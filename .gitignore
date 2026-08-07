@@ -1,0 +1,32 @@
+# --- Personal / scratch content ---
+# Local backup snapshots — likely contains unscrubbed project-specific
+# references, review before ever removing this line.
+local-backup/
+local-docs/
+
+# Scratch or in-progress notes not yet generalized for public sharing
+**/scratch/
+**/*-draft.md
+**/*.local.md
+**/*.local.*
+
+# --- Secrets / environment ---
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+
+# --- Agent/tool runtime artifacts (adjust if not applicable) ---
+.opencode/
+.claude/settings.local.json
+*.log
