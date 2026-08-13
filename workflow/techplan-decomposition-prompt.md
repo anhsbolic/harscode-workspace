@@ -29,7 +29,9 @@ structure.
 - **Contract section stays untouched.** The original techplan (specifically
   the contract) remains a single file and stays the source of truth for
   human review. Only the derived section — the part consumed by the
-  execution agent — gets split.
+  execution agent — gets split. This includes the Human Digest at the
+  top of the techplan (if present) — it stays with the contract file,
+  it does not get split into task files or duplicated across them.
 
 ## Input
 

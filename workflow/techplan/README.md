@@ -15,17 +15,19 @@ project repo, and portable across projects with different standards.
 | `rules.md` | What's mandatory, and how do we map content to sections? | Stable |
 | `guardrails.md` | When should the agent stop instead of assuming? | Stable |
 | `guidelines.md` | What's the read-synthesize-write process, step by step? | Stable |
+| `diagram-guidelines.md` | How do I write a valid, correctly-scoped Mermaid diagram for the digest? | Stable |
 | `examples.md` | Concrete examples calibrated for tone & level of detail? | Growing (append new examples) |
 | `retro.md` | Mistakes that happened during synthesis, and their mitigations? | Growing (living log) |
+| `techplan-example.md` | Real example of techplan result? | Stable|
 | `proposals/` | Proposed changes to the four files above | Growing (append new proposals) |
 
 ## Fundamental Rules
 
 1. **The agent must not edit `template.md`, `rules.md`, `guardrails.md`,
-   or `guidelines.md` directly.** If the agent finds a gap or friction
-   during synthesis, it writes a new proposal in `proposals/` (see
-   `proposals/_proposal-template.md` for the format). A human reviews
-   and merges it into the target document.
+   `guidelines.md`, or `diagram-guidelines.md` directly.** If the agent
+   finds a gap or friction during synthesis, it writes a new proposal in
+   `proposals/` (see `proposals/_proposal-template.md` for the format). A
+   human reviews and merges it into the target document.
 2. `examples.md` and `retro.md` may be appended to directly by the
    agent without going through the proposal process — the risk is low
    since these are additive (adding an example/note), not a change to

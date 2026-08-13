@@ -30,12 +30,31 @@ Step-by-step process for synthesizing raw docs into techplan.md.
    following `template.md`. Calibrate tone and level of detail using
    `examples.md`.
 
-7. **Check retro.md** before finishing — if there's a relevant lesson
+7. **Generate the Summary last**, after sections 1-13 (and 14, Open
+   Items) are complete. Condense per `rules.md` § 7 — don't write it as
+   an independent draft, and don't introduce anything not already
+   decided in sections 1-13 (`guardrails.md` § Summary Must Not
+   Introduce New Decisions). Include a diagram only if the plan meets
+   the branching/state-transition/multi-step-flow criteria in
+   `rules.md` § 7 — and if you do, validate every edge for both syntax
+   AND semantics against `diagram-guidelines.md` before finalizing
+   (`guardrails.md` § 9). Run the full self-check in `rules.md` § 7
+   before calling this step done — severity check, diagram semantic
+   check, and Open Items sync check are not optional.
+
+8. **Check retro.md** before finishing — if there's a relevant lesson
    for this story (e.g. a similar dedup case from before), apply it.
 
-8. **If you find a structural gap in this guidance**, write a proposal
+9. **If you find a structural gap in this guidance**, write a proposal
    (see Proposal Threshold below), don't edit the guidance directly
    (`guardrails.md` § 1).
+
+10. **If you're revising an existing techplan mid-Draft** (not a fresh
+    synthesis) and an Active Open Item has been resolved since the last
+    pass, move it to Resolved with the resolution recorded
+    (`rules.md` § 8, `guardrails.md` § 10) and regenerate the Summary
+    in the same edit (`guardrails.md` § 11) — don't leave that for the
+    next full synthesis pass.
 
 ## Proposal Threshold
 
