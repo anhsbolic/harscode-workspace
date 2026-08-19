@@ -26,13 +26,20 @@ That reframe drives every design decision here. The manageable variables aren't 
 
 ```
 workspace/
-├── workflow/           # development phases, in order of use
-│   ├── exploration/     # current-state gap analysis before any plan exists
-│   ├── techplan/         # the most formal phase — guardrails, proposals, retro log
+├── AGENTS.md            # first thing an agent reads — hard rules + routing, no rationale
+├── proposals/            # agent-writable proposals for best-practices/ (and, if ever needed, lightweight workflow/ phases)
+│   └── README.md
+├── workflow/            # development phases, in order of use
+│   ├── AGENTS.md         # hard rules + routing for this folder
+│   ├── README.md         # source of truth — phase tiering, rationale
+│   ├── exploration/       # current-state gap analysis before any plan exists
+│   ├── techplan/           # the most formal phase — guardrails, its own proposals/, retro log
 │   ├── code-review/
 │   ├── testing/
 │   └── pull-request/
-└── best-practices/     # technology-organized knowledge base
+└── best-practices/      # technology-organized knowledge base
+    ├── AGENTS.md          # hard rules + routing for this folder
+    ├── index.md            # source of truth — scannable table: trigger keyword → file → summary, plus governance detail
     ├── go/
     ├── graphql/
     ├── postgresql/
@@ -40,15 +47,16 @@ workspace/
     ├── kafka/
     ├── pubsub/
     ├── redis/
-    ├── ...
-    └── index.md          # scannable table: trigger keyword → file → summary
+    ├── infra/
+    ├── pwa/
+    └── ...
 ```
 
 **`workflow/`** encodes *how* an agent should move through a piece of work — exploration before planning, a formal proposal process for architectural decisions, lightweight checklists for lower-stakes phases like testing and PRs. Structural weight is proportional to stakes: `techplan/` has guardrails and a retro log; `code-review/` doesn't need that ceremony.
 
 **`best-practices/`** encodes *what* an agent should know — organized by technology, not by project, so it's genuinely portable. Every entry here has had project-specific references stripped and replaced with neutral examples before it's allowed in.
 
-**`index.md`** is load-bearing infrastructure, not a nice-to-have. Without it, an agent has to scan entire folders to find relevant guidance, which defeats the point. Every new best-practices file gets a row: trigger keywords → path → one-line summary.
+**`index.md`** is load-bearing infrastructure, not a nice-to-have. Without it, an agent has to scan entire folders to find relevant guidance, which defeats the point. Every new best-practices file gets a row: trigger keywords → path → one-line summary. For security-relevant work specifically, `index.md` also carries a Security Concern Map — a cross-cutting grouping by concern (authn, authz, secrets, PII, etc.) so an agent doesn't have to guess which technology folder a security pattern lives in.
 
 ## Design principles
 
@@ -56,6 +64,25 @@ workspace/
 - **Agents execute, humans own the guidance.** Agents can work within these files and write proposals for changes, but can't edit stable guidance directly. That boundary is deliberate.
 - **Weight matches stakes.** Not every phase needs the full formalism of `techplan/`. Over-engineering lightweight phases was tried and explicitly rejected.
 - **Everything here is project-agnostic by construction.** If a best-practice can't be stripped of project-specific context, it doesn't belong here yet.
+
+## Governance
+
+### Protection model, by area
+
+| Area | Editable by agent? | Proposal mechanism |
+|---|---|---|
+| `best-practices/` (all of it, including `index.md`) | No — not even append | `proposals/` (root) |
+| `workflow/techplan/` protected files (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`) | No | `workflow/techplan/proposals/` (own, separate from root) |
+| `workflow/techplan/examples.md`, `workflow/techplan/retro.md` | Yes — append directly | N/A |
+| `workflow/{exploration,code-review,testing,pull-request}/` | Corrected in the moment — no formal protection today | `proposals/` (root) if that ever changes |
+
+Two proposal mechanisms exist on purpose. `workflow/techplan/proposals/` predates the root `proposals/` and is scoped narrowly to techplan's own protected files, with a higher threshold (2+ stories or genuinely structural) because a techplan is a contract a lead signs off on. Root `proposals/` is lower-ceremony, for content that carries lower stakes — knowledge docs, not contracts. The two aren't consolidated; that's the "weight matches stakes" principle applied to governance itself, not just to workflow phases.
+
+### `AGENTS.md` vs `README.md`
+
+Every `README.md` (this file, `workflow/README.md`, `best-practices/index.md`) is the source of truth — read by humans and agents alike, holding the actual rationale, tables, and detail. `AGENTS.md` files are a separate, much thinner layer: the first thing an agent reads on entering a directory, containing only imperative hard rules and a pointer back to the relevant `README.md`/`index.md` for anything beyond that.
+
+`AGENTS.md` is not allowed to accumulate explanatory content over time. If a rule needs justifying, the justification goes in `README.md`, not inline in `AGENTS.md`.
 
 ## How this differs from Spec Kit / Superpowers / Amazon Kiro
 
@@ -68,7 +95,7 @@ This is an active, evolving personal system — not a finished product. Structur
 ## Usage
 
 1. Copy `workspace/` into your project root (or symlink it if you work across multiple repos).
-2. Point your agent's system prompt / project instructions at `workspace/workflow/README.md` as the entry point.
+2. Point your agent's system prompt / project instructions at `workspace/AGENTS.md` as the entry point — it routes to `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which in turn point to the full `README.md`/`index.md` for anything beyond the hard rules.
 3. Start a task in `exploration/` before jumping to `techplan/` — the workflow assumes you don't skip stages.
 
 ## License

@@ -17,6 +17,7 @@ under `workflow/` already is guidance, by definition. Naming a folder
 
 ```
 workflow/
+  AGENTS.md        First thing an agent reads in this folder — hard rules + routing, no rationale
   exploration/     Kickoff + clarifying questions → produces raw docs in docs/story/<code>/
   techplan/        Turns those raw docs into one techplan.md
   code-review/     Safety / Quality / Consistency review passes on the implementation
@@ -49,6 +50,40 @@ change frequency — this is deliberate, not inconsistent:
   guardrails or proposal process. None of these are contracts anyone
   approves; they're working practices that get corrected in the moment
   if they're off, not through formal review.
+
+## Governance
+
+### Protected files, by stage
+
+| Stage | Protected files? | Proposal mechanism |
+|---|---|---|
+| `techplan/` (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`) | Yes | `techplan/proposals/` (own, threshold: 2+ stories or genuinely structural) |
+| `techplan/examples.md`, `techplan/retro.md` | No — agent-appendable directly | N/A |
+| `exploration/`, `code-review/`, `testing/`, `pull-request/` | No, today | None — corrected in the moment. If a real recurring gap ever justifies formal protection here, use the root-level `../proposals/`, not a new mechanism |
+
+`techplan/proposals/` is the one place in this whole workspace with a
+higher bar (2+ stories or a genuinely structural gap) — appropriate
+given a techplan is a contract a lead signs off on. The root-level
+`proposals/` (which also governs `best-practices/`) is deliberately
+lower-ceremony and is available to any of the lightweight stages above
+if one of them ever outgrows "corrected in the moment." Don't reach for
+it pre-emptively — that would contradict the whole point of keeping
+these stages lightweight.
+
+`techplan/examples.md` and `techplan/retro.md` are the one exception to
+"protected files need a proposal" anywhere in this workspace — append
+directly, no proposal needed. This does not generalize to
+`best-practices/examples.md` files, which are proposal-gated (see
+`best-practices/index.md`).
+
+### `AGENTS.md` vs this file
+
+This file is the source of truth for `workflow/` — the tiering
+rationale above, cross-stage conventions, scope boundaries. `workflow/AGENTS.md`
+is a much thinner layer: the first thing an agent reads on entering this
+folder, containing only imperative hard rules and a pointer back here
+for anything beyond that. If a rule needs justifying, the justification
+lives here, not in `AGENTS.md`.
 
 ## Cross-Stage Source of Truth
 
