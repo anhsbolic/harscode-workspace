@@ -124,6 +124,7 @@ Minimum manifest contents:
   an explicit "no hard dependency" marker if the axis is parallel
   (component/module).
 - Back-reference to the originating contract techplan.
+- llm models to execute each tasks, you can read harscode-workspace/best-practices/model-routing.md
 
 ## Output
 
@@ -133,8 +134,8 @@ Minimum manifest contents:
 
 ## Cross-reference
 
-- Source techplan: see `/home/anhar-solehudin/projects/lkpp/backend-monorepo/docs/workspace/workflow/techplan-synthesis-prompt.md` for the
+- Source techplan: see `techplan-synthesis-prompt.md` for the
   contract/derived authoring process that precedes this decomposition
   step.
 - Task files produced here are still subject to the review checklist in
-  `/home/anhar-solehudin/projects/lkpp/backend-monorepo/docs/workspace/workflow/code-review/checklist.md`, same as any other derived-section content.
+  `code-review/checklist.md`, same as any other derived-section content.

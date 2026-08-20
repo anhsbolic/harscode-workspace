@@ -5,12 +5,12 @@ CLI, etc.) to synthesize a techplan.md from raw story docs, using this
 guidance folder. Fill in the two placeholders, paste as-is.
 
 ```
-Read the guidance folder at /home/anhar-solehudin/projects/lkpp/backend-monorepo/docs/workflow/techplan in this order:
+Read the guidance folder at workflow/techplan in this order:
 README.md, template.md, rules.md, guardrails.md, guidelines.md,
 examples.md, retro.md. This defines how you should classify content
 and what the output must look like.
 
-Then read every file in /home/anhar-solehudin/projects/lkpp/backend-monorepo/docs/product/story/GMRT-50941 — treat all of them as raw
+Then read every file in {STORY_PATH} — treat all of them as raw
 material. Don't assume a fixed number or fixed names; classify each
 piece of content by the function it serves (rules.md § 1), not by
 which file it came from.
@@ -37,13 +37,13 @@ silently, and STOP and ask me if you find a breaking change or data
 risk that isn't already explicit in the raw docs.
 
 Stack-specific risk lens: before finalizing sniffing (risk, edge cases, miscontext,
-misleading signals, inconsistency), read /home/anhar-solehudin/projects/lkpp/backend-monorepo/docs/best-practices/index.md.
+misleading signals, inconsistency), read best-practices/index.md.
 Match the trigger keywords in the index table against the area(s)/technology(ies)
 touched by this ticket (Go, PostgreSQL, GraphQL, REST API, Kafka, Pub/Sub, Redis).
 Open ONLY the matching file(s) — do not scan the entire best-practices/ folder.
 Apply the checklist from each matching file as part of the risk lens.
 
-Write the result to /home/anhar-solehudin/projects/lkpp/backend-monorepo/docs/product/story/GMRT-50941/techplan.md, following template.md's
+Write the result to {STORY_PATH}/techplan.md, following template.md's
 structure exactly. At the end, list out any open items or unresolved
 questions you carried forward instead of silently deciding — I'll
 review those manually before this goes anywhere further.
@@ -51,10 +51,9 @@ review those manually before this goes anywhere further.
 
 ## Placeholders
 
-- `{WORKFLOW_TECHPLAN_PATH}` — absolute path to this guidance folder
-  (e.g. `~/workflow/techplan`)
 - `{STORY_PATH}` — path to the story's raw docs in the target repo
-  (e.g. `docs/story/GMRT-50941`)
+  (e.g. `docs/story/GMRT-50941`). Used as a placeholder because the
+  story docs live in the target repo, not in this workspace.
 
 ## Notes
 
@@ -67,6 +66,6 @@ review those manually before this goes anywhere further.
   `{service}/.agents/docs/specs/{feature-name}/` is a deliberate
   checkpoint, not something to automate away.
 - The stack-specific risk lens step assumes `best-practices/` sits as a
-  sibling to `workflow/` under `docs/` (i.e. `docs/best-practices/` next
-  to `docs/workflow/`). If your layout differs, update the absolute
-  path in the risk lens step above accordingly.
+  sibling to `workflow/` at the workspace root (i.e. `best-practices/`
+  next to `workflow/`). If your layout differs, update the path in the
+  risk lens step above accordingly.
