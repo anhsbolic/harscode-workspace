@@ -1,8 +1,8 @@
 # Guidelines
 
 Runs after implementation exists, before it's considered done — either
-during active work or right before opening a PR. Three review passes,
-in order: Safety, Quality, Consistency.
+during active work or right before opening a PR. Four review passes,
+in order: Safety, Quality, Stack-Specific Best Practices, Consistency.
 
 ## 1. Safety Review
 
@@ -33,7 +33,28 @@ Look for:
 - Missing observability (no logging at decision points that matter for
   debugging later).
 
-## 3. Consistency Check
+## 3. Stack-Specific Best Practices Review
+
+> "Does this follow known correctness patterns for the technology it
+> touches?"
+
+This one requires an external lookup before it can be judged — same
+reason it's a separate pass and not folded into Quality. Steps:
+
+1. Check `best-practices/index.md` and match its trigger keywords
+   against the technology/area(s) touched by this diff (Go, PostgreSQL,
+   GraphQL, REST API, Kafka, Pub/Sub, Redis).
+2. Open only the matching file(s) — don't scan the whole folder.
+3. Apply that file's checklist to the diff (e.g. a Kafka consumer
+   change → `kafka/consumer-and-offset-management.md`; a new GraphQL
+   resolver → `graphql/resolver-n-plus-one.md`).
+
+This is domain knowledge, not project convention — don't substitute a
+pattern from a different project's codebase for what the matching
+best-practices file actually says. If no keyword matches, this pass is
+a no-op; don't force a match that isn't there.
+
+## 4. Consistency Check
 
 > "Does this follow the existing codebase's own patterns?"
 
@@ -50,6 +71,13 @@ pattern from a different project applies here. Check specifically:
 ## Order Matters
 
 Do Safety first — a beautifully consistent, well-named function that
-has a nil pointer bug is still broken. Quality and Consistency are
-about the code being good to live with; Safety is about the code being
-correct at all.
+has a nil pointer bug is still broken. Quality, Stack-Specific Best
+Practices, and Consistency are about the code being good to live with;
+Safety is about the code being correct at all.
+
+Stack-Specific Best Practices comes after Quality and before
+Consistency deliberately: it's domain correctness (is this right *for
+this technology*), which is a different question from both "is this
+well-built in general" (Quality) and "does this match what's already
+here" (Consistency) — and like Consistency, it requires reading an
+external reference before it can be judged, not just reading the diff.
