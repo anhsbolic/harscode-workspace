@@ -7,11 +7,11 @@ just reading code.
 
 ## Process
 
-0. **Read the latest implementation report first** (`3-build/report.md`, 
-   `5-patch/report.md` or the most recent report if the story looped back 
-   through the implementation after code review). Treat its rule-coverage 
-   table and named tests as *claims*, not settled fact — this step exists 
-   so this phase doesn't silently redo work already proven, and doesn't
+0. **Read the latest implementation report first** (`3-build/report.md`,
+   or the most recent report if the story looped back through the
+   implementation after code review). Treat its rule-coverage table and
+   named tests as *claims*, not settled fact — this step exists so this
+   phase doesn't silently redo work already proven, and doesn't
    silently trust work that was only claimed.
 
    - **Spot-check, don't rewrite.** For rules already backed by a named

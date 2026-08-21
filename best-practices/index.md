@@ -31,6 +31,7 @@ every category's row to find what's relevant to auth, secrets, PII, etc.
 | go | [go/rate-limiting.md](go/rate-limiting.md) | rate limit, throttle, lockout, token bucket | yes | Per-key limiter with idle-key eviction to avoid a memory leak |
 | go | [go/file-upload-handling.md](go/file-upload-handling.md) | file upload, multipart, content-type, magic bytes | yes | Sniff magic bytes, cap size server-side, stream instead of buffering |
 | go | [go/testing-concurrency.md](go/testing-concurrency.md) | race condition, goroutine, shared state, -race | no | go test -race + invariant-asserting concurrent tests |
+| go | [go/integration-testing-setup.md](go/integration-testing-setup.md) | integration test, build tag, real database, DATABASE_URL, live Postgres, testcontainers | no | Gate DB-dependent tests behind `//go:build integration`; reserve for constraint/transaction/query-validity checks a fake repo can't prove |
 | go | [go/authorization-and-idor.md](go/authorization-and-idor.md) | authorization, IDOR, ownership check, resource scope, access control | yes | Resource-level scope check, separate from role check |
 | go | [go/role-and-privilege-separation.md](go/role-and-privilege-separation.md) | role separation, privilege escalation, incompatible roles, recuse | yes | Role-exclusivity constraints enforced server-side, not just UI |
 | go | [go/webhook-signature-verification.md](go/webhook-signature-verification.md) | webhook, callback signature, hmac verification, replay protection | yes | Signature verification + replay protection on inbound callbacks |
