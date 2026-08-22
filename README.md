@@ -96,7 +96,14 @@ This is an active, evolving personal system — not a finished product. Structur
 
 1. Copy `workspace/` into your project root (or symlink it if you work across multiple repos).
 2. Point your agent's system prompt / project instructions at `workspace/AGENTS.md` as the entry point — it routes to `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which in turn point to the full `README.md`/`index.md` for anything beyond the hard rules.
-3. Start a task in `exploration/` before jumping to `techplan/` — the workflow assumes you don't skip stages.
+3. Start a task in `exploration/` before jumping to `techplan/` — the workflow assumes you don't skip stages. execute exploration & techplan in one session is better.
+4. techplan includes : synthesis -> review -> decomposition (optional)
+5. build based on techplan -> write report
+6. execute code-review based on build report -> create code review report and patch plan
+7. execute patch plan as part of build iteration
+8. execute testing based on all build report (build & patches)
+9. do patch after testing, when it says "your code need patch" -> write testing report, patch plan, and patch report
+10. create pull request
 
 ## License
 
