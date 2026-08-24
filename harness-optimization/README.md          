@@ -1,0 +1,91 @@
+# harness-optimization/
+
+## What this is
+
+A third pillar, sibling to `workflow/` and `best-practices/`:
+
+- `workflow/` — **what** to do, by phase (process knowledge)
+- `best-practices/` — **what** is correct, by technology (domain knowledge)
+- `harness-optimization/` — **how** a specific agent harness (Claude Code,
+  OpenCode CLI, or others added later) executes and enforces the two above
+
+## The one rule that keeps this pillar honest
+
+**Translation only. Never policy.**
+
+Every file in this tree exists to answer "how do I express an
+already-decided rule in this harness's native mechanism (subagent, hook,
+skill, slash command, config flag)?" — never "what should the rule be?"
+
+If writing a file here requires inventing a new rule, a new threshold, or a
+new exception that doesn't already exist in `workflow/` or
+`best-practices/`, that's a signal the content belongs in one of those two
+pillars first, as its own proposal. `harness-optimization/` translates it
+afterward. This ordering is not optional — a harness config that encodes a
+policy decision no other pillar has made is a second, uncoordinated source
+of truth, the exact failure this workspace's proposal system exists to
+prevent (see `techplan/retro.md` for what happens when a decision lives in
+two places and only one gets updated).
+
+## Structure
+
+```
+harness-optimization/
+├── README.md              # this file
+├── AGENTS.md               # pointer-only, short version
+├── token-optimization.md   # harness-agnostic rule (see below)
+├── <harness-name>/         # e.g. claude-code/, opencode/
+│   ├── README.md           # effective-as-of disclaimer (see below)
+│   ├── token-optimization.md   # how this harness enforces the root rule
+│   └── <track>/             # e.g. frontend/, backend/ — only if the
+│                             # harness's translation genuinely differs
+│                             # by track; not mandatory structure
+```
+
+A `<harness-name>/<track>/` split is used only when the actual translation
+differs meaningfully by track (e.g. which subagents exist, which best-
+practices category a skill wraps). Content that applies regardless of
+track (like token-optimization enforcement) stays at `<harness-name>/`
+root — don't duplicate it per track.
+
+## Governance level
+
+Same as `best-practices/`: **agent-protected, proposal-gated.** No direct
+edits to any file in this tree, including this one. Propose changes via
+`../proposals/`, following the same template used for `best-practices/`
+changes. See `AGENTS.md` for the short version and `../proposals/README.md`
+for the template.
+
+This is a stricter bar than most of `workflow/`'s lightweight phases, and
+deliberately so: unlike a guideline file, the content here is often
+*executable* (hook scripts, subagent tool restrictions) or directly shapes
+what an agent is and isn't allowed to touch. A wrong guideline gets
+corrected on the next read; a wrong hook can silently over-block or
+silently under-block with no visible symptom until it matters.
+
+## The disclaimer every harness subfolder must carry
+
+Harness features (hooks, subagents, skills, CLI flags) change faster than
+this workspace's other two pillars. Every `<harness-name>/README.md` must
+state:
+
+```
+Effective as of: <harness name + version/date>
+Last verified: <date>
+Re-verify: recommended every ~2-3 months, or immediately if the harness
+ships a major version change to hooks/subagents/skills mechanics.
+```
+
+Content that hasn't been re-verified past its stated window should be
+treated as a hypothesis, not a settled reference — same posture this
+workspace already takes with `best-practices/model-routing.md`.
+
+## Project-agnostic by construction
+
+Same discipline as `best-practices/`: nothing in this tree references a
+specific target repo, domain, or story. A subagent-mapping file describes
+generic phase names (`exploration`, `techplan`, `build`, `code-review`,
+`testing`) and generic tool/model tiers — never a specific project's
+folder layout or feature names. Project-specific harness config (actual
+`.claude/agents/*.md` files wired to a real repo) lives in that repo, not
+here — this tree is the reusable pattern, not an instance of it.
