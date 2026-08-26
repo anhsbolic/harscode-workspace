@@ -81,6 +81,44 @@ because the branching (3 reminder milestones + a take-down boundary +
 an idempotent no-op) is genuinely hard to hold in your head from a
 table alone.
 
+## Example: Interface Contract for a frontend-only techplan (no DB layer)
+
+Source: Kencleng `account/01-register-email-verification` (frontend track)
+
+The target repo's own convention (`frontend/AGENTS.md` §2) states the
+frontend is a pure presentation layer with no persistence layer of its
+own — the backend for this exact feature had already shipped and
+stabilized the DB schema and API contract in a separate, earlier
+techplan. Filling in `rules.md` §6's "minimum coverage" for this case:
+
+```markdown
+## 8. Interface Contract
+
+**DB Schema changes:** N/A — no persistence layer in `frontend/`
+(`frontend/AGENTS.md` §2).
+
+**API contract consumed** (already shipped, from the generated
+OpenAPI types — not authored by this task): ...
+
+**New frontend-side additions (this task):** the actual `lib/api/`
+wrapper functions/types this task adds on top of the fixed contract.
+
+**Business logic flow (concise, presentation-layer only):** ... every
+branch here is "what to render given what the backend already
+decided," never a re-derivation of a business rule.
+```
+
+Why this is good: it satisfies §6's letter (DB/API/business-logic-flow
+all addressed) without inventing a DB section that doesn't apply, and
+it draws a clean line between "the wire contract" (unchanged, just
+referenced) and "this task's actual code delta" (the wrapper layer),
+which is what a frontend-only techplan's Interface Contract is really
+documenting. The template's literal ` ```graphql ` fence for API
+changes was swapped for `typescript` — a deliberate, noted deviation
+per `guardrails.md` §4, not an oversight.
+
+---
+
 ## Example: when to skip the diagram
 
 A techplan that just adds one new column and wires it through one
