@@ -1,17 +1,11 @@
 # Template: techplan.md
 
 This skeleton's structure MUST be followed. Fill in each section
-following `rules.md` and `guardrails.md`. This document is
-execution-grade throughout — for the implementing agent, the engineer,
-and code review. It has no reviewer-facing summary.
-
-Once this techplan reaches **Approved** status, generate
-`report-techplan.md` from `report-template.md` — that file is the sole
-human-facing artifact (see Proposal 0005, which supersedes the older
-embedded-Summary design). Do not add a summary or condensed section
-back into this file; if a reviewer needs an update after Approved,
-regenerate `report-techplan.md` in full, don't patch either file
-piecemeal.
+following `rules.md` and `guardrails.md`. The Summary is written
+LAST, after sections 1-13 are complete — it's a condensation of what's
+already decided, not an independent draft. Everything from section 1
+onward is written for execution precision; the digest is the only part
+calibrated for a quick human read.
 
 ```markdown
 # Tech Plan: {Feature Name}
@@ -19,11 +13,46 @@ piecemeal.
 > Ticket    : {ticket code}
 > Author    : {name}
 > Date      : {YYYY-MM-DD}
-> Updated   : {fill in if there's a significant revision to any section}
+> Updated   : {fill in if there's a significant revision to section 1-7}
 > Status    : Draft / In Review / Approved / Implemented
 > Approach  : {optional — one-line summary, omit if section 1/2 already covers it}
 > Refs      : {optional — AGENTS.md that was read, PRD link, related story docs}
 
+---
+
+## 📋 Summary — start here
+
+*Derived from sections 1, 2, 5, 7, and 14 (Open Items) below —
+condensed, not reinterpreted. No line numbers, no full rule-by-rule
+tables, no full option comparisons. See `rules.md` § 7 (Summary) for
+what to include and `guardrails.md` § Digest Must Not Introduce New
+Decisions.*
+
+**What & why** — 2-4 sentences, from section 1.
+
+**Scope** — short bullets, from section 2, no file/line references.
+
+**Decision flow diagram** — a Mermaid diagram, ONLY if this plan has
+genuine branching logic, a state transition, or a multi-step
+cross-component flow (see `rules.md` § 7 for the criteria). Skip
+entirely for linear/CRUD plans — don't add a diagram just because the
+template has a slot for one.
+
+**Key decisions** — chosen option only, one line each, from section 5.
+Not the full option-comparison table.
+
+**Top risks** — High-severity rows only, from section 7.
+
+**Open items needing human input** — copy the Active list from section
+14 as-is. If section 14 has zero Active items, this line reads "none
+open" instead of being omitted silently.
+
+---
+<!-- Audience boundary: above is the human-readable digest for
+review/approval. Below is the full execution-grade plan — same
+decisions, same scope, expanded to file/line precision, rule IDs, and
+full option comparisons. Nothing below contradicts the digest above;
+it's the same source of truth at higher resolution. -->
 ---
 
 ## 1. Background
@@ -70,6 +99,14 @@ Testable, given/when/then style.
 | Risk | Likelihood | Severity | Mitigation |
 |---|---|---|---|
 
+---
+<!-- Secondary marker: sections 1-7 above still favor narrative/table
+form; 8-13 below are file/line-precise implementation detail. Both
+halves are inside the executor-facing part of the document — the only
+audience split that matters for review purposes is the one above,
+between the Summary and section 1. -->
+---
+
 ## 8. Interface Contract
 
 Check the target repo's convention first (see `guardrails.md`) to know
@@ -89,18 +126,12 @@ what's mandatory to cover here — it can differ per project/service.
 
 ## 9. Architecture / Plan
 
-High-level flow / pseudocode. Migration strategy if relevant. Include
-a diagram only if the flow has genuine branching, a state transition,
-or a multi-step cross-component sequence — skip it for a linear/CRUD
-plan and describe the flow in one line instead (`guidelines.md`'s
-diagram criteria apply here, not just in `report-template.md`).
+High-level flow / pseudocode. Migration strategy if relevant.
 
 ## 10. Implementation Details
 
 Reference file:function + signature. Full snippet ONLY for what's
-genuinely novel/non-obvious; for logic that mirrors an existing
-precedent, point at the precedent (file:line) instead of duplicating
-its code.
+genuinely novel/non-obvious.
 
 **File**: `path/to/file`
 - Change: ...
@@ -116,12 +147,15 @@ its code.
 ## 12. Testing Checklist
 
 Derived directly from section 4, written concurrently — not afterward.
-Mark a line with ⚠️ if it's a non-obvious gotcha worth flagging during
-review, instead of maintaining a separate mistakes table.
 
 - [ ] ...
 
-## 13. Open Items
+## 13. Testing Examples & Common Mistakes
+
+| Mistake | Error/Behavior | Fix |
+|---|---|---|
+
+## 14. Open Items
 
 Lifecycle rules in `rules.md` § 8. An item lives in exactly one of the
 two lists below at any time — never both, never neither once raised.
@@ -138,19 +172,11 @@ two lists below at any time — never both, never neither once raised.
 
 ## Structural Note
 
-- This file has no Summary/digest section and no audience boundary —
-  see Proposal 0005. Every section is written at execution precision
-  for the agent and reviewing engineer.
-- Once this techplan reaches **Approved**, generate
-  `report-techplan.md` from `report-template.md`. That file draws from
-  sections 1, 2, 5, 7, and 13 (Open Items) here, condensed for a
-  reviewer, plus its own Architecture/Plan and Interface Contract
-  sections. Never generate it before Approved, and never hand-patch it
-  — if this techplan changes afterward (including the
-  Approved→Implemented loop or a reopened Draft), regenerate
-  `report-techplan.md` in full. See `report-template.md`'s generation
-  checklist (relocated from the old `rules.md` § 7) before treating a
-  regenerated report as done.
+- The Summary is generated, not authored independently — see
+  `rules.md` § 7. If section 1, 2, 5, 7, or 14 (Open Items) changes,
+  regenerate the Summary; don't hand-patch it out of sync with the rest
+  of the plan. See `rules.md` § 7's self-check before calling any
+  revision done.
 - When an Active Open Item gets resolved — including mid-Draft, not
   just at Approved/Implemented — move it to Resolved with the
   resolution written out (`rules.md` § 8, `guardrails.md` § 10). Don't
