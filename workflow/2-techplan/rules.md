@@ -180,3 +180,34 @@ silently overwriting a locked contract).
 Active or Resolved. The Resolved list is the permanent record of what
 was asked and what was decided — same rationale as `retro.md` and
 `proposals/` being append-only logs elsewhere in this workspace.
+
+## 9. Test Focus Pointer Is Carried From Exploration, Not Invented
+
+Section 12's Test Focus Pointer table sources from the raw exploration
+docs' Sniffing Checklist § Risk findings for that story — never
+invented fresh during synthesis. If synthesis surfaces a new
+concurrency/perf/security concern that wasn't flagged during
+exploration, that's a missed area in exploration, not something to
+quietly add here without flagging it (see `guardrails.md` § 12).
+
+**What qualifies for the pointer:** a Risk-lens finding from exploration
+that is genuinely about shared state, race conditions, expensive
+primitives under load, or a security-sensitive boundary (auth, payment,
+PII) — not every risk finding qualifies. A risk already fully covered
+by section 4's ordinary rules (a plain validation edge case, for
+instance) doesn't need a pointer row; the pointer exists specifically
+for test *classes* the default build-loop suite (unit + mocked + API
+contract) does not cover.
+
+**Condensation, not restatement:** only areas that survived synthesis
+and remain relevant belong in the table — same condensation discipline
+this workspace already applies elsewhere (derived from earlier
+material, never an independent draft; the full plan wins if it ever
+disagrees with what exploration originally flagged).
+
+**Default is off:** the build/patch implementation loop runs unit +
+mocked-service + API-contract tests only, regardless of what this table
+says. A row here is an instruction for the testing phase
+(`workflow/5-testing/`) to schedule additional test classes there — it
+is never an instruction to run race/perf/security tests inside the
+tight build-loop iteration.

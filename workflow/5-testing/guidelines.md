@@ -33,6 +33,29 @@ just reading code.
    proven, close what was flagged, then cover the ground nothing else
    could.
 
+   - **Extract the Test Focus Pointer.** Read techplan § 12's Test
+     Focus Pointer table (`workflow/2-techplan/rules.md` § 9). For each
+     area still marked relevant, cross-check the raw exploration docs'
+     Sniffing Checklist Risk findings for the concrete detail behind
+     *why* it's flagged, then build a concrete Test Execution Plan:
+     - Concurrency/race: scope to the specific package(s)
+       (`go test -race ./internal/<area>/...`), never a blanket
+       `./...` sweep — see `best-practices/go/testing-concurrency.md`.
+     - Perf/load: concrete scenario + threshold, not "check
+       performance."
+     - Security: the specific vulnerability class relevant to the area
+       (e.g. an auth area gets IDOR/session checks, not a generic pass).
+     - If any deliberately-slow primitive (bcrypt, other KDFs) is
+       exercised, confirm the test uses a test-appropriate cost/work
+       factor before running it under load or concurrency — see
+       `best-practices/go/expensive-primitives-in-tests.md`.
+     - If the pointer table is empty but you (as reviewer) suspect a
+       genuinely sensitive area was scoped out silently — that's a
+       techplan drift signal, not a testing-phase gap. Flag it back
+       rather than quietly adding the test yourself; the techplan
+       should record the decision either way
+       (`workflow/2-techplan/guardrails.md` § 12).
+
 1. **Test every scenario from the techplan's Rules & Validation section
    (§ 4)** using the real interface — but per step 0, this means
    confirming coverage exists and is real, not re-deriving every test

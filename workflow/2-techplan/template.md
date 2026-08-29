@@ -121,6 +121,22 @@ review, instead of maintaining a separate mistakes table.
 
 - [ ] ...
 
+### Test Focus Pointer (carry-over from exploration Risk lens)
+
+Areas flagged as concurrency/perf/security-sensitive during exploration
+Stage 2 (`sniffing-checklist.md` § Risk) that are still relevant after
+synthesis — a pointer for the testing phase, not a full test plan.
+
+| Area | Why sensitive | Still relevant post-synthesis? |
+|---|---|---|
+
+Only list areas that survived synthesis and remain relevant — an area
+flagged during exploration but dropped/changed during synthesis is
+implicitly "N/A, see § 5 Decision Log for why," not restated here. This
+is a pointer, not a test plan: race/perf/security execution detail
+(scope, tooling, thresholds) is decided in the testing phase
+(`workflow/5-testing/`), not here.
+
 ## 13. Open Items
 
 Lifecycle rules in `rules.md` § 8. An item lives in exactly one of the

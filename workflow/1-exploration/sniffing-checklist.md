@@ -11,6 +11,15 @@ What could break, and how far does it reach? Not just "this function
 could fail" but who/what depends on it — other services, other product
 types, existing data, existing clients.
 
+If a finding here is genuinely about shared state, concurrency, an
+expensive primitive under load, or a security-sensitive boundary (auth,
+payment, PII) — write it concretely enough to carry forward into the
+techplan's Test Focus Pointer (`workflow/2-techplan/rules.md` § 9)
+later. "Possible race on session store" is carry-forward-ready; "watch
+concurrency here" is not — someone reading only this line during
+synthesis, without re-deriving it, should understand *why* it's
+flagged.
+
 ## 2. Edge Cases
 
 Null, empty, boundary values, concurrent access, partial state — for

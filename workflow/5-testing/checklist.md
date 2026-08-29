@@ -10,6 +10,20 @@
 - [ ] Every rule in techplan § 4 (Rules & Validation) maps to at least
       one test
 
+## Test Focus Pointer Execution (if techplan § 12 has any rows)
+
+- [ ] Every "Y" row in techplan's Test Focus Pointer has a concrete
+      Test Execution Plan (scope, tooling, threshold) — not just
+      re-run generically
+- [ ] Race/concurrency tests are scoped to the specific package(s),
+      never a blanket `./...` sweep
+- [ ] Any deliberately-slow primitive (bcrypt, other KDFs) exercised
+      under load/concurrency uses a test-appropriate cost factor, not
+      production settings
+- [ ] An empty pointer table with a suspected sensitive area has been
+      flagged back as a possible techplan drift, not silently
+      resolved by adding a test unilaterally
+
 ## Error Verification
 
 - [ ] Error category is correct (not generic when specific was expected)

@@ -56,6 +56,12 @@ Step-by-step process for synthesizing raw docs into techplan.md.
     in the same edit (`guardrails.md` § 11) — don't leave that for the
     next full synthesis pass.
 
+11. **When populating section 12 (Testing Checklist), also populate the
+    Test Focus Pointer table** (`rules.md` § 9) by cross-referencing the
+    raw exploration docs' Sniffing Checklist Risk findings for this
+    story. Don't silently drop a flagged area — mark it N/A with a
+    reason if it didn't survive synthesis (`guardrails.md` § 12).
+
 ## Proposal Threshold
 
 Write a proposal ONLY if:

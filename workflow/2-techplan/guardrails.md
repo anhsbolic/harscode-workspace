@@ -104,3 +104,21 @@ resynthesis — regenerate the Summary (`rules.md` § 7 self-check). A
 stale Summary that still lists a resolved item as needing human input,
 or a Top Risk that's since been mitigated, is actively misleading: it
 asks a reviewer to act on something that's already settled.
+
+## 12. Don't Silently Drop a Flagged Risk Area
+
+If exploration's Sniffing Checklist § Risk flagged an area as
+concurrency/perf/security-sensitive, and that area survives synthesis
+in some form, it must appear in section 12's Test Focus Pointer table —
+even if the answer is "no longer relevant, see § 5." Silently omitting
+it (rather than marking it N/A with a reason) reproduces the same class
+of gap as § 11 (Summary drifting out of sync): a reviewer or the
+testing phase has no way to tell "deliberately scoped out" from
+"forgotten."
+
+If you're unsure whether a Risk-lens finding rises to Test Focus
+Pointer relevance or is just an ordinary section 4 edge case — ask,
+don't guess. Over-including borderline cases is low-cost (worst case,
+the testing phase spends a few extra minutes confirming N/A); silently
+under-including one is what lets an untested race condition or
+security gap ship.
