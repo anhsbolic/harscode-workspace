@@ -21,6 +21,14 @@ Look specifically for:
 - Resources not released on early-return paths (connections, file
   handles, locks).
 
+If this pass flags genuinely concurrency-sensitive or security-sensitive
+code, cross-check the story's techplan § 12 Test Focus Pointer: does
+this area appear there? If the code clearly warrants race/perf/security
+coverage but the pointer table doesn't reflect it, report that as a
+**techplan-drift finding**, separate from any code-level Safety finding
+— the fix is updating the techplan (or confirming it's deliberately out
+of scope), not just noting the code issue.
+
 ## 2. Quality Review
 
 > "Is this code optimized? Maintainable? Readable?"

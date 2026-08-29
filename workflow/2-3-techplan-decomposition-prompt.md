@@ -31,7 +31,11 @@ structure.
   human review. Only the derived section — the part consumed by the
   execution agent — gets split. This includes the Human Digest at the
   top of the techplan (if present) — it stays with the contract file,
-  it does not get split into task files or duplicated across them.
+  it does not get split into task files or duplicated across them. The
+  same applies to § 12's Test Focus Pointer table, if present: it's a
+  story-level pointer consumed by the testing phase after all tasks are
+  done, not per-task detail — it stays with the contract, never
+  redistributed or duplicated into individual task files.
 
 ## Input
 

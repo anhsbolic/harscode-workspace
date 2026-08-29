@@ -49,6 +49,11 @@ Run each check against the actual techplan and actual source docs — not from m
 - No invented facts — spot-check 2-3 non-obvious technical claims against source docs.
 - No silent overwrite of a locked (Approved/Implemented) contract, or of Draft-status content mid-edit without Summary resync (guardrails §11).
 
+### 6. Test Focus Pointer completeness (rules.md §9, guardrails.md §12)
+- Read the raw exploration docs' Sniffing Checklist Risk-lens findings. For each one that's genuinely about shared state, concurrency, an expensive primitive under load, or a security-sensitive boundary — confirm it appears in §12's Test Focus Pointer table, either as a relevant row or explicitly marked N/A with a reason.
+- Flag any such finding that's simply absent from the table with no trace — this is the same class of silent-drop gap as Open Items desync (§4 above), just on a different section.
+- Don't flag ordinary section-4-covered edge cases that don't rise to pointer relevance — over-flagging noise defeats the check.
+
 ## Output format
 
 Do **not** output a rewritten techplan. Output a findings report:

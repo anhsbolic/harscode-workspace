@@ -43,6 +43,14 @@ touched by this ticket (Go, PostgreSQL, GraphQL, REST API, Kafka, Pub/Sub, Redis
 Open ONLY the matching file(s) — do not scan the entire best-practices/ folder.
 Apply the checklist from each matching file as part of the risk lens.
 
+When populating section 12 (Testing Checklist), also populate the Test
+Focus Pointer table (rules.md § 9) by cross-referencing the raw
+exploration docs' Sniffing Checklist Risk findings for this story. Only
+carry forward areas genuinely about shared state, concurrency, an
+expensive primitive under load, or a security-sensitive boundary — and
+don't silently drop one that survived synthesis (guardrails.md § 12);
+mark it N/A with a one-line reason instead.
+
 Write the result to {STORY_PATH}/techplan.md, following template.md's
 structure exactly. At the end, list out any open items or unresolved
 questions you carried forward instead of silently deciding — I'll

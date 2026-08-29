@@ -1,0 +1,71 @@
+# Build Prompt
+
+Manual-invoke prompt for the build/patch implementation loop — the
+tight edit → run → fix cycle after a techplan is approved, one
+iteration/scope slice at a time.
+
+## Inputs required before running
+
+- Path to the techplan (`docs/story/<story-code>/techplan.md`) — § 4
+  (Rules & Validation) and § 10-11 (Implementation Details) are the
+  contract to build against.
+- The specific rule(s)/scope being implemented in this iteration —
+  don't hand the agent the entire techplan and let it decide scope
+  each time; that's how iterations balloon and lose focus.
+
+## Prompt
+
+```
+You are implementing against an approved techplan, one iteration of
+the build/patch loop at a time. Don't revisit architectural decisions
+already made in the techplan — if something genuinely doesn't hold as
+written, stop and report it instead of silently working around it.
+
+Techplan: [PASTE PATH OR CONTENT HERE]
+Scope for this iteration: [PASTE SPECIFIC RULE(S)/SECTION HERE]
+
+Test scope for this loop — fixed, not negotiable per story:
+{file:workflow/3-build/guidelines.md#default-test-scope-always-regardless-of-techplan-content}
+
+Full checklist: {file:workflow/3-build/checklist.md}
+
+---
+
+Output format:
+
+## What changed
+[files touched, one line each]
+
+## Tests run
+[test name/pattern → category (unit/mocked/API-contract) → result]
+Confirm explicitly: no `-race`, perf/load, or security-class test was
+run in this iteration.
+
+## Contract check
+- [ ] This iteration satisfies its assigned scope from techplan § 4
+- [ ] No contract assumption broke — or, if one did, flagged below
+      instead of worked around
+
+## Flagged for techplan/testing review (if any)
+[Concurrency/perf/security concern noticed but not tested here, or a
+contract assumption that didn't hold — one line each]
+```
+
+## Notes
+
+- This prompt does not decide which model runs it — see
+  `best-practices/model-routing.md` (draft) for tier × stage routing.
+- This fills a real structural gap: `workflow/` numbers phases
+  1 (exploration) → 2 (techplan) → 4 (code-review) → 5 (testing) →
+  6 (pull-request), with no formal phase 3 (build) guidance in this
+  workspace despite target repos already using a `3-build/` path
+  convention for reports (see
+  `best-practices/go/examples/integration-testing-setup.md`). This
+  fills that gap with the minimum ceremony the loop's stakes warrant —
+  a fixed test-scope boundary and a flag-back mechanism — nothing
+  heavier, consistent with "weight matches stakes."
+- Project-specific build conventions (token-terseness instructions,
+  build tool invocation, etc.) still belong in the target repo's own
+  `AGENTS.md`/`CLAUDE.md`, not here — this file only owns the one
+  cross-project rule this workspace has evidence for: the default test
+  tier boundary.
