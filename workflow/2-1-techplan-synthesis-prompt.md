@@ -10,7 +10,7 @@ README.md, template.md, rules.md, guardrails.md, guidelines.md,
 examples.md, retro.md. This defines how you should classify content
 and what the output must look like.
 
-Then read every file in {STORY_PATH} — treat all of them as raw
+Then read every file in {EXPLORATION_LOGS_PATH} — treat all of them as raw
 material. Don't assume a fixed number or fixed names; classify each
 piece of content by the function it serves (rules.md § 1), not by
 which file it came from.
@@ -51,7 +51,7 @@ expensive primitive under load, or a security-sensitive boundary — and
 don't silently drop one that survived synthesis (guardrails.md § 12);
 mark it N/A with a one-line reason instead.
 
-Write the result to {STORY_PATH}/techplan.md, following template.md's
+Write the result to {EXPLORATION_LOGS_PATH}/techplan.md, following template.md's
 structure exactly. At the end, list out any open items or unresolved
 questions you carried forward instead of silently deciding — I'll
 review those manually before this goes anywhere further.
@@ -59,7 +59,7 @@ review those manually before this goes anywhere further.
 
 ## Placeholders
 
-- `{STORY_PATH}` — path to the story's raw docs in the target repo
+- `{EXPLORATION_LOGS_PATH}` — path to the story's raw docs in the target repo
   (e.g. `docs/story/GMRT-50941`). Used as a placeholder because the
   story docs live in the target repo, not in this workspace.
 
