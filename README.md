@@ -72,12 +72,26 @@ workspace/
 
 | Area | Editable by agent? | Proposal mechanism |
 |---|---|---|
-| `best-practices/` (all of it, including `index.md`) | No — not even append | `proposals/` (root) |
-| `workflow/techplan/` protected files (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`) | No | `workflow/techplan/proposals/` (own, separate from root) |
-| `workflow/techplan/examples.md`, `workflow/techplan/retro.md` | Yes — append directly | N/A |
-| `workflow/{exploration,code-review,testing,pull-request}/` | Corrected in the moment — no formal protection today | `proposals/` (root) if that ever changes |
+| `best-practices/` (all of it, including `index.md`) | No — not even append | `proposals/` (Protection Tier: `general`) |
+| `workflow/2-techplan/` protected files (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`, `report-template.md`) | No | `proposals/` (Protection Tier: `techplan-protected`) |
+| `workflow/2-techplan/examples.md`, `workflow/2-techplan/retro.md` | Yes — append directly | N/A |
+| `workflow/{1-exploration,4-code-review,5-testing,6-pull-request}/` | Corrected in the moment — no formal protection today | `proposals/` if that ever changes |
 
-Two proposal mechanisms exist on purpose. `workflow/techplan/proposals/` predates the root `proposals/` and is scoped narrowly to techplan's own protected files, with a higher threshold (2+ stories or genuinely structural) because a techplan is a contract a lead signs off on. Root `proposals/` is lower-ceremony, for content that carries lower stakes — knowledge docs, not contracts. The two aren't consolidated; that's the "weight matches stakes" principle applied to governance itself, not just to workflow phases.
+One `proposals/` folder, one continuous numbering sequence, for every
+protected area. This used to be two separate mechanisms — a root
+`proposals/` for `best-practices/` and lightweight `workflow/` phases,
+and a separate `workflow/2-techplan/proposals/` scoped to techplan's
+own protected files with its own numbering — kept apart deliberately
+because a techplan is a contract a lead signs off on and warrants a
+higher bar (2+ tasks or genuinely structural) than a best-practices
+knowledge doc does. Two independent numbering sequences that
+occasionally needed to cross-reference each other produced colliding
+numbers with no way to tell them apart in practice, so they were
+merged into one folder — the threshold distinction that mattered is
+preserved as a **Protection Tier** field on each proposal (see
+`proposals/README.md`), not by physical location anymore. "Weight
+matches stakes" still applies; it's just expressed as metadata now
+instead of folder structure.
 
 ### `AGENTS.md` vs `README.md`
 

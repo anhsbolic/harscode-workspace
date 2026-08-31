@@ -1,8 +1,8 @@
 # Report Template
 
-> Protected file (per proposal 0005, folding in 0004) — sibling to `template.md`. Not edited directly by the agent; changes go through the proposal process.
+> Protected file (per proposal 0012, folding in 0011) — sibling to `template.md`. Not edited directly by the agent; changes go through the proposal process.
 >
-> **This is the sole human-facing artifact.** `techplan.md` no longer contains a Summary section or audience boundary (per proposal 0005) — all reviewer-facing content lives here instead, sourced from the approved techplan.
+> **This is the sole human-facing artifact.** `techplan.md` no longer contains a Summary section or audience boundary (per proposal 0012) — all reviewer-facing content lives here instead, sourced from the approved techplan.
 >
 > **Generation rule (enforced):**
 > - Generate this file only after the source `techplan.md` reaches `Approved` status. Never draft in parallel with an in-progress techplan.
