@@ -1,6 +1,6 @@
 # Guidelines
 
-This stage produces the raw docs that live in `docs/story/<story-code>/`
+This stage produces the raw docs that live in `{TASK_PATH}/1-exploration/logs/`
 — before techplan synthesis begins. Output here is intentionally
 freeform in count and naming: don't force a fixed template onto raw
 docs (see `workflow/techplan/guidelines.md` § 1 for why).

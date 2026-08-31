@@ -13,9 +13,9 @@
 
 1. Decisions, risks, and scope end up explained **twice in the same file** — once in full (Decision Log, Edge Cases & Risks) and again, paraphrased, in Summary. Working through GMRT-51542 end to end made this concrete: nearly every Summary bullet was a shortened restatement of a section further down.
 2. A reviewer who only needs to sign off still opens a document containing code, file paths, and line numbers to get to the two paragraphs relevant to them.
-3. Owner reports this is not a one-off observation from this story alone — the single-document format has caused recurring process inefficiency across prior techplans, independent of the Summary-drift issues proposals 0002/0003 already fixed.
+3. Owner reports this is not a one-off observation from this story/task alone — the single-document format has caused recurring process inefficiency across prior techplans, independent of the Summary-drift issues proposals 0002/0003 already fixed.
 
-This is judged **genuinely structural** (per `guidelines.md`'s proposal threshold — either 2+ stories or a structural gap): the redundancy is inherent to serving two audiences from one document, not a compliance gap that a checklist can fix (which is what 0002/0003 were).
+This is judged **genuinely structural** (per `guidelines.md`'s proposal threshold — either 2+ stories/tasks or a structural gap): the redundancy is inherent to serving two audiences from one document, not a compliance gap that a checklist can fix (which is what 0002/0003 were).
 
 ## Decision
 
@@ -23,7 +23,7 @@ Split into two protected templates, each with exactly one audience and one owner
 
 1. **`template.md` → `techplan.md`** (unchanged file name, changed shape): **Agent-only.** Remove the Summary section and the audience-boundary comment entirely. Every section is execution-grade — for the implementing agent, the engineer, and code review. No content is written specifically "for a reviewer" anymore; that job moves entirely to the second document.
 
-2. **`report-template.md` → `report-techplan.md`** (new, mandatory): **The sole human-facing artifact.** Sourced entirely from the approved `techplan.md` — Background/Scope condensed, Decision Log condensed to plain-language "why," Top (High-severity only) Risks, Open Items needing a decision — **plus** two sections validated during GMRT-51542 that Summary never covered: a simplified Architecture/Plan (diagram only if the flow has genuine branching — same rule already in `guidelines.md`) and a simplified Interface Contract with representative JSON examples, when the story has an external-facing interface.
+2. **`report-template.md` → `report-techplan.md`** (new, mandatory): **The sole human-facing artifact.** Sourced entirely from the approved `techplan.md` — Background/Scope condensed, Decision Log condensed to plain-language "why," Top (High-severity only) Risks, Open Items needing a decision — **plus** two sections validated during GMRT-51542 that Summary never covered: a simplified Architecture/Plan (diagram only if the flow has genuine branching — same rule already in `guidelines.md`) and a simplified Interface Contract with representative JSON examples, when the story/task has an external-facing interface.
 
 **Sequencing rule (carried over from Proposal 0004, now enforced, not optional):**
 - `report-techplan.md` is generated **only after** `techplan.md` reaches `Approved` status. Never drafted in parallel with an in-progress techplan.
@@ -49,7 +49,7 @@ Proposals 0001-0003 built real machinery around the in-file Summary. That machin
 
 ## Caveat — evidence strength
 
-Documented evidence is one story (GMRT-51542). The "recurring inefficiency across prior techplans" claim is owner-asserted from experience, not logged in `retro.md` with specific instances. Recommend that the next 1-2 techplans built under this new format get a retro note if the split does or doesn't hold up in practice — particularly whether reviewers ever want to see architecture *before* a techplan is Approved, which would conflict with the post-Approval-only generation rule this proposal depends on.
+Documented evidence is one story/task (GMRT-51542). The "recurring inefficiency across prior techplans" claim is owner-asserted from experience, not logged in `retro.md` with specific instances. Recommend that the next 1-2 techplans built under this new format get a retro note if the split does or doesn't hold up in practice — particularly whether reviewers ever want to see architecture *before* a techplan is Approved, which would conflict with the post-Approval-only generation rule this proposal depends on.
 
 ## Targets
 

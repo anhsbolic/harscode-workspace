@@ -66,7 +66,7 @@ tool-agnostically (references "AI design tools (Claude Design, v0, and
 equivalents)" rather than assuming Claude Design specifically).
 
 Same "generic knowledge first, real-case enrichment later" pattern as
-0001 and the rest of `best-practices/` — no real kencleng frontend story
+0001 and the rest of `best-practices/` — no real kencleng frontend story/task
 has run through this workspace's phases yet, so neither file has a
 worked example grounded in an actual kencleng bug; expected to follow
 as the `account` domain's frontend track runs.

@@ -1,6 +1,6 @@
 # Proposal 0004 — Standalone Report Artifact, Generated Post-Approval
 
-**Status:** Draft (pending owner review/merge) · **Date:** 2026-08-27 · **Triggered by:** GMRT-51542 (single story — see caveat below)
+**Status:** Draft (pending owner review/merge) · **Date:** 2026-08-27 · **Triggered by:** GMRT-51542 (single story/task — see caveat below)
 
 ---
 
@@ -11,7 +11,7 @@
 1. A reviewer who only needs to sign off (not implement) still has to open the full execution-grade techplan to see even a simplified flow or the API shape — Summary intentionally excludes Architecture/Plan and Interface Contract detail, so there's no compact place a non-implementing stakeholder can see "how it roughly works" or "what the request/response looks like" without wading into code-adjacent sections.
 2. When a techplan needs to go to someone outside the immediate dev loop (e.g. attaching to a ticket for a lead who won't open the repo), there was no single exportable file — only the option of forwarding the entire technical document.
 
-Ad hoc fix tried during GMRT-51542: two independently-maintained files (`*-AGENT.md` full detail, `*-REPORT.md` compact). This worked for one story but reproduces the exact risk **Proposal 0001 already rejected** ("two independent documents... creates two sources of truth that can drift silently") if the two files are edited in parallel.
+Ad hoc fix tried during GMRT-51542: two independently-maintained files (`*-AGENT.md` full detail, `*-REPORT.md` compact). This worked for one story/task but reproduces the exact risk **Proposal 0001 already rejected** ("two independent documents... creates two sources of truth that can drift silently") if the two files are edited in parallel.
 
 ## Decision
 
@@ -27,11 +27,11 @@ Add a new artifact type, **Report**, with a hard sequencing rule that avoids the
 
 ## Rejected alternative
 
-**Two independently authored and maintained files from the start** (what was actually done ad hoc in GMRT-51542) — rejected as the durable pattern. It reproduces Proposal 0001's rejected risk if either file is edited without regenerating the other. Only acceptable as a one-off, explicitly risk-accepted choice for a single story — not as standing guidance.
+**Two independently authored and maintained files from the start** (what was actually done ad hoc in GMRT-51542) — rejected as the durable pattern. It reproduces Proposal 0001's rejected risk if either file is edited without regenerating the other. Only acceptable as a one-off, explicitly risk-accepted choice for a single story/task — not as standing guidance.
 
 ## Caveat — evidence strength
 
-This proposal is based on **one story**, not the 2+ stories (or clearly independent structural gap) that proposals 0001-0003 were grounded in before being accepted. Owner (Anhar) chose to formalize anyway rather than wait for a second occurrence. Recorded here so a future retro pass can revisit this proposal specifically if the pattern turns out not to hold up on the next story that needs a Report (e.g., if "generate only post-Approval" proves impractical because reviewers actually want to see architecture *before* approving, which would undercut the whole sequencing premise).
+This proposal is based on **one story/task**, not the 2+ stories/tasks (or clearly independent structural gap) that proposals 0001-0003 were grounded in before being accepted. Owner (Anhar) chose to formalize anyway rather than wait for a second occurrence. Recorded here so a future retro pass can revisit this proposal specifically if the pattern turns out not to hold up on the next story/task that needs a Report (e.g., if "generate only post-Approval" proves impractical because reviewers actually want to see architecture *before* approving, which would undercut the whole sequencing premise).
 
 ## Targets
 

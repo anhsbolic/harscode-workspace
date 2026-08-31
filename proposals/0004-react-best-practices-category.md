@@ -2,7 +2,7 @@
 
 **Status:** Proposed
 **Date:** 2026-08-23
-**Triggered by:** Frontend workflow discussion for kencleng, ahead of the `account` domain's frontend track starting (backend track for `account` is underway/near done; frontend is still scaffold-only — no real story to ground examples in yet, see Rationale)
+**Triggered by:** Frontend workflow discussion for kencleng, ahead of the `account` domain's frontend track starting (backend track for `account` is underway/near done; frontend is still scaffold-only — no real story/task to ground examples in yet, see Rationale)
 **Target area:** best-practices
 **Target file(s):**
 - New folder: `best-practices/react/` — 6 new files:
@@ -79,7 +79,7 @@ Corresponding `index.md` updates:
   security failures, not just correctness ones)
 - Coverage note updated to include `react/` and note these files are
   written from general React/Next.js knowledge, not yet grounded in a real
-  kencleng frontend story
+  kencleng frontend story/task
 
 ## Rationale
 
@@ -94,7 +94,7 @@ pattern already used for every other category in `best-practices/`
 (including `pwa/` itself, whose files predate any real kencleng frontend
 code) — distinct from `workflow/`, where structure is meant to be earned
 through observed friction rather than seeded upfront. No real frontend
-story has run through this workspace's phases yet, so none of these six
+story/task has run through this workspace's phases yet, so none of these six
 files have a worked example grounded in an actual kencleng bug yet; that's
 expected to follow as the `account` domain's frontend track runs, per the
 same enrichment pattern as everywhere else.

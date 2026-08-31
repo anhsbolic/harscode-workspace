@@ -47,7 +47,7 @@ name: techplan-writer
 description: Synthesizes a techplan from exploration output
 tools: Read, Write
 model: <highest tier warranted per model-routing.md's Techplan-synthesis
-        row, scaled to the story's assessed complexity tier>
+        row, scaled to the story/task's assessed complexity tier>
 ---
 
 Follow workflow/2-techplan/guidelines.md, rules.md, and
@@ -87,7 +87,7 @@ long shared context by accident.
       files by path — never inlines guideline content, for the same
       single-source-of-truth reason as `slash-commands.md`
 - [ ] What information a later-phase subagent needs from an earlier one
-      is explicit in how it's invoked (a file path, a story identifier)
+      is explicit in how it's invoked (a file path, a story/task identifier)
       — never assumed to be "still in context" from a prior turn
 - [ ] New subagent mappings are tried on a low-stakes task first — this
       is Tier 2 for a reason; an under- or over-fenced subagent is a

@@ -1,7 +1,7 @@
 # App Router Routing Conventions
 
 > Status: DRAFT — not yet grounded in real Kencleng examples. Enrich with real route
-> structure/PR references once the first App Router stories land, same pattern as every
+> structure/PR references once the first App Router stories/tasks land, same pattern as every
 > other file in this folder.
 >
 > Scope note: this file covers route-segment file conventions (loading/error/layout),

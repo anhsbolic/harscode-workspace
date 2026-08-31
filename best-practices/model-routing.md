@@ -139,7 +139,7 @@ If Claude Code models are unavailable:
 ## Formalization threshold
 
 Keep this as personal working notes until either:
-- The same routing decision proves right or wrong across 2+ real stories, or
+- The same routing decision proves right or wrong across 2+ real stories/tasks, or
 - You run your own Go/React mini-benchmark (planned, not yet started) and can replace ⚠️/❓ cells with ✅
 
 At that point it's a normal proposal candidate for `best-practices/index.md`, same threshold as everything else in this workspace.

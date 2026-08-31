@@ -1,8 +1,8 @@
 # Techplan Guidance
 
 This folder contains the guidance an AI Agent uses to read exploration
-documents in `docs/story/<story-code>/` and produce a single
-`techplan.md` in that same story folder.
+documents in `{TASK_PATH}/1-exploration/logs/` and produce a single
+`techplan.md` in `{TASK_PATH}/2-techplan/`.
 
 This folder is a **purely local workspace** — not merged into any
 project repo, and portable across projects with different standards.
@@ -42,11 +42,11 @@ project repo, and portable across projects with different standards.
 ## Workflow at a Glance
 
 ```
-docs/story/<story-code>/*.md  (raw, dynamic, count & content not fixed)
+{TASK_PATH}/1-exploration/logs/*.md  (raw, dynamic, count & content not fixed)
               │
               ▼  agent reads everything + reads this guidance folder
    classify content by FUNCTION (not by file name)
               │
               ▼
-docs/story/<story-code>/techplan.md   (canonical, ready for lead/team review)
+{TASK_PATH}/2-techplan/techplan.md   (canonical, ready for lead/team review)
 ```

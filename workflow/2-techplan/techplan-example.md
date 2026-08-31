@@ -14,7 +14,7 @@
 
 ### What & why
 
-Every ALKES (medical device) and Obat (pharmaceutical) product has a NIE (izin edar) that expires. Today nothing tracks that expiry in a queryable way — ALKES gets it from KFA Kemenkes but doesn't persist it; Obat relies on the seller filling a datepicker manually. This story adds a daily cron that reminds sellers before expiry and automatically freezes products once the NIE has expired.
+Every ALKES (medical device) and Obat (pharmaceutical) product has a NIE (izin edar) that expires. Today nothing tracks that expiry in a queryable way — ALKES gets it from KFA Kemenkes but doesn't persist it; Obat relies on the seller filling a datepicker manually. This story/task adds a daily cron that reminds sellers before expiry and automatically freezes products once the NIE has expired.
 
 ### Scope
 
@@ -174,8 +174,8 @@ Total reminders per product per expiry cycle: **exactly 3** (H-45, H-30, H-14). 
 | **A. Single column `nie_expired_date` + `nie_expired_date_source`** | **Chosen** (clarification #1). Obat and ALKES write to the same column, distinguished by source. |
 | B. Two columns (`nie_expired_date` + `nie_input_expired_date`) | Rejected — redundant; source discriminator is sufficient. |
 | **A. One freeze reason `NIE_EXPIRED`** | **Chosen.** Tech Lead's logic only produces the date-based "Kadaluwarsa" case. "Tidak Berlaku" (revoked) needs a separate Kemenkes signal, out of scope. |
-| B. Two reasons (`NIE_EXPIRED` + `NIE_REVOKED`) | Rejected for this story; can be added later with the same pattern. |
-| **A. Reason wording "Nomor Izin Edar Kadaluwarsa"** (PRD) | **Chosen.** PRD is authoritative for this story; "Kadaluwarsa" is more direct than migration 000032's "Masa Berlaku Nomor Izin Edar Habis" (different table, different flow). |
+| B. Two reasons (`NIE_EXPIRED` + `NIE_REVOKED`) | Rejected for this story/task; can be added later with the same pattern. |
+| **A. Reason wording "Nomor Izin Edar Kadaluwarsa"** (PRD) | **Chosen.** PRD is authoritative for this story/task; "Kadaluwarsa" is more direct than migration 000032's "Masa Berlaku Nomor Izin Edar Habis" (different table, different flow). |
 | B. Reuse migration 000032 wording | Rejected — conflates curation reject reason with freeze reason. |
 | **A. `nie_expired_date` type `DATE`** | **Chosen.** PRD uses date-only language; cron comparison is exact-day. Avoids the 00:00:00 vs current-time ambiguity of `TIMESTAMPTZ`. |
 | B. Type `TIMESTAMPTZ` | Rejected — forces a time-component decision every comparison. |

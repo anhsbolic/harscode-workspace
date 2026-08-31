@@ -100,13 +100,13 @@ the flat table and their own category.
 | client-security | pwa/xss-and-content-sanitization.md, pwa/token-storage-and-refresh.md, react/server-client-component-boundary.md |
 | enumeration-and-timing | restapi/anti-enumeration.md |
 
-**Instruction for agents:** for any story touching authentication, authorization,
+**Instruction for agents:** for any story/task touching authentication, authorization,
 money/PII, external callbacks, or client-facing security surfaces, check this map
 first — before falling back to scanning the full table by keyword.
 
 ---
 
-**Coverage complete for initial pass** across go/, postgresql/, graphql/, restapi/, kafka/, pubsub/, redis/, infra/, pwa/, react/. `react/` added 2026-08-23 — new frontend-general category, sibling to `pwa/` (which stays scoped to offline/service-worker/installability): `accessibility-fundamentals.md`, `server-client-component-boundary.md`, `form-validation-boundary.md`, `data-fetching-conventions.md`, `component-test-mocking-discipline.md`. Written from general React/Next.js knowledge, not yet grounded in a real kencleng frontend story — enrich with real examples as the first frontend tasks land, same pattern as every other category here. `react/app-router-routing-conventions.md` added 2026-08-26 — scoped strictly to route-segment file conventions (loading/error/layout), route composition (groups/parallel routes), and metadata; deliberately excludes Server/Client Component boundary and secrets-bundling risk, which stay owned by `server-client-component-boundary.md`. Also written from general knowledge, not yet grounded in a real story.
+**Coverage complete for initial pass** across go/, postgresql/, graphql/, restapi/, kafka/, pubsub/, redis/, infra/, pwa/, react/. `react/` added 2026-08-23 — new frontend-general category, sibling to `pwa/` (which stays scoped to offline/service-worker/installability): `accessibility-fundamentals.md`, `server-client-component-boundary.md`, `form-validation-boundary.md`, `data-fetching-conventions.md`, `component-test-mocking-discipline.md`. Written from general React/Next.js knowledge, not yet grounded in a real kencleng frontend story/task — enrich with real examples as the first frontend tasks land, same pattern as every other category here. `react/app-router-routing-conventions.md` added 2026-08-26 — scoped strictly to route-segment file conventions (loading/error/layout), route composition (groups/parallel routes), and metadata; deliberately excludes Server/Client Component boundary and secrets-bundling risk, which stay owned by `server-client-component-boundary.md`. Also written from general knowledge, not yet grounded in a real story/task.
 
 **Maintenance:** every new file added to any `best-practices/<category>/` folder gets
 one row here — category, path, trigger keywords, security-critical (yes/no), one-line
@@ -129,7 +129,7 @@ proposal — that exception is specific to `techplan/` and does not carry
 over here.
 
 **Threshold for proposing:** looser than `techplan/proposals/` (which
-needs 2+ stories or a genuinely structural gap). `best-practices/` is
+needs 2+ stories/tasks or a genuinely structural gap). `best-practices/` is
 knowledge content refined over time, not a contract — a single
 well-evidenced gap is enough to propose.
 

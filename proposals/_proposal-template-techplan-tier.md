@@ -2,7 +2,7 @@
 
 > Status: Proposed / Accepted / Rejected / Superseded
 > Date: {YYYY-MM-DD}
-> Triggered by: docs/story/{story-code}/
+> Triggered by: {task-code} ({short description}), or a real incident/recurring pattern
 > Target: {file name}.md § {section}
 
 ## Friction Found
