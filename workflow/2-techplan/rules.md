@@ -184,7 +184,7 @@ was asked and what was decided — same rationale as `retro.md` and
 ## 9. Test Focus Pointer Is Carried From Exploration, Not Invented
 
 Section 12's Test Focus Pointer table sources from the raw exploration
-docs' Sniffing Checklist § Risk findings for that story — never
+docs' Sniffing Checklist § Risk findings for that task — never
 invented fresh during synthesis. If synthesis surfaces a new
 concurrency/perf/security concern that wasn't flagged during
 exploration, that's a missed area in exploration, not something to

@@ -34,6 +34,7 @@ workspace/
 │   ├── README.md         # source of truth — phase tiering, rationale
 │   ├── exploration/       # current-state gap analysis before any plan exists
 │   ├── techplan/           # the most formal phase — guardrails, its own proposals/, retro log
+│   ├── build/              # thin test-scope boundary for the tight edit → run → fix loop
 │   ├── code-review/
 │   ├── testing/
 │   └── pull-request/
@@ -94,16 +95,69 @@ This is an active, evolving personal system — not a finished product. Structur
 
 ## Usage
 
-1. Copy `workspace/` into your project root (or symlink it if you work across multiple repos).
-2. Point your agent's system prompt / project instructions at `workspace/AGENTS.md` as the entry point — it routes to `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which in turn point to the full `README.md`/`index.md` for anything beyond the hard rules.
-3. Start a task in `exploration/` before jumping to `techplan/` — the workflow assumes you don't skip stages. execute exploration & techplan in one session is better.
-4. techplan includes : synthesis -> review -> decomposition (optional)
-5. build based on techplan -> write report
-6. execute code-review based on build report -> create code review report and patch plan
-7. execute patch plan as part of build iteration
-8. execute testing based on all build report (build & patches)
-9. do patch after testing, when it says "your code need patch" -> write testing report, patch plan, and patch report
-10. create pull request
+1. Copy this workspace's content into your project (or symlink it if
+   you work across multiple repos) — the exact location is up to you;
+   every prompt in `workflow/` refers to it as `{WORKSPACE_ROOT}`, set
+   once per project. See `workflow/README.md` § Path Variables
+   Convention.
+2. Point your agent's system prompt / project instructions at
+   `{WORKSPACE_ROOT}/AGENTS.md` as the entry point — it routes to
+   `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which
+   in turn point to the full `README.md`/`index.md` for anything beyond
+   the hard rules.
+3. Start a task in `1-exploration/` before jumping to `2-techplan/` —
+   the workflow assumes you don't skip stages. Running exploration and
+   techplan synthesis in one session is fine.
+4. Techplan includes: synthesis → review → decomposition (optional).
+5. Build against the techplan → write a build report.
+6. Run code review against the build report → produces a review report
+   and, if needed, a patch plan.
+7. Execute that patch plan as part of the build loop — patches are
+   always executed and reported in `3-build/`, regardless of which
+   phase asked for them (see Task Working Directory Structure below).
+8. Run testing against all build reports (initial build + every patch).
+9. If testing says the code needs a patch — write a testing report and
+   a patch plan (in `5-testing/`), then execute that patch the same way
+   as step 7 (in `3-build/`), producing a patch report there.
+10. Create the pull request.
+
+### Task Working Directory Structure
+
+Each task gets one root working directory in the target repo —
+referred to as `{TASK_PATH}` throughout every prompt in `workflow/`.
+Its subfolders mirror `workflow/`'s own phase numbering:
+
+```
+{TASK_PATH}/
+├── 1-exploration/
+│   └── logs/                    # raw exploration output (gap analysis, sniffing findings, solutioning)
+├── 2-techplan/
+│   ├── techplan.md
+│   └── tasks/                   # only if decomposition (2-3) was run — task files + manifest
+├── 3-build/
+│   ├── report.md                # initial build report
+│   └── patch-report-<n>.md      # every patch execution report lands here, whoever asked for it
+├── 4-code-review/
+│   ├── review-findings-<n>.md
+│   └── patch-plan-<n>.md        # the ask only — execution + report happens in 3-build/
+├── 5-testing/
+│   ├── testing-report-<n>.md
+│   └── patch-plan-<n>.md        # same — ask only, cross-references the patch-report number in 3-build/
+└── 6-pull-request/
+    └── pr-description.md
+```
+
+The rule in one sentence: **patches are always executed and reported
+in `3-build/`**, no matter how many rounds or which phase requested
+them — patching is build activity by definition. `4-code-review/` and
+`5-testing/` only ever hold the *request* (a patch plan), cross-
+referenced to the patch report number that actually did the work.
+
+This wasn't consistently followed before — see `retro.md`-style note:
+a real testing report once landed inside `3-build/` instead of
+`5-testing/` purely because that's where the session happened to be
+working. This structure exists specifically so that doesn't have to be
+a judgment call next time.
 
 ## License
 

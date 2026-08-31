@@ -6,7 +6,13 @@ iteration/scope slice at a time.
 
 ## Inputs required before running
 
-- Path to the techplan (`docs/story/<story-code>/techplan.md`) — § 4
+- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+  relative to (or as an absolute path from) your project. Set once per
+  project; see `workflow/README.md` § Path Variables Convention.
+- `{TASK_PATH}` — root working directory for this task in the target
+  repo. Set once per task; see root `README.md` § Task Working
+  Directory Structure.
+- Path to the techplan (`{TASK_PATH}/2-techplan/techplan.md`) — § 4
   (Rules & Validation) and § 10-11 (Implementation Details) are the
   contract to build against.
 - The specific rule(s)/scope being implemented in this iteration —
@@ -21,15 +27,30 @@ the build/patch loop at a time. Don't revisit architectural decisions
 already made in the techplan — if something genuinely doesn't hold as
 written, stop and report it instead of silently working around it.
 
+Guidance folder for this phase: {WORKSPACE_ROOT}/workflow/3-build —
+guidelines.md and checklist.md referenced below resolve relative to
+this.
+
+Response style: keep your own narration minimal during this
+iteration — do the work efficiently, don't narrate each step. The
+output format below is the one place to be complete
+({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+
 Techplan: [PASTE PATH OR CONTENT HERE]
 Scope for this iteration: [PASTE SPECIFIC RULE(S)/SECTION HERE]
 
-Test scope for this loop — fixed, not negotiable per story:
-{file:workflow/3-build/guidelines.md#default-test-scope-always-regardless-of-techplan-content}
+Test scope for this loop — fixed, not negotiable per task:
+{file:{WORKSPACE_ROOT}/workflow/3-build/guidelines.md#default-test-scope-always-regardless-of-techplan-content}
 
-Full checklist: {file:workflow/3-build/checklist.md}
+Full checklist: {file:{WORKSPACE_ROOT}/workflow/3-build/checklist.md}
 
 ---
+
+Write your output below to {TASK_PATH}/3-build/report.md for the
+initial build, or {TASK_PATH}/3-build/patch-report-<n>.md if this
+iteration is executing a patch plan from code-review or testing (see
+root README.md § Task Working Directory Structure) — increment <n>
+per patch, don't overwrite a previous one.
 
 Output format:
 

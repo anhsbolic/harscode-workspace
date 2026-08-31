@@ -33,7 +33,7 @@ structure.
   top of the techplan (if present) — it stays with the contract file,
   it does not get split into task files or duplicated across them. The
   same applies to § 12's Test Focus Pointer table, if present: it's a
-  story-level pointer consumed by the testing phase after all tasks are
+  task-level pointer consumed by the testing phase after all tasks are
   done, not per-task detail — it stays with the contract, never
   redistributed or duplicated into individual task files.
 
@@ -41,6 +41,18 @@ structure.
 
 - A techplan that has already been locked (contract is final, not in draft
   status).
+- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+  relative to (or as an absolute path from) your project. Set once per
+  project; see `workflow/README.md` § Path Variables Convention. Used
+  below for the model-routing reference.
+
+## Response Style
+
+Full detail, no compression, when redistributing content into task
+files — see "What This Must Not Do" above; that constraint IS this
+phase's response-style rule. State the chosen splitting axis and
+rationale explicitly, don't just apply one silently
+({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 ## Agent Workflow
 
@@ -128,9 +140,12 @@ Minimum manifest contents:
   an explicit "no hard dependency" marker if the axis is parallel
   (component/module).
 - Back-reference to the originating contract techplan.
-- llm models to execute each tasks, you can read harscode-workspace/best-practices/model-routing.md
+- llm models to execute each tasks, you can read {WORKSPACE_ROOT}/best-practices/model-routing.md
 
 ## Output
+
+Write everything below to `{TASK_PATH}/2-techplan/tasks/` (see root
+`README.md` § Task Working Directory Structure):
 
 - N task files (count depends on the resulting split), each self-contained
   for its scope.
@@ -138,8 +153,9 @@ Minimum manifest contents:
 
 ## Cross-reference
 
-- Source techplan: see `techplan-synthesis-prompt.md` for the
-  contract/derived authoring process that precedes this decomposition
-  step.
+- Source techplan: see `{WORKSPACE_ROOT}/workflow/2-1-techplan-synthesis-prompt.md`
+  for the contract/derived authoring process that precedes this
+  decomposition step.
 - Task files produced here are still subject to the review checklist in
-  `code-review/checklist.md`, same as any other derived-section content.
+  `{WORKSPACE_ROOT}/workflow/4-code-review/checklist.md`, same as any
+  other derived-section content.

@@ -20,6 +20,7 @@ workflow/
   AGENTS.md        First thing an agent reads in this folder — hard rules + routing, no rationale
   exploration/     Kickoff + clarifying questions → produces raw docs in docs/story/<code>/
   techplan/        Turns those raw docs into one techplan.md
+  build/           Thin test-scope boundary for the tight edit → run → fix loop
   code-review/     Safety / Quality / Consistency review passes on the implementation
   testing/         Testing-driven refinement + final verification
   pull-request/    Turns an approved techplan + final diff into a PR description
@@ -99,3 +100,75 @@ techplan's Implementation Details).
 - Project-specific codebase conventions (naming, error handling
   patterns, etc.) — those belong in the target repo's own `AGENTS.md`,
   not here. This folder stays generic and portable on purpose.
+
+## Path Variables Convention
+
+Every prompt file under `workflow/` (the root-level `*-prompt.md`
+files) references this workspace's own guidance files — `template.md`,
+`rules.md`, `best-practices/index.md`, and so on. Where this
+workspace's content actually lives relative to a given project varies
+by person and by project (copied into project root, kept as a
+subfolder, symlinked from a shared location elsewhere) — nothing here
+assumes one fixed layout.
+
+Two tiers of fill-in variables show up across these prompts — knowing
+which tier a variable belongs to tells you how often you actually need
+to touch it:
+
+- **Project-level (set once, reused across every task on this
+  project):** `{WORKSPACE_ROOT}` — where this workspace's content
+  lives relative to the project. `{CODEBASE_CONTEXT}` — a one-line
+  label for the project/repo (e.g. "Kencleng — Go backend + Next.js
+  frontend"), used only for quick orientation before an agent reads the
+  repo's own README/AGENTS.md in full. It is deliberately NOT a
+  restated description of the codebase — that would duplicate the
+  target repo's own README as a second, independently-drifting source
+  of truth, the exact failure mode this workspace's own single-source-
+  of-truth principle exists to avoid elsewhere. Deep repo understanding
+  always comes from the agent actually reading the repo's own
+  convention file, which every relevant prompt already instructs it to
+  do — this label just orients faster before that read happens.
+- **Per-run (set fresh for each task/invocation):** `{TASK_PATH}`,
+  `{TASK}` (pasted content or a document path, either works), and
+  similar — these change every time because they describe this
+  specific piece of work, not the project as a whole.
+
+Set every project-level variable once per project — e.g. if this
+workspace is symlinked at `./guidance` in a given project, every
+prompt used against that project resolves `{WORKSPACE_ROOT}` to
+`./guidance` for every future invocation, not once per prompt.
+
+`[TARGET REPO CONVENTION FILE PATH]` (used in a couple of prompts) is
+a third, hybrid case — technically project-level since the path itself
+doesn't change, but written as a per-invocation bracket placeholder
+today since the prompts that use it are invoked less frequently than
+per-task ones. Treat it as project-level in practice.
+
+## Response Style By Phase
+
+Two independent things vary by phase — don't conflate them into one
+"verbose vs terse" dial:
+
+- **Process verbosity** — how much narration/reasoning an agent
+  produces while doing the work itself, before any final report or
+  artifact exists. Planning-type phases (techplan synthesis, review,
+  decomposition) warrant full, explicit reasoning at every step,
+  because ambiguity here becomes an execution contract other people
+  and agents rely on later. Execution-loop phases (`build/`, and
+  `testing/`'s coverage/sweep work) warrant minimal narration — do the
+  work efficiently, don't narrate each step — because this is fast,
+  iterative work, not the final artifact.
+- **Deliverable completeness** — how much detail the phase's actual
+  output (techplan.md, a review findings report, a build/testing
+  report) contains. This stays high in every phase regardless of how
+  terse the process getting there was. A terse build loop must still
+  produce a complete, unambiguous report — what changed, what was
+  tested, what's flagged — the same way a real testing report already
+  demonstrates this is possible without a slow, over-narrated process
+  (see `best-practices/go/examples/testing-concurrency.md` for a
+  worked real-world example).
+
+Each prompt states its own setting for both axes near the top of its
+`## Prompt` block — a one-line pointer back here plus whatever's
+specific to that phase, not a restatement of the whole rationale every
+time.

@@ -2,25 +2,31 @@
 
 Manual-invoke prompt for the testing phase. One-shot: the sweep (Step
 0) and the four coverage categories run in a single invocation, against
-the same story.
+the same task.
 
 ## Inputs required before running
 
-- Path to the techplan (`docs/story/<story-code>/techplan.md`) — § 4
+- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+  relative to (or as an absolute path from) your project. Set once per
+  project; see `workflow/README.md` § Path Variables Convention.
+- `{TASK_PATH}` — root working directory for this task in the target
+  repo. Set once per task; see root `README.md` § Task Working
+  Directory Structure.
+- Path to the techplan (`{TASK_PATH}/2-techplan/techplan.md`) — § 4
   (Rules & Validation) is the source of truth for what must be covered,
   and § 12's Test Focus Pointer (if present) is the source of truth for
   which areas need race/perf/security-class coverage beyond the four
   standard categories below.
-- Path to the raw exploration docs (`docs/story/<story-code>/` raw
-  material, pre-techplan) — required to cross-check the *why* behind
-  any Test Focus Pointer entry (its Sniffing Checklist Risk-lens
-  finding). Without this, a Test Focus Pointer row is a label with no
-  detail to build a concrete test plan from.
-- Path to the latest implementation report (`3-build/report.md`, or the
-  most recent report if the story looped back through the
-  implementation after code review — e.g. a patch/rebuild report).
-  Required for Step 0 — without it the agent has no claims to spot-check
-  and will default to a full redo.
+- Path to the raw exploration docs (`{TASK_PATH}/1-exploration/logs/`,
+  pre-techplan) — required to cross-check the *why* behind any Test
+  Focus Pointer entry (its Sniffing Checklist Risk-lens finding).
+  Without this, a Test Focus Pointer row is a label with no detail to
+  build a concrete test plan from.
+- Path to the latest implementation report
+  (`{TASK_PATH}/3-build/report.md`, or the most recent
+  `patch-report-<n>.md` if the task looped back through implementation
+  after code review). Required for Step 0 — without it the agent has
+  no claims to spot-check and will default to a full redo.
 - The real interface entry point(s) to exercise (API base URL + routes,
   CLI command, UI flow) — not just "read the code and reason about it."
 - Path to the target repo's own build/lint/test commands (README or
@@ -30,11 +36,23 @@ the same story.
 ## Prompt
 
 ```
-You are running the testing phase for a story that has already been
+You are running the testing phase for a task that has already been
 through implementation and code review. Follow this process, in order:
 
+Guidance folder for this phase: {WORKSPACE_ROOT}/workflow/5-testing —
+guidelines.md, checklist.md, examples.md referenced below resolve
+relative to this.
+
+Response style: keep the sweep/coverage work itself efficient — don't
+narrate every step. The final report below must be as thorough as a
+real testing report demonstrates is possible without an over-narrated
+process (see {WORKSPACE_ROOT}/best-practices/go/examples/testing-concurrency.md
+for a worked example) — that level of detail is the bar for this
+report, not an exception ({WORKSPACE_ROOT}/workflow/README.md §
+Response Style By Phase).
+
 Step 0 — Sweep, don't redo:
-{file:workflow/5-testing/guidelines.md#process} (item 0 specifically).
+{file:{WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (item 0 specifically).
 Read the implementation report below. For every rule/scenario it claims
 is covered by a named test, spot-check it (run the existing test, don't
 rewrite it). Then read its "what is not tested, and why" section (or
@@ -53,7 +71,7 @@ the exploration docs or code, flag it back as a possible techplan gap —
 don't silently add the test yourself without noting the gap.
 
 Step 1 — Coverage per techplan § 4:
-{file:workflow/5-testing/guidelines.md#process} (items 1-3). Test every
+{file:{WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (items 1-3). Test every
 rule in the techplan's Rules & Validation section using the real
 interface. For rules already spot-checked in Step 0 as genuinely
 covered, don't re-derive a new test — note it as confirmed. Spend actual
@@ -70,9 +88,9 @@ Verify error responses precisely — category, actionable message,
 correct propagation through the app's error-handling layer, not just
 "an error happened."
 
-Full checklist: {file:workflow/5-testing/checklist.md}
+Full checklist: {file:{WORKSPACE_ROOT}/workflow/5-testing/checklist.md}
 Known recurring bug patterns worth specifically hunting for:
-{file:workflow/5-testing/examples.md}
+{file:{WORKSPACE_ROOT}/workflow/5-testing/examples.md}
 
 Techplan:
 [PASTE TECHPLAN PATH OR CONTENT HERE]
@@ -90,6 +108,14 @@ Target repo build/lint/test commands:
 [PASTE COMMANDS OR PATH TO README/MAKEFILE HERE]
 
 ---
+
+Write your output below to
+{TASK_PATH}/5-testing/testing-report-<n>.md (see root README.md § Task
+Working Directory Structure) — increment <n> per testing round. If any
+finding requires a code change, also write
+{TASK_PATH}/5-testing/patch-plan-<n>.md listing what needs to change —
+the patch itself gets executed and reported in {TASK_PATH}/3-build/,
+not here.
 
 Output format:
 
@@ -127,9 +153,9 @@ exercised beyond §1" if genuinely none apply.
 
 ## 4. New Bug Patterns
 Only include entries that meet the threshold in
-{file:workflow/5-testing/guidelines.md#threshold-for-adding-to-examplesmd}
+{file:{WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#threshold-for-adding-to-examplesmd}
 (a category of mistake, not a one-off). Otherwise state "No new pattern
-— see workflow/5-testing/examples.md for handling this ticket-specific
+— see {WORKSPACE_ROOT}/workflow/5-testing/examples.md for handling this ticket-specific
 bug directly."
 
 ## Verdict
@@ -143,7 +169,7 @@ Step-0-confirmed area that regressed.
 ## Notes
 
 - This prompt does not decide which model runs it — see
-  `best-practices/model-routing.md` (draft) for tier × stage routing.
+  `{WORKSPACE_ROOT}/best-practices/model-routing.md` (draft) for tier × stage routing.
   Testing is currently flat/DeepSeek-routed (Flash for Simple/Medium,
   Pro for Complex) — no dual-model requirement at this stage today.
 - Step 0 exists specifically so this phase doesn't silently re-verify
@@ -151,11 +177,11 @@ Step-0-confirmed area that regressed.
   doesn't silently trust an implementation report's claims without
   spot-checking. If Step 0 consistently gets skipped in practice (the
   agent defaults straight to a full redo, or defaults to blind trust),
-  log it in `workflow/5-testing/examples.md` — that would mirror the
+  log it in `{WORKSPACE_ROOT}/workflow/5-testing/examples.md` — that would mirror the
   exact "prose instruction doesn't survive" pattern already documented
-  in `workflow/2-techplan/retro.md`, and would be a candidate for
+  in `{WORKSPACE_ROOT}/workflow/2-techplan/retro.md`, and would be a candidate for
   converting Step 0 into a harder-gated checklist item instead of prose.
 - If a specific pass (coverage, error verification, final check)
   consistently produces weak findings across multiple real runs, note
-  the pattern in `workflow/5-testing/examples.md` before restructuring
+  the pattern in `{WORKSPACE_ROOT}/workflow/5-testing/examples.md` before restructuring
   this prompt — don't split it into per-step invocations preemptively.

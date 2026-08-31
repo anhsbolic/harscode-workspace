@@ -8,7 +8,7 @@
 > the missing piece isn't just "tier the testing phases" (already fixed
 > at the best-practices level, see root `proposals/0008`) but that
 > nothing currently tells the *testing* phase which areas of a given
-> story actually need race/perf/security-class tests versus the default
+> task actually need race/perf/security-class tests versus the default
 > build-loop set (unit/mocked/API-contract).
 > Target: `template.md` § 12 (new subsection), `rules.md` (new § 9),
 > `guardrails.md` (new § 12), `guidelines.md` (new step), `examples.md`
@@ -18,7 +18,7 @@
 ## Friction Found
 
 Two options were considered for where "which test classes does this
-story need" should live:
+task need" should live:
 
 1. Techplan gets a full test-plan section (scope, tooling, thresholds
    per area).
@@ -76,7 +76,7 @@ is a pointer, not a test plan: race/perf/security execution detail
 ## 9. Test Focus Pointer Is Carried From Exploration, Not Invented
 
 Section 12's Test Focus Pointer table sources from the raw exploration
-docs' Sniffing Checklist § Risk findings for that story — never
+docs' Sniffing Checklist § Risk findings for that task — never
 invented fresh during synthesis. If synthesis surfaces a new
 concurrency/perf/security concern that wasn't flagged during
 exploration, that's a missed area in exploration, not something to
@@ -134,7 +134,7 @@ steps 1-10):
 11. **When populating section 12 (Testing Checklist), also populate the
     Test Focus Pointer table** (`rules.md` § 9) by cross-referencing the
     raw exploration docs' Sniffing Checklist Risk findings for this
-    story. Don't silently drop a flagged area — mark it N/A with a
+    task. Don't silently drop a flagged area — mark it N/A with a
     reason if it didn't survive synthesis (`guardrails.md` § 12).
 ```
 
@@ -146,7 +146,7 @@ proposal):
 ## Example: a Test Focus Pointer table
 
 Source: illustrative, modeled on the incident that triggered this
-proposal (Kencleng auth story).
+proposal (Kencleng auth task).
 
 | Area | Why sensitive | Still relevant post-synthesis? |
 |---|---|---|
@@ -172,7 +172,7 @@ docs directly in the testing phase reintroduces exactly the
 two-sources-of-truth risk `proposals/0001` already rejected once for a
 different reason (human digest vs full plan as separate documents).
 
-Genuinely structural, not a one-off: any story with a concurrency,
+Genuinely structural, not a one-off: any task with a concurrency,
 performance, or security-sensitive area will hit this same gap absent
 a pointer mechanism — and the triggering incident (a 2-hour stalled
 build loop) is exactly the kind of real, costly friction this

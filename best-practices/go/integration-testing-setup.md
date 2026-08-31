@@ -1,80 +1,54 @@
-# Guidelines
+# go/examples.md
 
-Testing catches what static review misses. This runs after code review
-and any implementation loop that followed it (e.g. a rebuild driven by
-review findings) — using the actual interface (API call, CLI, UI), not
-just reading code.
+> Real-world references for files in `go/`. Kept separate from the principle
+> files themselves so those stay project-agnostic — this file is where the
+> concrete, implementation-level detail lives instead.
+>
+> Entries added only via `proposals/` review (see `proposals/README.md`) —
+> not agent-appendable directly, unlike `techplan/examples.md`.
 
-## Process
+---
 
-0. **Read the latest implementation report first** (`3-build/report.md`,
-   or the most recent report if the story looped back through the
-   implementation after code review). Treat its rule-coverage table and
-   named tests as *claims*, not settled fact — this step exists so this
-   phase doesn't silently redo work already proven, and doesn't
-   silently trust work that was only claimed.
+## For: `integration-testing-setup.md`
 
-   - **Spot-check, don't rewrite.** For rules already backed by a named
-     test, run the existing suite and confirm it still passes. Don't
-     write a second test that exercises the same rule the same way —
-     that's pure cost with no new signal.
-   - **Close the report's own gaps first.** A good implementation
-     report has a "what is not tested, and why" section — that's the
-     highest-value place to spend this phase's effort, because it's a
-     gap the implementer already flagged, not one you have to go find.
-   - **Then do what only this phase can do**: real-interface exercise
-     (not a unit test through a fake), backward compatibility, migration
-     collision, and a fresh end-to-end techplan read for contradictions
-     earlier passes might have introduced. These are structurally
-     different from unit-level verification — no report claim
-     substitutes for them.
+**Context:** Kencleng backend, account domain, MFA TOTP task (#06).
+Testing-phase report on the DB-backed integration suite for enroll/
+confirm/disable MFA.
 
-   This phase is a final sweep, not a rerun: confirm what's already
-   proven, close what was flagged, then cover the ground nothing else
-   could.
+**What happened:** an integration test helper
+(`TestMfaBackupCode_SingleUseAndDisabledInvalid_RealDB`) opened a
+transaction as a no-op probe — `tx, _ := svc.tx.BeginTx(ctx); _ = tx` —
+and never committed or rolled it back. That single leaked `pgx.Tx` held
+a pooled connection in transaction state for the rest of the test
+binary's life. Combined with a genuinely long, separate concurrent-DB
+test (100 goroutines confirming MFA against the same real Postgres
+instance), the pool was exhausted quickly enough that a subsequent
+`go test -tags=integration -run 'TestMfa...'` run **hung past a 240 s
+timeout** with no explicit `-timeout` set to fail it fast.
 
-1. **Test every scenario from the techplan's Rules & Validation section
-   (§ 4)** using the real interface — but per step 0, this means
-   confirming coverage exists and is real, not re-deriving every test
-   from a blank slate when a named test already proves it. If a
-   scenario in techplan § 4 can't be exercised through the real
-   interface, that's itself worth flagging (either the rule is
-   unreachable, or there's a missing entry point).
+It got worse from there: the hung test binary didn't fully exit when
+the run was aborted. A later, entirely unrelated chained command
+(`go build && go vet && go test ...`, 180 s budget) also timed out —
+not because build/vet/the new test run were themselves slow, but
+because the orphaned `account.test` process from the earlier hang was
+still alive and still contending for connections against the same
+database. Only after that orphan process was manually killed did
+ordinary unit runs return to their normal ~7 s.
 
-2. **Cover all four categories, not just the happy path:**
-   - Happy path: valid input → expected success
-   - Negative cases: missing required fields, invalid input, dependency
-     failures
-   - Edge cases: empty input, boundary values, nulls
-   - Backward compatibility: old clients/old data still behave as
-     expected
+**Disposition:** the tx leak was fixed (explicit deferred
+rollback/commit) but, notably, the fix itself was **not re-verified by
+execution** in the same session — it was compile-checked only, per
+direction to skip the integration/race runs rather than risk another
+hang. The fix landed in the codebase carrying an explicit "unverified"
+flag in the testing report until a follow-up run confirms it.
 
-3. **Verify error responses precisely**, not just "an error happened":
-   - Does the error category match expectation (e.g. client error vs
-     server error)?
-   - Is the error message something a caller can actually act on?
-   - Does the error propagate correctly through the app's error-handling
-     layer (not swallowed or re-wrapped into something generic)?
-
-4. **When a bug is found**, don't just fix it — check `examples.md` for
-   whether it matches a known recurring pattern, and note a new one in
-   this file if it's genuinely new (see Threshold note below).
-
-## Final Verification Before Considering Done
-
-Run the target repo's own build/lint/test commands (read its own
-README/Makefile — don't assume `go build`/`npm test`/etc., that's
-project-specific). Then check:
-
-- [ ] Every rule in techplan § 4 has a corresponding test
-- [ ] Migration/schema version doesn't collide with anything landed
-      since the techplan was written
-- [ ] Backward compatibility explicitly verified, not just assumed
-- [ ] A fresh read of the techplan end-to-end for gaps or
-      contradictions the earlier passes might have introduced
-
-## Threshold for Adding to examples.md
-
-Add a new bug pattern entry only if it's the kind of thing that could
-plausibly recur in unrelated features (a category of mistake), not a
-one-off bug specific to this ticket's logic.
+**Generalizable takeaway:** a leaked transaction in test code doesn't
+fail loudly — it fails as a hang, and specifically as a hang that gets
+worse over the life of a test binary (each additional leaked tx eats
+one more pooled connection) and can bleed into completely unrelated
+later commands if the process isn't confirmed dead. The fix isn't just
+"remember to commit" — it's structural: guard every test-helper
+`BeginTx` with `defer`, always run DB-backed suites with an explicit
+`-timeout` so a leak fails fast and visibly instead of hanging
+silently, and treat "confirm no orphan test process before the next
+DB-backed run" as a real step, not an edge case.

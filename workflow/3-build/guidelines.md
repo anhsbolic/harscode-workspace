@@ -10,7 +10,7 @@ in the moment.
 
 Run unit tests, mocked-service tests, and API-contract/functional
 tests only. This is the fixed default for every iteration of this
-loop — it does not vary by story, by techplan content, or by what the
+loop — it does not vary by task, by techplan content, or by what the
 Test Focus Pointer (techplan § 12, if present) says.
 
 Race/concurrency (`-race`), performance/load, and security-class tests
