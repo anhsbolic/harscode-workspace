@@ -8,20 +8,22 @@ a human — it does not assume and proceed.
 `template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, and
 `diagram-guidelines.md` must not be edited directly by the agent. If a
 gap is found, write a new proposal in `proposals/` (format in
-`proposals/_proposal-template.md`). See `README.md` § Fundamental Rules
-for when a proposal is warranted.
+`proposals/_proposal-template-techplan-tier.md`, Protection Tier:
+`techplan-protected`). See `README.md` § Fundamental Rules for when a
+proposal is warranted.
 
-## 2. Don't Modify or Delete Raw Docs in the Story Directory
+## 2. Don't Modify or Delete Raw Docs in the Task's Exploration Output
 
-Files in `docs/story/<story-code>/` (exploration doc, risk doc, plan
-doc, whatever they're named) are historical input, read-only. If there's
-duplication/conflict between files, resolve it in the resulting
+Files in `{TASK_PATH}/1-exploration/logs/` (exploration doc, risk doc,
+plan doc, whatever they're named) are historical input, read-only. If
+there's duplication/conflict between files, resolve it in the resulting
 techplan.md (see rules.md § Dedup & Reconciliation), not by editing the
 source raw docs.
 
 ## 3. Don't Overwrite an Approved/Implemented techplan.md
 
-If `techplan.md` in the story dir is already Approved or Implemented,
+If `techplan.md` in `{TASK_PATH}/2-techplan/` is already Approved or
+Implemented,
 and a new synthesis produces changes in section 1-7 (the contract part)
 — STOP. Explicitly flag to the reviewer that the contract has changed,
 don't overwrite silently. Changes in section 8-13 (derived) may be

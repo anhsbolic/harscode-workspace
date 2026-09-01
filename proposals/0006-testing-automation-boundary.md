@@ -1,4 +1,4 @@
-# 0003 — Automation-vs-manual boundary for frontend testing (`react/testing-automation-boundary.md`)
+# 0006 — Automation-vs-manual boundary for frontend testing (`react/testing-automation-boundary.md`)
 
 **Status:** Proposed
 **Date:** 2026-08-23

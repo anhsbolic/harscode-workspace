@@ -6,8 +6,8 @@ single project's specific conventions here (see guardrails.md for that).
 
 ## 1. Content → Section Mapping (by FUNCTION, not by file name)
 
-Raw docs in `docs/story/<story-code>/` vary in count and name. Never
-assume 1 file = 1 section. A single file can hold content for many
+Raw docs in `{TASK_PATH}/1-exploration/logs/` vary in count and name.
+Never assume 1 file = 1 section. A single file can hold content for many
 sections at once, and content for one section can be scattered across
 many files. Classify each piece of content by asking what question it
 answers:

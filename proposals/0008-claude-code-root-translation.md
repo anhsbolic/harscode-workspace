@@ -1,4 +1,4 @@
-# 0005 — Claude Code root translation: disclaimer convention + token-optimization enforcement
+# 0008 — Claude Code root translation: disclaimer convention + token-optimization enforcement
 
 **Status:** Proposed
 **Date:** 2026-08-23

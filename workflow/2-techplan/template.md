@@ -7,7 +7,7 @@ and code review. It has no reviewer-facing summary.
 
 Once this techplan reaches **Approved** status, generate
 `report-techplan.md` from `report-template.md` — that file is the sole
-human-facing artifact (see Proposal 0005, which supersedes the older
+human-facing artifact (see Proposal 0012, which supersedes the older
 embedded-Summary design). Do not add a summary or condensed section
 back into this file; if a reviewer needs an update after Approved,
 regenerate `report-techplan.md` in full, don't patch either file
@@ -155,7 +155,7 @@ two lists below at any time — never both, never neither once raised.
 ## Structural Note
 
 - This file has no Summary/digest section and no audience boundary —
-  see Proposal 0005. Every section is written at execution precision
+  see Proposal 0012. Every section is written at execution precision
   for the agent and reviewing engineer.
 - Once this techplan reaches **Approved**, generate
   `report-techplan.md` from `report-template.md`. That file draws from

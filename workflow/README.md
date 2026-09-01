@@ -4,7 +4,7 @@ This is a personal AI development workflow — guidance only. Everything
 in here tells an AI Agent *how* to produce something at a given stage
 of a feature's lifecycle. It does not store any generated content.
 
-Generated artifacts (story exploration docs, techplan.md, PR
+Generated artifacts (task exploration docs, techplan.md, PR
 descriptions, etc.) always live in the target project's own repo —
 different repo per project, dynamic, not tracked here. This folder is
 purely local and portable across projects with different standards.
@@ -18,7 +18,7 @@ under `workflow/` already is guidance, by definition. Naming a folder
 ```
 workflow/
   AGENTS.md        First thing an agent reads in this folder — hard rules + routing, no rationale
-  exploration/     Kickoff + clarifying questions → produces raw docs in docs/story/<code>/
+  exploration/     Kickoff + clarifying questions → produces raw docs in {TASK_PATH}/1-exploration/logs/
   techplan/        Turns those raw docs into one techplan.md
   build/           Thin test-scope boundary for the tight edit → run → fix loop
   code-review/     Safety / Quality / Consistency review passes on the implementation
@@ -58,24 +58,31 @@ change frequency — this is deliberate, not inconsistent:
 
 | Stage | Protected files? | Proposal mechanism |
 |---|---|---|
-| `techplan/` (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`) | Yes | `techplan/proposals/` (own, threshold: 2+ stories or genuinely structural) |
-| `techplan/examples.md`, `techplan/retro.md` | No — agent-appendable directly | N/A |
-| `exploration/`, `code-review/`, `testing/`, `pull-request/` | No, today | None — corrected in the moment. If a real recurring gap ever justifies formal protection here, use the root-level `../proposals/`, not a new mechanism |
+| `2-techplan/` (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`, `report-template.md`) | Yes | `../proposals/` (root), Protection Tier: `techplan-protected` — threshold: 2+ tasks or genuinely structural |
+| `2-techplan/examples.md`, `2-techplan/retro.md` | No — agent-appendable directly | N/A |
+| `1-exploration/`, `3-build/`, `4-code-review/`, `5-testing/`, `6-pull-request/` | No, today | None — corrected in the moment. If a real recurring gap ever justifies formal protection here, use `../proposals/` with Protection Tier `general`, not a new mechanism |
 
-`techplan/proposals/` is the one place in this whole workspace with a
-higher bar (2+ stories or a genuinely structural gap) — appropriate
-given a techplan is a contract a lead signs off on. The root-level
-`proposals/` (which also governs `best-practices/`) is deliberately
-lower-ceremony and is available to any of the lightweight stages above
-if one of them ever outgrows "corrected in the moment." Don't reach for
-it pre-emptively — that would contradict the whole point of keeping
-these stages lightweight.
+There's one proposal mechanism for the whole workspace: the root-level
+`proposals/`, one shared numbering sequence. `2-techplan/`'s protected
+files keep a higher bar (2+ tasks or a genuinely structural gap) —
+appropriate given a techplan is a contract a lead signs off on — but
+that's now expressed as a `Protection Tier: techplan-protected` field
+on the proposal itself, not a separate folder. This used to be a
+second, narrower `2-techplan/proposals/` folder; it was folded into
+the root `proposals/` because two independent numbering sequences that
+occasionally needed to cross-reference each other (a `best-practices/`
+fix and a techplan fix from the same real incident) produced colliding
+numbers. See `../proposals/README.md` for the tier field and numbering
+rule. The lightweight stages above use the same root `proposals/` with
+Protection Tier `general` if one of them ever outgrows "corrected in
+the moment." Don't reach for it pre-emptively — that would contradict
+the whole point of keeping these stages lightweight.
 
-`techplan/examples.md` and `techplan/retro.md` are the one exception to
-"protected files need a proposal" anywhere in this workspace — append
-directly, no proposal needed. This does not generalize to
-`best-practices/examples.md` files, which are proposal-gated (see
-`best-practices/index.md`).
+`2-techplan/examples.md` and `2-techplan/retro.md` are the one
+exception to "protected files need a proposal" anywhere in this
+workspace — append directly, no proposal needed. This does not
+generalize to `best-practices/examples.md` files, which are
+proposal-gated (see `best-practices/index.md`).
 
 ### `AGENTS.md` vs this file
 

@@ -1,4 +1,4 @@
-# 0006 — Claude Code frontend track, Tier 1: slash commands + skills wrapper
+# 0009 — Claude Code frontend track, Tier 1: slash commands + skills wrapper
 
 **Status:** Proposed
 **Date:** 2026-08-23

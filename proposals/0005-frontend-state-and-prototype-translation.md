@@ -1,4 +1,4 @@
-# 0002 — Frontend state-handling conventions + AI-prototype-to-production translation discipline
+# 0005 — Frontend state-handling conventions + AI-prototype-to-production translation discipline
 
 **Status:** Proposed
 **Date:** 2026-08-23
@@ -9,7 +9,7 @@
 - New: `best-practices/react/ai-prototype-to-production-translation.md`
 - `best-practices/index.md` — 2 new rows (no Security Concern Map entry needed — neither file is marked security-critical, though the error-message-leak checklist item in the first file is adjacent to it)
 
-Filed separately from proposal 0001 (same target area, same day) so each can
+Filed separately from proposal 0004 (same target area, same day) so each can
 be reviewed/accepted/rejected independently rather than as one bundle.
 
 ## Gap found

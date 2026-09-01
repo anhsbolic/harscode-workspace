@@ -7,13 +7,15 @@ file is just the short version and the routing table.
 
 - Working in `best-practices/` → `best-practices/AGENTS.md`
 - Working in `workflow/` → `workflow/AGENTS.md`
-- Writing a proposal for `best-practices/` (or a `workflow/` phase that
-  someday needs one) → `proposals/README.md`
+- Writing any proposal (`best-practices/`, `workflow/2-techplan/`
+  protected files, or a lightweight `workflow/` phase that someday
+  needs one) → `proposals/README.md`
 
 ## Hard rules that apply everywhere
 
-- `best-practices/` (all of it) and `workflow/techplan/`'s protected
+- `best-practices/` (all of it) and `workflow/2-techplan/`'s protected
   files: never edit directly, always propose.
-- Two separate proposal mechanisms exist on purpose — root `proposals/`
-  and `workflow/techplan/proposals/`. Don't conflate them or file a
-  techplan-guidance change under root `proposals/`, or vice versa.
+- One proposal mechanism for the whole workspace — root `proposals/`,
+  one shared numbering sequence. Set the `Protection Tier` field
+  correctly (`general` vs `techplan-protected`) instead of filing to a
+  separate folder — `workflow/2-techplan/proposals/` no longer exists.

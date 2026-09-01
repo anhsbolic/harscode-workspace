@@ -1,4 +1,4 @@
-# 0007 — Claude Code frontend track, Tier 2: subagent phase mapping + protected-file hook
+# 0010 — Claude Code frontend track, Tier 2: subagent phase mapping + protected-file hook
 
 **Status:** Proposed
 **Date:** 2026-08-23

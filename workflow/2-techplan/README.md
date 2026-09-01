@@ -19,15 +19,19 @@ project repo, and portable across projects with different standards.
 | `examples.md` | Concrete examples calibrated for tone & level of detail? | Growing (append new examples) |
 | `retro.md` | Mistakes that happened during synthesis, and their mitigations? | Growing (living log) |
 | `techplan-example.md` | Real example of techplan result? | Stable|
-| `proposals/` | Proposed changes to the four files above | Growing (append new proposals) |
+
+Proposed changes to the files above go in the workspace-root
+`proposals/` (not a local subfolder here — the two proposal
+mechanisms were consolidated into one; see `../../proposals/README.md`).
 
 ## Fundamental Rules
 
 1. **The agent must not edit `template.md`, `rules.md`, `guardrails.md`,
    `guidelines.md`, or `diagram-guidelines.md` directly.** If the agent
    finds a gap or friction during synthesis, it writes a new proposal in
-   `proposals/` (see `proposals/_proposal-template.md` for the format). A
-   human reviews and merges it into the target document.
+   the root `proposals/` (see `proposals/_proposal-template-techplan-tier.md`
+   for the format, Protection Tier: `techplan-protected`). A human
+   reviews and merges it into the target document.
 2. `examples.md` and `retro.md` may be appended to directly by the
    agent without going through the proposal process — the risk is low
    since these are additive (adding an example/note), not a change to

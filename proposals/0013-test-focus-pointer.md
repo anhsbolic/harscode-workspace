@@ -1,7 +1,7 @@
-# Proposal: Test Focus Pointer — carry concurrency/perf/security test scope from exploration into the techplan, without turning techplan into a test plan
+# 0013 — Test Focus Pointer — carry concurrency/perf/security test scope from exploration into the techplan, without turning techplan into a test plan
 
-> Status: Proposed
-> Date: 2026-08-27
+**Status:** Proposed
+**Date:** 2026-08-27
 > Triggered by: Real incident — a build/patch loop stalled ~2 hours
 > running a full race-detector pass (with production-cost bcrypt) that
 > should never have run in that phase at all. Root discussion concluded

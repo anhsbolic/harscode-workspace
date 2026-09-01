@@ -1,4 +1,4 @@
-# 0008 — Tier race/concurrency testing out of the build loop; new file for expensive-primitive test cost
+# 0014 — Tier race/concurrency testing out of the build loop; new file for expensive-primitive test cost
 
 **Status:** Proposed
 **Date:** 2026-08-27

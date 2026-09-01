@@ -1,6 +1,6 @@
-# Proposal 0004 — Standalone Report Artifact, Generated Post-Approval
+# 0011 — Standalone Report Artifact, Generated Post-Approval
 
-**Status:** Draft (pending owner review/merge) · **Date:** 2026-08-27 · **Triggered by:** GMRT-51542 (single story/task — see caveat below)
+**Status:** Accepted · **Date:** 2026-08-27 · **Triggered by:** GMRT-51542 (single story/task — see caveat below)
 
 ---
 

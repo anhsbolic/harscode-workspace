@@ -1,4 +1,4 @@
-# 0001 — New `react/` best-practices category (frontend-general, sibling to `pwa/`)
+# 0004 — New `react/` best-practices category (frontend-general, sibling to `pwa/`)
 
 **Status:** Proposed
 **Date:** 2026-08-23

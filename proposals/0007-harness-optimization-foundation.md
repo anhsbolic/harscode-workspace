@@ -1,4 +1,4 @@
-# 0004 — New `harness-optimization/` pillar: governance + harness-agnostic token-optimization rule
+# 0007 — New `harness-optimization/` pillar: governance + harness-agnostic token-optimization rule
 
 **Status:** Proposed
 **Date:** 2026-08-23

@@ -1,9 +1,9 @@
-# Proposal 0005 — Split `template.md` into Agent-only `techplan.md` + Mandatory `report-techplan.md`
+# 0012 — Split `template.md` into Agent-only `techplan.md` + Mandatory `report-techplan.md`
 
-**Status:** Draft (pending owner review/merge) · **Date:** 2026-08-27 · **Triggered by:** GMRT-51542 + owner-asserted recurring single-document inefficiency (see caveat)
+**Status:** Accepted · **Date:** 2026-08-27 · **Triggered by:** GMRT-51542 + owner-asserted recurring single-document inefficiency (see caveat)
 
 **Supersedes:** Proposal 0001's embedded-Summary design (Summary section is removed from `techplan.md`, not just condensed).
-**Folds in:** Proposal 0004 (`report-techplan.md` becomes the mandatory report artifact, not an optional additive superset — 0004 can be marked Superseded once this merges).
+**Folds in:** Proposal 0011 (`report-techplan.md` becomes the mandatory report artifact, not an optional additive superset — 0011 can be marked Superseded once this merges).
 
 ---
 
@@ -25,7 +25,7 @@ Split into two protected templates, each with exactly one audience and one owner
 
 2. **`report-template.md` → `report-techplan.md`** (new, mandatory): **The sole human-facing artifact.** Sourced entirely from the approved `techplan.md` — Background/Scope condensed, Decision Log condensed to plain-language "why," Top (High-severity only) Risks, Open Items needing a decision — **plus** two sections validated during GMRT-51542 that Summary never covered: a simplified Architecture/Plan (diagram only if the flow has genuine branching — same rule already in `guidelines.md`) and a simplified Interface Contract with representative JSON examples, when the story/task has an external-facing interface.
 
-**Sequencing rule (carried over from Proposal 0004, now enforced, not optional):**
+**Sequencing rule (carried over from Proposal 0011, now enforced, not optional):**
 - `report-techplan.md` is generated **only after** `techplan.md` reaches `Approved` status. Never drafted in parallel with an in-progress techplan.
 - If `techplan.md` changes after `report-techplan.md` was generated — including the Approved→Implemented loop, or a reopened Draft — `report-techplan.md` **must be regenerated in full** before it's considered current. No hand-patching a paragraph to match; regenerate the whole file from the current techplan.
 
@@ -45,7 +45,7 @@ Proposals 0001-0003 built real machinery around the in-file Summary. That machin
 
 ## Rejected alternative
 
-**Keep Summary embedded in `techplan.md` AND add `report-techplan.md` as a pure additive superset** (Proposal 0004's original framing). Rejected now: it reproduces the exact redundancy that triggered this proposal — background/decisions/risks would be written out in full in `techplan.md`'s Decision Log, paraphrased again in `techplan.md`'s Summary, and paraphrased a third time in `report-techplan.md`. Cleaner to have exactly one file own human-facing content.
+**Keep Summary embedded in `techplan.md` AND add `report-techplan.md` as a pure additive superset** (Proposal 0011's original framing). Rejected now: it reproduces the exact redundancy that triggered this proposal — background/decisions/risks would be written out in full in `techplan.md`'s Decision Log, paraphrased again in `techplan.md`'s Summary, and paraphrased a third time in `report-techplan.md`. Cleaner to have exactly one file own human-facing content.
 
 ## Caveat — evidence strength
 
@@ -54,7 +54,7 @@ Documented evidence is one story/task (GMRT-51542). The "recurring inefficiency 
 ## Targets
 
 - `template.md` — remove Summary section and audience-boundary comment; section numbering 1-14 unaffected (Summary was never a numbered section).
-- `report-template.md` — update from Proposal 0004's draft: remove "optional/additive" framing, make explicit this is the sole and mandatory human artifact, sourced directly from `techplan.md` (not from an in-file Summary that no longer exists).
+- `report-template.md` — update from Proposal 0011's draft: remove "optional/additive" framing, make explicit this is the sole and mandatory human artifact, sourced directly from `techplan.md` (not from an in-file Summary that no longer exists).
 - `rules.md` — relocate §7 (Summary self-check) into `report-template.md`'s own checklist; mark old §7 as moved, not deleted (retro trail).
 - `guardrails.md` — retarget §11; add new pre-Approval generation guardrail; §9-10 otherwise unchanged per table above.
-- `proposal-index.md` / retro equivalent — mark Proposal 0004 as **Superseded by 0005**.
+- `proposal-index.md` / retro equivalent — mark Proposal 0011 as **Superseded by 0012**.
