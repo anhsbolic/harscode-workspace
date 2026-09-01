@@ -15,10 +15,12 @@ project repo, and portable across projects with different standards.
 | `rules.md` | What's mandatory, and how do we map content to sections? | Stable |
 | `guardrails.md` | When should the agent stop instead of assuming? | Stable |
 | `guidelines.md` | What's the read-synthesize-write process, step by step? | Stable |
-| `diagram-guidelines.md` | How do I write a valid, correctly-scoped Mermaid diagram for the digest? | Stable |
+| `diagram-guidelines.md` | How do I write a valid, correctly-scoped Mermaid diagram for §9 or the report's Architecture section? | Stable |
 | `examples.md` | Concrete examples calibrated for tone & level of detail? | Growing (append new examples) |
 | `retro.md` | Mistakes that happened during synthesis, and their mitigations? | Growing (living log) |
-| `techplan-example.md` | Real example of techplan result? | Stable|
+| `techplan-example.md` | Real example of a finished, agent-only techplan.md? | Stable |
+| `report-template.md` | What does the post-Approval, human-facing report look like? | Stable |
+| `report-techplan-example.md` | Real example of a generated report-techplan.md, paired with `techplan-example.md`? | Stable |
 
 Proposed changes to the files above go in the workspace-root
 `proposals/` (not a local subfolder here — the two proposal

@@ -8,75 +8,6 @@
 
 ---
 
-## 📋 Summary start here
-
-*This section is for team review. No line numbers, no rule IDs, no full option tables — those live in the full plan below. If you just need to understand "what is this and should it be approved," stop reading after Open Items.*
-
-### What & why
-
-Every ALKES (medical device) and Obat (pharmaceutical) product has a NIE (izin edar) that expires. Today nothing tracks that expiry in a queryable way — ALKES gets it from KFA Kemenkes but doesn't persist it; Obat relies on the seller filling a datepicker manually. This story/task adds a daily cron that reminds sellers before expiry and automatically freezes products once the NIE has expired.
-
-### Scope
-
-- New `product_kfa.nie_expired_date` + `nie_expired_date_source` columns, backfilled via two separate manual scripts (ALKES from KFA data, Obat/FARMASI from a stakeholder spreadsheet — **not yet received**).
-- Two new cron-triggered endpoints (`/cron/nie-expiration/alkes` and `/farmasi`), sharing one service method.
-- Reminders at H-45 / H-30 / H-14 via the existing `pnd-general-inapp` Novu workflow (no new workflow needed).
-- Auto-freeze on expiry with a new `NIE_EXPIRED` reason.
-- **Not included**: unfreeze after renewal, the "revoked" (non-date-based) NIE case, any channel besides in-app.
-
-### How the cron decides what to do
-
-```mermaid
-flowchart TD
-    A["Product has non-NULL<br/>nie_expired_date?"] -->|No| Z["Skip (out of scope)"]
-    A -->|Yes| B{"expiry vs today"}
-    B -->|"expiry > today+45"| C["No action"]
-    B -->|"expiry == today+45"| D["Reminder: 45 days left"]
-    B -->|"expiry == today+30"| E["Reminder: 30 days left"]
-    B -->|"expiry == today+14"| F["Reminder: 14 days left"]
-    B -->|"today+14 < expiry < today, not a milestone day"| C
-    B -->|"expiry <= today"| G{"status already FREEZE?"}
-    G -->|Yes| H["No-op (idempotent)"]
-    G -->|No| I["Freeze — reason NIE_EXPIRED"]
-    I --> J{"status was ACTIVE?"}
-    J -->|Yes| K["Send take-down notification"]
-    J -->|No| L["Freeze happens, no notification"]
-
-    style D fill:#fff3cd
-    style E fill:#fff3cd
-    style F fill:#fff3cd
-    style I fill:#f8d7da
-    style K fill:#d1ecf1
-    style L fill:#f8d7da
-```
-
-Reminders fire on exact milestone days only (no window, no retry if a day is missed). Take-down fires the day the NIE expires or any day after, and is idempotent — running the cron twice never double-freezes or double-notifies.
-
-### Key decisions
-
-- **Take-down boundary**: a product freezes on its expiry day itself, not the day after (revised from the tech lead's original "strict past" reading after a PRD re-read — **flagged for explicit re-confirmation**, see Open Items).
-- **Freeze scope**: any non-FREEZE status gets frozen when expired (regulatory requirement), not just "live" (Tayang) products. Accepted trade-off: non-active products get frozen silently, without a notification.
-- **Notification**: reuses the existing `pnd-general-inapp` in-app workflow instead of registering a new Novu workflow — simpler, already proven in production.
-- **Backfill**: kept out of the migration entirely (two manual scripts run after deploy) to avoid a long-held lock on a large table.
-
-### Top risks
-
-| Risk | Why it matters |
-|---|---|
-| First run after backfill could freeze/notify a large batch at once | No pre-flight count or dry-run — by design (silent cron), but worth knowing before the backfill runs |
-| No index on the new column at launch | Could mean a slow cron on a large table; deliberately deferred until measured in production |
-| Non-active products get frozen with no notification to the seller | Accepted per regulation, but a likely source of "why was my product frozen" support tickets |
-
-### Open items
-
-1. **FARMASI backfill spreadsheet not yet received** — script can't be finalized until it arrives.
-
----
-
-# Full Execution Plan (implementation detail — for AI coding agents / implementers)
-
-*Below is the full execution-grade plan — same decisions, same scope, expanded to file/line precision, rule IDs, and full option comparisons for implementation and AI-agent execution. Nothing below contradicts the digest above; it's the same source of truth at higher resolution*
-
 ## 1. Background
 
 The catalog must check each Alat Kesehatan (ALKES) and Obat product's NIE expiration date daily and act on it: remind the seller at H-45/30/14, and freeze (take down) when the NIE has expired.
@@ -235,8 +166,6 @@ Total reminders per product per expiry cycle: **exactly 3** (H-45, H-30, H-14). 
 | `NieExpiredDate *time.Time` nil deref in reminder formatting | Low (filter excludes NULL) | Medium (panic) | Defensive nil-check in `sendNIEReminderNotification` before `.In(jakartaLocation).Format`. |
 | `TransactionID` for renewal: same product, new expiry | Low | Low (would dedup wrongly if ID didn't include expiry) | ID format includes `expirationDate` so renewal fires a new reminder. |
 
----
-<!-- Secondary marker: sections 1-7 above still favor narrative/table form; 8-13 below are file/line-precise implementation detail. Both halves are inside the executor-facing part of the document — the only audience split that matters for review purposes is the one above, between the Human Digest and section 1. -->
 ---
 
 ## 8. Interface Contract
@@ -417,47 +346,46 @@ Derived 1:1 from §4.
 
 - [ ] R1: take-down freezes an eligible product with `NIE_EXPIRED` reason.
 - [ ] R2 (ACTIVE): take-down notification fires for `ACTIVE_TO_FREEZE`.
-- [ ] R2 (non-ACTIVE): take-down freezes but no notification for `BLOCKED_TO_FREEZE` etc.
+- [ ] R2 (non-ACTIVE): take-down freezes but no notification for `BLOCKED_TO_FREEZE` etc. ⚠️ Filtering take-down by `status = ACTIVE` only is wrong — Tech Lead's rule is `status <> FREEZE`.
 - [ ] R3: re-running take-down on already-FREEZE product is a no-op.
 - [ ] R4: H-45 reminder fires with `daysRemaining=45` and correct `TransactionID`; status unchanged.
-- [ ] R5: H-30 and H-14 reminders fire independently with their own `TransactionID`.
+- [ ] R5: H-30 and H-14 reminders fire independently with their own `TransactionID`. ⚠️ The reminder query must stay single-pass per milestone — looping it like the take-down query causes an infinite loop, since reminders don't mutate state.
 - [ ] R6: products outside the three reminder days and not past expiry → no action.
 - [ ] R7: NULL `nie_expired_date` excluded from both branches.
-- [ ] R8: Obat upsert with `YYYY-MM-DD` sets `nie_expired_date` + `source=FARMASI`.
-- [ ] R9: Obat upsert with invalid date logs and leaves `nie_expired_date` untouched.
+- [ ] R8: Obat upsert with `YYYY-MM-DD` sets `nie_expired_date` + `source=FARMASI`. ⚠️ Adding both new columns to the table but forgetting `upsertProductKFA`'s OnConflict clause silently retains the stale value; forgetting them in `getProductKFAByProductIDs`'s SELECT makes the cron read a Go zero-value instead of NULL. Both places need both columns.
+- [ ] R9: Obat upsert with invalid date logs and leaves `nie_expired_date` untouched. ⚠️ Putting the Obat extraction inside `ConstructCustomFormKFAPharmacy`'s `checkerMap` overwrites the seller's value with KFA's (wrong source) — use the separate `extractObatNIEExpiryToKFA` step instead.
 - [ ] R10: Obat update with empty date preserves existing `nie_expired_date`.
-- [ ] R11: ALKES upsert sets `nie_expired_date` from latest matching `identifier_ids[].end_date`, `source=MEDICAL_DEVICES`.
+- [ ] R11: ALKES upsert sets `nie_expired_date` from latest matching `identifier_ids[].end_date`, `source=MEDICAL_DEVICES`. ⚠️ Reusing `kfa_source` as the discriminator conflates endpoint source with value source — use the dedicated `nie_expired_date_source` column.
 - [ ] R12: backfill script populates eligible ALKES rows with `source=MEDICAL_DEVICES`.
 - [ ] R13: backfill script skips rows with non-`YYYY-MM-DD` `end_date`.
 - [ ] R14: backfill script does not touch `kfa_source = 'KFA_FARMASI'` rows.
 - [ ] R15: backfill script re-run does not overwrite rows where `nie_expired_date IS NOT NULL`.
-- [ ] R16: same-day cron double-fire produces one reminder per (product, milestone) via Novu `TransactionID` dedup.
+- [ ] R16: same-day cron double-fire produces one reminder per (product, milestone) via Novu `TransactionID` dedup. ⚠️ `TransactionID = uuid.New()` defeats this — it must be deterministic (`nie-reminder-<id>-<days>-<expiry>`), or a same-day double-fire sends two reminders.
 - [ ] R17: scheduler missing H-45 → no reminder on H-44.
-- [ ] WIB date: `today` computed in WIB, not UTC (mock clock test).
+- [ ] WIB date: `today` computed in WIB, not UTC (mock clock test). ⚠️ `time.Now().UTC().Date()` shifts the reminder a calendar day early/late around 00:01 WIB — use `now.In(jakartaLocation).Date()`.
 - [ ] Cron is silent — no pre-flight or post-run Info logs on success.
 - [ ] Error logs emitted on batch failure, per-product reminder failure, or Novu dispatch failure.
-- [ ] Reminder `NotificationName` equals `GENERAL_IN_APP_NOTIFICATION` (`"pnd-general-inapp"`).
-- [ ] Reminder `Payload` has exactly two keys: `generalInAppContent` + `targetUrl`.
+- [ ] Reminder `NotificationName` equals `GENERAL_IN_APP_NOTIFICATION` (`"pnd-general-inapp"`). ⚠️ Using `pnd-seller-product-nie-expiry-reminder` (the originally-proposed dedicated workflow) fails at runtime, not compile time — it was never registered.
+- [ ] Reminder `Payload` has exactly two keys: `generalInAppContent` + `targetUrl`. ⚠️ `pnd-general-inapp` ignores extra keys (`subject`, `productName`, `daysRemaining`, etc.) — sending them just clutters the payload with no effect.
 
-## 13. Testing Examples & Common Mistakes
+### Test Focus Pointer (carry-over from exploration Risk lens)
 
-| Mistake | Error/Behavior | Fix |
+Areas flagged as concurrency/perf/security-sensitive during exploration Stage 2, still relevant after synthesis:
+
+| Area | Why sensitive | Still relevant post-synthesis? |
 |---|---|---|
-| Using `time.Now().UTC().Date()` for `today` | Reminder fires one calendar day early/late around 00:01 WIB | Use `now.In(jakartaLocation).Date()`. |
-| Adding column to table but not to `upsertProductKFA` OnConflict | Upsert silently retains stale `nie_expired_date` | Add both columns to the OnConflict record. |
-| Adding column to table but not to `getProductKFAByProductIDs` SELECT | Reads return Go zero-value; cron sees NULL | Add both columns to the SELECT list. |
-| Reusing `kfa_source` as the source discriminator | Conflates endpoint source with value source | Use the separate `nie_expired_date_source` column. |
-| Putting the Obat extraction inside `ConstructCustomFormKFAPharmacy`'s `checkerMap` | Overwrites the seller's value with KFA (wrong source) | Separate `extractObatNIEExpiryToKFA` step after the construct call. |
-| Reminder query loops like the take-down query | Infinite loop (reminder doesn't mutate) | Reminder is single-pass per milestone. |
-| `TransactionID = uuid.New()` | Same-day double-fire sends two reminders | Deterministic `nie-reminder-<id>-<days>-<expiry>`. |
-| Filtering take-down by `status = ACTIVE` only | Not Tech Lead's requirement | Tech Lead governs (`status <> FREEZE`). |
-| Using `pnd-seller-product-nie-expiry-reminder` as `NotificationName` | Novu workflow not registered → error | Use `GENERAL_IN_APP_NOTIFICATION` (`"pnd-general-inapp"`). |
-| Sending extra payload keys (`subject`, `productName`, etc.) | `pnd-general-inapp` doesn't read them — clutters payload | Payload is exactly two keys: `generalInAppContent` + `targetUrl`. |
+| Same-day cron double-fire → reminder dedup (R16) | Concurrency — Novu `TransactionID` dedup is the only safety net if the exact-day filter and a re-run overlap in the same window | Yes — needs a concurrent/double-run test, not just a single-call unit test |
+| Backfill script batch commits on `product_kfa` at scale | Performance — keyset-paginated `UPDATE` against a large table; no index ships with `000123` (§7) | Yes — measure `EXPLAIN ANALYZE` after first prod run per §9 step 9; flag if the follow-up index migration becomes urgent |
+| `today` boundary computed in WIB vs UTC | Correctness-critical time boundary — a naive UTC read shifts every milestone by a day (§7) | Yes — covered by the WIB mock-clock checklist line above, listed here since it was also flagged during exploration as a risk area, not just a rule |
 
----
+## 13. Open Items
 
-## Open Items Details
+Lifecycle rules in `rules.md` § 8. An item lives in exactly one of the two lists below at any time — never both, never neither once raised.
 
-### Active — need external input or implementation verification
+### Active — need external input or verification
 
 1. **FARMASI backfill spreadsheet — not yet received.** Script can't be finalized until it arrives. **Owner: Tech Lead / stakeholder.**
+
+### Resolved (kept for reference)
+
+1. ~~**Dedicated Novu workflow (`pnd-seller-product-nie-expiry-reminder`) needs to be registered before launch**~~ **RESOLVED — not needed.** PM confirmed the reminder reuses the existing, already-registered `pnd-general-inapp` workflow instead (see §5 Decision Log, §2 Scope). No new Novu workflow registration required.
