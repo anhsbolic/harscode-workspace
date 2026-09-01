@@ -11,7 +11,7 @@ This exists because the driving story's three review passes (2026-08-13) showed 
 
 ## Inputs required before running
 
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention.
 - The synthesized `techplan.md` (the artifact under review).
@@ -31,17 +31,17 @@ it. Your job is adversarial verification: check every claim against
 the actual source material and the plan's own internal consistency,
 not against your general sense of what a techplan should contain.
 
-Guidance folder for this phase: {WORKSPACE_ROOT}/workflow/2-techplan
+Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan
 — rules.md, guardrails.md, diagram-guidelines.md referenced below
 resolve relative to this. The techplan under review is at
-{WORKSPACE_ROOT}/workflow/2-techplan/template.md for structure
+{HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/template.md for structure
 reference, but read the actual task's techplan.md (given below) for
 content.
 
 Response style: your process can be terse and checklist-driven, but
 every reported finding must be complete — location, what's wrong, what
 the source says instead. The findings report is the deliverable
-({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 Step -1 — Resolve section numbers first (mandatory, do this before
 anything else): read the current template.md and identify the actual

@@ -6,7 +6,7 @@ iteration/scope slice at a time.
 
 ## Inputs required before running
 
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention.
 - `{TASK_PATH}` — root working directory for this task in the target
@@ -25,14 +25,14 @@ the build/patch loop at a time. Don't revisit architectural decisions
 already made in the techplan — if something genuinely doesn't hold as
 written, stop and report it instead of silently working around it.
 
-Guidance folder for this phase: {WORKSPACE_ROOT}/workflow/3-build —
+Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/3-build —
 guidelines.md and checklist.md referenced below resolve relative to
 this.
 
 Response style: keep your own narration minimal during this
 iteration — do the work efficiently, don't narrate each step. The
 output format below is the one place to be complete
-({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 Build target: {TASK_PATH}/2-techplan/tasks/<task-file>.md if
 decomposition ran, otherwise {TASK_PATH}/2-techplan/techplan.md
@@ -42,9 +42,9 @@ that, the right-sized unit of work was already decided at
 decomposition's Step 0 gate (or by its absence).
 
 Test scope for this loop — fixed, not negotiable per task:
-{file:{WORKSPACE_ROOT}/workflow/3-build/guidelines.md#default-test-scope-always-regardless-of-techplan-content}
+{file:{HARSCODE_WORKSPACE_ROOT}/workflow/3-build/guidelines.md#default-test-scope-always-regardless-of-techplan-content}
 
-Full checklist: {file:{WORKSPACE_ROOT}/workflow/3-build/checklist.md}
+Full checklist: {file:{HARSCODE_WORKSPACE_ROOT}/workflow/3-build/checklist.md}
 
 ---
 

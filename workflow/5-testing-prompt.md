@@ -6,7 +6,7 @@ the same task.
 
 ## Inputs required before running
 
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention.
 - `{TASK_PATH}` — root working directory for this task in the target
@@ -39,20 +39,20 @@ the same task.
 You are running the testing phase for a task that has already been
 through implementation and code review. Follow this process, in order:
 
-Guidance folder for this phase: {WORKSPACE_ROOT}/workflow/5-testing —
+Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/5-testing —
 guidelines.md, checklist.md, examples.md referenced below resolve
 relative to this.
 
 Response style: keep the sweep/coverage work itself efficient — don't
 narrate every step. The final report below must be as thorough as a
 real testing report demonstrates is possible without an over-narrated
-process (see {WORKSPACE_ROOT}/best-practices/go/examples/testing-concurrency.md
+process (see {HARSCODE_WORKSPACE_ROOT}/best-practices/go/examples/testing-concurrency.md
 for a worked example) — that level of detail is the bar for this
-report, not an exception ({WORKSPACE_ROOT}/workflow/README.md §
+report, not an exception ({HARSCODE_WORKSPACE_ROOT}/workflow/README.md §
 Response Style By Phase).
 
 Step 0 — Sweep, don't redo:
-{file:{WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (item 0 specifically).
+{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (item 0 specifically).
 Read the implementation report below. For every rule/scenario it claims
 is covered by a named test, spot-check it (run the existing test, don't
 rewrite it). Then read its "what is not tested, and why" section (or
@@ -71,7 +71,7 @@ the exploration docs or code, flag it back as a possible techplan gap —
 don't silently add the test yourself without noting the gap.
 
 Step 1 — Coverage per techplan § 4:
-{file:{WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (items 1-3). Test every
+{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (items 1-3). Test every
 rule in the techplan's Rules & Validation section using the real
 interface. For rules already spot-checked in Step 0 as genuinely
 covered, don't re-derive a new test — note it as confirmed. Spend actual
@@ -88,9 +88,9 @@ Verify error responses precisely — category, actionable message,
 correct propagation through the app's error-handling layer, not just
 "an error happened."
 
-Full checklist: {file:{WORKSPACE_ROOT}/workflow/5-testing/checklist.md}
+Full checklist: {file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/checklist.md}
 Known recurring bug patterns worth specifically hunting for:
-{file:{WORKSPACE_ROOT}/workflow/5-testing/examples.md}
+{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md}
 
 Techplan:
 [PASTE TECHPLAN PATH OR CONTENT HERE]
@@ -153,9 +153,9 @@ exercised beyond §1" if genuinely none apply.
 
 ## 4. New Bug Patterns
 Only include entries that meet the threshold in
-{file:{WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#threshold-for-adding-to-examplesmd}
+{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#threshold-for-adding-to-examplesmd}
 (a category of mistake, not a one-off). Otherwise state "No new pattern
-— see {WORKSPACE_ROOT}/workflow/5-testing/examples.md for handling this ticket-specific
+— see {HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md for handling this ticket-specific
 bug directly."
 
 ## Verdict
@@ -169,7 +169,7 @@ Step-0-confirmed area that regressed.
 ## Notes
 
 - This prompt does not decide which model runs it — see
-  `{WORKSPACE_ROOT}/best-practices/model-routing.md` (draft) for tier × stage routing.
+  `{HARSCODE_WORKSPACE_ROOT}/best-practices/model-routing.md` (draft) for tier × stage routing.
   Testing is currently flat/DeepSeek-routed (Flash for Simple/Medium,
   Pro for Complex) — no dual-model requirement at this stage today.
 - Step 0 exists specifically so this phase doesn't silently re-verify
@@ -177,11 +177,11 @@ Step-0-confirmed area that regressed.
   doesn't silently trust an implementation report's claims without
   spot-checking. If Step 0 consistently gets skipped in practice (the
   agent defaults straight to a full redo, or defaults to blind trust),
-  log it in `{WORKSPACE_ROOT}/workflow/5-testing/examples.md` — that would mirror the
+  log it in `{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md` — that would mirror the
   exact "prose instruction doesn't survive" pattern already documented
-  in `{WORKSPACE_ROOT}/workflow/2-techplan/retro.md`, and would be a candidate for
+  in `{HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/retro.md`, and would be a candidate for
   converting Step 0 into a harder-gated checklist item instead of prose.
 - If a specific pass (coverage, error verification, final check)
   consistently produces weak findings across multiple real runs, note
-  the pattern in `{WORKSPACE_ROOT}/workflow/5-testing/examples.md` before restructuring
+  the pattern in `{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md` before restructuring
   this prompt — don't split it into per-step invocations preemptively.

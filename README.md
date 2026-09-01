@@ -97,11 +97,11 @@ This is an active, evolving personal system — not a finished product. Structur
 
 1. Copy this workspace's content into your project (or symlink it if
    you work across multiple repos) — the exact location is up to you;
-   every prompt in `workflow/` refers to it as `{WORKSPACE_ROOT}`, set
+   every prompt in `workflow/` refers to it as `{HARSCODE_WORKSPACE_ROOT}`, set
    once per project. See `workflow/README.md` § Path Variables
    Convention.
 2. Point your agent's system prompt / project instructions at
-   `{WORKSPACE_ROOT}/AGENTS.md` as the entry point — it routes to
+   `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the entry point — it routes to
    `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which
    in turn point to the full `README.md`/`index.md` for anything beyond
    the hard rules.

@@ -6,7 +6,7 @@ using this guidance folder. Fill in the placeholders, paste as-is.
 
 ## Inputs required before running
 
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention.
 - `{TASK_PATH}` — root working directory for this specific task in the
@@ -21,7 +21,7 @@ using this guidance folder. Fill in the placeholders, paste as-is.
 ## Prompt
 
 ```
-Read the guidance folder at {WORKSPACE_ROOT}/workflow/2-techplan in
+Read the guidance folder at {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan in
 this order: README.md, template.md, rules.md, guardrails.md,
 guidelines.md, examples.md, retro.md. All bare file references below
 (rules.md, guardrails.md, template.md) resolve relative to this same
@@ -30,7 +30,7 @@ output must look like.
 
 Response style: full detail, execution-grade, no compression — this
 techplan becomes the contract other agents and humans execute against
-later ({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+later ({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 Then read every file in {TASK_PATH}/1-exploration/logs/ — treat all of
 them as raw material. Don't assume a fixed number or fixed names;
@@ -59,7 +59,7 @@ silently, and STOP and ask me if you find a breaking change or data
 risk that isn't already explicit in the raw docs.
 
 Stack-specific risk lens: before finalizing sniffing (risk, edge cases, miscontext,
-misleading signals, inconsistency), read {WORKSPACE_ROOT}/best-practices/index.md.
+misleading signals, inconsistency), read {HARSCODE_WORKSPACE_ROOT}/best-practices/index.md.
 Match the trigger keywords in the index table against the area(s)/technology(ies)
 touched by this ticket (Go, PostgreSQL, GraphQL, REST API, Kafka, Pub/Sub, Redis).
 Open ONLY the matching file(s) — do not scan the entire best-practices/ folder.
@@ -84,7 +84,7 @@ further.
 
 ## Notes
 
-- `{WORKSPACE_ROOT}` replaces the old "make sure it's reachable" manual
+- `{HARSCODE_WORKSPACE_ROOT}` replaces the old "make sure it's reachable" manual
   step — resolve it once for this project and every reference above
   follows automatically.
 - The output is a draft for your manual review — writing it to
@@ -92,6 +92,6 @@ further.
   something to automate past. Review before it goes anywhere further
   (a PR, a decomposition pass, etc.).
 - The stack-specific risk lens step assumes `best-practices/` sits as a
-  sibling to `workflow/` under `{WORKSPACE_ROOT}`. If your layout
-  differs, that's exactly what `{WORKSPACE_ROOT}` is for — point it at
+  sibling to `workflow/` under `{HARSCODE_WORKSPACE_ROOT}`. If your layout
+  differs, that's exactly what `{HARSCODE_WORKSPACE_ROOT}` is for — point it at
   wherever the common parent actually is.

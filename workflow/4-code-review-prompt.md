@@ -5,7 +5,7 @@ passes run in a single invocation, in order, against the same diff.
 
 ## Inputs required before running
 
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention.
 - `{TASK_PATH}` — root working directory for this task in the target
@@ -24,30 +24,30 @@ against the diff below. Do not skip a pass because an earlier pass
 found nothing — each pass looks for a different class of problem, and
 a clean Safety pass says nothing about Consistency.
 
-Guidance folder for this phase: {WORKSPACE_ROOT}/workflow/4-code-review
+Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review
 — guidelines.md, checklist.md, examples.md referenced below resolve
 relative to this. best-practices/index.md resolves relative to
-{WORKSPACE_ROOT}.
+{HARSCODE_WORKSPACE_ROOT}.
 
 Response style: findings must be complete per item (finding, location,
 why it matters, suggested fix) but not padded — "No findings" is a
 valid and preferred answer over invented non-issues
-({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 Guidance for each pass — read before judging, don't rely on general
 knowledge alone:
-- Pass 1 (Safety): {file:{WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#1-safety-review}
-- Pass 2 (Quality): {file:{WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#2-quality-review}
-- Pass 3 (Stack-Specific Best Practices): {file:{WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#3-stack-specific-best-practices-review}
-  — match against {file:{WORKSPACE_ROOT}/best-practices/index.md}, open only the files
+- Pass 1 (Safety): {file:{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#1-safety-review}
+- Pass 2 (Quality): {file:{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#2-quality-review}
+- Pass 3 (Stack-Specific Best Practices): {file:{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#3-stack-specific-best-practices-review}
+  — match against {file:{HARSCODE_WORKSPACE_ROOT}/best-practices/index.md}, open only the files
   that match this diff's technology, apply their checklists.
-- Pass 4 (Consistency): {file:{WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#4-consistency-check}
+- Pass 4 (Consistency): {file:{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/guidelines.md#4-consistency-check}
   — read [TARGET REPO CONVENTION FILE PATH] first, do not assume a
   pattern from a different project applies here.
 
-Full checklist (all four passes): {file:{WORKSPACE_ROOT}/workflow/4-code-review/checklist.md}
+Full checklist (all four passes): {file:{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/checklist.md}
 Known recurring finding patterns worth specifically hunting for:
-{file:{WORKSPACE_ROOT}/workflow/4-code-review/examples.md}
+{file:{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/examples.md}
 
 Diff to review:
 [PASTE DIFF OR LIST OF CHANGED FILES HERE]

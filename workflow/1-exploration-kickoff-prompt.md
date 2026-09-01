@@ -6,7 +6,7 @@ rigid form.
 
 ## Inputs required before running
 
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention.
 - `{TASK_PATH}` — root working directory for this specific task in the
@@ -15,7 +15,7 @@ rigid form.
   this same root — see root `README.md` § Task Working Directory
   Structure.
 - `{CODEBASE_CONTEXT}` — a one-line label (project name + high-level
-  stack), set once per project, same tier as `{WORKSPACE_ROOT}`. Not a
+  stack), set once per project, same tier as `{HARSCODE_WORKSPACE_ROOT}`. Not a
   restated description of the repo — deep repo understanding comes
   from Stage 1's own instruction to read the repo's convention file
   directly.
@@ -31,7 +31,7 @@ rigid form.
 You are exploring a task in this codebase: {CODEBASE_CONTEXT — a short
 one-line label, e.g. "Kencleng — Go backend + Next.js frontend", NOT a
 restated description of the repo. Set once per project and reuse
-across every task — see {WORKSPACE_ROOT}/workflow/README.md § Path
+across every task — see {HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Path
 Variables Convention}. This happens in three stages — do not skip or
 merge them.
 
@@ -39,14 +39,14 @@ Working directory for this task: {TASK_PATH} — write all raw output
 from every stage below into {TASK_PATH}/1-exploration/logs/ (see root
 README.md § Task Working Directory Structure).
 
-Guidance folder for this phase: {WORKSPACE_ROOT}/workflow/1-exploration
+Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/1-exploration
 — sniffing-checklist.md and guidelines.md referenced below resolve
 relative to this.
 
 Response style: Stage 1 stays terse — plan and order only, no detail
 yet. Stages 2 and 3 need full, concrete detail per area — this is raw
 material a future techplan builds a contract from
-({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 **Task:** {paste the task detail directly, or paste the path to a
 PRD/TRD/spec document to read instead — either works. If it's a path,

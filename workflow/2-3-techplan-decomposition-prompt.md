@@ -47,7 +47,7 @@ structure.
 - `{TASK_PATH}` — root working directory for this specific task; the
   techplan under consideration is at `{TASK_PATH}/2-techplan/techplan.md`
   (see root `README.md` § Task Working Directory Structure).
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention. Used
   below for the model-routing reference.
@@ -58,12 +58,12 @@ Full detail, no compression, when redistributing content into task
 files — see "What This Must Not Do" above; that constraint IS this
 phase's response-style rule. State the chosen splitting axis and
 rationale explicitly, don't just apply one silently
-({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 ## Prompt
 
 ```
-Read {WORKSPACE_ROOT}/workflow/2-3-techplan-decomposition-prompt.md in
+Read {HARSCODE_WORKSPACE_ROOT}/workflow/2-3-techplan-decomposition-prompt.md in
 full first — "When To Use This," "What This Must Not Do," and "Agent
 Workflow" (steps 0-4) define what you're allowed to do here and what
 you must not do (no compression, no reinterpretation, contract section
@@ -73,7 +73,7 @@ redistributed).
 Response style: full detail, no compression, when redistributing
 content into task files. State the splitting axis you choose and why,
 explicitly — don't apply one silently
-({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
 The techplan under consideration is at {TASK_PATH}/2-techplan/techplan.md
 — its contract must already be locked (not Draft). Read it in full
@@ -98,7 +98,7 @@ techplan in every task file.
 Generate the manifest last (Step 4) — task list, splitting axis +
 rationale, dependency graph (or an explicit "no hard dependency"
 marker), back-reference to the techplan, and which model to route each
-task to (see {WORKSPACE_ROOT}/best-practices/model-routing.md).
+task to (see {HARSCODE_WORKSPACE_ROOT}/best-practices/model-routing.md).
 
 Write every task file plus the manifest to
 {TASK_PATH}/2-techplan/tasks/. Report the gate-question answer and,
@@ -192,7 +192,7 @@ Minimum manifest contents:
   an explicit "no hard dependency" marker if the axis is parallel
   (component/module).
 - Back-reference to the originating contract techplan.
-- llm models to execute each tasks, you can read {WORKSPACE_ROOT}/best-practices/model-routing.md
+- llm models to execute each tasks, you can read {HARSCODE_WORKSPACE_ROOT}/best-practices/model-routing.md
 
 ## Output
 
@@ -205,11 +205,11 @@ Write everything below to `{TASK_PATH}/2-techplan/tasks/` (see root
 
 ## Cross-reference
 
-- Source techplan: see `{WORKSPACE_ROOT}/workflow/2-1-techplan-synthesis-prompt.md`
+- Source techplan: see `{HARSCODE_WORKSPACE_ROOT}/workflow/2-1-techplan-synthesis-prompt.md`
   for the contract/derived authoring process that precedes this
   decomposition step.
 - Task files produced here are still subject to the review checklist in
-  `{WORKSPACE_ROOT}/workflow/4-code-review/checklist.md`, same as any
+  `{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/checklist.md`, same as any
   other derived-section content.
 
 ## Notes

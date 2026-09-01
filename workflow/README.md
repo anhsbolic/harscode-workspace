@@ -123,7 +123,7 @@ which tier a variable belongs to tells you how often you actually need
 to touch it:
 
 - **Project-level (set once, reused across every task on this
-  project):** `{WORKSPACE_ROOT}` — where this workspace's content
+  project):** `{HARSCODE_WORKSPACE_ROOT}` — where this workspace's content
   lives relative to the project. `{CODEBASE_CONTEXT}` — a one-line
   label for the project/repo (e.g. "Kencleng — Go backend + Next.js
   frontend"), used only for quick orientation before an agent reads the
@@ -142,7 +142,7 @@ to touch it:
 
 Set every project-level variable once per project — e.g. if this
 workspace is symlinked at `./guidance` in a given project, every
-prompt used against that project resolves `{WORKSPACE_ROOT}` to
+prompt used against that project resolves `{HARSCODE_WORKSPACE_ROOT}` to
 `./guidance` for every future invocation, not once per prompt.
 
 `[TARGET REPO CONVENTION FILE PATH]` (used in a couple of prompts) is
@@ -195,7 +195,7 @@ copy last:
    restating an obvious phase name in prose is filler, not
    documentation.
 2. **`## Inputs required before running`** — every placeholder
-   (`{WORKSPACE_ROOT}`, `{TASK_PATH}`, etc.) and every precondition
+   (`{HARSCODE_WORKSPACE_ROOT}`, `{TASK_PATH}`, etc.) and every precondition
    material (a locked techplan, prior-phase output already on disk,
    etc.) needed before this prompt makes sense to run. Always this
    exact heading, always before the `## Prompt` block — a reader
