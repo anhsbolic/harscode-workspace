@@ -4,6 +4,22 @@ Ready-to-use prompt for instructing an AI Agent (Claude Code, OpenCode
 CLI, etc.) to synthesize a techplan.md from raw exploration output,
 using this guidance folder. Fill in the placeholders, paste as-is.
 
+## Inputs required before running
+
+- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+  relative to (or as an absolute path from) your project. Set once per
+  project; see `workflow/README.md` § Path Variables Convention.
+- `{TASK_PATH}` — root working directory for this specific task in the
+  target repo (e.g. `.local-agents/works/account/06-mfa-totp/`), NOT
+  just the exploration output folder. This prompt reads from
+  `{TASK_PATH}/1-exploration/logs/` and writes to
+  `{TASK_PATH}/2-techplan/techplan.md`.
+- Completed exploration output already sitting in
+  `{TASK_PATH}/1-exploration/logs/` — this prompt does not run
+  exploration itself, see `1-exploration-kickoff-prompt.md` for that.
+
+## Prompt
+
 ```
 Read the guidance folder at {WORKSPACE_ROOT}/workflow/2-techplan in
 this order: README.md, template.md, rules.md, guardrails.md,
@@ -65,19 +81,6 @@ or unresolved questions you carried forward instead of silently
 deciding — I'll review those manually before this goes anywhere
 further.
 ```
-
-## Placeholders
-
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
-  relative to (or as an absolute path from) your project. Set once per
-  project; see `workflow/README.md` § Path Variables Convention.
-- `{TASK_PATH}` — root working directory for this specific task in the
-  target repo (e.g. `.local-agents/works/account/06-mfa-totp/`), NOT
-  just the exploration output folder. Every phase writes into its own
-  numbered subfolder under this same root — see root `README.md` §
-  Task Working Directory Structure. This prompt specifically reads
-  from `{TASK_PATH}/1-exploration/logs/` and writes to
-  `{TASK_PATH}/2-techplan/techplan.md`.
 
 ## Notes
 

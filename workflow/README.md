@@ -179,3 +179,49 @@ Each prompt states its own setting for both axes near the top of its
 `## Prompt` block — a one-line pointer back here plus whatever's
 specific to that phase, not a restatement of the whole rationale every
 time.
+
+## Prompt File Shape
+
+Every `*-prompt.md` file follows the same skeleton, so a new phase's
+prompt doesn't drift from whichever sibling its author happened to
+copy last:
+
+1. **Title + one-line intro** — what this prompt is for. A dedicated
+   `## Purpose` heading is optional, not mandatory — only add one when
+   the prompt introduces something genuinely non-obvious that needs
+   justifying (e.g. `2-2-techplan-review-prompt.md` explains *why* an
+   independent second-pass review exists, citing the real incident
+   that motivated it). Don't add `## Purpose` just for uniformity —
+   restating an obvious phase name in prose is filler, not
+   documentation.
+2. **`## Inputs required before running`** — every placeholder
+   (`{WORKSPACE_ROOT}`, `{TASK_PATH}`, etc.) and every precondition
+   material (a locked techplan, prior-phase output already on disk,
+   etc.) needed before this prompt makes sense to run. Always this
+   exact heading, always before the `## Prompt` block — a reader
+   deciding whether they're ready to run this shouldn't have to read
+   the whole prompt text first to find out.
+3. **`## Prompt`** — the literal, paste-ready fenced block. Mandatory,
+   always this exact heading. This is the one thing every prompt file
+   exists to provide; if a phase turns out to need conditional logic
+   before its prompt applies (see `2-3-techplan-decomposition-prompt.md`'s
+   gate question), that logic goes inside this block, not as a
+   replacement for it.
+4. **Phase-specific output sections** (optional, varies per phase) —
+   e.g. `4-code-review-prompt.md`'s Safety/Quality/Consistency
+   breakdown, `3-build-prompt.md`'s What changed/Tests run. These
+   genuinely differ per phase; don't force a common shape here.
+5. **`## Notes`** — always last, always this exact heading. Answers
+   "what do I do with the output" and "what's the immediate next
+   manual step" — not a dumping ground for anything that didn't fit
+   elsewhere. If you're tempted to add a "How To Use" heading, put that
+   content here instead: a second heading for the same kind of content
+   invites exactly the two-sources-of-truth drift this workspace
+   already learned to avoid the hard way (`techplan/decisions-log.md`'s
+   Summary-desync history).
+
+When adding a new phase prompt, copy this shape, not the nearest
+existing file verbatim — the existing files themselves have drifted
+from each other before (`2-3-techplan-decomposition-prompt.md` was
+missing both its `## Prompt` block and its `## Notes` section until a
+routine review caught it).

@@ -4,6 +4,29 @@ A starting point for the first message of an exploration session. Fill
 in the placeholders, adapt freely — this is a starting shape, not a
 rigid form.
 
+## Inputs required before running
+
+- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
+  relative to (or as an absolute path from) your project. Set once per
+  project; see `workflow/README.md` § Path Variables Convention.
+- `{TASK_PATH}` — root working directory for this specific task in the
+  target repo (e.g. `.local-agents/works/account/06-mfa-totp/`). Every
+  later phase's prompt writes into its own numbered subfolder under
+  this same root — see root `README.md` § Task Working Directory
+  Structure.
+- `{CODEBASE_CONTEXT}` — a one-line label (project name + high-level
+  stack), set once per project, same tier as `{WORKSPACE_ROOT}`. Not a
+  restated description of the repo — deep repo understanding comes
+  from Stage 1's own instruction to read the repo's convention file
+  directly.
+- `{TASK}` — the actual requirement driving this specific task: paste
+  the detail directly, or a path to a PRD/TRD/spec document. Changes
+  every task, unlike `{CODEBASE_CONTEXT}`.
+- **Ticket** and **Area** — optional; leave as "not sure yet" if
+  unknown, Stage 1 will help figure the area out.
+
+## Prompt
+
 ```
 You are exploring a task in this codebase: {CODEBASE_CONTEXT — a short
 one-line label, e.g. "Kencleng — Go backend + Next.js frontend", NOT a
@@ -78,28 +101,16 @@ the content, not a preset template.
 
 ## Notes
 
-- `{TASK_PATH}` — root working directory for this specific task in the
-  target repo (e.g. `.local-agents/works/account/06-mfa-totp/`). Every
-  later phase's prompt writes into its own numbered subfolder under
-  this same root — see root `README.md` § Task Working Directory
-  Structure.
-- `{WORKSPACE_ROOT}` — path to this harscode-workspace's content relative
-  to (or as an absolute path from) your project. Set once per project;
-  see `workflow/README.md` § Path Variables Convention.
-- `{CODEBASE_CONTEXT}` is a one-line label only (project name + high-
-  level stack), not a restated description of the repo — that would
-  create a second, independently-drifting source of truth alongside
-  the repo's own README/AGENTS.md. Deep repo understanding always
-  comes from Stage 1's own instruction to read that file directly;
-  this label exists purely so the opening sentence orients the agent
-  before that read happens, and so a monorepo with multiple
-  services/frontends can disambiguate which one is in play. Set it
-  once per project, same tier as `{WORKSPACE_ROOT}`.
-- `{TASK}` accepts either pasted content or a document path — one
-  field, not a menu of source types to pick from. This is deliberately
-  separate from `{CODEBASE_CONTEXT}`: the latter is stable background
-  reused across every task on this project, `{TASK}` is the actual
-  requirement driving this specific task and changes every time.
+- `{CODEBASE_CONTEXT}` staying a one-line label rather than a restated
+  repo description is deliberate — a fuller restatement would create a
+  second, independently-drifting source of truth alongside the repo's
+  own README/AGENTS.md. It exists purely so the opening sentence
+  orients the agent before Stage 1's real repo read happens, and so a
+  monorepo with multiple services/frontends can disambiguate which one
+  is in play.
+- `{TASK}` is deliberately separate from `{CODEBASE_CONTEXT}`: the
+  latter is stable background reused across every task on this
+  project, `{TASK}` is the actual requirement and changes every time.
 - If the task is a file path, the agent reading it is part of Stage 1,
   not assumed to have happened already — Stage 1's own wording ("state
   your understanding of the task in your own words") exists

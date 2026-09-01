@@ -29,18 +29,24 @@ structure.
 - **Contract section stays untouched.** The original techplan (specifically
   the contract) remains a single file and stays the source of truth for
   human review. Only the derived section — the part consumed by the
-  execution agent — gets split. This includes the Human Digest at the
-  top of the techplan (if present) — it stays with the contract file,
-  it does not get split into task files or duplicated across them. The
-  same applies to § 12's Test Focus Pointer table, if present: it's a
-  task-level pointer consumed by the testing phase after all tasks are
-  done, not per-task detail — it stays with the contract, never
-  redistributed or duplicated into individual task files.
+  execution agent — gets split. `techplan.md` has no embedded Summary
+  or digest section to worry about here (Proposal 0012 moved that to a
+  separately-generated `report-techplan.md`, sourced from the approved
+  techplan — decomposition does not touch or regenerate that file). §
+  12's Test Focus Pointer table, if present, is a task-level pointer
+  consumed by the testing phase after all tasks are done, not per-task
+  detail — it stays with the contract, never redistributed or
+  duplicated into individual task files.
 
-## Input
+## Inputs required before running
 
-- A techplan that has already been locked (contract is final, not in draft
-  status).
+- A techplan that has already been locked (`Status: Approved` or later
+  in `template.md`'s lifecycle — not `Draft` or `In Review`). Running
+  this against an unlocked techplan risks decomposing content that's
+  still going to change.
+- `{TASK_PATH}` — root working directory for this specific task; the
+  techplan under consideration is at `{TASK_PATH}/2-techplan/techplan.md`
+  (see root `README.md` § Task Working Directory Structure).
 - `{WORKSPACE_ROOT}` — path to this harscode-workspace's content
   relative to (or as an absolute path from) your project. Set once per
   project; see `workflow/README.md` § Path Variables Convention. Used
@@ -53,6 +59,52 @@ files — see "What This Must Not Do" above; that constraint IS this
 phase's response-style rule. State the chosen splitting axis and
 rationale explicitly, don't just apply one silently
 ({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+
+## Prompt
+
+```
+Read {WORKSPACE_ROOT}/workflow/2-3-techplan-decomposition-prompt.md in
+full first — "When To Use This," "What This Must Not Do," and "Agent
+Workflow" (steps 0-4) define what you're allowed to do here and what
+you must not do (no compression, no reinterpretation, contract section
+and any Test Focus Pointer table stay with the original techplan, not
+redistributed).
+
+Response style: full detail, no compression, when redistributing
+content into task files. State the splitting axis you choose and why,
+explicitly — don't apply one silently
+({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+
+The techplan under consideration is at {TASK_PATH}/2-techplan/techplan.md
+— its contract must already be locked (not Draft). Read it in full
+before doing anything else.
+
+Step 0 — Gate question (mandatory, answer explicitly before proceeding):
+Is it worth it to decompose this techplan? Answer no and stop here,
+reporting a one-line reason, if it's small/linear enough for an
+execution agent to run through start to finish without losing focus,
+or if splitting it would mostly produce trivial single-task
+boundaries. Do not proceed to Step 1 on autopilot just because this
+prompt was invoked.
+
+If yes: read the full techplan (Step 1), choose one splitting axis
+from "Agent Workflow" § 2 — defaulting to dependency/sequence chain
+when it's ambiguous — and state your choice and rationale before
+redistributing content (Step 3). Each task file must remain
+full-detail for its scope; nothing gets shortened or summarized in the
+split, only relocated. Include a back-reference to the originating
+techplan in every task file.
+
+Generate the manifest last (Step 4) — task list, splitting axis +
+rationale, dependency graph (or an explicit "no hard dependency"
+marker), back-reference to the techplan, and which model to route each
+task to (see {WORKSPACE_ROOT}/best-practices/model-routing.md).
+
+Write every task file plus the manifest to
+{TASK_PATH}/2-techplan/tasks/. Report the gate-question answer and,
+if you proceeded, the splitting axis chosen — I'll review the split
+before any task is executed.
+```
 
 ## Agent Workflow
 
@@ -159,3 +211,21 @@ Write everything below to `{TASK_PATH}/2-techplan/tasks/` (see root
 - Task files produced here are still subject to the review checklist in
   `{WORKSPACE_ROOT}/workflow/4-code-review/checklist.md`, same as any
   other derived-section content.
+
+## Notes
+
+- The manifest and task files are a snapshot, not a living document —
+  don't hand-edit them to reflect progress; that belongs in your
+  PR/ticket tooling, not here.
+- Treat the Step 0 gate answer as a real decision, not a formality: if
+  the honest answer is "not worth it," stopping there and executing
+  straight from the original techplan is the correct outcome, not a
+  failure to produce output.
+- If a later code-review or testing pass surfaces a decision that
+  should have been in the original contract, that's a signal to update
+  the techplan itself (and regenerate `report-techplan.md` if it's
+  already Approved) — not to patch a task file in isolation.
+- This file only covers splitting an already-locked techplan into task
+  files. It does not cover generating the human-facing report — see
+  `report-template.md` for that, which is independent of whether
+  decomposition ran.
