@@ -12,12 +12,10 @@ iteration/scope slice at a time.
 - `{TASK_PATH}` — root working directory for this task in the target
   repo. Set once per task; see root `README.md` § Task Working
   Directory Structure.
-- Path to the techplan (`{TASK_PATH}/2-techplan/techplan.md`) — § 4
-  (Rules & Validation) and § 10-11 (Implementation Details) are the
-  contract to build against.
-- The specific rule(s)/scope being implemented in this iteration —
-  don't hand the agent the entire techplan and let it decide scope
-  each time; that's how iterations balloon and lose focus.
+- Build target: `{TASK_PATH}/2-techplan/tasks/<task-file>.md` if
+  decomposition ran, otherwise `{TASK_PATH}/2-techplan/techplan.md`
+  directly. § 4 (Rules & Validation) and § 10-11 (Implementation
+  Details) are the contract to build against, whichever file it's in.
 
 ## Prompt
 
@@ -36,8 +34,12 @@ iteration — do the work efficiently, don't narrate each step. The
 output format below is the one place to be complete
 ({WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
 
-Techplan: [PASTE PATH OR CONTENT HERE]
-Scope for this iteration: [PASTE SPECIFIC RULE(S)/SECTION HERE]
+Build target: {TASK_PATH}/2-techplan/tasks/<task-file>.md if
+decomposition ran, otherwise {TASK_PATH}/2-techplan/techplan.md
+directly. One task per iteration when tasks exist; the whole techplan
+in one go when they don't — don't ask for a separate scope on top of
+that, the right-sized unit of work was already decided at
+decomposition's Step 0 gate (or by its absence).
 
 Test scope for this loop — fixed, not negotiable per task:
 {file:{WORKSPACE_ROOT}/workflow/3-build/guidelines.md#default-test-scope-always-regardless-of-techplan-content}
@@ -63,7 +65,8 @@ Confirm explicitly: no `-race`, perf/load, or security-class test was
 run in this iteration.
 
 ## Contract check
-- [ ] This iteration satisfies its assigned scope from techplan § 4
+- [ ] This iteration satisfies its build target in full (the task
+      file's scope, or techplan § 4 in full if there's no task file)
 - [ ] No contract assumption broke — or, if one did, flagged below
       instead of worked around
 
