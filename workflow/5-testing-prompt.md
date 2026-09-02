@@ -93,19 +93,19 @@ Known recurring bug patterns worth specifically hunting for:
 {file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md}
 
 Techplan:
-[PASTE TECHPLAN PATH OR CONTENT HERE]
+{PASTE TECHPLAN PATH OR CONTENT HERE}
 
 Raw exploration docs:
-[PASTE PATH OR CONTENT HERE]
+{PASTE PATH OR CONTENT HERE}
 
 Latest implementation report (build or most recent patch/rebuild):
-[PASTE REPORT PATH OR CONTENT HERE]
+{PASTE REPORT PATH OR CONTENT HERE}
 
-Real interface entry point(s):
-[PASTE API ROUTES / CLI COMMANDS / UI FLOW HERE]
+Real interface entry point(s) (optional):
+{PASTE API ROUTES / CLI COMMANDS / UI FLOW HERE}
 
 Target repo build/lint/test commands:
-[PASTE COMMANDS OR PATH TO README/MAKEFILE HERE]
+{PASTE COMMANDS OR PATH TO README/MAKEFILE HERE}
 
 ---
 

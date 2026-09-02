@@ -50,10 +50,12 @@ Known recurring finding patterns worth specifically hunting for:
 {file:{HARSCODE_WORKSPACE_ROOT}/workflow/4-code-review/examples.md}
 
 Diff to review:
-[PASTE DIFF OR LIST OF CHANGED FILES HERE]
+{TASK_PATH}/3-build/report.md
+OR
+{PASTE DIFF OR LIST OF CHANGED FILES HERE}
 
 Target repo convention file:
-[PASTE PATH OR CONTENT OF AGENTS.md / README / CONTRIBUTING HERE]
+{PASTE PATH OR CONTENT OF AGENTS.md / README / CONTRIBUTING HERE}
 
 ---
 
