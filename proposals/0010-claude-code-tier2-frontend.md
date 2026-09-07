@@ -1,6 +1,6 @@
 # 0010 — Claude Code frontend track, Tier 2: subagent phase mapping + protected-file hook
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-23
 **Triggered by:** Following 0006's Tier 1 translations, addressing the higher-value but higher-risk mechanisms (subagents, hooks) — including a concrete governance failure observed during this workspace's own session (a protected-file edit made directly instead of via proposal, caught only on manual review)
 **Target area:** harness-optimization

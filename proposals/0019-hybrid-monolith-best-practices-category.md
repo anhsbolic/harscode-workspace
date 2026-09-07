@@ -1,6 +1,6 @@
 # New category: hybrid-monolith/
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-09-07
 **Protection Tier:** general
 **Triggered by:** locking the frontend data-fetching approach for a new Inertia.js-based project, surfacing a rendering-mechanism decision that doesn't fit any existing category

@@ -1,6 +1,6 @@
 # New category: laravel/
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-09-07
 **Protection Tier:** general
 **Triggered by:** locking the tech stack for a new project (Laravel 12 + Inertia + React), surfacing three architecture decisions with concrete rationale that don't fit any existing category

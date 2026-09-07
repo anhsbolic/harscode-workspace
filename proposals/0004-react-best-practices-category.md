@@ -1,6 +1,6 @@
 # 0004 — New `react/` best-practices category (frontend-general, sibling to `pwa/`)
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-23
 **Triggered by:** Frontend workflow discussion for kencleng, ahead of the `account` domain's frontend track starting (backend track for `account` is underway/near done; frontend is still scaffold-only — no real story/task to ground examples in yet, see Rationale)
 **Target area:** best-practices

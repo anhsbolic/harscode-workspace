@@ -1,6 +1,6 @@
 # New category: background-jobs/
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-09-07
 **Protection Tier:** general
 **Triggered by:** locking the scheduled-job design for a monthly batch calculation on a new project, surfacing a locking/idempotency pattern that doesn't fit any existing category

@@ -1,6 +1,6 @@
 # 0007 — New `harness-optimization/` pillar: governance + harness-agnostic token-optimization rule
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-23
 **Triggered by:** Discussion of optimizing this workspace's usage under specific agent harnesses (Claude Code, OpenCode CLI) — surfaced that "how a harness executes/enforces workflow and best-practices decisions" doesn't fit cleanly into either existing pillar, and that a token-optimization default needed a stable, harness-independent home before any harness-specific enforcement could be written
 **Target area:** new top-level directory

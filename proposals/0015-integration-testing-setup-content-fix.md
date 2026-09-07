@@ -1,6 +1,6 @@
 # 0015 — Fix content mismatch in `integration-testing-setup.md`; add real-task examples
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-27
 **Triggered by:** Testing report from account #06 (MFA TOTP) — while validating `proposals/0008`, found `best-practices/go/integration-testing-setup.md`'s actual content is a stray copy-paste of `workflow/5-testing/guidelines.md` (word-for-word, including its "Read the latest implementation report first" process steps), not integration-test-setup guidance at all. `best-practices/index.md`'s row for this file already describes the *intended* topic correctly ("Gate DB-dependent tests behind `//go:build integration`; reserve for constraint/transaction/query-validity checks a fake repo can't prove") — the file body just never matched it. The MFA TOTP report independently surfaced the exact real-world content this file should have had: a transaction-leak bug that exhausted the DB connection pool and hung a test run past a 240 s timeout, plus an orphan test process that then made an unrelated chained `build && vet && test` command time out at 180 s.
 **Target area:** best-practices

@@ -1,6 +1,6 @@
 # 0006 — Automation-vs-manual boundary for frontend testing (`react/testing-automation-boundary.md`)
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-23
 **Triggered by:** Discussion of whether kencleng frontend testing can/should be enforced by automation vs manual review — surfaced that the earlier checklist items across 0001/0002's files (ban raw `fetch`, ban unsanitized `dangerouslySetInnerHTML`, ban raw `error.message` in JSX) were stated as prose checklist items with no corresponding enforcement mechanism
 **Target area:** best-practices

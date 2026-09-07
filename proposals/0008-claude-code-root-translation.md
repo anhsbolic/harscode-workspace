@@ -1,6 +1,6 @@
 # 0008 — Claude Code root translation: disclaimer convention + token-optimization enforcement
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-23
 **Triggered by:** First harness added under `harness-optimization/`, following 0004's acceptance; immediate need to enforce the token-optimization rule in a concrete harness and record the evaluation of two third-party candidates (caveman, RTK)
 **Target area:** harness-optimization

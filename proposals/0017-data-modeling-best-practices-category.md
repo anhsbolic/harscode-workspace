@@ -1,6 +1,6 @@
 # New category: data-modeling/
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-09-07
 **Protection Tier:** general
 **Triggered by:** locking the ERD/schema-design approach for a new project, surfacing three cross-database schema patterns with concrete rationale that don't fit any existing category

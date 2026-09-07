@@ -1,6 +1,6 @@
 # 0009 — Claude Code frontend track, Tier 1: slash commands + skills wrapper
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-23
 **Triggered by:** Following 0004/0005's foundation, translating the two lowest-risk mechanisms first (slash commands, skills) before the higher-risk Tier 2 mechanisms (subagents, hooks)
 **Target area:** harness-optimization

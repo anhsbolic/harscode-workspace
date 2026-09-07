@@ -1,6 +1,6 @@
 # 0005 — Frontend state-handling conventions + AI-prototype-to-production translation discipline
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-23
 **Triggered by:** Reviewing kencleng's `docs/ui-ux/` and `docs/design-reference/` directories during frontend workflow discussion — found two genuinely generic patterns embedded inside otherwise correctly project-specific documents
 **Target area:** best-practices

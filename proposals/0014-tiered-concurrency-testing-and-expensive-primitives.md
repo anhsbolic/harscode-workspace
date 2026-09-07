@@ -1,6 +1,6 @@
 # 0014 — Tier race/concurrency testing out of the build loop; new file for expensive-primitive test cost
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-08-27
 **Triggered by:** Real incident — a Kencleng backend task with a concurrency test around bcrypt-based auth stalled the build/patch loop for ~2 hours. Root-caused to two compounding, independent gaps: (1) `testing-concurrency.md`'s existing Principle states `go test -race` should run "as part of the `make verify`/CI gate, not optional" with no scoping guidance on *when* in the lifecycle that gate fires, so it was firing inside the tight build-loop iteration; (2) the concurrent test exercised real bcrypt at production cost factor, and `-race`'s instrumentation overhead multiplied that cost across every parallel goroutine in the test.
 **Target area:** best-practices
