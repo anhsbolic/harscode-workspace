@@ -1,4 +1,4 @@
-# 0016 — React state ownership and component abstraction boundaries
+# 0020 — React state ownership and component abstraction boundaries
 
 Status: Accepted  
 Date: 2026-09-07  

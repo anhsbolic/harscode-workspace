@@ -1,4 +1,4 @@
-# 0017 — Responsive robustness and rendered visual verification
+# 0021 — Responsive robustness and rendered visual verification
 
 Status: Accepted  
 Date: 2026-09-07  

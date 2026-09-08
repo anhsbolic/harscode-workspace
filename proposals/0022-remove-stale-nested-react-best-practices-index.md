@@ -1,4 +1,4 @@
-# 0018 — Remove stale nested React best-practices index
+# 0022 — Remove stale nested React best-practices index
 
 Status: Accepted  
 Date: 2026-09-07  
