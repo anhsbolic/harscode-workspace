@@ -126,3 +126,40 @@ source table, not just Mermaid syntax. Also renamed "Human Digest" to
 formalized Open Items as `template.md` section 14 — it had been an
 informal, undocumented convention until now. See
 `proposals/0003-summary-rename-and-open-items-lifecycle.md`.
+
+---
+
+## 2026-09-09 — `rules.md` § 7 and `guidelines.md` step 7 still describe the embedded-Summary design Proposal 0012 already removed (D01-04-pengaturan-profil, koperasiqu-web-app)
+
+**What happened:** Read the guidance folder in the instructed order
+(README, template, rules, guardrails, guidelines, examples, retro) for
+a fresh techplan synthesis. `template.md`'s own Structural Note says
+plainly that the file "has no Summary/digest section and no audience
+boundary — see Proposal 0012, which supersedes the older
+embedded-Summary design," and its Open Items section is numbered § 13,
+not § 14. But `rules.md` § 7 ("Summary") and § 8 ("Open Items
+Lifecycle" — the section number 8 is fine, but its prose points at
+"the exact same items... as section 14's Active list") and
+`guidelines.md` step 7 ("Generate the Summary last, after sections
+1-13... are complete") still describe generating an embedded Summary
+section and reference "section 14" for Open Items — both stale
+relative to what `template.md` actually specifies today.
+
+**Why it was a problem:** an agent that reads `rules.md`/`guidelines.md`
+before `template.md`, or that skims rather than reads `template.md`'s
+Structural Note carefully, would try to write a Summary section into
+`techplan.md` itself and use the wrong Open Items section number —
+directly contradicting the current template. This session avoided it
+only because the read order happened to hit `template.md` first and
+its Structural Note was read closely enough to notice the explicit
+"supersedes" language.
+
+**Mitigation:** no rule change made this pass (this is exactly the
+kind of gap `guidelines.md`'s Proposal Threshold says to log here
+first, not immediately propose a fix for — one occurrence, not yet
+2+ stories). Noting it so a second occurrence is recognized as the
+same root cause rather than rediscovered from scratch: if this shows
+up again, `rules.md` § 7 and `guidelines.md` step 7 need to be
+updated (via proposal) to point at `report-template.md`/
+`report-techplan.md` instead of describing an embedded Summary, and
+every "section 14" Open Items reference needs to become "section 13."
