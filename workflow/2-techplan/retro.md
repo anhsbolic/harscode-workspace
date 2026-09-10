@@ -163,3 +163,66 @@ up again, `rules.md` § 7 and `guidelines.md` step 7 need to be
 updated (via proposal) to point at `report-template.md`/
 `report-techplan.md` instead of describing an embedded Summary, and
 every "section 14" Open Items reference needs to become "section 13."
+
+**Update, 2026-09-10 (D01-09-autentikasi-admin-pusat, same repo):**
+second occurrence, exactly as predicted above — a fresh techplan
+synthesis for a different task in the same repo hit the identical
+stale `rules.md` § 7/8 and `guidelines.md` step 7 text on the
+instructed read order. Threshold met; filed
+`proposals/0023-rules-and-guidelines-stale-summary-references.md`.
+
+---
+
+## 2026-09-10 — A short AGENTS.md golden-rule summary undersold a fuller convention doc it pointed at, and the exploration phase didn't read the fuller doc (D01-09-autentikasi-admin-pusat, koperasiqu-web-app)
+
+**What happened:** The target repo's `AGENTS.md` states a golden rule
+in one line: any domain needing to trigger a notification before
+Domain 8 is built must use the `NotificationDispatcher` contract.
+Exploration (Stage 2/3, a separate raw-doc-producing phase before this
+techplan) read that one line, found it contradicted by already-shipped
+code for the closest analogous flow (a set-password-link email sent via
+Laravel's native `->notify()`, bypassing the contract entirely), and
+recorded a decision — confirmed by the human — to "follow the golden
+rule" for this task's new email, without ever opening the fuller
+document `AGENTS.md` itself points at
+(`.agents/knowledge/architecture/notification-stub-contract.md`).
+
+While filling in this techplan's Interface Contract/Implementation
+Details (where the actual mechanics of "how does dispatch() cause an
+email to send" had to be specified concretely), reading that fuller doc
+in full revealed two things the one-line summary didn't convey: (1) its
+own scope is explicitly Domain 8's N1-N26 business-event catalog, not
+core per-domain auth mail — its own worked examples are cross-domain
+business events ("reassignment Stokis, reaktivasi Anggota"), not
+transactional credential emails; (2) its current bound implementation
+is a pure log-only stub that **explicitly does not send real email
+until Domain 8** — using it for this task's email would have silently
+produced zero real email sent, breaking the feature's own acceptance
+criterion, while looking "compliant" with the golden rule's one-line
+text.
+
+**Why it was a problem:** a human-confirmed decision, made in good
+faith from the one-line convention summary, turned out to be based on
+incomplete information — and nothing in the raw exploration docs flagged
+that the summary might not be the full story. The techplan-synthesis
+guardrail that caught it (`guardrails.md` § 4, "read the target
+convention first") is scoped to "before filling in section 8"; this
+case shows the same principle applies just as much to *any* golden-rule
+line an exploration phase treats as sufficient on its own, whenever
+that line points at a fuller doc by name.
+
+**Mitigation:** no rule change proposed this pass — this looks like a
+single incident (one convention doc, one repo) rather than a recurring
+or structural gap in this guidance folder itself; the existing
+`guardrails.md` § 4 principle already covers it in spirit, it just
+wasn't triggered early enough. Logging the pattern for now: when a raw
+exploration doc records a decision resting on a short rule/summary line
+that itself names a fuller doc ("see `X.md`" / "per `Y.md`"), techplan
+synthesis should open that fuller doc before treating the exploration
+doc's recorded decision as final — not just before filling in section 8
+specifically — and should be prepared to flag a correction (Decision
+Log + Open Item, not a silent override) if the fuller doc changes the
+picture. If this exact shape (a golden-rule summary undermining a
+recorded decision once the doc it points at is actually read) recurs on
+a different repo/convention doc, that's the signal to promote this into
+an explicit `guardrails.md` addition.

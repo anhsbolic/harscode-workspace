@@ -105,23 +105,39 @@ This is an active, evolving personal system — not a finished product. Structur
    `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which
    in turn point to the full `README.md`/`index.md` for anything beyond
    the hard rules.
-3. Start a task in `1-exploration/` before jumping to `2-techplan/` —
+3. Before the first feature in a new domain, run
+   `workflow/0-domain-sequencing-prompt.md` once to produce that
+   domain's `_domain-manifest.md` — it tells you which of the domain's
+   planned features can run in parallel sessions and which must wait on
+   another. Skip this for a domain's 2nd+ feature once the manifest
+   already exists and nothing new has been added to scope.
+4. Start a task in `1-exploration/` before jumping to `2-techplan/` —
    the workflow assumes you don't skip stages. Running exploration and
-   techplan synthesis in one session is fine.
-4. Techplan includes: synthesis → review → decomposition (optional).
-5. Build against the techplan → write a build report.
-6. Run code review against the build report → produces a review report
+   techplan synthesis in one session is fine — see `workflow/README.md`
+   § Session Boundaries for how the rest of a feature's phases are
+   meant to split across sessions.
+5. Techplan includes: synthesis → review → decomposition (optional).
+6. Build against the techplan → write a build report.
+7. Run code review against the build report → produces a review report
    and, if needed, a patch plan.
-7. Execute that patch plan as part of the build loop — patches are
+8. Execute that patch plan as part of the build loop — patches are
    always executed and reported in `3-build/`, regardless of which
    phase asked for them (see Task Working Directory Structure below).
-8. Run testing against all build reports (initial build + every patch).
-9. If testing says the code needs a patch — write a testing report and
-   a patch plan (in `5-testing/`), then execute that patch the same way
-   as step 7 (in `3-build/`), producing a patch report there.
-10. Create the pull request.
+9. Run testing against all build reports (initial build + every patch).
+10. If testing says the code needs a patch — write a testing report and
+    a patch plan (in `5-testing/`), then execute that patch the same way
+    as step 8 (in `3-build/`), producing a patch report there.
+11. Create the pull request.
 
 ### Task Working Directory Structure
+
+`{DOMAIN_PATH}` is the parent directory holding every feature's
+`{TASK_PATH}` within one domain (e.g. all of a domain's `D0X-NN-*`
+feature folders live directly under it). `_domain-manifest.md` (leading
+underscore, sorts before every feature folder) is the only file that
+lives directly under `{DOMAIN_PATH}` rather than inside a specific
+feature's `{TASK_PATH}` — it's the output of
+`workflow/0-domain-sequencing-prompt.md`, see step 3 of § Usage above.
 
 Each task gets one root working directory in the target repo —
 referred to as `{TASK_PATH}` throughout every prompt in `workflow/`.

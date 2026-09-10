@@ -16,3 +16,13 @@ there. This file is just the short version.
   `6-pull-request/`: no protected files today, corrected in the moment.
   Don't invent guardrails or a proposal requirement here on your own
   judgment.
+- Default session split for one feature: (exploration+techplan),
+  (build+patch loop), (code-review), (testing) — four sessions, not one
+  per phase and not one for the whole feature. See `README.md` §
+  Session Boundaries for the rationale and the one blessed exception
+  (merging exploration+techplan).
+- Before the first feature session in a new domain, run
+  `0-domain-sequencing-prompt.md` and produce `{DOMAIN_PATH}/
+  _domain-manifest.md` before picking which feature to start. Don't
+  default to strict serial order across a domain's features without
+  having checked this.

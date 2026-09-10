@@ -52,6 +52,67 @@ change frequency — this is deliberate, not inconsistent:
   approves; they're working practices that get corrected in the moment
   if they're off, not through formal review.
 
+## Session Boundaries
+
+This section states the default number of sessions a single feature
+(one `{TASK_PATH}`) should span, and where the boundaries fall — the
+harness-agnostic counterpart to `harness-optimization/<harness>/
+<track>/subagents.md`'s per-phase tool/context isolation, for whoever
+isn't running phases as separate subagents.
+
+**Default: four sessions per feature**, grouped by shared authority and
+response-style tier (§ Response Style By Phase above), not by raw phase
+count:
+
+1. **Exploration + Techplan** — both planning-type (full reasoning,
+   read-mostly). Merging these two, specifically, is the one combination
+   root `README.md` § Usage already blesses (step 3) — this section
+   doesn't change that, it generalizes what comes after it.
+2. **Build + Patch loop** — execution-loop, terse, and the tool scope
+   genuinely differs from planning (write access, running the code).
+   Every patch this feature ever needs — whether it came from this
+   session's own iteration, or from a patch-plan written later by
+   code-review or testing — executes here, per root `README.md` § Task
+   Working Directory Structure's existing rule that patches are always
+   build activity.
+3. **Code-review** — its own session. Different concern (investigating
+   already-built code, not building it) and, per `subagents.md`'s
+   existing principle, should not carry write access into that
+   investigation.
+4. **Testing** — its own session, same reasoning as code-review: a
+   different concern from building, verified independently rather than
+   from inside the build session's own accumulated context.
+
+**Why not fold build into session 1:** a build session inheriting
+exploration/techplan's full raw reasoning trail (which, on a non-trivial
+feature, can be a dozen-plus log files) carries deadweight context into
+a phase that's supposed to run terse and iterate fast — the same
+context-isolation reasoning `subagents.md` already applies to Claude
+Code's native subagent boundary applies just as well to a plain session
+boundary when subagents aren't in use.
+
+**Why not split further** (e.g. exploration and techplan as two
+sessions): not disallowed, but not the default either — root `README.md`
+step 3 already covers this case, and splitting a small/linear feature
+further is the same "premature structure" the decomposition prompt
+(`2-3-techplan-decomposition-prompt.md`) already warns against for a
+different granularity.
+
+**Re-entry after code-review or testing asks for a patch:** the patch
+itself is drafted and executed back in the build session's context (a
+continuation of session 2, or a fresh session re-grounded on
+`techplan.md` plus the specific patch-plan — either is fine). What must
+not happen is drafting the patch fix *inside* the code-review or testing
+session — that session's tool scope shouldn't include `Write` in the
+first place, per `subagents.md`'s existing separation-of-authority
+principle.
+
+This is guidance, not a hard rule — same tier as every other lightweight
+`workflow/` phase (see Governance below): correct it in the moment if a
+specific feature is small enough that a stricter split is pure overhead,
+same posture the decomposition prompt already takes toward "premature
+structure."
+
 ## Governance
 
 ### Protected files, by stage
