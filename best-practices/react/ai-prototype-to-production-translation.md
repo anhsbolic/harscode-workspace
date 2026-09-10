@@ -45,7 +45,7 @@ function DonationForm() {
 ```
 
 **Checklist — what transfers directly (structural/behavioral precedent)**
-- [ ] Component decomposition and composition (how the reference splits a page into sub-components) is a reasonable starting shape to mirror
+- [ ] Component decomposition and composition in the reference is useful evidence for the intended page structure, but remains a candidate starting shape — production boundaries are re-evaluated against meaningful responsibilities and the real application's existing component conventions
 - [ ] Which UI states exist and how they visually differ (idle/busy/selected/disabled) — the reference is useful evidence for "what states does this need," even though the mechanism producing them will be rewritten
 - [ ] Microcopy/content (labels, helper text, button text) is legitimate to reuse or adapt
 - [ ] Accessibility patterns already present in the export (e.g. `aria-pressed`, focus order) are worth carrying forward, not reinventing
@@ -55,5 +55,5 @@ function DonationForm() {
 - [ ] Hardcoded pixel/spacing values are mapped to the real design system's spacing scale, not reproduced as exact numbers — the export doesn't reliably use its own tokens consistently everywhere
 - [ ] The design tool's own scratch component primitives (its own `Button`/`Badge`/`Icon`/etc.) are never imported into or referenced by production code — the real app's own component library is used, built from the actual design-token documentation, with the reference consulted only for expected composition/behavior
 - [ ] Mock/placeholder data in the export is illustrative only — real data shape always comes from the actual API contract (OpenAPI schema or equivalent), never from what's hardcoded in the reference
-- [ ] Local component state (`useState` scattered through the export) is replaced with the real app's actual state-management conventions (server state via a query library, client state via the real store, forms via the real validation library) — not preserved as-is because it "already works"
+- [ ] Scratch state in the export is translated according to the real application's ownership model — derive deterministic values; keep externally authoritative data with its real data-fetching owner; keep form state with the real form convention; keep ephemeral interaction local; introduce shared client state only when its lifetime or consumers require it
 - [ ] Before treating anything in an export as correct, a known-issues/precedent doc (if one exists for that reference) is checked first — prototypes routinely have confirmed-wrong details sitting right there in otherwise-working code, and "it's already implemented" is not evidence it's correct

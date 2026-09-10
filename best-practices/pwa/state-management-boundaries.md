@@ -1,36 +1,38 @@
 # state-management-boundaries.md
 
-**Location:** `pwa/state-management-boundaries.md`
+Location: `pwa/state-management-boundaries.md`
 
-**Principle**
-Client-side state is best split by domain rather than kept in one monolithic global store — this makes it easier to reason about who can change what state, and limits the blast radius of a given change. More important than the split itself: state/cache invalidation after a mutation must be disciplined, especially after events that change session identity (token refresh, logout) — stale data from a previous session must not linger in another store and be rendered as if it were still valid.
+Principle When shared client-owned state is required, split it by domain rather than keeping one monolithic global store — this makes it easier to reason about who can change what and limits the blast radius of a change. Do not use client stores as mirrors of server-authoritative data; that data stays with its existing data-fetching owner. More important than the split itself: stores and caches that can contain identity-scoped data must be invalidated explicitly when session identity changes — stale data from a previous session must not be rendered as if it were still valid.
 
-**Bad**
-```js
-// one global store, and logout doesn't clear the others
+Bad
+
+```
+// one global store, and logout does not clear identity-scoped state
 function logout() {
   authStore.clear();
-  // profileStore, campaignStore, etc. still hold the previous user's data
+  // client-owned stores and query cache still contain previous-session data
 }
 ```
 
-**Good**
-```js
-// state split by domain
+Good
+
+```
+// genuinely client-owned shared state split by domain
 const authStore = createStore(...);
-const profileStore = createStore(...);
-const campaignStore = createStore(...);
+const editorDraftStore = createStore(...);
+const accountUiStore = createStore(...);
 
 function logout() {
   authStore.clear();
-  profileStore.reset();
-  campaignStore.reset(); // explicitly cleared, not assumed "irrelevant"
-  queryClient.clear(); // the data-fetching library's cache is invalidated too
+  editorDraftStore.reset();
+  accountUiStore.reset();
+  queryClient.clear(); // server-authoritative cached data is cleared at its owner
 }
 ```
 
-**Checklist**
-- [ ] State is split by domain, not one global store for every concern
-- [ ] Events that change session identity (logout, token refresh, account switch) have an explicit list of which stores/caches must be reset
-- [ ] No store is "forgotten" during logout because it was assumed unrelated to auth
-- [ ] The data-fetching library's cache (not just manual state stores) is included in the invalidation cycle
+Checklist
+
+* [ ] Shared client-owned state is split by domain; server-authoritative data is not duplicated into those stores
+* [ ] Events that change session identity (logout, token refresh, account switch) have an explicit list of which stores/caches must be reset
+* [ ] No store is "forgotten" during logout because it was assumed unrelated to auth
+* [ ] The data-fetching layer's cache, not just manual client stores, is included in the invalidation cycle
