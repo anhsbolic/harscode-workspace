@@ -35,6 +35,7 @@ A bare placeholder-only bullet such as `- {TASK_PATH}` is acceptable only when i
 8. **Avoid narration inside artifacts.** Artifacts record decisions/evidence, not the model's conversational journey to reach them.
 9. **Keep invocation contracts explicit.** Inputs, preconditions, write destinations, stop conditions, and next-phase handoffs are operational semantics, not filler.
 10. **Compress rationale before semantics.** If a reduction forces the reader to infer what a parameter means, which source is authoritative, when to stop, or what output is expected, the reduction went too far.
+11. **Prefer semantic anchors over ordinal section numbers.** When one evolving guidance artifact refers to another, use stable heading/ID/concept names unless the ordinal itself is contractually stable. If a report must display section numbers, resolve them from the current source at runtime. This rule exists because a Techplan review once silently checked stale sections after template renumbering.
 
 ## Context temperature
 
@@ -92,5 +93,6 @@ Before finalizing a Harscode guidance change, ask:
 - Did brevity remove an execution-critical or invocation-critical detail?
 - Could a fresh agent invoke this phase without guessing what an input means or where output belongs?
 - Are authority boundaries, stop conditions, and failure behavior still explicit?
+- Do cross-document references use stable semantic anchors rather than drift-prone ordinal numbers?
 - Can the intended reader find the relevant section without scanning unrelated material?
 - Does the change preserve current correctness while reducing ambiguity or repeated context?

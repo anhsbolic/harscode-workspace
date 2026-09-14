@@ -12,7 +12,7 @@ Read the latest build/patch report first.
 
 ## Test Focus Pointer
 
-Read Techplan §12. Each relevant specialized row must include an Exploration evidence anchor.
+Read the Techplan Test Focus Pointer. Each relevant specialized row must include an Exploration evidence anchor.
 
 Open **only that exact evidence source/heading** to recover the concrete reason/details. Do not scan all raw Exploration logs merely because one risk needs historical evidence.
 
@@ -29,7 +29,7 @@ If a sensitive area is clearly present but absent from the pointer, flag Techpla
 
 ## Rule coverage
 
-Every Techplan §4 rule needs meaningful coverage. Existing passing coverage can be confirmed rather than recreated. Focus new work on:
+Every Techplan Rules & Validation rule needs meaningful coverage. Existing passing coverage can be confirmed rather than recreated. Focus new work on:
 
 - missing coverage;
 - failing/stale coverage;

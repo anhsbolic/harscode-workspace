@@ -46,6 +46,12 @@ file(s) and leave the proposal in place — don't delete it. This folder
 is the only changelog for guidance changes, since it isn't its own
 git-tracked history separate from the rest of the workspace.
 
+**No self-approval.** The actor that authors a proposal is not the approval
+authority for that proposal. Obtain explicit human-owner or independent
+authorized acceptance before merge. After that approval, an authorized
+implementation actor may perform the mechanical application/merge; it does not
+turn authorship into approval authority.
+
 ## Numbering
 
 Strictly sequential, one shared counter across both tiers — check the

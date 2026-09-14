@@ -70,6 +70,12 @@ Report format:
 ## Tests run
 [test/command or pattern → verification category → result]
 
+## Verification scope confirmation
+Confirm explicitly: no race/concurrency, performance/load, or security-class
+test was executed in this Build iteration. If any was run, list it here and
+flag the scope deviation instead of silently treating it as ordinary Build
+verification.
+
 ## Contract check
 - [ ] Current build target satisfied in full
 - [ ] Live-code re-grounding did not invalidate a material contract assumption
@@ -93,4 +99,5 @@ Report format:
 
 - Build is execution, not a second Exploration phase. Patch ownership stays here even when another independent phase discovered the defect.
 - A terse Build process still owes a complete report. “Tests passed” without naming the meaningful verification is not a sufficient handoff.
+- The explicit verification-scope confirmation is an intentional forcing function: prose/checklist guidance alone is not treated as sufficient evidence that heavyweight Testing work stayed out of the tight Build loop.
 - Project-specific build tooling/commands remain target-repo authority; Harscode owns the phase boundary and portable test-scope discipline.

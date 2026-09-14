@@ -10,7 +10,7 @@ applicable; do not invent findings to make a pass look complete.
 - [ ] Errors are propagated, surfaced, or explicitly justified rather than silently swallowed.
 - [ ] External calls propagate applicable timeout/cancellation context.
 - [ ] Resources are released on all applicable return/error paths.
-- [ ] Any newly discovered specialized concurrency/perf/security concern missing from Techplan §12 is reported as Techplan drift.
+- [ ] Any newly discovered specialized concurrency/perf/security concern missing from the Techplan Test Focus Pointer is reported as Techplan drift.
 
 ## Quality
 

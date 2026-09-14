@@ -19,9 +19,9 @@ Review specifically for:
 - resource leaks on success/error/early-return paths.
 
 If Safety reveals a genuinely concurrency/perf/security-sensitive area, check
-the current Techplan §12 Test Focus Pointer. If specialized coverage is
-warranted but absent, report **Techplan drift** separately from the code-level
-finding. Review does not silently retrofit planning history.
+the current Techplan Test Focus Pointer. If specialized coverage is warranted
+but absent, report **Techplan drift** separately from the code-level finding.
+Review does not silently retrofit planning history.
 
 ## 2. Quality Review
 

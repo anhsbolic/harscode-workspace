@@ -86,6 +86,10 @@ Examples:
 - Testing starts from the current Techplan + latest build evidence and follows exact Test Focus evidence anchors when specialized context is needed.
 - PR truth comes from final repository state + final evidence, not planned changes that never landed.
 
+## What's Explicitly Out of Scope Here
+
+Project-specific codebase conventions and product/domain truth belong in the target repo, not Harscode. This heading is retained as an addressable compatibility anchor for accepted historical proposals; current layering details live under `Canonical phase prompts` below.
+
 ## Phase convergence
 
 A phase is sufficient when the next phase can proceed without inventing a material product/domain, authority/security, architecture/ownership, interface/data, risk, or verification decision.

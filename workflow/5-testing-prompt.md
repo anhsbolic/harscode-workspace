@@ -6,7 +6,7 @@ Independent verification after Build and Code Review. Testing confirms observabl
 
 - `{HARSCODE_WORKSPACE_ROOT}` — path to this Harscode workspace, used to resolve Testing and matching best-practice guidance.
 - `{TASK_PATH}` — root working directory for this task. Testing artifacts are written under `{TASK_PATH}/5-testing/`.
-- Current Approved `{TASK_PATH}/2-techplan/techplan.md` — §4 defines required behavior; §12 carries specialized Test Focus evidence pointers.
+- Current Approved `{TASK_PATH}/2-techplan/techplan.md` — Rules & Validation defines required behavior; the Test Focus Pointer carries specialized evidence pointers.
 - Latest relevant build/patch report under `{TASK_PATH}/3-build/` — Step 0 treats its named tests/coverage as claims to verify and its deferred/flagged items as priority gaps.
 - Real observable interface/entry point(s) where the product exposes one: API route, CLI command, UI flow, job/event boundary, or equivalent. If no direct external interface applies, use the nearest meaningful observable boundary and state why.
 - Target-repo build/lint/test authority — the actual README/Makefile/package scripts/CI-equivalent source that defines required final commands. Do not assume generic commands.
@@ -41,7 +41,7 @@ Do not trust a Build claim merely because it is written, and do not redo a
 proven test from scratch merely because Testing is a fresh session.
 
 TEST FOCUS
-Read Techplan §12 Test Focus Pointer. For every row still marked relevant,
+Read the Techplan Test Focus Pointer. For every row still marked relevant,
 open the exact Exploration evidence anchor recorded there — NOT the whole
 Exploration corpus — and recover the concrete reason/detail needed to design
 the specialized verification.
@@ -57,9 +57,9 @@ If a pointer is missing for an obviously concurrency/perf/security-sensitive
 area, report Techplan drift instead of silently inventing the prior decision.
 
 COVERAGE
-Verify every §4 rule through the appropriate real/observable interface where
-possible. Reuse confirmed existing coverage; spend new effort on missing,
-failing, stale, or independently observable behavior.
+Verify every Rules & Validation rule through the appropriate real/observable
+interface where possible. Reuse confirmed existing coverage; spend new effort
+on missing, failing, stale, or independently observable behavior.
 
 Cover applicable:
 - happy path;
@@ -108,7 +108,8 @@ missing from the pointer, record it explicitly as Techplan drift.
 | Rule / scenario | Category | Observable verification | Result |
 |---|---|---|---|
 
-Cite §4 rule IDs where applicable. Do not silently omit an unexercisable rule.
+Cite Rules & Validation rule IDs where applicable. Do not silently omit an
+unexercisable rule.
 
 ## 2. Error Verification
 | Error case | Expected behavior/category | Actual | Actionable/propagated correctly? |
@@ -147,5 +148,6 @@ coverage.
 ## Notes
 
 - Testing is a fresh independent verifier, not a full rerun of every earlier activity.
+- Runtime instructions refer to evolving Techplan sections by semantic name rather than remembered ordinal number.
 - Exact evidence anchors reduce rereading without weakening specialized-risk rationale.
 - The fresh whole-Techplan verification remains deliberately conservative during workflow-v2 dogfood; narrow it only after evidence shows quality is preserved.

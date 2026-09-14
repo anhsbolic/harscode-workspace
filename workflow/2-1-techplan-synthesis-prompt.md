@@ -49,8 +49,8 @@ SYNTHESIS
   Open Items; do not silently choose the convenient source.
 - Evaluate any independently operable migration/script/cron/runbook concern per
   rules.md §3 rather than forcing it into the feature plan.
-- Preserve material rejected alternatives in §5 with enough rationale that a
-  later agent does not re-litigate settled choices.
+- Preserve material rejected alternatives in the Decision Log with enough
+  rationale that a later agent does not re-litigate settled choices.
 
 PROJECT / PORTABLE AUTHORITY
 Read the target repo's applicable AGENTS/README/spec/convention sources for any
@@ -66,17 +66,18 @@ matching best-practice, verify the current authoritative file rather than
 copying the Exploration paraphrase as policy.
 
 IMPLEMENTATION DETAIL
-For §10, record code anchors as path + symbol/section + why relevant + intended
-change/precedent. Prefer anchors over copied code. Recheck non-obvious current
-facts against live code/spec before presenting them as executable instructions.
+In Implementation Details, record code anchors as path + symbol/section + why
+relevant + intended change/precedent. Prefer anchors over copied code. Recheck
+non-obvious current facts against live code/spec before presenting them as
+executable instructions.
 
 BEFORE FINALIZING
-- every §4 rule ID has §12 verification coverage;
+- every Rules & Validation rule ID has Testing Checklist verification coverage;
 - every surviving concurrency/perf/security-sensitive Exploration risk has a
   Test Focus Pointer row with its exact Exploration evidence anchor;
 - a scoped-out sensitive risk is N/A with a reason/Decision Log pointer, not
   silently absent;
-- unresolved material uncertainty is in §13 Open Items rather than guessed;
+- unresolved material uncertainty is in Open Items rather than guessed;
 - an existing Approved/Implemented Techplan has not been materially changed
   without the guardrail/human gate required for a contract revision.
 
@@ -103,6 +104,7 @@ At completion, report:
 ## Notes
 
 - `techplan.md` remains agent-executable; context optimization must not reduce contract precision.
+- Runtime instructions refer to evolving Techplan sections by semantic name rather than remembered ordinal number.
 - Examples/retro are calibration/history, not mandatory runtime authority.
 - Matching best-practice files are conditional correctness authorities, not cold examples; open them when the task actually triggers them.
 - After human Approval, generate `report-techplan.md` from `report-template.md`; run optional decomposition only when its own gate says it adds value.

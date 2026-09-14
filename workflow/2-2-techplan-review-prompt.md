@@ -2,7 +2,7 @@
 
 > **Status:** DRAFT — dogfood on 2+ real Complex-tier Techplans before proposing formalization as a stable gate.
 
-Independent adversarial verification of a synthesized Techplan. Use a different reviewer/model/actor from the primary synthesis when practical; this is review, not re-synthesis.
+Independent adversarial verification of a synthesized Techplan. This review must use an independent reviewer/actor context from the primary synthesis; it must not be the synthesizer merely self-checking its own plan. Exact model/client selection is execution configuration, not phase policy.
 
 ## Inputs required before running
 
@@ -44,19 +44,21 @@ If NO: stop, state why this review is not warranted, and do not review on
 autopilot.
 If YES: state the criteria and continue.
 
-Resolve current template section names/numbers before checking; do not rely on
-numbers remembered from an older template.
+Resolve current template section names before checking. If the report needs
+section numbers for human location, map those names to the current numbers from
+template.md at runtime; never encode remembered ordinal numbers in the checks.
 
 CHECKS
 
 1. Rule fidelity
-   - Every §4 rule traces to real requirement/Exploration evidence without
-     meaning-changing paraphrase.
-   - Every §4 rule has §12 verification coverage.
+   - Every Rules & Validation rule traces to real requirement/Exploration
+     evidence without meaning-changing paraphrase.
+   - Every Rules & Validation rule has Testing Checklist verification coverage.
    - Flag invented or silently dropped material rules.
 
 2. Decision fidelity
-   - Material chosen/rejected alternatives in §5 match Exploration solutioning.
+   - Material chosen/rejected alternatives in the Decision Log match
+     Exploration solutioning.
    - Do not re-litigate a correctly recorded choice; flag only missing,
      contradictory, or meaning-changing decision history.
 
@@ -99,7 +101,7 @@ Output only:
 
 ## Review findings — <task-code>
 **Gate:** <Complex criteria>
-**Sections resolved:** <current mapping>
+**Sections resolved:** <current mapping from semantic section names to current template numbers>
 
 ### Blocking
 - <finding — location — source evidence — material concern>
@@ -137,6 +139,8 @@ Non-blocking/mechanical corrections never trigger re-review by themselves. If Bu
 ## Notes
 
 - This Draft prompt does not choose named models; model routing is a separate execution concern.
+- Independence is mandatory at the reviewer/actor-context level even though exact model/client routing stays outside this phase prompt.
+- Use semantic section names in checks. A prior version hardcoded Techplan section numbers, the template later renumbered, and the review silently checked stale locations; keep this failure-mode rationale when compressing the prompt.
 - Broad Exploration rereading here is deliberate independent verification, not the default pattern for Build/Testing.
 - The reviewer's job is fidelity/correctness, not a second architecture contest after a decision is correctly recorded.
 - Re-evaluate the prompt after 2+ real Complex runs before making it a stable mandatory mechanism.

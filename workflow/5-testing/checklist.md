@@ -7,13 +7,13 @@
 
 ## Rule coverage
 
-- [ ] Every Techplan §4 rule has meaningful verification.
+- [ ] Every Techplan Rules & Validation rule has meaningful verification.
 - [ ] Applicable happy, negative, edge, and backward-compatibility behavior covered.
 - [ ] Contracted behavior that cannot be exercised through an observable interface is flagged.
 
 ## Test Focus Pointer
 
-For every relevant/`Yes` Techplan §12 row:
+For every relevant/`Yes` Techplan Test Focus Pointer row:
 
 - [ ] Opened the exact recorded Exploration evidence anchor, not the entire Exploration corpus.
 - [ ] Built a concrete specialized execution plan (scope/tooling/threshold or security class as applicable).
