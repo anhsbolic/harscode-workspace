@@ -98,4 +98,4 @@ exists.
 - [ ] Exploration → Techplan respects the Exploration `CONTINUE`/`FRESH`
       recommendation instead of hardcoding one behavior.
 - [ ] Review/Testing do not fix production code; patch work returns to Build.
-- [ ] New mappings are dogfooded before being trusted for high-risk work.
+- [ ] New mappings are exercised in low-stakes validation runs before being trusted for high-risk work.

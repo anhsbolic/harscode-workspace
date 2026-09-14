@@ -1,6 +1,6 @@
 # Techplan Independent Review Prompt (Draft)
 
-> **Status:** DRAFT — dogfood on 2+ real Complex-tier Techplans before proposing formalization as a stable gate.
+> **Status:** DRAFT — validate through 2+ real Complex-tier Techplans before proposing formalization as a stable gate.
 
 Independent adversarial verification of a synthesized Techplan. This review must use an independent reviewer/actor context from the primary synthesis; it must not be the synthesizer merely self-checking its own plan. Exact model/client selection is execution configuration, not phase policy.
 
@@ -143,4 +143,4 @@ Non-blocking/mechanical corrections never trigger re-review by themselves. If Bu
 - Use semantic section names in checks. A prior version hardcoded Techplan section numbers, the template later renumbered, and the review silently checked stale locations; keep this failure-mode rationale when compressing the prompt.
 - Broad Exploration rereading here is deliberate independent verification, not the default pattern for Build/Testing.
 - The reviewer's job is fidelity/correctness, not a second architecture contest after a decision is correctly recorded.
-- Re-evaluate the prompt after 2+ real Complex runs before making it a stable mandatory mechanism.
+- Re-evaluate the prompt after 2+ real Complex validation runs before making it a stable mandatory mechanism.

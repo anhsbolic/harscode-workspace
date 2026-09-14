@@ -52,7 +52,7 @@ Before Pass:
 - run the broader suite when the target repo/risk requires it for cross-cutting changes;
 - fresh-read the current Techplan end-to-end for contradictions/gaps.
 
-The fresh Techplan read is intentionally retained during workflow-v2 dogfood. Remove/narrow it only with evidence that quality is preserved.
+The fresh Techplan read is intentionally retained during the initial workflow-v2 validation runs. Remove/narrow it only with evidence that quality is preserved.
 
 ## Findings and patches
 

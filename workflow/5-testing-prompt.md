@@ -77,8 +77,8 @@ Run the target repo's own required build/lint/test commands. Check migration/
 schema collision when applicable, backward compatibility, and broader-suite
 coverage when a cross-cutting change/target-repo rule requires it. Perform a
 fresh end-to-end read of the current Techplan for contradictions/gaps; keep
-this whole-contract check during workflow-v2 dogfood because independence is
-part of the current quality baseline.
+this whole-contract check during the initial workflow-v2 validation runs
+because independence is part of the current quality baseline.
 
 Do not fix production code here. Findings needing code changes become a patch
 plan and return to Build authority; affected verification must be rerun after
@@ -150,4 +150,4 @@ coverage.
 - Testing is a fresh independent verifier, not a full rerun of every earlier activity.
 - Runtime instructions refer to evolving Techplan sections by semantic name rather than remembered ordinal number.
 - Exact evidence anchors reduce rereading without weakening specialized-risk rationale.
-- The fresh whole-Techplan verification remains deliberately conservative during workflow-v2 dogfood; narrow it only after evidence shows quality is preserved.
+- The fresh whole-Techplan verification remains deliberately conservative during the initial workflow-v2 validation runs; narrow it only after evidence shows quality is preserved.

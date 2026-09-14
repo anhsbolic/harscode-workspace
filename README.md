@@ -116,7 +116,7 @@ For domain-grouped projects, `{DOMAIN_PATH}` may additionally contain `_domain-m
 
 ## Status
 
-Active personal system. Changes are driven by real dogfood and should preserve proven quality before optimizing ceremony/context.
+Active personal system. Harscode uses **Continuous Real-Task Validation**: changes are evaluated through real engineering tasks, individual executions are **validation runs**, and evidence from those runs drives revisions while proven quality remains the floor.
 
 ## License
 

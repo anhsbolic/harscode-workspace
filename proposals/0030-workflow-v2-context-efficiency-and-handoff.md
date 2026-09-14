@@ -1,13 +1,13 @@
 # Proposal: Workflow v2 context efficiency and phase handoff
 
 > Status: Proposed
-> Experimental state: **Frozen for dogfood on `workflow-v2`**
+> Experimental state: **Frozen for Continuous Real-Task Validation on `workflow-v2`**
 > Date: 2026-09-14
 > Protection Tier: techplan-protected
-> Triggered by: Kencleng Codex frontend dogfood — quality was satisfactory, but Exploration + Techplan + independent review consumed disproportionate context/usage and exposed broad mandatory reads, recursive re-reading, and stale Techplan guidance.
+> Triggered by: Kencleng Codex frontend real-task validation — quality was satisfactory, but Exploration + Techplan + independent review consumed disproportionate context/usage and exposed broad mandatory reads, recursive re-reading, and stale Techplan guidance.
 > Target: cross-workspace workflow/context routing, including `AGENTS.md`, `workflow/`, protected `workflow/2-techplan/` guidance, `best-practices/` routing, and harness translations.
 
-> **Experimental-branch note:** the human owner explicitly authorized implementation of this proposal on `workflow-v2` for dogfood. That authorization does **not** mean this proposal is Accepted for `main`. `main` remains the proven quality baseline until workflow-v2 demonstrates same-or-better correctness in real tasks.
+> **Experimental-branch note:** the human owner explicitly authorized implementation of this proposal on `workflow-v2` for validation. That authorization does **not** mean this proposal is Accepted for `main`. `main` remains the proven quality baseline until workflow-v2 demonstrates same-or-better correctness in real tasks.
 
 ## Friction Found
 
@@ -20,11 +20,11 @@ The audit found four structural sources of avoidable context cost:
 3. **Cross-phase re-reading is too broad.** Testing can need the reason behind a Test Focus Pointer entry, but currently it is directed back to the raw Exploration corpus rather than to the exact evidence that created the pointer.
 4. **Stale protected guidance creates contradictory context.** Proposal 0012 removed the embedded Techplan Summary in favor of a separate post-Approval report, but `rules.md`, `guidelines.md`, and `guardrails.md` still contain old Summary/section-14 rules. Proposal 0023 already documented this recurring defect; it remains unapplied at this baseline.
 
-The same dogfood also showed that review-loop over-convergence can consume substantial effort after material correctness issues are resolved. Proposal 0028 added the stopping rule; workflow-v2 extends the same proportionality principle to context loading and handoff.
+The same real-task validation also showed that review-loop over-convergence can consume substantial effort after material correctness issues are resolved. Proposal 0028 added the stopping rule; workflow-v2 extends the same proportionality principle to context loading and handoff.
 
 ## Quality Preservation Constraint
 
-Context reduction is not success by itself. Workflow-v2 is acceptable only if real dogfood shows that:
+Context reduction is not success by itself. Workflow-v2 is acceptable only if Continuous Real-Task Validation shows that:
 
 1. no material rule or authority is lost;
 2. Build can execute without inventing product/domain, authority/security, architecture/ownership, or verification decisions;
@@ -109,7 +109,7 @@ A Build using decomposition reads the Techplan spine plus the current task slice
 
 Extend Test Focus Pointer rows with a source/evidence anchor to the Exploration finding that justified the row. Testing follows that anchor instead of scanning the entire Exploration corpus merely to recover the reason.
 
-Keep Testing's fresh end-to-end Techplan contradiction check during the first workflow-v2 dogfoods; independence is a correctness feature and should not be removed until evidence supports doing so.
+Keep Testing's fresh end-to-end Techplan contradiction check during the first workflow-v2 validation runs; independence is a correctness feature and should not be removed until evidence supports doing so.
 
 ### H. Keep patch ownership in Build
 
@@ -138,11 +138,13 @@ Workflow-v2 does **not**:
 - let Review or Testing fix production code in their own authority lane;
 - let Build rely on stale Exploration descriptions instead of live code;
 - split Techplans by file size alone;
-- change `main` until dogfood evidence supports adoption.
+- change `main` until validation evidence supports adoption.
 
-## Dogfood / Exit Criteria
+## Continuous Real-Task Validation / Exit Criteria
 
-Run workflow-v2 on real features while `main` stays untouched as the baseline. After each run, evaluate:
+**Continuous Real-Task Validation** is the ongoing practice of exercising Harscode on real engineering tasks and using observed outcome/context evidence to decide whether guidance should change. Each concrete execution is a **validation run**; observations that survive scrutiny become **validation evidence**.
+
+Run workflow-v2 on real features while `main` stays untouched as the baseline. After each validation run, evaluate:
 
 - Did any agent miss or re-litigate a material decision?
 - Did Build need information that selective context loading hid?
@@ -152,11 +154,11 @@ Run workflow-v2 on real features while `main` stays untouched as the baseline. A
 - Was context loading/re-reading observably lower?
 - Was the resulting code at least as good as the established baseline?
 
-Do not promote workflow-v2 to `main` from one successful run. Use multiple real tasks and revise this branch in place until the quality/efficiency tradeoff is credible.
+Do not promote workflow-v2 to `main` from one successful validation run. Use multiple real tasks and revise this branch in place until the quality/efficiency tradeoff is credible.
 
-## Dogfood Baseline Freeze — 2026-09-14
+## Validation Baseline Freeze — 2026-09-14
 
-The implementation on `workflow-v2` has completed its pre-dogfood correctness/consistency pass. **No blocking finding remains that requires a new workflow decision before dogfood.**
+The implementation on `workflow-v2` has completed its pre-validation correctness/consistency pass. **No blocking finding remains that requires a new workflow decision before validation runs.**
 
 The final audit fixed only evidence-backed contradictions or semantic-loss risks, including:
 
@@ -174,18 +176,18 @@ Deliberately deferred from this baseline:
 - mandatory token/allowance telemetry;
 - optional capability/image-generation policy;
 - Kencleng project-document optimization;
-- unrelated historical/example cleanup that does not block this dogfood.
+- unrelated historical/example cleanup that does not block validation.
 
 ### Freeze rule
 
-From this point until real dogfood evidence says otherwise:
+From this point until real-task validation evidence says otherwise:
 
 1. do **not** continue speculative compression or restructuring merely because another document could be shorter;
 2. do **not** add new workflow machinery for hypothetical failures;
-3. change `workflow-v2` only when dogfood exposes a correctness gap, context/handoff failure, recurring ambiguity, or clearly unnecessary repeated work;
+3. change `workflow-v2` only when validation exposes a correctness gap, context/handoff failure, recurring ambiguity, or clearly unnecessary repeated work;
 4. keep `main` untouched as the proven comparison baseline.
 
-The commit that records this section is the workflow-v2 **dogfood baseline checkpoint**. Subsequent changes should be traceable to concrete dogfood evidence rather than pre-emptive optimization.
+The commit that records this section is the workflow-v2 **validation baseline checkpoint**. Subsequent changes should be traceable to concrete validation evidence rather than pre-emptive optimization.
 
 ## Rationale
 
@@ -195,4 +197,4 @@ This proposal deliberately changes loading, handoff, and stale duplicated guidan
 
 ---
 
-*Experimental implementation is authorized on `workflow-v2` only. Keep Status `Proposed` until human review and dogfood evidence justify an Accepted/Rejected decision for `main`.*
+*Experimental implementation is authorized on `workflow-v2` only. Keep Status `Proposed` until human review and Continuous Real-Task Validation evidence justify an Accepted/Rejected decision for `main`.*

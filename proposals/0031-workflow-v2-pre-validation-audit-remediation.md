@@ -1,4 +1,4 @@
-# 0031 — Workflow-v2 pre-dogfood audit remediation
+# 0031 — Workflow-v2 pre-validation audit remediation
 
 **Status:** Accepted - Anhar
 **Date:** 2026-09-14
@@ -8,7 +8,7 @@
 
 ## Why this remediation exists
 
-The pre-dogfood audit found a small set of semantic regressions introduced during context-efficiency compression. Independent verification confirmed the important defect classes but corrected two parts of the original severity assessment:
+The pre-validation audit found a small set of semantic regressions introduced during context-efficiency compression. Independent verification confirmed the important defect classes but corrected two parts of the original severity assessment:
 
 - hardcoded Techplan section numbers in runtime phase guidance were a real regression and had spread beyond the original review prompt;
 - the Build report lost a useful forcing function, but the underlying heavyweight-test boundary still survived in Build checklist/guidelines, so the defect was auditability/enforcement weakening rather than total rule deletion;
@@ -82,4 +82,4 @@ Before treating workflow-v2 as frozen again:
 6. confirm proposal no-self-approval has one canonical owner;
 7. confirm no unrelated workflow/context architecture was changed.
 
-If those checks pass, the remediation commit becomes the new workflow-v2 dogfood baseline and supersedes `6edc1a6c9be10d54b3e37cc0c477c28790fcd81c` for future dogfood runs. Proposal 0030 remains the experiment design; this proposal records the pre-run correctness repair that reopened and then re-froze its original checkpoint.
+If those checks pass, the remediation commit becomes the new workflow-v2 validation baseline and supersedes `6edc1a6c9be10d54b3e37cc0c477c28790fcd81c` for future validation runs. Proposal 0030 remains the experiment design; this proposal records the pre-run correctness repair that reopened and then re-froze its original checkpoint.
