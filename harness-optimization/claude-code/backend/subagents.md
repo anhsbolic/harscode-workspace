@@ -1,134 +1,70 @@
 # subagents.md (Claude Code, backend track)
 
-**Tier:** 2 — higher risk than Tier 1. A subagent's tool restrictions and
-context isolation are load-bearing: get the tool list wrong and either an
-agent can do something it shouldn't (under-fenced), or a phase silently
-loses information it needed because it wasn't explicitly passed in
-(over-isolated). Test each mapping in a low-stakes run before trusting it.
+**Tier:** 2 — tool restrictions and context isolation are load-bearing. Test a
+new mapping on low-stakes work before relying on it.
 
 ## What this translates
 
-Same underlying idea as `../frontend/subagents.md` (0010) — `workflow/`'s
-"amnesiac contractor" framing maps onto Claude Code subagents as a
-genuinely separate context window per phase, one subagent per
-`workflow/` phase, `tools` scoped to the minimum, `model` chosen per
-`best-practices/model-routing.md`. Read that file first for the shared
-reasoning; this file only states where the backend translation actually
-differs, per `harness-optimization/README.md`'s rule that a track split
-exists only where the translation genuinely differs, not by default.
+The shared session/context rule is `workflow/context-management.md`; read
+`../frontend/subagents.md` for the common Claude Code translation.
 
-## Where backend genuinely differs from frontend
+Backend does **not** redefine the shared boundary rule: Exploration → Techplan
+remains adaptive, Build is fresh-preferred from planning, Review/Testing are
+fresh for independence, and patches return to Build authority. Use a subagent
+when that fresh/isolation boundary is actually chosen; do not infer "one
+subagent per phase" as generic workflow policy.
 
-1. **`builder` needs `Bash`, not just `Read`/`Write`.** Running
-   migrations, the framework's CLI tooling, and the test suite as part
-   of the tight build→run→fix loop (`workflow/3-build/`) is normal
-   backend build activity in a way that doesn't map the same way onto a
-   frontend build subagent (which `../frontend/subagents.md` doesn't
-   scope `Bash` for). Don't copy frontend's `builder` tool list verbatim
-   — it under-fences a backend build subagent that needs to actually run
-   migrations and tests to iterate.
-2. **Every subagent's system prompt must reference the target repo's
-   own File-Path-Fencing-Tier-0-class declaration**, wherever that
-   repo's `AGENTS.md` (or equivalent) states it — e.g. a PII-encryption
-   trait, a permission/role seeder, ledger-locking logic for balances.
-   This file does not name or hardcode what those paths are for any
-   specific project (that would violate this tree's project-agnostic-
-   by-construction rule); it states the pattern: **`builder`'s system
-   prompt must include an explicit instruction to stop and report,
-   rather than work around, any task that appears to require touching a
-   Tier-0-class fenced path** — mirroring `../frontend/hooks-protected-
-   files.md`'s "translate an existing rule, don't invent a new one"
-   discipline, one level up (prose-in-subagent-prompt instead of a
-   hook), applied to whatever the target repo itself has already
-   declared protected. Frontend has no equivalent because the
-   koperasiqu-web-app-style fencing concept, as observed so far, is
-   backend-specific (PII/encryption, permission seeding, ledger
-   locking) — this may not generalize to every project using this
-   workspace, which is exactly why the instruction is phrased as "read
-   whatever your target repo declares," not as a fixed list.
-3. **Model routing carries an explicit unresolved caveat.**
-   `best-practices/model-routing.md`'s "Backend build" row is scoped to
-   Go (`Backend build (Go)`) and that same table's own fallback-mapping
-   section notes the Go-tuned picks aren't validated for other backend
-   languages. For a non-Go backend (e.g. PHP/Laravel), route `builder`
-   to the fallback-mapping table's generic Claude Code "Backend build,
-   Expert" cell (currently Opus 4.8) rather than the Go-row's specific
-   picks, and flag this substitution explicitly rather than presenting
-   it as a validated language-specific choice — same posture a real
-   decomposition manifest on this workspace already took when it hit
-   this exact gap.
+## Where backend genuinely differs
+
+1. **`builder` normally needs `Bash` as well as read/write/edit.** Backend
+   iteration commonly needs migrations, framework CLI commands, and tests.
+   Scope Bash to what the target repo allows; tool availability never overrides
+   protected-path or command authority.
+2. **Target-repo fenced/protected paths remain authoritative.** A backend
+   builder must read the target repo's own protected-path declaration and stop
+   rather than work around a required fenced edit. Harscode does not hardcode a
+   project path list here.
+3. **Model routing remains an execution concern.** Use the active generic
+   routing/execution profile and preserve any language-validation caveat in
+   that source; this translation does not create a backend-specific model rule.
 
 ## Pattern
-
-```md
-<!-- .claude/agents/explorer.md -->
----
-name: explorer
-description: Runs the exploration phase (read-only investigation)
-tools: Read, Grep, Glob
-model: <lowest tier suited to interactive/small material per
-        best-practices/model-routing.md's Exploration row>
----
-
-Follow workflow/1-exploration-kickoff-prompt.md — the canonical entry
-prompt for this phase. Do not skip or merge stages. Read-only — do not
-write or edit files during this phase.
-```
 
 ```md
 <!-- .claude/agents/builder.md -->
 ---
 name: builder
-description: Runs the build phase (tight edit -> run -> fix loop) and executes patches requested by code-review or testing
+description: Runs Build/Patch edit -> verify -> fix work
 tools: Read, Write, Edit, Bash
-model: <Expert/Good/Enough per model-routing.md's "Backend build" row —
-        see the Go-scoping caveat above if this repo's backend isn't Go>
+model: <choice from the active model-routing/execution profile>
 ---
 
-Follow workflow/3-build-prompt.md — the canonical entry prompt for this
-phase. You have Bash access to run
-migrations, framework CLI tooling, and the test suite as part of the
-iteration loop. Every patch this feature needs — from your own
-iteration, or requested later by code-review/testing — executes and is
-reported here, per README.md's Task Working Directory Structure rule.
-
-Before touching any file, check it against [TARGET REPO CONVENTION FILE
-PATH]'s File-Path-Fencing declaration (if any). If the task appears to
-require touching a fenced path, stop and report it — do not work around
-it via an indirect edit.
+Follow workflow/3-build-prompt.md in full. Re-ground on the Approved Techplan
+spine, current task slice when decomposed, specific patch plan on re-entry, and
+current live code/spec. Use the target repo's allowed commands. Before editing,
+check the target repo's protected/fenced-path rules and stop/report if the work
+requires an edit outside this authority.
 ```
 
-Repeat the phase-subagent pattern for `techplan-writer` and
-`code-reviewer`/`tester` following `../frontend/subagents.md`'s existing
-examples for those two — nothing backend-specific changes their tool
-scope or system-prompt shape, only `builder`'s does, per the three
-differences above.
+Explorer, Techplan, Code Review, and Testing use the shared translation from
+`../frontend/subagents.md` unless a real backend harness-mechanics difference
+exists. Do not create a backend copy merely for stack terminology.
 
-## Context handoff between subagents
+## Patch re-entry
 
-Same requirement as `../frontend/subagents.md` — explicit, not assumed.
-One backend-specific addition: the `builder` subagent, when invoked to
-execute a patch requested by `code-reviewer` or `tester`, needs that
-patch-plan's file path passed in explicitly at invocation (it lives in
-`4-code-review/` or `5-testing/`, not `3-build/`, per README.md's Task
-Working Directory Structure) — a subagent boundary makes this handoff
-mandatory in exactly the way a single long session might let it happen
-implicitly.
+When Code Review or Testing requests a patch, invoke/reuse Build with the
+specific patch-plan path plus the smallest sufficient durable state. Do not
+move the production fix into reviewer/tester authority and do not pass the
+entire review/testing transcript as context.
 
 ## Checklist
 
-- [ ] `builder`'s tool list includes `Bash` — verify this wasn't copied
-      from frontend's `builder` mapping without re-checking
-- [ ] Every subagent's system prompt includes the fenced-path stop-and-
-      report instruction, sourced from the target repo's own `AGENTS.md`
-      (or equivalent) — never a hardcoded path list invented here
-- [ ] `builder`'s `model` choice states explicitly whether it's using a
-      language-validated cell from `model-routing.md`'s "Backend build"
-      row or falling back to the generic Claude Code Expert-tier pick,
-      per the caveat above — don't silently treat the Go-scoped picks as
-      language-neutral
-- [ ] Every subagent's system-prompt body references the phase's
-      canonical root `*-prompt.md` by path (the phase folder only when no
-      root prompt exists) — never inlines prompt or guideline content
-- [ ] New subagent mappings are tried on a low-stakes task first — Tier
-      2, same as frontend's version of this file
+- [ ] Backend `builder` has the target-repo command/tool capability it actually
+      needs, including Bash where appropriate.
+- [ ] Protected/fenced-path rules come from target-repo authority, not a list
+      invented here.
+- [ ] Session/subagent boundaries follow `workflow/context-management.md`.
+- [ ] Every subagent body routes to the canonical Harscode phase prompt rather
+      than a copied workflow.
+- [ ] Patch work remains Build authority.
+- [ ] New mappings are dogfooded before high-risk use.
