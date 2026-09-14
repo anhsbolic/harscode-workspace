@@ -7,68 +7,94 @@ A third pillar, sibling to `workflow/` and `best-practices/`:
 - `workflow/` — **what** to do, by phase (process knowledge)
 - `best-practices/` — **what** is correct, by technology (domain knowledge)
 - `harness-optimization/` — **how** a specific agent harness (Claude Code,
-  Codex, or others added later) executes and enforces the two above
+  Codex, OpenCode CLI, or others added later) executes and enforces the two above
 
 ## The one rule that keeps this pillar honest
 
 **Translation only. Never policy.**
 
-Every file in this tree answers "how do I express an already-decided rule in
-this harness's native mechanism?" — never "what should the rule be?"
+Every file in this tree exists to answer "how do I express an
+already-decided rule in this harness's native mechanism (subagent, hook,
+skill, slash command, config flag)?" — never "what should the rule be?"
 
-If a harness translation needs a new lifecycle rule, threshold, exception, or
-correctness rule that does not already exist in `workflow/` or
-`best-practices/`, change the owning pillar first through its normal governance.
-The harness translation follows afterward.
+If writing a file here requires inventing a new rule, a new threshold, or a
+new exception that doesn't already exist in `workflow/` or
+`best-practices/`, that's a signal the content belongs in one of those two
+pillars first, as its own proposal. `harness-optimization/` translates it
+afterward. This ordering is not optional — a harness config that encodes a
+policy decision no other pillar has made is a second, uncoordinated source
+of truth, the exact failure this workspace's proposal system exists to
+prevent.
 
-Context/session policy is owned by `workflow/context-management.md`; harness
-session, subagent, skill, or command mechanics translate that policy rather than
-creating a second lifecycle.
+`workflow/context-management.md` owns cross-phase context loading, handoff,
+and same/fresh-session intent. Harness session/subagent/skill mechanisms
+translate that policy; they do not create a second lifecycle or hardcode a
+new phase grouping merely because the harness exposes an isolation primitive.
 
 ## Structure
 
 ```text
 harness-optimization/
-├── README.md
-├── AGENTS.md
-├── token-optimization.md
-├── <harness-name>/
-│   ├── README.md
-│   ├── token-optimization.md   # when applicable
-│   └── <track>/                # only when translation genuinely differs
+├── README.md              # this file
+├── AGENTS.md              # pointer-only, short version
+├── token-optimization.md  # harness-agnostic output/process rule
+├── <harness-name>/        # e.g. claude-code/, codex/
+│   ├── README.md          # effective-as-of disclaimer (see below)
+│   ├── token-optimization.md   # how this harness enforces the root rule, when applicable
+│   └── <track>/           # only if the harness translation genuinely differs by track
 ```
 
-A `<harness-name>/<track>/` split is used only when the harness translation
-differs meaningfully by track. Track-specific application/domain knowledge is
-not enough reason to duplicate translation files.
+A `<harness-name>/<track>/` split is used only when the actual translation
+differs meaningfully by track (e.g. which subagents exist, which best-
+practices category a skill wraps). Content that applies regardless of
+track stays at `<harness-name>/` root — don't duplicate it per track.
 
 ## Governance level
 
-Same protection posture as `best-practices/`: **agent-protected,
-proposal-gated** on ordinary work. See `AGENTS.md` and root
-`proposals/README.md`.
+Same as `best-practices/`: **agent-protected, proposal-gated.** No direct
+edits to any file in this tree during ordinary task work, including this
+one. Propose changes via `../proposals/`, following the root proposal
+mechanism. See `AGENTS.md` for the short version and
+`../proposals/README.md` for the template/governance.
 
-This stricter bar is deliberate because content here can directly change tool,
-write, network, session, or instruction behavior. A wrong translation can
-silently under-fence or over-fence an agent.
+This is a stricter bar than most lightweight `workflow/` phases, and
+deliberately so: unlike a guideline file, the content here is often
+*executable* (hook scripts, subagent tool restrictions) or directly shapes
+what an agent is and isn't allowed to touch. A wrong guideline gets
+corrected on the next read; a wrong hook or sandbox mapping can silently
+over-block or under-block with no visible symptom until it matters.
 
-## Harness freshness disclaimer
+## The disclaimer every harness subfolder must carry
 
-Harness mechanics change quickly. Every `<harness-name>/README.md` must state:
+Harness features (hooks, subagents, skills, CLI flags) change faster than
+this workspace's other two pillars. Every `<harness-name>/README.md` must
+state:
 
 ```text
 Effective as of: <harness name + version/date>
 Last verified: <date>
-Re-verify: recommended every ~2-3 months, or after a material harness change
+Re-verify: recommended every ~2-3 months, or immediately if the harness
+ships a major version change to hooks/subagents/skills mechanics.
 ```
 
-Past-due capability/mechanic claims are hypotheses until re-verified. Stable
-Harscode policy does not become stale merely because one harness translation
-does.
+Content that hasn't been re-verified past its stated window should be
+treated as a hypothesis, not a settled reference — same posture this
+workspace already takes with fast-moving model/tool guidance.
 
 ## Project-agnostic by construction
 
-Nothing here should hardcode a target project's feature, domain, path list, or
-business rule. Actual project harness instances/configuration live in the
-target repo or user configuration; this tree documents reusable translation
-patterns.
+Same discipline as `best-practices/`: nothing in this tree should encode a
+specific target repo, feature, domain, or business rule. A subagent-mapping
+file describes generic phase names and reusable tool/context patterns;
+project-specific harness config (actual `.claude/agents/*.md`, project
+`AGENTS.md`, concrete protected-path lists, model/client execution profiles,
+etc.) lives in that target repo or user configuration, not here.
+
+## Context-efficiency boundary
+
+Harness optimization may reduce repeated loading by using native skills,
+hierarchical instructions, or isolated sessions, but it must preserve the
+semantic requirements of the source workflow. Output terseness and input
+context loading are separate concerns: follow root `token-optimization.md`
+for process/output style and `workflow/context-management.md` for what context
+is required, conditional, routed, or cold.
