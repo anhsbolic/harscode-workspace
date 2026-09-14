@@ -26,3 +26,9 @@ there. This file is just the short version.
   _domain-manifest.md` before picking which feature to start. Don't
   default to strict serial order across a domain's features without
   having checked this.
+- Start each phase from its root `*-prompt.md` where one exists. Harness
+  wrappers and project overlays route to it — never re-author it, never
+  fork it per stack. See `README.md` § Canonical Phase Prompts.
+- Stop polishing a phase artifact once the next phase won't have to
+  invent a material decision; if a later phase hits one anyway, stop and
+  report instead of inventing it. See `README.md` § Phase Convergence.

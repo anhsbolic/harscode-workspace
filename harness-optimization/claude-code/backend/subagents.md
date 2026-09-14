@@ -70,8 +70,9 @@ model: <lowest tier suited to interactive/small material per
         best-practices/model-routing.md's Exploration row>
 ---
 
-Follow workflow/1-exploration/guidelines.md's process. Do not skip or
-merge stages. Read-only — do not write or edit files during this phase.
+Follow workflow/1-exploration-kickoff-prompt.md — the canonical entry
+prompt for this phase. Do not skip or merge stages. Read-only — do not
+write or edit files during this phase.
 ```
 
 ```md
@@ -84,7 +85,8 @@ model: <Expert/Good/Enough per model-routing.md's "Backend build" row —
         see the Go-scoping caveat above if this repo's backend isn't Go>
 ---
 
-Follow workflow/3-build/'s process. You have Bash access to run
+Follow workflow/3-build-prompt.md — the canonical entry prompt for this
+phase. You have Bash access to run
 migrations, framework CLI tooling, and the test suite as part of the
 iteration loop. Every patch this feature needs — from your own
 iteration, or requested later by code-review/testing — executes and is
@@ -125,7 +127,8 @@ implicitly.
       row or falling back to the generic Claude Code Expert-tier pick,
       per the caveat above — don't silently treat the Go-scoped picks as
       language-neutral
-- [ ] Every subagent's system-prompt body references `workflow/<phase>/`
-      files by path — never inlines guideline content
+- [ ] Every subagent's system-prompt body references the phase's
+      canonical root `*-prompt.md` by path (the phase folder only when no
+      root prompt exists) — never inlines prompt or guideline content
 - [ ] New subagent mappings are tried on a low-stakes task first — Tier
       2, same as frontend's version of this file

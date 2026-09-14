@@ -22,16 +22,21 @@ Proposal 0026) — not because the core five commands differ in shape.
 description: Kick off the exploration phase for a new feature
 ---
 
-Follow the exploration guidelines and process defined in this workspace's
-`workflow/1-exploration/` directory. Do not skip or merge the stages.
+Read and follow {HARSCODE_WORKSPACE_ROOT}/workflow/1-exploration-kickoff-prompt.md
+in full — it is the canonical entry prompt for this phase. Fill its
+inputs from this project's settings and the arguments below. Do not
+skip or merge its stages.
 
 Area(s) to explore: $ARGUMENTS
 ```
 
 Same shape for the other four phase commands (`/techplan`, `/build`,
-`/code-review`, `/test`) — each body a pointer into that phase's actual
-`workflow/<phase>/` files, `$ARGUMENTS` carrying whatever varies per
-invocation (area to explore, techplan file path, etc.).
+`/code-review`, `/test`) — each body a pointer to that phase's canonical
+root `*-prompt.md`, using the same command → prompt mapping as
+`../frontend/slash-commands.md`, never to `workflow/<phase>/` directly
+(`workflow/README.md` § Canonical Phase Prompts). `$ARGUMENTS` carries
+whatever varies per invocation (area to explore, techplan file path,
+etc.).
 
 ```md
 <!-- .claude/commands/domain-sequence.md -->
@@ -58,9 +63,10 @@ have an equivalent need for.
 - [ ] One command per workflow phase (`/explore`, `/techplan`, `/build`,
       `/code-review`, `/test`), plus `/domain-sequence` for the
       pre-flight step — not per-project or per-feature
-- [ ] Command body references `workflow/<phase>/` files by path, never
-      copies their content inline — if the guideline changes, the
-      command doesn't need a separate edit
+- [ ] Command body references the phase's canonical root `*-prompt.md`
+      by path (the phase folder only when no root prompt exists), never
+      copies its content inline — if the prompt or guideline changes,
+      the command doesn't need a separate edit
 - [ ] `$ARGUMENTS` is used for the one thing that genuinely varies per
       invocation, not for anything that should already be fixed by the
       guideline itself

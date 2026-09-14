@@ -124,6 +124,20 @@ different class of drift. Cite the resolved section number from Step
    rule-level edge cases that don't rise to pointer relevance —
    over-flagging noise defeats the check.
 
+Classify every finding by what it would force Build to do if left
+unresolved:
+- Material — Build would have to invent a product/domain decision,
+  cross an authority/security boundary, choose a materially different
+  architecture/state/component ownership shape, or proceed without a
+  meaningful verification strategy; or the defect changes the plan's
+  meaning or makes the contract unusable. Only material findings are
+  Blocking. Tag each with the concern it touches.
+- Mechanical — wording, formatting, exact command spelling, local
+  implementation shape, and other unambiguous corrections Build can
+  safely resolve. These go under Non-blocking, never Blocking.
+Don't hunt for more findings once the material checks are done — this
+review converges, it doesn't polish.
+
 Explicitly out of scope: re-litigating architectural decisions already
 made in the Decision Log section — this is a compliance/consistency
 review, not a second design review. Style or wording nitpicks are not
@@ -147,10 +161,10 @@ Validation = §_, Testing Checklist = §_, Open Items = §_, ...]
 
 **Gate check:** [Complex-tier criteria that applied]
 
-### Blocking (must fix before Approved)
-- [finding] — [location in techplan, using the resolved section number] — [what's wrong] — [what source says instead]
+### Blocking (must fix before Approved — material findings only)
+- [finding] — [location in techplan, using the resolved section number] — [what's wrong] — [what source says instead] — [material concern: product/domain | authority/security | architecture/ownership | verification | meaning/unusable contract]
 
-### Non-blocking (worth a look, doesn't block approval)
+### Non-blocking (worth a look, doesn't block approval — includes all mechanical findings)
 - [finding]
 
 ### Clean
@@ -160,6 +174,24 @@ Validation = §_, Testing Checklist = §_, Open Items = §_, ...]
 ## What happens with findings
 
 Findings go back to the primary model (or the human lead) for resolution — this prompt does not auto-fix the techplan. If the same category of finding recurs across 2+ stories/tasks, that's the proposal threshold (`guidelines.md`) — write a proposal to fold it into `rules.md`/`guardrails.md`/`diagram-guidelines.md` as a permanent self-check item, the same way proposal 0003 converted recurring prose instructions into checklist items.
+
+### Convergence (stopping rule)
+
+Default shape — not a loop:
+
+```text
+synthesis
+→ one independent review (only when Step 0's Complex gate applies)
+→ one resolution pass
+→ human gate
+```
+
+- **The resolver declares material change.** Whoever resolves the findings states, for the resolution as a whole, whether it changed scope, architecture/ownership, business/security semantics, or verification strategy — regardless of how the reviewer tagged the findings. A fix to a finding tagged mechanical that turns out to change one of those counts as material.
+- **Re-review follows that declaration, and the human gate has the final call.** If the answer is yes, re-review runs unless the human gate explicitly waives it. If the answer is no, the human gate can still order one. Neither the resolver nor the reviewer skips re-review on their own say — the resolver is usually the actor that wrote the plan, so its own "not material" is not the last word.
+- **Non-blocking findings never trigger re-review.** Resolve them in the same pass or defer them to Build.
+- **Deferral covers mechanical detail only.** If Build later hits a material decision the plan left open, it stops and reports back instead of inventing the answer (`workflow/README.md` § Phase Convergence).
+
+This is a stopping rule, not permission to ignore material contradictions. Added by proposal 0028 while this prompt is still Draft; the 2+ real Complex-tier formalization threshold above is unchanged, and this rule should be re-evaluated as part of that formalization.
 
 ## Notes
 

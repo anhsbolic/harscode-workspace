@@ -21,8 +21,10 @@ idea.
 ## Pattern
 
 One subagent per `workflow/` phase. Frontmatter carries the model tier
-and tool restriction; the system prompt body points at the phase's actual
-guideline files by reference, same discipline as `slash-commands.md`.
+and tool restriction; the system prompt body points at the phase's
+canonical root `*-prompt.md` by reference — the same prompt and mapping
+`slash-commands.md` uses, never the phase folder directly
+(`workflow/README.md` § Canonical Phase Prompts).
 
 ```md
 <!-- .claude/agents/explorer.md -->
@@ -34,10 +36,11 @@ model: <lowest tier suited to interactive/small material per
         best-practices/model-routing.md's Exploration row>
 ---
 
-Follow workflow/1-exploration/guidelines.md's 3-stage process and
-workflow/1-exploration/sniffing-checklist.md's five lenses. Do not skip
-or merge stages. You have read-only access — do not attempt to write or
-edit files during this phase.
+Follow workflow/1-exploration-kickoff-prompt.md — the canonical entry
+prompt for this phase, which routes to the 3-stage process and the
+sniffing checklist itself. Do not skip or merge stages. You have
+read-only access — do not attempt to write or edit files during this
+phase.
 ```
 
 ```md
@@ -50,8 +53,9 @@ model: <highest tier warranted per model-routing.md's Techplan-synthesis
         row, scaled to the story/task's assessed complexity tier>
 ---
 
-Follow workflow/2-techplan/guidelines.md, rules.md, and
-guardrails.md. You may write the techplan artifact itself. You do not
+Follow workflow/2-1-techplan-synthesis-prompt.md — the canonical entry
+prompt for this phase, which routes to workflow/2-techplan/guidelines.md,
+rules.md, and guardrails.md. You may write the techplan artifact itself. You do not
 have access to edit any file under workflow/2-techplan/ directly (that
 tree is agent-protected — see workflow/2-techplan/AGENTS.md); if you
 find a gap in the guidance itself, write a proposal instead.
@@ -83,9 +87,10 @@ long shared context by accident.
 - [ ] Each subagent's `model` is chosen per `best-practices/
       model-routing.md`'s tier logic, not defaulted to whatever the
       main session is using
-- [ ] Every subagent's system-prompt body references `workflow/<phase>/`
-      files by path — never inlines guideline content, for the same
-      single-source-of-truth reason as `slash-commands.md`
+- [ ] Every subagent's system-prompt body references the phase's
+      canonical root `*-prompt.md` by path (the phase folder only when no
+      root prompt exists) — never inlines prompt or guideline content,
+      for the same single-source-of-truth reason as `slash-commands.md`
 - [ ] What information a later-phase subagent needs from an earlier one
       is explicit in how it's invoked (a file path, a story/task identifier)
       — never assumed to be "still in context" from a prior turn

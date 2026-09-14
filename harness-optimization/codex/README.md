@@ -37,6 +37,25 @@ cross-phase response terseness rule
 
 Do not create a giant `CODEX.md` by default. Codex already has a native hierarchical project-instruction mechanism; adding another always-loaded project policy file normally creates duplication rather than capability.
 
+## Canonical phase prompts
+
+Start each phase from Harscode's canonical root `*-prompt.md` (see `workflow/README.md` § Canonical Phase Prompts). A Codex skill, `AGENTS.md` routing line, or session kickoff may fill that prompt's variables and add target-repo context, but must not replace it with a re-authored Codex version of the phase. `skills.md` § Workflow/session wrappers describes the wrapper shape.
+
+## Execution profiles
+
+A target project or user may maintain a Codex execution profile for fast-moving execution mechanics, such as:
+
+- current model choice;
+- reasoning effort;
+- Desktop vs CLI client;
+- browser/rendered capability;
+- image/design capability;
+- other harness-specific tool availability.
+
+That profile belongs in user Codex configuration or the target repository — not in this directory. It is translation/configuration, not Harscode lifecycle policy: it must not redefine the lifecycle, project truth, approval authority, or testing obligations. A stronger model does not skip a phase's gate; a missing browser capability does not remove a rendered-verification obligation — the obligation is met another way or flagged.
+
+Do not add specific Codex model names here, and do not add a `codex/frontend/` folder merely to store model choices or visual-tool preferences (see the track-split rule under Files). Origin: proposal 0028.
+
 ## Files
 
 - `instruction-loading.md` — how Codex's `AGENTS.md` hierarchy maps to Harscode/project source ownership without duplicating policy.

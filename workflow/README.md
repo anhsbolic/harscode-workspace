@@ -163,11 +163,71 @@ against current reality (e.g. `pull-request/guidelines.md` explains why
 "Changes" and "Demo" must come from the actual diff, not from
 techplan's Implementation Details).
 
+## Phase Convergence
+
+A phase artifact is sufficient when the next phase can proceed without
+inventing a material decision owned by an earlier authority — product
+or domain behavior, an authority/security boundary, architecture or
+ownership shape, or the verification strategy. Once that holds, stop.
+Don't keep polishing a completed phase for local or mechanical detail
+(wording, formatting, exact command spelling, local implementation
+shape) that the next phase can safely resolve.
+
+The converse holds too: if a later phase hits a material decision the
+earlier artifact left open, it stops and reports back rather than
+inventing the answer. Deferral covers mechanical detail only.
+
+Techplan's independent review applies this as a concrete stopping rule
+— see `2-2-techplan-review-prompt.md` § What happens with findings.
+Origin: proposal 0028, where a review loop kept going into command
+spelling and whitespace after every material finding was resolved.
+
 ## What's Explicitly Out of Scope Here
 
 - Project-specific codebase conventions (naming, error handling
   patterns, etc.) — those belong in the target repo's own `AGENTS.md`,
   not here. This folder stays generic and portable on purpose.
+
+## Canonical Phase Prompts
+
+Where a phase has a root-level `*-prompt.md` file, that file is the
+canonical invocation surface for the phase. Start from it: fill its
+variables (§ Path Variables Convention below) and adapt only where the
+prompt itself allows adaptation. A phase without a root prompt
+(`6-pull-request/` today) is invoked from its folder's own guidance
+files instead.
+
+- **Harness wrappers** — slash commands, subagents, skills — route to
+  or mechanically wrap the canonical prompt. They don't restate its
+  instructions as an independently maintained copy, and they don't
+  point past it at the phase folder: the prompt is what carries the
+  phase's inputs, response-style setting, and output format. See
+  `harness-optimization/<harness>/` for each harness's translation.
+- **Project or harness overlays** may add only narrow context or
+  capability details the prompt doesn't already own — the target
+  repo's convention file, available tools, the execution profile.
+- **No per-project or per-stack copies.** A second hand-authored
+  version of a phase prompt needs a proposal that establishes a real
+  lifecycle difference, not just a stack difference.
+
+Stack specialization happens through layering, not forking:
+
+```
+Harscode phase prompt
++ matching best-practices/ files for the stack
++ target repo authority (its AGENTS.md, specs, design sources)
++ harness/project execution profile (model, reasoning effort, client, tools)
+```
+
+Phase prompts stay model-neutral. Which model, client, or tool runs a
+phase is an execution concern owned by harness translations, the
+target project, or the user's own configuration — not lifecycle
+policy. (`best-practices/model-routing.md` remains the generic routing
+reference and changes through its own proposals.)
+
+Origin: proposal 0028 — a dogfood run that authored a custom harness
+prompt on top of this guidance worked, but duplicated phase logic and
+let project/tool mechanics leak into the wrong layer.
 
 ## Path Variables Convention
 
