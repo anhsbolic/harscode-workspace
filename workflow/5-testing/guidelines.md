@@ -1,110 +1,63 @@
-# Guidelines
+# Testing Guidelines
 
-Testing catches what static review misses. This runs after code review
-and any implementation loop that followed it (e.g. a rebuild driven by
-review findings) — using the actual interface (API call, CLI, UI), not
-just reading code.
+Testing independently verifies observable correctness after implementation/review. It is a final sweep, not a replay of Exploration and Build.
 
-## Process
+## 0. Start from current claims
 
-0. **Read the latest implementation report first** (`3-build/report.md`, 
-   `{TASK_PATH}/3-build/report.md` (or the most recent `patch-report-<n>.md` if the task looped back 
-   through the implementation after code review). Treat its rule-coverage 
-   table and named tests as *claims*, not settled fact — this step exists 
-   so this phase doesn't silently redo work already proven, and doesn't
-   silently trust work that was only claimed.
+Read the latest build/patch report first.
 
-   - **Spot-check, don't rewrite.** For rules already backed by a named
-     test, run the existing suite and confirm it still passes. Don't
-     write a second test that exercises the same rule the same way —
-     that's pure cost with no new signal.
-   - **Close the report's own gaps first.** A good implementation
-     report has a "what is not tested, and why" section — that's the
-     highest-value place to spend this phase's effort, because it's a
-     gap the implementer already flagged, not one you have to go find.
-   - **Then do what only this phase can do**: real-interface exercise
-     (not a unit test through a fake), backward compatibility, migration
-     collision, and a fresh end-to-end techplan read for contradictions
-     earlier passes might have introduced. These are structurally
-     different from unit-level verification — no report claim
-     substitutes for them.
+- Spot-check named tests/coverage; do not duplicate equivalent tests.
+- Close `Deferred / not tested here` and `Flagged` items first.
+- Then cover what independent Testing uniquely proves: real interface/observable behavior, specialized risk classes, compatibility, migration/schema collisions, and final whole-contract consistency.
 
-   This phase is a final sweep, not a rerun: confirm what's already
-   proven, close what was flagged, then cover the ground nothing else
-   could.
+## Test Focus Pointer
 
-   - **Extract the Test Focus Pointer.** Read techplan § 12's Test
-     Focus Pointer table (`workflow/2-techplan/rules.md` § 9). For each
-     area still marked relevant, cross-check the raw exploration docs'
-     Sniffing Checklist Risk findings for the concrete detail behind
-     *why* it's flagged, then build a concrete Test Execution Plan:
-     - Concurrency/race: scope to the specific package(s)
-       (`go test -race ./internal/<area>/...`), never a blanket
-       `./...` sweep — see `best-practices/go/testing-concurrency.md`.
-     - Perf/load: concrete scenario + threshold, not "check
-       performance."
-     - Security: the specific vulnerability class relevant to the area
-       (e.g. an auth area gets IDOR/session checks, not a generic pass).
-     - If any deliberately-slow primitive (bcrypt, other KDFs) is
-       exercised, confirm the test uses a test-appropriate cost/work
-       factor before running it under load or concurrency — see
-       `best-practices/go/expensive-primitives-in-tests.md`.
-     - If the pointer table is empty but you (as reviewer) suspect a
-       genuinely sensitive area was scoped out silently — that's a
-       techplan drift signal, not a testing-phase gap. Flag it back
-       rather than quietly adding the test yourself; the techplan
-       should record the decision either way
-       (`workflow/2-techplan/guardrails.md` § 12).
+Read Techplan §12. Each relevant specialized row must include an Exploration evidence anchor.
 
-1. **Test every scenario from the techplan's Rules & Validation section
-   (§ 4)** using the real interface — but per step 0, this means
-   confirming coverage exists and is real, not re-deriving every test
-   from a blank slate when a named test already proves it. If a
-   scenario in techplan § 4 can't be exercised through the real
-   interface, that's itself worth flagging (either the rule is
-   unreachable, or there's a missing entry point).
+Open **only that exact evidence source/heading** to recover the concrete reason/details. Do not scan all raw Exploration logs merely because one risk needs historical evidence.
 
-2. **Cover all four categories, not just the happy path:**
-   - Happy path: valid input → expected success
-   - Negative cases: missing required fields, invalid input, dependency
-     failures
-   - Edge cases: empty input, boundary values, nulls
-   - Backward compatibility: old clients/old data still behave as
-     expected
+Then choose appropriate verification:
 
-3. **Verify error responses precisely**, not just "an error happened":
-   - Does the error category match expectation (e.g. client error vs
-     server error)?
-   - Is the error message something a caller can actually act on?
-   - Does the error propagate correctly through the app's error-handling
-     layer (not swallowed or re-wrapped into something generic)?
+- concurrency/race — scope to the relevant unit/package rather than blanket execution where possible;
+- performance/load — concrete scenario + threshold;
+- security — vulnerability/authority class relevant to the actual boundary;
+- expensive primitives — test-appropriate work factor before load/concurrency execution.
 
-4. **When a bug is found**, don't just fix it — check `examples.md` for
-   whether it matches a known recurring pattern, and note a new one in
-   this file if it's genuinely new (see Threshold note below).
+Matching stack best practices are conditional authorities discovered through `best-practices/index.md` clue-map routing.
 
-## Final Verification Before Considering Done
+If a sensitive area is clearly present but absent from the pointer, flag Techplan drift instead of silently rewriting planning history inside Testing.
 
-Run the target repo's own build/lint/test commands (read its own
-README/Makefile — don't assume `go build`/`npm test`/etc., that's
-project-specific). Then check:
+## Rule coverage
 
-- [ ] Every rule in techplan § 4 has a corresponding test
-- [ ] Migration/schema version doesn't collide with anything landed
-      since the techplan was written
-- [ ] Backward compatibility explicitly verified, not just assumed
-- [ ] If the change is cross-cutting (a shared middleware, trait, base
-      class, or anything else applied across every route/module), the
-      target repo's **entire** test suite has run clean — not only the
-      tests for the feature that motivated it. A cross-cutting change
-      can expose a latent bug in code this task never touched (origin:
-      a rate-limiting middleware's post-response bookkeeping surfaced
-      an unrelated service's missing transaction wrapper).
-- [ ] A fresh read of the techplan end-to-end for gaps or
-      contradictions the earlier passes might have introduced
+Every Techplan §4 rule needs meaningful coverage. Existing passing coverage can be confirmed rather than recreated. Focus new work on:
 
-## Threshold for Adding to examples.md
+- missing coverage;
+- failing/stale coverage;
+- negative/edge/backward-compatible behavior not already proven;
+- real-interface behavior a lower-level test cannot establish.
 
-Add a new bug pattern entry only if it's the kind of thing that could
-plausibly recur in unrelated features (a category of mistake), not a
-one-off bug specific to this ticket's logic.
+If a contracted rule cannot be exercised through any real observable entry point, report the mismatch.
+
+## Error verification
+
+Where relevant, verify expected error category, actionable external behavior/message, and propagation through the target repo's error boundary. “An error happened” is insufficient.
+
+## Final verification
+
+Before Pass:
+
+- run target-repo required build/lint/test commands;
+- verify migration/schema collision where applicable;
+- verify backward compatibility where applicable;
+- run the broader suite when the target repo/risk requires it for cross-cutting changes;
+- fresh-read the current Techplan end-to-end for contradictions/gaps.
+
+The fresh Techplan read is intentionally retained during workflow-v2 dogfood. Remove/narrow it only with evidence that quality is preserved.
+
+## Findings and patches
+
+Testing may write a patch plan; production code fixes return to Build/Patch authority. Re-run affected verification after the patch.
+
+## Recurring patterns
+
+Consult/add `examples.md` only when a defect represents a reusable category, not every ticket-specific bug. Examples are cold calibration/history, not mandatory startup context.

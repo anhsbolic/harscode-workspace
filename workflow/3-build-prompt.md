@@ -1,95 +1,81 @@
-# Build Prompt
+# Build / Patch Prompt
 
-Manual-invoke prompt for the build/patch implementation loop — the
-tight edit → run → fix cycle after a techplan is approved, one
-iteration/scope slice at a time.
+Canonical entrypoint for the edit → verify → fix implementation loop after Techplan approval.
 
 ## Inputs required before running
 
-- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
-  relative to (or as an absolute path from) your project. Set once per
-  project; see `workflow/README.md` § Path Variables Convention.
-- `{TASK_PATH}` — root working directory for this task in the target
-  repo. Set once per task; see root `README.md` § Task Working
-  Directory Structure.
-- Build target: `{TASK_PATH}/2-techplan/tasks/<task-file>.md` if
-  decomposition ran, otherwise `{TASK_PATH}/2-techplan/techplan.md`
-  directly. § 4 (Rules & Validation) and § 10-11 (Implementation
-  Details) are the contract to build against, whichever file it's in.
+- `{HARSCODE_WORKSPACE_ROOT}`
+- `{TASK_PATH}`
+- Approved `{TASK_PATH}/2-techplan/techplan.md`
+- current task file when decomposition ran, otherwise the Techplan itself is the build target
+- optional specific patch plan when re-entering from Code Review/Testing
 
 ## Prompt
 
-```
-You are implementing against an approved techplan, one iteration of
-the build/patch loop at a time. Don't revisit architectural decisions
-already made in the techplan — if something genuinely doesn't hold as
-written, stop and report it instead of silently working around it.
+```text
+You are executing the Approved contract through Build/Patch authority.
 
-Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/3-build —
-guidelines.md and checklist.md referenced below resolve relative to
-this.
+Read:
+- {HARSCODE_WORKSPACE_ROOT}/workflow/3-build/guidelines.md
+- {HARSCODE_WORKSPACE_ROOT}/workflow/3-build/checklist.md
+- {TASK_PATH}/2-techplan/techplan.md as the authoritative spine
+- the current task file only when decomposition exists
+- the specific patch plan only when this is a Review/Testing re-entry
 
-Response style: keep your own narration minimal during this
-iteration — do the work efficiently, don't narrate each step. The
-output format below is the one place to be complete
-({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+Do not load raw Exploration logs by default. If the Techplan explicitly points
+to unresolved evidence, open that exact source only.
 
-Build target: {TASK_PATH}/2-techplan/tasks/<task-file>.md if
-decomposition ran, otherwise {TASK_PATH}/2-techplan/techplan.md
-directly. One task per iteration when tasks exist; the whole techplan
-in one go when they don't — don't ask for a separate scope on top of
-that, the right-sized unit of work was already decided at
-decomposition's Step 0 gate (or by its absence).
+Before editing, reopen current live code/spec at the Techplan/task code anchors.
+Earlier Exploration/Techplan descriptions are coordinates/evidence, not a frozen
+copy of implementation reality.
 
-Test scope for this loop — fixed, not negotiable per task:
-{file:{HARSCODE_WORKSPACE_ROOT}/workflow/3-build/guidelines.md#default-test-scope-always-regardless-of-techplan-content}
+Do not re-explore settled product/domain decisions. If live code contradicts a
+material Techplan assumption (behavior, authority/security, architecture/
+ownership, interface/data contract, risk/verification), stop and report it
+instead of silently redesigning.
 
-Full checklist: {file:{HARSCODE_WORKSPACE_ROOT}/workflow/3-build/checklist.md}
+When task files exist, execute the current task with the parent spine. Do not
+read unrelated sibling tasks unless a declared hard dependency requires one.
 
----
+For patch re-entry, production fixes remain Build work even when the finding
+came from Review/Testing. Re-ground on the parent Techplan + current task (if
+any) + specific patch plan + relevant live code/diff; do not import the whole
+Review/Testing conversation.
 
-Write your output below to {TASK_PATH}/3-build/report.md for the
-initial build, or {TASK_PATH}/3-build/patch-report-<n>.md if this
-iteration is executing a patch plan from code-review or testing (see
-root README.md § Task Working Directory Structure) — increment <n>
-per patch, don't overwrite a previous one.
+Run the Build-loop test scope defined in guidelines.md. Do not pull heavyweight
+race/perf/security-class verification into this tight loop.
 
-Output format:
+Process narration is terse; do the work. Write:
+- initial: {TASK_PATH}/3-build/report.md
+- patch: {TASK_PATH}/3-build/patch-report-<n>.md
+
+Report format:
 
 ## What changed
-[files touched, one line each]
+[file → concise behavior/contract-relevant change]
 
 ## Tests run
-[test name/pattern → category (unit/mocked/API-contract) → result]
-Confirm explicitly: no `-race`, perf/load, or security-class test was
-run in this iteration.
+[test/pattern → category → result]
 
 ## Contract check
-- [ ] This iteration satisfies its build target in full (the task
-      file's scope, or techplan § 4 in full if there's no task file)
-- [ ] No contract assumption broke — or, if one did, flagged below
-      instead of worked around
+- [ ] Current build target satisfied
+- [ ] Live-code re-grounding did not invalidate a material contract assumption
 
-## Flagged for techplan/testing review (if any)
-[Concurrency/perf/security concern noticed but not tested here, or a
-contract assumption that didn't hold — one line each]
+## Deferred / not tested here
+[heavyweight or independent verification intentionally left for Testing, with reason; "none" if none]
+
+## Flagged for Techplan / Testing
+[material assumption break or specialized concern; "none" if none]
+
+## Phase handoff
+- Completed: <build target/patch completed or what remains>
+- Artifacts: <report path>
+- Open / blocked: <material blocker or none>
+- Recommended next step: Code Review after initial build; return to requesting phase after patch
+- Session recommendation: CONTINUE for another Build iteration while focused; FRESH for Code Review/Testing
+- Context pointers: parent Techplan + current task/patch plan + changed files/tests only
 ```
 
 ## Notes
 
-- This prompt does not decide which model runs it — see
-  `best-practices/model-routing.md` (draft) for tier × stage routing.
-- This fills a real structural gap: `workflow/` numbers phases
-  1 (exploration) → 2 (techplan) → 4 (code-review) → 5 (testing) →
-  6 (pull-request), with no formal phase 3 (build) guidance in this
-  workspace despite target repos already using a `3-build/` path
-  convention for reports (see
-  `best-practices/go/examples/integration-testing-setup.md`). This
-  fills that gap with the minimum ceremony the loop's stakes warrant —
-  a fixed test-scope boundary and a flag-back mechanism — nothing
-  heavier, consistent with "weight matches stakes."
-- Project-specific build conventions (token-terseness instructions,
-  build tool invocation, etc.) still belong in the target repo's own
-  `AGENTS.md`/`CLAUDE.md`, not here — this file only owns the one
-  cross-project rule this workspace has evidence for: the default test
-  tier boundary.
+Build is execution, not a second Exploration phase. Patch ownership stays here even when another independent phase discovered the defect.

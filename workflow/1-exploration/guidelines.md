@@ -1,74 +1,49 @@
-# Guidelines
+# Exploration Guidelines
 
-This stage produces the raw docs that live in `{TASK_PATH}/1-exploration/logs/`
-— before techplan synthesis begins. Output here is intentionally
-freeform in count and naming: don't force a fixed template onto raw
-docs (see `workflow/techplan/guidelines.md` § 1 for why).
+Exploration produces durable evidence under `{TASK_PATH}/1-exploration/logs/` before Techplan synthesis. Output shape stays flexible; evidence quality matters more than a fixed file template.
 
-The process has three stages. Each stage has a different purpose and a
-different rule about whether solutions are allowed to appear yet.
+## Stage 1 — Plan announcement
 
-## Stage 1: Plan Announcement (blocking)
+Before deep implementation inspection:
 
-Before reading anything, the agent states:
-- Which areas it intends to explore
-- In what order
-- Why that order (dependency, risk, or just logical grouping)
+- state the task understanding;
+- identify relevant areas, order, and reason;
+- stop for human confirmation.
 
-**This is a hard stop.** The agent waits for confirmation before
-proceeding to Stage 2. This is the cheapest, highest-leverage point to
-redirect — no work has been done yet, so a wrong area or wrong order
-costs nothing to fix here versus discovering it three files in.
+This checkpoint prevents expensive investigation of the wrong scope.
 
-## Stage 2: Gap Analysis (one area at a time, not blocking between areas)
+## Stage 2 — Gap analysis
 
-For each area, in the announced order:
+For each area:
 
-1. Explore that area **fully** before moving to the next. Don't explore
-   everything shallowly then write one combined summary — that's where
-   detail gets lost. One area, one complete pass, one document.
-2. Document, for that area only:
-   - **Current state** — what exists today, concretely (not "there's
-     some validation logic" but which function, what it actually
-     checks)
-   - **Requirement** — what the new requirement expects of this area
-   - **Gap** — the specific difference between the two
-   - **Sniffing findings** — see `sniffing-checklist.md`. This runs on
-     every area, not as a separate pass at the end.
-3. **Do not propose solutions or options here.** If a fix or approach
-   occurs to you while exploring, note it as a bare observation (e.g.
-   "possible fix: X" as one line), but do not develop it, compare it
-   against alternatives, or write a Decision-Log-shaped section. That
-   happens in Stage 3, deliberately later, after the gap itself has been
-   reviewed and confirmed accurate.
-4. Report progress after each area (not blocking, just visible) so
-   there's a natural point to redirect if something looks off — but
-   don't wait for explicit go-ahead to continue to the next area unless
-   asked to.
+1. inspect current live source/behavior deeply enough to state what exists;
+2. trace the relevant requirement to its actual source;
+3. write the concrete gap;
+4. run the five sniffing lenses from `sniffing-checklist.md`;
+5. record **code anchors** for later phases: `path + symbol/section + why relevant`.
 
-## Stage 3: Solutioning (starts only after Stage 2 is reviewed)
+Code anchors are coordinates, not frozen truth. Do not copy routine code bodies just so Build can avoid reopening current code later.
 
-Only after the gap analysis has been read and confirmed does trade-off
-exploration, option comparison, and Decision-Log-shaped material get
-written. This is a separate, later activity — don't let it bleed
-backward into Stage 2's output.
+Do not develop solution options yet. Progress updates can be terse and non-blocking after each area.
 
-## Why the Split Matters
+## Stage 3 — Solutioning
 
-Mixing gap analysis and solutioning in one pass means the agent commits
-to a solution frame before its understanding of the current state is
-even validated. A wrong or incomplete gap analysis quietly poisons every
-option comparison built on top of it. Keeping them separate means a
-wrong gap analysis gets caught and fixed *before* any solutioning effort
-is spent on top of it.
+After the human confirms Stage 2, evaluate solution options/trade-offs. Record:
 
-## What NOT to Do Here
+- chosen material direction;
+- material rejected alternatives and why;
+- consequences/risks;
+- unresolved external questions.
 
-- Don't try to produce something techplan-shaped at this stage — that's
-  a separate synthesis step done later.
-- Don't hardcode project-specific conventions into the raw docs'
-  structure — the codebase's own conventions belong in that repo's own
-  convention file, referenced, not duplicated.
-- Don't compress Stage 2 output to save space. Detail is the point of
-  this stage — compression happens later, during techplan synthesis,
-  not here.
+This durable decision evidence lets Techplan synthesis preserve the outcome without depending on remembered chat discussion.
+
+## Completion handoff
+
+At Stage-3 completion use `workflow/context-management.md`'s compact handoff. Recommend Techplan CONTINUE/FRESH using observable continuation fitness, not a Small/Medium/Heavy label.
+
+## What not to do
+
+- Do not produce a Techplan-shaped contract prematurely.
+- Do not duplicate target-project conventions into Harscode-shaped prose.
+- Do not compress away concrete Stage-2 evidence merely to save context; downstream phases reduce read amplification through routing/anchors, not by destroying evidence.
+- Do not turn every code observation into an implementation decision; live code is rechecked during Build.

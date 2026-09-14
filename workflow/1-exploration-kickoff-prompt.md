@@ -1,127 +1,77 @@
-# Kickoff Prompt
+# Exploration Kickoff Prompt
 
-A starting point for the first message of an exploration session. Fill
-in the placeholders, adapt freely — this is a starting shape, not a
-rigid form.
+Canonical entrypoint for understanding a task before solution/Techplan synthesis.
 
 ## Inputs required before running
 
-- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
-  relative to (or as an absolute path from) your project. Set once per
-  project; see `workflow/README.md` § Path Variables Convention.
-- `{TASK_PATH}` — root working directory for this specific task in the
-  target repo (e.g. `.local-agents/works/account/06-mfa-totp/`). Every
-  later phase's prompt writes into its own numbered subfolder under
-  this same root — see root `README.md` § Task Working Directory
-  Structure.
-- `{CODEBASE_CONTEXT}` — a one-line label (project name + high-level
-  stack), set once per project, same tier as `{HARSCODE_WORKSPACE_ROOT}`. Not a
-  restated description of the repo — deep repo understanding comes
-  from Stage 1's own instruction to read the repo's convention file
-  directly.
-- `{TASK}` — the actual requirement driving this specific task: paste
-  the detail directly, or a path to a PRD/TRD/spec document. Changes
-  every task, unlike `{CODEBASE_CONTEXT}`.
-- **Ticket** and **Area** — optional; leave as "not sure yet" if
-  unknown, Stage 1 will help figure the area out.
+- `{HARSCODE_WORKSPACE_ROOT}`
+- `{TASK_PATH}`
+- `{CODEBASE_CONTEXT}` — one-line orientation only
+- `{TASK}` — requirement text or source path
+- optional Ticket / Area
 
 ## Prompt
 
-```
-You are exploring a task in this codebase: {CODEBASE_CONTEXT — a short
-one-line label, e.g. "Kencleng — Go backend + Next.js frontend", NOT a
-restated description of the repo. Set once per project and reuse
-across every task — see {HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Path
-Variables Convention}. This happens in three stages — do not skip or
-merge them.
+```text
+You are exploring this task in {CODEBASE_CONTEXT}.
 
-Working directory for this task: {TASK_PATH} — write all raw output
-from every stage below into {TASK_PATH}/1-exploration/logs/ (see root
-README.md § Task Working Directory Structure).
+Task: {TASK}
+Ticket: {ticket/link if any}
+Area: {known area or "not sure yet"}
+Working directory: {TASK_PATH}
 
-Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/1-exploration
-— sniffing-checklist.md and guidelines.md referenced below resolve
-relative to this.
+Read the target repo's applicable instructions/authority only as needed to
+identify and investigate the relevant areas. Guidance for Exploration lives at:
+- {HARSCODE_WORKSPACE_ROOT}/workflow/1-exploration/guidelines.md
+- {HARSCODE_WORKSPACE_ROOT}/workflow/1-exploration/sniffing-checklist.md
 
-Response style: Stage 1 stays terse — plan and order only, no detail
-yet. Stages 2 and 3 need full, concrete detail per area — this is raw
-material a future techplan builds a contract from
-({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+Do not load Exploration examples unless you need calibration for an ambiguous
+output shape.
 
-**Task:** {paste the task detail directly, or paste the path to a
-PRD/TRD/spec document to read instead — either works. If it's a path,
-read the file in full before Stage 1, don't summarize from the
-filename alone}
+STAGE 1 — PLAN ANNOUNCEMENT (hard stop)
+- State your 1–2 sentence understanding of the task.
+- Identify the areas you intend to explore, order, and why.
+- Do not inspect implementation deeply or propose solutions yet.
+- STOP for human confirmation.
 
-**Ticket:** {ticket ID/link, if any}
+STAGE 2 — GAP ANALYSIS (after confirmation)
+For each area, complete it before moving on:
+- Current state — concrete live behavior, files/symbols/contracts.
+- Requirement — exact relevant source expectation.
+- Gap — specific difference.
+- Sniffing — risk, edge cases, miscontext, misleading signals,
+  inconsistency per sniffing-checklist.md.
+- Code anchors — record path + symbol/section + why it matters for later
+  verification/Build; do not turn copied implementation into a new authority.
 
-**Area (if known):** {service/module/component, or "not sure yet —
-help me figure out the areas"}
+No developed solutioning here. A one-line observation may be parked without
+turning it into a decision.
 
----
+Write durable Stage-2 evidence under {TASK_PATH}/1-exploration/logs/.
+Report progress after each area so the human can redirect, but do not require a
+new approval between every area unless asked.
 
-STAGE 1 — Plan Announcement (do this first, then STOP and wait for me):
+STAGE 3 — SOLUTIONING (only after human confirms Stage 2)
+Compare options/trade-offs and record the chosen direction plus material
+rejected alternatives/rationale. Keep source evidence and decisions durable in
+{TASK_PATH}/1-exploration/logs/; do not rely on chat memory alone.
 
-Read this repo's own convention file (AGENTS.md / README / whatever
-exists) just enough to identify which areas of the codebase are
-relevant to this task. Then tell me:
-- Your understanding of the task itself, in your own words — one or
-  two sentences, so I can catch a misread before you go further
-- Which areas you intend to explore
-- In what order, and why that order
-- Do NOT read the actual implementation files yet, and do NOT propose
-  any solution yet. Wait for my go-ahead before Stage 2.
+At Stage-3 completion, output:
 
-STAGE 2 — Gap Analysis (after I confirm the plan):
+## Phase handoff
+- Completed: <areas explored + solutioning state>
+- Artifacts: <durable Exploration paths>
+- Open / blocked: <material unresolved items or none>
+- Recommended next step: Techplan synthesis
+- Session recommendation: CONTINUE | FRESH — based on continuation fitness
+- Context pointers: <source/spec paths + code anchors likely needed next>
 
-For each area, one at a time, fully before moving to the next:
-- Current state: what exists today, concretely — actual function/file
-  names, actual behavior, not a vague description
-- Requirement: what the task (above) expects here — cite the
-  specific line/section it came from if it's a document, don't
-  paraphrase from memory of the whole doc
-- Gap: the specific difference
-- Sniffing: run the five lenses in sniffing-checklist.md (risk, edge
-  cases, miscontext, misleading signals, inconsistency) on this area
-- Do NOT propose solutions or compare options here. A bare one-line
-  observation is fine if something occurs to you, but don't develop it.
-- Report after each area so I can redirect if needed, then continue to
-  the next area without waiting for explicit approval each time.
-
-STAGE 3 — Solutioning (only after I've reviewed Stage 2's output):
-
-This is where trade-offs, options, and rationale get written. Don't
-start this until I explicitly confirm the gap analysis is accurate and
-tell you to proceed.
-
-Write whatever form of raw doc best captures what's found at each
-stage into {TASK_PATH}/1-exploration/logs/ — the shape should follow
-the content, not a preset template.
+Recommend FRESH when the session was compacted/reset, accumulated substantial
+dead ends/unrelated investigation, had major human redirection, or cannot name
+the current durable authorities cleanly. Otherwise CONTINUE is valid; do not
+use a fuzzy task-size label as the deciding rule.
 ```
 
 ## Notes
 
-- `{CODEBASE_CONTEXT}` staying a one-line label rather than a restated
-  repo description is deliberate — a fuller restatement would create a
-  second, independently-drifting source of truth alongside the repo's
-  own README/AGENTS.md. It exists purely so the opening sentence
-  orients the agent before Stage 1's real repo read happens, and so a
-  monorepo with multiple services/frontends can disambiguate which one
-  is in play.
-- `{TASK}` is deliberately separate from `{CODEBASE_CONTEXT}`: the
-  latter is stable background reused across every task on this
-  project, `{TASK}` is the actual requirement and changes every time.
-- If the task is a file path, the agent reading it is part of Stage 1,
-  not assumed to have happened already — Stage 1's own wording ("state
-  your understanding of the task in your own words") exists
-  specifically to surface a misread here before Stage 2 wastes effort
-  on the wrong requirement.
-- Stage 1 is a hard stop by default — see
-  `guidelines.md` § Why the Split Matters for why this is the cheapest
-  point to redirect.
-- Stage 2 is not blocking between areas, but the agent should still
-  report progress so there's a natural checkpoint if something looks
-  off.
-- Don't let Stage 3 material creep backward into Stage 2's docs — if a
-  Stage 2 doc already reads like a Decision Log, that's a sign the split
-  wasn't respected.
+Exploration is detailed evidence, not an early Techplan. The Techplan later synthesizes it into a durable execution contract. Code anchors transfer coordinates; later phases still reopen live code/spec before treating implementation details as current fact.

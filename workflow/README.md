@@ -1,385 +1,142 @@
 # Workflow
 
-This is a personal AI development workflow — guidance only. Everything
-in here tells an AI Agent *how* to produce something at a given stage
-of a feature's lifecycle. It does not store any generated content.
+Portable guidance for moving one piece of work from understanding → executable plan → implementation → independent review/testing → delivery. Generated task artifacts live in the target project, not this workspace.
 
-Generated artifacts (task exploration docs, techplan.md, PR
-descriptions, etc.) always live in the target project's own repo —
-different repo per project, dynamic, not tracked here. This folder is
-purely local and portable across projects with different standards.
+Use `AGENTS.md` as the lightweight router. Use this README for cross-phase/governance rationale; ordinary phase execution starts from the canonical phase prompt.
 
-There is no top-level "guidance" folder here on purpose — everything
-under `workflow/` already is guidance, by definition. Naming a folder
-"guidance" inside "workflow" would just repeat the point.
+## Lifecycle
 
-## Structure
-
-```
-workflow/
-  AGENTS.md        First thing an agent reads in this folder — hard rules + routing, no rationale
-  exploration/     Kickoff + clarifying questions → produces raw docs in {TASK_PATH}/1-exploration/logs/
-  techplan/        Turns those raw docs into one techplan.md
-  build/           Thin test-scope boundary for the tight edit → run → fix loop
-  code-review/     Safety / Quality / Consistency review passes on the implementation
-  testing/         Testing-driven refinement + final verification
-  pull-request/    Turns an approved techplan + final diff into a PR description
+```text
+(optional domain sequencing)
+Exploration
+→ Techplan synthesis
+→ optional independent Techplan review
+→ optional Techplan decomposition
+→ Build / Patch
+→ Code Review
+→ Build / Patch when findings require code changes
+→ Testing
+→ Build / Patch when testing finds code defects
+→ Pull Request
+(optional domain closure)
 ```
 
-This is the rough lifecycle order, though in practice it loops — code
-review and testing often send you back to adjust the implementation, and
-occasionally back to techplan if a contract-level assumption breaks.
+Phase weight is intentionally uneven. Techplan is a high-stakes execution contract; Build is a tight execution loop; Review/Testing are independent verification concerns. Do not copy ceremony from one phase into another merely for symmetry.
 
-## Why Each Stage Has a Different Internal Structure
+## Context and session boundaries
 
-Not every stage needs the same amount of ceremony. The internal
-structure of each folder is proportional to that stage's stakes and
-change frequency — this is deliberate, not inconsistent:
+`context-management.md` is the source of truth for:
 
-- **`techplan/`** is high-stakes (it's the contract a lead approves
-  before execution) and changes slowly. It has `rules.md` +
-  `guardrails.md` + a formal `proposals/` process — the agent cannot
-  edit its core files directly.
-- **`pull-request/`** is high-frequency and low-stakes per artifact (one
-  PR description, easy to fix in review if it's slightly off). It's
-  intentionally lightweight: `template.md` + `guidelines.md` +
-  `examples.md`, no guardrails, no proposal process. Add ceremony here
-  only if a real recurring problem proves it's needed — don't
-  pre-emptively copy the techplan structure.
-- **`exploration/`, `code-review/`, `testing/`** are all lightweight,
-  same tier as `pull-request/` — guidelines + examples/checklist, no
-  guardrails or proposal process. None of these are contracts anyone
-  approves; they're working practices that get corrected in the moment
-  if they're off, not through formal review.
+- Required / routing / conditional / cold context;
+- durable artifacts vs chat memory;
+- same-session vs fresh-session continuation fitness;
+- default phase-transition intent;
+- code anchors;
+- Build ownership of patches;
+- compact phase-completion handoff.
 
-## Session Boundaries
+Key principle: **smallest sufficient context that preserves correctness**. A fresh session re-grounds from durable state; a same session may reuse active, unchanged context without mechanically rereading it.
 
-This section states the default number of sessions a single feature
-(one `{TASK_PATH}`) should span, and where the boundaries fall — the
-harness-agnostic counterpart to `harness-optimization/<harness>/
-<track>/subagents.md`'s per-phase tool/context isolation, for whoever
-isn't running phases as separate subagents.
+The default transition intent is not “one session per phase” and not “one session for the feature.” Exploration → Techplan is adaptive; Build, Review, and Testing retain authority/independence boundaries. See `context-management.md` instead of duplicating the matrix here.
 
-**Default: four sessions per feature**, grouped by shared authority and
-response-style tier (§ Response Style By Phase above), not by raw phase
-count:
+## Domain-grouped projects (optional)
 
-1. **Exploration + Techplan** — both planning-type (full reasoning,
-   read-mostly). Merging these two, specifically, is the one combination
-   root `README.md` § Usage already blesses (step 4) — this section
-   doesn't change that, it generalizes what comes after it.
-2. **Build + Patch loop** — execution-loop, terse, and the tool scope
-   genuinely differs from planning (write access, running the code).
-   Every patch this feature ever needs — whether it came from this
-   session's own iteration, or from a patch-plan written later by
-   code-review or testing — executes here, per root `README.md` § Task
-   Working Directory Structure's existing rule that patches are always
-   build activity.
-3. **Code-review** — its own session. Different concern (investigating
-   already-built code, not building it) and, per `subagents.md`'s
-   existing principle, should not carry write access into that
-   investigation.
-4. **Testing** — its own session, same reasoning as code-review: a
-   different concern from building, verified independently rather than
-   from inside the build session's own accumulated context.
+Projects that explicitly group planned work by domain may use:
 
-**Why not fold build into session 1:** a build session inheriting
-exploration/techplan's full raw reasoning trail (which, on a non-trivial
-feature, can be a dozen-plus log files) carries deadweight context into
-a phase that's supposed to run terse and iterate fast — the same
-context-isolation reasoning `subagents.md` already applies to Claude
-Code's native subagent boundary applies just as well to a plain session
-boundary when subagents aren't in use.
+- `0-domain-sequencing-prompt.md` before choosing the first feature;
+- `7-domain-closure-prompt.md` after the domain's feature work completes testing.
 
-**Why not split further** (e.g. exploration and techplan as two
-sessions): not disallowed, but not the default either — root `README.md`
-step 4 already covers this case, and splitting a small/linear feature
-further is the same "premature structure" the decomposition prompt
-(`2-3-techplan-decomposition-prompt.md`) already warns against for a
-different granularity.
-
-**Re-entry after code-review or testing asks for a patch:** the patch
-itself is drafted and executed back in the build session's context (a
-continuation of session 2, or a fresh session re-grounded on
-`techplan.md` plus the specific patch-plan — either is fine). What must
-not happen is drafting the patch fix *inside* the code-review or testing
-session — that session's tool scope shouldn't include `Write` in the
-first place, per `subagents.md`'s existing separation-of-authority
-principle.
-
-This is guidance, not a hard rule — same tier as every other lightweight
-`workflow/` phase (see Governance below): correct it in the moment if a
-specific feature is small enough that a stricter split is pure overhead,
-same posture the decomposition prompt already takes toward "premature
-structure."
-
-## Domain-Grouped Projects (Optional)
-
-Some projects divide their roadmap/spec by domain — e.g. a domain whose
-planned features are `D01-01` through `D01-09` — and group those
-features' `{TASK_PATH}` folders under a shared `{DOMAIN_PATH}`. **For
-those projects only**, two domain-level prompts bracket the per-feature
-cycle:
-
-- `0-domain-sequencing-prompt.md` — before the first feature in a
-  domain: which planned features can run in parallel sessions and which
-  must wait on another.
-- `7-domain-closure-prompt.md` — after every feature in the domain has
-  finished testing: a whole-domain check before the domain is declared
-  done.
-
-Neither is part of the default lifecycle. A project that plans and
-builds feature by feature, without grouping features by domain, skips
-both entirely — nothing to record, no placeholder file, no note that
-they were skipped.
-
-"Domain" here means how the *work* is divided and planned, not
-Domain-Driven Design. A DDD codebase planned feature by feature doesn't
-need these prompts; a non-DDD codebase whose roadmap is split by domain
-can use them.
-
-The two prompts are independent of each other. Closure can run for a
-domain that never had a `_domain-manifest.md` (it falls back to the
-domain spec for the feature list), and producing a manifest doesn't
-oblige a closure review — though a domain large enough to need
-sequencing is usually large enough to benefit from closure.
-
-The numbers mark lifecycle *position* (before exploration / after
-testing), not obligation.
-
-Origin: proposal 0029, which also retrofitted this condition onto
-0026's sequencing prompt after it had landed as an unconditional rule.
+Feature-by-feature projects skip both. “Domain” describes planning/work grouping, not Domain-Driven Design.
 
 ## Governance
 
-### Protected files, by stage
+### Protected Techplan guidance
 
-| Stage | Protected files? | Proposal mechanism |
-|---|---|---|
-| `2-techplan/` (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`, `report-template.md`) | Yes | `../proposals/` (root), Protection Tier: `techplan-protected` — threshold: 2+ tasks or genuinely structural |
-| `2-techplan/examples.md`, `2-techplan/retro.md` | No — agent-appendable directly | N/A |
-| `1-exploration/`, `3-build/`, `4-code-review/`, `5-testing/`, `6-pull-request/` | No, today | None — corrected in the moment. If a real recurring gap ever justifies formal protection here, use `../proposals/` with Protection Tier `general`, not a new mechanism |
+These `2-techplan/` files are proposal-gated:
 
-There's one proposal mechanism for the whole workspace: the root-level
-`proposals/`, one shared numbering sequence. `2-techplan/`'s protected
-files keep a higher bar (2+ tasks or a genuinely structural gap) —
-appropriate given a techplan is a contract a lead signs off on — but
-that's now expressed as a `Protection Tier: techplan-protected` field
-on the proposal itself, not a separate folder. This used to be a
-second, narrower `2-techplan/proposals/` folder; it was folded into
-the root `proposals/` because two independent numbering sequences that
-occasionally needed to cross-reference each other (a `best-practices/`
-fix and a techplan fix from the same real incident) produced colliding
-numbers. See `../proposals/README.md` for the tier field and numbering
-rule. The lightweight stages above use the same root `proposals/` with
-Protection Tier `general` if one of them ever outgrows "corrected in
-the moment." Don't reach for it pre-emptively — that would contradict
-the whole point of keeping these stages lightweight.
+- `template.md`
+- `rules.md`
+- `guardrails.md`
+- `guidelines.md`
+- `diagram-guidelines.md`
+- `report-template.md`
 
-`2-techplan/examples.md` and `2-techplan/retro.md` are the one
-exception to "protected files need a proposal" anywhere in this
-workspace — append directly, no proposal needed. This does not
-generalize to `best-practices/examples.md` files, which are
-proposal-gated (see `best-practices/index.md`).
+`examples.md` and `retro.md` are append-only exceptions. Stable recurring lessons should graduate into protected rules instead of becoming required historical reading.
 
-### `AGENTS.md` vs this file
+### Lightweight phases
 
-This file is the source of truth for `workflow/` — the tiering
-rationale above, cross-stage conventions, scope boundaries. `workflow/AGENTS.md`
-is a much thinner layer: the first thing an agent reads on entering this
-folder, containing only imperative hard rules and a pointer back here
-for anything beyond that. If a rule needs justifying, the justification
-lives here, not in `AGENTS.md`.
+`1-exploration/`, `3-build/`, `4-code-review/`, `5-testing/`, and `6-pull-request/` have no protected core today. Correct small issues in place; use the root proposal process only when a structural/recurring change warrants it.
 
-## Cross-Stage Source of Truth
+### Proposal system
 
-Later stages consume earlier stages' output, but not by copying
-wholesale — each stage's guidance specifies which section of the
-earlier artifact is authoritative and which parts must be re-verified
-against current reality (e.g. `pull-request/guidelines.md` explains why
-"Changes" and "Demo" must come from the actual diff, not from
-techplan's Implementation Details).
+All proposals live under root `proposals/` with one numbering sequence and the applicable protection tier. See `proposals/README.md`.
 
-## Phase Convergence
+### Authoring Harscode itself
 
-A phase artifact is sufficient when the next phase can proceed without
-inventing a material decision owned by an earlier authority — product
-or domain behavior, an authority/security boundary, architecture or
-ownership shape, or the verification strategy. Once that holds, stop.
-Don't keep polishing a completed phase for local or mechanical detail
-(wording, formatting, exact command spelling, local implementation
-shape) that the next phase can safely resolve.
+Use root `AUTHORING.md`: correctness density, one source of truth, direct prose, progressive disclosure, and soft—not hard—document-size review thresholds.
 
-The converse holds too: if a later phase hits a material decision the
-earlier artifact left open, it stops and reports back rather than
-inventing the answer. Deferral covers mechanical detail only.
+## Cross-stage source of truth
 
-Techplan's independent review applies this as a concrete stopping rule
-— see `2-2-techplan-review-prompt.md` § What happens with findings.
-Origin: proposal 0028, where a review loop kept going into command
-spelling and whitespace after every material finding was resolved.
+Later phases consume earlier durable artifacts selectively. They do not copy them wholesale and do not treat remembered chat context as authority.
 
-## What's Explicitly Out of Scope Here
+Examples:
 
-- Project-specific codebase conventions (naming, error handling
-  patterns, etc.) — those belong in the target repo's own `AGENTS.md`,
-  not here. This folder stays generic and portable on purpose.
+- Build executes the Approved Techplan + current task slice (when decomposed) and reopens live code at recorded anchors.
+- Code Review judges the current diff against the contract/current repo, not the Build session's memory.
+- Testing starts from the current Techplan + latest build evidence and follows exact Test Focus evidence anchors when specialized context is needed.
+- PR truth comes from final repository state + final evidence, not planned changes that never landed.
 
-## Canonical Phase Prompts
+## Phase convergence
 
-Where a phase has a root-level `*-prompt.md` file, that file is the
-canonical invocation surface for the phase. Start from it: fill its
-variables (§ Path Variables Convention below) and adapt only where the
-prompt itself allows adaptation. A phase without a root prompt
-(`6-pull-request/` today) is invoked from its folder's own guidance
-files instead.
+A phase is sufficient when the next phase can proceed without inventing a material product/domain, authority/security, architecture/ownership, interface/data, risk, or verification decision.
 
-- **Harness wrappers** — slash commands, subagents, skills — route to
-  or mechanically wrap the canonical prompt. They don't restate its
-  instructions as an independently maintained copy, and they don't
-  point past it at the phase folder: the prompt is what carries the
-  phase's inputs, response-style setting, and output format. See
-  `harness-optimization/<harness>/` for each harness's translation.
-- **Project or harness overlays** may add only narrow context or
-  capability details the prompt doesn't already own — the target
-  repo's convention file, available tools, the execution profile.
-- **No per-project or per-stack copies.** A second hand-authored
-  version of a phase prompt needs a proposal that establishes a real
-  lifecycle difference, not just a stack difference.
+Once that holds, stop polishing mechanical detail. If a later phase encounters such a missing decision anyway, it stops/reports back rather than inventing the answer.
 
-Stack specialization happens through layering, not forking:
+Techplan independent review applies the concrete convergence rule in `2-2-techplan-review-prompt.md`.
 
-```
-Harscode phase prompt
-+ matching best-practices/ files for the stack
-+ target repo authority (its AGENTS.md, specs, design sources)
-+ harness/project execution profile (model, reasoning effort, client, tools)
-```
+## Canonical phase prompts
 
-Phase prompts stay model-neutral. Which model, client, or tool runs a
-phase is an execution concern owned by harness translations, the
-target project, or the user's own configuration — not lifecycle
-policy. (`best-practices/model-routing.md` remains the generic routing
-reference and changes through its own proposals.)
+Where a root `*-prompt.md` exists, it is the default invocation surface:
 
-Origin: proposal 0028 — a dogfood run that authored a custom harness
-prompt on top of this guidance worked, but duplicated phase logic and
-let project/tool mechanics leak into the wrong layer.
+| Concern | Canonical entry |
+|---|---|
+| Domain sequencing (optional) | `0-domain-sequencing-prompt.md` |
+| Exploration | `1-exploration-kickoff-prompt.md` |
+| Techplan synthesis | `2-1-techplan-synthesis-prompt.md` |
+| Techplan independent review | `2-2-techplan-review-prompt.md` when its gate applies |
+| Techplan decomposition | `2-3-techplan-decomposition-prompt.md` when its gate applies |
+| Build / Patch | `3-build-prompt.md` |
+| Code Review | `4-code-review-prompt.md` |
+| Testing | `5-testing-prompt.md` |
+| Pull Request | `6-pull-request/` guidance (no root prompt today) |
+| Domain closure (optional) | `7-domain-closure-prompt.md` |
 
-## Path Variables Convention
+Harness wrappers route to these prompts; they do not maintain stack/project copies of lifecycle policy. Stack correctness comes from matching `best-practices/`; project truth comes from the target repo; model/client/tool selection belongs to execution profiles/harness configuration.
 
-Every prompt file under `workflow/` (the root-level `*-prompt.md`
-files) references this workspace's own guidance files — `template.md`,
-`rules.md`, `best-practices/index.md`, and so on. Where this
-workspace's content actually lives relative to a given project varies
-by person and by project (copied into project root, kept as a
-subfolder, symlinked from a shared location elsewhere) — nothing here
-assumes one fixed layout.
+## Path variables
 
-Two tiers of fill-in variables show up across these prompts — knowing
-which tier a variable belongs to tells you how often you actually need
-to touch it:
+- **Project-level:** `{HARSCODE_WORKSPACE_ROOT}`, `{CODEBASE_CONTEXT}`, target convention path. Set/reuse these per target project without restating the project into Harscode.
+- **Task/run-level:** `{TASK_PATH}`, `{TASK}`, ticket/area, diff, entry point, etc.
 
-- **Project-level (set once, reused across every task on this
-  project):** `{HARSCODE_WORKSPACE_ROOT}` — where this workspace's content
-  lives relative to the project. `{CODEBASE_CONTEXT}` — a one-line
-  label for the project/repo (e.g. "Kencleng — Go backend + Next.js
-  frontend"), used only for quick orientation before an agent reads the
-  repo's own README/AGENTS.md in full. It is deliberately NOT a
-  restated description of the codebase — that would duplicate the
-  target repo's own README as a second, independently-drifting source
-  of truth, the exact failure mode this workspace's own single-source-
-  of-truth principle exists to avoid elsewhere. Deep repo understanding
-  always comes from the agent actually reading the repo's own
-  convention file, which every relevant prompt already instructs it to
-  do — this label just orients faster before that read happens.
-- **Per-run (set fresh for each task/invocation):** `{TASK_PATH}`,
-  `{TASK}` (pasted content or a document path, either works), and
-  similar — these change every time because they describe this
-  specific piece of work, not the project as a whole.
+Deep project understanding comes from reading target-repo authority, not from expanding `{CODEBASE_CONTEXT}` into a copied project description.
 
-Set every project-level variable once per project — e.g. if this
-workspace is symlinked at `./guidance` in a given project, every
-prompt used against that project resolves `{HARSCODE_WORKSPACE_ROOT}` to
-`./guidance` for every future invocation, not once per prompt.
+## Response style
 
-`[TARGET REPO CONVENTION FILE PATH]` (used in a couple of prompts) is
-a third, hybrid case — technically project-level since the path itself
-doesn't change, but written as a per-invocation bracket placeholder
-today since the prompts that use it are invoked less frequently than
-per-task ones. Treat it as project-level in practice.
+Two independent axes:
 
-## Response Style By Phase
+1. **Process narration** — default direct/terse. Explain reasoning where a human gate or material trade-off needs it; do not narrate routine reads/tool calls/obvious execution.
+2. **Deliverable completeness** — stays high. A terse process can still owe a complete Techplan, finding, build report, test report, or PR description.
 
-Two independent things vary by phase — don't conflate them into one
-"verbose vs terse" dial:
+Planning artifacts are not licenses for verbose narrative. They preserve decisions, evidence, rationale that controls execution, and unresolved material questions. See `context-management.md` for the compact phase handoff.
 
-- **Process verbosity** — how much narration/reasoning an agent
-  produces while doing the work itself, before any final report or
-  artifact exists. Planning-type phases (techplan synthesis, review,
-  decomposition) warrant full, explicit reasoning at every step,
-  because ambiguity here becomes an execution contract other people
-  and agents rely on later. Execution-loop phases (`build/`, and
-  `testing/`'s coverage/sweep work) warrant minimal narration — do the
-  work efficiently, don't narrate each step — because this is fast,
-  iterative work, not the final artifact.
-- **Deliverable completeness** — how much detail the phase's actual
-  output (techplan.md, a review findings report, a build/testing
-  report) contains. This stays high in every phase regardless of how
-  terse the process getting there was. A terse build loop must still
-  produce a complete, unambiguous report — what changed, what was
-  tested, what's flagged — the same way a real testing report already
-  demonstrates this is possible without a slow, over-narrated process
-  (see `best-practices/go/examples/testing-concurrency.md` for a
-  worked real-world example).
+## Prompt file shape
 
-Each prompt states its own setting for both axes near the top of its
-`## Prompt` block — a one-line pointer back here plus whatever's
-specific to that phase, not a restatement of the whole rationale every
-time.
+Canonical prompts use a predictable shape without forcing filler headings:
 
-## Prompt File Shape
+1. title + short purpose;
+2. `## Inputs required before running`;
+3. `## Prompt` with the runnable instruction;
+4. phase-specific output/rules only when needed;
+5. `## Notes` last.
 
-Every `*-prompt.md` file follows the same skeleton, so a new phase's
-prompt doesn't drift from whichever sibling its author happened to
-copy last:
-
-1. **Title + one-line intro** — what this prompt is for. A dedicated
-   `## Purpose` heading is optional, not mandatory — only add one when
-   the prompt introduces something genuinely non-obvious that needs
-   justifying (e.g. `2-2-techplan-review-prompt.md` explains *why* an
-   independent second-pass review exists, citing the real incident
-   that motivated it). Don't add `## Purpose` just for uniformity —
-   restating an obvious phase name in prose is filler, not
-   documentation.
-2. **`## Inputs required before running`** — every placeholder
-   (`{HARSCODE_WORKSPACE_ROOT}`, `{TASK_PATH}`, etc.) and every precondition
-   material (a locked techplan, prior-phase output already on disk,
-   etc.) needed before this prompt makes sense to run. Always this
-   exact heading, always before the `## Prompt` block — a reader
-   deciding whether they're ready to run this shouldn't have to read
-   the whole prompt text first to find out.
-3. **`## Prompt`** — the literal, paste-ready fenced block. Mandatory,
-   always this exact heading. This is the one thing every prompt file
-   exists to provide; if a phase turns out to need conditional logic
-   before its prompt applies (see `2-3-techplan-decomposition-prompt.md`'s
-   gate question), that logic goes inside this block, not as a
-   replacement for it.
-4. **Phase-specific output sections** (optional, varies per phase) —
-   e.g. `4-code-review-prompt.md`'s Safety/Quality/Consistency
-   breakdown, `3-build-prompt.md`'s What changed/Tests run. These
-   genuinely differ per phase; don't force a common shape here.
-5. **`## Notes`** — always last, always this exact heading. Answers
-   "what do I do with the output" and "what's the immediate next
-   manual step" — not a dumping ground for anything that didn't fit
-   elsewhere. If you're tempted to add a "How To Use" heading, put that
-   content here instead: a second heading for the same kind of content
-   invites exactly the two-sources-of-truth drift this workspace
-   already learned to avoid the hard way (`techplan/decisions-log.md`'s
-   Summary-desync history).
-
-When adding a new phase prompt, copy this shape, not the nearest
-existing file verbatim — the existing files themselves have drifted
-from each other before (`2-3-techplan-decomposition-prompt.md` was
-missing both its `## Prompt` block and its `## Notes` section until a
-routine review caught it).
+A prompt should route to deeper authority rather than copying it. When adding a prompt, follow this shape and root `AUTHORING.md` rather than copying the nearest sibling's historical quirks.
