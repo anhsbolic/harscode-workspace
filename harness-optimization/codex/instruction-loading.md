@@ -1,105 +1,71 @@
-# instruction-loading.md (Codex)
+# Instruction Loading (Codex)
 
-## What this translates
-
-Harscode separates three kinds of truth:
+## Authority mapping
 
 ```text
-project-specific rules and routing
-→ target repo
+target-repo product/domain/project rules
+→ target repo hierarchical AGENTS.md + canonical project sources
 
-portable lifecycle/process guidance
-→ workflow/
+portable lifecycle/process
+→ Harscode workflow/ canonical phase prompt + routed context
 
 portable engineering correctness
-→ best-practices/
+→ Harscode best-practices clue map → matching authority
 ```
 
-Codex already has a native hierarchical instruction mechanism. The translation goal is therefore **not** to create another Codex policy document; it is to use the hierarchy without collapsing those source boundaries.
+Codex's hierarchical project instructions make another giant always-loaded policy file unnecessary.
 
-## Current Codex behavior this pattern relies on
+## Always-loaded project instructions
 
-As verified 2026-09-13, Codex aggregates instruction sources including:
+Keep target-repo `AGENTS.md` focused on what must govern nearly every task in that scope:
 
-- user/Codex-home `AGENTS.override.md` and `AGENTS.md`;
-- project instruction files from the Git/project root toward the current working directory;
-- configured fallback project-document filenames;
-- configured skill metadata.
-
-More-specific project instructions are layered later. The project-document path is bounded by a default context budget, so always-loaded instruction size is not free.
-
-## Target-repo pattern
-
-Use root `AGENTS.md` for only the material that must always govern work in the repository:
-
-- hard safety/correctness rules;
-- write/protected-path fencing;
+- hard safety/write/protected-path rules;
 - authoritative local commands;
 - directory/scope boundaries;
-- concise routing to project canonical docs;
-- concise routing to Harscode lifecycle/best-practice sources.
+- concise routes to project canonical sources and Harscode entrypoints.
 
-Use nested `AGENTS.md` only where a subtree genuinely needs additional or more-specific rules.
+Move rationale, long examples, architecture/design explanation, and full workflow procedures to their owners and load them on demand.
 
-Move rationale, long examples, detailed architecture, visual-system explanation, and full workflow procedures into the source that owns them, then route to that source.
+Useful test:
 
-A useful test is:
+> Does Codex need this before almost every task in this scope, or only when a specific concern is active?
 
-> Would Codex need this sentence before almost every task in this scope, or only when a specific concern is active?
-
-If it is concern-specific, prefer routing/progressive disclosure over always-loaded prose.
+If concern-specific, route/progressively disclose it.
 
 ## Harscode integration
 
-Do not paste Harscode workflow files wholesale into project `AGENTS.md`.
-
-A target repo should be able to say, in compact form:
+Do not put a blanket instruction such as “read the whole Harscode README/index first.” Route by concern:
 
 ```text
-feature lifecycle / generic phase responsibilities
-→ {HARSCODE_WORKSPACE_ROOT}/workflow/README.md
+workflow task
+→ {HARSCODE_WORKSPACE_ROOT}/workflow/AGENTS.md
+→ applicable canonical workflow/*-prompt.md
+→ only context the prompt/trigger requires
 
-portable engineering guidance
-→ {HARSCODE_WORKSPACE_ROOT}/best-practices/index.md
+engineering best practice
+→ {HARSCODE_WORKSPACE_ROOT}/best-practices/AGENTS.md
+→ targeted search/scan of index.md for active stack/concern
+→ matching best-practice file(s)
 ```
 
-Then the active phase/task loads only the smallest relevant Harscode material.
+For same/fresh sessions and re-grounding, follow `workflow/context-management.md` via `session-boundaries.md`.
 
-The target repo remains authoritative for its own domain/product/architecture rules. Harscode remains authoritative for the portable concern it owns.
+## Overrides / fallback filenames
 
-## `AGENTS.override.md`
+Use `AGENTS.override.md` only for intentional local/operator overrides, not as an overflow file for a bloated baseline.
 
-Treat `AGENTS.override.md` as an explicit override mechanism, not the normal home for baseline project governance.
-
-Good uses are genuinely temporary/local/operator-specific overrides where overriding the normal hierarchy is intentional and visible.
-
-Do not use an override file merely because the root `AGENTS.md` became too large. If the root file is bloated, compact it and move detail to canonical/on-demand sources instead.
-
-## `project_doc_fallback_filenames`
-
-Codex can be configured to recognize additional project-document filenames.
-
-Use this as a compatibility bridge for a repository that already has a legitimate instruction file under another name. Do not introduce a new `CODEX.md` (or similar) solely because the option exists.
-
-A fallback filename that duplicates `AGENTS.md` creates two independent sources that can drift.
+Use additional project-document fallback filenames only to recognize an existing legitimate instruction surface. Do not create `CODEX.md` simply because configuration allows it.
 
 ## Conflict handling
 
-When two instruction sources appear to conflict on the same concern:
+When instruction sources conflict:
 
-1. apply Codex's normal instruction precedence;
-2. identify whether the conflict is actually between two legitimate owners;
-3. surface a real source-of-truth contradiction instead of silently choosing whichever rule makes the current task easier.
+1. apply normal Codex instruction precedence;
+2. identify the legitimate semantic owners;
+3. surface a real source-of-truth contradiction instead of choosing whichever rule makes the task easier.
 
-Harness translation must not be used to override project/domain authority.
+Harness translation never overrides target project/domain authority.
 
 ## Context-budget check
 
-Before adding always-loaded instruction text, ask:
-
-- Is this already stated in `workflow/`, `best-practices/`, or a target-repo canonical doc?
-- Can the root/nested `AGENTS.md` point there instead?
-- Is this rule scoped to only one subtree?
-- Could a Skill load this only when relevant?
-
-The goal is not the smallest possible `AGENTS.md`; it is the smallest **complete always-needed** instruction surface.
+Before adding persistent instruction text, ask whether it is already owned elsewhere, whether it can be routed conditionally, and whether its scope can be narrower. Goal: smallest **complete always-needed** instruction surface, not smallest file at any cost.

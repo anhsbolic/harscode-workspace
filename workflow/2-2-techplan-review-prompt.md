@@ -1,201 +1,137 @@
-# Techplan Review Prompt (Draft)
+# Techplan Independent Review Prompt (Draft)
 
-> Status: DRAFT — not yet a protected file. Proposed location: `workflow/techplan-review-prompt.md` (sibling to `techplan-synthesis-prompt.md` and `techplan-decomposition-prompt.md`, not nested inside `techplan/`).
-> Trigger for formalizing into a proposal: run this against 2+ real Complex-tier techplans first. If it reliably surfaces gaps the primary pass missed, propose it into the repo. If it mostly finds nothing new, keep it informal.
+> **Status:** DRAFT — dogfood on 2+ real Complex-tier Techplans before proposing formalization as a stable gate.
 
-## Purpose
-
-An independent second-pass review of a synthesized `techplan.md`, run by a **different model** than the one that produced it. This is not re-synthesis and not a rewrite — it is adversarial verification against the source material and the plan's own internal consistency.
-
-This exists because the driving story's three review passes (2026-08-13) showed that a model checking its own output against a self-check list is not equivalent to an independent check. Proposal 0002's diagram-syntax and severity gaps, and proposal 0003's R18 recurrence and Summary/Open-Items desync, were all found specifically because a *different* actor (model or human) looked at the same artifact with fresh eyes.
+Independent adversarial verification of a synthesized Techplan. Use a different reviewer/model/actor from the primary synthesis when practical; this is review, not re-synthesis.
 
 ## Inputs required before running
 
-- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
-  relative to (or as an absolute path from) your project. Set once per
-  project; see `workflow/README.md` § Path Variables Convention.
-- The synthesized `techplan.md` (the artifact under review).
-- The raw exploration docs it was synthesized from
-  (`{TASK_PATH}/1-exploration/logs/`) — required for Check 1 (Rule
-  fidelity) and Check 6 (Test Focus Pointer completeness), both of
-  which trace claims back to source material, not to the reviewer's
-  judgment.
-- `rules.md`, `guardrails.md`, `diagram-guidelines.md`, `template.md` — the review runs against these, not against the reviewer's own general sense of what a techplan should look like.
+- `{HARSCODE_WORKSPACE_ROOT}`
+- actual task `techplan.md`
+- all durable Exploration evidence in `{TASK_PATH}/1-exploration/logs/`
+- current `workflow/2-techplan/{template.md,rules.md,guardrails.md}`
+- `diagram-guidelines.md` only if a diagram exists
+
+Unlike ordinary cross-phase progressive disclosure, this review intentionally re-grounds broadly on Exploration evidence for **independent fidelity checking**. That cost is justified only when the Complex gate below applies.
 
 ## Prompt
 
-```
-You are running an independent second-pass review of a synthesized
-techplan.md — you did not write this plan, and you are not rewriting
-it. Your job is adversarial verification: check every claim against
-the actual source material and the plan's own internal consistency,
-not against your general sense of what a techplan should contain.
+```text
+You are independently reviewing a synthesized techplan.md. Do not rewrite it.
+Verify it against the actual durable source evidence and current Techplan
+authority, not against your memory/general preference.
 
-Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan
-— rules.md, guardrails.md, diagram-guidelines.md referenced below
-resolve relative to this. The techplan under review is at
-{HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/template.md for structure
-reference, but read the actual task's techplan.md (given below) for
-content.
+Read:
+- {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/template.md
+- {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/rules.md
+- {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/guardrails.md
+- the actual task Techplan
+- every durable Exploration artifact for this task
+- diagram-guidelines.md only if the Techplan includes a diagram
 
-Response style: your process can be terse and checklist-driven, but
-every reported finding must be complete — location, what's wrong, what
-the source says instead. The findings report is the deliverable
-({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+Process narration may be terse/checklist-driven; every finding must include
+location, defect, source evidence, and materiality.
 
-Step -1 — Resolve section numbers first (mandatory, do this before
-anything else): read the current template.md and identify the actual
-section number for each of the following named sections in THIS
-version of the template: Rules & Validation, Testing Checklist (and
-its Test Focus Pointer subsection, if present), Open Items, Decision
-Log, Edge Cases & Risks, and Summary (if the template still has one —
-some versions moved this to a separate report-template.md instead).
-Use the section names below, resolved to whatever number they
-actually have in the template you're reviewing against — do not
-assume fixed numbers from memory or from a previous review. Template
-section numbers change as this workspace's guidance evolves via its
-own proposal process; a check written against a stale number silently
-checks the wrong thing.
+STEP 0 — COMPLEX GATE
+Is independent review warranted? Treat as Complex when the plan has ≥15
+Rules & Validation entries, crosses services/contracts, carries a breaking
+change, or touches high-stakes auth/payment/PII/event-contract boundaries.
 
-Step 0 — Gate question (mandatory, answer explicitly before
-proceeding): Is this techplan Complex-tier? (Rules & Validation has
-≥15 rules, cross-service, breaking-change trigger, or touches
-auth/payment/PII/Kafka-pubsub contract)
-- If no — stop here. State why review isn't warranted at this tier
-  and exit. Don't review "on autopilot" just because this prompt was
-  invoked.
-- If yes — proceed, and state which Complex-tier criteria applied.
+If NO: stop, state why this review is not warranted, and do not review on
+autopilot.
+If YES: state the criteria and continue.
 
-Run every check below against the actual techplan and actual source
-docs — not from memory of what a typical techplan contains. Don't skip
-a check because an earlier one found nothing; each looks for a
-different class of drift. Cite the resolved section number from Step
--1 whenever you reference a section, not an assumed one.
+Resolve current template section names/numbers before checking; do not rely on
+numbers remembered from an older template.
 
-1. Rule fidelity (Rules & Validation section): count rule IDs there.
-   Confirm every rule ID has a corresponding line in the Testing
-   Checklist section. Flag any missing. For each rule, re-derive it
-   from the raw exploration doc it claims to come from — flag any rule
-   that doesn't trace back, or that paraphrases the source in a way
-   that changes meaning.
+CHECKS
 
-2. Diagram validation (if the plan includes a Mermaid diagram, wherever
-   it lives in the template):
-   - Syntax: every edge uses `-->`, no single-dash edges.
-   - Semantic: for every branch condition, re-check against the source
-     table or rule it claims to represent. Confirm the direction of
-     any inequality is correct and the range is actually satisfiable
-     (watch for impossible-range bugs, e.g. a condition that can never
-     be true given the variables involved). Confirm no gaps or
-     overlaps between branches.
+1. Rule fidelity
+   - Every §4 rule traces to real requirement/Exploration evidence without
+     meaning-changing paraphrase.
+   - Every §4 rule has §12 verification coverage.
+   - Flag invented or silently dropped material rules.
 
-3. Human-facing summary accuracy (only if the template has a
-   human-facing summary/digest section, under whatever name it
-   currently uses): confirm any "top risks" or equivalent list only
-   includes the severity tier the template defines as inclusion
-   criteria — flag anything below that bar. Confirm every item in any
-   condensed Open-Items-style list matches the current state of the
-   full Open Items section exactly. Confirm the summary introduces no
-   decision that isn't traceable to the full plan's body.
+2. Decision fidelity
+   - Material chosen/rejected alternatives in §5 match Exploration solutioning.
+   - Do not re-litigate a correctly recorded choice; flag only missing,
+     contradictory, or meaning-changing decision history.
 
-4. Open Items lifecycle (Open Items section): every item is in exactly
-   one defined lifecycle state — flag ambiguous or dual-state items,
-   whatever the state names are called in this version of the
-   template. Every resolved item has its resolution recorded, not
-   deleted.
+3. Diagram validation (only if present)
+   - valid Mermaid syntax;
+   - branch/state/control-flow semantics match §4/§8/§9 evidence;
+   - no impossible/gapped/overlapping conditions.
 
-5. Guardrail compliance spot-check: no invented facts — spot-check 2-3
-   non-obvious technical claims against source docs. No silent
-   overwrite of a locked/approved contract, or of draft-status content
-   mid-edit without a dependent summary/derived section being
-   resynced.
+4. Open Items lifecycle
+   - each item is Active or Resolved, never ambiguous/duplicated;
+   - resolved items retain actual resolution/consequence.
 
-6. Test Focus Pointer completeness (Testing Checklist section's Test
-   Focus Pointer subsection, if the template you're reviewing against
-   has one — some earlier techplans predate this and won't): read the
-   raw exploration docs' risk-lens findings from its sniffing/gap
-   analysis. For each finding genuinely about shared state,
-   concurrency, an expensive primitive under load, or a
-   security-sensitive boundary — confirm it appears in the pointer
-   table, either as a relevant row or explicitly marked not-applicable
-   with a reason. Flag any such finding that's simply absent with no
-   trace — the same class of silent-drop gap as Open Items desync
-   (Check 4), just on a different section. Don't flag ordinary
-   rule-level edge cases that don't rise to pointer relevance —
-   over-flagging noise defeats the check.
+5. Technical-fact / guardrail spot-check
+   - verify 2–3 non-obvious paths/symbols/signatures/contracts against live
+     source/spec or durable evidence;
+   - no silent material overwrite of an already locked contract.
 
-Classify every finding by what it would force Build to do if left
-unresolved:
-- Material — Build would have to invent a product/domain decision,
-  cross an authority/security boundary, choose a materially different
-  architecture/state/component ownership shape, or proceed without a
-  meaningful verification strategy; or the defect changes the plan's
-  meaning or makes the contract unusable. Only material findings are
-  Blocking. Tag each with the concern it touches.
-- Mechanical — wording, formatting, exact command spelling, local
-  implementation shape, and other unambiguous corrections Build can
-  safely resolve. These go under Non-blocking, never Blocking.
-Don't hunt for more findings once the material checks are done — this
-review converges, it doesn't polish.
+6. Test Focus Pointer completeness
+   - every surviving concurrency/perf/security-sensitive Exploration finding
+     is relevant/Yes or explicit N/A with reason;
+   - every row has the correct exact Exploration evidence anchor;
+   - no ordinary rule-level edge case is inflated into specialized testing
+     without reason.
 
-Explicitly out of scope: re-litigating architectural decisions already
-made in the Decision Log section — this is a compliance/consistency
-review, not a second design review. Style or wording nitpicks are not
-worth reporting on their own.
+Classify findings:
 
-Techplan under review:
-[PASTE PATH OR CONTENT HERE]
+MATERIAL / BLOCKING — Build would otherwise need to invent or cross a material
+product/domain, authority/security, architecture/ownership, interface/data,
+risk/meaning, or verification decision; or the Techplan contract is unusable.
+Tag the concern.
 
-Raw exploration docs it was synthesized from:
-[PASTE PATH OR CONTENT HERE]
+MECHANICAL / NON-BLOCKING — wording/formatting/exact command/local shape or
+other unambiguous correction Build can safely resolve without changing
+material meaning.
 
----
+Do not hunt for polish after the material checks are complete.
 
-Do NOT output a rewritten techplan. Output a findings report in this
-exact format:
+Output only:
 
 ## Review findings — <task-code>
+**Gate:** <Complex criteria>
+**Sections resolved:** <current mapping>
 
-**Section numbers resolved (this techplan's version):** [Rules &
-Validation = §_, Testing Checklist = §_, Open Items = §_, ...]
+### Blocking
+- <finding — location — source evidence — material concern>
 
-**Gate check:** [Complex-tier criteria that applied]
-
-### Blocking (must fix before Approved — material findings only)
-- [finding] — [location in techplan, using the resolved section number] — [what's wrong] — [what source says instead] — [material concern: product/domain | authority/security | architecture/ownership | verification | meaning/unusable contract]
-
-### Non-blocking (worth a look, doesn't block approval — includes all mechanical findings)
-- [finding]
+### Non-blocking
+- <finding>
 
 ### Clean
-- [checklist items that passed, briefly — confirms the check was actually run, not skipped]
+- <checks that passed, briefly>
+
+## Phase handoff
+- Completed: independent review
+- Artifacts: <review findings path if written>
+- Open / blocked: <blocking findings or none>
+- Recommended next step: one resolution pass, then human gate
+- Session recommendation: CONTINUE only for the planning resolution/human gate while context is focused; FRESH for Build after Approval
+- Context pointers: Techplan + exact source anchors for blocking findings only
 ```
 
 ## What happens with findings
 
-Findings go back to the primary model (or the human lead) for resolution — this prompt does not auto-fix the techplan. If the same category of finding recurs across 2+ stories/tasks, that's the proposal threshold (`guidelines.md`) — write a proposal to fold it into `rules.md`/`guardrails.md`/`diagram-guidelines.md` as a permanent self-check item, the same way proposal 0003 converted recurring prose instructions into checklist items.
-
-### Convergence (stopping rule)
-
-Default shape — not a loop:
+Default shape:
 
 ```text
 synthesis
-→ one independent review (only when Step 0's Complex gate applies)
+→ one independent review (Complex only)
 → one resolution pass
 → human gate
 ```
 
-- **The resolver declares material change.** Whoever resolves the findings states, for the resolution as a whole, whether it changed scope, architecture/ownership, business/security semantics, or verification strategy — regardless of how the reviewer tagged the findings. A fix to a finding tagged mechanical that turns out to change one of those counts as material.
-- **Re-review follows that declaration, and the human gate has the final call.** If the answer is yes, re-review runs unless the human gate explicitly waives it. If the answer is no, the human gate can still order one. Neither the resolver nor the reviewer skips re-review on their own say — the resolver is usually the actor that wrote the plan, so its own "not material" is not the last word.
-- **Non-blocking findings never trigger re-review.** Resolve them in the same pass or defer them to Build.
-- **Deferral covers mechanical detail only.** If Build later hits a material decision the plan left open, it stops and reports back instead of inventing the answer (`workflow/README.md` § Phase Convergence).
+The resolver declares whether the resolution changed material scope, architecture/ownership, business/security/interface semantics, or verification strategy. If yes, re-review runs unless the human gate waives it. If no, the human may still order re-review.
 
-This is a stopping rule, not permission to ignore material contradictions. Added by proposal 0028 while this prompt is still Draft; the 2+ real Complex-tier formalization threshold above is unchanged, and this rule should be re-evaluated as part of that formalization.
+Non-blocking/mechanical corrections never trigger re-review by themselves. If Build later discovers a material gap, it returns to the Techplan/human gate rather than inventing the decision.
 
 ## Notes
 
-- This prompt does not decide which model runs it — see `best-practices/model-routing.md` (draft): the mandatory dual-model row for Techplan Complex synthesis is what this review formalizes into a repeatable step.
-- Explicitly out of scope is also stated inside the prompt block itself (not just here) so the model sees the boundary at review time, not only in this file's documentation.
-- **Why section numbers are resolved at runtime instead of hardcoded:** the previous version of this prompt hardcoded `§4`/`§12`/`§14` etc. directly, copied from `template.md`'s numbering at the time it was written. `template.md` has since evolved (its Open Items section is now `§13`, not `§14`) and this prompt's checks 3-4 kept citing the stale `§14` without anyone noticing — a review prompt silently checking the wrong section number is exactly the kind of drift this prompt exists to catch elsewhere. Naming sections instead of numbering them makes this prompt resilient to future `template.md` renumbering without needing a matching edit here every time.
-- This same fragility likely affects `2-1-techplan-synthesis-prompt.md` and `2-3-techplan-decomposition-prompt.md` too, wherever they reference section numbers directly — worth an audit pass, but out of scope for this fix.
+- This Draft prompt does not choose named models; model routing is a separate execution concern.
+- Broad Exploration rereading here is deliberate independent verification, not the default pattern for Build/Testing.
+- Re-evaluate the prompt after 2+ real Complex runs before making it a stable mandatory mechanism.
