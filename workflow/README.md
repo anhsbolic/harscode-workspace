@@ -66,7 +66,7 @@ count:
 
 1. **Exploration + Techplan** — both planning-type (full reasoning,
    read-mostly). Merging these two, specifically, is the one combination
-   root `README.md` § Usage already blesses (step 3) — this section
+   root `README.md` § Usage already blesses (step 4) — this section
    doesn't change that, it generalizes what comes after it.
 2. **Build + Patch loop** — execution-loop, terse, and the tool scope
    genuinely differs from planning (write access, running the code).
@@ -93,7 +93,7 @@ boundary when subagents aren't in use.
 
 **Why not split further** (e.g. exploration and techplan as two
 sessions): not disallowed, but not the default either — root `README.md`
-step 3 already covers this case, and splitting a small/linear feature
+step 4 already covers this case, and splitting a small/linear feature
 further is the same "premature structure" the decomposition prompt
 (`2-3-techplan-decomposition-prompt.md`) already warns against for a
 different granularity.
@@ -112,6 +112,43 @@ This is guidance, not a hard rule — same tier as every other lightweight
 specific feature is small enough that a stricter split is pure overhead,
 same posture the decomposition prompt already takes toward "premature
 structure."
+
+## Domain-Grouped Projects (Optional)
+
+Some projects divide their roadmap/spec by domain — e.g. a domain whose
+planned features are `D01-01` through `D01-09` — and group those
+features' `{TASK_PATH}` folders under a shared `{DOMAIN_PATH}`. **For
+those projects only**, two domain-level prompts bracket the per-feature
+cycle:
+
+- `0-domain-sequencing-prompt.md` — before the first feature in a
+  domain: which planned features can run in parallel sessions and which
+  must wait on another.
+- `7-domain-closure-prompt.md` — after every feature in the domain has
+  finished testing: a whole-domain check before the domain is declared
+  done.
+
+Neither is part of the default lifecycle. A project that plans and
+builds feature by feature, without grouping features by domain, skips
+both entirely — nothing to record, no placeholder file, no note that
+they were skipped.
+
+"Domain" here means how the *work* is divided and planned, not
+Domain-Driven Design. A DDD codebase planned feature by feature doesn't
+need these prompts; a non-DDD codebase whose roadmap is split by domain
+can use them.
+
+The two prompts are independent of each other. Closure can run for a
+domain that never had a `_domain-manifest.md` (it falls back to the
+domain spec for the feature list), and producing a manifest doesn't
+oblige a closure review — though a domain large enough to need
+sequencing is usually large enough to benefit from closure.
+
+The numbers mark lifecycle *position* (before exploration / after
+testing), not obligation.
+
+Origin: proposal 0029, which also retrofitted this condition onto
+0026's sequencing prompt after it had landed as an unconditional rule.
 
 ## Governance
 

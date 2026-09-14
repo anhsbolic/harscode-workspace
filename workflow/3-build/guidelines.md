@@ -50,3 +50,14 @@ reveals the techplan's contract doesn't actually hold — a rule can't
 be satisfied as written, an assumption turns out wrong — that's a
 stop-and-ask moment (loop back to techplan), not a silent workaround
 or a silent reinterpretation of scope.
+
+The same applies when a techplan or task file contradicts itself — most
+often an abbreviated interface-contract snippet disagreeing with an
+explicit "mirrors X" / "implement exactly like Y" instruction in the
+same file or its parent techplan. If the difference is material
+(behavior, the contract a caller sees, an authority/security boundary,
+data shape), stop and ask — don't pick one. If it's mechanical only
+(local naming, internal shape the contract doesn't expose), follow the
+mirroring instruction and record the discrepancy in the build report.
+Either way it's written down, never resolved silently. See
+`workflow/README.md` § Phase Convergence.

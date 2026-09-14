@@ -21,11 +21,13 @@ there. This file is just the short version.
   per phase and not one for the whole feature. See `README.md` §
   Session Boundaries for the rationale and the one blessed exception
   (merging exploration+techplan).
-- Before the first feature session in a new domain, run
-  `0-domain-sequencing-prompt.md` and produce `{DOMAIN_PATH}/
-  _domain-manifest.md` before picking which feature to start. Don't
-  default to strict serial order across a domain's features without
-  having checked this.
+- Domain-level prompts apply only if the project groups its work by
+  domain (`README.md` § Domain-Grouped Projects) — otherwise skip them
+  and don't mention them. When it does: run
+  `0-domain-sequencing-prompt.md` before the first feature in a new
+  domain (don't default to strict serial order without it), and run
+  `7-domain-closure-prompt.md` after the domain's last feature finishes
+  testing, before declaring the domain done.
 - Start each phase from its root `*-prompt.md` where one exists. Harness
   wrappers and project overlays route to it — never re-author it, never
   fork it per stack. See `README.md` § Canonical Phase Prompts.

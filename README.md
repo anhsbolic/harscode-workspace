@@ -105,12 +105,14 @@ This is an active, evolving personal system — not a finished product. Structur
    `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which
    in turn point to the full `README.md`/`index.md` for anything beyond
    the hard rules.
-3. Before the first feature in a new domain, run
-   `workflow/0-domain-sequencing-prompt.md` once to produce that
-   domain's `_domain-manifest.md` — it tells you which of the domain's
-   planned features can run in parallel sessions and which must wait on
-   another. Skip this for a domain's 2nd+ feature once the manifest
-   already exists and nothing new has been added to scope.
+3. *(Optional — only if the project groups its work by domain; see
+   `workflow/README.md` § Domain-Grouped Projects.)* Before the first
+   feature in a new domain, run `workflow/0-domain-sequencing-prompt.md`
+   once to produce that domain's `_domain-manifest.md` — it tells you
+   which of the domain's planned features can run in parallel sessions
+   and which must wait on another. Skip this for a domain's 2nd+ feature
+   once the manifest already exists and nothing new has been added to
+   scope.
 4. Start a task in `1-exploration/` before jumping to `2-techplan/` —
    the workflow assumes you don't skip stages. Running exploration and
    techplan synthesis in one session is fine — see `workflow/README.md`
@@ -128,16 +130,26 @@ This is an active, evolving personal system — not a finished product. Structur
     a patch plan (in `5-testing/`), then execute that patch the same way
     as step 8 (in `3-build/`), producing a patch report there.
 11. Create the pull request.
+12. *(Optional — domain-grouped projects only.)* Once every feature in
+    a domain has finished testing, run
+    `workflow/7-domain-closure-prompt.md` before declaring the domain
+    done. Its findings go back through the normal cycle (patch plans,
+    or new tasks for unowned cross-cutting work) — they're not fixed
+    inside the review.
 
 ### Task Working Directory Structure
 
+*(Domain-grouped projects only — a project that doesn't group work by
+domain has no `{DOMAIN_PATH}`; each `{TASK_PATH}` stands on its own.)*
 `{DOMAIN_PATH}` is the parent directory holding every feature's
 `{TASK_PATH}` within one domain (e.g. all of a domain's `D0X-NN-*`
-feature folders live directly under it). `_domain-manifest.md` (leading
-underscore, sorts before every feature folder) is the only file that
-lives directly under `{DOMAIN_PATH}` rather than inside a specific
-feature's `{TASK_PATH}` — it's the output of
-`workflow/0-domain-sequencing-prompt.md`, see step 3 of § Usage above.
+feature folders live directly under it). `_domain-manifest.md` (output
+of `workflow/0-domain-sequencing-prompt.md`, step 3 of § Usage) and
+`_domain-closure-review.md` (output of
+`workflow/7-domain-closure-prompt.md`, step 12) are the only files that
+live directly under `{DOMAIN_PATH}` rather than inside a specific
+feature's `{TASK_PATH}` — the leading underscore sorts them before
+every feature folder.
 
 Each task gets one root working directory in the target repo —
 referred to as `{TASK_PATH}` throughout every prompt in `workflow/`.

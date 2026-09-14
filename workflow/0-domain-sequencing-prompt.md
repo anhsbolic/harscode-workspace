@@ -5,8 +5,13 @@ first exploration session — not once per feature. Produces a coarse,
 domain-wide dependency/parallel-safety graph across all of a domain's
 *planned* features, so you know which ones can run in parallel sessions
 and which must wait on another, before picking which one to start next.
+**Optional:** applies only to projects that group their work by domain
+(`workflow/README.md` § Domain-Grouped Projects).
 
 ## When To Use This
+
+Only if the project groups its features by domain. If it doesn't, this
+prompt doesn't apply — skip it entirely and start at exploration.
 
 Run this the first time you're about to start exploration on any
 feature in a domain that doesn't have a `_domain-manifest.md` yet. Skip

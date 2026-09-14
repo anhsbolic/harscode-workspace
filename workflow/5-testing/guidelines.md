@@ -93,6 +93,13 @@ project-specific). Then check:
 - [ ] Migration/schema version doesn't collide with anything landed
       since the techplan was written
 - [ ] Backward compatibility explicitly verified, not just assumed
+- [ ] If the change is cross-cutting (a shared middleware, trait, base
+      class, or anything else applied across every route/module), the
+      target repo's **entire** test suite has run clean — not only the
+      tests for the feature that motivated it. A cross-cutting change
+      can expose a latent bug in code this task never touched (origin:
+      a rate-limiting middleware's post-response bookkeeping surfaced
+      an unrelated service's missing transaction wrapper).
 - [ ] A fresh read of the techplan end-to-end for gaps or
       contradictions the earlier passes might have introduced
 
