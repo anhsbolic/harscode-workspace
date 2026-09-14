@@ -1,192 +1,123 @@
 # harscode-workspace
 
-A portable, local-only guidance system that AI coding agents follow across projects — not a prompt collection, not a framework, but a working manual built from real codebase experience.
+A portable, project-agnostic work manual for AI-assisted software delivery. It separates **workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
 
-## The problem
+## Mental model
 
-AI coding agents don't compound. Every session starts from zero context, no matter how many hours you spent teaching the last one. The common fix is throwing more prompts, more rules files, more "best practices" docs at the problem — but most of that content is either too abstract to act on, or too tied to one project to reuse.
+AI coding agents do not reliably compound context across sessions. Durable quality comes from controlling:
 
-`harscode-workspace` is an attempt to solve this differently: a project-agnostic directory of workflow phases and technology-specific best practices, grounded in real examples, designed to be dropped into any repo and actually followed — not just referenced.
+- **knowledge** — what authority is available;
+- **durable state** — what survives session boundaries;
+- **scope/authority** — what the active phase may decide/change;
+- **verification** — what proves the result;
+- **human gates** — where unresolved material decisions stop.
 
-## Philosophy: managing amnesiac contractors, not teammates
-
-AI agents aren't growing team members. They don't compound skill over time, they fail confidently without internal signals telling them something's wrong, and they have no skin in the game. The right mental model is closer to **managing a fleet of amnesiac contractors** who can be handed an increasingly complete work manual.
-
-That reframe drives every design decision here. The manageable variables aren't "how smart is the model" — they're things like:
-
-- **Knowledge** — what the agent actually knows going in
-- **Memory** — what persists across sessions (usually: nothing, unless you build it)
-- **Scope** — what the agent is allowed to touch
-- **Verification** — how you catch confident failures before they ship
-- **Human checkpoint** — where a person has to sign off before the agent proceeds
-
-`harscode-workspace` is the "work manual" side of that equation.
+Harscode is the portable manual around those controls. Target-project truth still belongs in the target repo.
 
 ## Structure
 
-```
-workspace/
-├── AGENTS.md            # first thing an agent reads — hard rules + routing, no rationale
-├── proposals/            # agent-writable proposals for best-practices/ (and, if ever needed, lightweight workflow/ phases)
-│   └── README.md
-├── workflow/            # development phases, in order of use
-│   ├── AGENTS.md         # hard rules + routing for this folder
-│   ├── README.md         # source of truth — phase tiering, rationale
-│   ├── exploration/       # current-state gap analysis before any plan exists
-│   ├── techplan/           # the most formal phase — guardrails, its own proposals/, retro log
-│   ├── build/              # thin test-scope boundary for the tight edit → run → fix loop
-│   ├── code-review/
-│   ├── testing/
-│   └── pull-request/
-└── best-practices/      # technology-organized knowledge base
-    ├── AGENTS.md          # hard rules + routing for this folder
-    ├── index.md            # source of truth — scannable table: trigger keyword → file → summary, plus governance detail
-    ├── go/
-    ├── graphql/
-    ├── postgresql/
-    ├── restapi/
-    ├── kafka/
-    ├── pubsub/
-    ├── redis/
-    ├── infra/
-    ├── pwa/
-    └── ...
+```text
+AGENTS.md                  lightweight root router + hard rules
+AUTHORING.md               standard for writing Harscode guidance itself
+workflow/                  lifecycle / phase authority
+  AGENTS.md                phase router
+  context-management.md    context classes, handoff, session transitions
+  *-prompt.md              canonical phase entrypoints
+  <phase>/                 deeper phase rules/checklists/examples
+best-practices/            technology/correctness knowledge base
+  AGENTS.md                targeted discovery rules
+  index.md                 clue map → matching best-practice files
+harness-optimization/      translation into Codex/Claude/etc mechanisms
+proposals/                 one protected-guidance proposal log
 ```
 
-**`workflow/`** encodes *how* an agent should move through a piece of work — exploration before planning, a formal proposal process for architectural decisions, lightweight checklists for lower-stakes phases like testing and PRs. Structural weight is proportional to stakes: `techplan/` has guardrails and a retro log; `code-review/` doesn't need that ceremony.
+### `workflow/`
 
-**`best-practices/`** encodes *what* an agent should know — organized by technology, not by project, so it's genuinely portable. Every entry here has had project-specific references stripped and replaced with neutral examples before it's allowed in.
+Owns **what must happen by phase**: Exploration, Techplan, Build/Patch, Code Review, Testing, PR, plus optional domain-level sequencing/closure.
 
-**`index.md`** is load-bearing infrastructure, not a nice-to-have. Without it, an agent has to scan entire folders to find relevant guidance, which defeats the point. Every new best-practices file gets a row: trigger keywords → path → one-line summary. For security-relevant work specifically, `index.md` also carries a Security Concern Map — a cross-cutting grouping by concern (authn, authz, secrets, PII, etc.) so an agent doesn't have to guess which technology folder a security pattern lives in.
+### `best-practices/`
+
+Owns **portable engineering correctness** by technology/concern. `index.md` is a clue map; agents target relevant rows/sections and then open matching authority rather than reading the whole knowledge base.
+
+### `harness-optimization/`
+
+Owns **translation only**: how a harness expresses existing Harscode rules using its native instruction/session/skill/sandbox mechanisms. It does not invent lifecycle or engineering policy.
 
 ## Design principles
 
-- **Single source of truth over phase-split content.** Cross-cutting knowledge (e.g. Go error handling) lives in `best-practices/`, not duplicated across every workflow phase that touches Go.
-- **Agents execute, humans own the guidance.** Agents can work within these files and write proposals for changes, but can't edit stable guidance directly. That boundary is deliberate.
-- **Weight matches stakes.** Not every phase needs the full formalism of `techplan/`. Over-engineering lightweight phases was tried and explicitly rejected.
-- **Everything here is project-agnostic by construction.** If a best-practice can't be stripped of project-specific context, it doesn't belong here yet.
+- **Quality/correctness is the floor.** Context/token reduction is useful only when outcome quality is preserved or improved.
+- **Single source of truth.** Link/routable authority beats repeated hand-maintained copies.
+- **Progressive disclosure.** Load required authority first; clue maps locate conditional detail; examples/history stay cold until needed.
+- **Durable artifacts over chat memory.** A fresh phase/session can reconstruct required truth from files + current source state.
+- **Weight matches stakes.** Techplan is formal; Build is a tight loop; Review/Testing are independent verification concerns.
+- **Terse process, complete artifact.** Avoid narration/filler without weakening execution/review evidence.
+- **Project-agnostic by construction.** Project-specific facts/rules belong in the target repo.
+
+See `AUTHORING.md` for documentation-writing rules and `workflow/context-management.md` for runtime context/session rules.
 
 ## Governance
 
-### Protection model, by area
-
-| Area | Editable by agent? | Proposal mechanism |
+| Area | Direct edit on ordinary task? | Change mechanism |
 |---|---|---|
-| `best-practices/` (all of it, including `index.md`) | No — not even append | `proposals/` (root), Protection Tier: `general` |
-| `workflow/2-techplan/` protected files (`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`, `report-template.md`) | No | `proposals/` (root), Protection Tier: `techplan-protected` |
-| `workflow/2-techplan/examples.md`, `workflow/2-techplan/retro.md` | Yes — append directly | N/A |
-| `workflow/{1-exploration,3-build,4-code-review,5-testing,6-pull-request}/` | Corrected in the moment — no formal protection today | `proposals/` (root), Protection Tier: `general`, if that ever changes |
+| `best-practices/` | No | root `proposals/`, `general` tier |
+| protected `workflow/2-techplan/` files | No | root `proposals/`, `techplan-protected` tier |
+| `workflow/2-techplan/examples.md`, `retro.md` | append-only exception | direct append |
+| lightweight workflow phase guidance | yes, corrected in the moment today | proposal only for structural/recurring changes |
+| `harness-optimization/` | No | root `proposals/` |
 
-One proposal mechanism, one shared numbering sequence: `proposals/` at the workspace root. This used to be two separate mechanisms — a root `proposals/` and a narrower `workflow/2-techplan/proposals/` for techplan's own protected files — kept apart because a techplan is a contract a lead signs off on and changes more slowly than everything else. In practice, two independent numbering sequences that occasionally needed to cross-reference each other (the same real incident sometimes driving both a `best-practices/` fix and a techplan fix) produced colliding numbers with no way to tell them apart. The fix was to consolidate into one folder and one sequence, keeping the tier distinction as a **Protection Tier field on each proposal** (`general` vs `techplan-protected`) instead of by folder location. `techplan-protected` keeps the higher bar (2+ tasks or genuinely structural); `general` keeps the lower one. See `proposals/README.md` for the full mechanics, template choice, and numbering rule.
+One proposal folder, one numbering sequence. See `proposals/README.md`.
 
-### `AGENTS.md` vs `README.md`
-
-Every `README.md` (this file, `workflow/README.md`, `best-practices/index.md`) is the source of truth — read by humans and agents alike, holding the actual rationale, tables, and detail. `AGENTS.md` files are a separate, much thinner layer: the first thing an agent reads on entering a directory, containing only imperative hard rules and a pointer back to the relevant `README.md`/`index.md` for anything beyond that.
-
-`AGENTS.md` is not allowed to accumulate explanatory content over time. If a rule needs justifying, the justification goes in `README.md`, not inline in `AGENTS.md`.
-
-## How this differs from Spec Kit / Superpowers / Amazon Kiro
-
-This project studied those tools but didn't adopt them wholesale. The short version: most existing systems optimize for either heavy spec formalism upfront (Spec Kit) or a general-purpose skill library (Superpowers, Kiro) — neither is built specifically around the exploration → techplan → execution loop with proportional structure per phase, or around a strict separation between agent-writable proposals and human-owned guardrails. `harscode-workspace` trades some generality for being opinionated about that loop.
-
-## Status
-
-This is an active, evolving personal system — not a finished product. Structure gets revised based on real usage (e.g. the `exploration/` phase was recently reworked after practical testing surfaced gaps in how agents were handling multi-area exploration). Expect churn.
+`AGENTS.md` files are intentionally small routing/hard-rule surfaces. Full README/index documents are **not mandatory startup reads merely because they exist**; load their relevant sections when the active concern requires them.
 
 ## Usage
 
-1. Copy this workspace's content into your project (or symlink it if
-   you work across multiple repos) — the exact location is up to you;
-   every prompt in `workflow/` refers to it as `{HARSCODE_WORKSPACE_ROOT}`, set
-   once per project. See `workflow/README.md` § Path Variables
-   Convention.
-2. Point your agent's system prompt / project instructions at
-   `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the entry point — it routes to
-   `workflow/AGENTS.md` and `best-practices/AGENTS.md` as needed, which
-   in turn point to the full `README.md`/`index.md` for anything beyond
-   the hard rules.
-3. *(Optional — only if the project groups its work by domain; see
-   `workflow/README.md` § Domain-Grouped Projects.)* Before the first
-   feature in a new domain, run `workflow/0-domain-sequencing-prompt.md`
-   once to produce that domain's `_domain-manifest.md` — it tells you
-   which of the domain's planned features can run in parallel sessions
-   and which must wait on another. Skip this for a domain's 2nd+ feature
-   once the manifest already exists and nothing new has been added to
-   scope.
-4. Start a task in `1-exploration/` before jumping to `2-techplan/` —
-   the workflow assumes you don't skip stages. Running exploration and
-   techplan synthesis in one session is fine — see `workflow/README.md`
-   § Session Boundaries for how the rest of a feature's phases are
-   meant to split across sessions.
-5. Techplan includes: synthesis → review → decomposition (optional).
-6. Build against the techplan → write a build report.
-7. Run code review against the build report → produces a review report
-   and, if needed, a patch plan.
-8. Execute that patch plan as part of the build loop — patches are
-   always executed and reported in `3-build/`, regardless of which
-   phase asked for them (see Task Working Directory Structure below).
-9. Run testing against all build reports (initial build + every patch).
-10. If testing says the code needs a patch — write a testing report and
-    a patch plan (in `5-testing/`), then execute that patch the same way
-    as step 8 (in `3-build/`), producing a patch report there.
-11. Create the pull request.
-12. *(Optional — domain-grouped projects only.)* Once every feature in
-    a domain has finished testing, run
-    `workflow/7-domain-closure-prompt.md` before declaring the domain
-    done. Its findings go back through the normal cycle (patch plans,
-    or new tasks for unowned cross-cutting work) — they're not fixed
-    inside the review.
+1. Make Harscode reachable from the target project and set `{HARSCODE_WORKSPACE_ROOT}`.
+2. Use `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the routing entrypoint.
+3. Start the active phase from its canonical prompt under `workflow/`.
+4. Optional domain-grouped projects may run domain sequencing before the first feature.
+5. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
+6. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
+7. Build executes the Approved Techplan (plus current decomposed task when applicable) and reopens live code at recorded anchors.
+8. Code Review runs independently. Findings needing code changes create a patch plan and return to Build authority.
+9. Testing runs independently. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
+10. Create the PR from final repository state + durable evidence.
+11. Optional domain-grouped projects may run domain closure after feature testing completes.
 
-### Task Working Directory Structure
+Session/context details live in `workflow/context-management.md`; do not infer “same session” or “fresh session” solely from task size.
 
-*(Domain-grouped projects only — a project that doesn't group work by
-domain has no `{DOMAIN_PATH}`; each `{TASK_PATH}` stands on its own.)*
-`{DOMAIN_PATH}` is the parent directory holding every feature's
-`{TASK_PATH}` within one domain (e.g. all of a domain's `D0X-NN-*`
-feature folders live directly under it). `_domain-manifest.md` (output
-of `workflow/0-domain-sequencing-prompt.md`, step 3 of § Usage) and
-`_domain-closure-review.md` (output of
-`workflow/7-domain-closure-prompt.md`, step 12) are the only files that
-live directly under `{DOMAIN_PATH}` rather than inside a specific
-feature's `{TASK_PATH}` — the leading underscore sorts them before
-every feature folder.
+## Task working directory
 
-Each task gets one root working directory in the target repo —
-referred to as `{TASK_PATH}` throughout every prompt in `workflow/`.
-Its subfolders mirror `workflow/`'s own phase numbering:
+Each task uses one `{TASK_PATH}` in the target repo:
 
-```
+```text
 {TASK_PATH}/
 ├── 1-exploration/
-│   └── logs/                    # raw exploration output (gap analysis, sniffing findings, solutioning)
+│   └── logs/                       durable raw evidence / code anchors / solutioning
 ├── 2-techplan/
-│   ├── techplan.md
-│   └── tasks/                   # only if decomposition (2-3) was run — task files + manifest
+│   ├── techplan.md                 authoritative execution-grade spine
+│   ├── report-techplan.md          generated after Approval; human-facing digest
+│   └── tasks/                      optional decomposition task files + manifest
 ├── 3-build/
-│   ├── report.md                # initial build report
-│   └── patch-report-<n>.md      # every patch execution report lands here, whoever asked for it
+│   ├── report.md
+│   └── patch-report-<n>.md
 ├── 4-code-review/
 │   ├── review-findings-<n>.md
-│   └── patch-plan-<n>.md        # the ask only — execution + report happens in 3-build/
+│   └── patch-plan-<n>.md
 ├── 5-testing/
 │   ├── testing-report-<n>.md
-│   └── patch-plan-<n>.md        # same — ask only, cross-references the patch-report number in 3-build/
+│   └── patch-plan-<n>.md
 └── 6-pull-request/
     └── pr-description.md
 ```
 
-The rule in one sentence: **patches are always executed and reported
-in `3-build/`**, no matter how many rounds or which phase requested
-them — patching is build activity by definition. `4-code-review/` and
-`5-testing/` only ever hold the *request* (a patch plan), cross-
-referenced to the patch report number that actually did the work.
+Patch rule: **production patches are executed/reported in `3-build/` regardless of which independent phase requested them.** Review/Testing keep the finding/patch-plan request, preserving authority separation.
 
-This wasn't consistently followed before — see `retro.md`-style note:
-a real testing report once landed inside `3-build/` instead of
-`5-testing/` purely because that's where the session happened to be
-working. This structure exists specifically so that doesn't have to be
-a judgment call next time.
+For domain-grouped projects, `{DOMAIN_PATH}` may additionally contain `_domain-manifest.md` and `_domain-closure-review.md`; feature-by-feature projects have no domain-level artifacts.
+
+## Status
+
+Active personal system. Changes are driven by real dogfood and should preserve proven quality before optimizing ceremony/context.
 
 ## License
 
-_(TBD — add your preferred license here, e.g. MIT)_
+_(TBD)_
