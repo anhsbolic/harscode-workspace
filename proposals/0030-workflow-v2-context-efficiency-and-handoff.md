@@ -1,6 +1,7 @@
 # Proposal: Workflow v2 context efficiency and phase handoff
 
 > Status: Proposed
+> Experimental state: **Frozen for dogfood on `workflow-v2`**
 > Date: 2026-09-14
 > Protection Tier: techplan-protected
 > Triggered by: Kencleng Codex frontend dogfood — quality was satisfactory, but Exploration + Techplan + independent review consumed disproportionate context/usage and exposed broad mandatory reads, recursive re-reading, and stale Techplan guidance.
@@ -152,6 +153,39 @@ Run workflow-v2 on real features while `main` stays untouched as the baseline. A
 - Was the resulting code at least as good as the established baseline?
 
 Do not promote workflow-v2 to `main` from one successful run. Use multiple real tasks and revise this branch in place until the quality/efficiency tradeoff is credible.
+
+## Dogfood Baseline Freeze — 2026-09-14
+
+The implementation on `workflow-v2` has completed its pre-dogfood correctness/consistency pass. **No blocking finding remains that requires a new workflow decision before dogfood.**
+
+The final audit fixed only evidence-backed contradictions or semantic-loss risks, including:
+
+- restoring explicit invocation/input semantics after an initial over-compression pass;
+- preserving fuller detail in conditional decomposition/human-report guidance where shortening had little runtime benefit;
+- keeping Techplan review's broad source re-grounding where independence is a correctness feature;
+- aligning Code Review best-practice discovery with targeted clue-map routing;
+- aligning Codex/Claude wrappers with adaptive session boundaries rather than hardcoded phase grouping;
+- preserving Build ownership of production patches;
+- correcting the malformed `harness-optimization/README.md` filename with trailing spaces so existing references resolve normally.
+
+Deliberately deferred from this baseline:
+
+- generic model-routing modernization;
+- mandatory token/allowance telemetry;
+- optional capability/image-generation policy;
+- Kencleng project-document optimization;
+- unrelated historical/example cleanup that does not block this dogfood.
+
+### Freeze rule
+
+From this point until real dogfood evidence says otherwise:
+
+1. do **not** continue speculative compression or restructuring merely because another document could be shorter;
+2. do **not** add new workflow machinery for hypothetical failures;
+3. change `workflow-v2` only when dogfood exposes a correctness gap, context/handoff failure, recurring ambiguity, or clearly unnecessary repeated work;
+4. keep `main` untouched as the proven comparison baseline.
+
+The commit that records this section is the workflow-v2 **dogfood baseline checkpoint**. Subsequent changes should be traceable to concrete dogfood evidence rather than pre-emptive optimization.
 
 ## Rationale
 
