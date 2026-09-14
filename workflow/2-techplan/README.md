@@ -1,58 +1,43 @@
 # Techplan Guidance
 
-This folder contains the guidance an AI Agent uses to read exploration
-documents in `{TASK_PATH}/1-exploration/logs/` and produce a single
-`techplan.md` in `{TASK_PATH}/2-techplan/`.
+This folder owns the portable rules for turning Exploration evidence into an execution-grade `techplan.md`.
 
-This folder is a **purely local workspace** — not merged into any
-project repo, and portable across projects with different standards.
+## Runtime file map
 
-## File Map
-
-| File | Answers the question | Nature |
+| File | Role | Context class |
 |---|---|---|
-| `template.md` | What does the final techplan look like? | Stable |
-| `rules.md` | What's mandatory, and how do we map content to sections? | Stable |
-| `guardrails.md` | When should the agent stop instead of assuming? | Stable |
-| `guidelines.md` | What's the read-synthesize-write process, step by step? | Stable |
-| `diagram-guidelines.md` | How do I write a valid, correctly-scoped Mermaid diagram for §9 or the report's Architecture section? | Stable |
-| `examples.md` | Concrete examples calibrated for tone & level of detail? | Growing (append new examples) |
-| `retro.md` | Mistakes that happened during synthesis, and their mitigations? | Growing (living log) |
-| `techplan-example.md` | Real example of a finished, agent-only techplan.md? | Stable |
-| `report-template.md` | What does the post-Approval, human-facing report look like? | Stable |
-| `report-techplan-example.md` | Real example of a generated report-techplan.md, paired with `techplan-example.md`? | Stable |
+| `template.md` | Required output structure | **Required** |
+| `rules.md` | What the Techplan must preserve and how evidence maps into it | **Required** |
+| `guardrails.md` | Hard stops / no-assumption boundaries | **Required** |
+| `guidelines.md` | Process reference for synthesis/revision | Routing / conditional when using the canonical prompt |
+| `diagram-guidelines.md` | Mermaid syntax/semantic rules | Conditional — only when a diagram is warranted |
+| `examples.md` | Tone/detail calibration | Cold — open only when shape/detail is ambiguous |
+| `techplan-example.md` | Full finished example | Cold |
+| `retro.md` | Historical failures and lessons | Cold — do not load every run; recurring lessons belong in stable rules |
+| `report-template.md` | Post-Approval human-facing report | Conditional — only after Approval/report generation |
+| `report-techplan-example.md` | Human-report example | Cold |
 
-Proposed changes to the files above go in the workspace-root
-`proposals/` (not a local subfolder here — the two proposal
-mechanisms were consolidated into one; see `../../proposals/README.md`).
+The canonical synthesis entrypoint is `../2-1-techplan-synthesis-prompt.md`. It already carries the execution process; do not recursively read every file in this folder before synthesis.
 
-## Fundamental Rules
+## Fundamental rules
 
-1. **The agent must not edit `template.md`, `rules.md`, `guardrails.md`,
-   `guidelines.md`, or `diagram-guidelines.md` directly.** If the agent
-   finds a gap or friction during synthesis, it writes a new proposal in
-   the root `proposals/` (see `proposals/_proposal-template-techplan-tier.md`
-   for the format, Protection Tier: `techplan-protected`). A human
-   reviews and merges it into the target document.
-2. `examples.md` and `retro.md` may be appended to directly by the
-   agent without going through the proposal process — the risk is low
-   since these are additive (adding an example/note), not a change to
-   an existing rule.
-3. Proposals that have been **Merged** are not deleted. Since this
-   folder isn't git-tracked as its own repo, the proposal history is
-   the only changelog that exists for "why rules.md looks like this now".
-4. Threshold for writing a proposal: **recurring friction (2+ stories)
-   or genuinely structural** — not every time a session finds something
-   that could be slightly better. See `guidelines.md` § Proposal Threshold.
+1. `template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, `diagram-guidelines.md`, and `report-template.md` are protected. Change them through the root `proposals/` mechanism.
+2. `examples.md` and `retro.md` are append-only exceptions. Add only reusable calibration/learning; do not use them as a shadow rule system.
+3. Stable rules win over examples/retro history. If history reveals a recurring structural gap, promote the lesson through a proposal instead of requiring future agents to reread the history.
+4. Proposal threshold for this protected tier: recurring friction across 2+ tasks or a genuinely structural gap.
 
-## Workflow at a Glance
+## Output model
 
+```text
+Exploration durable evidence
+        ↓
+Techplan synthesis
+        ↓
+techplan.md — execution-grade authoritative spine
+        ↓ optional after Approval
+2-techplan/tasks/* — scoped execution slices; never a replacement for material spine decisions
+        ↓ after Approval
+report-techplan.md — human-facing digest generated from the Techplan
 ```
-{TASK_PATH}/1-exploration/logs/*.md  (raw, dynamic, count & content not fixed)
-              │
-              ▼  agent reads everything + reads this guidance folder
-   classify content by FUNCTION (not by file name)
-              │
-              ▼
-{TASK_PATH}/2-techplan/techplan.md   (canonical, ready for lead/team review)
-```
+
+`techplan.md` is written for execution and engineering review: **complete, unambiguous, execution-grade, non-redundant**. The separate report is the reviewer digest; do not add an embedded Summary back into the Techplan.

@@ -1,97 +1,86 @@
-# Synthesis Prompt
+# Techplan Synthesis Prompt
 
-Ready-to-use prompt for instructing an AI Agent (Claude Code, OpenCode
-CLI, etc.) to synthesize a techplan.md from raw exploration output,
-using this guidance folder. Fill in the placeholders, paste as-is.
+Canonical entrypoint for turning completed Exploration evidence into `techplan.md`.
 
 ## Inputs required before running
 
-- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
-  relative to (or as an absolute path from) your project. Set once per
-  project; see `workflow/README.md` § Path Variables Convention.
-- `{TASK_PATH}` — root working directory for this specific task in the
-  target repo (e.g. `.local-agents/works/account/06-mfa-totp/`), NOT
-  just the exploration output folder. This prompt reads from
-  `{TASK_PATH}/1-exploration/logs/` and writes to
-  `{TASK_PATH}/2-techplan/techplan.md`.
-- Completed exploration output already sitting in
-  `{TASK_PATH}/1-exploration/logs/` — this prompt does not run
-  exploration itself, see `1-exploration-kickoff-prompt.md` for that.
+- `{HARSCODE_WORKSPACE_ROOT}` — Harscode workspace path.
+- `{TASK_PATH}` — task working directory.
+- Completed durable Exploration artifacts in `{TASK_PATH}/1-exploration/logs/`.
+- Applicable target-repo authority/specs must be reachable.
 
 ## Prompt
 
-```
-Read the guidance folder at {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan in
-this order: README.md, template.md, rules.md, guardrails.md,
-guidelines.md, examples.md, retro.md. All bare file references below
-(rules.md, guardrails.md, template.md) resolve relative to this same
-folder. This defines how you should classify content and what the
-output must look like.
+```text
+You are synthesizing the execution-grade Techplan for this task.
 
-Response style: full detail, execution-grade, no compression — this
-techplan becomes the contract other agents and humans execute against
-later ({HARSCODE_WORKSPACE_ROOT}/workflow/README.md § Response Style By Phase).
+Read these Techplan authorities in full:
+- {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/template.md
+- {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/rules.md
+- {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/guardrails.md
 
-Then read every file in {TASK_PATH}/1-exploration/logs/ — treat all of
-them as raw material. Don't assume a fixed number or fixed names;
-classify each piece of content by the function it serves (rules.md
-§ 1), not by which file it came from.
+Use {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/guidelines.md only when
+you need deeper process clarification; this canonical prompt already owns
+the normal execution sequence. Do not default-load examples.md, retro.md,
+techplan-example.md, report-template.md, or diagram-guidelines.md.
+Open them only when their trigger in the Techplan README/guidelines applies.
 
-Before filling in the Interface Contract section, read this repo's own
-convention file (AGENTS.md / README / CONTRIBUTING — whatever exists
-here) to know what's mandatory to cover — don't assume the conventions
-from the guidance folder apply here.
+Output quality: complete, unambiguous, execution-grade, non-redundant.
+A fresh Build agent must be able to execute without inventing a material
+product/domain, authority/security, architecture/ownership, interface/data,
+risk, or verification decision. Do not pad the Techplan with duplicated
+source prose, historical narrative, generic framework knowledge, or exact
+mechanical detail Build can safely derive from live code.
 
-If two or more raw docs cover the same ground with conflicting or
-overlapping detail, follow rules.md § 2 (Dedup & Reconciliation) —
-prefer the most specific and most recent version, and call out
-anything that's a genuine conflict rather than picking silently.
+Exploration coverage:
+- If this is a fresh/compacted session, read every durable file in
+  {TASK_PATH}/1-exploration/logs/ once.
+- If this is the same healthy session that completed Exploration, enumerate
+  the durable files and reuse evidence still active/unchanged. Open anything
+  not already covered and reopen exact source sections when wording is
+  material. Do not mechanically reread unchanged evidence just for ceremony.
+- Correctness must remain reconstructable from durable artifacts; do not
+  write a decision that exists only in chat memory.
 
-If any sub-component has its own independent operational lifecycle
-(one-time script, cron, separate rollback/cleanup) — evaluate per
-rules.md § 3 whether it belongs as a section here or as a separate
-linked document.
+Classify evidence by function per rules.md §1. Reconcile overlaps/conflicts
+per §2. Preserve material rejected alternatives in §5 so later agents do
+not re-litigate settled choices.
 
-Follow every guardrail in guardrails.md — in particular: don't invent
-technical facts (mark anything uncertain as `TBD — verify`), don't
-overwrite an existing Approved/Implemented techplan's contract sections
-silently, and STOP and ask me if you find a breaking change or data
-risk that isn't already explicit in the raw docs.
+Read the target repo's applicable AGENTS/README/spec/convention sources for
+any project-specific contract or implementation assumption. Technical paths,
+symbols, signatures, schema/API facts, and current behavior must come from
+those sources or direct live-code/spec checks.
 
-Stack-specific risk lens: before finalizing sniffing (risk, edge cases, miscontext,
-misleading signals, inconsistency), read {HARSCODE_WORKSPACE_ROOT}/best-practices/index.md.
-Match the trigger keywords in the index table against the area(s)/technology(ies)
-touched by this ticket (Go, PostgreSQL, GraphQL, REST API, Kafka, Pub/Sub, Redis).
-Open ONLY the matching file(s) — do not scan the entire best-practices/ folder.
-Apply the checklist from each matching file as part of the risk lens.
+For Implementation Details, record code anchors as path + symbol/section +
+why relevant + intended change/precedent. Prefer anchors over copied code.
 
-When populating the Testing Checklist section (currently §12 — verify
-the actual number against this template.md, don't assume), also
-populate its Test Focus Pointer table (see rules.md's Test Focus
-Pointer rule) by cross-referencing the raw exploration docs' Sniffing
-Checklist Risk findings for this task. Only carry forward areas
-genuinely about shared state, concurrency, an expensive primitive
-under load, or a security-sensitive boundary — and don't silently drop
-one that survived synthesis (see guardrails.md's rule on flagged risk
-areas); mark it N/A with a one-line reason instead.
+Before finalizing §12:
+- every §4 rule ID has checklist coverage;
+- every surviving concurrency/perf/security-sensitive Exploration risk has a
+  Test Focus Pointer row with its exact Exploration evidence anchor;
+- a scoped-out sensitive risk is N/A with a reason/Decision Log pointer, not
+  silently absent.
 
-Write the result to {TASK_PATH}/2-techplan/techplan.md, following
-template.md's structure exactly. At the end, list out any open items
-or unresolved questions you carried forward instead of silently
-deciding — I'll review those manually before this goes anywhere
-further.
+There is NO embedded Summary in techplan.md. Do not generate the human report
+during Draft/In Review; report-techplan.md is generated separately only after
+Approval.
+
+Write the result to {TASK_PATH}/2-techplan/techplan.md using template.md.
+Carry unresolved material uncertainty into §13 Open Items instead of guessing.
+
+At completion, report:
+
+## Phase handoff
+- Completed: Techplan synthesized and self-checked (or state what remains)
+- Artifacts: {TASK_PATH}/2-techplan/techplan.md
+- Open / blocked: <material unresolved items or none>
+- Recommended next step: human Techplan gate; independent review only if its Complex gate applies
+- Session recommendation: FRESH for Build after Techplan approval; if review/decomposition remains, CONTINUE only while planning context stays focused
+- Context pointers: techplan path + only source anchors needed for unresolved follow-up
 ```
 
 ## Notes
 
-- `{HARSCODE_WORKSPACE_ROOT}` replaces the old "make sure it's reachable" manual
-  step — resolve it once for this project and every reference above
-  follows automatically.
-- The output is a draft for your manual review — writing it to
-  `{TASK_PATH}/2-techplan/techplan.md` is a deliberate checkpoint, not
-  something to automate past. Review before it goes anywhere further
-  (a PR, a decomposition pass, etc.).
-- The stack-specific risk lens step assumes `best-practices/` sits as a
-  sibling to `workflow/` under `{HARSCODE_WORKSPACE_ROOT}`. If your layout
-  differs, that's exactly what `{HARSCODE_WORKSPACE_ROOT}` is for — point it at
-  wherever the common parent actually is.
+- `techplan.md` remains agent-executable; context optimization must not reduce contract precision.
+- Examples/retro are calibration/history, not mandatory runtime authority.
+- After human Approval, generate `report-techplan.md` from `report-template.md`; then run optional decomposition only when its own gate says it adds value.

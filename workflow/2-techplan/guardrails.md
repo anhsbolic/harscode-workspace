@@ -1,126 +1,57 @@
 # Guardrails
 
-Hard stops. If any of these conditions are hit, the agent STOPS and asks
-a human — it does not assume and proceed.
+Hard stops and no-assumption boundaries for Techplan synthesis/revision.
 
-## 1. Don't Edit This Guidance Directly
+## 1. Protected Guidance Requires a Proposal
 
-`template.md`, `rules.md`, `guardrails.md`, `guidelines.md`, and
-`diagram-guidelines.md` must not be edited directly by the agent. If a
-gap is found, write a new proposal in `proposals/` (format in
-`proposals/_proposal-template-techplan-tier.md`, Protection Tier:
-`techplan-protected`). See `README.md` § Fundamental Rules for when a
-proposal is warranted.
+Do not change protected files in this folder during ordinary task work. Use the root proposal mechanism and the applicable human gate.
 
-## 2. Don't Modify or Delete Raw Docs in the Task's Exploration Output
+## 2. Exploration Evidence Is Read-Only History
 
-Files in `{TASK_PATH}/1-exploration/logs/` (exploration doc, risk doc,
-plan doc, whatever they're named) are historical input, read-only. If
-there's duplication/conflict between files, resolve it in the resulting
-techplan.md (see rules.md § Dedup & Reconciliation), not by editing the
-source raw docs.
+Do not rewrite/delete `{TASK_PATH}/1-exploration/logs/` to make synthesis easier. Reconcile duplication/conflict in the Techplan and preserve source anchors.
 
-## 3. Don't Overwrite an Approved/Implemented techplan.md
+## 3. Do Not Silently Change a Locked Material Contract
 
-If `techplan.md` in `{TASK_PATH}/2-techplan/` is already Approved or
-Implemented,
-and a new synthesis produces changes in section 1-7 (the contract part)
-— STOP. Explicitly flag to the reviewer that the contract has changed,
-don't overwrite silently. Changes in section 8-13 (derived) may be
-updated without special flagging since that content is expected to be
-volatile. The Summary is regenerated whenever section 1, 2, 5, or
-7 changes — treat that regeneration as part of the same flagged change,
-not a separate silent edit.
+If an Approved/Implemented Techplan would change a material product/domain rule, scope, authority/security boundary, architecture/ownership decision, interface/data contract, risk acceptance, or verification strategy, stop and flag the contract change before overwriting it.
 
-## 4. Read the Target Convention First, Don't Assume
+Do not classify change safety by section number alone. §8 Interface Contract, §12 verification obligations, and §13 Open Items can be material even though older guidance once called later sections “derived.”
 
-Before filling in section 8 (Interface Contract), read the AGENTS.md /
-README / convention file that exists in the target repo (not in this
-guidance folder). Minimal coverage, naming convention, error handling
-pattern — all of that is specific per project/service, and this
-guidance folder is deliberately generic so it stays portable across
-projects.
+Mechanical corrections that do not change meaning may be updated normally and recorded where the workflow/report expects them.
 
-## 5. Don't Invent Technical Facts
+## 4. Read Target-Repo Authority Before Declaring Its Contract
 
-Line numbers, function signatures, file names — all of these must come
-from the raw docs OR from a direct cross-check against the codebase. If
-unsure, write `TBD — verify` explicitly in the techplan, don't write it
-as if it were certain.
+Before finalizing interface/implementation conventions, read the applicable target-repo `AGENTS.md`/README/convention/spec source. Harscode is portable; it does not invent project-specific naming, error, API, state, design, or build conventions.
 
-## 6. Stop on Breaking Changes or Data Risk Not Already Made Explicit
+## 5. Do Not Invent Technical Facts
 
-If, during synthesis, the agent finds a potential breaking change, a
-risky data migration, or an impact on existing clients that is NOT
-mentioned in the raw docs — stop and ask. Don't quietly write it into
-Edge Cases as "low risk" without human validation.
+Paths, symbols, signatures, schema/API details, existing behavior, and line/section anchors must come from durable source material or a direct live-code/spec check. If uncertain, write `TBD — verify` / Open Item rather than presenting a guess as fact.
 
-## 7. Full Code Snippets Only for What's Non-Obvious
+## 6. Stop on Newly Discovered Breaking/Data/Authority Risk
 
-Section 10 (Implementation Details) references file:function +
-signature. Full function bodies only when the logic is genuinely
-new/non-obvious. Reason: implementation detail is the part most likely
-to change during iteration — full snippets go stale fast and add
-maintenance burden to the document without adding value (the code/PR is
-already the source of truth for exact detail).
+If synthesis reveals a potential breaking change, risky data operation, security/authority boundary change, or existing-client impact that the Exploration evidence did not make explicit, surface it for resolution. Do not quietly downgrade it into a routine Edge Case.
 
-## 8. Summary Must Not Introduce New Decisions
+## 7. Full Code Snippets Only When They Add Contract Value
 
-The Summary step (rules.md § 7) is condensation, not synthesis. If,
-while writing it, sections 1-13 don't actually contain a clear answer
-to "why," "what's in scope," or "what's the risk" — that's a gap in the
-full plan, not something to improvise in the Summary. Fix the relevant
-section (1, 2, 5, or 7) first, then condense.
+Prefer `path + symbol + intended change + precedent`. Include a full body/snippet only when the logic is genuinely novel/non-obvious and the snippet materially reduces implementation ambiguity. Code remains source of truth for exact implementation.
 
-## 9. Diagram Must Be Validated — Syntax AND Semantics — Before Finalizing
+## 8. Human Report Cannot Introduce Decisions
 
-If the Summary includes a Mermaid diagram, re-check it on two axes
-before writing the final file:
-- **Syntax**: every edge uses a double-dash arrow (`-->`), never a
-  single-dash (`->`) — see `diagram-guidelines.md`.
-- **Semantics**: every branch condition shown in the diagram matches
-  section 4 / the timeline table exactly. An inverted range, a
-  boundary drawn on the wrong side, or a condition that can never be
-  true (e.g. `today+14 < expiry < today`) is a correctness bug, not a
-  rendering issue — syntax-only validation will not catch it.
+`report-techplan.md` is generated only after Approval from `report-template.md`. If the report needs a fact/decision/risk that is absent or ambiguous in the Techplan, fix/reopen the Techplan instead of inventing the answer in the report.
 
-Treat both checks with the same seriousness as § 5 (Don't Invent
-Technical Facts): an unrendered, broken, or logically-wrong diagram is
-a shipped defect, not a style nitpick. If you can't confirm both, either
-fix the diagram or simplify it — don't ship it unverified.
+## 9. Diagram Must Be Syntax- and Semantics-Valid
 
-## 10. Resolved Open Items Must Be Recorded, Not Deleted
+When a diagram is warranted, validate both rendering syntax and branch/state/control-flow meaning against the Techplan rules/contracts. If either cannot be confirmed, fix or simplify the diagram rather than shipping an attractive contradiction.
 
-Regardless of the techplan's status (Draft, In Review, Approved,
-Implemented), when an Active Open Item is resolved, move it to the
-Resolved list with the resolution written out (`rules.md` § 8). Don't
-silently delete the line. A future reviewer needs to know what was
-asked and what it resolved to — the same reason `retro.md` and
-`proposals/` are append-only elsewhere in this workspace.
+## 10. Resolved Open Items Stay Recorded
 
-## 11. Summary Must Stay in Sync With the Full Plan
+Move resolved items to §13 Resolved with the actual resolution; never silently delete them. If the resolution materially changes the contract, apply §3 as well.
 
-Before treating any edit to sections 1, 2, 5, 7, or 14 (Open Items) as
-done — including a mid-Draft Open Item resolution, not just a full
-resynthesis — regenerate the Summary (`rules.md` § 7 self-check). A
-stale Summary that still lists a resolved item as needing human input,
-or a Top Risk that's since been mitigated, is actively misleading: it
-asks a reviewer to act on something that's already settled.
+## 11. Approved Human Report Must Stay Derived
 
-## 12. Don't Silently Drop a Flagged Risk Area
+When an Approved Techplan changes, regenerate `report-techplan.md` in full before treating the report as current. The Techplan remains authoritative if the two disagree.
 
-If exploration's Sniffing Checklist § Risk flagged an area as
-concurrency/perf/security-sensitive, and that area survives synthesis
-in some form, it must appear in section 12's Test Focus Pointer table —
-even if the answer is "no longer relevant, see § 5." Silently omitting
-it (rather than marking it N/A with a reason) reproduces the same class
-of gap as § 11 (Summary drifting out of sync): a reviewer or the
-testing phase has no way to tell "deliberately scoped out" from
-"forgotten."
+## 12. Flagged Sensitive Risk Needs a Traceable Pointer
 
-If you're unsure whether a Risk-lens finding rises to Test Focus
-Pointer relevance or is just an ordinary section 4 edge case — ask,
-don't guess. Over-including borderline cases is low-cost (worst case,
-the testing phase spends a few extra minutes confirming N/A); silently
-under-including one is what lets an untested race condition or
-security gap ship.
+A surviving concurrency/perf/security-sensitive Exploration finding must appear in §12 Test Focus Pointer with its evidence anchor. If no longer relevant, retain an explicit N/A/reason or Decision Log pointer.
+
+If uncertain whether a finding requires specialized Testing coverage, surface the uncertainty instead of silently omitting the risk or running a heavyweight test inside Build.
