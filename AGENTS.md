@@ -1,21 +1,18 @@
 # AGENTS.md — harscode-workspace
 
-Read `README.md` first — full governance rationale lives there. This
-file is just the short version and the routing table.
+This is the lightweight router and hard-rule surface. Do **not** load the full root `README.md` by default merely to route ordinary work; read the relevant section when workspace structure/governance rationale is actually needed.
 
 ## Where to go
 
-- Working in `best-practices/` → `best-practices/AGENTS.md`
-- Working in `workflow/` → `workflow/AGENTS.md`
-- Writing any proposal (`best-practices/`, `workflow/2-techplan/`
-  protected files, or a lightweight `workflow/` phase that someday
-  needs one) → `proposals/README.md`
+- Running or changing a workflow phase → `workflow/AGENTS.md`, then the phase's canonical root `*-prompt.md` where one exists.
+- Looking up engineering guidance → `best-practices/AGENTS.md`.
+- Writing a proposal → `proposals/README.md`.
+- Creating/editing Harscode guidance itself → `AUTHORING.md`.
+- Harness-specific translation/configuration → `harness-optimization/AGENTS.md`.
 
 ## Hard rules that apply everywhere
 
-- `best-practices/` (all of it) and `workflow/2-techplan/`'s protected
-  files: never edit directly, always propose.
-- One proposal mechanism for the whole workspace — root `proposals/`,
-  one shared numbering sequence. Set the `Protection Tier` field
-  correctly (`general` vs `techplan-protected`) instead of filing to a
-  separate folder — `workflow/2-techplan/proposals/` no longer exists.
+- `best-practices/` and protected `workflow/2-techplan/` files are proposal-gated. Never change them on an ordinary task without the applicable proposal/human authority.
+- One proposal mechanism: root `proposals/`, one shared numbering sequence; use the applicable protection tier.
+- Project-specific truth belongs in the target repo, not Harscode.
+- Prefer targeted reads over broad folder scans. Load additional guidance when a concrete trigger requires it; do not read files merely because they are adjacent.
