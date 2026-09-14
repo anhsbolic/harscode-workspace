@@ -2,15 +2,27 @@
 
 Protected sibling of `template.md`.
 
-**This is the sole human-facing Techplan digest.** Generate it only from an **Approved** `techplan.md`; regenerate in full whenever the source materially changes. Never hand-maintain it as a second contract.
+**Purpose:** `report-techplan.md` is the human-facing digest of an **Approved** `techplan.md`. It helps reviewers understand scope, architecture, material decisions, high risks, and open decisions without replacing the execution contract.
 
-Generation checklist:
+**Audience:** reviewer/lead/stakeholder who needs to understand or sign off, not the Build agent implementing the full technical detail.
 
-- [ ] Top Risks contains High-severity rows only.
-- [ ] Any diagram is warranted by the source flow and validated for syntax + semantics (`guardrails.md` §9; `diagram-guidelines.md`).
-- [ ] Open Items match current Techplan §13 Active/Resolved state.
-- [ ] Referenced rule/decision IDs still exist in the current Techplan.
-- [ ] No new decision/risk/contract was invented during condensation.
+## Generation rule
+
+- Generate only after the source Techplan reaches **Approved**.
+- Generate from the current Techplan; do not draft this report in parallel with an unresolved Draft/In Review plan.
+- Regenerate the report in full after a material Approved-Techplan change. Do not hand-maintain it as a second contract.
+- If this report and the Techplan disagree, the Techplan wins and this report is stale.
+
+## Generation checklist
+
+- [ ] Scope reflects the current Approved Techplan, including explicit out-of-scope boundaries.
+- [ ] Architecture/plan is reviewer-readable and does not leak unnecessary implementation detail.
+- [ ] Interface Contract appears only when a materially reviewer-relevant external/cross-boundary contract exists.
+- [ ] Key Decisions come from the Techplan Decision Log; no new decision is invented during condensation.
+- [ ] Risk requiring sign-off contains High-severity risks only, using the current Techplan severity/status.
+- [ ] Open items shown as needing a decision match the current **Active** Open Items. Resolved items are never presented as still needing action.
+- [ ] Any diagram is warranted by the source flow and validated for syntax + semantics via `diagram-guidelines.md` and current Techplan rules/contracts.
+- [ ] Every referenced rule/decision/risk ID still exists in the current Techplan.
 
 ```markdown
 # Report: {Story/Task Title}
@@ -21,74 +33,99 @@ Generation checklist:
 > Version : report v{n} — generated from techplan v{n}, {date}
 > Source  : {path to approved techplan.md}
 
+---
+
 ## What & why
-{short plain-language purpose/problem}
+
+{One short plain-language paragraph: what changes, why it matters, and the outcome this work is meant to enable. Do not restate implementation detail.}
 
 ## Scope
 
 **Included**
+- {reviewer-relevant behavior/outcome}
 - ...
 
-**Explicitly not included**
+**Explicitly not included this round**
+- {material boundary or deferred outcome}
 - ...
 
 ## Architecture / Plan
 
-{One-line flow for simple/linear work. Use a diagram only for genuine branching, state transitions, or multi-component ordering; validate via `diagram-guidelines.md`.}
+{For a simple linear change, use a short prose flow. Use a diagram only when genuine branching, state transition, or multi-component ordering makes it clearer than prose. Validate any diagram via `diagram-guidelines.md`.}
 
 **Components touched**
 
-| Component | Purpose |
+| Component | Purpose / change |
 |---|---|
-| ... | ... |
+| {plain component name} | {one-line reviewer-level description} |
 
-**Not touched:** {blast-radius confirmation}
+**Not touched / blast-radius boundary:** {important areas deliberately unchanged, e.g. no schema change / no existing API change, when material to reviewer confidence}
 
 ## Interface Contract
 
-{Include only when an external-facing/cross-boundary contract materially changes.}
+{Include this section only when the Approved Techplan adds/changes a reviewer-relevant API, event, webhook, external interface, or cross-boundary contract. Omit it for purely internal work.}
 
 | Concern | Contract |
 |---|---|
-| Endpoint/event/interface | ... |
-| Authentication/authority | ... |
-| Trigger/caller | ... |
+| Endpoint / event / interface | {method + path, event name, command, or other contract identity} |
+| Authentication / authority | {who may invoke / relevant authority boundary} |
+| Trigger / caller | {who or what initiates it} |
 
-**Representative request/input:**
+**Request / input**
+
+| Field / input | Meaning / requirement |
+|---|---|
+| {field} | {plain-language description} |
+
 ```json
-{}
+{representative example when JSON is the actual contract format; otherwise use the appropriate concise example format}
 ```
 
-**Representative response/output:**
+**Response / output**
+
+| Field / output | Meaning |
+|---|---|
+| {field} | {plain-language description} |
+
 ```json
-{}
+{representative example when applicable}
 ```
 
-**Error behavior:** ...
+**Error behavior:** {reviewer-relevant error categories/conditions and consequence. Do not invent detail absent from the Approved Techplan.}
 
 ## Key decisions
 
-| Decision | Why |
+{Include material choices a reviewer should know or might otherwise re-open. Keep rejected alternatives in the Techplan unless the rejection itself matters for sign-off.}
+
+| Decision | Why / consequence |
 |---|---|
-| ... | ... |
+| {chosen material decision} | {plain-language rationale} |
 
 ## Risk requiring sign-off
 
-{High-severity only.}
+{High-severity risks only. If there are none, say `No High-severity risk requiring sign-off identified in the Approved Techplan.` Do not promote Medium/Low risks just to fill the section.}
 
 | Risk | Exposure / mitigation | Status |
 |---|---|---|
-| ... | ... | ... |
+| {risk} | {plain-language exposure/mitigation} | {accepted / mitigated / open} |
 
-## Open item(s) — needs decision
+## Open item(s) — needs your decision
 
-{Active items that need reviewer/lead input.}
+{List only current Active Open Items that genuinely need reviewer/lead input. If none, say `None.` Resolved Open Items remain in the Techplan history and must not be presented as active.}
 
 ## Sign-off
+
 - [ ] Scope confirmed
-- [ ] High risks accepted/mitigated as recorded
-- [ ] Active decision items resolved or explicitly owned/deferred
+- [ ] Material interface/authority change understood, if applicable
+- [ ] High-severity risks accepted/mitigated as recorded, if any
+- [ ] Active decision items resolved or explicitly owned/deferred, if any
 
 ---
-*Execution detail: see the Approved source Techplan.*
+*Full execution detail, rule IDs, implementation anchors, and complete risk/decision history: see the Approved source Techplan.*
 ```
+
+## Notes
+
+- Reviewer readability is the reason this artifact exists; do not compress it into cryptic labels merely to save tokens.
+- Do not copy full rule tables, implementation anchors, or low-level test detail from the Techplan unless a specific reviewer decision depends on them.
+- This report is derived evidence, not a second place to resolve ambiguity. If condensation exposes a missing material fact, reopen/fix the Techplan first.
