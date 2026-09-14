@@ -73,7 +73,7 @@ All proposals live under root `proposals/` with one numbering sequence and the a
 
 ### Authoring Harscode itself
 
-Use root `AUTHORING.md`: correctness density, one source of truth, direct prose, progressive disclosure, and soft—not hard—document-size review thresholds.
+Use root `AUTHORING.md`: correctness density, one source of truth, direct prose, progressive disclosure, explicit invocation semantics, and soft—not hard—document-size review thresholds.
 
 ## Cross-stage source of truth
 
@@ -134,9 +134,9 @@ Planning artifacts are not licenses for verbose narrative. They preserve decisio
 Canonical prompts use a predictable shape without forcing filler headings:
 
 1. title + short purpose;
-2. `## Inputs required before running`;
+2. `## Inputs required before running` — an invocation contract, not a placeholder inventory. For each non-obvious input, state what it represents, its valid source/form, relevant project/task/round scope, and any precondition/authority limitation needed to avoid guessing. Bare variable names are not a brevity target;
 3. `## Prompt` with the runnable instruction;
 4. phase-specific output/rules only when needed;
 5. `## Notes` last.
 
-A prompt should route to deeper authority rather than copying it. When adding a prompt, follow this shape and root `AUTHORING.md` rather than copying the nearest sibling's historical quirks.
+A prompt should route to deeper authority rather than copying it, but routing must not make the prompt skeletal: a fresh agent still needs enough local semantics to invoke the phase safely. When adding or revising a prompt, follow this shape and root `AUTHORING.md` rather than copying the nearest sibling's historical quirks.
