@@ -1,91 +1,83 @@
 # Guidelines
 
-Runs after implementation exists, before it's considered done — either
-during active work or right before opening a PR. Four review passes,
-in order: Safety, Quality, Stack-Specific Best Practices, Consistency.
+Runs after implementation exists, before it is considered done. Four review
+passes run in order against the same current diff:
+
+1. Safety
+2. Quality
+3. Stack-Specific Best Practices
+4. Consistency
 
 ## 1. Safety Review
 
-> "Review this implementation for: nil/null pointer safety, concurrency
-> safety, error handling, resource safety."
+Review specifically for:
 
-Look specifically for:
-- Nil/null dereference when a dependency's data can legitimately be
-  empty or missing.
-- Race conditions in concurrent code — shared mutable state without
-  synchronization, goroutines/tasks that outlive their expected scope.
-- Errors silently swallowed (caught and discarded, or logged but not
-  propagated when the caller needs to know).
-- Missing cancellation/timeout propagation in code that calls out to
-  another service.
-- Resources not released on early-return paths (connections, file
-  handles, locks).
+- nil/null dereference where absence is legitimate;
+- race/shared-state or lifecycle hazards in concurrent/async code;
+- swallowed errors or errors that do not reach the caller that needs them;
+- missing cancellation/timeout propagation for external calls;
+- resource leaks on success/error/early-return paths.
 
-If this pass flags genuinely concurrency-sensitive or security-sensitive
-code, cross-check the task's techplan § 12 Test Focus Pointer: does
-this area appear there? If the code clearly warrants race/perf/security
-coverage but the pointer table doesn't reflect it, report that as a
-**techplan-drift finding**, separate from any code-level Safety finding
-— the fix is updating the techplan (or confirming it's deliberately out
-of scope), not just noting the code issue.
+If Safety reveals a genuinely concurrency/perf/security-sensitive area, check
+the current Techplan §12 Test Focus Pointer. If specialized coverage is
+warranted but absent, report **Techplan drift** separately from the code-level
+finding. Review does not silently retrofit planning history.
 
 ## 2. Quality Review
 
-> "Is this code optimized? Maintainable? Readable?"
+Review for maintainability/readability issues that materially affect the
+change, including:
 
-Look for:
-- Duplicated logic that should be extracted into a shared helper.
-- Unclear function signatures (e.g. multiple same-typed return values
-  with no way to tell which is which without reading the body).
-- Naming that doesn't match what the thing actually does.
-- Missing observability (no logging at decision points that matter for
-  debugging later).
+- duplicated logic that deserves a shared abstraction;
+- misleading names/signatures;
+- missing observability at meaningful decision/failure points;
+- dead/leftover code from refactoring;
+- unnecessary complexity with a simpler local shape already established in
+  the target repo.
+
+Do not invent style findings merely to populate the section.
 
 ## 3. Stack-Specific Best Practices Review
 
-> "Does this follow known correctness patterns for the technology it
-> touches?"
+This pass requires routed external knowledge, but **not a blanket full-index
+read**.
 
-This one requires an external lookup before it can be judged — same
-reason it's a separate pass and not folded into Quality. Steps:
+1. Use `best-practices/index.md` as a clue map. Search/scan only trigger rows
+   relevant to the technologies/areas touched by the diff. For a security
+   concern, also target the matching Security Concern Map row(s).
+2. Open only the matching best-practice files.
+3. Apply those files' actual checklists/rules to the diff.
+4. Cite the matching best-practice source for each finding.
 
-1. Check `best-practices/index.md` and match its trigger keywords
-   against the technology/area(s) touched by this diff (Go, PostgreSQL,
-   GraphQL, REST API, Kafka, Pub/Sub, Redis).
-2. Open only the matching file(s) — don't scan the whole folder.
-3. Apply that file's checklist to the diff (e.g. a Kafka consumer
-   change → `kafka/consumer-and-offset-management.md`; a new GraphQL
-   resolver → `graphql/resolver-n-plus-one.md`).
+If no trigger/security concern matches, this pass is explicitly clean/no-op;
+do not force a nearby best practice merely to have something to report.
 
-This is domain knowledge, not project convention — don't substitute a
-pattern from a different project's codebase for what the matching
-best-practices file actually says. If no keyword matches, this pass is
-a no-op; don't force a match that isn't there.
+Best-practice guidance is portable engineering knowledge, not target-project
+convention. Do not substitute a different project's pattern for the routed
+Harscode source.
 
 ## 4. Consistency Check
 
-> "Does this follow the existing codebase's own patterns?"
+Read the target repo's applicable convention/instruction source; do not infer
+project conventions from Harscode or another repository.
 
-This one is NOT generic — it requires reading the target repo's own
-convention file (AGENTS.md/README/CONTRIBUTING) first. Don't assume a
-pattern from a different project applies here. Check specifically:
-- Error handling convention (how errors are constructed/wrapped/typed).
-- Logging convention (format, what gets logged at what level).
-- Validation convention (where/how input validation happens).
-- Naming convention for anything newly introduced (constants, error
-  messages, etc.) — consistent with what already exists nearby, not
-  just internally consistent with itself.
+Check applicable concerns such as:
 
-## Order Matters
+- error construction/wrapping/category convention;
+- logging/observability convention;
+- validation placement/shape;
+- naming and local architectural precedent;
+- project-specific frontend/backend/design/test conventions relevant to this
+  diff.
 
-Do Safety first — a beautifully consistent, well-named function that
-has a nil pointer bug is still broken. Quality, Stack-Specific Best
-Practices, and Consistency are about the code being good to live with;
-Safety is about the code being correct at all.
+Cite the target-repo source/precedent behind a consistency finding.
 
-Stack-Specific Best Practices comes after Quality and before
-Consistency deliberately: it's domain correctness (is this right *for
-this technology*), which is a different question from both "is this
-well-built in general" (Quality) and "does this match what's already
-here" (Consistency) — and like Consistency, it requires reading an
-external reference before it can be judged, not just reading the diff.
+## Order matters
+
+Safety comes first because correctness/safety defects dominate local quality.
+Stack-specific correctness and project consistency are separate checks: one
+asks "is this correct for the technology/concern?"; the other asks "does this
+fit this repository's actual conventions?"
+
+Use the current diff as review scope. The Build report is evidence/context, not
+a substitute for inspecting the code change itself.
