@@ -8,6 +8,21 @@ Optimize for **correctness density**: the smallest amount of guidance that prese
 
 Shorter is not automatically better. A cohesive 300-line contract can be safer than five fragments that require the reader to reconstruct hidden dependencies. Conversely, a long file that mixes unrelated concerns forces every reader to pay for content they do not need.
 
+## Semantic preservation floor
+
+Prefer the shortest text that preserves operational meaning. Do **not** remove parameter semantics, preconditions, authority boundaries, stop conditions, failure behavior, decision rationale, or output meaning merely to reduce document size.
+
+A canonical runtime prompt must be usable by a fresh agent without relying on remembered chat context. Progressive disclosure may defer deeper knowledge, but the prompt itself still needs enough information to invoke the phase safely and know where deeper authority lives.
+
+For each non-obvious required input, state enough of the following to prevent guessing:
+
+- what the input represents;
+- the valid form/source when that is not obvious (text, path, diff, URL, current artifact, etc.);
+- whether its scope/lifetime matters (project-level, task-level, current round);
+- any precondition or authority limitation whose omission could change execution.
+
+A bare placeholder-only bullet such as `- {TASK_PATH}` is acceptable only when its semantics are genuinely obvious from the same prompt. Canonical phase prompts should normally spell out task/workspace/artifact inputs because those values control where agents read and write.
+
 ## Writing rules
 
 1. **Be direct.** State the rule, decision, or routing instruction first. Remove greetings, filler, repeated conclusions, generic motivation, and prose that does not change behavior.
@@ -18,6 +33,8 @@ Shorter is not automatically better. A cohesive 300-line contract can be safer t
 6. **Prefer explicit triggers.** Conditional guidance should say when to open/use it. Avoid instructions such as “read everything in this folder.”
 7. **Preserve executability.** Do not remove behavior, ownership, interface, security/authority, risk, or verification detail merely to make a document shorter.
 8. **Avoid narration inside artifacts.** Artifacts record decisions/evidence, not the model's conversational journey to reach them.
+9. **Keep invocation contracts explicit.** Inputs, preconditions, write destinations, stop conditions, and next-phase handoffs are operational semantics, not filler.
+10. **Compress rationale before semantics.** If a reduction forces the reader to infer what a parameter means, which source is authoritative, when to stop, or what output is expected, the reduction went too far.
 
 ## Context temperature
 
@@ -72,6 +89,8 @@ Before finalizing a Harscode guidance change, ask:
 - Does this introduce a second source of truth?
 - Is every mandatory read necessary for the active decision?
 - Could examples/history become conditional instead?
-- Did brevity remove an execution-critical detail?
+- Did brevity remove an execution-critical or invocation-critical detail?
+- Could a fresh agent invoke this phase without guessing what an input means or where output belongs?
+- Are authority boundaries, stop conditions, and failure behavior still explicit?
 - Can the intended reader find the relevant section without scanning unrelated material?
 - Does the change preserve current correctness while reducing ambiguity or repeated context?

@@ -6,11 +6,12 @@ Independent adversarial verification of a synthesized Techplan. Use a different 
 
 ## Inputs required before running
 
-- `{HARSCODE_WORKSPACE_ROOT}`
-- actual task `techplan.md`
-- all durable Exploration evidence in `{TASK_PATH}/1-exploration/logs/`
-- current `workflow/2-techplan/{template.md,rules.md,guardrails.md}`
-- `diagram-guidelines.md` only if a diagram exists
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this Harscode workspace, used to resolve current Techplan authority.
+- `{TASK_PATH}` — root working directory for the task under review.
+- `{TASK_PATH}/2-techplan/techplan.md` — the actual synthesized Techplan; this prompt reviews it and does not replace it.
+- `{TASK_PATH}/1-exploration/logs/` — all durable Exploration evidence for independent fidelity checking. Broad rereading is intentional here when the Complex gate applies.
+- Applicable target-repo source/spec/live-code authority — required for technical-fact spot checks; Exploration prose is not a substitute for current source truth.
+- `diagram-guidelines.md` is conditional and is opened only when the Techplan actually contains a diagram.
 
 Unlike ordinary cross-phase progressive disclosure, this review intentionally re-grounds broadly on Exploration evidence for **independent fidelity checking**. That cost is justified only when the Complex gate below applies.
 
@@ -19,15 +20,17 @@ Unlike ordinary cross-phase progressive disclosure, this review intentionally re
 ```text
 You are independently reviewing a synthesized techplan.md. Do not rewrite it.
 Verify it against the actual durable source evidence and current Techplan
-authority, not against your memory/general preference.
+and target-repo authority, not against your memory or general preference.
 
 Read:
 - {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/template.md
 - {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/rules.md
 - {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/guardrails.md
-- the actual task Techplan
-- every durable Exploration artifact for this task
+- {TASK_PATH}/2-techplan/techplan.md
+- every durable Exploration artifact under {TASK_PATH}/1-exploration/logs/
 - diagram-guidelines.md only if the Techplan includes a diagram
+- target-repo source/spec/live code only where a claim needs independent fact
+  verification
 
 Process narration may be terse/checklist-driven; every finding must include
 location, defect, source evidence, and materiality.
@@ -59,21 +62,22 @@ CHECKS
 
 3. Diagram validation (only if present)
    - valid Mermaid syntax;
-   - branch/state/control-flow semantics match §4/§8/§9 evidence;
-   - no impossible/gapped/overlapping conditions.
+   - branch/state/control-flow semantics match the relevant rules/contracts;
+   - no impossible, gapped, or overlapping conditions.
 
 4. Open Items lifecycle
    - each item is Active or Resolved, never ambiguous/duplicated;
-   - resolved items retain actual resolution/consequence.
+   - resolved items retain the actual resolution/consequence.
 
 5. Technical-fact / guardrail spot-check
-   - verify 2–3 non-obvious paths/symbols/signatures/contracts against live
-     source/spec or durable evidence;
+   - verify 2–3 non-obvious paths/symbols/signatures/contracts against current
+     target-repo source/spec/live code, not only against Exploration wording;
+   - no invented technical fact;
    - no silent material overwrite of an already locked contract.
 
 6. Test Focus Pointer completeness
    - every surviving concurrency/perf/security-sensitive Exploration finding
-     is relevant/Yes or explicit N/A with reason;
+     is `Yes` or explicit `N/A` with reason;
    - every row has the correct exact Exploration evidence anchor;
    - no ordinary rule-level edge case is inflated into specialized testing
      without reason.
@@ -86,8 +90,8 @@ risk/meaning, or verification decision; or the Techplan contract is unusable.
 Tag the concern.
 
 MECHANICAL / NON-BLOCKING — wording/formatting/exact command/local shape or
-other unambiguous correction Build can safely resolve without changing
-material meaning.
+other unambiguous correction that can be resolved without changing material
+meaning.
 
 Do not hunt for polish after the material checks are complete.
 
@@ -108,7 +112,7 @@ Output only:
 
 ## Phase handoff
 - Completed: independent review
-- Artifacts: <review findings path if written>
+- Artifacts: <review findings path if one was written; otherwise "review output in current session">
 - Open / blocked: <blocking findings or none>
 - Recommended next step: one resolution pass, then human gate
 - Session recommendation: CONTINUE only for the planning resolution/human gate while context is focused; FRESH for Build after Approval
@@ -134,4 +138,5 @@ Non-blocking/mechanical corrections never trigger re-review by themselves. If Bu
 
 - This Draft prompt does not choose named models; model routing is a separate execution concern.
 - Broad Exploration rereading here is deliberate independent verification, not the default pattern for Build/Testing.
+- The reviewer's job is fidelity/correctness, not a second architecture contest after a decision is correctly recorded.
 - Re-evaluate the prompt after 2+ real Complex runs before making it a stable mandatory mechanism.
