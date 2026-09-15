@@ -35,6 +35,8 @@ target-repo applicable instructions/authority
 
 Do not paste or re-read an entire earlier phase merely because it exists.
 
+Durable workflow-generated artifacts should also carry compact execution provenance when the phase controls their format: phase/stage, author, created/updated time, and — when the harness exposes them and it is safe/useful to persist — model, reasoning effort, session/thread id, target revision, and workflow revision. Do not invent unknown values or persist account/credential metadata. Git history remains the default version history.
+
 ## Same session vs fresh session
 
 Use **continuation fitness**, not a fuzzy task-size label.
@@ -68,10 +70,19 @@ Do not invent a context-window percentage as an automatic cutoff. Context occupa
 | Build → Code Review | **Fresh** for independent inspection |
 | Code Review → Patch | **Build authority**; continue prior Build if healthy, otherwise fresh Build re-grounded on the patch plan |
 | Build/Patch → Testing | **Fresh** for independent verification |
-| Testing → Patch | **Build authority** |
+| Testing → Patch | **Build authority**; continue prior Build if healthy, otherwise fresh Build re-grounded on the patch plan |
 | Testing → PR | **Flexible**; ground on final repository state + durable evidence |
 
 Fresh for **independence** and fresh for **context hygiene** are different reasons. Record the actual reason.
+
+`CONTINUE`, `FRESH`, and `BUILD authority` are portable routing semantics. Human-facing handoffs should translate them into an explicit action sentence instead of exposing only the enum. Examples:
+
+```text
+Continue Techplan synthesis in this session because Exploration context remains focused and current.
+Start a fresh Code Review session because reviewer independence is part of the next phase's value.
+Return to the existing Build session because the patch is narrow and implementation context remains focused.
+Start a fresh Build/Patch session re-grounded on the patch plan because the previous Build session is stale/compacted.
+```
 
 ## Code knowledge across phases
 
@@ -102,6 +113,8 @@ approved techplan (and current task slice if decomposed)
 
 Do not carry the whole Review/Testing conversation into Build.
 
+The handoff back to Build should tell the operator whether to reuse the existing Build session or start a fresh Build/Patch session, based on continuation fitness. `BUILD authority` alone is not a complete human instruction.
+
 ## Phase completion handoff
 
 At a **meaningful stage/phase completion** (not every progress message), finish with a compact handoff:
@@ -110,13 +123,16 @@ At a **meaningful stage/phase completion** (not every progress message), finish 
 ## Phase handoff
 - Completed: <what reached the phase/stage exit condition>
 - Artifacts: <paths written/updated; "none" if none>
-- Open / blocked: <material unresolved items; "none" if none>
+- Human decision: <decision needed now; "none" if no human decision is currently required>
+- Open / deferred: <non-blocking unresolved/deferred items; "none" if none>
 - Recommended next step: <one concrete next action/phase>
-- Session recommendation: CONTINUE | FRESH — <short reason>
+- Session transition: <plain-language continue/fresh/return-to-Build action + reason>
 - Context pointers: <only paths/anchors the next phase is likely to need>
 ```
 
-Keep this operational. Do not repeat the phase report inside the handoff.
+Keep **Human decision** separate from **Open / deferred**. A durable unresolved item is not enough if a person must make a decision before the next meaningful step; surface that decision explicitly at the boundary.
+
+Keep the handoff operational. Do not repeat the phase report inside it.
 
 If the phase already owns a structured report, the handoff points to it instead of duplicating its contents.
 
