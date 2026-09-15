@@ -7,13 +7,19 @@ After **Approved**, generate `report-techplan.md` from `report-template.md` as t
 ```markdown
 # Tech Plan: {Feature Name}
 
-> Ticket    : {ticket code}
-> Author    : {name}
-> Date      : {YYYY-MM-DD}
-> Updated   : {when materially revised}
-> Status    : Draft / In Review / Approved / Implemented
-> Approach  : {optional one-line orientation}
-> Refs      : {source specs / target authority / related artifacts}
+> Phase             : Techplan
+> Ticket            : {ticket code or none}
+> Author            : {human/agent identity}
+> Model             : {exact model when agent-authored/exposed; otherwise omit/not exposed}
+> Reasoning         : {when exposed; otherwise omit/not exposed}
+> Session           : {session/thread id when useful and safe to persist}
+> Created           : {YYYY-MM-DD or timestamp}
+> Updated           : {when materially revised}
+> Target revision   : {commit/ref if known}
+> Workflow revision : {Harscode commit/ref if known}
+> Status            : Draft / In Review / Approved / Implemented
+> Approach          : {optional one-line orientation}
+> Refs              : {source specs / target authority / related artifacts}
 
 ---
 
@@ -60,7 +66,7 @@ Record material choices so a later agent does not reopen rejected approaches.
 ## 7. Edge Cases & Risks
 
 | ID | Risk / edge case | Likelihood | Severity | Mitigation / accepted exposure |
-|---|---|---|---|---|
+|---|---|---:|---:|---|
 | RISK-1 | ... | ... | ... | ... |
 
 ## 8. Interface Contract
@@ -97,10 +103,22 @@ Full snippets only for genuinely novel/non-obvious logic that materially reduces
 
 ## 12. Testing Checklist
 
-Derived 1:1 from §4 rule IDs.
+Preserve verification coverage for every Rules & Validation rule. Use one or more rows per rule when different evidence/owners are genuinely required.
 
-- [ ] R1 — ...
-- [ ] R2 — ...
+| Rule | Verification / evidence | Primary owner | Why this is worth running / risk if skipped |
+|---|---|---|---|
+| R1 | ... | Build / Testing / Human | ... |
+| R2 | ... | ... | ... |
+
+Primary owner means who owns the authoritative evidence, not who is forbidden from ever running the check:
+
+- **Build** — fast/focused edit-loop confidence or an artifact/test that must be executable as it is authored.
+- **Testing** — independent final/broad verification.
+- **Human** — subjective/product acceptance automation cannot decide.
+
+Code Review is normally a reasoning phase, not the primary owner of a planned suite; it may run a targeted reproduction/check when needed to substantiate a suspected finding.
+
+When a non-trivial verification tool/technique is named (for example browser automation, production build, race detector, load test, security scan, or human rendered acceptance), explain why it is appropriate and the meaningful risk if it is skipped. Do not prescribe a heavyweight tool merely for ceremony.
 
 ### Test Focus Pointer
 
@@ -122,6 +140,10 @@ This is a pointer, not the full test execution plan.
 
 1. ~~**{short title}**~~ **RESOLVED — {actual resolution}.** {who/when if known; consequence if any}.
 ```
+
+## Provenance rule
+
+Do not invent unavailable model/session/revision metadata and do not persist credentials/account identifiers. Git history remains the default version history; do not add a manual semantic Techplan version unless an external artifact/contract genuinely requires one.
 
 ## Spine invariant
 
