@@ -78,20 +78,30 @@ Keep source evidence and decisions durable in
 {TASK_PATH}/1-exploration/logs/; do not rely on chat memory alone. The raw-doc
 shape should follow the evidence rather than a forced per-file template.
 
+For every durable Exploration artifact written in this phase, include a compact
+provenance header with the values actually known: Phase/Stage, Author, Created
+(and Updated when materially revised), plus Model, Reasoning, Session, target
+revision, and workflow revision when exposed/known and safe to persist. Do not
+invent missing metadata or persist account/credential identifiers. Git history
+is the default version history.
+
 At Stage-3 completion, output:
 
 ## Phase handoff
 - Completed: <areas explored + solutioning state>
 - Artifacts: <durable Exploration paths>
-- Open / blocked: <material unresolved items or none>
+- Human decision: <decision needed now; "none" if none>
+- Open / deferred: <non-blocking unresolved/deferred items or "none">
 - Recommended next step: Techplan synthesis
-- Session recommendation: CONTINUE | FRESH — based on continuation fitness
+- Session transition: <plain-language continue/fresh action + reason>
 - Context pointers: <source/spec paths + code anchors likely needed next>
 
-Recommend FRESH when the session was compacted/reset, accumulated substantial
-dead ends/unrelated investigation, had major human redirection, or cannot name
-the current durable authorities cleanly. Otherwise CONTINUE is valid; do not
-use a fuzzy task-size label as the deciding rule.
+Recommend a fresh Techplan session when this session was compacted/reset,
+accumulated substantial dead ends/unrelated investigation, had major human
+redirection, or cannot name the current durable authorities cleanly. Otherwise
+say explicitly that Techplan synthesis can continue in this session because
+continuation fitness remains healthy. Do not expose only a CONTINUE/FRESH enum
+or use a fuzzy task-size label as the deciding rule.
 ```
 
 ## Notes
@@ -100,3 +110,4 @@ use a fuzzy task-size label as the deciding rule.
 - `{CODEBASE_CONTEXT}` stays intentionally small; target-repo authority owns the real project description.
 - Code anchors transfer coordinates, not cached implementation truth. Later phases reopen live code/spec before treating implementation facts as current.
 - Stage 1 is a deliberate human checkpoint. Stage 2 is not blocking between areas; Stage 3 waits for confirmation that the gap analysis is sound.
+- Stage 1 does not need its own durable artifact merely because it is a checkpoint; preserve durable evidence when Stage 2/3 creates information later phases must reconstruct.
