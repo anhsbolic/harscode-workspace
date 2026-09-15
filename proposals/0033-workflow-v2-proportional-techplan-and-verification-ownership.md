@@ -11,7 +11,7 @@
 - `workflow/2-1-techplan-synthesis-prompt.md` — proportional/fail-fast planning language plus early review/decomposition recommendations.
 - `workflow/3-build-prompt.md` and `workflow/3-build/guidelines.md` — focused edit-loop verification only.
 - `workflow/4-code-review-prompt.md` and `workflow/4-code-review/guidelines.md` — targeted repro only when needed to substantiate review findings; no broad final-suite replay by default.
-- `workflow/5-testing-prompt.md` — independent final/broad verification owns the final evidence while sweeping rather than blindly replaying Build.
+- `workflow/5-testing-prompt.md` and `workflow/5-testing/guidelines.md` — independent final/broad verification owns the final evidence while sweeping rather than blindly replaying Build.
 
 ## Friction Found
 
