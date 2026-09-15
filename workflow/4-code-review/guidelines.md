@@ -8,6 +8,16 @@ passes run in order against the same current diff:
 3. Stack-Specific Best Practices
 4. Consistency
 
+## Verification posture
+
+Code Review is primarily independent reasoning against the current diff and contract, not a second final Testing phase.
+
+Run a command/reproduction when it is needed to prove or disprove a suspected finding, validate a concrete behavior the diff makes uncertain, or distinguish a real defect from speculation. Keep that execution targeted to the question being reviewed.
+
+Do **not** replay the full target-repo test/build/browser matrix by default merely because Review is independent. Broad final verification remains Testing-owned when the Techplan/target repo assigns it there. If Review runs a broad suite, state the concrete review question/risk that required it.
+
+A failing targeted reproduction is evidence for a finding/patch plan; Review still does not edit production code.
+
 ## 1. Safety Review
 
 Review specifically for:
