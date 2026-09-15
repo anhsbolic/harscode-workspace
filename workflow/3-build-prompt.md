@@ -50,11 +50,28 @@ Testing. Re-ground on parent Techplan + current task (if any) + the specific
 patch plan + relevant live code/diff. Do not import the whole reviewer/tester
 conversation as hidden authority.
 
+Remember which phase requested the patch. After the narrow patch, return to
+that requesting phase unless the patch materially invalidates the Techplan or
+broadens scope enough to justify a different route. Do not automatically create
+a full new review loop merely because a patch occurred.
+
 VERIFICATION
-Run the Build-loop test scope defined in guidelines.md using the target repo's
-actual commands. Do not pull heavyweight race/perf/security-class verification
-into this tight loop merely for extra confidence; those belong to independent
-Testing when triggered.
+Use the Techplan Testing Checklist's primary-owner/rationale fields plus
+workflow/3-build/guidelines.md.
+
+Run focused Build-loop verification needed to make the edit credible. If you
+add/change an automated test, run it enough to prove the authored test is
+executable and exercises the intended state. Do not replay broad Testing-owned
+suites merely for extra confidence unless target-repo authority requires them
+at this point, the current change materially affects that risk, or the broader
+suite is the only credible evidence.
+
+For a narrow patch, rerun affected verification first; broaden only when the
+patch changes scope/risk or wider regression evidence is necessary.
+
+Do not pull heavyweight race/perf/security-class verification into this tight
+loop merely for extra confidence; those belong to independent Testing when
+triggered.
 
 Process narration is terse; do the work. Write:
 - initial build: {TASK_PATH}/3-build/report.md
@@ -62,13 +79,24 @@ Process narration is terse; do the work. Write:
 
 Increment <n> for each patch round and never overwrite earlier patch reports.
 
+Every durable Build/Patch report must start with compact provenance using only
+known/exposed values:
+- Phase: Build or Build/Patch
+- Author
+- Created/Updated
+- Model / Reasoning / Session when exposed and safe to persist
+- Target revision / Workflow revision when known
+
+Do not invent missing metadata or persist account/credential identifiers. Git
+history is the default version history.
+
 Report format:
 
 ## What changed
 [file/symbol or area → concise behavior/contract-relevant change]
 
 ## Tests run
-[test/command or pattern → verification category → result]
+[test/command or pattern → verification category → result + why this run belonged in Build when non-obvious]
 
 ## Verification scope confirmation
 Confirm explicitly: no race/concurrency, performance/load, or security-class
@@ -76,12 +104,15 @@ test was executed in this Build iteration. If any was run, list it here and
 flag the scope deviation instead of silently treating it as ordinary Build
 verification.
 
+Also note any broad Testing-owned suite executed in Build and why it was
+necessary for this iteration.
+
 ## Contract check
 - [ ] Current build target satisfied in full
 - [ ] Live-code re-grounding did not invalidate a material contract assumption
 
 ## Deferred / not tested here
-[verification deliberately left for independent Testing, with reason; "none" if none]
+[verification deliberately left for independent Testing/Human, with reason; "none" if none]
 
 ## Flagged for Techplan / Testing
 [material assumption break or specialized concern; "none" if none]
@@ -89,9 +120,10 @@ verification.
 ## Phase handoff
 - Completed: <build target/patch completed or what remains>
 - Artifacts: <report path>
-- Open / blocked: <material blocker or none>
+- Human decision: <decision needed now or "none">
+- Open / deferred: <material blocker/deferred item or "none">
 - Recommended next step: Code Review after initial build; return to the requesting Review/Testing phase after a patch
-- Session recommendation: CONTINUE for another Build iteration while focused; FRESH for Code Review/Testing
+- Session transition: <plain-language action + reason; e.g. start fresh Code Review/Testing for independence, continue this Build session for another focused iteration, or return to/restart Build/Patch as appropriate>
 - Context pointers: parent Techplan + current task/patch plan + changed files/tests only
 ```
 
@@ -100,4 +132,5 @@ verification.
 - Build is execution, not a second Exploration phase. Patch ownership stays here even when another independent phase discovered the defect.
 - A terse Build process still owes a complete report. “Tests passed” without naming the meaningful verification is not a sufficient handoff.
 - The explicit verification-scope confirmation is an intentional forcing function: prose/checklist guidance alone is not treated as sufficient evidence that heavyweight Testing work stayed out of the tight Build loop.
+- Build verification is focused confidence, not final-verification theater. Independent Testing still owns the broad/final evidence assigned to it by the Techplan/target repo.
 - Project-specific build tooling/commands remain target-repo authority; Harscode owns the phase boundary and portable test-scope discipline.
