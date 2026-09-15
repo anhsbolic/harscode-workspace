@@ -1,8 +1,8 @@
 # codex/ — OpenAI Codex harness translations
 
 **Effective as of:** OpenAI Codex CLI / Codex agent mechanics documented in September 2026
-**Last verified:** 2026-09-13
-**Re-verify:** every ~2–3 months, or after material Codex changes to instruction loading, skills, sandbox/approval, sessions/subagents, or hosted capabilities.
+**Last verified:** 2026-09-15
+**Re-verify:** every ~2–3 months, or after material Codex changes to instruction loading, skills, sandbox/approval, sessions/subagents, usage/status surfaces, or hosted capabilities.
 
 ## Scope
 
@@ -24,6 +24,9 @@ phase/context separation
 
 runtime write/network/tool authority
 → permissions-and-sandbox.md
+
+session usage / CRTV operator observability
+→ benchmarking.md
 
 output/process terseness
 → token-optimization.md translation
@@ -48,14 +51,15 @@ Do not put project-specific model names/commands/paths in this reusable translat
 - `instruction-loading.md` — hierarchical instruction loading / avoiding duplicate project policy.
 - `skills.md` — progressive-disclosure wrappers around existing Harscode sources.
 - `session-boundaries.md` — same/fresh session translation and re-grounding.
-- `permissions-and-sandbox.md` — runtime authority translation.
+- `permissions-and-sandbox.md` — runtime authority translation and proportional destructive-operation approvals.
+- `benchmarking.md` — session-level usage/quality observability for CRTV/operator benchmarking.
 - `token-optimization.md` — output/context-efficiency translation.
 
 There is no Codex frontend/backend split by default. Add a track only when Codex translation itself differs materially, not when stack guidance/model preference differs.
 
 ## Project instancing
 
-Actual target-repo `AGENTS.md`, `.codex/skills/`, concrete config values, browser/test commands, protected-path lists, and execution profiles belong in the target repo/user config.
+Actual target-repo `AGENTS.md`, `.codex/skills/`, concrete config values, browser/test commands, protected-path lists, benchmark artifact paths, and execution profiles belong in the target repo/user config.
 
 ## Capability references
 
