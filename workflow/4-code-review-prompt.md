@@ -38,6 +38,18 @@ Do not load raw Exploration logs. The Techplan is the reviewed execution
 contract; if material intent/evidence is missing from it, report Techplan drift
 rather than rebuilding product intent from history.
 
+VERIFICATION POSTURE
+Review is primarily independent reasoning against the current diff/contract.
+Run a targeted command/reproduction when needed to prove or disprove a
+suspected finding or resolve a concrete review uncertainty. Do not replay the
+full build/test/browser matrix by default merely because Review is independent.
+Broad/final verification remains Testing-owned when the Techplan/target repo
+assigns it there.
+
+If you run a broad suite in Review, state the exact finding/risk/question that
+required it. A failing targeted reproduction is evidence for a finding/patch
+plan; do not fix production code in this session.
+
 For each finding state:
 - location;
 - problem;
@@ -62,6 +74,12 @@ Write:
 
 Increment <n> per review round; do not overwrite prior review evidence.
 
+Every durable Review artifact must start with compact provenance using only
+known/exposed values: Phase, Author, Created/Updated, and where safe/available
+Model, Reasoning, Session, target revision, and workflow revision. Do not
+invent missing metadata or persist account/credential identifiers. Git history
+is the default version history.
+
 Output sections:
 
 ## 1. Safety
@@ -76,6 +94,9 @@ Output sections:
 ## 4. Consistency
 [findings + cited target-repo convention/precedent, or "No findings"]
 
+## Verification executed during Review
+[targeted command/reproduction + review question + result; "none" if no runtime verification was needed]
+
 ## Verdict
 Approve | Approve with minor comments | Request changes
 
@@ -86,14 +107,16 @@ look cleaner.
 ## Phase handoff
 - Completed: four-pass review + verdict
 - Artifacts: <findings path; patch-plan path if any>
-- Open / blocked: <blocking findings or none>
-- Recommended next step: Testing if approved; otherwise Build/Patch
-- Session recommendation: FRESH for Testing; BUILD authority for patches
+- Human decision: <decision needed now or "none">
+- Open / deferred: <blocking/non-blocking findings or "none">
+- Recommended next step: Testing if approved; otherwise Build/Patch using the specific patch plan
+- Session transition: if approved, start a fresh Testing session for independence; if patching, explicitly say whether to return to the existing healthy Build session or start a fresh Build/Patch session re-grounded on the patch plan, with reason
 - Context pointers: Techplan + specific findings/patch plan + diff anchors only
 ```
 
 ## Notes
 
 - Fresh review context is a correctness feature: the reviewer should not inherit Build's implementation reasoning as proof.
-- Review independence does not require re-reading unrelated Exploration history.
+- Review independence does not require re-reading unrelated Exploration history or replaying the final test matrix.
 - `workflow/4-code-review/examples.md` is conditional calibration for a concrete recurring pattern, not mandatory startup context.
+- A narrow patch that exactly implements an accepted Review patch plan does not automatically require another full four-pass review. Re-review when the patch materially changes production behavior/contract/architecture/security or broadens the diff; otherwise targeted confirmation/requesting-phase verification may be sufficient.
