@@ -41,7 +41,8 @@ Rules & Validation entries, crosses services/contracts, carries a breaking
 change, or touches high-stakes auth/payment/PII/event-contract boundaries.
 
 If NO: stop, state why this review is not warranted, and do not review on
-autopilot.
+autopilot. Human conscious approval remains sufficient unless project policy
+requires another gate.
 If YES: state the criteria and continue.
 
 Resolve current template section names before checking. If the report needs
@@ -54,6 +55,8 @@ CHECKS
    - Every Rules & Validation rule traces to real requirement/Exploration
      evidence without meaning-changing paraphrase.
    - Every Rules & Validation rule has Testing Checklist verification coverage.
+   - Verification primary ownership/rationale does not silently weaken or
+     duplicate the contract.
    - Flag invented or silently dropped material rules.
 
 2. Decision fidelity
@@ -97,6 +100,12 @@ meaning.
 
 Do not hunt for polish after the material checks are complete.
 
+If you write a durable review artifact, prepend compact provenance using only
+values actually known/exposed: Phase, Author, Created/Updated, and where safe
+and available Model, Reasoning, Session, target revision, and workflow revision.
+Do not persist account/credential identifiers; Git history is the default
+version history.
+
 Output only:
 
 ## Review findings — <task-code>
@@ -113,21 +122,22 @@ Output only:
 - <checks that passed, briefly>
 
 ## Phase handoff
-- Completed: independent review
+- Completed: independent review gate + review when warranted
 - Artifacts: <review findings path if one was written; otherwise "review output in current session">
-- Open / blocked: <blocking findings or none>
-- Recommended next step: one resolution pass, then human gate
-- Session recommendation: CONTINUE only for the planning resolution/human gate while context is focused; FRESH for Build after Approval
+- Human decision: <approve/revise/waive next planning step as applicable; "none" if no decision is needed now>
+- Open / deferred: <blocking findings or non-blocking follow-up; "none" if none>
+- Recommended next step: one resolution pass then human gate when review ran; human gate directly when the Complex gate says review is not warranted
+- Session transition: <plain-language continue/fresh action + reason; Build is fresh-preferred after Approval>
 - Context pointers: Techplan + exact source anchors for blocking findings only
 ```
 
 ## What happens with findings
 
-Default shape:
+Default shape when the Complex gate applies:
 
 ```text
 synthesis
-→ one independent review (Complex only)
+→ one independent review
 → one resolution pass
 → human gate
 ```
