@@ -37,6 +37,32 @@ A bare placeholder-only bullet such as `- {TASK_PATH}` is acceptable only when i
 10. **Compress rationale before semantics.** If a reduction forces the reader to infer what a parameter means, which source is authoritative, when to stop, or what output is expected, the reduction went too far.
 11. **Prefer semantic anchors over ordinal section numbers.** When one evolving guidance artifact refers to another, use stable heading/ID/concept names unless the ordinal itself is contractually stable. If a report must display section numbers, resolve them from the current source at runtime. This rule exists because a Techplan review once silently checked stale sections after template renumbering.
 
+## Workflow artifact provenance
+
+Durable workflow-generated artifacts should be reconstructable without depending on chat history or a harness UI that may disappear.
+
+When the producing phase controls the artifact format, record a compact provenance header with the metadata that is actually known:
+
+```text
+Phase: <phase/stage>
+Author: <human or agent identity>
+Created: <date/time when useful>
+Updated: <when materially revised>
+Model: <exact model if agent-authored and exposed by the harness>
+Reasoning: <if exposed>
+Session: <session/thread id if useful and safe to persist>
+Target revision: <commit/ref if known>
+Workflow revision: <commit/ref if known>
+```
+
+Rules:
+
+- Do not invent unavailable metadata; use `unknown`/`not exposed` only when the field is required by the artifact shape, otherwise omit it.
+- Do not persist account email, credentials, secrets, or other authentication identifiers merely because a status screen exposes them.
+- Git history is the default version history. Do not add hand-maintained semantic versions unless the artifact itself has a versioned contract or regeneration rule that genuinely needs one.
+- A derived artifact should point to its source artifact/version/revision rather than pretending to be a second authority.
+- Provenance is traceability, not policy. It must not change which source owns product/domain behavior or workflow decisions.
+
 ## Context temperature
 
 Classify guidance by how often it belongs in an active execution context:
@@ -95,4 +121,5 @@ Before finalizing a Harscode guidance change, ask:
 - Are authority boundaries, stop conditions, and failure behavior still explicit?
 - Do cross-document references use stable semantic anchors rather than drift-prone ordinal numbers?
 - Can the intended reader find the relevant section without scanning unrelated material?
+- Does each durable workflow artifact retain enough provenance to reconstruct who/what produced it without leaking credentials?
 - Does the change preserve current correctness while reducing ambiguity or repeated context?
