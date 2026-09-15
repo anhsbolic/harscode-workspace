@@ -8,7 +8,12 @@ Read the latest build/patch report first.
 
 - Spot-check named tests/coverage; do not duplicate equivalent tests.
 - Close `Deferred / not tested here` and `Flagged` items first.
+- Execute verification whose Techplan primary owner is Testing.
 - Then cover what independent Testing uniquely proves: real interface/observable behavior, specialized risk classes, compatibility, migration/schema collisions, and final whole-contract consistency.
+
+Use the Techplan Testing Checklist's `Why / risk if skipped` rationale to choose the minimum credible independent execution. A named tool is not a ritual by itself.
+
+When Testing re-enters after a narrow patch, verify the affected finding/gap first. Re-run broad/final suites when the Techplan or target repo assigns them to Testing, when the patch materially changes the relevant risk/scope, or when a broader suite is required to establish final compatibility. Do not replay unrelated expensive checks solely because another Testing round began.
 
 ## Test Focus Pointer
 
@@ -34,7 +39,10 @@ Every Techplan Rules & Validation rule needs meaningful coverage. Existing passi
 - missing coverage;
 - failing/stale coverage;
 - negative/edge/backward-compatible behavior not already proven;
-- real-interface behavior a lower-level test cannot establish.
+- real-interface behavior a lower-level test cannot establish;
+- Testing-owned final evidence not already supplied by an authoritative equivalent mechanism.
+
+Build-owned rows may be spot-checked according to risk rather than blindly rerun in full. Human-owned rows remain explicit external gates; agent automation cannot mark them passed.
 
 If a contracted rule cannot be exercised through any real observable entry point, report the mismatch.
 
@@ -46,7 +54,7 @@ Where relevant, verify expected error category, actionable external behavior/mes
 
 Before Pass:
 
-- run target-repo required build/lint/test commands;
+- run target-repo required final build/lint/test commands;
 - verify migration/schema collision where applicable;
 - verify backward compatibility where applicable;
 - run the broader suite when the target repo/risk requires it for cross-cutting changes;
@@ -54,9 +62,13 @@ Before Pass:
 
 The fresh Techplan read is intentionally retained during the initial workflow-v2 validation runs. Remove/narrow it only with evidence that quality is preserved.
 
+If a broad check is intentionally not rerun because its evidence remains current and another phase/authoritative mechanism already owns it, record that omission and why it is safe. Verification economy is explicit evidence selection, not silent skipping.
+
 ## Findings and patches
 
-Testing may write a patch plan; production code fixes return to Build/Patch authority. Re-run affected verification after the patch.
+Testing may write a patch plan; production code fixes return to Build/Patch authority. Re-run affected verification after the patch according to the proportional re-entry rule above.
+
+The handoff should tell the operator whether to return to the existing healthy Build session or start a fresh Build/Patch session; `BUILD authority` alone is not a complete human instruction.
 
 ## Recurring patterns
 
