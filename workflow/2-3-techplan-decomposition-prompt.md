@@ -19,7 +19,7 @@ Skip decomposition when the Techplan is cohesive/linear enough to execute as one
 ## Inputs required before running
 
 - `{HARSCODE_WORKSPACE_ROOT}` — path to this Harscode workspace. Used to resolve Techplan/decomposition authority.
-- `{TASK_PATH}` — root working directory for this task. The parent plan is `{TASK_PATH}/2-techplan/techplan.md`; generated task files/manifest go under `{TASK_PATH}/2-techplan/tasks/`.
+- `{TASK_PATH}` — root working directory for the task under review. The parent plan is `{TASK_PATH}/2-techplan/techplan.md`; generated task files/manifest go under `{TASK_PATH}/2-techplan/tasks/`.
 - Approved `{TASK_PATH}/2-techplan/techplan.md` — authoritative parent spine. Do not run against Draft/In Review material that may still change materially.
 - Applicable target-repo authority/spec/live-code sources when a proposed task boundary depends on current module/component ownership or dependency shape.
 
@@ -75,6 +75,9 @@ STEP 2 — GENERATE TASK FILES
 Write task files under {TASK_PATH}/2-techplan/tasks/.
 
 Each task file must include:
+- compact provenance using only known/exposed values: Phase, Author, Created/
+  Updated, and where safe/available Model, Reasoning, Session, target revision,
+  and workflow revision;
 - task purpose and exact scoped outcome;
 - parent Techplan path/version/status back-reference;
 - parent rule/decision/risk/contract IDs that govern the task;
@@ -82,6 +85,9 @@ Each task file must include:
 - hard dependency task(s), only when genuinely required;
 - scoped verification obligations the task must satisfy before handoff;
 - any explicit NOT-in-this-task boundary needed to prevent scope bleed.
+
+Do not invent missing provenance metadata or persist account/credential
+identifiers. Git history is the default version history.
 
 A task must be executable from:
 
@@ -113,6 +119,7 @@ of whether decomposition runs.
 
 STEP 4 — GENERATE THE MANIFEST LAST
 Write a manifest under {TASK_PATH}/2-techplan/tasks/ containing:
+- compact provenance under the same rule as task files;
 - task file list + short purpose;
 - chosen splitting axis + rationale;
 - dependency graph/order, or explicit `no hard dependency` where appropriate;
@@ -128,10 +135,11 @@ At completion, report:
 
 ## Phase handoff
 - Completed: decomposition gate + generated task set/manifest when warranted
-- Artifacts: <task/manifest paths or none>
-- Open / blocked: <contract gap discovered or none>
-- Recommended next step: human check of the split, then Build
-- Session recommendation: FRESH for Build
+- Artifacts: <task/manifest paths or "none">
+- Human decision: <review/accept the split when files were generated; "none" when decomposition was skipped>
+- Open / deferred: <contract gap discovered or "none">
+- Recommended next step: human check of the split when generated, then Build; otherwise Build after Approved Techplan
+- Session transition: <plain-language action + reason; Build is fresh-preferred>
 - Context pointers: parent Techplan + first/current task + declared hard dependency only
 ```
 
@@ -146,6 +154,7 @@ At completion, report:
 
 ## Notes
 
+- Techplan synthesis should already have emitted an early `Skip | Consider` decomposition recommendation; this prompt owns the actual post-Approval gate when invoked.
 - A human should review the decomposition shape before Build begins; a syntactically valid split can still choose a poor boundary.
 - If later Code Review/Testing shows that a child task depended on a material decision absent from the parent spine, reopen/fix the Techplan and regenerate affected task files. Do not patch one child into becoming a second source of truth.
 - Task files are snapshots derived from an Approved plan. If a material parent contract changes, regenerate or explicitly reconcile affected task files before continuing.
