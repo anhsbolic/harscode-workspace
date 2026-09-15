@@ -6,6 +6,15 @@ Portable authority: `workflow/context-management.md`.
 
 Codex sessions/subagents implement that policy; they do not create a second lifecycle.
 
+Human-facing handoffs should say the action to take, not only the portable enum. `CONTINUE`, `FRESH`, and `BUILD authority` remain useful internal semantics, but the operator should see wording such as:
+
+```text
+Continue Techplan synthesis in this session because the Exploration context remains focused and current.
+Start a fresh Code Review session because reviewer independence is part of the phase's value.
+Return to the existing Build session because the patch is narrow and implementation context remains focused.
+Start a fresh Build/Patch session re-grounded on the patch plan because the previous Build context is stale/compacted.
+```
+
 ## Exploration → Techplan
 
 Adaptive:
@@ -27,15 +36,26 @@ target repo AGENTS/authority
 + specific patch plan when re-entering
 ```
 
-Do not carry raw Exploration by default. Review/Testing patch requests return to Build authority; reuse a healthy Build session or start a fresh one with the durable patch plan.
+Do not carry raw Exploration by default. Review/Testing patch requests return to Build authority.
+
+When re-entering after a patch request:
+
+- return to the existing Build session when it is still healthy/focused and the patch is narrow;
+- start a fresh Build/Patch session when the prior Build context is stale, compacted, materially redirected, or no longer cheaper than re-grounding on the durable patch plan.
+
+The Review/Testing handoff should state which one it recommends and why so the operator does not have to infer the session destination from `BUILD authority` alone.
 
 ## Code Review
 
 Fresh context preferred for independence. Read current diff + current Techplan contract + applicable target-repo authority + routed matching best practices. Do not edit production code in review.
 
+Review does not require a blanket full-suite replay. Run targeted reproduction/verification when a suspected finding needs objective evidence; broad final verification normally belongs to Testing according to the approved Techplan/target repo.
+
 ## Testing
 
 Fresh context preferred for independent verification. Read current Techplan + latest build evidence + target repo's real verification authority. Follow exact Test Focus evidence anchors rather than loading the whole Exploration corpus.
+
+On a Testing re-entry after a narrow patch, keep the same independent Testing session only while it remains focused and the affected verification is clear; a fresh Testing session is justified when independence/context hygiene has been lost. Do not create a fresh session solely to make benchmark accounting cleaner.
 
 ## Pull Request
 
