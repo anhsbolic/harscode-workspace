@@ -1,10 +1,12 @@
-# 0031 — Workflow-v2 pre-validation audit remediation
+# 0032 — Workflow-v2 pre-validation audit remediation
 
 **Status:** Accepted - Anhar
 **Date:** 2026-09-14
 **Protection Tier:** general
 **Triggered by:** `audits/workflow-v2-audits.md`, followed by an independent verification pass against `main@fbeb2e657e1258c5c45dc5f70518acd7f915baa8` and the frozen workflow-v2 checkpoint `6edc1a6c9be10d54b3e37cc0c477c28790fcd81c`.
 **Scope:** `workflow-v2` only. `main` remains untouched as the proven comparison baseline.
+
+> Renumbering note: this proposal was `0031` on the isolated experimental branch and became final proposal `0032` when current `main` (which already owned proposal `0030`) was reconciled before promotion.
 
 ## Why this remediation exists
 
@@ -82,4 +84,4 @@ Before treating workflow-v2 as frozen again:
 6. confirm proposal no-self-approval has one canonical owner;
 7. confirm no unrelated workflow/context architecture was changed.
 
-If those checks pass, the remediation commit becomes the new workflow-v2 validation baseline and supersedes `6edc1a6c9be10d54b3e37cc0c477c28790fcd81c` for future validation runs. Proposal 0030 remains the experiment design; this proposal records the pre-run correctness repair that reopened and then re-froze its original checkpoint.
+If those checks pass, the remediation commit becomes the new workflow-v2 validation baseline and supersedes `6edc1a6c9be10d54b3e37cc0c477c28790fcd81c` for future validation runs. Proposal 0031 remains the experiment design; this proposal records the pre-run correctness repair that reopened and then re-froze its original checkpoint.

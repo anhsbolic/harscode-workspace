@@ -1,25 +1,43 @@
 # harscode-workspace
 
-A portable, project-agnostic work manual for AI-assisted software delivery. It separates **workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
+A portable, project-agnostic work manual for moving product intent into reliable software with AI agents. It separates **product-design authority**, **engineering workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
 
 ## Mental model
 
-AI coding agents do not reliably compound context across sessions. Durable quality comes from controlling:
+AI agents do not reliably compound context across sessions. Durable quality comes from controlling:
 
 - **knowledge** — what authority is available;
 - **durable state** — what survives session boundaries;
-- **scope/authority** — what the active phase may decide/change;
+- **scope/authority** — what the active area/phase may decide or change;
 - **verification** — what proves the result;
 - **human gates** — where unresolved material decisions stop.
 
-Harscode is the portable manual around those controls. Target-project truth still belongs in the target repo.
+A useful shorthand is:
+
+```text
+product/domain truth
+→ product design when materially open
+→ engineering exploration
+→ techplan
+→ build / patch
+→ code review
+→ testing
+→ pull request
+```
+
+Not every task needs upstream product-design work. The point is to make that boundary explicit so implementation does not become accidental product or design authority.
 
 ## Structure
 
 ```text
 AGENTS.md                  lightweight root router + hard rules
 AUTHORING.md               standard for writing Harscode guidance itself
-workflow/                  lifecycle / phase authority
+product-design/            upstream product-brand/UI/UX authority-building guidance
+  AGENTS.md                product-design router + hard rules
+  kickoff-prompt.md        collaborative design-discussion entrypoint
+  README.md                scope, authority, usage model
+  ...                      exploration/canonicalization/handoff guidance
+workflow/                  engineering lifecycle / phase authority
   AGENTS.md                phase router
   context-management.md    context classes, handoff, session transitions
   *-prompt.md              canonical phase entrypoints
@@ -31,9 +49,15 @@ harness-optimization/      translation into Codex/Claude/etc mechanisms
 proposals/                 one protected-guidance proposal log
 ```
 
+### `product-design/`
+
+Owns reusable upstream decision discipline for turning product/domain truth into implementation-ready product-brand/UI/UX authority. Use it when product-brand/UI direction is materially open, design generations conflict, visual references/prototypes have unclear authority, or design readiness is uncertain.
+
+It is **not** a mandatory per-feature engineering phase. If the target project already has sufficiently clear canonical design authority, skip product-design work and begin engineering Exploration.
+
 ### `workflow/`
 
-Owns **what must happen by phase**: Exploration, Techplan, Build/Patch, Code Review, Testing, PR, plus optional domain-level sequencing/closure.
+Owns **what must happen by engineering phase**: Exploration, Techplan, Build/Patch, Code Review, Testing, PR, plus optional domain-level sequencing/closure.
 
 ### `best-practices/`
 
@@ -41,15 +65,42 @@ Owns **portable engineering correctness** by technology/concern. `index.md` is a
 
 ### `harness-optimization/`
 
-Owns **translation only**: how a harness expresses existing Harscode rules using its native instruction/session/skill/sandbox mechanisms. It does not invent lifecycle or engineering policy.
+Owns **translation only**: how a harness expresses existing Harscode rules using its native instruction/session/skill/sandbox mechanisms. It does not invent product, lifecycle, or engineering policy.
+
+## Product-to-engineering authority boundary
+
+Harscode deliberately separates four kinds of reusable authority:
+
+```text
+product/domain truth
+→ owned by the target project
+
+product-design/
+→ how open product truth becomes coherent product-brand/UI/UX authority
+
+workflow/
+→ how engineering interprets, plans, builds, reviews, verifies, and delivers
+
+best-practices/
+→ reusable technical correctness knowledge used during that work
+```
+
+This prevents existing code, prototypes, generated visuals, or old implementations from becoming accidental current authority merely because they exist.
+
+A healthy design handoff is asymmetric:
+
+> **Design hands off invariants and intent; engineering owns implementation mechanics.**
 
 ## Design principles
 
 - **Quality/correctness is the floor.** Context/token reduction is useful only when outcome quality is preserved or improved.
+- **Product truth before implementation convenience.** Shared guidance must not silently invent project semantics or brand decisions.
 - **Single source of truth.** Link/routable authority beats repeated hand-maintained copies.
+- **Evidence and authority are different.** A prototype, screenshot, generated visual, historical implementation, or prior artifact may be useful evidence without being current authority.
 - **Progressive disclosure.** Load required authority first; clue maps locate conditional detail; examples/history stay cold until needed.
 - **Durable artifacts over chat memory.** A fresh phase/session can reconstruct required truth from files + current source state.
-- **Weight matches stakes.** Techplan is formal; Build is a tight loop; Review/Testing are independent verification concerns.
+- **Weight matches stakes.** Product-design work is conditional; Techplan is formal; Build is a tight loop; Review/Testing are independent verification concerns.
+- **Calibrate before proliferating.** When establishing a new product/visual system, prove it on a representative slice before spreading it broadly.
 - **Terse process, complete artifact.** Avoid narration/filler without weakening execution/review evidence.
 - **Project-agnostic by construction.** Project-specific facts/rules belong in the target repo.
 
@@ -57,13 +108,14 @@ See `AUTHORING.md` for documentation-writing rules and `workflow/context-managem
 
 ## Governance
 
-| Area | Direct edit on ordinary task? | Change mechanism |
+| Area | Direct edit on ordinary project task? | Change mechanism |
 |---|---|---|
+| `product-design/` | No | root `proposals/`, `general` tier |
 | `best-practices/` | No | root `proposals/`, `general` tier |
 | protected `workflow/2-techplan/` files | No | root `proposals/`, `techplan-protected` tier |
 | `workflow/2-techplan/examples.md`, `retro.md` | append-only exception | direct append |
-| lightweight workflow phase guidance | yes, corrected in the moment today | proposal only for structural/recurring changes |
-| `harness-optimization/` | No | root `proposals/` |
+| lightweight workflow phase guidance | yes, corrected in the moment today | proposal for structural/recurring changes |
+| `harness-optimization/` | No | root `proposals/`, `general` tier |
 
 One proposal folder, one numbering sequence. See `proposals/README.md`.
 
@@ -73,29 +125,30 @@ One proposal folder, one numbering sequence. See `proposals/README.md`.
 
 1. Make Harscode reachable from the target project and set `{HARSCODE_WORKSPACE_ROOT}`.
 2. Use `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the routing entrypoint.
-3. Start the active phase from its canonical prompt under `workflow/`.
-4. Optional domain-grouped projects may run domain sequencing before the first feature.
-5. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
-6. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
-7. Build executes the Approved Techplan (plus current decomposed task when applicable) and reopens live code at recorded anchors.
-8. Code Review runs independently. Findings needing code changes create a patch plan and return to Build authority.
-9. Testing runs independently. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
-10. Create the PR from final repository state + durable evidence.
-11. Optional domain-grouped projects may run domain closure after feature testing completes.
+3. If product/design authority is materially open, use `product-design/kickoff-prompt.md` and the product-design guidance until the needed authority is implementation-ready. If design authority is already sufficiently clear, skip this step.
+4. Start the engineering task from the active canonical prompt under `workflow/`.
+5. Optional domain-grouped projects may run domain sequencing before the first feature.
+6. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
+7. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
+8. Build executes the Approved Techplan (plus current decomposed task when applicable) and reopens live code at recorded anchors.
+9. Code Review runs independently. Findings needing code changes create a patch plan and return to Build authority.
+10. Testing runs independently. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
+11. Create the PR from final repository state + durable evidence.
+12. Optional domain-grouped projects may run domain closure after feature testing completes.
 
-Session/context details live in `workflow/context-management.md`; do not infer “same session” or “fresh session” solely from task size.
+Session/context details live in `workflow/context-management.md`; do not infer same/fresh session solely from task size.
 
 ## Task working directory
 
-Each task uses one `{TASK_PATH}` in the target repo:
+Each engineering task uses one `{TASK_PATH}` in the target repo:
 
 ```text
 {TASK_PATH}/
 ├── 1-exploration/
-│   └── logs/                       durable raw evidence / code anchors / solutioning
+│   └── logs/                       durable evidence / code anchors / solutioning
 ├── 2-techplan/
 │   ├── techplan.md                 authoritative execution-grade spine
-│   ├── report-techplan.md          generated after Approval; human-facing digest
+│   ├── report-techplan.md          optional post-Approval human-facing digest when needed
 │   └── tasks/                      optional decomposition task files + manifest
 ├── 3-build/
 │   ├── report.md
@@ -116,7 +169,9 @@ For domain-grouped projects, `{DOMAIN_PATH}` may additionally contain `_domain-m
 
 ## Status
 
-Active personal system. Harscode uses **Continuous Real-Task Validation**: changes are evaluated through real engineering tasks, individual executions are **validation runs**, and evidence from those runs drives revisions while proven quality remains the floor.
+Active personal system. Harscode uses **Continuous Real-Task Validation (CRTV)**: changes are evaluated through real product/engineering work, individual executions are validation runs, and evidence from those runs drives revisions while proven quality remains the floor.
+
+The workflow-v2 line has completed two materially different real Kencleng validation runs with positive correctness/outcome evidence and is being promoted as the current **operational default**. That is not a claim of full maturity: future real tasks should keep recording outcome/context evidence, especially for lifecycle paths not yet exercised, and refinements should be driven by recurring evidence rather than speculative optimization.
 
 ## License
 

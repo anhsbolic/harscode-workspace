@@ -1,4 +1,4 @@
-# 0033 — Workflow-v2 proportional Techplan and verification ownership refinement
+# 0034 — Workflow-v2 proportional Techplan and verification ownership refinement
 
 **Status:** Accepted - Anhar
 **Date:** 2026-09-15
@@ -12,6 +12,8 @@
 - `workflow/3-build-prompt.md` and `workflow/3-build/guidelines.md` — focused edit-loop verification only.
 - `workflow/4-code-review-prompt.md` and `workflow/4-code-review/guidelines.md` — targeted repro only when needed to substantiate review findings; no broad final-suite replay by default.
 - `workflow/5-testing-prompt.md` and `workflow/5-testing/guidelines.md` — independent final/broad verification owns the final evidence while sweeping rather than blindly replaying Build.
+
+> Renumbering note: this proposal was `0033` on the isolated experimental branch and became final proposal `0034` when current `main` was reconciled before promotion.
 
 ## Friction Found
 

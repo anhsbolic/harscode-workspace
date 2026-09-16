@@ -1,4 +1,4 @@
-# 0032 — Workflow-v2 provenance, handoff, and harness observability refinement
+# 0033 — Workflow-v2 provenance, handoff, and harness observability refinement
 
 **Status:** Accepted - Anhar
 **Date:** 2026-09-15
@@ -9,7 +9,7 @@
 - `AUTHORING.md` — define compact provenance expectations for workflow-generated artifacts.
 - `workflow/context-management.md` — standardize human-facing phase handoff semantics.
 - `workflow/1-exploration-kickoff-prompt.md` — provenance + improved handoff wording.
-- `workflow/2-1-techplan-synthesis-prompt.md` — handoff/provenance alignment; proposal 0033 owns Techplan-specific routing semantics.
+- `workflow/2-1-techplan-synthesis-prompt.md` — handoff/provenance alignment; proposal 0034 owns Techplan-specific routing semantics.
 - `workflow/2-2-techplan-review-prompt.md` — provenance + human-readable handoff.
 - `workflow/2-3-techplan-decomposition-prompt.md` — provenance + human-readable handoff.
 - `workflow/3-build-prompt.md` — provenance + explicit Build/Patch re-entry/session wording.
@@ -19,6 +19,8 @@
 - `harness-optimization/codex/README.md` — route to benchmark guidance.
 - `harness-optimization/codex/permissions-and-sandbox.md` — proportional destructive-command approval guidance.
 - `harness-optimization/codex/session-boundaries.md` — human-readable transition examples.
+
+> Renumbering note: this proposal was `0032` on the isolated experimental branch and became final proposal `0033` when current `main` was reconciled before promotion.
 
 ## Gap found
 
@@ -147,4 +149,4 @@ The proposal deliberately does not introduce a new patch phase, new stage artifa
 
 ---
 
-*Accepted by the human owner after Validation #1 discussion. Apply on `workflow-v2` only and validate on a different real task before considering promotion to `main`.*
+*Accepted by the human owner after Validation #1 discussion. Applied on `workflow-v2` and validated on a different real task before promotion consideration.*
