@@ -4,6 +4,8 @@ Read `README.md` first. This file is the short routing and governance layer for 
 
 ## Where to go
 
+- Start a collaborative upstream product-design session → `kickoff-prompt.md`
+- Human/AI discussion style and decision facilitation → `discussion-facilitation.md`
 - Product brand/UI direction, creative directions, visual proofs → `product-brand-and-ui-exploration.md`
 - Design source of truth, legacy cleanup, canonicalization → `design-authority-and-canonicalization.md`
 - Design readiness and engineering handoff → `design-to-engineering-handoff.md`
@@ -12,6 +14,9 @@ Read `README.md` first. This file is the short routing and governance layer for 
 
 - Product/domain truth always outranks visual/design artifacts.
 - Do not turn generated visuals or prototypes into implicit product specifications.
+- Do not run upstream product-design discussion as a static questionnaire when the next question depends on prior answers.
+- Interpret human answers, challenge meaningful assumptions proportionally, and recommend when evidence is sufficient; human authority does not require agent passivity.
+- Keep material decision state explicit (`LOCKED`, `WORKING`, `OPEN`, `REJECTED/SUPERSEDED`) in long discussions.
 - Do not keep multiple active design authorities for the same concern without an explicit reason and precedence rule.
 - Do not silently resolve materially OPEN product/design decisions during implementation.
 - Project-specific aesthetics, tokens, brand names, and product semantics do not belong in this directory.
