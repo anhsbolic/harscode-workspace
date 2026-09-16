@@ -29,9 +29,18 @@ Not every feature needs a fresh product-design cycle. Use this guidance when bra
 
 | Concern | Read |
 |---|---|
+| Start a collaborative upstream product-design discussion | `kickoff-prompt.md` |
+| Facilitate the human/design conversation well | `discussion-facilitation.md` |
 | Establish product-brand/UI direction from product truth | `product-brand-and-ui-exploration.md` |
 | Promote approved exploration into one clean active authority | `design-authority-and-canonicalization.md` |
 | Move approved design authority into engineering without redesigning in code | `design-to-engineering-handoff.md` |
+
+The distinction matters:
+
+- `kickoff-prompt.md` is an executable starting shape;
+- `discussion-facilitation.md` defines **how** the agent should collaborate with the human;
+- `product-brand-and-ui-exploration.md` defines **what** upstream design questions should be reasoned through;
+- canonicalization and handoff guidance define how approved decisions become durable authority and then engineering input.
 
 ## Core model
 
@@ -50,6 +59,21 @@ product truth + user needs
 
 The exact artifacts are project-specific. The decision order is the reusable part.
 
+The discussion itself should be adaptive rather than questionnaire-driven:
+
+```text
+orient
+→ find the highest-leverage open question
+→ ask
+→ interpret
+→ challenge where meaningful
+→ recommend when evidence is sufficient
+→ human confirms/refines
+→ update decision state
+→ prove visually when useful
+→ promote only after approval
+```
+
 ## Hard boundaries
 
 - Product/domain truth outranks design artifacts.
@@ -58,6 +82,7 @@ The exact artifacts are project-specific. The decision order is the reusable par
 - Generated visual studies are evidence only to the extent explicitly approved.
 - Brand-defining decisions require a human gate when the project treats them as durable identity/product precedent.
 - Materially OPEN design decisions must not be silently resolved inside implementation.
+- Product-design discussion should reduce ambiguity over time; it should not become an endless preference interview.
 
 ## Human authority and change governance
 
