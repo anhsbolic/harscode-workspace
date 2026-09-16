@@ -3,77 +3,113 @@
 **Status:** Accepted — approved by Anhar
 **Date:** 2026-09-16
 **Protection Tier:** general
-**Triggered by:** A completed upstream product-brand/UI-design cycle exposed a reusable gap: Harscode had strong engineering workflow and frontend implementation guidance, but no first-class shared guidance for moving product truth, user needs, brand intent, visual exploration, and UI/UX decisions into implementation-ready design authority.
+**Triggered by:** A full upstream product-brand/UI-design cycle exposed a repeatable gap: Harscode had strong engineering workflow and frontend implementation guidance, but no generic guidance for deliberately turning product truth, user trust needs, brand intent, visual exploration, and UI/UX decisions into implementation-ready design authority before engineering begins.
 **Target area:** root `product-design/`
-**Human approval:** Anhar explicitly approved the proposal and authorized implementation in this session.
 **Target file(s):**
-- `product-design/README.md` — first-class upstream product-design entrypoint and boundary with domain truth, workflow, and technical best practices.
-- `product-design/AGENTS.md` — routing and hard rules for the new area.
-- `product-design/product-brand-and-ui-exploration.md` — reusable guidance for product-brand/UI exploration, creative directions, truth/provenance discipline, and visual proofs.
-- `product-design/design-authority-and-canonicalization.md` — reusable guidance for authority ownership, legacy harvesting, one active source of truth, visual-reference boundaries, and canonicalization.
-- `product-design/design-to-engineering-handoff.md` — reusable readiness, reconciliation, calibration, reset-vs-migration, and implementation-handoff guidance.
-- `AGENTS.md` — route upstream product-design work to the new first-class area and protect shared guidance through the proposal mechanism.
+- `product-design/README.md` — define scope, authority boundary, and routing for upstream product-design work.
+- `product-design/AGENTS.md` — provide concise routing and hard rules.
+- `product-design/product-brand-and-ui-exploration.md` — generic upstream exploration guidance for product brand + UI direction.
+- `product-design/discussion-facilitation.md` — guidance for conducting adaptive human/AI product-design discussions.
+- `product-design/kickoff-prompt.md` — reusable non-rigid kickoff prompt for collaborative upstream product-design work.
+- `product-design/design-authority-and-canonicalization.md` — rules for separating exploration evidence from canonical design authority and preventing multiple active sources of truth.
+- `product-design/design-to-engineering-handoff.md` — readiness and handoff guidance for moving from approved design authority into engineering exploration/techplanning without accidentally redesigning inside implementation.
+- `AGENTS.md` — route product-design work to the new first-class area.
 
 ## Gap found
 
-Before this change, Harscode covered engineering exploration, techplanning, frontend implementation, prototype translation, responsive behavior, component boundaries, rendered verification, and testing well, but had no durable upstream discipline for questions such as:
+Harscode previously reached product work mostly through engineering-facing concerns: feature exploration, frontend implementation, prototype translation, responsive behavior, rendered verification, component abstraction, and testing boundaries.
 
-- what product truth visual design must preserve;
-- how to define product posture before choosing tokens;
-- how to compare real creative directions instead of polishing one arbitrary moodboard;
-- how trust/provenance/unknown states should constrain visual expression;
-- when generated visual studies are useful evidence versus accidental product specifications;
-- how to promote approved design work into one active source of truth;
-- how to remove legacy design generations without losing reusable knowledge;
-- how to distinguish design invariants from engineering implementation freedom;
-- when design is READY, PARTIAL, or materially OPEN for engineering;
-- when to calibrate one representative implementation slice before broad rollout.
+That left two upstream gaps.
 
-Without this layer, implementation tends to become accidental design authority, stale prototypes retain gravity, multiple design generations remain active, and engineering silently fills material product/design gaps inside code.
+The first was **design decision discipline**: no shared guidance covered product posture, trust requirements, creative-direction exploration, visual proofs, canonicalization, or design-readiness handoff.
 
-## Accepted direction
+The second was **discussion facilitation**: even with the right design topics, an AI agent could still behave like a questionnaire bot, passive note-taker, or option generator instead of a useful design-thinking partner.
 
-The human reviewer chose a **root `product-design/` area** instead of the originally proposed `best-practices/product-design/` category.
+Without explicit guidance, predictable failure modes include:
 
-Rationale:
+1. Implementation becomes accidental design authority.
+2. Prototype or generated-visual gravity overrides product truth.
+3. Teams choose visual tokens before resolving product posture and trust needs.
+4. Multiple active sources of design truth coexist.
+5. Visual proofs are over-read as product or route specifications.
+6. Brand color silently acquires semantic meaning.
+7. Different kinds of progress collapse into one generic progress treatment.
+8. Unresolved product/design decisions are silently invented in code.
+9. Canonicalization happens too early or too late.
+10. Design-to-engineering handoff lacks an explicit boundary.
+11. Product-design discussion becomes a long static questionnaire.
+12. Agents record answers without interpreting their implications.
+13. Agents list options without recommending a direction.
+14. Agents either agree automatically or challenge performatively.
+15. Long discussions accumulate context without explicit decision-state tracking.
 
-- this discipline is upstream of implementation and not technology-specific;
-- it owns a distinct product-to-engineering concern rather than reusable code knowledge;
-- it should be discoverable alongside `workflow/` and `best-practices/`, not nested under either;
-- it may later gain executable prompts or workflow integration if real usage demonstrates the need, without forcing every engineering task through a product-design phase today.
+## Accepted change
 
-## Accepted principles
+Create `product-design/` as a first-class upstream area beside `workflow/` and `best-practices/`.
 
-The implementation promotes these reusable rules:
+The final architecture is:
 
-- product truth before aesthetics;
-- product posture before tokens;
-- challenge persuasive/emotional shortcuts explicitly;
-- explore multiple meaningful directions with trade-offs;
-- synthesize deliberately rather than averaging contradictory directions;
-- separate structural meaning from expressive style;
-- treat provenance and unknown states as first-class design concerns;
-- brand color is not automatically semantic color;
-- progress visualizations must represent a specific kind of progress;
-- visual proofs should answer decision questions and be capable of failing the direction;
-- generated visuals are only as authoritative as explicitly approved;
-- one active source of truth per design concern;
-- harvest reusable legacy knowledge before deleting superseded authority;
-- prefer Git history/archive over competing active design generations;
-- canonical docs may keep material decisions explicitly OPEN rather than inventing precision;
-- human approval is required where brand/product precedent is durable;
-- design readiness should be classified before Build;
-- design hands off invariants, engineering owns mechanics;
-- existing code is evidence, not automatic design authority;
-- choose reset vs migration from current implementation evidence, not aesthetic preference;
-- calibrate before proliferating a new visual system;
-- shared primitive changes require downstream impact analysis;
-- implementation reuse must not erase semantic distinctions;
-- material visual implementation requires rendered verification and, where required, human acceptance;
-- reopen approved design only when implementation produces material evidence.
+```text
+product/domain truth
+→ product-design/
+→ workflow/1-exploration
+→ workflow/2-techplan
+→ build / review / testing / PR
+```
 
-## Implementation note
+`product-design/` is deliberately **not** a mandatory workflow phase. Product-design authority is durable upstream context and is not recreated for every engineering task.
 
-This accepted proposal is implemented on the same branch/PR that originally carried the proposal. It remains in `proposals/` as changelog evidence after merge.
+The area contains three kinds of guidance:
 
-No Kencleng-specific palette, typography, brand name, UI copy, or domain semantics are promoted into Harscode. Only the reusable decision discipline is retained.
+### Design reasoning
+
+`product-brand-and-ui-exploration.md` covers product truth → posture → creative directions → synthesis → visual proofs → concrete visual-system decisions.
+
+### Human/AI facilitation
+
+`discussion-facilitation.md` defines how an AI agent should collaborate with the human:
+
+```text
+orient
+→ find the highest-leverage unresolved question
+→ ask a small number of questions
+→ interpret the answer
+→ challenge where meaningful
+→ recommend when evidence is sufficient
+→ human confirms/refines
+→ update LOCKED / WORKING / OPEN / REJECTED state
+→ prove visually when useful
+→ canonicalize only after approval
+```
+
+`kickoff-prompt.md` packages that interaction model as a reusable starting prompt without turning it into a rigid staged workflow.
+
+### Authority and handoff
+
+`design-authority-and-canonicalization.md` defines how approved exploration becomes one clean source of truth.
+
+`design-to-engineering-handoff.md` defines READY/PARTIAL/OPEN readiness, design invariants vs engineering freedoms, migration/reset reconciliation, calibration, rendered verification, and human acceptance.
+
+## Rationale
+
+This belongs in shared Harscode guidance because the pattern is not tied to one brand, UI stack, visual style, or product domain.
+
+The reusable insight is the decision discipline:
+
+```text
+product truth
+→ product/design reasoning
+→ adaptive human/AI discussion
+→ selected direction
+→ representative proof
+→ canonical authority
+→ engineering interpretation
+```
+
+Project-specific aesthetics remain in each target project's own documentation.
+
+The root location is intentional. Product design is neither technology-specific best-practice knowledge nor an engineering execution phase. It is upstream authority-building work that feeds the engineering workflow.
+
+---
+
+*Accepted by Anhar on 2026-09-16 and implemented in the same PR. This proposal remains as changelog evidence for the guidance change.*
