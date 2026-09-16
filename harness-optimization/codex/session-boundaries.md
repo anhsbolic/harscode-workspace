@@ -1,133 +1,68 @@
-# session-boundaries.md (Codex)
+# Session Boundaries (Codex)
 
 ## What this translates
 
-`workflow/README.md` already defines the portable default session boundary for one feature:
+Portable authority: `workflow/context-management.md`.
+
+Codex sessions/subagents implement that policy; they do not create a second lifecycle.
+
+Human-facing handoffs should say the action to take, not only the portable enum. `CONTINUE`, `FRESH`, and `BUILD authority` remain useful internal semantics, but the operator should see wording such as:
 
 ```text
-1. Exploration + Techplan
-2. Build + Patch
-3. Code Review
-4. Testing
+Continue Techplan synthesis in this session because the Exploration context remains focused and current.
+Start a fresh Code Review session because reviewer independence is part of the phase's value.
+Return to the existing Build session because the patch is narrow and implementation context remains focused.
+Start a fresh Build/Patch session re-grounded on the patch plan because the previous Build context is stale/compacted.
 ```
 
-Pull-request generation consumes the approved/verified result afterward.
+## Exploration → Techplan
 
-Codex does not change this lifecycle. The harness translation only explains how to preserve the same context/authority separation when using Codex sessions or optional native subagents.
+Adaptive:
 
-## Portable baseline: fresh/re-grounded sessions
+- CONTINUE when Exploration context is focused, relevant sources remain active/unchanged, durable artifacts exist, and no independence benefit is lost.
+- FRESH when compaction/reset, substantial dead ends, major redirection, or context ambiguity makes re-grounding cheaper/safer.
 
-The correctness baseline is ordinary Codex session isolation.
+The same canonical Techplan prompt works in both cases. A fresh session reads durable Exploration evidence; a continuing healthy session may reuse active evidence and selectively reopen exact source sections.
 
-### Session 1 — Exploration + Techplan
+## Build / Patch
 
-Purpose:
-
-- understand the target repo and requirement;
-- resolve material ambiguity;
-- produce/review the execution contract.
-
-Expected posture:
-
-- read-heavy;
-- full planning reasoning where Harscode requires it;
-- write only the planning/task artifacts the active Harscode prompt permits;
-- do not begin production implementation merely because the plan looks obvious.
-
-Ground on the target repo's applicable `AGENTS.md`, relevant project/spec sources, and the current Harscode Exploration/Techplan guidance.
-
-### Session 2 — Build + Patch
-
-Purpose:
-
-- execute the locked plan;
-- run the tight edit → verify → fix loop;
-- apply later patch plans produced by review/testing.
-
-Expected posture:
-
-- narrow production write scope;
-- terse process narration;
-- load only the planning output and project sources needed to implement the current work unit rather than carrying the full Exploration trail forward.
-
-When Code Review or Testing later requests a patch, route implementation back to this authority. Do not quietly convert the review/testing context into a second build owner.
-
-### Session 3 — Code Review
-
-Purpose:
-
-- independently inspect the implementation for safety, quality, and consistency issues.
-
-Expected posture:
-
-- read-only production scope where practical;
-- do not fix findings inside the review session;
-- produce findings/patch-plan input according to Harscode Code Review guidance.
-
-A review session that edits its own findings away loses the separation Harscode created this boundary to preserve.
-
-### Session 4 — Testing
-
-Purpose:
-
-- independently verify observable correctness with the appropriate objective/static/rendered/runtime evidence.
-
-Expected posture:
-
-- production code read-only where practical;
-- test/evidence artifacts may be created only where the active Harscode/target-repo guidance permits;
-- if a product-code fix is needed, route it back through Build/Patch and then re-run verification.
-
-Testing is the final independent verifier when Harscode uses a separate Testing phase.
-
-## Re-grounding a fresh Codex session
-
-A new session does not need the entire previous chat transcript.
-
-Re-ground on the smallest sufficient durable state:
+Fresh from planning is preferred. Re-ground on:
 
 ```text
-target repo AGENTS.md hierarchy
-+ current task/feature artifact(s)
-+ relevant canonical project/spec docs
-+ current Harscode phase guidance
-+ specific prior finding/patch plan when re-entering Build
+target repo AGENTS/authority
++ Approved Techplan spine
++ current task slice when decomposed
++ live code/spec at anchors
++ specific patch plan when re-entering
 ```
 
-Do not paste raw Exploration logs into Build unless the plan explicitly says a particular log contains unresolved evidence the implementation needs.
+Do not carry raw Exploration by default. Review/Testing patch requests return to Build authority.
 
-## Codex native subagents / multi-agent tools
+When re-entering after a patch request:
 
-Current Codex releases expose native multi-agent/subagent capability. Treat that as an optional optimization layer, not as Harscode policy.
+- return to the existing Build session when it is still healthy/focused and the patch is narrow;
+- start a fresh Build/Patch session when the prior Build context is stale, compacted, materially redirected, or no longer cheaper than re-grounding on the durable patch plan.
 
-A native subagent is useful when it creates a real isolation or parallelism benefit, for example:
+The Review/Testing handoff should state which one it recommends and why so the operator does not have to infer the session destination from `BUILD authority` alone.
 
-- an independent review lane;
-- independent targeted investigation of separate concerns;
-- bounded verification work that can report evidence back to the main session.
+## Code Review
 
-Do not require subagents merely because the capability exists.
+Fresh context preferred for independence. Read current diff + current Techplan contract + applicable target-repo authority + routed matching best practices. Do not edit production code in review.
 
-Do not use a subagent to bypass Harscode authority separation — e.g. spawning a write-capable reviewer that both identifies and silently fixes its own findings.
+Review does not require a blanket full-suite replay. Run targeted reproduction/verification when a suspected finding needs objective evidence; broad final verification normally belongs to Testing according to the approved Techplan/target repo.
 
-If native multi-agent mechanics change or are unavailable, fall back to the four durable session boundaries above. The workflow must remain valid without them.
+## Testing
 
-## Parallelism boundary
+Fresh context preferred for independent verification. Read current Techplan + latest build evidence + target repo's real verification authority. Follow exact Test Focus evidence anchors rather than loading the whole Exploration corpus.
 
-Parallel Codex agents are safe only when the underlying Harscode/project work is safe to parallelize.
+On a Testing re-entry after a narrow patch, keep the same independent Testing session only while it remains focused and the affected verification is clear; a fresh Testing session is justified when independence/context hygiene has been lost. Do not create a fresh session solely to make benchmark accounting cleaner.
 
-Harness concurrency never overrides:
+## Pull Request
 
-- overlapping write-scope concerns;
-- migration/order dependencies;
-- shared contracts;
-- project protected paths;
-- human-review gates.
+Use final repository state + durable review/testing evidence. Same/fresh session is flexible; do not reconstruct truth from stale Build memory.
 
-The harness can execute a parallel plan; it does not decide whether the plan is logically safe.
+## Native subagents / multi-agent tools
 
-## Pull-request generation
+Optional execution optimization. Use when it creates real isolation/parallelism without violating Harscode/project authority. Never require it merely because Codex exposes it.
 
-PR generation should consume the final diff plus the durable Harscode artifacts/evidence required by `workflow/pull-request/`.
-
-Do not reconstruct PR truth from the build session's memory when the final repository state or final Testing evidence says something else.
+Parallelism does not override write-scope conflicts, dependencies, protected paths, shared contracts, or human gates.

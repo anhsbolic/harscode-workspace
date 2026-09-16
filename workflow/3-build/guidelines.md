@@ -1,63 +1,47 @@
-# Guidelines
+# Build / Patch Guidelines
 
-The build/patch implementation loop: the tight edit → run → fix cycle
-that happens after a techplan is approved and before code review.
-Lightweight tier — same as `exploration/`, `code-review/`, `testing/`,
-`pull-request/` — no protected files, no proposal process, corrected
-in the moment.
+Build is the tight edit → run → fix loop after Techplan approval. Keep process narration terse and verification local enough for rapid iteration.
 
-## Default test scope (always, regardless of techplan content)
+## Context boundary
 
-Run unit tests, mocked-service tests, and API-contract/functional
-tests only. This is the fixed default for every iteration of this
-loop — it does not vary by task, by techplan content, or by what the
-Test Focus Pointer (techplan § 12, if present) says.
+Build starts from:
 
-Race/concurrency (`-race`), performance/load, and security-class tests
-never run inside this loop, even for an area the Test Focus Pointer
-marks Y. A Y in that table is an instruction for the testing phase
-(`workflow/5-testing/`) to schedule those test classes there — it is
-not an instruction to run them here.
+```text
+Approved Techplan spine
++ current task slice when decomposed
++ specific patch plan when re-entering
++ relevant live code/spec at recorded anchors
+```
 
-This boundary exists because of a real incident: a full-package
-`-race` run combined with production-cost bcrypt inside this loop
-caused a ~2-hour build stall (see
-`best-practices/go/testing-concurrency.md` and
-`best-practices/go/expensive-primitives-in-tests.md`).
+Raw Exploration is not a default Build input. If a material contract assumption is missing, route back to Techplan rather than reconstructing product intent inside Build.
 
-## If you're about to reach for a heavier test class
+Reopen live code before editing. **Transfer coordinates, not cached facts.** If a code anchor moved, locate its current equivalent nearby; if its material contract premise no longer holds, stop/report.
 
-Stop and ask: is this actually needed to confirm the current change
-satisfies the API/interface contract? If the honest answer is "I want
-extra confidence about concurrency/performance/security," that
-confidence belongs in the testing phase, not here — note it as a
-suggested Test Focus Pointer entry for the next techplan review
-instead of running it now.
+## Default Build-loop test scope
 
-## Expensive primitives in test fixtures
+Run ordinary fast verification appropriate to the target repo: unit, mocked-service/component, API/contract/functional tests that belong in the edit loop.
 
-Any fixture/helper created or touched in this loop that hashes a
-password or runs a KDF must use a minimal test-time cost/work factor
-(`bcrypt.MinCost`, not `bcrypt.DefaultCost`) — see
-`best-practices/go/expensive-primitives-in-tests.md`. This matters
-specifically here because it's the fast-iteration loop: a slow fixture
-here is paid on every single iteration, not once.
+Use the Techplan Testing Checklist's verification ownership/rationale to keep the loop proportional:
 
-## What this phase is not
+- run Build-owned checks that provide fast confidence for the behavior being edited;
+- when Build adds or materially changes an automated test, run it enough to establish that the authored test is executable and actually exercises the intended state, even when independent Testing owns the final/broad evidence;
+- do not replay broad Testing-owned suites merely for extra confidence unless target-repo authority explicitly requires them at this point, the current edit materially changes the relevant risk, or the broader suite is the only credible way to validate the change;
+- after a narrow Review/Testing patch, rerun the affected verification first and broaden only when the patch changes scope/risk or wider regression evidence is necessary.
 
-Not where architectural decisions get revisited. If implementation
-reveals the techplan's contract doesn't actually hold — a rule can't
-be satisfied as written, an assumption turns out wrong — that's a
-stop-and-ask moment (loop back to techplan), not a silent workaround
-or a silent reinterpretation of scope.
+Race/concurrency, performance/load, and security-class sweeps belong to independent Testing when the Techplan/Test Focus Pointer requires them. Do not turn every Build iteration into final verification.
 
-The same applies when a techplan or task file contradicts itself — most
-often an abbreviated interface-contract snippet disagreeing with an
-explicit "mirrors X" / "implement exactly like Y" instruction in the
-same file or its parent techplan. If the difference is material
-(behavior, the contract a caller sees, an authority/security boundary,
-data shape), stop and ask — don't pick one. If it's mechanical only
-(local naming, internal shape the contract doesn't expose), follow the
-mirroring instruction and record the discrepancy in the build report.
-Either way it's written down, never resolved silently. See
-`workflow/README.md` § Phase Convergence.
+For a non-trivial check, preserve the Techplan's reason/risk rather than treating the tool name itself as authority. Browser automation, production builds, race detectors, or other expensive verification should be run here only when the Build loop genuinely needs that evidence; their final verification ownership may remain Testing/Human.
+
+Expensive test fixtures (e.g. password KDFs) use test-appropriate cost/work factors where the applicable best practice requires it.
+
+## Patch ownership
+
+Review/Testing produce findings/patch plans; production code changes execute here. A patch may reuse a healthy Build session or start a fresh Build session re-grounded on the smallest sufficient durable state per `workflow/context-management.md`.
+
+When handing the patch back, state the requesting phase explicitly. A narrow patch should normally return to the phase that requested it rather than automatically starting a new full review loop.
+
+## Material contradiction rule
+
+Do not silently choose between contradictory material instructions. Behavior, authority/security, data/interface shape, architecture/ownership, and verification strategy must be resolved in the authoritative Techplan/human gate.
+
+Mechanical local ambiguity (naming/internal shape) may be resolved using current target-repo convention and live precedent, then recorded in the build report when useful.

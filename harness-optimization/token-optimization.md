@@ -1,64 +1,34 @@
-# token-optimization.md (harness-agnostic rule)
+# Token / Output Efficiency (Harness-Agnostic)
 
 ## Scope
 
-This file states the rule. It does not say how to enforce it in any
-particular harness — that translation lives in `<harness-name>/token-
-optimization.md` (e.g. `claude-code/token-optimization.md`). This
-separation exists so the rule itself has exactly one source of truth
-regardless of how many harnesses eventually implement it.
+This file governs **output/process verbosity**. `workflow/context-management.md` separately governs what context should be loaded. Do not conflate the two.
 
-## The rule
+Harness translations may enforce these rules through their own instruction mechanisms; they do not redefine them.
 
-```
-Default: terse.
-  - No filler, no hedging, no restating the question, no sign-off.
-  - Applies to explanatory/conversational output — never to code,
-    diffs, or configuration content itself.
+## Rule
 
-Exception — full completeness required, compression OFF — whenever
-output:
-  (a) crosses an audience boundary into human-facing content
-      (a summary/digest section, a risk note, a PR description,
-      anything a reviewer reads instead of the full underlying detail), OR
-  (b) falls inside a section already governed by a formal, named
-      self-check checklist in `workflow/` (i.e. a section that exists
-      specifically because a prior gap recurred and got converted into
-      an explicit mechanical check).
-```
+Default explanatory/process narration is direct and terse:
 
-## Why this shape, not a flat rule or a per-phase list
+- no filler, hedging, repeated request restatement, routine tool narration, or sign-off;
+- explain material trade-offs/human gates when the explanation affects a decision;
+- do not mechanically shorten code, diffs, configuration, or required structured artifacts.
 
-**Not a flat "always be terse" rule:** tested against this workspace's own
-history in about one minute of thought and immediately produced a
-counterexample (a techplan Summary, or any section already protected by a
-self-check checklist) — see `techplan/retro.md` for what happens when a
-completeness-critical section gets under-specified. A flat rule with no
-exception logic would either get manually re-litigated every time someone
-hits an exception, or silently compress content this workspace already
-went through multiple review passes to make *not* silently drop detail.
+Deliverables remain complete enough for their audience/next phase. Examples:
 
-**Not a per-phase list (exploration/techplan/code-review/testing/PR each
-get their own rule):** violates the same "single source of truth over
-phase-split content" principle already established for `best-practices/`.
-It also doesn't actually align with phase boundaries — a single phase
-(techplan) contains both a zone that needs full completeness (the Summary)
-and a zone that's fine to keep terse (the execution-grade detail sections,
-which are agent-to-agent consumption, not human-facing). Keying the
-exception to phase name would misclassify both zones.
+- `techplan.md` remains execution-grade for Build;
+- `report-techplan.md` remains complete for human sign-off;
+- review/testing findings contain enough evidence to act on;
+- PR descriptions accurately reflect final diff/evidence.
 
-**Why triggers (a) and (b) instead:** both are self-maintaining rather
-than a static list that needs manual upkeep. If a future proposal adds a
-new self-check-guarded section anywhere in `workflow/`, it's automatically
-covered by trigger (b) without this file needing an edit — the exception
-is defined by "does this section have a self-check guard," not by naming
-every section that currently has one.
+**Terse process ≠ incomplete artifact.**
 
-## What this file is not
+## Context efficiency is different
 
-Not a claim that any specific third-party token-compression tool is safe
-or effective to install. Tool-specific evaluation (what's been measured,
-what's been tried, current verdict) lives in each harness's own
-`token-optimization.md`, dated and re-verifiable — those are empirical
-claims about fast-moving external tools, which don't belong mixed into a
-rule intended to be stable.
+A short response does not compensate for loading irrelevant context. Likewise context compaction is not permission to lose durable decisions.
+
+For context loading, phase handoff, same/fresh session choice, and progressive disclosure, follow `workflow/context-management.md`.
+
+## Third-party compression tools
+
+No generic recommendation. Evaluate per harness for measured quality/cost effect, what inputs/outputs are transformed, security/supply-chain cost, and whether required durable artifacts remain intact.

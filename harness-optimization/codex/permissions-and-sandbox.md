@@ -34,6 +34,39 @@ Pull Request
 
 This mapping supports Harscode's existing separation-of-authority principle. It does not create new phase rules.
 
+## Proportional command approval
+
+Do not solve safety by blanket-blocking useful workspace/Git operations. Prefer a productive authorized workspace with approval reserved for materially destructive, irreversible, scope-expanding, or protected operations.
+
+When target-repo authority allows them, ordinary low-risk operations normally include:
+
+```text
+git status
+git diff
+git log
+read/search/list commands
+target-repo test/lint/build commands
+ordinary authorized edits inside the current write scope
+```
+
+Operations that normally deserve explicit approval or project-specific blocking unless already specifically authorized include examples such as:
+
+```text
+rm -rf or broad recursive deletion
+git reset --hard
+git clean -fd / git clean -fdx
+git push --force / --force-with-lease
+discard-all-worktree operations
+destructive database/storage commands
+writes outside the authorized workspace or into protected paths
+```
+
+These examples are risk classes, not a universal command blacklist. A narrowly scoped removal explicitly required by an approved task is different from a broad destructive cleanup. Conversely, wrapping a destructive operation in a script does not make it safe.
+
+Do not approve a command merely because the binary is normally safe. Evaluate the actual arguments/effect and current project authority.
+
+Concrete Codex allow/ask/block configuration syntax changes over time; re-verify the current Codex version before turning these intent-level rules into machine configuration.
+
 ## Protected paths
 
 The protected-path list comes from the target repository's applicable instructions/specs, not from this file.

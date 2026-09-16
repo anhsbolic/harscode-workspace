@@ -5,71 +5,72 @@ correctly; there's no blast radius beyond the current turn.
 
 ## What this translates
 
-Same translation as `../frontend/slash-commands.md` (0009) — `workflow/`'s
-phase-kickoff prompt files are already standalone Markdown meant to be
-handed to an agent verbatim, which is close to a file-format change, not
-new content, to become Claude Code slash commands. This file exists
-separately from the frontend one only because `harness-optimization/
-README.md`'s track-split rule is about the *harness translation*, and
-backend adds one command frontend doesn't need (`/domain-sequence`,
-Proposal 0026) — not because the core five commands differ in shape.
+Same translation as `../frontend/slash-commands.md` — `workflow/`'s
+canonical phase prompts are standalone Markdown meant to be handed to an
+agent at phase start. The command is therefore a thin invocation adapter,
+not a second copy of workflow policy.
+
+The backend track exists only for genuine translation differences, not
+because the core `/explore`, `/techplan`, `/build`, `/code-review`, and
+`/test` lifecycle differs.
 
 ## Pattern
 
 ```md
 <!-- .claude/commands/explore.md -->
 ---
-description: Kick off the exploration phase for a new feature
+description: Kick off the exploration phase for a new feature/task
 ---
 
 Read and follow {HARSCODE_WORKSPACE_ROOT}/workflow/1-exploration-kickoff-prompt.md
-in full — it is the canonical entry prompt for this phase. Fill its
-inputs from this project's settings and the arguments below. Do not
-skip or merge its stages.
+in full — it is the canonical entry prompt for this phase. Resolve its
+project-level inputs from this project's settings and use the arguments
+below as the task requirement/source unless the caller mapped them more
+explicitly.
 
-Area(s) to explore: $ARGUMENTS
+Task/source to explore: $ARGUMENTS
 ```
 
-Same shape for the other four phase commands (`/techplan`, `/build`,
-`/code-review`, `/test`) — each body a pointer to that phase's canonical
-root `*-prompt.md`, using the same command → prompt mapping as
-`../frontend/slash-commands.md`, never to `workflow/<phase>/` directly
-(`workflow/README.md` § Canonical Phase Prompts). `$ARGUMENTS` carries
-whatever varies per invocation (area to explore, techplan file path,
-etc.).
+Same shape for the other core phase commands: each body points to that
+phase's canonical root `*-prompt.md`, never past it directly to a phase
+folder. `$ARGUMENTS` carries per-invocation input; it is not a substitute
+for project-level variables or a valid `{TASK_PATH}`.
+
+The command does not decide whether the next phase shares the same session.
+Honor the canonical prompt's phase handoff and `CONTINUE`/`FRESH`
+recommendation.
+
+## Optional domain sequencing wrapper
+
+If the target project groups work by domain and
+`workflow/0-domain-sequencing-prompt.md` applies, a command may expose it:
 
 ```md
 <!-- .claude/commands/domain-sequence.md -->
 ---
-description: Run the domain-level sequencing pre-flight before starting the first feature in a new domain
+description: Run the optional domain-level sequencing pre-flight
 ---
 
-Follow `workflow/0-domain-sequencing-prompt.md` in full — read it first,
-it defines what this pass must and must not do (coarse, domain-wide
-fencing/dependency check only, not per-feature implementation detail;
-explicit lower-confidence caveat required in the output).
+Follow {HARSCODE_WORKSPACE_ROOT}/workflow/0-domain-sequencing-prompt.md in
+full. Resolve its required inputs explicitly; do not infer the entire domain
+scope from the argument alone.
 
-Domain to sequence: $ARGUMENTS
+Domain/spec input: $ARGUMENTS
 ```
 
-This sixth command is the one genuine backend-track addition beyond the
-five-command pattern `../frontend/slash-commands.md` already
-established — it exists because Proposal 0026 added a domain-level
-pre-flight step that frontend's translation predates and doesn't (yet)
-have an equivalent need for.
+This wrapper is optional because the **project planning shape** is optional;
+it is not inherently a backend-only lifecycle concept. A frontend or mixed
+project can expose the same wrapper when its domain planning uses the generic
+prompt.
 
 ## Checklist
 
-- [ ] One command per workflow phase (`/explore`, `/techplan`, `/build`,
-      `/code-review`, `/test`), plus `/domain-sequence` for the
-      pre-flight step — not per-project or per-feature
-- [ ] Command body references the phase's canonical root `*-prompt.md`
-      by path (the phase folder only when no root prompt exists), never
-      copies its content inline — if the prompt or guideline changes,
-      the command doesn't need a separate edit
-- [ ] `$ARGUMENTS` is used for the one thing that genuinely varies per
-      invocation, not for anything that should already be fixed by the
-      guideline itself
-- [ ] Commands are added to the project repo's own `.claude/commands/`,
-      not to this workspace — this file is the reusable pattern, not an
-      instance of it (see `harness-optimization/README.md`)
+- [ ] Core command bodies reference canonical root prompts and do not copy
+      their workflow content.
+- [ ] `$ARGUMENTS` supplies the per-invocation value the command owns; required
+      project/task inputs remain explicit.
+- [ ] `/explore` treats its primary argument as task/source, not Area-only.
+- [ ] Phase handoff/session choice remains owned by workflow context rules.
+- [ ] `/domain-sequence` exists only when domain-grouped planning applies.
+- [ ] Command instances live in the target repo's `.claude/commands/`, not in
+      Harscode itself.

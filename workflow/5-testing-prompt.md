@@ -1,187 +1,184 @@
 # Testing Prompt
 
-Manual-invoke prompt for the testing phase. One-shot: the sweep (Step
-0) and the four coverage categories run in a single invocation, against
-the same task.
+Independent verification after Build and Code Review. Testing confirms observable correctness and closes verification gaps; it is not a replay of every earlier phase.
 
 ## Inputs required before running
 
-- `{HARSCODE_WORKSPACE_ROOT}` — path to this harscode-workspace's content
-  relative to (or as an absolute path from) your project. Set once per
-  project; see `workflow/README.md` § Path Variables Convention.
-- `{TASK_PATH}` — root working directory for this task in the target
-  repo. Set once per task; see root `README.md` § Task Working
-  Directory Structure.
-- Path to the techplan (`{TASK_PATH}/2-techplan/techplan.md`) — § 4
-  (Rules & Validation) is the source of truth for what must be covered,
-  and § 12's Test Focus Pointer (if present) is the source of truth for
-  which areas need race/perf/security-class coverage beyond the four
-  standard categories below.
-- Path to the raw exploration docs (`{TASK_PATH}/1-exploration/logs/`,
-  pre-techplan) — required to cross-check the *why* behind any Test
-  Focus Pointer entry (its Sniffing Checklist Risk-lens finding).
-  Without this, a Test Focus Pointer row is a label with no detail to
-  build a concrete test plan from.
-- Path to the latest implementation report
-  (`{TASK_PATH}/3-build/report.md`, or the most recent
-  `patch-report-<n>.md` if the task looped back through implementation
-  after code review). Required for Step 0 — without it the agent has
-  no claims to spot-check and will default to a full redo.
-- The real interface entry point(s) to exercise (API base URL + routes,
-  CLI command, UI flow) — not just "read the code and reason about it."
-- Path to the target repo's own build/lint/test commands (README or
-  Makefile) — required for Final Verification, don't assume
-  `go build`/`npm test`/etc.
+- `{HARSCODE_WORKSPACE_ROOT}` — path to this Harscode workspace, used to resolve Testing and matching best-practice guidance.
+- `{TASK_PATH}` — root working directory for this task. Testing artifacts are written under `{TASK_PATH}/5-testing/`.
+- Current Approved `{TASK_PATH}/2-techplan/techplan.md` — Rules & Validation defines required behavior; the Testing Checklist records planned evidence/primary ownership/rationale and the Test Focus Pointer carries specialized evidence pointers.
+- Latest relevant build/patch report under `{TASK_PATH}/3-build/` — Step 0 treats its named tests/coverage as claims to verify and its deferred/flagged items as priority gaps.
+- Real observable interface/entry point(s) where the product exposes one: API route, CLI command, UI flow, job/event boundary, or equivalent. If no direct external interface applies, use the nearest meaningful observable boundary and state why.
+- Target-repo build/lint/test authority — the actual README/Makefile/package scripts/CI-equivalent source that defines required final commands. Do not assume generic commands.
+
+Raw Exploration is **not** a blanket input. Specialized Test Focus rows must carry exact evidence anchors; Testing opens those specific sources when the underlying risk rationale is needed.
 
 ## Prompt
 
-```
-You are running the testing phase for a task that has already been
-through implementation and code review. Follow this process, in order:
+```text
+You are independently verifying the current implementation after Build and
+Code Review.
 
-Guidance folder for this phase: {HARSCODE_WORKSPACE_ROOT}/workflow/5-testing —
-guidelines.md, checklist.md, examples.md referenced below resolve
-relative to this.
+Read:
+- {HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/guidelines.md
+- {HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/checklist.md
+- {TASK_PATH}/2-techplan/techplan.md
+- latest relevant {TASK_PATH}/3-build/report.md or patch-report-<n>.md
+- target repo's actual build/test/entry-point authority
 
-Response style: keep the sweep/coverage work itself efficient — don't
-narrate every step. The final report below must be as thorough as a
-real testing report demonstrates is possible without an over-narrated
-process (see {HARSCODE_WORKSPACE_ROOT}/best-practices/go/examples/testing-concurrency.md
-for a worked example) — that level of detail is the bar for this
-report, not an exception ({HARSCODE_WORKSPACE_ROOT}/workflow/README.md §
-Response Style By Phase).
+Do not load testing examples by default; open examples.md only for a concrete
+recurring-pattern/calibration need.
 
-Step 0 — Sweep, don't redo:
-{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (item 0 specifically).
-Read the implementation report below. For every rule/scenario it claims
-is covered by a named test, spot-check it (run the existing test, don't
-rewrite it). Then read its "what is not tested, and why" section (or
-equivalent) — that is your priority list, not a fresh read of techplan
-§ 4 from zero.
+Process narration is terse; the testing report is complete evidence.
 
-Also as part of Step 0: read techplan § 12's Test Focus Pointer table.
-For every row still marked relevant, cross-check the raw exploration
-docs below for the concrete Sniffing Checklist Risk-lens finding behind
-it, then build a Test Execution Plan (scope, tooling, threshold) for
-that area — this is a distinct deliverable from the four-category
-coverage in Step 1, and covers race/concurrency/perf/security-class
-tests that Step 1 does not. If the pointer table is empty or missing
-but you notice a genuinely concurrency/perf/security-sensitive area in
-the exploration docs or code, flag it back as a possible techplan gap —
-don't silently add the test yourself without noting the gap.
+STEP 0 — SWEEP, DON'T REDO
+Treat the Build report's named tests/coverage as claims:
+- run/spot-check existing named coverage rather than rewriting equivalent tests;
+- close its Deferred/not-tested and Flagged items first;
+- execute verification whose Techplan primary owner is Testing;
+- identify what still requires independent real-interface/final verification.
 
-Step 1 — Coverage per techplan § 4:
-{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#process} (items 1-3). Test every
-rule in the techplan's Rules & Validation section using the real
-interface. For rules already spot-checked in Step 0 as genuinely
-covered, don't re-derive a new test — note it as confirmed. Spend actual
-effort only on: rules with no named test, rules whose named test you
-could not confirm still passes, and the four categories below.
+Do not trust a Build claim merely because it is written, and do not redo a
+proven test from scratch merely because Testing is a fresh session.
 
-Cover all four categories, not just the happy path:
-- Happy path
-- Negative cases (missing fields, invalid input, dependency failures)
-- Edge cases (empty/null/boundary values)
-- Backward compatibility (old clients, existing data)
+Use the Techplan's `Why / risk if skipped` rationale to decide the minimum
+credible independent execution. A tool name is not a ritual: run the evidence
+because the approved contract/target-repo requirement/risk justifies it.
 
-Verify error responses precisely — category, actionable message,
-correct propagation through the app's error-handling layer, not just
-"an error happened."
+When re-entering Testing after a narrow patch, verify the affected gap/finding
+first. Re-run broad/final suites when they are assigned to Testing by the
+Techplan/target repo, when the patch materially changes the relevant risk/scope,
+or when a broader suite is necessary to establish final compatibility. Do not
+replay unrelated expensive checks solely because another Testing round began.
 
-Full checklist: {file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/checklist.md}
-Known recurring bug patterns worth specifically hunting for:
-{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md}
+TEST FOCUS
+Read the Techplan Test Focus Pointer. For every row still marked relevant,
+open the exact Exploration evidence anchor recorded there — NOT the whole
+Exploration corpus — and recover the concrete reason/detail needed to design
+the specialized verification.
 
-Techplan:
-{PASTE TECHPLAN PATH OR CONTENT HERE}
+Build a concrete execution plan appropriate to the flagged concern (for
+example scoped race/concurrency coverage, a performance scenario + threshold,
+or a security check matched to the actual authority boundary). Route to
+matching best-practice files through
+{HARSCODE_WORKSPACE_ROOT}/best-practices/AGENTS.md only when the concern
+triggers them.
 
-Raw exploration docs:
-{PASTE PATH OR CONTENT HERE}
+If a pointer is missing for an obviously concurrency/perf/security-sensitive
+area, report Techplan drift instead of silently inventing the prior decision.
 
-Latest implementation report (build or most recent patch/rebuild):
-{PASTE REPORT PATH OR CONTENT HERE}
+COVERAGE
+Verify every Rules & Validation rule through the appropriate real/observable
+interface where possible. Reuse confirmed existing coverage; spend new effort
+on missing, failing, stale, or independently observable behavior.
 
-Real interface entry point(s) (optional):
-{PASTE API ROUTES / CLI COMMANDS / UI FLOW HERE}
+Respect the Testing Checklist's primary ownership:
+- Testing-owned rows require independent final evidence here unless an
+  authoritative target-repo mechanism already supplies equivalent current
+  evidence and the report can cite it credibly;
+- Build-owned rows may be spot-checked according to risk rather than blindly
+  rerun in full;
+- Human-owned rows must remain an explicit external decision/gate; agent
+  automation cannot mark them passed.
 
-Target repo build/lint/test commands:
-{PASTE COMMANDS OR PATH TO README/MAKEFILE HERE}
+Cover applicable:
+- happy path;
+- negative cases;
+- edge/boundary cases;
+- backward compatibility.
 
----
+Verify error category, caller-visible/actionable behavior, and propagation when
+error semantics are part of the contract. If a contracted rule cannot be
+exercised through a meaningful observable entry point, report that mismatch
+instead of silently marking it covered.
 
-Write your output below to
-{TASK_PATH}/5-testing/testing-report-<n>.md (see root README.md § Task
-Working Directory Structure) — increment <n> per testing round. If any
-finding requires a code change, also write
-{TASK_PATH}/5-testing/patch-plan-<n>.md listing what needs to change —
-the patch itself gets executed and reported in {TASK_PATH}/3-build/,
-not here.
+FINAL VERIFICATION
+Run the target repo's own required final build/lint/test commands according to
+its authority. Check migration/schema collision when applicable, backward
+compatibility, and broader-suite coverage when a cross-cutting change/target-
+repo rule requires it.
 
-Output format:
+Perform a fresh end-to-end read of the current Techplan for contradictions/gaps;
+keep this whole-contract check during the initial workflow-v2 validation runs
+because independence is part of the current quality baseline.
+
+Do not fix production code here. Findings needing code changes become a patch
+plan and return to Build authority; affected verification must be rerun after
+the patch according to the proportional re-entry rule above.
+
+Write:
+- {TASK_PATH}/5-testing/testing-report-<n>.md
+- {TASK_PATH}/5-testing/patch-plan-<n>.md when code changes are required
+
+Increment <n> per testing round and preserve earlier evidence.
+
+Every durable Testing artifact must start with compact provenance using only
+known/exposed values: Phase, Author, Created/Updated, and where safe/available
+Model, Reasoning, Session, target revision, and workflow revision. Do not
+invent missing metadata or persist account/credential identifiers. Git history
+is the default version history.
+
+Report format:
 
 ## 0. Sweep Summary
-- Confirmed (spot-checked, still passing): [rule/scenario → test name]
-- Closed from report's own gap list: [gap → what was added/verified]
-- Not carried over — required fresh testing: [what, and why the report
-  didn't cover it]
+- Confirmed: <rule/scenario → existing test/verification → result>
+- Closed from prior gap/deferred list: <gap → verification/result>
+- Still requires fresh Testing: <item → why>
 
 ## 0a. Test Focus Pointer Execution
-[Area (from techplan § 12) | Why sensitive (from exploration) | Test
-executed (scope/tooling/threshold) | Result] per row. If the pointer
-table was empty/missing and you suspect a genuinely sensitive area was
-scoped out silently, state that here as a flagged item, not a finding
-buried elsewhere — this is a techplan-drift signal
-(`workflow/2-techplan/guardrails.md` § 12), report it back rather than
-resolving it unilaterally.
+| Area | Evidence anchor opened | Specialized verification | Result |
+|---|---|---|---|
+
+If no Test Focus row applies, say so. If a sensitive area appears to be
+missing from the pointer, record it explicitly as Techplan drift.
 
 ## 1. Test Coverage
-[Rule/Scenario | Category (happy/negative/edge/backward-compat) |
-Real-interface test performed | Result] per item. Cite § 4 rule IDs
-where applicable. If a § 4 scenario can't be exercised through the real
-interface, flag it explicitly — don't skip silently.
+| Rule / scenario | Category | Observable verification | Result |
+|---|---|---|---|
+
+Cite Rules & Validation rule IDs where applicable. Do not silently omit an
+unexercisable rule.
 
 ## 2. Error Verification
-[Error case | Expected category | Actual category | Message
-actionable? | Propagation correct?] per case, or "No error paths
-exercised beyond §1" if genuinely none apply.
+| Error case | Expected behavior/category | Actual | Actionable/propagated correctly? |
+|---|---|---|---|
+
+Use `N/A — reason` when the contract genuinely has no error path exercised in
+this round.
 
 ## 3. Final Verification
-- [ ] Target repo build/lint/test commands: pass/fail (paste output)
-- [ ] Migration/schema version collision check: result
-- [ ] Backward compatibility: explicitly verified, not assumed
-- [ ] Fresh end-to-end techplan read: gaps/contradictions found, or none
+- Target repo required final build/lint/test commands: <command/evidence + result>
+- Broad checks intentionally not rerun: <check + reason/risk ownership; "none" if none>
+- Migration/schema collision: <result or N/A — reason>
+- Backward compatibility: <evidence/result or N/A — reason>
+- Broader-suite requirement for cross-cutting change: <result or N/A — reason>
+- Fresh Techplan consistency read: <gap/contradiction found or none>
 
-## 4. New Bug Patterns
-Only include entries that meet the threshold in
-{file:{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/guidelines.md#threshold-for-adding-to-examplesmd}
-(a category of mistake, not a one-off). Otherwise state "No new pattern
-— see {HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md for handling this ticket-specific
-bug directly."
+## 4. New Recurring Bug Patterns
+Only reusable categories belong here. Ticket-specific defects stay in this
+report; do not grow examples.md for every bug.
 
 ## Verdict
-One of: Pass / Pass with flagged follow-ups / Fail — send back to
-implementation.
-If "Fail" or flagged follow-ups, list which findings are blocking vs.
-optional, and whether they trace to a genuinely new gap or a
-Step-0-confirmed area that regressed.
+Pass | Pass with flagged follow-ups | Fail — send back to Build
+
+If not a clean Pass, distinguish blocking failures from non-blocking follow-up
+and state whether each is a new gap or a regression of previously claimed
+coverage.
+
+## Phase handoff
+- Completed: <verification scope + verdict>
+- Artifacts: <testing report; patch plan if any>
+- Human decision: <human-owned acceptance/decision needed now or "none">
+- Open / deferred: <blocking failures/follow-ups or "none">
+- Recommended next step: PR when passed and human gates are satisfied; otherwise Build/Patch using the specific patch plan
+- Session transition: if patching, explicitly say whether to return to the existing healthy Build session or start a fresh Build/Patch session and why; for PR, state whether a fresh session is useful based on context fitness
+- Context pointers: final Techplan + test report + patch plan/final diff as applicable
 ```
 
 ## Notes
 
-- This prompt does not decide which model runs it — see
-  `{HARSCODE_WORKSPACE_ROOT}/best-practices/model-routing.md` (draft) for tier × stage routing.
-  Testing is currently flat/DeepSeek-routed (Flash for Simple/Medium,
-  Pro for Complex) — no dual-model requirement at this stage today.
-- Step 0 exists specifically so this phase doesn't silently re-verify
-  everything from a blank slate (token cost with no new signal) and
-  doesn't silently trust an implementation report's claims without
-  spot-checking. If Step 0 consistently gets skipped in practice (the
-  agent defaults straight to a full redo, or defaults to blind trust),
-  log it in `{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md` — that would mirror the
-  exact "prose instruction doesn't survive" pattern already documented
-  in `{HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/retro.md`, and would be a candidate for
-  converting Step 0 into a harder-gated checklist item instead of prose.
-- If a specific pass (coverage, error verification, final check)
-  consistently produces weak findings across multiple real runs, note
-  the pattern in `{HARSCODE_WORKSPACE_ROOT}/workflow/5-testing/examples.md` before restructuring
-  this prompt — don't split it into per-step invocations preemptively.
+- Testing is a fresh independent verifier, not a full rerun of every earlier activity.
+- Runtime instructions refer to evolving Techplan sections by semantic name rather than remembered ordinal number.
+- Exact evidence anchors reduce rereading without weakening specialized-risk rationale.
+- The fresh whole-Techplan verification remains deliberately conservative during the initial workflow-v2 validation runs; narrow it only after evidence shows quality is preserved.
+- Verification economy means justified evidence, not fewer tests by default. If a broad check is genuinely release-critical, run it once in the phase that owns the final evidence rather than ceremonially repeating it everywhere.

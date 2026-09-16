@@ -1,38 +1,36 @@
-# Checklist
+# Testing Checklist
 
-## Test Coverage
+## Sweep
 
-- [ ] Happy path tested via the real interface
-- [ ] Negative cases tested (missing fields, invalid input, dependency
-      failure)
-- [ ] Edge cases tested (empty/null/boundary values)
-- [ ] Backward compatibility tested (old client behavior, existing data)
-- [ ] Every rule in techplan § 4 (Rules & Validation) maps to at least
-      one test
+- [ ] Latest build/patch report read first; named coverage spot-checked rather than blindly recreated.
+- [ ] Build report Deferred/Flagged items were addressed or explicitly carried forward.
 
-## Test Focus Pointer Execution (if techplan § 12 has any rows)
+## Rule coverage
 
-- [ ] Every "Y" row in techplan's Test Focus Pointer has a concrete
-      Test Execution Plan (scope, tooling, threshold) — not just
-      re-run generically
-- [ ] Race/concurrency tests are scoped to the specific package(s),
-      never a blanket `./...` sweep
-- [ ] Any deliberately-slow primitive (bcrypt, other KDFs) exercised
-      under load/concurrency uses a test-appropriate cost factor, not
-      production settings
-- [ ] An empty pointer table with a suspected sensitive area has been
-      flagged back as a possible techplan drift, not silently
-      resolved by adding a test unilaterally
+- [ ] Every Techplan Rules & Validation rule has meaningful verification.
+- [ ] Applicable happy, negative, edge, and backward-compatibility behavior covered.
+- [ ] Contracted behavior that cannot be exercised through an observable interface is flagged.
 
-## Error Verification
+## Test Focus Pointer
 
-- [ ] Error category is correct (not generic when specific was expected)
-- [ ] Error message is actionable for the caller
-- [ ] Error propagates through the app's actual error-handling layer
+For every relevant/`Yes` Techplan Test Focus Pointer row:
 
-## Before Marking Done
+- [ ] Opened the exact recorded Exploration evidence anchor, not the entire Exploration corpus.
+- [ ] Built a concrete specialized execution plan (scope/tooling/threshold or security class as applicable).
+- [ ] Concurrency/race scope is targeted where possible rather than an unjustified blanket sweep.
+- [ ] Deliberately expensive primitives use test-appropriate cost/work factors.
+- [ ] A suspected sensitive area missing from the pointer is reported as Techplan drift, not silently retrofitted into planning history.
 
-- [ ] Target repo's own build/lint/test commands pass
-- [ ] Migration/schema version (if any) doesn't collide with anything
-      landed since techplan was written
-- [ ] Fresh end-to-end read of the techplan for gaps or contradictions
+## Errors
+
+- [ ] Applicable error category/external behavior is correct.
+- [ ] Error is actionable at the appropriate caller/UI boundary.
+- [ ] Propagation follows target-repo convention.
+
+## Final verification
+
+- [ ] Target repo's required build/lint/test commands pass.
+- [ ] Migration/schema collision checked when applicable.
+- [ ] Backward compatibility explicitly verified when applicable.
+- [ ] Broader suite run when target authority/risk requires it for cross-cutting changes.
+- [ ] Fresh end-to-end Techplan read completed for contradictions/gaps.

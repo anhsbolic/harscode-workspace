@@ -1,14 +1,12 @@
 # AGENTS.md — best-practices/
 
-Read `index.md` first — full governance, examples.md convention, and
-genericity discipline live there. This file is just the short version.
+This tree is a routed knowledge base, not a folder to browse exhaustively.
 
 ## Hard rules
 
-- Do not edit any file in this tree directly — not `index.md`, not any
-  category file, not any `examples.md`. Not even a typo fix.
-- To propose a change: write to `../proposals/` using the template in
-  `../proposals/README.md`. Never merge your own proposal.
-- Before opening any file: check `index.md`'s Security Concern Map
-  (security-relevant work) or the trigger-keyword table (everything
-  else). Never browse the folder to find a file.
+- Do not edit files in this tree directly on ordinary work. Changes go through the root `proposals/` mechanism.
+- Use `index.md` as a **clue map**, not as mandatory prose to absorb end-to-end.
+- For security-relevant work, target the Security Concern Map for the active concern; otherwise search/scan trigger keywords for the technologies/areas actually touched.
+- Open only the matching best-practice files. If no trigger matches, do not force one.
+- A clue/index entry routes to authority; it does not replace the target file's rule.
+- Read full `index.md` governance/detail only when maintaining the best-practices system itself.

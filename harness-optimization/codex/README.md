@@ -1,90 +1,66 @@
 # codex/ — OpenAI Codex harness translations
 
 **Effective as of:** OpenAI Codex CLI / Codex agent mechanics documented in September 2026
-**Last verified:** 2026-09-13
-**Re-verify:** recommended every ~2-3 months, or immediately if Codex ships a major change to `AGENTS.md` loading, Skills, sandbox/approval behavior, or multi-agent/subagent mechanics.
+**Last verified:** 2026-09-15
+**Re-verify:** every ~2–3 months, or after material Codex changes to instruction loading, skills, sandbox/approval, sessions/subagents, usage/status surfaces, or hosted capabilities.
 
 ## Scope
 
-This directory translates existing Harscode rules into Codex-native mechanisms.
+Translation only. Never policy.
 
-The parent rule still applies:
+Portable rules live in `workflow/` and `best-practices/`. This directory maps them onto Codex-native instruction/session/skill/sandbox behavior.
 
-> **Translation only. Never policy.**
-
-If a Codex-specific file would need to invent a lifecycle rule, testing obligation, risk threshold, approval rule, or engineering best practice, stop and propose that rule in `workflow/` or `best-practices/` first.
-
-## Codex-native mapping
-
-Use Codex mechanisms according to the concern they actually own:
+## Mapping
 
 ```text
-project hard rules / commands / fencing / routing
-→ hierarchical AGENTS.md in the target repo
+project hard rules / routing
+→ target repo hierarchical AGENTS.md
 
-on-demand reusable procedures / best-practice discovery
-→ Codex Skills
+on-demand reusable procedures / knowledge discovery
+→ Codex Skills / targeted references
 
-phase/context isolation
-→ Harscode session boundaries first; Codex subagents optionally
+phase/context separation
+→ workflow/context-management.md translated by session-boundaries.md
 
-runtime write/network/tool boundaries
-→ Codex sandbox + approval configuration
+runtime write/network/tool authority
+→ permissions-and-sandbox.md
 
-cross-phase response terseness rule
-→ one persistent Codex instruction surface
+session usage / CRTV operator observability
+→ benchmarking.md
+
+output/process terseness
+→ token-optimization.md translation
 ```
 
-Do not create a giant `CODEX.md` by default. Codex already has a native hierarchical project-instruction mechanism; adding another always-loaded project policy file normally creates duplication rather than capability.
+Do not create a giant `CODEX.md` or duplicate the same persistent rule across profile/user/project/skills.
 
 ## Canonical phase prompts
 
-Start each phase from Harscode's canonical root `*-prompt.md` (see `workflow/README.md` § Canonical Phase Prompts). A Codex skill, `AGENTS.md` routing line, or session kickoff may fill that prompt's variables and add target-repo context, but must not replace it with a re-authored Codex version of the phase. `skills.md` § Workflow/session wrappers describes the wrapper shape.
+Start each lifecycle phase from Harscode's canonical root `workflow/*-prompt.md`. A Codex wrapper may resolve variables and add target-repo/execution-profile context; it may not maintain a re-authored lifecycle copy.
 
 ## Execution profiles
 
-A target project or user may maintain a Codex execution profile for fast-moving execution mechanics, such as:
+A target project/user may configure fast-moving mechanics such as model, reasoning effort, CLI/client, browser/rendered capability, image/design capability, and other tool availability. That profile lives in target/user configuration, not generic Harscode workflow policy.
 
-- current model choice;
-- reasoning effort;
-- Desktop vs CLI client;
-- browser/rendered capability;
-- image/design capability;
-- other harness-specific tool availability.
+A stronger model does not skip a workflow gate. A missing capability does not erase an evidence obligation; satisfy it another authorized way or surface the gap.
 
-That profile belongs in user Codex configuration or the target repository — not in this directory. It is translation/configuration, not Harscode lifecycle policy: it must not redefine the lifecycle, project truth, approval authority, or testing obligations. A stronger model does not skip a phase's gate; a missing browser capability does not remove a rendered-verification obligation — the obligation is met another way or flagged.
-
-Do not add specific Codex model names here, and do not add a `codex/frontend/` folder merely to store model choices or visual-tool preferences (see the track-split rule under Files). Origin: proposal 0028.
+Do not put project-specific model names/commands/paths in this reusable translation directory merely because one project uses them.
 
 ## Files
 
-- `instruction-loading.md` — how Codex's `AGENTS.md` hierarchy maps to Harscode/project source ownership without duplicating policy.
-- `skills.md` — how to wrap Harscode guidance as Codex Skills using progressive disclosure.
-- `session-boundaries.md` — how Harscode's existing session guidance maps to Codex sessions and optional native subagents.
-- `permissions-and-sandbox.md` — how Codex sandbox/approval controls reinforce existing authority without defining new authority.
-- `token-optimization.md` — how to enforce the harness-agnostic Harscode output rule in one Codex-native persistent instruction surface.
+- `instruction-loading.md` — hierarchical instruction loading / avoiding duplicate project policy.
+- `skills.md` — progressive-disclosure wrappers around existing Harscode sources.
+- `session-boundaries.md` — same/fresh session translation and re-grounding.
+- `permissions-and-sandbox.md` — runtime authority translation and proportional destructive-operation approvals.
+- `benchmarking.md` — session-level usage/quality observability for CRTV/operator benchmarking.
+- `token-optimization.md` — output/context-efficiency translation.
 
-There is no `frontend/` or `backend/` split yet because the initial translation above is track-agnostic. Add a track subfolder only when real use proves the Codex translation itself differs materially by track.
+There is no Codex frontend/backend split by default. Add a track only when Codex translation itself differs materially, not when stack guidance/model preference differs.
 
-## Project instancing rule
+## Project instancing
 
-Actual target-repo artifacts such as:
+Actual target-repo `AGENTS.md`, `.codex/skills/`, concrete config values, browser/test commands, protected-path lists, benchmark artifact paths, and execution profiles belong in the target repo/user config.
 
-- root/nested `AGENTS.md` content;
-- `.codex/skills/` packages;
-- machine/user `config.toml` values;
-- concrete browser/test commands;
-- project protected-path lists;
+## Capability references
 
-belong in the target repository or user Codex configuration, not here.
-
-This directory is the reusable translation pattern, not an instance of it.
-
-## Capability sources used for this verification
-
-- https://openai.com/index/unrolling-the-codex-agent-loop/
-- https://openai.com/index/running-codex-safely/
-- https://github.com/openai/codex/blob/main/codex-rs/core/config.schema.json
-- https://github.com/openai/codex/blob/main/codex-rs/skills/src/assets/samples/skill-creator/SKILL.md
-
-Treat these as fast-moving harness references. If current Codex behavior diverges from this directory, re-verify the mechanism first; do not silently rewrite Harscode policy to fit a harness change.
+Fast-moving Codex mechanics should be re-verified against current OpenAI/Codex sources before concrete configuration is copied into a project. Harness drift must not silently rewrite Harscode lifecycle policy.

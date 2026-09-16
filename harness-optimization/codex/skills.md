@@ -2,53 +2,55 @@
 
 ## What this translates
 
-Codex Skills provide progressive disclosure: small selection metadata is available up front, the `SKILL.md` body is loaded when the skill is used, and supporting references/scripts can be loaded only when needed.
+Codex Skills provide progressive disclosure: small selection metadata is
+available up front, the `SKILL.md` body is loaded when the skill is used, and
+supporting references/scripts can be loaded only when needed.
 
-That maps well to Harscode's existing goal of keeping portable detail on demand instead of stuffing it into every project instruction file.
-
-A Codex Skill is therefore an **adapter to an existing Harscode source**, not a place to invent or rewrite policy.
+A Codex Skill is an **adapter to an existing Harscode source**, not a place to
+invent or rewrite policy.
 
 ## Two useful wrapper classes
 
-### 1. Workflow/session wrappers
+### 1. Workflow wrappers
 
-A project may expose thin skills aligned to the existing Harscode lifecycle/session boundaries, for example:
+Prefer thin wrappers around canonical phase entrypoints, for example:
 
 ```text
-harscode-plan
-→ Exploration + Techplan
-
-harscode-build
-→ Build + Patch
-
-harscode-review
-→ Code Review
-
-harscode-test
-→ Testing
-
-harscode-pr
-→ Pull Request
+harscode-explore  → Exploration
+harscode-techplan → Techplan synthesis/review/decomposition gates
+harscode-build    → Build/Patch
+harscode-review   → Code Review
+harscode-test     → Testing
+harscode-pr       → Pull Request
 ```
 
-These names are examples, not new Harscode phase names.
+These are example Skill names, not new Harscode phase names.
 
-A wrapper should:
+A project may also expose a convenience planning orchestrator such as
+`harscode-plan`, but it must honor `workflow/context-management.md`: after
+Exploration it follows the phase handoff's `CONTINUE`/`FRESH` recommendation.
+It must not force Exploration + Techplan into one session or one context window.
+
+A workflow wrapper should:
 
 1. resolve the target repo's applicable `AGENTS.md` instructions;
 2. resolve `{HARSCODE_WORKSPACE_ROOT}`;
-3. read the current Harscode prompt/guidelines for that phase/session;
-4. verify the inputs/preconditions the Harscode prompt requires;
-5. execute the phase and write generated artifacts only where Harscode/target-repo guidance says they belong;
-6. preserve Harscode's output completeness and self-check requirements.
+3. read the current canonical Harscode phase prompt;
+4. verify the prompt's inputs/preconditions;
+5. load only the required/triggered authority that prompt routes to;
+6. execute the phase and write artifacts only where Harscode/target-repo
+   guidance owns them;
+7. preserve phase handoff, human gates, and output completeness.
 
-Do not paste a stale hand-edited copy of the phase prompt into the skill and then let the two evolve independently.
+Do not paste a stale hand-edited copy of the phase prompt into the Skill. A
+Skill that spans multiple phases must still respect fresh/independent boundaries
+rather than treating Skill activation as permission to keep one giant context.
 
 ### 2. Best-practice discovery wrappers
 
-`best-practices/index.md` already provides the routing signal for portable engineering guidance.
-
-Codex Skills can translate that routing into automatic progressive disclosure. Keep the transform mechanical:
+`best-practices/index.md` provides routing signals for portable engineering
+guidance. Codex Skills can translate that routing into automatic progressive
+disclosure:
 
 ```text
 best-practices index entry / trigger signal
@@ -58,19 +60,16 @@ underlying best-practice source
 → skill body/reference source
 ```
 
-Do not invent new trigger semantics or rewrite the engineering rule while wrapping it.
+Do not invent trigger semantics or rewrite engineering rules while wrapping
+them.
 
 ## Source strategies
 
-Choose one strategy per generated skill and make it explicit.
+Choose one strategy per generated Skill and make it explicit.
 
-### Preferred when Harscode is reliably readable from the target workspace
+### Preferred when Harscode is reliably readable
 
-Keep the skill thin and read the current Harscode source at runtime.
-
-This minimizes synchronization drift.
-
-Conceptual shape:
+Keep the Skill thin and read the current Harscode source at runtime:
 
 ```md
 ---
@@ -88,43 +87,41 @@ Do not reinterpret or restate the source rule here.
 
 ### Fallback when the external Harscode path is not reliably accessible
 
-Generate an exact copy of the source into the project skill, but treat it as a **generated cache**, not a new authority.
-
-The generation process must record the source path/revision and regenerate when Harscode changes. Do not manually maintain both copies.
+Generate an exact copy of the source into the project Skill, but treat it as a
+**generated cache**, not a new authority. Record source path/revision and
+regenerate when Harscode changes; do not hand-maintain both copies.
 
 ## Skill structure
 
-Current Codex skills support a required `SKILL.md` plus optional resources such as scripts/references/assets.
-
-Use extra files only when they materially reduce repeated work or keep conditional detail out of the skill entrypoint. Do not create structure for its own sake.
-
-For Harscode wrappers:
+Use supporting references/scripts only when they materially reduce repeated
+work or keep conditional detail out of the entrypoint.
 
 - `SKILL.md` should stay short and discriminating;
-- supporting `references/` are appropriate when the wrapper needs multiple Harscode sources conditionally;
-- `scripts/` are appropriate only for deterministic repeated transforms/checks, not for encoding policy that belongs in Markdown sources.
+- `references/` are appropriate for multiple conditional Harscode sources;
+- `scripts/` are for deterministic repeated transforms/checks, not policy.
 
 ## Placement
 
-Actual skill instances belong in the target repo's supported project-local Codex skill surface (for example `.codex/skills/` where current Codex supports it) or the user's Codex skill installation, depending on desired scope.
-
-Do not commit target-project skill instances into `harscode-workspace` itself. This directory documents the reusable transform.
+Actual Skill instances belong in the target repo's supported project-local
+Codex skill surface or the user's Codex Skill installation, depending on scope.
+Do not commit target-project instances into `harscode-workspace` itself.
 
 ## Keep the first installation small
 
-Do not generate one skill for every Harscode file on day one just because it is possible.
+Do not generate one Skill for every Harscode file merely because it is
+possible. Start with wrappers that remove real lookup/friction, dogfood them,
+and add more only when benefit outweighs metadata/synchronization cost.
 
-Start with wrappers that remove real repeated lookup/friction in the target project. Dogfood them. Add more only when actual use shows the progressive-disclosure benefit outweighs the metadata/synchronization surface.
-
-This is an optimization rule, not a new lifecycle requirement: manual routing through `workflow/` and `best-practices/index.md` remains a valid fallback.
+Manual routing through `workflow/` and `best-practices/index.md` remains a
+valid fallback.
 
 ## Verification checklist
 
-For every generated Harscode-backed Codex skill:
-
-- [ ] The skill points to an existing authoritative Harscode source.
-- [ ] Its description is derived from existing routing/phase intent rather than new policy wording.
-- [ ] It does not weaken target-repo `AGENTS.md` rules.
-- [ ] It does not create project artifacts outside the locations Harscode/project guidance owns.
-- [ ] If content was copied, the copy is marked/generated as a cache with source revision metadata.
-- [ ] Removing/failing to trigger the skill falls back safely to manual Harscode lookup rather than changing correctness requirements.
+- [ ] Skill points to an existing authoritative Harscode source.
+- [ ] Description is derived from existing routing/phase intent, not new policy.
+- [ ] Target-repo `AGENTS.md` authority is preserved.
+- [ ] Project artifacts stay in Harscode/project-owned locations.
+- [ ] Copied content is a generated cache with source revision metadata.
+- [ ] Multi-phase wrappers honor Harscode phase handoff/session boundaries.
+- [ ] Removing/failing to trigger the Skill falls back safely to manual
+      Harscode lookup rather than changing correctness requirements.

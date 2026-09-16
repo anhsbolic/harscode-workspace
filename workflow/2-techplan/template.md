@@ -1,35 +1,31 @@
 # Template: techplan.md
 
-This skeleton's structure MUST be followed. Fill in each section
-following `rules.md` and `guardrails.md`. This document is
-execution-grade throughout — for the implementing agent, the engineer,
-and code review. It has no reviewer-facing summary.
+Follow this structure with `rules.md` and `guardrails.md`. `techplan.md` is the **execution-grade authoritative spine** for the implementing agent and engineering review: complete, unambiguous, non-redundant.
 
-Once this techplan reaches **Approved** status, generate
-`report-techplan.md` from `report-template.md` — that file is the sole
-human-facing artifact (see Proposal 0012, which supersedes the older
-embedded-Summary design). Do not add a summary or condensed section
-back into this file; if a reviewer needs an update after Approved,
-regenerate `report-techplan.md` in full, don't patch either file
-piecemeal.
+After **Approved**, generate `report-techplan.md` from `report-template.md` as the sole human-facing digest. Never add an embedded Summary back here.
 
 ```markdown
 # Tech Plan: {Feature Name}
 
-> Ticket    : {ticket code}
-> Author    : {name}
-> Date      : {YYYY-MM-DD}
-> Updated   : {fill in if there's a significant revision to any section}
-> Status    : Draft / In Review / Approved / Implemented
-> Approach  : {optional — one-line summary, omit if section 1/2 already covers it}
-> Refs      : {optional — AGENTS.md that was read, PRD link, related story docs}
+> Phase             : Techplan
+> Ticket            : {ticket code or none}
+> Author            : {human/agent identity}
+> Model             : {exact model when agent-authored/exposed; otherwise omit/not exposed}
+> Reasoning         : {when exposed; otherwise omit/not exposed}
+> Session           : {session/thread id when useful and safe to persist}
+> Created           : {YYYY-MM-DD or timestamp}
+> Updated           : {when materially revised}
+> Target revision   : {commit/ref if known}
+> Workflow revision : {Harscode commit/ref if known}
+> Status            : Draft / In Review / Approved / Implemented
+> Approach          : {optional one-line orientation}
+> Refs              : {source specs / target authority / related artifacts}
 
 ---
 
 ## 1. Background
 
-Why this change needs to exist. Current behavior / problem statement.
-2-3 paragraphs max.
+Why this change exists and the current problem. Keep it factual; do not repeat later implementation detail.
 
 ## 2. Scope
 
@@ -41,139 +37,118 @@ Why this change needs to exist. Current behavior / problem statement.
 
 ## 3. Requirements
 
-| Condition | Requirement | Source/Note |
+| ID | Requirement | Source / evidence |
 |---|---|---|
+| Q1 | ... | ... |
 
 ## 4. Rules & Validation
 
-Testable, given/when/then style.
+Testable behavior/invariants. Give stable rule IDs.
 
-- Scenario A: ...
-- Scenario B (error case): ... → error `{ErrMsgXxx}`
+- **R1** — Given ... when ... then ...
+- **R2** — ...
 
 ## 5. Decision Log
 
-| Option considered | Why rejected/accepted |
-|---|---|
-| Option A | ... |
-| Option B (chosen) | ... |
+Record material choices so a later agent does not reopen rejected approaches.
+
+| ID | Decision / option | Status | Rationale / consequence |
+|---|---|---|---|
+| D1 | Option A | Chosen | ... |
+| D1-alt | Option B | Rejected | ... |
 
 ## 6. Backward Compatibility
 
-- Database: how existing data is handled
-- API: additive vs breaking
-- Existing clients/data: affected or not
-- Deprecation path if applicable
+- Existing data: ...
+- API/contracts/clients: ...
+- Migration/deprecation compatibility: ...
 
 ## 7. Edge Cases & Risks
 
-| Risk | Likelihood | Severity | Mitigation |
-|---|---|---|---|
+| ID | Risk / edge case | Likelihood | Severity | Mitigation / accepted exposure |
+|---|---|---:|---:|---|
+| RISK-1 | ... | ... | ... | ... |
 
 ## 8. Interface Contract
 
-Check the target repo's convention first (see `guardrails.md`) to know
-what's mandatory to cover here — it can differ per project/service.
+Follow the target repo's own authority; include only applicable contract surfaces.
 
-**DB Schema changes:**
-```sql
-```
+**Persistence/data shape:** ...
 
-**API changes:**
-```graphql
-```
+**API/event/external interface:** ...
 
-**Business logic flow (concise, not full code):**
-```
-```
+**Cross-layer/business boundary:** ...
 
 ## 9. Architecture / Plan
 
-High-level flow / pseudocode. Migration strategy if relevant. Include
-a diagram only if the flow has genuine branching, a state transition,
-or a multi-step cross-component sequence — skip it for a linear/CRUD
-plan and describe the flow in one line instead (`guidelines.md`'s
-diagram criteria apply here, not just in `report-template.md`).
+High-level execution/data/control flow. Include a diagram only for genuine branching, state transition, or multi-component ordering; when used, follow `diagram-guidelines.md`.
 
 ## 10. Implementation Details
 
-Reference file:function + signature. Full snippet ONLY for what's
-genuinely novel/non-obvious; for logic that mirrors an existing
-precedent, point at the precedent (file:line) instead of duplicating
-its code.
+Use code anchors instead of freezing routine code into prose.
 
-**File**: `path/to/file`
-- Change: ...
+| Anchor | Why relevant | Intended change / precedent |
+|---|---|---|
+| `path/to/file.ext` — `SymbolName` | ... | ... |
+
+Full snippets only for genuinely novel/non-obvious logic that materially reduces ambiguity.
 
 ## 11. Files Changed / Files NOT Changed
 
-| File | Change Type | Description |
+| File / area | Change type | Description |
 |---|---|---|
 
-| File | Reason untouched |
+| File / area intentionally untouched | Why |
 |---|---|
 
 ## 12. Testing Checklist
 
-Derived directly from section 4, written concurrently — not afterward.
-Mark a line with ⚠️ if it's a non-obvious gotcha worth flagging during
-review, instead of maintaining a separate mistakes table.
+Preserve verification coverage for every Rules & Validation rule. Use one or more rows per rule when different evidence/owners are genuinely required.
 
-- [ ] ...
+| Rule | Verification / evidence | Primary owner | Why this is worth running / risk if skipped |
+|---|---|---|---|
+| R1 | ... | Build / Testing / Human | ... |
+| R2 | ... | ... | ... |
 
-### Test Focus Pointer (carry-over from exploration Risk lens)
+Primary owner means who owns the authoritative evidence, not who is forbidden from ever running the check:
 
-Areas flagged as concurrency/perf/security-sensitive during exploration
-Stage 2 (`sniffing-checklist.md` § Risk) that are still relevant after
-synthesis — a pointer for the testing phase, not a full test plan.
+- **Build** — fast/focused edit-loop confidence or an artifact/test that must be executable as it is authored.
+- **Testing** — independent final/broad verification.
+- **Human** — subjective/product acceptance automation cannot decide.
 
-| Area | Why sensitive | Still relevant post-synthesis? |
-|---|---|---|
+Code Review is normally a reasoning phase, not the primary owner of a planned suite; it may run a targeted reproduction/check when needed to substantiate a suspected finding.
 
-Only list areas that survived synthesis and remain relevant — an area
-flagged during exploration but dropped/changed during synthesis is
-implicitly "N/A, see § 5 Decision Log for why," not restated here. This
-is a pointer, not a test plan: race/perf/security execution detail
-(scope, tooling, thresholds) is decided in the testing phase
-(`workflow/5-testing/`), not here.
+When a non-trivial verification tool/technique is named (for example browser automation, production build, race detector, load test, security scan, or human rendered acceptance), explain why it is appropriate and the meaningful risk if it is skipped. Do not prescribe a heavyweight tool merely for ceremony.
+
+### Test Focus Pointer
+
+Only specialized concurrency/perf/security-sensitive evidence that belongs in the independent Testing phase.
+
+| Area | Why sensitive | Evidence anchor from Exploration | Still relevant post-synthesis? |
+|---|---|---|---|
+| ... | ... | `1-exploration/logs/<file>.md#<heading>` | Yes / N/A — reason + Decision Log pointer |
+
+This is a pointer, not the full test execution plan.
 
 ## 13. Open Items
 
-Lifecycle rules in `rules.md` § 8. An item lives in exactly one of the
-two lists below at any time — never both, never neither once raised.
-
-### Active — need external input or verification
+### Active — needs external input or verification
 
 1. ...
 
-### Resolved (kept for reference)
+### Resolved — retained as decision history
 
-1. ~~**{short title}**~~ **RESOLVED — {one-line resolution}.** {who
-   resolved it, when, and the consequence if any}.
+1. ~~**{short title}**~~ **RESOLVED — {actual resolution}.** {who/when if known; consequence if any}.
 ```
 
-## Structural Note
+## Provenance rule
 
-- This file has no Summary/digest section and no audience boundary —
-  see Proposal 0012. Every section is written at execution precision
-  for the agent and reviewing engineer.
-- Once this techplan reaches **Approved**, generate
-  `report-techplan.md` from `report-template.md`. That file draws from
-  sections 1, 2, 5, 7, and 13 (Open Items) here, condensed for a
-  reviewer, plus its own Architecture/Plan and Interface Contract
-  sections. Never generate it before Approved, and never hand-patch it
-  — if this techplan changes afterward (including the
-  Approved→Implemented loop or a reopened Draft), regenerate
-  `report-techplan.md` in full. See `report-template.md`'s generation
-  checklist (relocated from the old `rules.md` § 7) before treating a
-  regenerated report as done.
-- When an Active Open Item gets resolved — including mid-Draft, not
-  just at Approved/Implemented — move it to Resolved with the
-  resolution written out (`rules.md` § 8, `guardrails.md` § 10). Don't
-  delete the line; a silently-vanished item loses the "why" a reviewer
-  may need later.
-- If this feature has a sub-component with an independent operational
-  lifecycle (one-time script, cron job, separate migration with its own
-  rollback/cleanup) — evaluate first whether that's an extra section
-  here or a separate linked techplan. See `rules.md` § Runbook vs
-  Techplan.
+Do not invent unavailable model/session/revision metadata and do not persist credentials/account identifiers. Git history remains the default version history; do not add a manual semantic Techplan version unless an external artifact/contract genuinely requires one.
+
+## Spine invariant
+
+Optional decomposition may move scoped execution detail into `2-techplan/tasks/`, but this Techplan remains the authoritative spine. No material scope/rule, decision, risk, interface/data contract, verification obligation, or unresolved item may exist only in a child task file.
+
+## Report rule
+
+When the Techplan first reaches Approved, and whenever an Approved report becomes stale because the source Techplan materially changed, regenerate `report-techplan.md` from `report-template.md` in full. The report never overrides this file.
