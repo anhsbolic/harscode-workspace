@@ -2,12 +2,28 @@
 
 # Best Practices Index
 
-Scan this table first. Match `Trigger keywords` against the area being explored/planned,
-then open only the matching file(s) — don't read every file in `best-practices/`.
+This is the global fallback clue map. **Do not scan it when the active category is already known and that category has a subindex.**
 
-For anything security-relevant, check the **Security Concern Map** below first — it
-groups security-critical files by concern across folders, so you don't have to scan
-every category's row to find what's relevant to auth, secrets, PII, etc.
+Preferred routing:
+
+```text
+known category/specialization
+→ category subindex (for example react/index.md or go/index.md)
+→ matching file(s)
+```
+
+Fallback routing:
+
+```text
+category not yet known
+→ this global index
+→ matching category/subindex
+→ matching file(s)
+```
+
+Reading an index never implies reading all descendants.
+
+For anything security-relevant, check the **Security Concern Map** below when a narrower applicable subindex does not already identify the required security guidance. It groups security-critical files by concern across folders so agents do not need to scan every category row.
 
 | Category | File | Trigger keywords | Security-critical | Summary |
 |---|---|---|---|---|
