@@ -136,12 +136,7 @@ first — before falling back to scanning the full table by keyword.
 
 **Coverage complete for initial pass** across go/, postgresql/, graphql/, restapi/, kafka/, pubsub/, redis/, infra/, pwa/, react/. `react/` added 2026-08-23 — new frontend-general category, sibling to `pwa/` (which stays scoped to offline/service-worker/installability): `accessibility-fundamentals.md`, `server-client-component-boundary.md`, `form-validation-boundary.md`, `data-fetching-conventions.md`, `component-test-mocking-discipline.md`. Written from general React/Next.js knowledge, not yet grounded in a real kencleng frontend story/task — enrich with real examples as the first frontend tasks land, same pattern as every other category here. `react/app-router-routing-conventions.md` added 2026-08-26 — scoped strictly to route-segment file conventions (loading/error/layout), route composition (groups/parallel routes), and metadata; deliberately excludes Server/Client Component boundary and secrets-bundling risk, which stay owned by `server-client-component-boundary.md`. Also written from general knowledge, not yet grounded in a real story/task. `laravel/`, `data-modeling/`, `background-jobs/`, `hybrid-monolith/` added 2026-09-07 (proposals 0016-0019) — four new categories surfaced while locking the tech stack for a new Laravel/Inertia/React project. Written from general knowledge grounded in locked architectural decisions for that project, not yet from real implementation friction — enrich with real examples once the first backend/frontend tasks land, same pattern as `react/` above.
 
-**Maintenance:** every new file added to any `best-practices/<category>/` folder gets
-one row here — category, path, trigger keywords, security-critical (yes/no), one-line
-summary. If security-critical is `yes`, also add it to the Security Concern Map under
-every concern tag it applies to — a security-critical file with no map entry is
-effectively invisible to the primary security-scan path. Keep summaries scannable
-(one line); don't restate the file's content here.
+**Maintenance:** every new **guidance authority file** added to a `best-practices/<category>/` folder gets one row here — category, path, trigger keywords, security-critical (yes/no), one-line summary. Category routing files such as `<category>/index.md` do not get knowledge rows because they are indexes, not guidance authority. If a guidance file is security-critical, also add it to the Security Concern Map under every concern tag it applies to. Keep summaries scannable; don't restate the target file's content here.
 
 ## Governance
 
