@@ -174,7 +174,9 @@ Patch authority still belongs to Build/Patch even when Review or Testing discove
 
 Active personal system. Harscode uses **Continuous Real-Task Validation (CRTV)**: changes are evaluated through real product/engineering work, individual executions are validation runs, and evidence from those runs drives revisions while proven quality remains the floor.
 
-The workflow-v2 line has completed two materially different real Kencleng validation runs with positive correctness/outcome evidence and is being promoted as the current **operational default**. That is not a claim of full maturity: future real tasks should keep recording outcome/context evidence, especially for lifecycle paths not yet exercised, and refinements should be driven by recurring evidence rather than speculative optimization.
+The workflow-v2 line on `main` remains the current **operational default** after two materially different real Kencleng validation runs with positive correctness/outcome evidence.
+
+This branch adds **Orchestrator Protocol v0.1 as a Pilot Candidate**. It is not promoted operational authority yet. Validate it through a real Kencleng delivery slice, record protocol friction/outcome evidence, remediate from evidence, and only then decide whether it should replace or extend the current `main` behavior.
 
 ## License
 
