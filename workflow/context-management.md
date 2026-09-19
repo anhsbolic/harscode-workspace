@@ -37,6 +37,23 @@ Do not paste or re-read an entire earlier phase merely because it exists.
 
 Durable workflow-generated artifacts should also carry compact execution provenance when the phase controls their format: phase/stage, author, created/updated time, and — when the harness exposes them and it is safe/useful to persist — model, reasoning effort, session/thread id, target revision, and workflow revision. Do not invent unknown values or persist account/credential metadata. Git history remains the default version history.
 
+## Orchestrated Run identity
+
+When Orchestrator Protocol v0.1 dispatches the phase, also apply `workflow/orchestrated-run-overlay.md`.
+
+Keep these identities separate:
+
+```text
+Work Unit = bounded delivery outcome
+Run       = one workflow execution occurrence
+Participant = assigned executor
+Session   = bounded execution context
+```
+
+A fresh Session does not create a new Work Unit. Re-entering a workflow phase does create a new Run, even when the same Participant and Session continue.
+
+For fresh-session grounding, prefer current-effective artifacts named by orchestration state over scanning historical Run folders. Deep history is conditional context for regression, loop diagnosis, decision audit, or another concrete need.
+
 ## Same session vs fresh session
 
 Use **continuation fitness**, not a fuzzy task-size label.
