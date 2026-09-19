@@ -1,6 +1,6 @@
 # harscode-workspace
 
-A portable, project-agnostic work manual for moving product intent into reliable software with AI agents. It separates **product-design authority**, **engineering workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
+A portable, project-agnostic work manual for moving product intent into reliable software with AI agents. It separates **product-design authority**, **delivery orchestration**, **engineering workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
 
 ## Mental model
 
@@ -37,8 +37,13 @@ product-design/            upstream product-brand/UI/UX authority-building guida
   kickoff-prompt.md        collaborative design-discussion entrypoint
   README.md                scope, authority, usage model
   ...                      exploration/canonicalization/handoff guidance
+orchestration/             pilot coordination protocol / Work Unit + Run semantics
+  AGENTS.md                lightweight orchestration router
+  protocol-v0.1.md         pilot-candidate coordination semantics
+  run-contract.md          Work Unit / Run / Participant / Session invocation contract
 workflow/                  engineering lifecycle / phase authority
   AGENTS.md                phase router
+  orchestrated-run-overlay.md path/identity compatibility for orchestrated Runs
   context-management.md    context classes, handoff, session transitions
   *-prompt.md              canonical phase entrypoints
   <phase>/                 deeper phase rules/checklists/examples
@@ -55,9 +60,13 @@ Owns reusable upstream decision discipline for turning product/domain truth into
 
 It is **not** a mandatory per-feature engineering phase. If the target project already has sufficiently clear canonical design authority, skip product-design work and begin engineering Exploration.
 
+### `orchestration/`
+
+Owns **how approved work is coordinated** in the v0.1 pilot: Work Units, Runs, Roles/Specializations, Participants/Sessions, Decisions, Findings, Blockers, state, history, and control-surface semantics. It does not own project product/domain truth or replace workflow phase authority.
+
 ### `workflow/`
 
-Owns **what must happen by engineering phase**: Exploration, Techplan, Build/Patch, Code Review, Testing, PR, plus optional domain-level sequencing/closure.
+Owns **what must happen by engineering phase**: Exploration, Techplan, Build/Patch, Code Review, Testing, PR, plus optional domain-level sequencing/closure. When a phase is dispatched as an orchestrated Run, `workflow/orchestrated-run-overlay.md` adapts identity/read-write paths without changing the phase's canonical behavior.
 
 ### `best-practices/`
 
@@ -126,7 +135,7 @@ One proposal folder, one numbering sequence. See `proposals/README.md`.
 1. Make Harscode reachable from the target project and set `{HARSCODE_WORKSPACE_ROOT}`.
 2. Use `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the routing entrypoint.
 3. If product/design authority is materially open, use `product-design/kickoff-prompt.md` and the product-design guidance until the needed authority is implementation-ready. If design authority is already sufficiently clear, skip this step.
-4. Start the engineering task from the active canonical prompt under `workflow/`.
+4. If the target project is using Orchestrator Protocol v0.1, route through `orchestration/AGENTS.md` and dispatch a Run using `workflow/orchestrated-run-overlay.md`; otherwise start the engineering task directly from the active canonical prompt under `workflow/`.
 5. Optional domain-grouped projects may run domain sequencing before the first feature.
 6. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
 7. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
@@ -138,34 +147,28 @@ One proposal folder, one numbering sequence. See `proposals/README.md`.
 
 Session/context details live in `workflow/context-management.md`; do not infer same/fresh session solely from task size.
 
-## Task working directory
+## Working-state modes
 
-Each engineering task uses one `{TASK_PATH}` in the target repo:
+### Legacy task-path mode
+
+Existing projects may continue using one `{TASK_PATH}` with ordinal phase folders. That structure remains supported for non-orchestrated runs.
+
+### Orchestrated Run mode — v0.1 pilot
+
+Projects using Orchestrator Protocol v0.1 provide explicit `WORK_UNIT_ID`, `RUN_ID`, `RUN_PATH`, and `PRIOR_ARTIFACTS` according to `orchestration/run-contract.md` and `workflow/orchestrated-run-overlay.md`.
+
+In this mode:
 
 ```text
-{TASK_PATH}/
-├── 1-exploration/
-│   └── logs/                       durable evidence / code anchors / solutioning
-├── 2-techplan/
-│   ├── techplan.md                 authoritative execution-grade spine
-│   ├── report-techplan.md          optional post-Approval human-facing digest when needed
-│   └── tasks/                      optional decomposition task files + manifest
-├── 3-build/
-│   ├── report.md
-│   └── patch-report-<n>.md
-├── 4-code-review/
-│   ├── review-findings-<n>.md
-│   └── patch-plan-<n>.md
-├── 5-testing/
-│   ├── testing-report-<n>.md
-│   └── patch-plan-<n>.md
-└── 6-pull-request/
-    └── pr-description.md
+Work Unit identity
+≠ filesystem path
+≠ workflow phase
+≠ Session
 ```
 
-Patch rule: **production patches are executed/reported in `3-build/` regardless of which independent phase requested them.** Review/Testing keep the finding/patch-plan request, preserving authority separation.
+Each workflow re-entry creates a new Run and preserves earlier evidence. Filesystem ordering is not execution chronology. A dedicated Harscode Space is optional and project-defined; tiny work may rely on a lightweight Work Unit record plus commit/PR/test evidence.
 
-For domain-grouped projects, `{DOMAIN_PATH}` may additionally contain `_domain-manifest.md` and `_domain-closure-review.md`; feature-by-feature projects have no domain-level artifacts.
+Patch authority still belongs to Build/Patch even when Review or Testing discovered the finding. The requesting phase preserves its finding/patch request; the new Build Run records the production fix.
 
 ## Status
 
