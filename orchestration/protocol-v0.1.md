@@ -157,6 +157,12 @@ Storage is project-defined. Logical durability is required; physical co-location
 
 Project the current state: current outcome, NOW/NEXT/LATER, active/blocked/stalled work, human attention, ready work, sessions, and next actions. It must be regenerable from underlying orchestration records.
 
+## Runtime resolution
+
+Machine-local runtime bindings are not project authority. A target project may provide local runtime configuration for paths and Human-declared available models.
+
+Model selection is fit-for-purpose, not strongest-by-default. The Orchestrator reads the Human-owned registry, chooses the least costly sufficiently capable model, and MUST obtain explicit Human approval before using any model marked as approval-required. The Orchestrator must not mutate the model registry.
+
 ## Workflow evolution
 
 The Orchestrator may identify a workflow gap, use temporary routing, and propose reusable guidance. It must not silently promote a new canonical Harscode workflow.
