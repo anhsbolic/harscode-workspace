@@ -21,3 +21,7 @@ This is the HOT router for Harscode orchestration. Read this when work is coordi
 - Portable engineering guidance → `../best-practices/AGENTS.md`
 
 Project-specific product truth, Work Unit definitions, Control Surface state, and Harscode Spaces belong in the target project, not this workspace.
+
+## Local runtime configuration
+
+- Machine-local paths, available model registry, Human ownership, and model-selection gates → `local-runtime-config.md`
