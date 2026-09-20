@@ -27,8 +27,11 @@ An orchestrated phase invocation should make these values discoverable:
 - `PARTICIPANT` — assigned executor identity when known.
 - `SESSION` — execution-context identifier when known.
 - `TARGET_REVISION` / `WORKFLOW_REVISION` — when known and safe to persist.
+- `PROJECT_LANGUAGE_PROFILE` — optional compact project language directive or pointer when the target project selects a non-default human-facing language.
 
 Project-specific authority/task sources remain explicit inputs to the phase.
+
+When `PROJECT_LANGUAGE_PROFILE` is present, it affects human-facing prose only. Canonical Harscode terms/enums and code/API/schema identifiers remain unchanged.
 
 ## Compatibility with legacy TASK_PATH
 
