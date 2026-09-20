@@ -11,6 +11,7 @@ This is the lightweight router and hard-rule surface. Do **not** load the full r
 - Writing a proposal → `proposals/README.md`.
 - Creating/editing Harscode guidance itself → `AUTHORING.md`.
 - Harness-specific translation/configuration → `harness-optimization/AGENTS.md`.
+- Project-selected human-facing language / language-handling ambiguity → `communication/AGENTS.md`.
 
 ## Hard rules that apply everywhere
 
