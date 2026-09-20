@@ -13,7 +13,7 @@ ROLE = Explorer
 TASK
 CODEBASE_CONTEXT
 PRIOR_ARTIFACTS = none or explicit relevant current-effective inputs
-optional SPECIALIZATION / PARTICIPANT / SESSION / WORK_UNIT_PATH / PROJECT_LANGUAGE_PROFILE / Ticket / Area
+optional SPECIALIZATION / PARTICIPANT / SESSION / WORK_UNIT_PATH / COMMUNICATION_LANGUAGE / COMMUNICATION_PROFILE_PATH / Ticket / Area
 ```
 
 ## Invocation
@@ -32,7 +32,8 @@ Role: {ROLE}
 Specialization: {SPECIALIZATION if any}
 Participant: {PARTICIPANT if known}
 Session: {SESSION if known}
-Project language: {PROJECT_LANGUAGE_PROFILE if defined}
+Communication language: {COMMUNICATION_LANGUAGE if defined}
+Communication profile: {COMMUNICATION_PROFILE_PATH if defined}
 
 Task: {TASK}
 Codebase context: {CODEBASE_CONTEXT}
@@ -40,8 +41,6 @@ Ticket: {ticket/link if any}
 Area: {known area or "not sure yet"}
 
 For this Run, write durable Exploration evidence under {RUN_PATH}, not an
-ordinal legacy TASK_PATH phase directory. When a project language profile is
-provided, use it for human-facing prose while preserving canonical Harscode
-terms/enums and code/API/schema identifiers. Stage 1 remains the canonical hard
+ordinal legacy TASK_PATH phase directory. When COMMUNICATION_LANGUAGE is provided, use it for human-facing prose while preserving canonical Harscode terms/enums and code/API/schema identifiers. COMMUNICATION_PROFILE_PATH is optional; load it only when present and needed. Stage 1 remains the canonical hard
 stop. Do not steer Exploration toward expected gaps, Work Units, or solutions.
 ```
