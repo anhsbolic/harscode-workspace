@@ -16,6 +16,7 @@ Keep this file limited to local/runtime resolution concerns, such as:
 
 - local paths needed to reach Harscode or project resources;
 - optional local communication defaults;
+- a simple runtime harness binding when one harness is intentionally used for the project;
 - models currently available to the human/operator.
 
 Do not store product authority, delivery scope, workflow decisions, credentials, tokens, secrets, or harness-specific commands here.
@@ -43,6 +44,9 @@ communication_language: Bahasa Indonesia
 paths:
   project_root: .
   harscode_workspace_root: ../harscode-workspace
+
+runtime:
+  harness: codex-cli
 
 available_models:
   - id: example-model
@@ -80,11 +84,18 @@ A model marked `approval_required: true` may be recommended by the Orchestrator,
 
 ## Harness boundary
 
-The v0 registry lists models, not harnesses.
+The v0 config MAY record one simple runtime binding such as:
 
-Codex, Claude Code, ChatGPT, or another runtime may expose different model catalogs and tool capabilities. Harness-specific provisioning, commands, authentication, and tool configuration remain outside this local model registry during the v0 pilot.
+```yaml
+runtime:
+  harness: codex-cli
+```
 
-If real execution later proves that model identity alone is insufficient for correct dispatch, treat that as CRTV evidence before expanding the schema.
+This only identifies the operator-selected execution harness for the project. It does not create a harness registry or authorize the Orchestrator to manage harness-specific commands, flags, authentication, tool permissions, or provisioning.
+
+Model capability/cost metadata remains separate from the harness binding.
+
+If real execution later proves that this simple binding is insufficient for correct dispatch, treat that as CRTV evidence before expanding the schema.
 
 ## Git behavior
 
