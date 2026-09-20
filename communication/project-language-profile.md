@@ -1,79 +1,65 @@
-# Project Language Profile
+# Project Communication Language
 
-Harscode source guidance is written in English, but target projects may choose a different human-facing communication language.
+Harscode supports target projects that use a human-facing communication language different from Harscode's source language.
 
-The selected project language changes communication only. It MUST NOT change authority, workflow semantics, protocol vocabulary, identifiers, code symbols, API/schema fields, or externally defined contract terms.
+The project communication setting is intentionally small.
 
-## Project profile
+## Project setting
 
-A target project MAY define:
+A target project MAY provide only these two values:
 
-- default human-facing language;
-- handling of technical English terminology;
-- canonical Harscode terms that remain untranslated;
-- protocol enum/value handling;
-- handling of exact authority quotations;
-- handling of code/API/schema/CLI/path identifiers.
+1. `COMMUNICATION_LANGUAGE` — the human-facing language to use.
+2. `COMMUNICATION_PROFILE_PATH` — optional path to additional project-specific communication guidance.
 
-## Required invariants
+Example with an additional profile:
 
-Project language selection MUST preserve:
+```text
+COMMUNICATION_LANGUAGE = Bahasa Indonesia
+COMMUNICATION_PROFILE_PATH = docs/project/communication-profile.md
+```
 
-- canonical Harscode object names when they carry protocol meaning;
-- exact protocol enum/status/type values;
+Example without an additional profile:
+
+```text
+COMMUNICATION_LANGUAGE = English
+COMMUNICATION_PROFILE_PATH = none
+```
+
+The profile path is optional. A project MUST NOT be required to create a dedicated communication-profile document merely to use Harscode.
+
+## Semantics
+
+`COMMUNICATION_LANGUAGE` affects human-facing prose.
+
+It MUST NOT change:
+
+- Harscode protocol semantics;
+- canonical protocol enum/status/type values;
 - Work Unit / Run identifiers;
-- file paths, branch names, commit SHAs, CLI commands;
-- code symbols, API fields, schema names, and externally defined identifiers;
-- exact source wording when wording itself is authoritative or materially relevant.
+- code symbols;
+- API fields;
+- schema names;
+- CLI commands;
+- file paths;
+- branch names;
+- commit SHAs;
+- externally defined identifiers or contract terms.
 
-## Human-facing prose
+When translation would reduce precision, canonical Harscode and technical terms MAY remain in English.
 
-Human-facing explanation, rationale, handoff prose, report narrative, Finding/Decision descriptions, and Control Surface prose MAY follow the selected project language.
+## Optional profile
 
-A project using a non-English language SHOULD prefer natural prose in that language while preserving canonical English technical terms when translation would reduce precision or create terminology drift.
+If `COMMUNICATION_PROFILE_PATH` is present, load it only when the Run needs the additional communication rules it contains.
 
-Example:
-
-```text
-Status: ACTIVE
-Scheduling: RUNNING
-Role: Explorer
-
-Tujuan Run:
-Menghasilkan evidence yang cukup untuk memahami...
-```
-
-Do not translate canonical enum values into localized synonyms such as `AKTIF`, `TERBLOKIR`, or `BERJALAN`.
-
-## Routing and context economy
-
-The full profile is WARM guidance. Normal Runs should receive only the compact project directive needed for execution.
-
-Preferred flow:
-
-```text
-target-project router/instructions
-→ compact language directive
-→ full language profile only when language handling is ambiguous
-```
-
-Do not require every agent to reread this file in full merely because the project uses a non-English language.
+If it is absent or `none`, do not synthesize a profile and do not treat the absence as a missing dependency.
 
 ## Orchestrated Runs
 
-When Orchestrator Protocol v0.1 prepares a Run invocation, the project language profile is an optional routing input.
-
-The invocation SHOULD carry a compact directive such as:
+The Orchestrator MAY carry these values into a Run invocation:
 
 ```text
-Human-facing prose: Bahasa Indonesia.
-Preserve canonical Harscode terms/enums and code/API/schema identifiers in English.
+COMMUNICATION_LANGUAGE = <project-selected language>
+COMMUNICATION_PROFILE_PATH = <path or none>
 ```
 
-The Orchestrator must not translate canonical protocol semantics while generating the invocation.
-
-## Project ownership
-
-Harscode defines this mechanism only.
-
-The target project owns the actual language choice and any project-specific terminology preference.
+Normal Runs should receive only the communication context needed for execution.
