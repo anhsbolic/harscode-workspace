@@ -58,6 +58,9 @@ available_models:
     capabilities:
       - reasoning
       - coding
+    supported_reasoning_efforts:
+      - medium
+      - high
     cost_tier: standard
     approval_required: false
 ```
@@ -66,6 +69,7 @@ available_models:
 
 - `id` — exact model identifier meaningful to the operator/runtime.
 - `capabilities` — Human-declared capability tags. Keep them factual and useful for routing.
+- `supported_reasoning_efforts` — Human-declared reasoning/thinking levels that may be selected for this model.
 - `cost_tier` — Human-declared relative class: `low`, `standard`, or `high`.
 - `approval_required` — whether the Orchestrator must obtain explicit Human approval before dispatching this model.
 
@@ -81,9 +85,10 @@ For each Run:
 2. consider only Human-declared available models;
 3. prefer a model that sufficiently covers those needs without material capability excess;
 4. among sufficiently fitting candidates, prefer the lower declared `cost_tier`;
-5. if the selected candidate has `approval_required: true`, stop before dispatch and request explicit Human approval;
-6. if no non-gated model is sufficient, request approval for a suitable gated model or ask the Human to revise the registry;
-7. never silently fall back to the strongest model merely because it is available.
+5. select the lowest supported reasoning effort that is sufficient for the Run;
+6. if the selected candidate has `approval_required: true`, stop before dispatch and request explicit Human approval;
+7. if no non-gated model is sufficient, request approval for a suitable gated model or ask the Human to revise the registry;
+8. never silently fall back to the strongest model or highest reasoning effort merely because it is available.
 
 A model marked `approval_required: true` may be recommended by the Orchestrator, but may not be dispatched until approval is recorded.
 
@@ -151,3 +156,26 @@ Escalate pairing only when orchestration complexity or risk materially requires 
 - protocol/state consistency audit.
 
 Do not escalate merely because a stronger model is available.
+
+## Reasoning effort selection
+
+Model selection and reasoning-effort selection are separate runtime decisions.
+
+The Orchestrator should resolve:
+
+```text
+SELECTED_MODEL
+REASONING_EFFORT
+```
+
+using the Human-owned registry.
+
+Principle:
+
+> Use the lowest supported reasoning effort that is sufficient for the Run.
+
+Do not bind a fixed reasoning effort permanently to a model. The same model may be used at different effort levels for different Runs.
+
+The selected effort MUST be one of the model's Human-declared `supported_reasoning_efforts`.
+
+A higher reasoning effort does not create a separate approval gate in v0 unless the model itself already requires approval or the Human later adds an explicit project policy. If the model requires approval, that approval covers the selected effort for that Run only.
