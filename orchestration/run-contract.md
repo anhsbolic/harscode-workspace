@@ -30,11 +30,12 @@ An orchestrated phase invocation should make these values discoverable:
 - `COMMUNICATION_LANGUAGE` — optional human-facing language selected by the target project.
 - `COMMUNICATION_PROFILE_PATH` — optional path to additional project-specific communication guidance.
 - `SELECTED_MODEL` — optional dispatch-time model resolved from Human-owned local runtime configuration.
+- `REASONING_EFFORT` — optional dispatch-time reasoning/thinking level resolved separately from the model and constrained by the Human-owned registry.
 - `MODEL_APPROVAL` — required approval evidence when the selected model is marked `approval_required: true`.
 
 Project-specific authority/task sources remain explicit inputs to the phase.
 
-Model availability/capability metadata is runtime context, not Work Unit authority. Resolve it according to `orchestration/local-runtime-config.md`; do not copy the whole local registry into durable Run artifacts unless needed as pilot evidence.
+Model availability/capability metadata and supported reasoning efforts are runtime context, not Work Unit authority. Resolve model and reasoning effort separately according to `orchestration/local-runtime-config.md`; do not copy the whole local registry into durable Run artifacts unless needed as pilot evidence.
 
 When `COMMUNICATION_LANGUAGE` is present, it affects human-facing prose only. Canonical Harscode terms/enums and code/API/schema identifiers remain unchanged. `COMMUNICATION_PROFILE_PATH` is optional and MUST NOT be treated as a required dependency when absent or set to `none`.
 
