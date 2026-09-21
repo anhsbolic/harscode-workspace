@@ -52,11 +52,13 @@ Do not force trivial local implementation choices into the Decision Log. Record 
 
 Do not fabricate a contract merely to fill a template subsection. Mark genuinely non-applicable parts clearly or omit optional detail where the template allows it.
 
-## 7. Human Report Is Separate and Post-Approval
+## 7. Human Report Is Separate and Generated at the Human Gate
 
-`techplan.md` has no embedded Summary/digest. Once the Techplan is **Approved**, generate `report-techplan.md` from `report-template.md`. The report is derived from the current Techplan and never becomes the execution source of truth.
+`techplan.md` has no embedded Summary/digest. Generate `report-techplan.md` from `report-template.md` when the current-effective Techplan has converged enough to enter the Human approval gate, after applicable planning review/resolution has converged.
 
-If the approved Techplan later changes materially, regenerate the report in full; do not hand-patch the digest independently.
+Do not generate or maintain the report in parallel with every Draft mutation. The report is derived review evidence, never the execution source of truth.
+
+If a material Techplan revision changes the Human decision surface, regenerate the report before the next Human approval decision. If an Approved Techplan later changes materially, regenerate it again. Do not hand-patch the digest independently.
 
 ## 8. Open Items Lifecycle
 
