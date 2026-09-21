@@ -136,9 +136,10 @@ Decomposition:
 The decomposition prompt remains responsible for the actual post-Approval gate
 and exact split if invoked.
 
-There is NO embedded Summary in techplan.md. Do not generate the human report
-during Draft/In Review; report-techplan.md is generated separately only after
-Approval.
+There is NO embedded Summary in techplan.md. Do not generate report-techplan.md
+during active synthesis/review churn. Generate it only when the current-effective
+Techplan is ready to enter the Human approval gate, after any invoked review/
+resolution path has converged.
 
 Write the result to {TASK_PATH}/2-techplan/techplan.md using template.md.
 Populate the template's provenance fields only with values actually known or
@@ -169,5 +170,5 @@ At completion, report:
 - Runtime instructions refer to evolving Techplan sections by semantic name rather than remembered ordinal number.
 - Examples/retro are calibration/history, not mandatory runtime authority.
 - Matching best-practice files are conditional correctness authorities, not cold examples; open them when the task actually triggers them.
-- After human Approval, generate `report-techplan.md` from `report-template.md`; run optional decomposition only when its own gate says it adds value.
+- Generate `report-techplan.md` from `report-template.md` when the current-effective Techplan reaches the Human approval gate after applicable review/resolution convergence; run optional decomposition only when its own gate says it adds value.
 - Independent review is a correctness tool for plans that justify its cost, not a ritual substitute for conscious human approval.
