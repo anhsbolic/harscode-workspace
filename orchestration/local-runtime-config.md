@@ -48,6 +48,11 @@ paths:
 runtime:
   harness: codex-cli
 
+orchestrator_pairing:
+  default_model: example-standard-model
+  escalation_model: example-advanced-model
+  escalation_requires_human_approval: true
+
 available_models:
   - id: example-model
     capabilities:
@@ -113,3 +118,36 @@ When committed, use only public-safe values:
 - do not include usernames/home directories;
 - do not include credentials, tokens, private endpoints, or other secrets;
 - treat model availability as intentionally public evidence.
+
+## Orchestrator pairing model
+
+The Human ↔ Orchestrator pairing model is a separate concern from per-Run execution model selection.
+
+A target project MAY define:
+
+```yaml
+orchestrator_pairing:
+  default_model: example-standard-model
+  escalation_model: example-advanced-model
+  escalation_requires_human_approval: true
+```
+
+Semantics:
+
+- `default_model` — normal model for routine Human ↔ Orchestrator coordination.
+- `escalation_model` — model reserved for materially harder orchestration reasoning.
+- `escalation_requires_human_approval` — whether explicit Human approval is required before switching the pairing to the escalation model.
+
+The pairing model MUST NOT automatically control execution models for Explorer, Planner, Implementer, Reviewer, Verifier, or any other dispatched Role.
+
+Likewise, selecting a stronger model for a Run MUST NOT silently upgrade the Human ↔ Orchestrator pairing model.
+
+Escalate pairing only when orchestration complexity or risk materially requires it, for example:
+
+- cross-authority conflict;
+- complex dependency/decomposition reasoning;
+- repeated `STALLED` diagnosis;
+- material concurrency/routing decisions;
+- protocol/state consistency audit.
+
+Do not escalate merely because a stronger model is available.
