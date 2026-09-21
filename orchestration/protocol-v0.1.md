@@ -163,6 +163,8 @@ Machine-local runtime bindings are not project authority. A target project may p
 
 Model selection is fit-for-purpose, not strongest-by-default. The Orchestrator reads the Human-owned registry, chooses the least costly sufficiently capable model, and MUST obtain explicit Human approval before using any model marked as approval-required. The Orchestrator must not mutate the model registry.
 
+The Human ↔ Orchestrator pairing model is configured separately from per-Run execution model selection. Pairing escalation does not imply stronger execution models, and a stronger execution model does not imply pairing escalation.
+
 ## Workflow evolution
 
 The Orchestrator may identify a workflow gap, use temporary routing, and propose reusable guidance. It must not silently promote a new canonical Harscode workflow.
