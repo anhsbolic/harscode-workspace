@@ -20,6 +20,8 @@ Human Pairing guidance covers:
 ## Reading map
 
 - Session continuity and context hygiene → `session-continuity.md`
+- Model selection and Human approval → `model-and-approval.md`
+- Workflow checkpoints and Human intervention → `checkpoint-and-intervention.md`
 - Runtime/model configuration and approval mechanics → `../orchestration/local-runtime-config.md`
 - Orchestration objects, state, routing, Decisions, Runs → `../orchestration/protocol-v0.1.md`
 - Workflow phase behavior and checkpoints → `../workflow/`
