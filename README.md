@@ -51,6 +51,7 @@ best-practices/            technology/correctness knowledge base
   AGENTS.md                targeted discovery rules
   index.md                 clue map → matching best-practice files
 harness-optimization/      translation into Codex/Claude/etc mechanisms
+human-pairing/             Human-facing operator handbook for pairing, approvals, and session hygiene
 proposals/                 one protected-guidance proposal log
 ```
 
@@ -75,6 +76,10 @@ Owns **portable engineering correctness** by technology/concern. `index.md` is a
 ### `harness-optimization/`
 
 Owns **translation only**: how a harness expresses existing Harscode rules using its native instruction/session/skill/sandbox mechanisms. It does not invent product, lifecycle, or engineering policy.
+
+### `human-pairing/`
+
+Human-facing operating guidance for working with Harscode/Orchestrator without turning the Human into the workflow prompt author. It explains approvals, corrections, Run/Session boundaries, context hygiene, and related operator practices while linking back to the canonical owning guidance.
 
 ## Product-to-engineering authority boundary
 
