@@ -2,7 +2,7 @@
 
 Follow this structure with `rules.md` and `guardrails.md`. `techplan.md` is the **execution-grade authoritative spine** for the implementing agent and engineering review: complete, unambiguous, non-redundant.
 
-After **Approved**, generate `report-techplan.md` from `report-template.md` as the sole human-facing digest. Never add an embedded Summary back here.
+At the Human approval gate, generate `report-techplan.md` from `report-template.md` after applicable planning review/resolution has converged. It is the sole human-facing digest; never add an embedded Summary back here.
 
 ```markdown
 # Tech Plan: {Feature Name}
@@ -151,4 +151,4 @@ Optional decomposition may move scoped execution detail into `2-techplan/tasks/`
 
 ## Report rule
 
-When the Techplan first reaches Approved, and whenever an Approved report becomes stale because the source Techplan materially changed, regenerate `report-techplan.md` from `report-template.md` in full. The report never overrides this file.
+Generate `report-techplan.md` from `report-template.md` when the current-effective Techplan is ready for the Human approval gate under `rules.md` § Human Report. Regenerate it in full after a material revision changes the Human decision surface, including later material changes to an Approved Techplan. The report never overrides this file.
