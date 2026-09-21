@@ -1,6 +1,6 @@
 # Proposal 0036 — Human Techplan Review Report Before Approval
 
-Status: Proposed
+Status: Accepted
 Date: 2026-09-21
 Protection Tier: techplan-protected
 Triggered by: Kencleng `WU-S1-002 / TP-001` (human review friction after synthesis, independent review, and resolution)
