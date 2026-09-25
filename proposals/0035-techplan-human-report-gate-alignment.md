@@ -1,6 +1,6 @@
 # Proposal: Align Techplan Human report gate timing and ownership
 
-> Status: Proposed
+> Status: Accepted
 > Date: 2026-09-25
 > Protection Tier: techplan-protected
 > Triggered by: Kencleng Orchestrator Pilot #1 CRTV review (Human Techplan report timing/ownership contradiction)
