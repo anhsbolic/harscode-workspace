@@ -11,6 +11,7 @@ Transform approved product intent into coordinated, verifiable delivery while pr
 
 - **Parent Outcome** — approved larger result.
 - **Work Unit** — bounded outcome that must become true.
+- **Work Graph** — current cross-Work-Unit coordination topology: known Work Units, canonical HARD/SOFT dependency edges, and produced milestone/rendezvous conditions. It coordinates outcomes; it does not own implementation detail.
 - **Run** — one execution occurrence of a workflow activity.
 - **Role** — semantic responsibility.
 - **Specialization** — project-specific refinement of a Role.
@@ -35,9 +36,31 @@ Every Work Unit has exactly one primary type:
 - `RECONCILIATION`
 - `VERIFICATION`
 
-A Work Unit has a stable ID, title, outcome, parent, scope, execution status, scheduling state, horizon, and completion criteria. Flexible tags describe secondary concerns.
+A Work Unit has a stable definition and one current-state projection of what is true now.
+
+Conceptually:
+
+```text
+Work Unit
+├── Definition
+│   ├── ID / title / type / parent
+│   ├── outcome / scope
+│   ├── completion condition
+│   └── coordination ownership
+└── Current State
+    ├── execution status
+    ├── scheduling state when active/applicable
+    ├── horizon / readiness
+    ├── current Run / milestone
+    ├── Human gate / authority sync
+    └── active blocker
+```
+
+For every current-state field there is exactly one current value. Updating current state replaces that field's prior current value; historical values must not remain as competing current-state sections in the same record.
 
 Work Unit identity is not a repo/path/issue/PR/session/run. Structural evolution is traceable through `split_from`, `merged_from`, `derived_from`, `supersedes`, and `superseded_by`.
+
+Cross-Work-Unit dependency topology has one canonical owner: the Work Graph. A Work Unit record may display a derived dependency summary for readability, but it must not become an independently maintained second dependency truth.
 
 ## Roles and assignment
 
@@ -102,6 +125,8 @@ INFO | ATTENTION | HIGH | CRITICAL
 
 These are independent dimensions.
 
+Scheduling describes active scheduling posture only. When a Work Unit is terminal (`DONE` or `CANCELLED`), it has no active scheduling posture in the semantic model. A concrete representation may omit, null, or mark scheduling non-applicable; it must not invent a terminal scheduling value such as `DONE` unless the protocol explicitly adds one later.
+
 ## Dependencies and blockers
 
 Dependency types may include AUTHORITY, CONTRACT, DELIVERY, DATA, ENVIRONMENT, VERIFICATION, HUMAN_DECISION, and EXTERNAL. Scope dependencies to the affected Work Unit/batch rather than blocking unrelated work.
@@ -111,6 +136,8 @@ Every active Blocker records classification, affected work, severity, next-actio
 ## Runs, history, and loops
 
 Filesystem names do not encode workflow chronology. Runs and Events do.
+
+Events are append-only material coordination history. Record facts such as Run dispatch/completion/failure, Work Unit state transitions, Human Decisions, Blocker open/close, milestone promotion, and Work Graph structural amendments. Events explain how current state was reached; they are not current state themselves. Detailed command/read telemetry remains Run-local rather than being promoted into global Event history.
 
 Re-entering a phase creates a new Run. A repeated Run requires meaningful delta: new evidence, authority decision, material plan amendment, different implementation approach, resolved dependency, or specific defect correction.
 
@@ -155,7 +182,9 @@ Storage is project-defined. Logical durability is required; physical co-location
 
 ## Control Surface
 
-Project the current state: current outcome, NOW/NEXT/LATER, active/blocked/stalled work, human attention, ready work, sessions, and next actions. It must be regenerable from underlying orchestration records.
+Project the current state: current outcome, NOW/NEXT/LATER, active/blocked/stalled work, human attention, ready work, sessions, and next actions.
+
+The Control Surface is derived from the Work Graph, Work Unit Current State, and open Decisions/Blockers. It must be regenerable from those underlying orchestration records. If it conflicts with underlying current state, the Control Surface is stale and must be regenerated; it does not become authority by recency or wording.
 
 ## Runtime resolution
 
