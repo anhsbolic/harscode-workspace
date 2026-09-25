@@ -53,14 +53,16 @@ Answers:
 
 > What bounded Work Units are currently known, what do they depend on, and what milestone/rendezvous does each produce?
 
-The Work Graph owns orchestration topology:
+The Work Graph owns cross-Work-Unit orchestration topology:
 
 - Work Unit identities;
-- causal HARD/SOFT dependencies;
+- canonical causal HARD/SOFT dependency edges;
 - produced milestone/rendezvous conditions;
 - structural derivation/split/merge relationships where relevant.
 
 The Work Graph must not become a shadow Techplan. It does not own implementation steps, API/schema details, file edits, or detailed verification procedures.
+
+Dependency edges are not duplicated as independently maintained current truth inside each Work Unit record. A Work Unit may point to or display a derived dependency summary for readability, but the Work Graph remains the canonical cross-Work-Unit topology.
 
 ## Work Unit record
 
@@ -75,7 +77,6 @@ Definition
 - Parent
 - Outcome
 - Scope / out of scope
-- Dependencies
 - Completion condition
 - Coordination owner
 
