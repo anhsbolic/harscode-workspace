@@ -2,13 +2,13 @@
 
 Protected sibling of `template.md`.
 
-**Purpose:** `report-techplan.md` is the human-facing digest of the current-effective `techplan.md` at a Human review/sign-off gate. It helps reviewers understand scope, architecture, material decisions, material risks/trade-offs, review history, and approval boundaries without replacing the execution contract.
+**Purpose:** `report-techplan.md` is the human-facing digest of the current-effective `techplan.md` at the Human approval gate, generated before the Human approval decision after applicable planning review/resolution has converged. It helps reviewers understand scope, architecture, material decisions, material risks/trade-offs, review history, and approval boundaries without replacing the execution contract.
 
-**Audience:** reviewer/lead/stakeholder who needs to understand or sign off, not the Build agent implementing the full technical detail.
+**Audience:** reviewer/lead/stakeholder who needs to decide whether to approve, reject, or request revision of the current-effective Techplan, not the Build agent implementing the full technical detail.
 
 ## Generation rule
 
-- Generate when the current-effective Techplan has converged enough to enter a Human approval gate: synthesis is complete, any invoked independent review has completed, blocking findings are resolved, and any mandatory re-review has completed.
+- Generate when the current-effective Techplan has converged enough to enter a Human approval gate: synthesis is complete, any invoked independent review has completed, blocking findings are resolved, and any mandatory re-review has completed. Present the report before the Human approval decision; the Human decision applies to the current-effective Techplan, not to a separate report lifecycle.
 - Do not draft or maintain this report in parallel with active synthesis/review churn.
 - Regenerate the report in full when a material revision returns the Techplan to a Human approval gate, or when a materially changed Approved Techplan makes the existing report stale. Do not hand-maintain it as a second contract.
 - If this report and the Techplan disagree, the Techplan wins and this report is stale.
@@ -136,7 +136,9 @@ Protected sibling of `template.md`.
 
 {State plainly what approval authorizes and what it does not authorize, derived from the Techplan and project authority. Do not invent generic permissions.}
 
-## Sign-off
+## Human review checklist
+
+This checklist helps the Human review the current-effective Techplan; completing it does not create a separate approval object for this report.
 
 - [ ] Scope confirmed
 - [ ] Material interface/authority change understood, if applicable
