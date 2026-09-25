@@ -36,7 +36,11 @@ Prefer `path + symbol + intended change + precedent`. Include a full body/snippe
 
 ## 8. Human Report Cannot Introduce Decisions
 
-`report-techplan.md` is generated only after Approval from `report-template.md`. If the report needs a fact/decision/risk that is absent or ambiguous in the Techplan, fix/reopen the Techplan instead of inventing the answer in the report.
+Generate `report-techplan.md` from `report-template.md` only when the current-effective Techplan has converged enough to enter the Human approval gate, after applicable planning review/resolution has converged. The report is derived Human-review evidence; it is not a separate authority object and is not generated as a post-approval artifact.
+
+The planning workflow participant that owns the current Techplan semantics generates or regenerates the report. The Orchestrator may dispatch that work but must not silently author the report as a substitute for the planning participant.
+
+If the report needs a fact/decision/risk that is absent or ambiguous in the Techplan, fix/reopen the Techplan instead of inventing the answer in the report.
 
 ## 9. Diagram Must Be Syntax- and Semantics-Valid
 
