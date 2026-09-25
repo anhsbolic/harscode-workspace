@@ -1,6 +1,6 @@
 # Proposal: Separate orchestration current state, history, and projection
 
-> Status: Proposed
+> Status: Accepted
 > Date: 2026-09-25
 > Protection Tier: general
 > Triggered by: Kencleng Orchestrator Pilot #1 CRTV review (state/projection drift)
