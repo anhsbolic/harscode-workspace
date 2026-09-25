@@ -10,6 +10,8 @@ This is the HOT router for Harscode orchestration. Read this when work is coordi
 - When authority is missing or conflicting, escalate through the applicable Decision path instead of inventing an answer.
 - Re-entry into a workflow phase creates a new Run and requires a meaningful delta.
 - Current state must be reconstructable from durable orchestration records; filesystem ordering is never workflow chronology.
+- Keep Work Unit definition, current state, append-only history, and Control Surface projection semantically separate. Current-state fields have one active value; historical transitions belong in Events.
+- Cross-Work-Unit dependency topology is owned by the Work Graph; do not create a second independently maintained dependency truth inside Work Unit records.
 - Load only the smallest applicable knowledge for the current role, specialization, task scope, and workflow phase.
 
 ## Routing
