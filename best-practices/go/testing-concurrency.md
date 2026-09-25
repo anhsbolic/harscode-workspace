@@ -1,45 +1,33 @@
-# go/examples.md
+# Testing Concurrency
 
-> Real-world references for files in `go/`. Kept separate from the principle
-> files themselves so those stay project-agnostic — this file is where the
-> concrete, implementation-level detail lives instead.
->
-> Entries added only via `proposals/` review (see `proposals/README.md`) —
-> not agent-appendable directly, unlike `techplan/examples.md`.
+Use concurrency-specific verification only when the code or invariant actually involves concurrent access, shared mutable state, goroutine lifecycle, synchronization, or timing-sensitive behavior.
 
----
+## Trigger
 
-## For: `testing-concurrency.md`
+Use this guidance when a change touches:
 
-**Context:** Kencleng backend, account domain, MFA TOTP task (#06).
-Testing-phase report comparing a full-package `-race` run against a
-scoped one, same package, same session.
+- shared mutable state accessed concurrently;
+- goroutine coordination/lifecycle;
+- locks, atomics, channels, wait groups, or similar synchronization;
+- invariants that can fail only under concurrent interleavings.
 
-**What happened:** `go test -race ./internal/domain/account/...` — the
-full account package, unscoped — took **319 s (5.3 min)**. The account
-package's non-MFA tests are a heavy bcrypt-backed unit suite
-(registration/login run real `bcrypt.GenerateFromPassword`/
-`CompareHashAndPassword` at production-equivalent cost, and the
-register timing-parity tests deliberately burn comparable bcrypt on
-every branch to defend against timing attacks) — the race detector
-roughly doubles all of that instrumentation cost on top.
+Go code by itself is not a reason to run the race detector.
 
-The same MFA-specific race coverage, scoped with `-run 'TestMfa'`
-against the exact same package, took **17 s** — roughly 19x faster,
-for tests that themselves hadn't changed at all. The slowdown was
-entirely attributable to unscoped `-race` picking up every other test
-in the package, most of which had nothing to do with what was actually
-being verified.
+## Verification
 
-**Generalizable takeaway:** `-race`'s cost isn't fixed per test — it's
-proportional to everything caught in scope, and scope is controllable
-two ways, not just one. Package-level scoping (`./internal/x/...` vs
-`./...`) is the coarse lever; `-run` scoping by test name is the fine
-one, and the two compound — a package that's slow for reasons entirely
-unrelated to the code actually under test (here: bcrypt cost in
-sibling tests) is exactly where `-run` scoping earns back the most
-time. This is concrete evidence for `testing-concurrency.md`'s
-checklist item on scoping race runs to areas with genuine
-shared-state/concurrency risk: scope to the *tests*, not just the
-package, when a package mixes concurrency-relevant code with
-unrelated, independently-slow tests.
+Prefer the smallest credible scope that exercises the real concurrency risk.
+
+- Start with the relevant package/unit.
+- Narrow further to relevant tests when unrelated sibling tests are expensive.
+- Use invariant-asserting concurrent tests when a race-free execution alone would not prove the intended behavior.
+- Run broader race coverage only when the changed risk is genuinely cross-cutting or project policy requires it.
+
+The race detector is evidence for data races, not a substitute for behavioral concurrency assertions.
+
+## Cost discipline
+
+Race instrumentation can amplify unrelated test cost. Scope by both package and test selection where that preserves the required evidence.
+
+Do not run broad `-race` sweeps merely because the project is written in Go.
+
+Historical calibration/examples: `examples.md#for-testing-concurrencymd`.
