@@ -1,6 +1,6 @@
 # Add minimum Orchestrated Run dispatch contract for Pilot #2
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-09-25
 **Protection Tier:** general
 **Triggered by:** Kencleng Orchestrator Pilot #1 CRTV review found the Run contract insufficient for dedicated-Orchestrator dispatch, authorization routing, model rationale, and same-Run Session recovery
