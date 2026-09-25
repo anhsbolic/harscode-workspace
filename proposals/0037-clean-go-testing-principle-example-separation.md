@@ -1,6 +1,6 @@
 # Clean Go testing principle/example separation
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-09-25
 **Protection Tier:** general
 **Triggered by:** Kencleng Orchestrator Pilot #1 CRTV review found best-practice authority/example role contamination
