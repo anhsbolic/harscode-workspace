@@ -20,10 +20,11 @@ The intended experience is:
 Human starts Orchestrator once
 → Orchestrator determines runnable work
 → Orchestrator prepares/launches visible Participant CLI Run
-→ Participant executes workflow
+→ Orchestrator confirms minimum successful dispatch
+→ Participant executes independently
+→ Human reports only a material problem or completion
 → durable Run artifacts are produced
-→ Orchestrator reconciles result
-→ Human is involved only for real gates/corrections or launcher fallback
+→ Orchestrator reconciles result after the signal
 ```
 
 Pilot success does not require perfect terminal automation. Occasional manual recovery is acceptable. Routine Human per-Run setup is not the intended steady state.
@@ -187,23 +188,37 @@ Pilot #2 should first observe where permission friction occurs before creating a
 
 ## Orchestrator intervention posture
 
-Do not turn the Orchestrator into a realtime efficiency policeman.
+Do not turn the Orchestrator into a realtime efficiency policeman or process supervisor.
 
-Default:
+Pilot #2 default after successful dispatch is **fire-and-forget**:
 
 ```text
-observe
-→ record
-→ review at Run boundary
+launch visible Participant
+→ confirm minimum dispatch success
+→ retain last-known RUNNING
+→ no realtime transcript/progress polling
+→ Human reports problem or completion
+→ reconcile from durable artifacts/handoff
 ```
 
-Interrupt during execution only for materially harmful behavior such as:
+The Human is the lightweight liveness/problem/completion signal for this pilot. Silence from the Human means only that no problem has been reported; it does not prove current process liveness.
 
-- destructive/protected action;
-- authority violation;
-- obvious infinite/stalled loop;
-- runaway expensive verification;
-- genuine security/permission boundary.
+Do not continuously read Participant transcripts, mirror Participant reasoning, or poll Session state merely to report progress. Live inspection is diagnostic-only and should have a concrete trigger such as:
+
+- Human reports a problem or asks for investigation;
+- an immediate launch failure is suspected;
+- an expected durable signal is missing after a completion claim;
+- a genuine permission/security boundary requires diagnosis.
+
+If direct evidence suggests materially harmful behavior such as destructive/protected action or authority violation, intervene through the applicable Human/protected path. Pilot #2 does not require autonomous detection of every stall, loop, or inefficient verification pattern.
+
+### Visible-launch evidence
+
+A successful process launch and a Session identifier are not, by themselves, proof that a Participant was visibly presented.
+
+When available, use direct window/screenshot evidence. When the environment cannot expose window state, record process-level evidence and the observability limitation without upgrading it to visual proof.
+
+If GUI or Codex runtime-local access is denied by the outer sandbox, managed escalation may be required. After escalation, retry the intended visible Ghostty + interactive Codex path; do not silently substitute a background/non-visible launcher.
 
 ## Explicit non-goals
 
