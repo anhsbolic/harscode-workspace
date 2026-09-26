@@ -173,11 +173,11 @@ They must not silently:
 - expand write/network scope beyond project authority;
 - reinterpret an unavailable capability as permission to skip evidence.
 
-Pilot #2 uses Ubuntu + Ghostty + Codex CLI mechanics, but these authorization classes are candidate orchestration semantics rather than Codex-specific policy.
+Pilot #2 authorization classes remain candidate orchestration semantics rather than Codex-specific policy.
 
-For the current Pilot #2 execution posture, visible Ghostty + interactive Codex CLI is the normal Participant dispatch path. If the outer sandbox blocks GUI launch or Codex runtime-local filesystem access, that is harness friction rather than a reason to change workflow authority. Request the narrow managed escalation needed and retry the visible path.
+For the current Pilot #2 execution posture, the Human performs the mechanical Participant dispatch from Orchestrator-provided instructions. Terminal, GUI, prompt-injection, or runtime-local permission mechanics are not part of the Run authorization model and are not Pilot #2 success criteria.
 
-A background/non-visible launcher may be useful as a diagnostic tool, but it is not an equivalent silent fallback for a Pilot #2 Run whose execution target is visible.
+The Orchestrator must provide the Human the exact minimum dispatch information needed; the Human should not have to infer routing, model choice, invocation path, or workflow prompt.
 
 ## Observability
 
@@ -251,14 +251,14 @@ When a Run cannot proceed because of permission/sandbox limits:
 4. request only the narrowest needed authority/capability;
 5. retry the intended execution path after the boundary is resolved.
 
-For Pilot #2 visible dispatch specifically:
+For Pilot #2 Human-assisted dispatch specifically:
 
-- GUI/runtime-local denial may require managed escalation;
-- escalation should preserve the intended Ghostty + interactive Codex execution mode;
-- do not silently switch to background/non-visible execution merely because it is easier after escalation;
-- if the visible path still cannot be established, record a Pilot deviation and return control to Human/Orchestrator routing.
+- if the Human cannot open or start the requested Participant Session, record the concrete mechanical blocker and adjust the dispatch instruction;
+- if invocation delivery fails, correct the invocation/prompt handoff without changing workflow authority;
+- do not require the Orchestrator to automate terminal/window/process mechanics during this pilot;
+- keep Human intervention mechanical: launch, paste/run the provided invocation, interact at genuine workflow gates, report problem/completion.
 
-After a visible Run is successfully dispatched, normal supervision is fire-and-forget: the Orchestrator does not poll the Participant transcript or progress. The Human reports a material problem or completion; only then does the Orchestrator diagnose or reconcile from durable artifacts.
+After dispatch, normal supervision is fire-and-forget: the Orchestrator does not poll the Participant transcript or progress. The Human reports a material problem or completion; only then does the Orchestrator diagnose or reconcile from durable artifacts.
 
 Do not weaken verification or silently rewrite scope just to avoid the permission boundary.
 
