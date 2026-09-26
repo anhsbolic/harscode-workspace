@@ -91,50 +91,55 @@ Orchestrator Participant
 
 A replacement Session must reconstruct from durable orchestration state rather than chat memory.
 
-## Pilot #2 execution hypothesis
+## Pilot #2 execution posture
 
-Pilot #2 uses an **Automated Visible Fleet** execution style:
+Pilot #2 now uses **Human-Assisted Orchestration**.
 
-- Host OS: Ubuntu
-- Terminal surface: Ghostty
-- Harness: Codex CLI
-- Human manually bootstraps the Orchestrator Session.
-- The Orchestrator should prepare and, when safely possible, launch Participant CLI Sessions/Runs.
-- Human per-Run terminal setup is fallback/diagnostic behavior, not the intended steady state.
+The primary goal of this pilot is orchestration correctness, not fleet/window automation.
 
-These mechanics are Pilot #2 implementation choices, not orchestration semantics.
-
-### Fire-and-forget Participant coordination
-
-Pilot #2 intentionally keeps Participant supervision lightweight.
-
-Normal dispatch posture:
+Current operating model:
 
 ```text
-Orchestrator determines the Run
-→ prepares durable invocation
-→ launches a visible Ghostty + interactive Codex CLI Participant Session
-→ confirms minimum successful dispatch
-→ records last-known Run state as RUNNING
-→ stops monitoring by default
+Orchestrator decides and prepares
+→ Human performs the mechanical Participant dispatch
+→ Participant executes the assigned Run
+→ Human reports a material problem or completion
+→ Orchestrator reconciles durable artifacts and determines the next route
 ```
 
-Minimum successful dispatch means:
+The Orchestrator still owns coordination. Human involvement is intentionally limited to mechanical execution and genuine authority/workflow gates.
 
-- the Ghostty/Codex Participant process or surface was launched;
-- the durable Run invocation was delivered to the Participant;
-- no immediate launch failure is known.
+For each Participant Run, the Orchestrator must provide enough concrete dispatch detail that the Human does not have to reconstruct the workflow:
 
-After successful dispatch:
+- Role / Participant type;
+- model and reasoning effort;
+- target working directory when relevant;
+- durable invocation path or exact minimal kickoff prompt;
+- any required Session posture such as fresh vs continuation;
+- what the Human should report back when the Participant blocks or completes.
+
+The Human may open the requested terminal/session, select the requested model/effort, paste the Orchestrator-provided invocation pointer/prompt, and interact directly at genuine workflow Human gates. The Human should not invent the workflow route, compose a replacement task, or decide the next Run on behalf of the Orchestrator.
+
+After dispatch, supervision remains lightweight:
 
 - the Orchestrator MUST NOT continuously monitor, mirror, or poll the Participant transcript/progress as normal behavior;
-- the Human acts as the lightweight problem/completion signal;
-- if the Human reports no problem, orchestration retains the last-known `RUNNING` state rather than claiming guaranteed realtime liveness;
+- if the Human reports no problem, orchestration retains the last-known active state rather than claiming guaranteed realtime liveness;
 - if the Human reports a material problem, the Orchestrator diagnoses/routes only as much as needed;
-- if the Human reports that the Participant finished, the Orchestrator reads the durable Run artifacts/handoff, reconciles Work Unit/Event/Control Surface state, and determines the next route;
-- direct Human ↔ Participant interaction remains valid at genuine workflow Human gates.
+- if the Human reports that the Participant finished, the Orchestrator reads the durable Run artifacts/handoff, reconciles Work Unit/Event/Control Surface state, and determines the next route.
 
-This is deliberately not a monitoring daemon, transcript-mirroring system, or autonomous process supervisor.
+Direct Human ↔ Participant interaction remains valid at genuine workflow Human gates.
+
+### Automated Visible Fleet hold
+
+Automated Visible Fleet is **on hold for the remainder of Pilot #2**.
+
+Ghostty/Codex spawning, prompt injection, native-window visibility, process supervision, split/tab/window control, and runtime-local permission mechanics are not Pilot #2 success criteria.
+
+Do not spend Pilot #2 delivery effort building or debugging terminal/fleet automation unless a narrow diagnostic is required to unblock the Human-assisted path.
+
+The observations already gathered remain CRTV evidence, but automation mechanics should be researched separately after Pilot #2 and before Pilot #3.
+
+These mechanics are implementation choices, not orchestration semantics.
 
 ### Human-facing continuation contract
 
@@ -172,27 +177,42 @@ Choose one:
 After the choice, the Orchestrator will prepare the applicable next Run/gate.
 ```
 
-### Pilot #2 visible-launch recovery posture
+### Pilot #2 mechanical-dispatch boundary
 
-The normal Pilot #2 Participant path is visible Ghostty + interactive Codex CLI. A background/non-visible launcher is not an equivalent silent fallback.
+The Orchestrator must treat Human-assisted dispatch as a deliberate Pilot #2 operating mode, not as a workflow failure.
 
-When GUI or Codex runtime-local access is blocked by the outer sandbox/environment:
+A healthy handoff to Human should look like:
 
-1. verify that the visible launch remains the intended path;
-2. request the narrow managed escalation/capability needed;
-3. retry the same visible launcher path;
-4. if visible dispatch still cannot be established, record a Pilot deviation and stop/reroute rather than silently substituting background execution.
+```text
+Next Action
+Run <RUN_ID> with <Role>.
 
-Process/session existence alone is not proof of visual visibility. Use direct window/screenshot evidence when available; otherwise record the limitation truthfully.
+Decision / Action By Human
+1. Open a fresh/continuation Participant Session as instructed.
+2. Use model <MODEL> with reasoning <EFFORT>.
+3. Use working directory <PATH> when applicable.
+4. Paste/run the provided invocation pointer or minimal kickoff prompt.
+5. Report a material problem or completion back to the Orchestrator.
+```
+
+The Orchestrator should not ask the Human to rediscover canonical prompts, infer artifact paths, choose models, or decide routing mechanics that are already Orchestrator-owned.
 
 Changing terminal, harness, or model in a later pilot must not require changing Work Unit, Run, Decision, dependency, or authority semantics.
 
 ## Pilot #2 success signal
 
-The operating model is healthier than Pilot #1 when:
+Pilot #2 succeeds when orchestration correctness is demonstrated across real work:
 
-- Human no longer acts as the normal per-Run prompt composer and session launcher;
-- participant execution remains role-isolated;
-- Human interaction focuses on genuine decisions/corrections;
 - a fresh Orchestrator Session can resume from durable artifacts;
-- failure of a terminal tab does not destroy orchestration truth.
+- Work Unit decomposition and dependency topology remain evidence-based;
+- runnable frontier and workflow routing are correct;
+- Role/Participant boundaries remain isolated;
+- model/reasoning routing is explicit and justified;
+- Human gates are surfaced correctly;
+- workflow artifact ownership remains correct;
+- Participant completion is reconciled correctly into Work Unit state, Events, Work Graph, and Control Surface;
+- Decisions/Blockers/Findings are routed without inventing authority;
+- milestones are not promoted prematurely;
+- Human-assisted dispatch remains mechanical rather than turning the Human into the real Orchestrator.
+
+Automated fleet/window mechanics are explicitly deferred from Pilot #2 success criteria.
