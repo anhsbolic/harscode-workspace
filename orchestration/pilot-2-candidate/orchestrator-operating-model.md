@@ -53,6 +53,14 @@ The Orchestrator must not replace:
 
 Derived Human-facing workflow artifacts should be produced by the workflow participant that owns their source semantics, not silently authored by the Orchestrator.
 
+For Pilot #2, make the ownership boundary explicit:
+
+- `techplan.md` is Planner-owned;
+- `report-techplan.md` is Planner-owned and is generated only when the current-effective Techplan reaches the Human approval gate after any invoked review/resolution path converges;
+- Code Review verdict/evidence is Reviewer-owned;
+- Testing verdict/evidence is Verifier-owned;
+- the Orchestrator may dispatch, route, reconcile, and project these artifacts, but must not author them on behalf of the owning workflow Role.
+
 ## Downstream Work Unit decomposition
 
 The Orchestrator owns orchestration decomposition after sufficient upstream evidence exists.
@@ -95,6 +103,51 @@ Pilot #2 uses an **Automated Visible Fleet** execution style:
 - Human per-Run terminal setup is fallback/diagnostic behavior, not the intended steady state.
 
 These mechanics are Pilot #2 implementation choices, not orchestration semantics.
+
+### Fire-and-forget Participant coordination
+
+Pilot #2 intentionally keeps Participant supervision lightweight.
+
+Normal dispatch posture:
+
+```text
+Orchestrator determines the Run
+→ prepares durable invocation
+→ launches a visible Ghostty + interactive Codex CLI Participant Session
+→ confirms minimum successful dispatch
+→ records last-known Run state as RUNNING
+→ stops monitoring by default
+```
+
+Minimum successful dispatch means:
+
+- the Ghostty/Codex Participant process or surface was launched;
+- the durable Run invocation was delivered to the Participant;
+- no immediate launch failure is known.
+
+After successful dispatch:
+
+- the Orchestrator MUST NOT continuously monitor, mirror, or poll the Participant transcript/progress as normal behavior;
+- the Human acts as the lightweight problem/completion signal;
+- if the Human reports no problem, orchestration retains the last-known `RUNNING` state rather than claiming guaranteed realtime liveness;
+- if the Human reports a material problem, the Orchestrator diagnoses/routes only as much as needed;
+- if the Human reports that the Participant finished, the Orchestrator reads the durable Run artifacts/handoff, reconciles Work Unit/Event/Control Surface state, and determines the next route;
+- direct Human ↔ Participant interaction remains valid at genuine workflow Human gates.
+
+This is deliberately not a monitoring daemon, transcript-mirroring system, or autonomous process supervisor.
+
+### Pilot #2 visible-launch recovery posture
+
+The normal Pilot #2 Participant path is visible Ghostty + interactive Codex CLI. A background/non-visible launcher is not an equivalent silent fallback.
+
+When GUI or Codex runtime-local access is blocked by the outer sandbox/environment:
+
+1. verify that the visible launch remains the intended path;
+2. request the narrow managed escalation/capability needed;
+3. retry the same visible launcher path;
+4. if visible dispatch still cannot be established, record a Pilot deviation and stop/reroute rather than silently substituting background execution.
+
+Process/session existence alone is not proof of visual visibility. Use direct window/screenshot evidence when available; otherwise record the limitation truthfully.
 
 Changing terminal, harness, or model in a later pilot must not require changing Work Unit, Run, Decision, dependency, or authority semantics.
 
