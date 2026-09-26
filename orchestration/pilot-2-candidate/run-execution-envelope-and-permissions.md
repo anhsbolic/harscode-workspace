@@ -175,6 +175,10 @@ They must not silently:
 
 Pilot #2 uses Ubuntu + Ghostty + Codex CLI mechanics, but these authorization classes are candidate orchestration semantics rather than Codex-specific policy.
 
+For the current Pilot #2 execution posture, visible Ghostty + interactive Codex CLI is the normal Participant dispatch path. If the outer sandbox blocks GUI launch or Codex runtime-local filesystem access, that is harness friction rather than a reason to change workflow authority. Request the narrow managed escalation needed and retry the visible path.
+
+A background/non-visible launcher may be useful as a diagnostic tool, but it is not an equivalent silent fallback for a Pilot #2 Run whose execution target is visible.
+
 ## Observability
 
 Record material permission requests and disposition when practical:
@@ -245,7 +249,16 @@ When a Run cannot proceed because of permission/sandbox limits:
 2. verify the active authority allows it;
 3. classify the action;
 4. request only the narrowest needed authority/capability;
-5. continue after the boundary is resolved.
+5. retry the intended execution path after the boundary is resolved.
+
+For Pilot #2 visible dispatch specifically:
+
+- GUI/runtime-local denial may require managed escalation;
+- escalation should preserve the intended Ghostty + interactive Codex execution mode;
+- do not silently switch to background/non-visible execution merely because it is easier after escalation;
+- if the visible path still cannot be established, record a Pilot deviation and return control to Human/Orchestrator routing.
+
+After a visible Run is successfully dispatched, normal supervision is fire-and-forget: the Orchestrator does not poll the Participant transcript or progress. The Human reports a material problem or completion; only then does the Orchestrator diagnose or reconcile from durable artifacts.
 
 Do not weaken verification or silently rewrite scope just to avoid the permission boundary.
 
