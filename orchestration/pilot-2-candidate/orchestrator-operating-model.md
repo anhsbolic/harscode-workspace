@@ -129,6 +129,63 @@ After dispatch, supervision remains lightweight:
 
 Direct Human ↔ Participant interaction remains valid at genuine workflow Human gates.
 
+### Open-Item Resolution Run
+
+Pilot #2 may use a dedicated **Open-Item Resolution Run** when a Techplan or other current-effective workflow artifact contains a decision surface that is complex, interdependent, or costly for the Human to reconstruct unaided.
+
+This is an optional routing pattern, not a mandatory phase for every Open Item.
+
+Use:
+
+- Role: `Explorer`;
+- specialization: `Open-Item Decision Resolution / Product-Contract Facilitation`;
+- a fresh Session when the decision surface is materially complex or crosses multiple authority/evidence domains.
+
+Purpose:
+
+- reduce uncertainty around current Open Items;
+- retrieve and organize the evidence relevant to each item;
+- identify dependencies between items and a sensible discussion order;
+- explain the issue, available options, material pros/cons, risks, and consequences;
+- provide a recommendation when evidence supports one;
+- identify the correct decision owner or downstream evidence owner;
+- facilitate direct Human/owner discussion without taking authority from them;
+- produce a durable handoff that the Orchestrator can reconcile.
+
+The Run MUST NOT force every Open Item into a final decision. A healthy per-item outcome may be:
+
+- `RESOLVED`;
+- `PARTIALLY_RESOLVED`;
+- `DEFERRED`;
+- `NEEDS_OWNER`;
+- `NEEDS_FURTHER_EVIDENCE`.
+
+For an unresolved or deferred item, the Explorer should preserve useful continuation context, such as:
+
+- what is already known;
+- what remains uncertain;
+- important constraints and risks;
+- options already eliminated;
+- recommended direction or experiment, when justified;
+- the trigger/evidence/Role needed before the item can be decided;
+- which later Run or owner should receive the handoff.
+
+The expected lifecycle is:
+
+```text
+Open Items detected
+→ Orchestrator decides whether a dedicated resolution Run adds value
+→ Explorer analyzes evidence, dependencies, options, trade-offs, recommendation, and ownership
+→ Human/owner discussion where appropriate
+→ Explorer records durable per-item outcomes and continuation clues
+→ Orchestrator reconciles
+→ unresolved items route to the appropriate Planner / Build / Reviewer / Verifier / Human / specialist path
+```
+
+The Explorer facilitates uncertainty reduction; it does not become Product Authority, Security Authority, API owner, Planner, or Implementer.
+
+Do not create a new first-class workflow Role for this pattern during Pilot #2. Treat it as an Explorer specialization until repeated CRTV evidence demonstrates that a distinct Role has different lifecycle, authority, artifact, or failure-mode requirements.
+
 ### Automated Visible Fleet hold
 
 Automated Visible Fleet is **on hold for the remainder of Pilot #2**.
