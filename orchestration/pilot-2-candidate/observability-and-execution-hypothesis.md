@@ -5,46 +5,42 @@
 
 ## Execution hypothesis
 
-Pilot #2 intentionally uses a specific, simple implementation:
+Pilot #2 intentionally uses **Human-Assisted Orchestration**.
 
-- Ubuntu
-- Ghostty
-- Codex CLI
-- Automated Visible Fleet
-
-The Orchestrator should prepare Run identity, model/reasoning choice, scoped invocation, working directory, and authorization envelope before launch.
+The Orchestrator prepares the coordination decision and dispatch package; the Human performs the mechanical Participant launch/prompt delivery.
 
 The intended experience is:
 
 ```text
-Human starts Orchestrator once
-→ Orchestrator determines runnable work
-→ Orchestrator prepares/launches visible Participant CLI Run
-→ Orchestrator confirms minimum successful dispatch
+Human starts Orchestrator
+→ Orchestrator reconstructs state and determines runnable work
+→ Orchestrator prepares Run identity, model/effort, Session posture, invocation, and Human dispatch instructions
+→ Human opens the requested Participant Session and delivers the invocation/prompt
 → Participant executes independently
-→ Human reports only a material problem or completion
+→ Human reports only a material problem, genuine workflow gate, or completion
 → durable Run artifacts are produced
-→ Orchestrator reconciles result after the signal
+→ Orchestrator reconciles result and states the next route
 ```
 
-Pilot success does not require perfect terminal automation. Occasional manual recovery is acceptable. Routine Human per-Run setup is not the intended steady state.
+Pilot #2 success does not depend on terminal spawning, prompt injection, CUA/native-window observability, process supervision, or other Automated Visible Fleet mechanics.
 
-Ghostty/tab state is never orchestration authority.
+Those mechanics are deferred for dedicated research after Pilot #2 and before Pilot #3.
 
-## Why visible execution for Pilot #2
+Terminal/window state is never orchestration authority.
 
-Pilot #2 still performs CRTV of Harscode itself.
+## Human-assisted execution rationale
 
-Visible Participant sessions provide a cheap debugging surface for:
+Pilot #2 still performs CRTV of Harscode itself, but the evidence priority is orchestration correctness.
 
-- over-reading/repetitive source loading;
-- permission friction;
-- agent stalls/loops;
-- verification ritual;
-- unexpected context loss;
-- invocation misunderstanding.
+Manual Participant launch/prompt delivery is acceptable when it preserves these boundaries:
 
-This is a pilot/debugging advantage, not a claim that visible terminals are the mature execution architecture.
+- Orchestrator chooses and prepares the Run;
+- Human performs only the mechanical dispatch requested;
+- Participant owns phase execution/artifacts;
+- Human reports problems/completion;
+- Orchestrator owns reconciliation and next routing.
+
+Visible terminals may still be useful for Human debugging, but their automation is not a Pilot #2 requirement.
 
 ## Observability principle
 
@@ -190,12 +186,13 @@ Pilot #2 should first observe where permission friction occurs before creating a
 
 Do not turn the Orchestrator into a realtime efficiency policeman or process supervisor.
 
-Pilot #2 default after successful dispatch is **fire-and-forget**:
+Pilot #2 default after Human-assisted dispatch is **fire-and-forget**:
 
 ```text
-launch visible Participant
-→ confirm minimum dispatch success
-→ retain last-known RUNNING
+Orchestrator prepares dispatch
+→ Human launches Participant and delivers invocation
+→ Human confirms dispatch when useful
+→ retain last-known active state
 → no realtime transcript/progress polling
 → Human reports problem or completion
 → reconcile from durable artifacts/handoff
@@ -212,13 +209,17 @@ Do not continuously read Participant transcripts, mirror Participant reasoning, 
 
 If direct evidence suggests materially harmful behavior such as destructive/protected action or authority violation, intervene through the applicable Human/protected path. Pilot #2 does not require autonomous detection of every stall, loop, or inefficient verification pattern.
 
-### Visible-launch evidence
+### Mechanical dispatch evidence
 
-A successful process launch and a Session identifier are not, by themselves, proof that a Participant was visibly presented.
+For Human-assisted dispatch, the minimum useful evidence is that:
 
-When available, use direct window/screenshot evidence. When the environment cannot expose window state, record process-level evidence and the observability limitation without upgrading it to visual proof.
+- the Human received the Run dispatch instructions;
+- the invocation/prompt was delivered to the intended Participant Session;
+- no immediate blocking problem was reported.
 
-If GUI or Codex runtime-local access is denied by the outer sandbox, managed escalation may be required. After escalation, retry the intended visible Ghostty + interactive Codex path; do not silently substitute a background/non-visible launcher.
+Do not require automated window/process telemetry merely to treat the Run as dispatched.
+
+If the Human reports that launch or invocation delivery failed, record the real mechanical blocker and provide a corrected dispatch instruction. Do not turn the failure into a broad orchestration redesign during Pilot #2.
 
 ## Explicit non-goals
 
