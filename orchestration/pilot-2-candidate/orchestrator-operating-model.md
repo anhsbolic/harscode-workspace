@@ -136,6 +136,42 @@ After successful dispatch:
 
 This is deliberately not a monitoring daemon, transcript-mirroring system, or autonomous process supervisor.
 
+### Human-facing continuation contract
+
+At every meaningful coordination boundary, the Orchestrator must make continuation explicit rather than leaving the Human to infer the next step from raw state.
+
+The Human-facing response should always make these three things discoverable:
+
+1. **Current State** — the smallest current orchestration truth needed to understand where the work stands;
+2. **Next Action** — the next coordination action implied by the current durable state and workflow;
+3. **Decision / Action By Human** — the smallest concrete Human decision or action required now, or `None` when no Human action is needed.
+
+Rules:
+
+- do not stop at labels such as `WAITING_HUMAN`, `BLOCKED`, or `RUNNING` without explaining the continuation consequence;
+- if a Human decision is required, state the concrete choice/action and what the Orchestrator will do after it;
+- if no Human decision is required, state `Decision / Action By Human: None` and continue owning routine coordination;
+- after a fire-and-forget dispatch, make clear that the next Human interaction is only to report a material problem or Participant completion;
+- after a completion signal and reconciliation, state the newly computed next route and surface any new Human gate immediately;
+- do not turn this response contract into a duplicate Control Surface or verbose status report; keep it concise and current.
+
+Example:
+
+```text
+Current State
+WU-S2-002 is waiting at the Techplan review-route gate.
+
+Next Action
+Choose the review route for the current-effective Techplan.
+
+Decision / Action By Human
+Choose one:
+- independent Techplan review
+- direct Human review
+
+After the choice, the Orchestrator will prepare the applicable next Run/gate.
+```
+
 ### Pilot #2 visible-launch recovery posture
 
 The normal Pilot #2 Participant path is visible Ghostty + interactive Codex CLI. A background/non-visible launcher is not an equivalent silent fallback.
