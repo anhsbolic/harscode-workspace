@@ -15,6 +15,62 @@ Owns material authority and protected decisions, including Product, Design, secu
 
 Human approval should remain a decision, not routine orchestration mechanics.
 
+A Human authority decision and an artifact status update are distinct events.
+
+When a Human explicitly approves a workflow artifact at its defined gate, that Human statement is the approval event. A later Participant-owned update that changes artifact metadata/status to reflect that approval is artifact reconciliation, not a second approval.
+
+Likewise, a valid Human/owner decision made in a relevant Participant Session does not require duplicate approval unless the workflow defines a separate artifact or milestone approval gate, the scope materially changes, authority is mismatched, or newer evidence conflicts with the decision.
+
+### Project Authority Mapping
+
+Pilot #2 treats authority ownership as project-defined durable state.
+
+Harscode does not prescribe a universal list of authority areas. Each target project defines the authority areas that are materially relevant to its own Product, Design, Security/Privacy, API/Contract, Delivery, Release, or other governance concerns.
+
+A project-level Authority Map should make each currently relevant authority area discoverable through at least:
+
+- authority area identity/name;
+- named current owner;
+- scope of authority;
+- effective-from context/date.
+
+Multiple authority areas may map to the same named Human or owner. The authority context must still remain explicit because the same person may act under different authority scopes.
+
+The Authority Map represents current authority ownership. It does not replace historical Decision provenance.
+
+The Orchestrator must re-read the current Authority Map when:
+
+- reconstructing from a fresh Orchestrator Session;
+- bootstrapping a new Slice or materially new work area;
+- routing an Open Item that requires authority;
+- authority ownership is reported or evidenced as changed.
+
+The Orchestrator must not infer permanent universal authority merely because the project currently has a single Human owner.
+
+### Authority Discovery and Synchronization
+
+Authority discovery is progressive and event-driven, not a one-time immutable project setup and not a recurring sprint ceremony.
+
+At initial project/product orchestration bootstrap, the Orchestrator should determine whether the currently material authority areas have named owners. When meaningful authority ownership is missing or ambiguous, the Orchestrator should route an Authority Discovery / Authority Sync activity before dependent authority decisions are required.
+
+A project does not need to enumerate every possible future authority area up front.
+
+Authority Sync is warranted when evidence shows that:
+
+- a required authority area has no current named owner;
+- an existing owner explicitly rejects or no longer holds that authority;
+- authority scopes overlap or conflict materially;
+- the Human delegates or reassigns authority;
+- new project scope introduces a materially new authority concern;
+- current durable authority mapping contradicts newer explicit owner evidence.
+
+Authority Sync updates current ownership prospectively. It must not rewrite the provenance of Decisions that were validly made under a prior authority mapping.
+
+Authority ambiguity is distinct from a normal Human decision gate:
+
+- `AUTHORITY_SYNC` means the valid decision owner is not yet sufficiently known;
+- `HUMAN_DECISION` means the relevant owner is known and the next required step is the owner's actual decision.
+
 ### Orchestrator
 
 Owns coordination:
@@ -152,6 +208,20 @@ Purpose:
 - facilitate direct Human/owner discussion without taking authority from them;
 - produce a durable handoff that the Orchestrator can reconcile.
 
+
+When a decision-ready item has a known authority owner available in the Session, the Explorer should actively facilitate the decision rather than merely publish analysis and wait for the Human to initiate discussion.
+
+Facilitation should be proportional to the item and may include:
+
+- explain the unresolved question in concrete terms;
+- summarize relevant evidence and constraints;
+- present materially distinct options and trade-offs;
+- provide a recommendation when justified;
+- identify the applicable authority context;
+- ask the named owner for a sufficiently explicit decision or direction.
+
+The Explorer must not pressure the owner to decide when evidence remains insufficient. In that case it should record the missing evidence and route need instead.
+
 The Run MUST NOT force every Open Item into a final decision. A healthy per-item outcome may be:
 
 - `RESOLVED`;
@@ -182,7 +252,73 @@ Open Items detected
 → unresolved items route to the appropriate Planner / Build / Reviewer / Verifier / Human / specialist path
 ```
 
+A Human or owner decision made directly inside the relevant Participant Session is valid decision evidence when it is explicit enough and the Participant records it durably with sufficient provenance.
+
+The durable handoff should distinguish at least:
+
+- agent recommendation;
+- tentative Human/owner direction;
+- Human/owner decision;
+- superseded decision where applicable.
+
+For a material decision, record:
+
+- the resolved question;
+- the decision itself;
+- named decision-maker;
+- applicable authority context;
+- scope of the decision;
+- source Run;
+- relevant date/effective context;
+- material consequences or remaining unresolved concerns.
+
+The Orchestrator should reconcile valid recorded decision evidence without asking the Human to repeat the same approval merely because the decision happened inside a Participant Session.
+
 The Explorer facilitates uncertainty reduction; it does not become Product Authority, Security Authority, API owner, Planner, or Implementer.
+
+### Unresolved-Item Routing
+
+The presence of an unresolved item does not by itself justify parking the whole Work Unit or routing immediately to `WAITING_HUMAN`.
+
+For each material unresolved item, the Orchestrator should determine:
+
+1. what is actually unresolved;
+2. which authority area owns any required material decision;
+3. whether the current Authority Map resolves that owner;
+4. whether additional specialist analysis/review can safely reduce uncertainty before an owner decision;
+5. whether the answer can only be established through later Build or Testing evidence;
+6. which specific milestone, contract surface, or work scope is actually blocked.
+
+Useful routing outcomes may include:
+
+- authority decision;
+- specialist analysis/review;
+- deferred Build evidence;
+- deferred Testing evidence;
+- non-blocking deferred item;
+- authority synchronization.
+
+These are routing semantics for Pilot #2, not new canonical protocol enums.
+
+Default principle:
+
+> Human decides; the appropriate specialist performs the analysis needed to make that decision well.
+
+A Human decision gate should normally be surfaced only when:
+
+- the valid named authority owner is known;
+- the material question is sufficiently bounded;
+- relevant evidence/options are already adequate for decision;
+- there is no useful specialist work that should occur first;
+- the next actual progress step is the owner decision or approval itself.
+
+If specialist work can materially reduce uncertainty first, the Orchestrator should normally route that work rather than shifting the analytical burden to the Human.
+
+An unresolved item should block only the work or milestone whose correctness depends on it. Safe unaffected work should remain runnable when the Work Graph and workflow allow it.
+
+Evidence obligations that inherently belong to Build or Testing should not be forced into premature planning-time resolution. The earlier phase should instead establish the required invariant, acceptance boundary, or verification obligation and route the empirical proof to the appropriate later Role.
+
+If the required authority area itself is not mapped, route Authority Sync rather than presenting the unresolved technical or product question as a normal Human decision gate.
 
 Do not create a new first-class workflow Role for this pattern during Pilot #2. Treat it as an Explorer specialization until repeated CRTV evidence demonstrates that a distinct Role has different lifecycle, authority, artifact, or failure-mode requirements.
 
@@ -212,6 +348,8 @@ Rules:
 
 - do not stop at labels such as `WAITING_HUMAN`, `BLOCKED`, or `RUNNING` without explaining the continuation consequence;
 - if a Human decision is required, state the concrete choice/action and what the Orchestrator will do after it;
+- when Human attention is required because of an unresolved item, distinguish whether the Human must make a decision now, participate in a specialist-facilitated discussion, or only provide authority-owner synchronization; do not collapse all three into `WAITING_HUMAN`;
+- the Orchestrator may ask focused questions and discuss a decision with the Human when the issue is already sufficiently bounded; substantive specialist analysis should remain with the appropriate Participant rather than turning the Orchestrator into that specialist;
 - if no Human decision is required, state `Decision / Action By Human: None` and continue owning routine coordination;
 - after a fire-and-forget dispatch, make clear that the next Human interaction is only to report a material problem or Participant completion;
 - after a completion signal and reconciliation, state the newly computed next route and surface any new Human gate immediately;
