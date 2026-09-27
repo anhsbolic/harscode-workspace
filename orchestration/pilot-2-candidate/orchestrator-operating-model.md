@@ -155,7 +155,7 @@ Participant identity remains ephemeral. A single Participant execution episode m
 
 ## Participant execution and continuation
 
-Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, Participant Execution Handoff, and related artifact-ownership/mutation semantics must follow `participant-execution-continuation.md`.
+Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, Participant Execution Handoff, Run Resume, and related artifact-ownership/mutation semantics must follow `participant-execution-continuation.md`.
 
 Key boundary:
 
@@ -164,7 +164,11 @@ Key boundary:
 - Session is a disposable runtime/context container;
 - immediate context renewal changes Session while keeping the same active Participant/Run;
 - a meaningful orchestration pause may terminate the Participant while leaving the Run open;
-- assignment truth is Orchestrator-owned through the Invocation;
+- the same Run may later resume with a new Participant when the original Invocation still accurately describes the assignment;
+- material changes to objective, Role/workflow route, material scope, completion condition, or upstream obligations normally require a new Run rather than silent mutation;
+- Human decisions, blocker resolution, or Participant replacement alone do not imply a new Run;
+- the Orchestrator must validate the durable resume basis and current assignment validity before dispatching a resumed execution episode;
+- assignment truth is Orchestrator-owned through the base Invocation and thin Resume Invocation;
 - execution truth is Participant-owned through Checkpoints/Handoffs;
 - Run completion remains Orchestrator-owned after durable reconciliation;
 - once an artifact has been materially relied upon, material corrections preserve provenance through amendment/supersession rather than silent rewrite.
