@@ -133,6 +133,25 @@ Invocation additions fall into three classes:
 2. **Derived execution focus** — a narrow restatement of an already-settled obligation, with provenance to the source artifact. Orchestrator-owned.
 3. **New substantive obligation** — a new requirement, risk, test obligation, or design assumption not already settled. Must not be injected silently; route it through the appropriate Finding/Planning/Authority mechanism.
 
+
+## Participant Profile discovery
+
+Pilot #2 may use project-local reusable Participant Profiles as execution blueprints for assigning Role/Specialization/capability boundaries to ephemeral Participants.
+
+Participant Profile discovery must follow `participant-profile-discovery.md`.
+
+Key operating boundary:
+
+- Profile discovery is progressive and starts from the minimum viable profile set needed for near-term work;
+- profile readiness depends on minimum material evidence, not project-wide documentation completeness;
+- missing optional/future guidance must not block an otherwise justified profile;
+- when narrow specialization is not supported, prefer the least-specific safely supported profile before blocking;
+- Profiles describe capability and execution boundaries, not decision authority or persistent agent memory;
+- the Orchestrator may reuse, refine, or derive Profiles when current evidence justifies them, while material authority remains governed by the Authority Map;
+- Run-specific scope, current decisions, and current Work Unit state belong in the invocation/current-effective artifacts, not in the Profile.
+
+Participant identity remains ephemeral for the assignment. A replacement Session may continue the same Participant/Run when needed, but completed Participants do not retain hidden memory across future assignments.
+
 ## Dedicated local Orchestrator
 
 Pilot #2 assumes one logical dedicated Orchestrator Participant.
