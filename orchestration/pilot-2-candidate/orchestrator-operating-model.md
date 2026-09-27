@@ -150,27 +150,25 @@ Key operating boundary:
 - the Orchestrator may reuse, refine, or derive Profiles when current evidence justifies them, while material authority remains governed by the Authority Map;
 - Run-specific scope, current decisions, and current Work Unit state belong in the invocation/current-effective artifacts, not in the Profile.
 
-Participant identity remains ephemeral. A single Participant execution episode may span multiple Sessions when immediate context/runtime renewal is needed, but a meaningful pause such as a Human gate, external wait, or blocker may end that Participant while the Run itself remains open. Later continuation may instantiate a new Participant for the same unchanged Run. Completed Participants do not retain hidden memory across future execution episodes.
+Participant identity remains ephemeral. A single Run/Participant execution occurrence may span multiple Sessions when immediate context/runtime renewal is needed. If a meaningful pause such as a Human gate, external wait, or blocker ends that execution occurrence, the current Run ends and the Orchestrator reconciles Work Unit state. Later workflow re-entry creates a new Run with meaningful-delta provenance. Completed Participants do not retain hidden memory across future Runs.
 
 
 ## Participant execution and continuation
 
-Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, Participant Execution Handoff, Run Resume, and related artifact-ownership/mutation semantics must follow `participant-execution-continuation.md`.
+Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, Participant Execution Handoff, repeated-Run provenance, and related artifact-ownership/mutation semantics must follow `participant-execution-continuation.md`.
 
 Key boundary:
 
-- Run is durable assignment state;
-- Participant is ephemeral execution capacity;
+- Run is one execution occurrence of a workflow activity, consistent with the canonical protocol;
+- Participant is the ephemeral executor identity for that Run;
 - Session is a disposable runtime/context container;
-- immediate context renewal changes Session while keeping the same active Participant/Run;
-- a meaningful orchestration pause may terminate the Participant while leaving the Run open;
-- the same Run may later resume with a new Participant when the original Invocation still accurately describes the assignment;
-- material changes to objective, Role/workflow route, material scope, completion condition, or upstream obligations normally require a new Run rather than silent mutation;
-- Human decisions, blocker resolution, or Participant replacement alone do not imply a new Run;
-- the Orchestrator must validate the durable resume basis and current assignment validity before dispatching a resumed execution episode;
-- assignment truth is Orchestrator-owned through the base Invocation and thin Resume Invocation;
+- immediate context renewal may replace Session while keeping the same active Participant/Run;
+- Continuation Checkpoints are only for Session replacement inside the same execution occurrence;
+- when a meaningful pause/Human gate/blocker ends the execution occurrence, the current Run ends and the Orchestrator reconciles canonical Work Unit execution/scheduling state;
+- later workflow re-entry creates a new Run and must have meaningful-delta provenance such as new evidence, authority decision, material plan amendment, different implementation approach, resolved dependency, or specific defect correction;
+- do not create a parallel Run lifecycle/state machine for WAITING/BLOCKED; use canonical Work Unit execution status and scheduling posture;
+- assignment truth is Orchestrator-owned through the Run Invocation;
 - execution truth is Participant-owned through Checkpoints/Handoffs;
-- Run completion remains Orchestrator-owned after durable reconciliation;
 - once an artifact has been materially relied upon, material corrections preserve provenance through amendment/supersession rather than silent rewrite.
 
 ## Project orchestration bootstrap
