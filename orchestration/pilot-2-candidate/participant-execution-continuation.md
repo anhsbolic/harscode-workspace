@@ -19,15 +19,17 @@ Core principles:
 
 - **Participant Profile** — reusable execution blueprint: capability, operating boundaries, guidance routing, and expected handoff behavior.
 - **Run** — durable bounded assignment and workflow execution route.
-- **Participant** — concrete ephemeral executor for an active execution episode within a Run.
+- **Participant** — concrete ephemeral executor identity for a Run.
 - **Session** — temporary runtime/context container used by that Participant.
-- **Run Invocation** — Orchestrator-owned binding artifact that tells a Participant what assignment to execute.
-- **Continuation Checkpoint** — Participant-owned execution-state artifact used when the same execution episode continues in a replacement Session.
-- **Participant Execution Handoff** — Participant-owned result/handoff artifact produced when that Participant execution episode ends, whether or not the Run itself ends.
+- **Run Invocation** — Orchestrator-owned binding artifact that tells a Participant what Run to execute.
+- **Continuation Checkpoint** — Participant-owned execution-state artifact used when the same Run/Participant continues in a replacement Session.
+- **Participant Execution Handoff** — Participant-owned result/handoff artifact produced when the Run execution occurrence ends.
 
-A Run may use multiple Participant execution episodes sequentially when execution stops for a meaningful external wait, Human gate, blocker, or other orchestration pause while the assignment remains unchanged.
+A Run is one execution occurrence of a workflow activity, consistent with the canonical protocol.
 
-A single Participant execution episode may span multiple Sessions when context/runtime renewal is immediate and the assignment remains active.
+A Run may span multiple Sessions only when the same active execution occurrence continues through immediate context/runtime renewal.
+
+A Run must not span multiple separated execution occurrences.
 
 ## Run Invocation
 
@@ -110,59 +112,11 @@ Run becomes dispatchable
 → Orchestrator reconciles Run / Work Unit / next route
 ```
 
-A Participant must not retain hidden memory across future execution episodes.
+A Participant must not retain hidden memory across future Runs.
 
 ### Immediate Session renewal
 
 When only the Session/runtime context changes and substantive execution is continuing immediately:
-
-```text
-same Run
-same Participant
-same Profile revision
-new Session
-```
-
-Context renewal changes the container, not the assignment.
-
-### Meaningful pause
-
-When execution stops for a Human decision, external dependency, blocker, or other meaningful wait:
-
-```text
-Participant writes Execution Handoff
-→ Participant terminates
-→ Run may remain open / blocked / waiting
-→ later continuation may instantiate a new Participant for the same Run
-```
-
-Do not keep a Participant notionally alive merely because the Run has not completed.
-
-
-## Run Resume semantics
-
-A Run may resume after an immediate Session replacement or after a meaningful pause.
-
-The default decision rule is:
-
-> Resume the same Run while the original Run Invocation still accurately describes the assignment that must now be executed.
-
-If the assignment meaning has changed materially, create a new Run rather than silently changing the old Run.
-
-Useful material-change signals include:
-
-- bounded objective changed;
-- Role or workflow route changed;
-- material execution scope changed;
-- Run completion condition changed;
-- an upstream authority/contract/architecture decision materially changed the work;
-- the remaining work has become a materially distinct bounded assignment.
-
-A Human decision or cleared blocker does not automatically require a new Run. The effect on the assignment determines whether the Run remains valid.
-
-### Same Participant, replacement Session
-
-Use this path for immediate context/runtime renewal while the same execution episode is still active.
 
 ```text
 Run            SAME
@@ -171,100 +125,55 @@ Profile rev    SAME
 Session        NEW
 ```
 
-Resume basis:
+Context renewal changes the Session, not the Run.
 
-- base Run Invocation;
-- same pinned Participant Profile revision;
-- latest Continuation Checkpoint;
-- current durable working state.
+The replacement Session reconstructs from the base Run Invocation, the pinned Participant Profile revision, the latest Continuation Checkpoint, and current durable working state.
 
-This is context renewal, not reassignment.
+### Meaningful pause and workflow re-entry
 
-### New Participant, same Run
-
-Use this path when a prior Participant execution episode has ended, but the original Run assignment remains semantically valid.
-
-Examples include:
-
-- Human/owner decision has now resolved a gate anticipated by the original assignment;
-- external dependency or permission has cleared;
-- a blocker has been resolved without changing the assignment meaning;
-- execution resumes after a meaningful pause.
+When execution stops for a Human decision, external dependency, blocker, or another meaningful pause that ends the current execution occurrence:
 
 ```text
-Run            SAME
-Participant    NEW
-Session        NEW
+Participant writes Execution Handoff
+→ current Run execution occurrence ends
+→ Orchestrator reconciles Work Unit state
+→ Work Unit may become WAITING / WAITING_HUMAN / BLOCKED / PARKED as applicable
+→ meaningful delta occurs
+→ later workflow re-entry creates a NEW Run
 ```
 
-The new Participant reconstructs from:
+Examples of meaningful delta include the canonical protocol cases:
 
-- base Run Invocation;
-- previous Participant Execution Handoff;
-- newly effective Decisions/evidence;
-- current durable working state.
+- new evidence;
+- authority decision;
+- material plan amendment;
+- different implementation approach;
+- resolved dependency;
+- specific defect correction.
 
-Because this is a new execution episode, the Orchestrator may select the current suitable Participant Profile revision if it remains compatible with the same Run. Profile revision stability applies within an active Participant episode, not necessarily across all future episodes of the Run.
+Do not keep the old Run open across a separated execution occurrence.
 
-### New Run
+Core rule:
 
-Create a new Run when the original Invocation no longer accurately represents the assignment.
+> A Run may span multiple Sessions, but it does not span multiple execution occurrences.
 
-A useful test is:
+> Session renewal preserves a Run; workflow re-entry creates a new Run.
 
-> If a fresh executor read the original Run Invocation today, would it still accurately describe the work that must now be performed?
+## Repeated Run provenance
 
-- if yes, same-Run resume may be valid;
-- if no, reconcile the prior Run and create a new Run.
+A repeated/new Run created after workflow re-entry should preserve concise provenance to the prior execution.
 
-Do not use context exhaustion, Participant replacement, Human decision, or blocker resolution alone as reasons for a new Run.
+Make discoverable when applicable:
 
-## Resume Invocation
+- prior Run ID;
+- prior Participant Execution Handoff;
+- meaningful delta that justifies re-entry;
+- newly effective Decision/evidence;
+- current-effective assignment inputs.
 
-A resume should use a thin Orchestrator-owned Resume Invocation rather than rewriting the base Run Invocation.
+The new Run receives a new Run Invocation, Participant identity, and applicable current Profile revision.
 
-The Resume Invocation should identify at least:
-
-- Run ID;
-- whether this continues the same execution episode or starts a new execution episode;
-- Participant ID;
-- prior Participant ID when applicable;
-- base Run Invocation pointer;
-- resume basis such as Continuation Checkpoint or prior Execution Handoff;
-- newly effective Decision/evidence pointers when applicable;
-- selected Participant Profile ID/revision;
-- reason for resume;
-- working/runtime route when needed.
-
-Conceptually:
-
-```text
-Base Run Invocation
-+
-current resume basis
-+
-execution-episode identity
-=
-Resume Invocation
-```
-
-The base Invocation remains the durable assignment definition.
-
-## Resume validation
-
-Before dispatching a resumed execution episode, the Orchestrator should verify that:
-
-1. the original Run remains semantically valid;
-2. the Run is not already terminal or superseded;
-3. the gate/blocker/dependency that justified the pause is actually resolved enough to proceed;
-4. the durable resume basis is readable and sufficient;
-5. current project state does not materially invalidate the assignment;
-6. a suitable Participant Profile revision is available;
-7. the durable working state is reconstructable.
-
-If these checks fail, reconcile first rather than blindly resuming.
-
-A resumed Participant must not infer missing execution state from prior-session memory.
+Do not introduce a cross-execution Resume Invocation for this path. The canonical repeated-Run semantics already represent the new execution occurrence.
 
 ## Session fitness and context renewal
 
@@ -377,7 +286,7 @@ A replacement Session must not reconstruct missing state from assumption.
 
 The Participant owns the Participant Execution Handoff.
 
-The Handoff ends that Participant execution episode. It does not necessarily end the Run.
+The Handoff ends the current Run execution occurrence. The Orchestrator then reconciles the Work Unit and determines whether the Work Unit is complete, waiting/blocked, or later requires a repeated/new Run.
 
 A minimal Handoff should make discoverable:
 
@@ -409,34 +318,30 @@ The Participant records the decision as observed evidence; it does not become th
 
 The Orchestrator later reconciles the decision into durable project/orchestration state without requiring duplicate approval merely because the decision occurred inside a Participant Session.
 
-## Participant termination vs Run completion
+## Session termination, Run end, and Work Unit continuation
 
-Session termination, Participant termination, and Run completion are distinct.
+Session termination and Run termination are distinct.
 
 ```text
 Session termination
 = runtime context ends
 
-Participant termination
-= execution episode ends
+Run termination
+= one workflow execution occurrence ends
 
-Run completion
-= Orchestrator determines the durable assignment is complete
+Work Unit continuation
+= Orchestrator reconciles whether the bounded outcome needs more work
 ```
 
-A Participant may terminate while the Run remains:
+A Session may terminate while the same Run continues only through immediate Session replacement.
 
-- blocked;
-- partial;
-- waiting for Human/owner decision;
-- waiting for external evidence;
-- otherwise open.
+When the Participant produces the terminal Execution Handoff for the occurrence, that Run ends.
 
-The Participant does not need to remain alive while orchestration is waiting.
+If the Work Unit is not yet complete because it is waiting on a Human/owner decision, blocked by a dependency, or requires later re-entry, the Orchestrator updates canonical Work Unit execution/scheduling state rather than keeping the Run alive.
 
-Run completion remains Orchestrator-owned.
+Later execution uses a new Run with meaningful-delta provenance.
 
-The Orchestrator should reconcile the Handoff against the Invocation/completion condition before marking the Run complete.
+Run result/reconciliation remains Orchestrator-owned; Participants do not self-promote Work Unit or milestone state.
 
 ## Artifact ownership
 
@@ -446,8 +351,8 @@ Semantic ownership for this candidate model:
 - Continuation Checkpoint — Participant;
 - Participant Execution Handoff — Participant;
 - Session Transition / recovery record — Orchestrator;
-- Run state — Orchestrator;
-- Work Unit state / Work Graph / Control Surface — Orchestrator;
+- Run dispatch/result chronology — Orchestrator;
+- Work Unit execution/scheduling state / Work Graph / Control Surface — Orchestrator;
 - Human Decision — Human/authority owner; evidence may be recorded by Participant;
 - Learning Proposal — proposer/Participant;
 - Project Learning promotion — applicable Human/review authority.
@@ -514,6 +419,8 @@ For immediate Session renewal, the Orchestrator should provide:
 - replacement Session posture;
 - base Invocation pointer;
 - latest Continuation Checkpoint.
+
+After a meaningful pause has ended the Run occurrence, later execution must be dispatched as a new Run with concise provenance to the prior Run/Handoff and the meaningful delta.
 
 The Human should not author the handoff, reconstruct workflow routing, or invent the continuation task.
 
