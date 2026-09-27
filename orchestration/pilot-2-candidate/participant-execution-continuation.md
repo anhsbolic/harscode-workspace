@@ -138,6 +138,134 @@ Participant writes Execution Handoff
 
 Do not keep a Participant notionally alive merely because the Run has not completed.
 
+
+## Run Resume semantics
+
+A Run may resume after an immediate Session replacement or after a meaningful pause.
+
+The default decision rule is:
+
+> Resume the same Run while the original Run Invocation still accurately describes the assignment that must now be executed.
+
+If the assignment meaning has changed materially, create a new Run rather than silently changing the old Run.
+
+Useful material-change signals include:
+
+- bounded objective changed;
+- Role or workflow route changed;
+- material execution scope changed;
+- Run completion condition changed;
+- an upstream authority/contract/architecture decision materially changed the work;
+- the remaining work has become a materially distinct bounded assignment.
+
+A Human decision or cleared blocker does not automatically require a new Run. The effect on the assignment determines whether the Run remains valid.
+
+### Same Participant, replacement Session
+
+Use this path for immediate context/runtime renewal while the same execution episode is still active.
+
+```text
+Run            SAME
+Participant    SAME
+Profile rev    SAME
+Session        NEW
+```
+
+Resume basis:
+
+- base Run Invocation;
+- same pinned Participant Profile revision;
+- latest Continuation Checkpoint;
+- current durable working state.
+
+This is context renewal, not reassignment.
+
+### New Participant, same Run
+
+Use this path when a prior Participant execution episode has ended, but the original Run assignment remains semantically valid.
+
+Examples include:
+
+- Human/owner decision has now resolved a gate anticipated by the original assignment;
+- external dependency or permission has cleared;
+- a blocker has been resolved without changing the assignment meaning;
+- execution resumes after a meaningful pause.
+
+```text
+Run            SAME
+Participant    NEW
+Session        NEW
+```
+
+The new Participant reconstructs from:
+
+- base Run Invocation;
+- previous Participant Execution Handoff;
+- newly effective Decisions/evidence;
+- current durable working state.
+
+Because this is a new execution episode, the Orchestrator may select the current suitable Participant Profile revision if it remains compatible with the same Run. Profile revision stability applies within an active Participant episode, not necessarily across all future episodes of the Run.
+
+### New Run
+
+Create a new Run when the original Invocation no longer accurately represents the assignment.
+
+A useful test is:
+
+> If a fresh executor read the original Run Invocation today, would it still accurately describe the work that must now be performed?
+
+- if yes, same-Run resume may be valid;
+- if no, reconcile the prior Run and create a new Run.
+
+Do not use context exhaustion, Participant replacement, Human decision, or blocker resolution alone as reasons for a new Run.
+
+## Resume Invocation
+
+A resume should use a thin Orchestrator-owned Resume Invocation rather than rewriting the base Run Invocation.
+
+The Resume Invocation should identify at least:
+
+- Run ID;
+- whether this continues the same execution episode or starts a new execution episode;
+- Participant ID;
+- prior Participant ID when applicable;
+- base Run Invocation pointer;
+- resume basis such as Continuation Checkpoint or prior Execution Handoff;
+- newly effective Decision/evidence pointers when applicable;
+- selected Participant Profile ID/revision;
+- reason for resume;
+- working/runtime route when needed.
+
+Conceptually:
+
+```text
+Base Run Invocation
++
+current resume basis
++
+execution-episode identity
+=
+Resume Invocation
+```
+
+The base Invocation remains the durable assignment definition.
+
+## Resume validation
+
+Before dispatching a resumed execution episode, the Orchestrator should verify that:
+
+1. the original Run remains semantically valid;
+2. the Run is not already terminal or superseded;
+3. the gate/blocker/dependency that justified the pause is actually resolved enough to proceed;
+4. the durable resume basis is readable and sufficient;
+5. current project state does not materially invalidate the assignment;
+6. a suitable Participant Profile revision is available;
+7. the durable working state is reconstructable.
+
+If these checks fail, reconcile first rather than blindly resuming.
+
+A resumed Participant must not infer missing execution state from prior-session memory.
+
 ## Session fitness and context renewal
 
 Use the existing semantic Session fitness states:
