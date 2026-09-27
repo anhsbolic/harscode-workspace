@@ -152,6 +152,26 @@ Key operating boundary:
 
 Participant identity remains ephemeral for the assignment. A replacement Session may continue the same Participant/Run when needed, but completed Participants do not retain hidden memory across future assignments.
 
+
+## Project orchestration bootstrap
+
+Initial project orchestration bootstrap must follow `project-orchestration-bootstrap.md`.
+
+Bootstrap is a minimum-readiness coordination lifecycle, not a requirement to complete project documentation, architecture, profile discovery, authority mapping, runtime mechanics, or whole-project planning up front.
+
+The Orchestrator should:
+
+- establish the smallest durable project/orchestration context needed to reconstruct the work;
+- scope readiness to the near-term objective and initial runnable frontier;
+- reuse Authority Mapping and Participant Profile Discovery guidance instead of duplicating their logic;
+- establish discoverable pointers to current-effective authority, profile, runtime/model, and orchestration-state sources;
+- derive only the minimum Parent Outcome / Work Unit topology needed to expose the first justified Run;
+- prefer Exploration or Planning over speculative implementation decomposition when solution evidence is insufficient;
+- stop bootstrap once the first real Run can be dispatched safely;
+- reconcile affected bootstrap concerns progressively when material project context changes instead of repeating a full bootstrap by default.
+
+A Bootstrap Record is a routing/readiness index, not a new source of Product, Design, Security, Architecture, or delivery authority.
+
 ## Dedicated local Orchestrator
 
 Pilot #2 assumes one logical dedicated Orchestrator Participant.
