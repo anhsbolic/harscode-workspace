@@ -150,8 +150,24 @@ Key operating boundary:
 - the Orchestrator may reuse, refine, or derive Profiles when current evidence justifies them, while material authority remains governed by the Authority Map;
 - Run-specific scope, current decisions, and current Work Unit state belong in the invocation/current-effective artifacts, not in the Profile.
 
-Participant identity remains ephemeral for the assignment. A replacement Session may continue the same Participant/Run when needed, but completed Participants do not retain hidden memory across future assignments.
+Participant identity remains ephemeral. A single Participant execution episode may span multiple Sessions when immediate context/runtime renewal is needed, but a meaningful pause such as a Human gate, external wait, or blocker may end that Participant while the Run itself remains open. Later continuation may instantiate a new Participant for the same unchanged Run. Completed Participants do not retain hidden memory across future execution episodes.
 
+
+## Participant execution and continuation
+
+Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, Participant Execution Handoff, and related artifact-ownership/mutation semantics must follow `participant-execution-continuation.md`.
+
+Key boundary:
+
+- Run is durable assignment state;
+- Participant is ephemeral execution capacity;
+- Session is a disposable runtime/context container;
+- immediate context renewal changes Session while keeping the same active Participant/Run;
+- a meaningful orchestration pause may terminate the Participant while leaving the Run open;
+- assignment truth is Orchestrator-owned through the Invocation;
+- execution truth is Participant-owned through Checkpoints/Handoffs;
+- Run completion remains Orchestrator-owned after durable reconciliation;
+- once an artifact has been materially relied upon, material corrections preserve provenance through amendment/supersession rather than silent rewrite.
 
 ## Project orchestration bootstrap
 
