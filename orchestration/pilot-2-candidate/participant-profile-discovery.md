@@ -228,12 +228,12 @@ Typical lifecycle:
 Participant Profile
 → Orchestrator assigns the Profile to a Run
 → ephemeral Participant is instantiated
-→ one or more Sessions may execute the same assignment if Session replacement is needed
+→ one or more Sessions may execute the same Run occurrence if Session replacement is needed
 → Participant produces durable handoff/artifacts
-→ Participant terminates when the assignment ends
+→ Participant terminates when the Run occurrence ends
 ```
 
-The Participant must not rely on hidden memory across assignments.
+The Participant must not rely on hidden memory across future Runs.
 
 Multiple parallel Participants derived from the same Profile must have distinct Participant identities.
 
