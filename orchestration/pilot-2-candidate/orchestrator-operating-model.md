@@ -150,25 +150,26 @@ Key operating boundary:
 - the Orchestrator may reuse, refine, or derive Profiles when current evidence justifies them, while material authority remains governed by the Authority Map;
 - Run-specific scope, current decisions, and current Work Unit state belong in the invocation/current-effective artifacts, not in the Profile.
 
-Participant identity remains ephemeral. A single Run/Participant execution occurrence may span multiple Sessions when immediate context/runtime renewal is needed. If a meaningful pause such as a Human gate, external wait, or blocker ends that execution occurrence, the current Run ends and the Orchestrator reconciles Work Unit state. Later workflow re-entry creates a new Run with meaningful-delta provenance. Completed Participants do not retain hidden memory across future Runs.
+Participant identity remains ephemeral. One Run binds one Participant identity and may span multiple Sessions when immediate context/runtime renewal is needed. A Human/owner decision inside an active Participant Session does not by itself end the Run; the Run ends when that execution occurrence ends and the Participant produces its terminal Handoff (or abnormal termination is reconciled). Later workflow re-entry creates a new Run with meaningful-delta provenance. Completed Participants do not retain hidden memory across future Runs.
 
 
 ## Participant execution and continuation
 
-Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, Participant Execution Handoff, repeated-Run provenance, and related artifact-ownership/mutation semantics must follow `participant-execution-continuation.md`.
+Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, terminal Participant Execution Handoff, Orchestrator reconciliation, repeated-Run provenance, and durable Run-evidence discoverability must follow `participant-execution-continuation.md`.
 
-Key boundary:
+Key operating rules:
 
-- Run is one execution occurrence of a workflow activity, consistent with the canonical protocol;
-- Participant is the ephemeral executor identity for that Run;
-- Session is a disposable runtime/context container;
-- immediate context renewal may replace Session while keeping the same active Participant/Run;
-- Continuation Checkpoints are only for Session replacement inside the same execution occurrence;
-- when a meaningful pause/Human gate/blocker ends the execution occurrence, the current Run ends and the Orchestrator reconciles canonical Work Unit execution/scheduling state;
-- later workflow re-entry creates a new Run and must have meaningful-delta provenance such as new evidence, authority decision, material plan amendment, different implementation approach, resolved dependency, or specific defect correction;
-- do not create a parallel Run lifecycle/state machine for WAITING/BLOCKED; use canonical Work Unit execution status and scheduling posture;
-- assignment truth is Orchestrator-owned through the Run Invocation;
-- execution truth is Participant-owned through Checkpoints/Handoffs;
+- one Run is one execution occurrence of a workflow activity;
+- one Run binds one Participant identity and may span multiple Sessions;
+- immediate Session replacement preserves the same Run, Participant, and pinned Profile revision through a Participant-authored Continuation Checkpoint;
+- a Human/owner decision during an active Session does not automatically end the Run; terminal Handoff or reconciled abnormal termination ends the execution occurrence;
+- terminal Handoff is Participant evidence, not Work Unit state; the Orchestrator reconciles it against the Invocation and durable evidence before updating canonical Work Unit execution/scheduling state;
+- reconciliation is coordination work, not hidden Reviewer/Verifier execution, and does not require a separate reconciliation-report artifact by default;
+- later workflow re-entry creates a new Run and requires meaningful-delta provenance tied to prior relevant execution evidence;
+- a `PARTIAL` Handoff alone is not sufficient meaningful delta for mechanical repetition; repeated unresolved causes should trigger diagnosis and canonical `STALLED` handling;
+- active Work Unit → current Run and Run ID → durable Invocation/evidence must be deterministically discoverable, while chronology remains owned by Runs/Events rather than filesystem ordering;
+- do not add a parallel Run lifecycle state machine, cross-execution Resume Invocation, Run Registry, latest-checkpoint mirror, or universal filesystem layout without CRTV evidence that the extra mechanism solves a real problem;
+- assignment truth is Orchestrator-owned through the Run Invocation; execution truth is Participant-owned through Checkpoints/Handoffs;
 - once an artifact has been materially relied upon, material corrections preserve provenance through amendment/supersession rather than silent rewrite.
 
 ## Project orchestration bootstrap
