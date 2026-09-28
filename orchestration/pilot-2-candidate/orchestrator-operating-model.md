@@ -142,7 +142,10 @@ Participant Profile discovery must follow `participant-profile-discovery.md`.
 
 Key operating boundary:
 
-- Profile discovery is progressive and starts from the minimum viable profile set needed for near-term work;
+- initial Project Bootstrap establishes the minimum evidence-backed baseline Profile team justified by the near-term project shape;
+- a new Slice performs bounded readiness reconciliation against that existing baseline rather than full re-bootstrap;
+- normal Runs reuse existing suitable Profiles directly; Profile suitability is an invariant, not a mandatory pre-Run ceremony;
+- just-in-time Profile discovery/refinement is used only when real work exposes a capability gap or the Human surfaces a materially justified missing capability;
 - profile readiness depends on minimum material evidence, not project-wide documentation completeness;
 - missing optional/future guidance must not block an otherwise justified profile;
 - when narrow specialization is not supported, prefer the least-specific safely supported profile before blocking;
@@ -176,7 +179,7 @@ Key operating rules:
 
 Initial project orchestration bootstrap must follow `project-orchestration-bootstrap.md`.
 
-Bootstrap is a minimum-readiness coordination lifecycle, not a requirement to complete project documentation, architecture, profile discovery, authority mapping, runtime mechanics, or whole-project planning up front.
+Bootstrap is one initial minimum-readiness preparation lifecycle, not a requirement to complete project documentation, architecture, profile discovery, authority mapping, runtime mechanics, or whole-project planning up front, and not a ritual repeated before each Run.
 
 The Orchestrator should:
 
@@ -186,7 +189,9 @@ The Orchestrator should:
 - establish discoverable pointers to current-effective authority, profile, runtime/model, and orchestration-state sources;
 - derive only the minimum Parent Outcome / Work Unit topology needed to expose the first justified Run;
 - prefer Exploration or Planning over speculative implementation decomposition when solution evidence is insufficient;
-- stop bootstrap once the first real Run can be dispatched safely;
+- stop bootstrap once the stable minimum foundation is sufficient and the first real Run can be dispatched safely;
+- at a new Slice/material work area, perform bounded readiness reconciliation and reuse existing foundation/Profile state by default;
+- during normal work, fill only specific proven gaps just-in-time rather than re-running bootstrap/profile readiness;
 - reconcile affected bootstrap concerns progressively when material project context changes instead of repeating a full bootstrap by default.
 
 A Bootstrap Record is a routing/readiness index, not a new source of Product, Design, Security, Architecture, or delivery authority.
