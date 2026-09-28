@@ -7,7 +7,7 @@
 
 Establish the minimum durable orchestration state required to begin real project work safely.
 
-Bootstrap is coordination initialization, not project completion.
+Bootstrap is initial coordination preparation, not project completion and not a ritual that repeats before every Run or Work Unit.
 
 Bootstrap MUST NOT require:
 
@@ -27,7 +27,7 @@ Core principle:
 
 ## Core rules
 
-- initialize only what the initial runnable frontier actually needs;
+- initialize the minimum stable orchestration foundation justified by the near-term project shape and initial runnable frontier;
 - prefer durable project evidence over assumption;
 - discover progressively after bootstrap;
 - block only the work whose correctness depends on missing state;
@@ -94,11 +94,13 @@ Input should remain limited to:
 - current durable project evidence;
 - initial work shape.
 
-The output is the minimum reusable Participant Profile set needed now.
+The output is the minimum reusable Participant Profile baseline justified by current durable evidence and near-term project shape.
 
-It is valid for bootstrap to require only an Explorer profile if the first justified Run is Exploration.
+Bootstrap may seed a small stable project team beyond the literal first Run when the near-term workflow/repository evidence already makes those recurring capabilities clear and reusable. For example, a project may justifiably establish baseline Explorer, Planner, Implementer, Reviewer, or Verifier Profiles when their expected use is already evidenced.
 
-Do not create Planner, Implementer, Reviewer, Verifier, or specialist profiles merely because they may be useful later.
+It is also valid for bootstrap to require only an Explorer profile if Exploration is the only capability currently justified.
+
+Do not create specialist or future Profiles merely because they might become useful later. Bootstrap should establish an evidence-backed baseline team, not speculate about every future capability.
 
 The Profile readiness guardrails remain:
 
@@ -342,6 +344,52 @@ These are candidate semantics, not canonical protocol enums.
 
 It does not mean project orchestration setup is permanently finished.
 
+## Post-bootstrap lifecycle
+
+After initial bootstrap, normal orchestration should not repeat bootstrap or run a visible profile-readiness ceremony before every Run.
+
+Use three operating layers:
+
+```text
+Project Bootstrap
+→ one initial preparation of the durable orchestration foundation
+
+New Slice / materially new work area
+→ bounded readiness reconciliation against the existing foundation
+
+Gap discovered during real work
+→ just-in-time completion of the specific missing concern
+```
+
+### Slice readiness reconciliation
+
+At the start of a new Slice or materially new work area, the Orchestrator should perform a lightweight bounded reconciliation rather than full re-bootstrap.
+
+Check only concerns that could materially affect the Slice, such as:
+
+- near-term objective/context;
+- relevant authority ownership;
+- whether existing Participant Profiles remain sufficient;
+- newly required project/repository capability;
+- runtime/model readiness when materially changed;
+- Work Graph / durable-state discoverability.
+
+Reuse existing bootstrap state and Profiles by default.
+
+A new Slice does not by itself justify recreating Profiles, re-reading all project documentation, or rebuilding the orchestration foundation.
+
+### Just-in-time gap completion
+
+During normal work, a missing capability, authority mapping, runtime prerequisite, or durable guidance gap may be discovered by the Orchestrator or surfaced by the Human.
+
+Resolve only the specific proven gap.
+
+Just-in-time completion is an exception/completion mechanism, not the normal pre-Run ritual. It should not make every Run re-prove project readiness.
+
+Core rule:
+
+> Profile suitability and orchestration readiness are invariants to preserve, not ceremonies to repeat before every Run.
+
 ## Post-bootstrap reconciliation
 
 Bootstrap state is not immutable.
@@ -361,9 +409,10 @@ Prefer targeted reconciliation over full re-bootstrap.
 The normal lifecycle is:
 
 ```text
-Initial Bootstrap
+Initial Project Bootstrap
 → Normal Orchestration
-→ Event-driven reconciliation when material context changes
+→ bounded Slice readiness reconciliation when a new Slice/material work area begins
+→ targeted just-in-time reconciliation only when real work exposes a gap
 ```
 
 A full re-bootstrap is unnecessary unless the underlying project/orchestration identity materially changes.
