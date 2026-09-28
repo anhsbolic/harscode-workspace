@@ -191,7 +191,7 @@ Integration must not hide missing local verification obligations.
 
 Separate semantic runnable frontier from safe concurrent execution on the current machine/workspace.
 
-Multiple Work Units may be READY semantically while the runtime scheduler still serializes their actual mutation.
+Multiple Work Units may be semantically runnable while the runtime scheduler still serializes their actual mutation.
 
 Reasons may include:
 
@@ -203,21 +203,21 @@ Reasons may include:
 
 Therefore:
 
-> READY does not imply RUNNING immediately.
+> Semantically runnable does not imply `RUNNING` immediately.
 
 The Orchestrator may queue semantically parallel work when local execution safety requires serialization.
 
 ## Same-repository mutation safety
 
-Pilot #2 uses Automated Visible Fleet and may expose true concurrent repository mutation for the first time.
+Automated Visible Fleet is on hold for the remainder of Pilot #2. Current Human-Assisted execution may still serialize repository mutation even when multiple Work Units are semantically runnable.
 
 Do not introduce a generic worktree/branch strategy before evidence requires it.
 
 For now:
 
 - preserve semantic parallelism in the Work Graph;
-- allow the scheduler to serialize unsafe simultaneous mutation;
-- treat repeated concurrency friction as CRTV evidence for later workspace-isolation design.
+- allow execution to serialize unsafe simultaneous mutation;
+- treat repeated concurrency friction as CRTV evidence for later workspace-isolation or concurrent-execution design.
 
 ## Contract change during parallel work
 
