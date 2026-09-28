@@ -24,8 +24,9 @@ Core principle:
 ## Core rules
 
 - profile discovery is progressive;
-- project initiation should seed only the minimum viable profile set needed for near-term delivery;
-- later capability needs may reuse, refine, or create profiles just-in-time;
+- project bootstrap should seed the minimum evidence-backed baseline Profile set justified by the near-term project shape, including stable recurring Roles when their need is already clear;
+- existing suitable Profiles should be reused directly during normal Runs without a mandatory profile-readiness ceremony;
+- later capability gaps may reuse, refine, or create Profiles through bounded Slice reconciliation or just-in-time completion when real evidence requires it;
 - no profile may be more specific than the durable evidence supporting it;
 - profile readiness is scoped to the capability needed now, not to project-wide documentation completeness;
 - missing guidance that is not currently applicable MUST NOT block profile creation;
@@ -33,19 +34,29 @@ Core principle:
 - profile discovery never grants material decision authority;
 - current Run state, prior Session history, and hidden agent memory do not belong in profiles.
 
-## Discovery triggers
+## Discovery and reconciliation triggers
 
-Profile discovery or re-evaluation is warranted when:
+Participant Profile work has three normal entry points:
 
-- project orchestration bootstrap begins;
-- runnable work requires capability not covered by current profiles;
-- an existing profile is materially too broad or too narrow;
-- a new stack, domain, risk area, or execution boundary appears;
+- **Project bootstrap** — establish the initial reusable baseline team justified by durable near-term project evidence;
+- **Slice readiness reconciliation** — at a new Slice/material work area, reuse the baseline by default and refine/create only when the Slice introduces a materially new capability or boundary;
+- **Just-in-time gap completion** — during real work, resolve a specific capability/profile gap discovered by the Orchestrator or explicitly surfaced by the Human.
+
+Profile creation or re-evaluation is warranted when:
+
+- runnable work requires capability not covered by current Profiles;
+- an existing Profile is materially too broad or too narrow;
+- a new stack, domain, risk area, or execution boundary materially changes the capability need;
 - repeated Run friction indicates specialization mismatch;
 - project guidance or guardrails materially change;
-- an independence requirement requires a distinct execution blueprint.
+- an independence requirement requires a distinct execution blueprint;
+- a Human requests a missing specialist/capability and durable evidence supports that need.
 
-A new Work Unit or a narrower Run scope does not by itself justify a new profile.
+A new Work Unit, a normal Run dispatch, or a narrower Run scope does not by itself justify profile discovery or a visible readiness check.
+
+Core rule:
+
+> Profile suitability is an orchestration invariant, not a mandatory ceremony before every Run.
 
 ## Evidence sufficiency gate
 
@@ -128,6 +139,16 @@ Route to runtime preparation or environment handling.
 Runtime mechanics must not silently change the semantic profile.
 
 A gap should block only the affected profile refinement/creation and dependent work, not unrelated orchestration.
+
+## Baseline reuse and gap completion
+
+Once a Profile is active and still fit for its intended project capability, normal Runs should reuse it directly.
+
+Do not require the Orchestrator to visibly re-prove Profile readiness before each dispatch. Reconciliation is event-driven: perform it when new Slice context, durable evidence, capability mismatch, Human request, or execution friction gives a concrete reason.
+
+Project bootstrap may create a stable baseline team whose recurring use is already justified by the near-term project shape. Just-in-time creation is for gaps discovered later, not the default way to instantiate every ordinary Role.
+
+The Human may surface a missing capability during real work. The Orchestrator should validate the request against durable evidence and project boundaries, then reuse/refine/create the narrowest justified Profile rather than treating the request itself as authority to invent capability.
 
 ## Reuse / refine / create decision
 
