@@ -200,7 +200,7 @@ Deep event/history scanning is conditional, not the default bootstrap.
 Pilot #2 should explicitly validate that a fresh Orchestrator Session can answer:
 
 - what is active;
-- what is ready;
+- what is semantically runnable;
 - what is waiting/blocked;
 - what needs Human attention;
 - what current Runs/Sessions exist;
@@ -218,7 +218,7 @@ rather than a prose replay of prior chat history.
 
 ## Visibility vs observability
 
-Pilot #2 uses Automated Visible Fleet, but:
+Automated Visible Fleet is on hold for the remainder of Pilot #2. Existing fleet observations remain CRTV evidence only.
 
 > Visibility is a debugging convenience. Observability is reconstructable execution evidence.
 
@@ -242,17 +242,20 @@ A CLI process exit does not by itself define Run outcome.
 Possible interpretations include:
 
 ~~~text
-artifacts complete + expected exit
-→ Run COMPLETED
+artifacts complete + terminal Handoff/evidence
+→ Run occurrence ends
+→ Orchestrator reconciles Work Unit state
 
-process lost + sufficient checkpoint
-→ Session lost / Run resumable
+process/Session lost + sufficient checkpoint
+→ replace Session
+→ continue the same active Run / Participant
 
-process lost + insufficient checkpoint
-→ recovery required; strengthen durable state before safe continuation
+execution occurrence ended or cannot be safely reconstructed
+→ reconcile from durable evidence
+→ later execution, when justified by meaningful delta, uses a new Run
 ~~~
 
-Do not equate process existence with Session or Run state.
+Do not equate process existence with Session or Run state. Do not introduce a parallel Run lifecycle state such as `COMPLETED` or `RESUMABLE`; canonical current execution/scheduling state remains on the Work Unit.
 
 ## Over-reading as a fitness signal
 
@@ -302,20 +305,20 @@ no durable progress
 
 Repeated unresolved causes should route to diagnosis rather than mechanical repetition.
 
-## Automated Visible Fleet posture
+## Human-Assisted execution posture
 
-Pilot #2 does not require continuous terminal surveillance.
+Pilot #2 uses Human-Assisted Orchestration and does not require continuous terminal surveillance or fleet/window automation.
 
 Sufficient posture:
 
 ~~~text
-launch
-→ wait for durable completion/checkpoint signal
-→ occasional status check when needed
-→ inspect on timeout/stall/Human concern
+Orchestrator prepares dispatch
+→ Human mechanically launches the Participant Session
+→ wait for Human-reported material problem or completion
+→ reconcile from durable checkpoint/handoff evidence
 ~~~
 
-If reliable completion/recovery cannot be achieved without stronger process integration, treat that as CRTV evidence before adding a supervisor/heartbeat system.
+Live terminal/process inspection is diagnostic-only. If reliable completion/recovery cannot be achieved without stronger process integration, treat that as CRTV evidence before adding supervisor/heartbeat/fleet automation.
 
 ## Operational vs benchmark observability
 
