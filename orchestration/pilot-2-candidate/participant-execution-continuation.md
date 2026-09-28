@@ -9,7 +9,7 @@ Define the minimum durable contract for executing a Run through ephemeral Partic
 
 Core principles:
 
-> The Run is durable assignment state. The Participant is ephemeral execution capacity. The Session is a disposable runtime context.
+> The Run is the durable record and assignment binding for one execution occurrence of a workflow activity. The Participant is ephemeral execution capacity. The Session is a disposable runtime context.
 
 > A Session may be disposable; an active assignment must be reconstructable.
 
@@ -18,7 +18,7 @@ Core principles:
 ## Semantic boundary
 
 - **Participant Profile** — reusable execution blueprint: capability, operating boundaries, guidance routing, and expected handoff behavior.
-- **Run** — durable bounded assignment and workflow execution route.
+- **Run** — durable record and assignment binding for one execution occurrence of a workflow activity.
 - **Participant** — concrete ephemeral executor identity for a Run.
 - **Session** — temporary runtime/context container used by that Participant.
 - **Run Invocation** — Orchestrator-owned binding artifact that tells a Participant what Run to execute.
@@ -39,21 +39,14 @@ The Invocation defines the assignment; it does not duplicate durable project tru
 
 A minimal Invocation should make discoverable:
 
-- Run ID;
-- Work Unit ID;
-- workflow route;
-- Role;
-- Participant Profile ID and pinned revision;
-- Participant ID for the initial execution episode;
-- bounded Run objective;
-- Run-specific scope;
-- Run-level completion condition;
-- current-effective input pointers;
-- material input revision-at-dispatch when drift detection is useful;
-- model/reasoning route and rationale;
-- working directory/runtime route;
-- Session posture;
-- expected Participant-owned outputs/handoff behavior.
+- **Identity** — Run ID, Work Unit ID, workflow route;
+- **Assignment** — bounded objective, Run-specific scope, Run-level completion condition;
+- **Execution binding** — Role, Specialization when useful, Participant ID, Participant Profile ID, pinned Profile revision;
+- **Effective inputs** — current-effective input pointers plus assignment-defining revisions when drift detection matters;
+- **Repeated-Run provenance when applicable** — prior relevant execution evidence, meaningful delta, and newly effective Decision/Finding/dependency evidence;
+- **Runtime route** — model, reasoning effort, routing rationale, working directory/runtime route;
+- **Session posture** — initial Session identity/posture;
+- **Expected handoff** — required Participant-owned completion evidence.
 
 Run-specific scope is narrower than, and cannot override, project/profile guardrails.
 
@@ -69,6 +62,10 @@ Profile/project boundary
 
 The Invocation routes to current-effective truth rather than copying Product, Techplan, contract, or guidance content unnecessarily.
 
+Pin what defines what the Run means; resolve ordinary execution guidance as current-effective.
+
+Assignment-defining material commonly includes the pinned Participant Profile revision, approved Techplan/contract/spec revisions that define the Run, and authority Decisions when their exact provenance matters. Generic project guidance, coding conventions, reusable best practices, and other ordinary scoped guidance should normally remain current-effective rather than being indiscriminately pinned.
+
 ## Invocation stability
 
 Before dispatch, the Orchestrator may edit the Invocation normally.
@@ -79,14 +76,14 @@ After dispatch:
 
 - non-material cleanup may use normal Git history;
 - material changes to objective, scope, Role, workflow route, completion condition, Profile, or authority-relevant inputs must not be silently rewritten;
-- a material semantic assignment change should normally create a new Run;
-- a narrow clarification that does not change the assignment may be handled as an explicit amendment when justified.
+- if a material change makes the active assignment no longer valid, stop/reconcile the current Run and use a new Run for subsequent execution;
+- a narrow clarification that does not change the assignment meaning may be handled as an explicit amendment when justified.
 
 A Run must not silently become a different assignment while retaining the same identity.
 
 ## Participant Profile revision
 
-An active execution episode uses the Participant Profile revision pinned at dispatch.
+An active Run uses the Participant Profile revision pinned at dispatch.
 
 Profile refinement does not silently mutate an active Participant.
 
@@ -104,12 +101,11 @@ Typical execution:
 Run becomes dispatchable
 → Orchestrator selects Profile/model/runtime
 → Orchestrator creates Invocation
-→ Participant execution episode instantiated
-→ Session executes
+→ Participant executes the Run through one or more Sessions
 → Participant writes Checkpoint when immediate Session renewal is needed
-→ Participant writes Execution Handoff when the execution episode ends
+→ Participant writes terminal Execution Handoff when the Run occurrence ends
 → Participant terminates
-→ Orchestrator reconciles Run / Work Unit / next route
+→ Orchestrator reconciles Work Unit / next route
 ```
 
 A Participant must not retain hidden memory across future Runs.
@@ -131,7 +127,9 @@ The replacement Session reconstructs from the base Run Invocation, the pinned Pa
 
 ### Meaningful pause and workflow re-entry
 
-When execution stops for a Human decision, external dependency, blocker, or another meaningful pause that ends the current execution occurrence:
+A Human/authority decision made while the Participant remains actively executing does not by itself end the Run. The same Run may continue when the decision is durably recorded and the execution occurrence remains active.
+
+When a Human decision, external dependency, blocker, or another meaningful pause causes the current execution occurrence to end:
 
 ```text
 Participant writes Execution Handoff
@@ -161,15 +159,17 @@ Core rule:
 
 ## Repeated Run provenance
 
-A repeated/new Run created after workflow re-entry should preserve concise provenance to the prior execution.
+A repeated/new Run created after workflow re-entry should preserve concise provenance to the prior relevant execution evidence.
 
 Make discoverable when applicable:
 
-- prior Run ID;
-- prior Participant Execution Handoff;
+- prior relevant Run(s) and Participant Execution Handoff(s);
+- relevant review/finding/decision/dependency evidence;
 - meaningful delta that justifies re-entry;
 - newly effective Decision/evidence;
 - current-effective assignment inputs.
+
+Repeated-Run provenance follows causal relevance, not merely chronological adjacency. A later Build/Patch Run may, for example, depend on an earlier Build Handoff plus a Reviewer Finding produced by an intervening Review Run.
 
 The new Run receives a new Run Invocation, Participant identity, and applicable current Profile revision.
 
@@ -253,13 +253,15 @@ After reliance:
 
 Create Checkpoints for actual Session transitions, not on a mandatory clock/token schedule unless future CRTV evidence demonstrates the need.
 
+Do not introduce a separate `latest-checkpoint` mirror. The applicable Checkpoint is identified by the transition/dispatch that relied upon it, not by filename recency or filesystem timestamp.
+
 ## Replacement Session reconstruction
 
 A replacement Session should perform a short reconstruction procedure before substantive continuation:
 
 1. read the base Run Invocation;
 2. read the exact pinned Participant Profile revision;
-3. read the latest Continuation Checkpoint;
+3. read the Continuation Checkpoint explicitly relied upon by the replacement transition/dispatch;
 4. inspect referenced durable working state;
 5. verify that current state still matches checkpoint assumptions;
 6. continue from the recorded next execution step.
@@ -290,12 +292,14 @@ The Handoff ends the current Run execution occurrence. The Orchestrator then rec
 
 A minimal Handoff should make discoverable:
 
+- identity/provenance for the Run, Work Unit, Participant, Role/Profile revision;
 - execution outcome;
 - durable outputs;
+- verification performed, not performed, not applicable, or still unverified as applicable;
 - Findings;
 - Human/owner Decisions observed, with provenance when applicable;
 - Blockers;
-- remaining concerns/work;
+- remaining and explicitly unverified work/concerns;
 - recommended continuation;
 - Learning Proposal pointer or `None`.
 
@@ -310,6 +314,10 @@ Useful execution-outcome semantics may include:
 
 These are Participant execution results, not canonical orchestration-state enums.
 
+Under normal execution, one Run should produce one terminal Participant Execution Handoff. Checkpoints may be multiple, but the terminal Handoff closes the Run occurrence. Material corrections after the Handoff reliance boundary should amend/supersede rather than silently rewrite it.
+
+The Handoff summarizes execution evidence and routes the Orchestrator to durable truth; it should not duplicate inspectable source code, full transcripts, copied plans, or raw complete logs.
+
 ## Human decisions during Participant execution
 
 A Human/authority decision made inside a Participant Session is valid decision evidence when it is explicit enough and recorded durably with appropriate provenance.
@@ -317,6 +325,38 @@ A Human/authority decision made inside a Participant Session is valid decision e
 The Participant records the decision as observed evidence; it does not become the authority owner.
 
 The Orchestrator later reconciles the decision into durable project/orchestration state without requiring duplicate approval merely because the decision occurred inside a Participant Session.
+
+
+## Orchestrator reconciliation after terminal Handoff
+
+A terminal Handoff is Participant evidence, not the resulting Work Unit state.
+
+The Orchestrator should perform a coordination-level reconciliation before updating canonical Work Unit state:
+
+1. validate Run / Work Unit / Participant identity and provenance;
+2. compare the Handoff against the Run Invocation objective, scope, completion condition, and expected outputs;
+3. resolve material durable evidence rather than relying on narrative claims alone;
+4. reconcile Findings, Decisions, Blockers, and their ownership/routing implications;
+5. check whether material authority or assignment-defining input drift invalidates the completion claim;
+6. evaluate the Work Unit completion/workflow consequence;
+7. update canonical Work Unit current state and record material Events;
+8. recompute the runnable frontier.
+
+Reconciliation checks coordination sufficiency. It must not turn the Orchestrator into a hidden Reviewer or Verifier. When technical correctness or independent verification remains unresolved, route the appropriate Role.
+
+Do not create a default `reconciliation-report.md` or second reconciliation state store. The durable consequence should be expressed through the existing Work Unit current state, Events, Blockers/Decisions/Work Graph updates, and the next Run Invocation when applicable.
+
+### Repeated Run gate and STALLED
+
+A terminal `PARTIAL` result does not by itself justify a repeated Run.
+
+Before dispatching repeated execution, the Orchestrator should be able to identify the prior relevant execution evidence, the meaningful delta, and why another execution occurrence is now justified.
+
+If work can safely continue as the same execution occurrence, use Session replacement rather than ending the Run.
+
+If the original Run was materially oversized, the runtime route was unfit, or decomposition was wrong, correct that cause before creating the next Run so the correction itself provides meaningful delta.
+
+If a repeated Run intended to resolve cause X ends with materially the same unresolved cause X, treat that as a strong signal for canonical `STALLED`: stop mechanical repetition, diagnose, and reroute. `STALLED` is a loop-breaker, not a synonym for difficult work.
 
 ## Session termination, Run end, and Work Unit continuation
 
@@ -398,6 +438,32 @@ Material corrections may use simple relations such as:
 - `SUPERSEDES`.
 
 Do not build a heavyweight artifact-versioning system unless repeated CRTV evidence requires it.
+
+## Run evidence discoverability
+
+Storage/layout remains project-defined, but durable resolution must be deterministic.
+
+Candidate invariants:
+
+- given an active Work Unit, its current Run must be discoverable from current orchestration state;
+- given a Run ID, its Invocation and available execution evidence must be deterministically resolvable without conversational memory or heuristic repository search;
+- workflow chronology comes from Runs and Events, not filesystem ordering;
+- repeated-execution lineage comes from durable causal provenance and meaningful delta, not chat recall.
+
+A project-local layout such as:
+
+```text
+<orchestration-root>/
+  runs/
+    <run-id>/
+      invocation.md
+      checkpoints/
+      handoff.md
+```
+
+is a valid candidate implementation pattern, not a universal Harscode filesystem law.
+
+Do not introduce a Run Registry merely because a Participant Profile Registry exists. A separate Run Registry is justified only if deterministic Run-ID resolution cannot be achieved cleanly through the project’s existing orchestration layout/indexing.
 
 ## Human-Assisted dispatch
 
