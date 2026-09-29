@@ -428,15 +428,18 @@ The Orchestrator should perform a coordination-level reconciliation before updat
 2. compare the Handoff against the Run Invocation objective, scope, completion condition, and expected outputs;
 3. resolve material durable evidence rather than relying on narrative claims alone;
 4. reconcile Findings, Decisions, Blockers, and their ownership/routing implications;
-5. for each material Decision, determine whether it is execution-local or
+5. when multiple Decisions appear to overlap or conflict, compare their authority
+   areas, owners, scopes, effective contexts, and explicit supersession before
+   deciding which is current-effective; do not infer global recency precedence;
+6. for each material Decision, determine whether it is execution-local or
    authority-affecting, and if authority-affecting identify the owning
    authoritative artifact/surface that must be updated;
-6. check whether material authority or assignment-defining input drift invalidates the completion claim;
-7. verify that required authority synchronization is complete before treating
+7. check whether material authority or assignment-defining input drift invalidates the completion claim;
+8. verify that required authority synchronization is complete before treating
    dependent work as fully reconciled;
-8. evaluate the Work Unit completion/workflow consequence;
-9. update canonical Work Unit current state and record material Events;
-10. recompute the runnable frontier.
+9. evaluate the Work Unit completion/workflow consequence;
+10. update canonical Work Unit current state and record material Events;
+11. recompute the runnable frontier.
 
 Reconciliation checks coordination sufficiency. It must not turn the Orchestrator into a hidden Reviewer or Verifier. When technical correctness or independent verification remains unresolved, route the appropriate Role.
 
