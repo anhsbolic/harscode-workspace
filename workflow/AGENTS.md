@@ -8,6 +8,7 @@ This is the workflow hard-rule/router layer. Do **not** read all of `README.md` 
 - `1-exploration/`, `3-build/`, `4-code-review/`, `5-testing/`, `6-pull-request/` are lightweight and have no protected core today.
 - Start each phase from its root `*-prompt.md` where one exists. Harness/project wrappers route to it; they do not re-author or fork lifecycle policy by stack.
 - When a phase is dispatched as an orchestrated Run, also load `orchestrated-run-overlay.md`. The overlay changes identity/read-write path semantics only; the canonical phase prompt remains phase authority.
+- Under orchestrated execution, do not carry a Participant/Session across a Run boundary. A new phase or later phase re-entry uses a new Run/Participant and fresh Participant Session/context; only immediate Session replacement inside the same active Run preserves the Participant.
 - Use `context-management.md` for phase/session transitions: durable artifacts over chat memory, progressive disclosure, compact handoff, and Build ownership of patches.
 - Stop polishing when the next phase can proceed without inventing a material decision. If a later phase hits one anyway, stop/report instead of inventing it.
 - Domain-level prompts apply only to projects that group work by domain; otherwise skip them without ceremony.
