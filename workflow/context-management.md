@@ -142,6 +142,33 @@ In orchestrated mode, a handoff back to Build starts a new Build/Patch Run with 
 
 In non-orchestrated mode, continuation fitness may still determine whether an existing healthy Build session is reused. `BUILD authority` alone is not a complete human instruction.
 
+## Human-visible blocker signal
+
+When a phase/Participant concludes that an **active Blocker** exists and surfaces
+it to the Human, make the signal immediately noticeable:
+
+```text
+[SCOPED BLOCKER DETECTED]
+
+Blocks: <exact affected work / milestone / contract surface>
+Does not block: <safe unaffected work, or "none materially useful">
+Next route: <smallest concrete resolution route>
+Owner: <next-action owner>
+```
+
+Keep it simple:
+
+- use the signal only for a real active Blocker, not for every Finding, risk,
+  warning, unresolved question, or deferred item;
+- the blocker may affect a narrow surface or the whole Work Unit; always state
+  the exact scope;
+- if safe unaffected work can continue, say so explicitly;
+- do not require a matching `[NO BLOCKER]` signal when none exists;
+- this is a Human-facing visibility convention, not a new protocol enum, state,
+  severity, or artifact requirement.
+
+A response may continue with normal explanation after this compact signal.
+
 ## Phase completion handoff
 
 At a **meaningful stage/phase completion** (not every progress message), finish with a compact handoff:
