@@ -167,6 +167,15 @@ The Orchestrator must not replace:
 
 Derived Human-facing workflow artifacts should be produced by the workflow participant that owns their source semantics, not silently authored by the Orchestrator.
 
+The Orchestrator should not request or create extra Run-local documents merely
+to mirror internal reasoning steps. Before adding an artifact, ask what unique
+durable truth, evidence, ownership, or reconstruction value it provides.
+
+When existing canonical phase artifacts already preserve the needed semantics,
+prefer pointers and concise reconciliation over duplicating the same content in
+another Run-local file. This does not authorize removing required workflow
+artifacts, independent review evidence, verification evidence, or provenance.
+
 For Pilot #2, make the ownership boundary explicit:
 
 - `techplan.md` is Planner-owned;
