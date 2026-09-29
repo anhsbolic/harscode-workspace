@@ -364,6 +364,74 @@ The Orchestrator should:
 
 A Bootstrap Record is a routing/readiness index, not a new source of Product, Design, Security, Architecture, or delivery authority.
 
+## Orchestrator pairing model routing
+
+Pilot #2 should route the **Human ↔ Orchestrator pairing model** by current
+coordination complexity, not by a fixed Role-to-model mapping and not by a
+"strongest model by default" rule.
+
+The Human-owned runtime/model registry remains the source for which models and
+reasoning modes are actually available. This candidate guidance only defines
+when stronger pairing capability is justified.
+
+For the currently observed Pilot #2 model set:
+
+- **Luna High** is the default fit for bounded, routine, evidence-clear
+  orchestration;
+- **Sol High** is justified when the Orchestrator must resolve materially
+  cross-cutting, ambiguous, conflicting, or high-downstream-cost coordination.
+
+The Orchestrator may step down from Sol High to Luna High when the current state
+has become operationally bounded, including when:
+
+- durable state has been reconstructed cleanly;
+- the relevant Authority Map is sufficient for the current frontier;
+- Work Graph / current frontier is stable enough that no major decomposition or
+  topology judgment is pending;
+- there are no materially conflicting authority interpretations or durable
+  artifacts requiring synthesis;
+- the next work is bounded reconciliation, dispatch preparation, routine
+  routing, or straightforward continuation;
+- the cost of a wrong coordination judgment is limited and readily reversible.
+
+The Orchestrator should escalate from Luna High to Sol High when any of the
+following materially applies:
+
+- durable artifacts conflict or the source of current truth is ambiguous;
+- a new cross-feature, cross-Slice, or cross-authority concern must be
+  synthesized;
+- the next step requires major Work Graph/decomposition judgment;
+- repeated Runs or unresolved causes indicate a possible loop / `STALLED`
+  condition;
+- protocol/candidate guidance itself is ambiguous or appears contradictory;
+- the Orchestrator must reconcile multiple valid Decisions or authority contexts;
+- the decision has high downstream cost, broad blast radius, or is difficult to
+  reverse;
+- a fresh reconstruction cannot confidently identify the current frontier from
+  durable state.
+
+Do not switch models merely because:
+
+- a particular workflow Role is active;
+- the task has a large file count;
+- the previous Run used a stronger model;
+- the work feels important but the coordination judgment is actually bounded.
+
+Model switching should happen at a natural coordination boundary whenever
+possible. A switch changes execution capacity, not orchestration semantics,
+authority, Work Unit state, or Run identity.
+
+If the Orchestrator notices that a bounded Luna-routed coordination task has
+become materially ambiguous, it should escalate before making the high-cost
+judgment rather than finish the judgment with an insufficient route.
+
+Likewise, after a Sol-routed ambiguity has been resolved into a stable bounded
+frontier, staying on Sol merely by inertia is not a correctness requirement.
+
+Participant Run model routing remains a separate decision. A strong Orchestrator
+pairing model does not imply strong Participant models, and a strong Participant
+model does not imply the Orchestrator pairing must remain escalated.
+
 ## Dedicated local Orchestrator
 
 Pilot #2 assumes one logical dedicated Orchestrator Participant.
