@@ -184,6 +184,48 @@ For Pilot #2, make the ownership boundary explicit:
 - Testing verdict/evidence is Verifier-owned;
 - the Orchestrator may dispatch, route, reconcile, and project these artifacts, but must not author them on behalf of the owning workflow Role.
 
+## Work Unit current-state discipline
+
+When a target project uses a Work Unit record or `manifest.md`-like artifact,
+treat it as the concise current-state representation of that Work Unit, not as
+an accumulating Run history.
+
+The record should make the current truth easy to reconstruct, including when
+applicable:
+
+- stable Work Unit identity, outcome, scope, and completion condition;
+- current execution/scheduling/horizon state;
+- current Run or next runnable route;
+- active Human gate / authority synchronization need;
+- active Blocker and affected scope;
+- current-effective milestone or contract pointers;
+- concise pointers to the evidence that justifies the current state.
+
+When reconciliation changes current state, replace the prior current value
+rather than appending another narrative account of the completed Run.
+
+Chronology and detailed execution evidence belong primarily in:
+
+- Events for material coordination history;
+- Run-owned artifacts / Handoffs for execution evidence;
+- Decision / Finding / Blocker records where those semantics have their own
+  durable owner.
+
+Do not copy a completed Run's full outcome into the Work Unit record when a
+pointer plus the resulting current-state consequence is sufficient.
+
+This is not a mandate to make the Work Unit record artificially terse. Keep
+material rationale when omitting it would make the current state ambiguous or
+unsafe to reconstruct. The goal is **current truth with enough provenance**, not
+minimal word count.
+
+If fresh reconstruction would otherwise require expensive traversal across many
+historical Runs, prefer a concise current-effective pointer/index over copying
+historical narrative back into the current-state record.
+
+Physical storage and filename remain project-defined; this guidance does not
+create a mandatory `manifest.md` artifact.
+
 ## Downstream Work Unit decomposition
 
 The Orchestrator owns orchestration decomposition after sufficient upstream evidence exists.
