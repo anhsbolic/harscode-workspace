@@ -1,7 +1,7 @@
 # Pilot #2 Candidate — Orchestrator Operating Model
 
 > Status: PILOT #2 CANDIDATE / NON-AUTHORITATIVE
-> Scope: Group A checkpoint only. This document records CRTV design hypotheses and does not override `orchestration/protocol-v0.1.md`, canonical workflow guidance, or project authority.
+> Scope: cross-cutting Pilot #2 Orchestrator behavior and coordination posture. This document records CRTV design hypotheses and does not override `orchestration/protocol-v0.1.md`, canonical workflow guidance, project authority, or narrower current candidate concern owners listed in `README.md`.
 
 ## Purpose
 
@@ -401,7 +401,9 @@ Pilot #2 should preserve these ownership boundaries:
 - **Decision / authority artifacts** own material authority decisions and
   ownership context;
 - **Control Surface** is a derived Human-facing projection and must be
-  regenerable from underlying state.
+  regenerable from underlying state; the semantic projection must be derivable,
+  but a separately persisted `control-surface.md` file is project-defined and
+  not universally required.
 
 A project-specific tracker, dashboard, summary, or status document may exist for
 usability, but it should be treated as a derived projection unless project
@@ -556,18 +558,19 @@ coordination complexity, not by a fixed Role-to-model mapping and not by a
 "strongest model by default" rule.
 
 The Human-owned runtime/model registry remains the source for which models and
-reasoning modes are actually available. This candidate guidance only defines
-when stronger pairing capability is justified.
+reasoning modes are actually available. Exact model names and model-generation
+assumptions are runtime/local data, not Harscode coordination semantics.
 
-For the currently observed Pilot #2 model set:
+Use two capability postures conceptually:
 
-- **Luna High** is the default fit for bounded, routine, evidence-clear
-  orchestration;
-- **Sol High** is justified when the Orchestrator must resolve materially
-  cross-cutting, ambiguous, conflicting, or high-downstream-cost coordination.
+- **bounded pairing route** — the least costly currently available model/effort
+  that is sufficient for routine, evidence-clear orchestration;
+- **escalated pairing route** — a stronger available model/effort when the
+  Orchestrator must resolve materially cross-cutting, ambiguous, conflicting, or
+  high-downstream-cost coordination.
 
-The Orchestrator may step down from Sol High to Luna High when the current state
-has become operationally bounded, including when:
+The Orchestrator may step down from the escalated route to the bounded route when
+the current state has become operationally bounded, including when:
 
 - durable state has been reconstructed cleanly;
 - the relevant Authority Map is sufficient for the current frontier;
@@ -579,8 +582,8 @@ has become operationally bounded, including when:
   routing, or straightforward continuation;
 - the cost of a wrong coordination judgment is limited and readily reversible.
 
-The Orchestrator should escalate from Luna High to Sol High when any of the
-following materially applies:
+The Orchestrator should escalate from the bounded route when any of the following
+materially applies:
 
 - durable artifacts conflict or the source of current truth is ambiguous;
 - a new cross-feature, cross-Slice, or cross-authority concern must be
@@ -606,16 +609,19 @@ Model switching should happen at a natural coordination boundary whenever
 possible. A switch changes execution capacity, not orchestration semantics,
 authority, Work Unit state, or Run identity.
 
-If the Orchestrator notices that a bounded Luna-routed coordination task has
-become materially ambiguous, it should escalate before making the high-cost
-judgment rather than finish the judgment with an insufficient route.
+If a bounded pairing route becomes materially ambiguous, escalate before making
+the high-cost judgment rather than finishing it with an insufficient route.
+Likewise, after an escalated ambiguity has been resolved into a stable bounded
+frontier, staying escalated merely by inertia is not a correctness requirement.
 
-Likewise, after a Sol-routed ambiguity has been resolved into a stable bounded
-frontier, staying on Sol merely by inertia is not a correctness requirement.
+The current runtime may map these postures to specific model/effort pairs, but
+that mapping belongs in Human-owned runtime configuration and may change without
+changing this candidate guidance.
 
-Participant Run model routing remains a separate decision. A strong Orchestrator
-pairing model does not imply strong Participant models, and a strong Participant
-model does not imply the Orchestrator pairing must remain escalated.
+Participant Run model routing remains a separate decision governed by
+`model-routing-and-escalation.md`. A stronger Orchestrator pairing route does
+not imply stronger Participant models, and a stronger Participant model does not
+imply the Orchestrator pairing must remain escalated.
 
 ## Dedicated local Orchestrator
 
