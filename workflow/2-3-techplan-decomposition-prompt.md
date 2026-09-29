@@ -139,7 +139,7 @@ At completion, report:
 - Human decision: <review/accept the split when files were generated; "none" when decomposition was skipped>
 - Open / deferred: <contract gap discovered or "none">
 - Recommended next step: human check of the split when generated, then Build; otherwise Build after Approved Techplan
-- Session transition: <plain-language action + reason; Build is fresh-preferred>
+- Session transition: <plain-language action + reason; Build starts with a new Run/Participant and fresh Participant Session when orchestrated, otherwise fresh is preferred>
 - Context pointers: parent Techplan + first/current task + declared hard dependency only
 ```
 
