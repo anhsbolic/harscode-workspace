@@ -157,6 +157,51 @@ Core rule:
 
 > Session renewal preserves a Run; workflow re-entry creates a new Run.
 
+### Run-boundary proportionality
+
+A semantic distinction does not automatically require a new Run.
+
+Within one active execution occurrence, the Participant may handle multiple
+closely related Findings, questions, or Human decisions when all of the
+following remain true:
+
+- the Run objective and completion condition still mean the same thing;
+- the Role and Specialization remain fit for the work;
+- the Run-specific scope has not materially expanded;
+- applicable authority ownership is known and Human-owned decisions remain with
+  the proper owner;
+- no independent review/verification boundary requires a different Participant;
+- assignment-defining inputs have not changed in a way that invalidates the
+  active assignment;
+- the Participant/Session remains fit to continue safely.
+
+Examples of changes that do **not** by themselves require a new Run:
+
+- a Finding reveals a related sub-question already inside the Run objective;
+- the Human resolves a bounded decision while the Participant is still actively
+  executing;
+- several related decision surfaces are discussed together because they share
+  the same evidence and authority context;
+- the Participant refines analysis within the existing objective without
+  changing the workflow Role.
+
+Create a new Run when the execution occurrence truly ends or the assignment
+meaning changes materially, including when:
+
+- objective or completion condition changes materially;
+- the work crosses into a different Role or required independent Participant;
+- scope expands beyond the bounded assignment;
+- a meaningful pause ends the occurrence and later re-entry is required;
+- new authority/evidence materially invalidates the active assignment;
+- a different execution approach constitutes a meaningful new occurrence.
+
+Do not create a new Run merely to reflect every conceptual distinction,
+intermediate Finding, or Human interaction. Run boundaries exist to preserve
+execution meaning and provenance, not to maximize procedural separation.
+
+This rule does not weaken canonical re-entry semantics: once an occurrence has
+ended, later re-entry is a new Run with meaningful-delta provenance.
+
 ## Repeated Run provenance
 
 A repeated/new Run created after workflow re-entry should preserve concise provenance to the prior relevant execution evidence.
