@@ -168,7 +168,7 @@ Kencleng Pilot #2 bounded Slice-2 `readiness-reconciliation.md` was valuable as 
 
 ### SR-005 — Slim Work Unit manifest historical narrative
 
-**Status:** `OBSERVED`
+**Status:** `EXPERIMENT_CANDIDATE`
 
 **Observed cost**  
 The current Work Unit manifest has accumulated long summaries of completed Run outcomes already represented by Run artifacts and Events.
@@ -189,7 +189,7 @@ The manifest must still expose enough provenance/pointers to reconstruct current
 Produce a compact derived version of one existing manifest and test whether a fresh Orchestrator can reconstruct the same frontier and blockers.
 
 **Evidence**  
-Kencleng Pilot #2 `WU-S2-002/manifest.md` growth.
+Kencleng Pilot #2 `WU-S2-002/manifest.md` is ~16 KB and includes a long current-effective prior-artifact inventory plus completed-Run routing narrative already recoverable from Run evidence and Events. Current candidate guidance now defines the manifest-like record as concise current truth with enough provenance. A bounded slim-manifest reconstruction test is now well-defined; safety is not yet proven, so this remains below `SAFE_TO_ADOPT`.
 
 ### SR-006 — Compress stage-specific Explorer evidence
 
