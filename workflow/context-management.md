@@ -21,7 +21,7 @@ For the active phase, classify potential inputs as:
 
 ## Durable state beats chat memory
 
-Correctness must be reconstructable from durable artifacts plus current source-of-truth files. A phase may reuse context already loaded in the same healthy session, but a required decision cannot exist only in remembered conversation.
+Correctness must be reconstructable from durable artifacts plus current source-of-truth files. A phase may reuse context already loaded in the same healthy session when the same execution occurrence is still active, or in a non-orchestrated flow where no Run boundary has been crossed. A required decision cannot exist only in remembered conversation.
 
 A fresh session re-grounds on the smallest sufficient durable state:
 
@@ -50,13 +50,20 @@ Participant = assigned executor
 Session   = bounded execution context
 ```
 
-A fresh Session does not create a new Work Unit. Re-entering a workflow phase does create a new Run, even when the same Participant and Session continue.
+A fresh Session does not create a new Work Unit.
+
+In orchestrated mode, keep two continuation paths distinct:
+
+- **same active Run** — immediate Session replacement may preserve the same Run and Participant when the execution occurrence is still continuing;
+- **new phase / later phase re-entry after a completed occurrence** — create a new Run, new Participant identity, and fresh Participant Session/context. Reconstruct from durable artifacts; do not resume the prior Participant's conversation as hidden execution state.
 
 For fresh-session grounding, prefer current-effective artifacts named by orchestration state over scanning historical Run folders. Deep history is conditional context for regression, loop diagnosis, decision audit, or another concrete need.
 
 ## Same session vs fresh session
 
 Use **continuation fitness**, not a fuzzy task-size label.
+
+The rules in this section apply to Session replacement inside the same active execution occurrence and to non-orchestrated workflow usage. They must not be used to carry one Participant/Session across an orchestrated Run boundary.
 
 ### CONTINUE when
 
@@ -81,24 +88,25 @@ Do not invent a context-window percentage as an automatic cutoff. Context occupa
 
 | Transition | Default |
 |---|---|
-| Exploration → Techplan | **Adaptive** — continue or fresh based on continuation fitness |
-| Techplan → Build | **Fresh preferred** — Build needs the locked contract + live code, not exploratory reasoning |
-| Build iteration → Build iteration | **Continue** while focused |
-| Build → Code Review | **Fresh** for independent inspection |
-| Code Review → Patch | **Build authority**; continue prior Build if healthy, otherwise fresh Build re-grounded on the patch plan |
-| Build/Patch → Testing | **Fresh** for independent verification |
-| Testing → Patch | **Build authority**; continue prior Build if healthy, otherwise fresh Build re-grounded on the patch plan |
-| Testing → PR | **Flexible**; ground on final repository state + durable evidence |
+| Exploration → Techplan | **Non-orchestrated:** adaptive from continuation fitness. **Orchestrated:** new Techplan Run/Participant with fresh Session context. |
+| Techplan → Build | **Fresh** in orchestrated mode; fresh preferred otherwise. Build needs the approved contract + live code, not exploratory reasoning. |
+| Build iteration → Build iteration | **Continue** only while it remains the same active Build Run/execution occurrence. |
+| Build → Code Review | **Fresh** for independent inspection; orchestrated mode uses a new Review Run/Participant. |
+| Code Review → Patch | **Build authority. Orchestrated:** new Build/Patch Run/Participant with fresh Session context re-grounded on the patch plan. **Non-orchestrated:** continuation fitness may reuse a healthy Build session. |
+| Build/Patch → Testing | **Fresh** for independent verification; orchestrated mode uses a new Testing Run/Participant. |
+| Testing → Patch | **Build authority. Orchestrated:** new Build/Patch Run/Participant with fresh Session context re-grounded on the patch plan. **Non-orchestrated:** continuation fitness may reuse a healthy Build session. |
+| Testing → PR | **Orchestrated:** new PR Run/Participant when PR work is dispatched as a Run. **Non-orchestrated:** flexible; ground on final repository state + durable evidence. |
 
 Fresh for **independence** and fresh for **context hygiene** are different reasons. Record the actual reason.
 
 `CONTINUE`, `FRESH`, and `BUILD authority` are portable routing semantics. Human-facing handoffs should translate them into an explicit action sentence instead of exposing only the enum. Examples:
 
 ```text
-Continue Techplan synthesis in this session because Exploration context remains focused and current.
+Continue Techplan synthesis in this session because Exploration context remains focused and current. (Non-orchestrated flow.)
+Start a fresh Techplan Participant Session from the new Run Invocation because orchestrated phase transition creates a new Run/Participant.
 Start a fresh Code Review session because reviewer independence is part of the next phase's value.
-Return to the existing Build session because the patch is narrow and implementation context remains focused.
-Start a fresh Build/Patch session re-grounded on the patch plan because the previous Build session is stale/compacted.
+Start a fresh Build/Patch Participant Session from the new Run Invocation and patch plan because orchestrated re-entry is a new Run/Participant.
+Return to the existing Build session only in a non-orchestrated flow when continuation fitness remains healthy.
 ```
 
 ## Code knowledge across phases
@@ -130,7 +138,9 @@ approved techplan (and current task slice if decomposed)
 
 Do not carry the whole Review/Testing conversation into Build.
 
-The handoff back to Build should tell the operator whether to reuse the existing Build session or start a fresh Build/Patch session, based on continuation fitness. `BUILD authority` alone is not a complete human instruction.
+In orchestrated mode, a handoff back to Build starts a new Build/Patch Run with a new Participant and fresh Session context, re-grounded from the new Invocation plus the smallest sufficient durable inputs. Do not route back by resuming the prior Build Participant's conversation.
+
+In non-orchestrated mode, continuation fitness may still determine whether an existing healthy Build session is reused. `BUILD authority` alone is not a complete human instruction.
 
 ## Phase completion handoff
 
@@ -143,7 +153,7 @@ At a **meaningful stage/phase completion** (not every progress message), finish 
 - Human decision: <decision needed now; "none" if no human decision is currently required>
 - Open / deferred: <non-blocking unresolved/deferred items; "none" if none>
 - Recommended next step: <one concrete next action/phase>
-- Session transition: <plain-language continue/fresh/return-to-Build action + reason>
+- Session transition: <plain-language action + reason; in orchestrated mode, distinguish same-Run Session replacement from new-Run/new-Participant dispatch>
 - Context pointers: <only paths/anchors the next phase is likely to need>
 ```
 
