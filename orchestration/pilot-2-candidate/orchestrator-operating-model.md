@@ -568,7 +568,8 @@ Use:
 
 - Role: `Explorer`;
 - specialization: `Open-Item Decision Resolution / Product-Contract Facilitation`;
-- a fresh Session when the decision surface is materially complex or crosses multiple authority/evidence domains.
+- a new Run/Participant with a fresh Participant Session/context, as required by
+  the current Pilot #2 new-Run lifecycle.
 
 Purpose:
 
