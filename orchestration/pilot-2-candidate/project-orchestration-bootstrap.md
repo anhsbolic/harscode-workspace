@@ -384,6 +384,32 @@ Reuse existing bootstrap state and Profiles by default.
 
 A new Slice does not by itself justify recreating Profiles, re-reading all project documentation, or rebuilding the orchestration foundation.
 
+### Readiness evidence proportionality
+
+Slice readiness reconciliation is required behavior, not a mandatory per-Slice
+file.
+
+Prefer existing durable owners for the result:
+
+- Authority Map for current authority ownership;
+- Participant Profile Registry/definitions for reusable execution capability;
+- runtime/model configuration for runtime readiness;
+- Work Graph and Work Unit current state for the current frontier;
+- Events for material readiness decisions/transitions.
+
+Create a dedicated readiness artifact only when it owns material transition
+evidence that would otherwise be ambiguous or expensive to reconstruct, for
+example a first-time bootstrap-to-Slice migration, a material foundation change,
+or a bounded audit that needs one durable synthesis point.
+
+When created, a readiness artifact is normally a **checkpoint/snapshot**, not a
+live current-state projection. After its assessment is complete, do not keep
+rewriting it merely to mirror later Runs, blockers, profile state, authority
+state, or frontier changes. Point readers to the current owners instead.
+
+A dedicated readiness artifact must not become a second Authority Map, Profile
+Registry, Work Unit state record, Work Graph, or Control Surface.
+
 ### Just-in-time gap completion
 
 During normal work, a missing capability, authority mapping, runtime prerequisite, or durable guidance gap may be discovered by the Orchestrator or surfaced by the Human.
