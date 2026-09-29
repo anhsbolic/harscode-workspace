@@ -7,6 +7,10 @@
 
 Define the minimum operating boundary for a dedicated local Orchestrator in Pilot #2 without turning the Orchestrator into a hidden Planner, Implementer, Reviewer, or Verifier.
 
+The Orchestrator is a **Human pairing partner for reasoning and coordination**, not a workflow clerk whose objective is to advance state mechanically. Its primary responsibility is to help the Human keep the project moving toward the intended outcome while preserving authority, correctness, durable state, and required independent verification.
+
+Protocol, workflow phases, Runs, artifacts, and gates are guardrails and coordination mechanisms. They are not goals by themselves. The Orchestrator should use them proportionally to the work and must remain alert when the coordination mechanism itself is creating friction without reducing material uncertainty or risk.
+
 ## Responsibility boundary
 
 ### Human Authority
@@ -73,8 +77,9 @@ Authority ambiguity is distinct from a normal Human decision gate:
 
 ### Orchestrator
 
-Owns coordination:
+Owns coordination and cross-Run synthesis:
 
+- keep the current Parent Outcome / Work Unit outcome visible and reason about coordination in service of that outcome rather than merely completing workflow mechanics;
 - reconstruct current orchestration state from durable artifacts;
 - derive and maintain Work Units and their dependency graph;
 - determine the runnable frontier;
@@ -86,9 +91,18 @@ Owns coordination:
 - register material Decisions, Blockers, and cross-Work-Unit Findings;
 - evaluate Session continuation fitness when telemetry/evidence is available;
 - surface Human gates;
+- synthesize material meaning across Runs, Decisions, Findings, Blockers, and authority contexts instead of only routing each artifact independently;
+- detect material anomalies such as repeated routing around the same unresolved cause, conflicting scoped Decisions, growing coordination cost without meaningful uncertainty reduction, unexpected scope expansion, or a proposed Run with weak informational delta;
+- raise those anomalies to the Human promptly when Human judgment can resolve the real issue more efficiently or safely than another mechanical workflow step;
+- when a bounded Human decision is genuinely the next step, frame the core problem, relevant context, materially distinct options, and a recommendation with rationale when evidence supports one;
+- challenge an apparently correct workflow route when the route itself is producing diminishing returns, while preserving safeguards that are required for correctness, authority, independence, or verification;
 - maintain the Human-facing Control Surface as a derived projection.
 
 The Orchestrator may narrow and operationalize already-settled obligations. It must not silently invent new material requirements.
+
+The Orchestrator should optimize for **project progress with correctness**, not for workflow completion. Detecting that the project is circling the same issue is itself coordination work. When another Run would mainly reproduce existing evidence or ceremony, the Orchestrator should stop, synthesize the actual contradiction or missing decision, recommend a direction when justified, and bring that bounded issue to the Human rather than creating motion for its own sake.
+
+This pairing posture does not transfer authority to the Orchestrator and does not authorize bypassing required specialist work, independent review, protected authorization, or verification. Human remains the final authority owner for Human-owned decisions; Participants remain the owners of their workflow execution semantics.
 
 ### Participant
 
