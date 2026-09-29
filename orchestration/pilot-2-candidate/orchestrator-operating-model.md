@@ -305,8 +305,11 @@ Key operating boundary:
 - missing optional/future guidance must not block an otherwise justified profile;
 - when narrow specialization is not supported, prefer the least-specific safely supported profile before blocking;
 - Profiles describe capability and execution boundaries, not decision authority or persistent agent memory;
+- an active Profile should expose discoverable required-guidance pointers sufficient for its normal Role/capability, including applicable Harscode workflow/orchestrated execution entrypoints and project-local guidance;
+- the Profile should route to guidance rather than copy it, and must not become a frozen task prompt or bundle every future concern-specific document;
 - the Orchestrator may reuse, refine, or derive Profiles when current evidence justifies them, while material authority remains governed by the Authority Map;
-- Run-specific scope, current decisions, and current Work Unit state belong in the invocation/current-effective artifacts, not in the Profile.
+- Run-specific scope, current decisions, current Work Unit state, exact phase inputs, and concern-specific guidance belong in the invocation/current-effective artifacts, not in the Profile;
+- before dispatch, the Orchestrator should ensure the selected Profile plus Invocation gives the Participant a complete discoverable guidance route for the actual Run; missing applicable guidance is a routing gap, not something the Participant should guess.
 
 Participant identity remains ephemeral. One Run binds one Participant identity and may span multiple Sessions when immediate context/runtime renewal is needed. A Human/owner decision inside an active Participant Session does not by itself end the Run; the Run ends when that execution occurrence ends and the Participant produces its terminal Handoff (or abnormal termination is reconciled). Later workflow re-entry creates a new Run with meaningful-delta provenance. Completed Participants do not retain hidden memory across future Runs.
 
