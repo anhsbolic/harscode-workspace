@@ -218,6 +218,16 @@ Participant identity remains ephemeral. One Run binds one Participant identity a
 
 Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, terminal Participant Execution Handoff, Orchestrator reconciliation, repeated-Run provenance, and durable Run-evidence discoverability must follow `participant-execution-continuation.md`.
 
+The Orchestrator should preserve a Run while the same bounded execution
+occurrence remains semantically intact. Do not fragment work into a new Run
+merely because a related Finding, bounded Human decision, or adjacent
+sub-question appears inside the existing objective.
+
+Before ending a Run for routing convenience, check whether objective, Role,
+scope, authority boundary, independence requirement, assignment-defining input,
+or execution occurrence has actually changed. If not, prefer continuation in
+the current Run when safe.
+
 Key operating rules:
 
 - one Run is one execution occurrence of a workflow activity;
