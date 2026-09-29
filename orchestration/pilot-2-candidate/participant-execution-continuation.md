@@ -444,6 +444,41 @@ Semantic ownership for this candidate model:
 
 One durable artifact should have one semantic owner. Avoid shared-write artifacts whose provenance becomes ambiguous.
 
+### Run artifact proportionality
+
+Do not create a Run-local artifact merely because a conceptual stage, Finding,
+or discussion step occurred.
+
+The durable Run package should contain the **smallest set of artifacts that
+preserves the execution meaning and evidence required for correctness**.
+
+The following remain required when applicable:
+
+- a discoverable Run Invocation before dispatch;
+- the canonical phase-owned artifact(s) required by the active workflow route;
+- a Continuation Checkpoint only when an actual Session transition/recovery
+  requires one;
+- a terminal Participant Execution Handoff when the execution occurrence ends;
+- additional evidence artifacts when the evidence is materially useful for
+  verification, decision provenance, review, reconstruction, or later reuse.
+
+Do not collapse or remove a canonical phase-owned artifact just to reduce file
+count. For example, a Planner-owned `techplan.md`, Reviewer-owned review
+evidence, or Verifier-owned testing evidence keeps its own semantic ownership
+when the workflow requires it.
+
+Extra Run-local evidence files should earn their existence by owning material
+information that would otherwise become ambiguous, hard to verify, or expensive
+to reconstruct. Avoid splitting one coherent body of evidence into multiple
+files only to mirror internal reasoning stages.
+
+Likewise, do not duplicate the same conclusion across several Run-local files
+for convenience. Prefer pointers plus a concise summary when the durable truth
+already exists elsewhere.
+
+Artifact count is not a success metric. Reconstructability, provenance,
+verification quality, and semantic ownership are.
+
 ## Session Transition record
 
 The Participant records why/how execution can safely continue through its Checkpoint.
