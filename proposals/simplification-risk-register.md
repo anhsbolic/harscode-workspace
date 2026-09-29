@@ -64,6 +64,134 @@ Pointers to CRTV observations, Runs, artifacts, or other concrete evidence.
 
 ---
 
+## Bounded CRTV experiment — current-state simplification
+
+The three current `EXPERIMENT_CANDIDATE` items below share one evidence
+question:
+
+> Can Harscode reduce duplicated current-state/readiness narrative while a fresh
+> Orchestrator still reconstructs the same current frontier, blockers, authority
+> state, and next action without hidden conversational context?
+
+Do **not** test all removals at once. Use staged ablation so any quality loss can
+be attributed to a specific simplification.
+
+### Experiment sequence
+
+**Stage A — Baseline reconstruction**
+
+Run a fresh Orchestrator reconstruction against the current project state using
+the normal current artifact set.
+
+Capture only the observable result needed for comparison:
+
+- current Parent Outcome / active Slice;
+- active Work Unit and current execution/scheduling/horizon;
+- current Run or next runnable route;
+- active blockers and exact affected scope;
+- authority gaps / Human decisions actually needed now;
+- current-effective contract / milestone posture;
+- next action;
+- any uncertainty or artifact conflict encountered.
+
+This is the control. Do not change project artifacts yet.
+
+**Stage B — Readiness-artifact ablation (`SR-004`)**
+
+Repeat fresh reconstruction without relying on a dedicated
+`readiness-reconciliation.md`-like artifact.
+
+The Orchestrator must reconstruct readiness from the actual current owners:
+Authority Map, Profile Registry/definitions, runtime config, Work Graph, Work
+Unit current state, Events, and current-effective workflow/project artifacts.
+
+Pass only if the result is materially equivalent to Stage A and no important
+readiness gap becomes ambiguous.
+
+**Stage C — Projection ablation (`SR-002`)**
+
+Repeat reconstruction while treating one convenience projection at a time as
+unavailable/stale, starting with the projection that has the least unique
+semantic ownership.
+
+Do not remove the semantic owner. Test examples one at a time:
+
+- project tracker detailed current-Slice narrative unavailable while its coarse
+  cross-slice state remains available;
+- Control Surface unavailable while Work Graph + Work Unit current state +
+  open Decisions/Blockers remain available.
+
+Pass only if current orchestration truth remains reconstructable and Human
+situational awareness is not materially degraded.
+
+**Stage D — Slim Work Unit representation (`SR-005`)**
+
+Create a **derived experiment-only** compact representation of one current Work
+Unit. Do not replace the authoritative project artifact during the test.
+
+The compact form should retain:
+
+- stable identity / outcome / scope / completion condition;
+- current execution/scheduling/horizon;
+- current Run or next route;
+- active Human gate / authority sync;
+- active blockers with affected scope;
+- current-effective milestone/contract pointers;
+- minimum evidence pointers needed to justify current state.
+
+It should omit completed-Run narrative and long historical artifact inventories
+that are already owned by Events / Run evidence.
+
+Give the fresh Orchestrator the compact representation instead of the verbose
+one and compare with Stage A.
+
+### Pass criteria
+
+A simplification candidate passes its stage only when all of these remain true:
+
+1. **semantic equivalence** — no materially different current-state conclusion;
+2. **authority integrity** — no owner/scope/decision is invented or lost;
+3. **blocker fidelity** — exact affected scope and safe unaffected work remain
+   discoverable;
+4. **frontier fidelity** — the same next runnable route / Human gate is derived;
+5. **provenance sufficiency** — the current truth can still be justified from
+   durable pointers without broad historical archaeology;
+6. **Human usability** — the result can still be explained concisely without
+   needing the Human to reconstruct missing orchestration state;
+7. **failure visibility** — ambiguity/staleness/conflict becomes visible rather
+   than silently guessed.
+
+### Failure criteria
+
+Treat the experiment as failed for that simplification when any of these occurs:
+
+- fresh reconstruction produces a materially different frontier or blocker;
+- a valid Decision/authority context becomes difficult to locate or is
+  mis-scoped;
+- the Orchestrator must scan large historical Run sets merely to understand
+  current truth;
+- Human situational awareness materially worsens;
+- a supposedly redundant artifact turns out to carry unique current semantics;
+- the Orchestrator needs remembered chat/history to compensate for the removed
+  surface.
+
+On failure, keep the safer existing mechanism and record the missing capability.
+Do not compensate by adding a new mirror/projection unless the evidence points to
+a real owner gap.
+
+### Evidence discipline
+
+- Keep project canonical/current artifacts unchanged until the relevant stage
+  passes.
+- Use fresh-session reconstruction; prior chat memory must not be part of the
+  test.
+- Run one ablation at a time.
+- Record the smallest useful comparison evidence; the experiment itself must not
+  create another large artifact ecosystem.
+- Passing one project/Work Unit is evidence, not universal proof. Promotion to
+  `SAFE_TO_ADOPT` requires enough CRTV evidence for the actual scope of the
+  proposed Harscode change.
+
 ## Current candidates
 
 ### SR-001 — Reduce default Run artifact count
