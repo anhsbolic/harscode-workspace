@@ -130,6 +130,62 @@ Authority ambiguity is distinct from a normal Human decision gate:
 - `AUTHORITY_SYNC` means the valid decision owner is not yet sufficiently known;
 - `HUMAN_DECISION` means the relevant owner is known and the next required step is the owner's actual decision.
 
+### Cross-context authority and Decision conflicts
+
+Progressive authority discovery means Harscode may encounter two Decisions that
+were each valid in their original scoped context but cannot both govern the same
+new downstream surface without reconciliation.
+
+Do not resolve that situation by:
+
+- assuming the newer Decision globally supersedes the older one;
+- treating the broader-sounding wording as higher authority;
+- choosing the Decision from the "stronger" workflow Role;
+- collapsing different authority areas just because the same Human owns them;
+- silently widening a local Decision into project-wide policy.
+
+When apparently conflicting Decisions are discovered, first reconstruct:
+
+1. the authority area for each Decision;
+2. the named owner at the time of each Decision;
+3. the Decision scope and affected artifact/work;
+4. the effective-from context/date;
+5. whether either Decision explicitly supersedes the other;
+6. the new downstream surface where the conflict now becomes material.
+
+Then classify the situation:
+
+- **non-overlapping scopes** — preserve both; route each only to its applicable
+  context;
+- **same authority area, explicit supersession** — apply the current-effective
+  Decision while preserving historical provenance;
+- **same authority area, ambiguous overlap** — route a bounded owner Decision to
+  reconcile/supersede the conflict;
+- **different authority areas with a cross-context contract conflict** — surface
+  the contradiction jointly to the relevant owner(s); do not let one context
+  silently override the other;
+- **authority ownership itself unclear or changed** — route `AUTHORITY_SYNC`
+  before asking for the substantive conflict decision.
+
+The Orchestrator should make the conflict concrete for the Human:
+
+- what each valid Decision currently says;
+- why both became incompatible on this downstream surface;
+- which authority contexts are involved;
+- what work is actually blocked;
+- what safe unaffected work can continue;
+- the smallest reconciliation Decision required.
+
+Do not reopen either Decision merely because another context exists. Reconciliation
+is required only when the overlap has become materially relevant to current work.
+
+A cross-context conflict should block only the dependent contract/work surface.
+It must not automatically park the entire Work Unit or project.
+
+Once reconciled, preserve the prior Decisions as historical provenance and
+propagate the new current-effective Decision to the owning authoritative
+artifact(s) using the Decision-propagation rules above.
+
 ### Orchestrator
 
 Owns coordination and cross-Run synthesis:
