@@ -99,14 +99,41 @@ Do not use chat memory, assumptions, or one-off Participant recollection as proj
 
 ## Required vs routed guidance
 
-A Participant Profile may distinguish:
+A Participant Profile should distinguish:
 
-- **required guidance** — minimum guidance that must be read for the profile to operate safely in its normal project scope;
-- **routed / optional guidance** — concern-specific guidance that is pulled only when the current Run makes it applicable.
+- **required guidance** — minimum stable guidance that must be discoverable for the profile to operate safely in its normal project scope;
+- **routed / optional guidance** — concern-specific or Run-specific guidance that is pulled only when the current Run makes it applicable.
 
-For example, a Go backend profile may require root/backend project guidance while money, idempotency, anti-enumeration, concurrency, or email guidance remains routed by Run scope.
+Required guidance should normally include the stable entrypoints that define how
+the Profile's Role executes under Harscode, when those entrypoints apply. In an
+orchestrated project this may include, for example:
+
+- the applicable canonical workflow phase entrypoint/guidelines for the Role;
+- `workflow/orchestrated-run-overlay.md` for orchestrated identity/path semantics;
+- the current Orchestrator/Pilot guidance that materially changes Participant
+  execution or handoff behavior;
+- project-local root/scoped guidance such as applicable `AGENTS.md` files.
+
+The Profile should point to these sources; it should not copy their contents.
+
+Run-specific invocation remains responsible for naming the exact current-effective
+phase inputs, task scope, current authority/decision evidence, and any additional
+guidance needed for that occurrence. A Profile is therefore a reusable guidance
+router, not a frozen bundle of every document a future Run might need.
+
+Use stable logical/current-effective pointers by default. Pin a guidance revision
+in the Profile only when the Profile's meaning genuinely depends on that exact
+revision; otherwise the Run Invocation may pin assignment-defining inputs when
+drift detection matters.
+
+For example, a Go backend profile may require root/backend project guidance plus
+the stable Build/orchestrated-run entrypoints, while money, idempotency,
+anti-enumeration, concurrency, or email guidance remains routed by Run scope.
 
 Do not turn optional or future-applicable guidance into a profile-readiness prerequisite.
+
+A Profile that names a Role/capability but provides no discoverable route to the
+guidance needed to execute that Role safely is incomplete for that capability.
 
 ## Evidence-gap classification
 
@@ -198,8 +225,11 @@ A project-local profile should identify at least:
 
 ### Knowledge routing
 
-- required guidance;
-- optional or routed guidance pointers when useful.
+- required guidance pointers, including applicable Harscode workflow/orchestrated
+  execution entrypoints and project-local guidance needed for normal safe operation;
+- optional or routed guidance pointers when useful;
+- enough separation between stable Profile guidance and Run-specific guidance
+  that the Profile does not become a frozen task prompt.
 
 ### Handoff contract
 
