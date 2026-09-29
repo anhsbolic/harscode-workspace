@@ -110,7 +110,7 @@ look cleaner.
 - Human decision: <decision needed now or "none">
 - Open / deferred: <blocking/non-blocking findings or "none">
 - Recommended next step: Testing if approved; otherwise Build/Patch using the specific patch plan
-- Session transition: if approved, start a fresh Testing session for independence; if patching, explicitly say whether to return to the existing healthy Build session or start a fresh Build/Patch session re-grounded on the patch plan, with reason
+- Session transition: if approved, start a fresh Testing session for independence; if patching under orchestration, start a new Build/Patch Run/Participant with a fresh Participant Session re-grounded on the patch plan; outside orchestrated mode, use continuation fitness to choose whether a healthy Build session can be reused
 - Context pointers: Techplan + specific findings/patch plan + diff anchors only
 ```
 
