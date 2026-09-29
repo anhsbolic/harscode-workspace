@@ -18,6 +18,7 @@ This is the HOT router for Harscode orchestration. Read this when work is coordi
 ## Routing
 
 - Protocol semantics and object boundaries → `protocol-v0.1.md`
+- Pilot #2 candidate guidance ownership/routing → `pilot-2-candidate/README.md` (do not read the whole candidate directory by default)
 - Run/session/workspace invocation contract → `run-contract.md`
 - Role-specialization guidance routing → `specializations/README.md`
 - Engineering workflow execution → `../workflow/AGENTS.md`
