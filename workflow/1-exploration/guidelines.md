@@ -84,7 +84,7 @@ This durable decision evidence lets Techplan synthesis preserve the outcome with
 
 ## Completion handoff
 
-At Stage-3 completion use `workflow/context-management.md`'s compact handoff. Recommend Techplan CONTINUE/FRESH using observable continuation fitness, not a Small/Medium/Heavy label.
+At Stage-3 completion use `workflow/context-management.md`'s compact handoff. In orchestrated mode, Techplan starts as a new Run/Participant with a fresh Participant Session/context. Outside orchestrated mode, recommend Techplan CONTINUE/FRESH using observable continuation fitness, not a Small/Medium/Heavy label.
 
 ## What not to do
 
