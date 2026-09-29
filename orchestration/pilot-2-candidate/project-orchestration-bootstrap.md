@@ -181,6 +181,12 @@ Discoverability does not require pre-creating every artifact.
 
 A not-yet-materialized Work Graph or Control Surface is valid when no justified topology/state yet exists, as long as the future location/creation route is clear enough.
 
+Do not create a tracker, dashboard, Control Surface, or other convenience
+projection merely because bootstrap has a slot for durable state. Create a
+projection only when it serves a concrete coordination/Human-readability need.
+When created, it must remain derived from its owning state rather than becoming
+a parallel source that must be reconciled independently.
+
 ## Initial Outcome and Work Decomposition
 
 Bootstrap may derive a Parent Outcome from a sufficiently authoritative upstream objective.
