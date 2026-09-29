@@ -36,7 +36,7 @@ An orchestrated phase invocation should make these values discoverable:
 - `EXECUTION_ENVELOPE` — compact semantic authorization block or pointer describing authorized write scope, routine capabilities, known required commands, justified specialized verification, Orchestrator-routed actions, and Human/protected actions.
 - `MODEL_ROUTING_RATIONALE` — concise minimum-capability and sufficiency rationale for the selected model/reasoning effort, plus escalation trigger when applicable.
 - `CONTINUATION_CHECKPOINT` — optional pointer to durable continuation state; required when a new Session continues an already-active Run and the normal phase handoff is not sufficient.
-- `SESSION_TRANSITION` — optional `CONTINUE` / `FRESH` routing result when relevant.
+- `SESSION_TRANSITION` — optional `CONTINUE` / `FRESH` execution-context routing result when relevant. It does not decide whether a Run is reused; Run/re-entry semantics are resolved first.
 - `SESSION_TRANSITION_REASON` — explicit reason for the transition, such as independence, context hygiene, harness recovery, Human redirection, or another stated reason.
 
 Project-specific authority/task sources remain explicit inputs to the phase.
@@ -118,7 +118,18 @@ Next route
 
 ## Re-entry
 
-Returning to Exploration, Planning, Build, Review, or Testing creates a new Run. Never overwrite the prior Run merely to make the directory look linear.
+Returning to Exploration, Planning, Build, Review, or Testing after the prior
+execution occurrence ended creates a new Run. Never overwrite the prior Run
+merely to make the directory look linear.
+
+Under the current Pilot #2 Participant lifecycle, that new Run also binds a new
+Participant identity and fresh Participant Session/context. Reconstruct from
+durable inputs rather than resuming the prior Participant conversation. See
+`pilot-2-candidate/participant-execution-continuation.md`.
+
+Immediate Session replacement while the same execution occurrence is still
+active is different: it may preserve the Run and Participant through a
+Continuation Checkpoint.
 
 The current effective Artifact must be explicit when multiple versions/runs exist.
 
