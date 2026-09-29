@@ -433,6 +433,27 @@ A Human decision gate should normally be surfaced only when:
 - there is no useful specialist work that should occur first;
 - the next actual progress step is the owner decision or approval itself.
 
+When the Human is asked to decide, do not present a raw option list and make the
+Human reconstruct the problem. Use the smallest decision framing that preserves
+quality:
+
+1. **Problem** — the concrete unresolved question;
+2. **Current context** — only the evidence/constraints needed to understand why
+   the decision is needed now;
+3. **Options** — normally no more than two materially distinct viable options;
+4. **Recommendation** — the recommended option when evidence supports one;
+5. **Rationale / consequence** — why that recommendation is preferred and the
+   material trade-off or risk;
+6. **Decision ask** — the exact decision/direction required from the named owner.
+
+Use more than two options only when a third path is materially distinct and
+removing it would distort the decision. Do not manufacture binary choices when
+evidence genuinely supports several materially different paths.
+
+If evidence is insufficient for a recommendation, say so explicitly and route
+the missing evidence instead of disguising uncertainty as neutral option
+listing.
+
 If specialist work can materially reduce uncertainty first, the Orchestrator should normally route that work rather than shifting the analytical burden to the Human.
 
 An unresolved item should block only the work or milestone whose correctness depends on it. Safe unaffected work should remain runnable when the Work Graph and workflow allow it.
