@@ -104,6 +104,50 @@ The Orchestrator should optimize for **project progress with correctness**, not 
 
 This pairing posture does not transfer authority to the Orchestrator and does not authorize bypassing required specialist work, independent review, protected authorization, or verification. Human remains the final authority owner for Human-owned decisions; Participants remain the owners of their workflow execution semantics.
 
+### Loop-breaking and diminishing returns
+
+Before preparing another Run on an unresolved surface, the Orchestrator must perform a lightweight progression check. The purpose is not to add a new ceremony; it is to avoid mistaking repeated activity for progress.
+
+The Orchestrator should ask:
+
+1. What materially new evidence, authority decision, capability, or execution approach would this Run add?
+2. What uncertainty or blocker is expected to shrink because of it?
+3. Is the same underlying issue already represented by prior Run evidence?
+4. Can the real next step now be handled directly as a bounded Human decision, authority synchronization, or existing specialist action?
+5. Would another Run mainly restate, repackage, or transfer the same unresolved question?
+
+A new or repeated Run remains justified when there is a credible expected delta, such as:
+
+- materially new evidence can be gathered;
+- a newly available authority decision changes the decision surface;
+- a different Role or specialization can answer a question the prior Role could not;
+- an implementation/review/verification step can produce evidence unavailable in analysis;
+- a prior dependency has changed or been resolved;
+- a specific defect or contradiction can now be tested or corrected.
+
+The Orchestrator should **stop mechanical routing** when the expected delta is weak and the same core issue is recurring. It should then synthesize the situation for the Human in outcome-oriented terms:
+
+- the core unresolved issue or contradiction;
+- why prior Runs did not close it;
+- what is already known and should not be re-investigated;
+- what actually blocks progress;
+- at most the smallest materially distinct decision paths needed now;
+- a recommendation and rationale when evidence supports one;
+- the exact Human decision/action required, if any.
+
+The Orchestrator should distinguish the cause before choosing the next route:
+
+- **missing evidence** → route the Role that can obtain genuinely new evidence;
+- **known-owner decision** → surface a bounded `HUMAN_DECISION`;
+- **unknown/mismatched authority** → route `AUTHORITY_SYNC`;
+- **conflicting valid Decisions** → surface the conflict and applicable authority contexts rather than silently choosing one;
+- **scope/Role mismatch** → reframe or reroute only if the new boundary is materially different;
+- **repeated unresolved cause with no credible new delta** → diagnose and use canonical `STALLED` handling where applicable.
+
+Do not use `STALLED` merely because an issue is difficult or because a Human decision is pending. The trigger is repeated inability to make material progress through the current route, not inconvenience.
+
+A loop-break does not require the Orchestrator to become the domain specialist. It may synthesize the evidence already produced and recommend a coordination direction, but new specialist analysis remains owned by the applicable Participant.
+
 ### Participant
 
 Executes the assigned workflow Role and Run.
@@ -484,6 +528,7 @@ Pilot #2 succeeds when orchestration correctness is demonstrated across real wor
 - workflow artifact ownership remains correct;
 - Participant completion is reconciled correctly into Work Unit state, Events, Work Graph, and Control Surface;
 - Decisions/Blockers/Findings are routed without inventing authority;
+- repeated routing demonstrates meaningful informational/execution delta, and diminishing-return loops are surfaced rather than extended mechanically;
 - milestones are not promoted prematurely;
 - Human-assisted dispatch remains mechanical rather than turning the Human into the real Orchestrator.
 
