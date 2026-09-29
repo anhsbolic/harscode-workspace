@@ -127,7 +127,7 @@ Output only:
 - Human decision: <approve/revise/waive next planning step as applicable; "none" if no decision is needed now>
 - Open / deferred: <blocking findings or non-blocking follow-up; "none" if none>
 - Recommended next step: one resolution pass then human gate when review ran; human gate directly when the Complex gate says review is not warranted
-- Session transition: <plain-language continue/fresh action + reason; Build is fresh-preferred after Approval>
+- Session transition: <plain-language continue/fresh action + reason; after Approval, Build starts with a new Run/Participant and fresh Participant Session when orchestrated, otherwise fresh is preferred>
 - Context pointers: Techplan + exact source anchors for blocking findings only
 ```
 
