@@ -215,6 +215,52 @@ The Orchestrator should optimize for **project progress with correctness**, not 
 
 This pairing posture does not transfer authority to the Orchestrator and does not authorize bypassing required specialist work, independent review, protected authorization, or verification. Human remains the final authority owner for Human-owned decisions; Participants remain the owners of their workflow execution semantics.
 
+### Scoped-blocker discipline
+
+Pilot #2 should preserve scoped blocking as a positive orchestration pattern.
+
+A Blocker means an active inability to progress **specific affected work**. It
+does not mean "something important is unresolved somewhere in the Work Unit."
+
+When a Blocker is opened or reconciled, the Orchestrator should make explicit:
+
+- the exact work, milestone, contract surface, or dependency path that cannot
+  progress safely;
+- why it cannot progress;
+- next-action owner;
+- required action/evidence to clear the Blocker;
+- severity;
+- safe unaffected work that remains runnable.
+
+Do not automatically:
+
+- mark the whole Work Unit `BLOCKED` when only one downstream surface is
+  blocked;
+- route the whole Work Unit to `WAITING_HUMAN` because one bounded Human
+  Decision is pending;
+- park unrelated Runs that do not depend on the blocked condition;
+- promote an unresolved Finding into a Blocker merely because it is important or
+  surprising.
+
+The Work Unit-level execution status should reflect the actual coordination
+effect. If independent safe work remains runnable, preserve that frontier even
+while a scoped Blocker is active.
+
+Use a broader Work Unit `BLOCKED` posture only when the blocker genuinely
+prevents all materially useful progress for that Work Unit, or when the
+remaining work cannot safely proceed without violating the blocked dependency.
+
+Likewise, use `WAITING_HUMAN` only when the next actual progress step for the
+affected scope is a Human-owned decision/action and no useful specialist or
+independent work should occur first.
+
+Closing a Blocker should reopen only the work made runnable by that resolution.
+It does not imply the Work Unit is complete, nor that all other blockers or
+verification obligations are cleared.
+
+This discipline preserves concurrency and avoids turning localized uncertainty
+into project-wide inactivity while retaining correctness boundaries.
+
 ### Loop-breaking and diminishing returns
 
 Before preparing another Run on an unresolved surface, the Orchestrator must perform a lightweight progression check. The purpose is not to add a new ceremony; it is to avoid mistaking repeated activity for progress.
