@@ -226,6 +226,52 @@ historical narrative back into the current-state record.
 Physical storage and filename remain project-defined; this guidance does not
 create a mandatory `manifest.md` artifact.
 
+## Projection ownership and duplication
+
+Current-state convenience views must not become competing sources of truth.
+
+For every material orchestration concern, the Orchestrator should know which
+durable artifact owns the semantic truth and which artifacts are only derived
+views.
+
+Pilot #2 should preserve these ownership boundaries:
+
+- **Work Graph** owns cross-Work-Unit dependency topology;
+- **Work Unit current state** owns the current execution/scheduling/horizon and
+  active blocker/gate state for that Work Unit;
+- **Events** own material coordination chronology;
+- **Run artifacts / Handoffs** own execution evidence for the Run;
+- **Decision / authority artifacts** own material authority decisions and
+  ownership context;
+- **Control Surface** is a derived Human-facing projection and must be
+  regenerable from underlying state.
+
+A project-specific tracker, dashboard, summary, or status document may exist for
+usability, but it should be treated as a derived projection unless project
+authority explicitly gives it unique semantic ownership.
+
+Rules:
+
+- do not maintain the same semantic field independently in multiple places;
+- when a projection repeats underlying state, prefer pointers or concise
+  rendering over copied historical narrative;
+- if a projection conflicts with its owning source, the owning source wins and
+  the projection is stale;
+- stale projection is a reporting/reconciliation issue, not authority by
+  recency;
+- adding a new projection requires a concrete Human/operational need that is not
+  already served adequately;
+- removing a projection is a separate correctness-sensitive simplification and
+  should not happen until fresh reconstruction and Human situational awareness
+  remain proven sufficient without it.
+
+The Orchestrator should update only the surfaces whose owned or derived meaning
+actually changed. Do not turn every Run completion into a ritual rewrite of all
+status documents when some surfaces can be regenerated or are unaffected.
+
+This section clarifies ownership and sync discipline only. It does not yet
+remove Control Surface, project tracker, or any other existing projection.
+
 ## Downstream Work Unit decomposition
 
 The Orchestrator owns orchestration decomposition after sufficient upstream evidence exists.
