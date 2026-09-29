@@ -45,6 +45,12 @@ A Finding is not a Blocker merely because it is unresolved, surprising, or
 important. State the exact affected scope and progression consequence. If only
 part of the work is blocked, keep safe unaffected solutioning open.
 
+If any Stage-2 Finding is an active Blocker, use the Human-visible
+`[SCOPED BLOCKER DETECTED]` convention from `workflow/context-management.md`
+before the boundary summary. Make clear that "Stage 3 may proceed" does not mean
+"no blocker exists" when Stage 3 is itself the route to resolve that scoped
+Blocker.
+
 The Stage-2 boundary summary must tell the human:
 
 1. what was found;
