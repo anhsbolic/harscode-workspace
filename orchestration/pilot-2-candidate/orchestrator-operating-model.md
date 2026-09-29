@@ -343,93 +343,57 @@ For Pilot #2, make the ownership boundary explicit:
 
 ## Work Unit current-state discipline
 
-When a target project uses a Work Unit record or `manifest.md`-like artifact,
-treat it as the concise current-state representation of that Work Unit, not as
-an accumulating Run history.
+The Orchestrator must keep each Work Unit record focused on **current truth with
+enough provenance**, not on accumulating Run history.
 
-The record should make the current truth easy to reconstruct, including when
-applicable:
+Preserve these boundaries:
 
-- stable Work Unit identity, outcome, scope, and completion condition;
-- current execution/scheduling/horizon state;
-- current Run or next runnable route;
-- active Human gate / authority synchronization need;
-- active Blocker and affected scope;
-- current-effective milestone or contract pointers;
-- concise pointers to the evidence that justifies the current state.
+- current-state fields have one current value and are replaced when state changes;
+- Work Graph owns cross-Work-Unit dependency topology;
+- Events own material chronology;
+- Run artifacts/Handoffs own execution evidence;
+- Decision/Finding/Blocker artifacts retain their own semantics when applicable.
 
-When reconciliation changes current state, replace the prior current value
-rather than appending another narrative account of the completed Run.
+A Work Unit record should expose the current outcome/scope/completion condition,
+current execution/scheduling/horizon, active Run or next route, active Human
+gate/blocker, and concise current-effective evidence pointers when those are
+material.
 
-Chronology and detailed execution evidence belong primarily in:
+Do not copy completed Run narratives into the Work Unit record when a pointer
+plus current-state consequence is sufficient. Do not make the record artificially
+terse when that would make reconstruction unsafe.
 
-- Events for material coordination history;
-- Run-owned artifacts / Handoffs for execution evidence;
-- Decision / Finding / Blocker records where those semantics have their own
-  durable owner.
-
-Do not copy a completed Run's full outcome into the Work Unit record when a
-pointer plus the resulting current-state consequence is sufficient.
-
-This is not a mandate to make the Work Unit record artificially terse. Keep
-material rationale when omitting it would make the current state ambiguous or
-unsafe to reconstruct. The goal is **current truth with enough provenance**, not
-minimal word count.
-
-If fresh reconstruction would otherwise require expensive traversal across many
-historical Runs, prefer a concise current-effective pointer/index over copying
-historical narrative back into the current-state record.
-
-Physical storage and filename remain project-defined; this guidance does not
-create a mandatory `manifest.md` artifact.
+Physical filename/storage remains project-defined; this does not require a
+`manifest.md` file.
 
 ## Projection ownership and duplication
 
-Current-state convenience views must not become competing sources of truth.
+Current-state convenience views must remain derived, not competing sources of
+truth.
 
-For every material orchestration concern, the Orchestrator should know which
-durable artifact owns the semantic truth and which artifacts are only derived
-views.
+The Orchestrator must preserve these semantic owners:
 
-Pilot #2 should preserve these ownership boundaries:
+- Work Graph → cross-Work-Unit topology;
+- Work Unit current state → current execution/scheduling/horizon and active
+  blocker/gate state;
+- Events → material coordination chronology;
+- Run artifacts/Handoffs → Run execution evidence;
+- Decision/authority artifacts → authority decisions and ownership context;
+- Control Surface → derived Human-facing projection.
 
-- **Work Graph** owns cross-Work-Unit dependency topology;
-- **Work Unit current state** owns the current execution/scheduling/horizon and
-  active blocker/gate state for that Work Unit;
-- **Events** own material coordination chronology;
-- **Run artifacts / Handoffs** own execution evidence for the Run;
-- **Decision / authority artifacts** own material authority decisions and
-  ownership context;
-- **Control Surface** is a derived Human-facing projection and must be
-  regenerable from underlying state; the semantic projection must be derivable,
-  but a separately persisted `control-surface.md` file is project-defined and
-  not universally required.
+A tracker/dashboard/summary may exist for usability, but it is derived unless
+project authority explicitly gives it unique ownership.
 
-A project-specific tracker, dashboard, summary, or status document may exist for
-usability, but it should be treated as a derived projection unless project
-authority explicitly gives it unique semantic ownership.
+If a projection conflicts with its owner, the owner wins and the projection is
+stale. Update only surfaces whose owned/derived meaning changed; do not rewrite
+all status artifacts after every Run.
 
-Rules:
+The Control Surface must be derivable when needed. A separately persisted
+`control-surface.md` file is optional project implementation.
 
-- do not maintain the same semantic field independently in multiple places;
-- when a projection repeats underlying state, prefer pointers or concise
-  rendering over copied historical narrative;
-- if a projection conflicts with its owning source, the owning source wins and
-  the projection is stale;
-- stale projection is a reporting/reconciliation issue, not authority by
-  recency;
-- adding a new projection requires a concrete Human/operational need that is not
-  already served adequately;
-- removing a projection is a separate correctness-sensitive simplification and
-  should not happen until fresh reconstruction and Human situational awareness
-  remain proven sufficient without it.
-
-The Orchestrator should update only the surfaces whose owned or derived meaning
-actually changed. Do not turn every Run completion into a ritual rewrite of all
-status documents when some surfaces can be regenerated or are unaffected.
-
-This section clarifies ownership and sync discipline only. It does not yet
-remove Control Surface, project tracker, or any other existing projection.
+Adding or removing a projection is a correctness-sensitive choice: require a
+concrete Human/operational need for addition, and sufficient reconstruction /
+situational-awareness evidence before removal.
 
 ## Downstream Work Unit decomposition
 
@@ -441,187 +405,106 @@ A coordination-only split may be performed by the Orchestrator. A split that est
 
 ## Invocation augmentation boundary
 
-Invocation additions fall into three classes:
+The Orchestrator may add routing metadata and concise derived execution focus to
+a Run Invocation, but it must not smuggle a new substantive obligation into
+free-form dispatch text.
 
-1. **Routing metadata** — Run ID, Role, Session posture, model/reasoning selection, working directory, artifact paths. Orchestrator-owned.
-2. **Derived execution focus** — a narrow restatement of an already-settled obligation, with provenance to the source artifact. Orchestrator-owned.
-3. **New substantive obligation** — a new requirement, risk, test obligation, or design assumption not already settled. Must not be injected silently; route it through the appropriate Finding/Planning/Authority mechanism.
+For material inputs, distinguish:
 
-For material Invocation inputs, the Orchestrator should also make the input
-posture explicit:
+- **assignment-defining pinned** — exact provenance defines what the Run means;
+- **execution baseline** — establishes starting/drift-detection context;
+- **current-effective** — resolves ordinary applicable guidance/source at
+  execution time.
 
-- **assignment-defining pinned** — exact revision/provenance defines the Run;
-- **execution baseline** — revision establishes starting/drift-detection context;
-- **current-effective** — resolve the applicable guidance/source at execution
-  time.
+A repository SHA does not mean "everything is pinned." Assignment-defining
+contracts must not float on ambiguous "latest" semantics either.
 
-Do not use a repository commit SHA as shorthand for "everything is pinned."
-Likewise, do not leave an assignment-defining contract floating on "latest" when
-the exact approved revision determines what the Participant must execute.
+Current-effective guidance still needs reconstructable provenance. Semantic
+pinning preserves assignment meaning; provenance capture records what was
+actually relied upon.
 
-The selected posture should follow semantic necessity, not convenience:
-reproducibility where the Run meaning depends on exact evidence, current-effective
-resolution where ordinary guidance should evolve safely, and baseline references
-where the purpose is merely to detect material drift.
-
-Current-effective guidance still needs provenance. At dispatch, the Orchestrator
-should make the material guidance revision actually resolved by the Participant
-reconstructable without turning that revision into an assignment pin. If guidance
-changes during the same Run, follow the drift/reconciliation rules in
-`participant-execution-continuation.md`; do not silently reinterpret prior
-execution under newer guidance.
-
-This distinction is important:
-
-> **semantic pinning controls assignment meaning; provenance capture records what
-> was actually relied upon.**
+Detailed Invocation, drift, amendment, and guidance-provenance mechanics are
+owned by `participant-execution-continuation.md`.
 
 ## Participant Profile discovery
 
-Pilot #2 may use project-local reusable Participant Profiles as execution blueprints for assigning Role/Specialization/capability boundaries to ephemeral Participants.
+Participant Profile lifecycle and guidance-routing mechanics are owned by
+`participant-profile-discovery.md`.
 
-Participant Profile discovery must follow `participant-profile-discovery.md`.
+The Orchestrator's cross-cutting responsibilities are only to:
 
-Key operating boundary:
+- reuse the least-specific safely sufficient Profile by default;
+- create/refine one only when durable evidence shows a real reusable capability
+  gap;
+- ensure the selected Profile exposes the stable guidance routes needed for its
+  normal capability;
+- ensure the Run Invocation supplies current scope, authority/evidence, and
+  concern-specific guidance;
+- never infer decision authority or persistent memory from Profile capability.
 
-- initial Project Bootstrap establishes the minimum evidence-backed baseline Profile team justified by the near-term project shape;
-- a new Slice performs bounded readiness reconciliation against that existing baseline rather than full re-bootstrap;
-- normal Runs reuse existing suitable Profiles directly; Profile suitability is an invariant, not a mandatory pre-Run ceremony;
-- just-in-time Profile discovery/refinement is used only when real work exposes a capability gap or the Human surfaces a materially justified missing capability;
-- profile readiness depends on minimum material evidence, not project-wide documentation completeness;
-- missing optional/future guidance must not block an otherwise justified profile;
-- when narrow specialization is not supported, prefer the least-specific safely supported profile before blocking;
-- Profiles describe capability and execution boundaries, not decision authority or persistent agent memory;
-- an active Profile should expose discoverable required-guidance pointers sufficient for its normal Role/capability, including applicable Harscode workflow/orchestrated execution entrypoints and project-local guidance;
-- the Profile should route to guidance rather than copy it, and must not become a frozen task prompt or bundle every future concern-specific document;
-- the Orchestrator may reuse, refine, or derive Profiles when current evidence justifies them, while material authority remains governed by the Authority Map;
-- Run-specific scope, current decisions, current Work Unit state, exact phase inputs, and concern-specific guidance belong in the invocation/current-effective artifacts, not in the Profile;
-- before dispatch, the Orchestrator should ensure the selected Profile plus Invocation gives the Participant a complete discoverable guidance route for the actual Run; missing applicable guidance is a routing gap, not something the Participant should guess.
-
-Participant identity remains ephemeral. One Run binds one Participant identity and may span multiple Sessions when immediate context/runtime renewal is needed. A Human/owner decision inside an active Participant Session does not by itself end the Run; the Run ends when that execution occurrence ends and the Participant produces its terminal Handoff (or abnormal termination is reconciled). Later workflow re-entry creates a new Run with meaningful-delta provenance. Completed Participants do not retain hidden memory across future Runs.
-
+Profile suitability is an orchestration invariant, not a mandatory ceremony
+before every Run.
 
 ## Participant execution and continuation
 
-Participant execution, Run Invocation, Session renewal, Continuation Checkpoint, terminal Participant Execution Handoff, Orchestrator reconciliation, repeated-Run provenance, and durable Run-evidence discoverability must follow `participant-execution-continuation.md`.
+Run Invocation, Participant lifecycle, Session renewal, Checkpoint/Handoff,
+repeated-Run provenance, Run-artifact proportionality, and detailed
+reconciliation mechanics are owned by
+`participant-execution-continuation.md`.
 
-The Orchestrator should preserve a Run while the same bounded execution
-occurrence remains semantically intact. Do not fragment work into a new Run
-merely because a related Finding, bounded Human decision, or adjacent
-sub-question appears inside the existing objective.
+The Orchestrator must preserve only the cross-cutting boundary here:
 
-Before ending a Run for routing convenience, check whether objective, Role,
-scope, authority boundary, independence requirement, assignment-defining input,
-or execution occurrence has actually changed. If not, prefer continuation in
-the current Run when safe.
-
-Key operating rules:
-
-- one Run is one execution occurrence of a workflow activity;
-- one Run binds one Participant identity and may span multiple Sessions;
-- immediate Session replacement preserves the same Run, Participant, and pinned Profile revision through a Participant-authored Continuation Checkpoint;
-- a Human/owner decision during an active Session does not automatically end the Run; terminal Handoff or reconciled abnormal termination ends the execution occurrence;
-- terminal Handoff is Participant evidence, not Work Unit state; the Orchestrator reconciles it against the Invocation and durable evidence before updating canonical Work Unit execution/scheduling state;
-- reconciliation is coordination work, not hidden Reviewer/Verifier execution, and does not require a separate reconciliation-report artifact by default;
-- later workflow re-entry creates a new Run and requires meaningful-delta provenance tied to prior relevant execution evidence;
-- a `PARTIAL` Handoff alone is not sufficient meaningful delta for mechanical repetition; repeated unresolved causes should trigger diagnosis and canonical `STALLED` handling;
-- active Work Unit → current Run and Run ID → durable Invocation/evidence must be deterministically discoverable, while chronology remains owned by Runs/Events rather than filesystem ordering;
-- do not add a parallel Run lifecycle state machine, cross-execution Resume Invocation, Run Registry, latest-checkpoint mirror, or universal filesystem layout without CRTV evidence that the extra mechanism solves a real problem;
-- assignment truth is Orchestrator-owned through the Run Invocation; execution truth is Participant-owned through Checkpoints/Handoffs;
-- once an artifact has been materially relied upon, material corrections preserve provenance through amendment/supersession rather than silent rewrite.
+- keep the same Run/Participant while the same execution occurrence continues,
+  including immediate Session replacement when safely reconstructable;
+- later phase re-entry after the occurrence ends uses a new Run/Participant with
+  meaningful-delta provenance;
+- do not fragment a Run merely because a related Finding, bounded Human decision,
+  or adjacent sub-question appears inside the same objective;
+- terminal Handoff is Participant evidence, not Work Unit state;
+- Orchestrator reconciliation updates coordination state without becoming hidden
+  Reviewer/Verifier work;
+- repeated unresolved cause triggers diagnosis/`STALLED`, not mechanical retry;
+- assignment truth flows through Invocation; execution truth flows through
+  Participant-owned durable evidence.
 
 ## Project orchestration bootstrap
 
-Initial project orchestration bootstrap must follow `project-orchestration-bootstrap.md`.
+Bootstrap and Slice-readiness mechanics are owned by
+`project-orchestration-bootstrap.md`.
 
-Bootstrap is one initial minimum-readiness preparation lifecycle, not a requirement to complete project documentation, architecture, profile discovery, authority mapping, runtime mechanics, or whole-project planning up front, and not a ritual repeated before each Run.
+The Orchestrator should establish only the minimum durable foundation needed to
+reconstruct the near-term objective and expose the first justified Run. Reuse
+existing authority/Profile/runtime/orchestration state by default; perform
+bounded readiness reconciliation for new material work and fill proven gaps
+just-in-time.
 
-The Orchestrator should:
-
-- establish the smallest durable project/orchestration context needed to reconstruct the work;
-- scope readiness to the near-term objective and initial runnable frontier;
-- reuse Authority Mapping and Participant Profile Discovery guidance instead of duplicating their logic;
-- establish discoverable pointers to current-effective authority, profile, runtime/model, and orchestration-state sources;
-- derive only the minimum Parent Outcome / Work Unit topology needed to expose the first justified Run;
-- prefer Exploration or Planning over speculative implementation decomposition when solution evidence is insufficient;
-- stop bootstrap once the stable minimum foundation is sufficient and the first real Run can be dispatched safely;
-- at a new Slice/material work area, perform bounded readiness reconciliation and reuse existing foundation/Profile state by default;
-- during normal work, fill only specific proven gaps just-in-time rather than re-running bootstrap/profile readiness;
-- reconcile affected bootstrap concerns progressively when material project context changes instead of repeating a full bootstrap by default.
-
-A Bootstrap Record is a routing/readiness index, not a new source of Product, Design, Security, Architecture, or delivery authority.
+Bootstrap is not whole-project planning, documentation completion, or a ceremony
+repeated before normal Runs. Stop once the first safe runnable frontier is
+available.
 
 ## Orchestrator pairing model routing
 
-Pilot #2 should route the **Human ↔ Orchestrator pairing model** by current
-coordination complexity, not by a fixed Role-to-model mapping and not by a
-"strongest model by default" rule.
+Exact pairing model names belong to Human-owned runtime configuration. Candidate
+routing here is capability-based:
 
-The Human-owned runtime/model registry remains the source for which models and
-reasoning modes are actually available. Exact model names and model-generation
-assumptions are runtime/local data, not Harscode coordination semantics.
+- use the least costly sufficient **bounded pairing route** for routine,
+  evidence-clear coordination;
+- escalate only when coordination becomes materially cross-cutting, ambiguous,
+  conflicting, high-blast-radius, or difficult to reverse.
 
-Use two capability postures conceptually:
+Typical escalation triggers include conflicting durable artifacts/authority,
+major Work Graph or decomposition judgment, cross-Slice/cross-authority
+synthesis, repeated `STALLED` diagnosis, protocol ambiguity, or inability to
+reconstruct a trustworthy frontier.
 
-- **bounded pairing route** — the least costly currently available model/effort
-  that is sufficient for routine, evidence-clear orchestration;
-- **escalated pairing route** — a stronger available model/effort when the
-  Orchestrator must resolve materially cross-cutting, ambiguous, conflicting, or
-  high-downstream-cost coordination.
+Step down after the ambiguity is resolved into a stable bounded frontier. Do not
+escalate merely because a Role is important, file count is large, or a stronger
+model was used previously.
 
-The Orchestrator may step down from the escalated route to the bounded route when
-the current state has become operationally bounded, including when:
-
-- durable state has been reconstructed cleanly;
-- the relevant Authority Map is sufficient for the current frontier;
-- Work Graph / current frontier is stable enough that no major decomposition or
-  topology judgment is pending;
-- there are no materially conflicting authority interpretations or durable
-  artifacts requiring synthesis;
-- the next work is bounded reconciliation, dispatch preparation, routine
-  routing, or straightforward continuation;
-- the cost of a wrong coordination judgment is limited and readily reversible.
-
-The Orchestrator should escalate from the bounded route when any of the following
-materially applies:
-
-- durable artifacts conflict or the source of current truth is ambiguous;
-- a new cross-feature, cross-Slice, or cross-authority concern must be
-  synthesized;
-- the next step requires major Work Graph/decomposition judgment;
-- repeated Runs or unresolved causes indicate a possible loop / `STALLED`
-  condition;
-- protocol/candidate guidance itself is ambiguous or appears contradictory;
-- the Orchestrator must reconcile multiple valid Decisions or authority contexts;
-- the decision has high downstream cost, broad blast radius, or is difficult to
-  reverse;
-- a fresh reconstruction cannot confidently identify the current frontier from
-  durable state.
-
-Do not switch models merely because:
-
-- a particular workflow Role is active;
-- the task has a large file count;
-- the previous Run used a stronger model;
-- the work feels important but the coordination judgment is actually bounded.
-
-Model switching should happen at a natural coordination boundary whenever
-possible. A switch changes execution capacity, not orchestration semantics,
-authority, Work Unit state, or Run identity.
-
-If a bounded pairing route becomes materially ambiguous, escalate before making
-the high-cost judgment rather than finishing it with an insufficient route.
-Likewise, after an escalated ambiguity has been resolved into a stable bounded
-frontier, staying escalated merely by inertia is not a correctness requirement.
-
-The current runtime may map these postures to specific model/effort pairs, but
-that mapping belongs in Human-owned runtime configuration and may change without
-changing this candidate guidance.
-
-Participant Run model routing remains a separate decision governed by
-`model-routing-and-escalation.md`. A stronger Orchestrator pairing route does
-not imply stronger Participant models, and a stronger Participant model does not
-imply the Orchestrator pairing must remain escalated.
+Pairing routing is independent from Participant Run model routing. Generic Run
+model/effort routing and escalation diagnosis are owned by
+`model-routing-and-escalation.md`; concrete pairing model bindings are owned by
+the Human runtime registry.
 
 ## Dedicated local Orchestrator
 
