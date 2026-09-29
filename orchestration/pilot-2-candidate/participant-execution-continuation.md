@@ -42,7 +42,7 @@ A minimal Invocation should make discoverable:
 - **Identity** — Run ID, Work Unit ID, workflow route;
 - **Assignment** — bounded objective, Run-specific scope, Run-level completion condition;
 - **Execution binding** — Role, Specialization when useful, Participant ID, Participant Profile ID, pinned Profile revision;
-- **Effective inputs** — current-effective input pointers plus assignment-defining revisions when drift detection matters;
+- **Effective inputs** — current-effective input pointers, assignment-defining revisions when drift detection matters, and material resolved-guidance provenance when needed for reconstruction;
 - **Repeated-Run provenance when applicable** — prior relevant execution evidence, meaningful delta, and newly effective Decision/Finding/dependency evidence;
 - **Runtime route** — model, reasoning effort, routing rationale, working directory/runtime route;
 - **Session posture** — initial Session identity/posture;
@@ -106,6 +106,51 @@ available.
 At dispatch, the Invocation should make the posture discoverable for material
 inputs. A reader should be able to tell whether a pointer is assignment-defining,
 baseline-only, or current-effective without guessing.
+
+### Current-effective guidance provenance
+
+`current-effective` means **not semantically pinned**. It does not mean
+"untracked."
+
+When material workflow/project guidance is resolved for dispatch, capture enough
+revision/provenance to reconstruct which guidance the Participant actually relied
+on. This may be a repository/workflow revision plus the applicable guidance
+pointers rather than a separate snapshot of every file.
+
+Provenance capture and semantic pinning are different:
+
+- **provenance capture** records what revision was observed/used;
+- **semantic pinning** requires that exact revision to define the Run assignment.
+
+Ordinary guidance should normally use provenance capture without semantic
+pinning.
+
+During an active Run:
+
+- do not silently rewrite the original observed-guidance provenance;
+- if a later Session or explicit re-resolution sees a newer guidance revision,
+  compare the material delta before continuing;
+- if the change does not alter the Run meaning, safety boundary, authority,
+  required outputs, or verification obligation, the Run may continue and the
+  newly observed revision should be recorded when materially useful;
+- if the change materially invalidates or changes the active assignment, stop and
+  reconcile before continuing; use an explicit amendment only when the assignment
+  meaning remains intact, otherwise end the occurrence and use a new Run;
+- a newer guidance revision must not retroactively change what an earlier
+  Participant Session was instructed to do.
+
+A replacement Session reconstructing the same Run should therefore know both:
+
+1. the guidance provenance previously relied upon; and
+2. the current-effective guidance now available.
+
+It should check for material drift rather than blindly freezing the old guidance
+or blindly adopting the new one.
+
+Core rule:
+
+> Semantic pinning preserves assignment meaning; provenance capture preserves
+> reconstructability. Use both only where each is actually needed.
 
 ## Invocation stability
 
