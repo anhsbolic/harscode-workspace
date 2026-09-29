@@ -76,6 +76,32 @@ question:
 Do **not** test all removals at once. Use staged ablation so any quality loss can
 be attributed to a specific simplification.
 
+### Experiment comparison boundary
+
+The experiment is **revision-bound and non-blocking**.
+
+A baseline must record the target project revision/state it reconstructed.
+Subsequent ablation stages compare against that same revision/state, even if
+normal Pilot work has already moved the live branch forward.
+
+Conceptually:
+
+```text
+target project @ revision X
+├── Stage A — normal artifact set
+├── Stage B — same revision X, readiness artifact excluded
+├── Stage C — same revision X, one convenience projection excluded at a time
+└── Stage D — same revision X, compact derived Work Unit representation
+```
+
+Do not regenerate Stage A merely because normal project state changed after the
+baseline was captured. A new baseline is justified only when deliberately
+starting a new experiment cohort on a new revision.
+
+The simplification experiment must not become a critical-path gate for ordinary
+Pilot work. Normal orchestration may continue after the baseline is captured;
+ablation stages may later inspect the immutable prior revision/state.
+
 ### Experiment sequence
 
 **Stage A — Baseline reconstruction**
@@ -94,7 +120,7 @@ Capture only the observable result needed for comparison:
 - next action;
 - any uncertainty or artifact conflict encountered.
 
-This is the control. Do not change project artifacts yet.
+This is the control. Record the exact target project revision/state used for the reconstruction. Do not mutate project artifacts merely for the baseline.
 
 **Stage B — Readiness-artifact ablation (`SR-004`)**
 
@@ -181,8 +207,12 @@ a real owner gap.
 
 ### Evidence discipline
 
-- Keep project canonical/current artifacts unchanged until the relevant stage
-  passes.
+- Keep project canonical/current artifacts unchanged for the tested revision;
+  use read-only/derived experiment inputs for ablation.
+- Bind Stage A/B/C/D comparisons to the same target project revision/state.
+- Do not regenerate a baseline solely because normal Pilot work advanced the live
+  branch after Stage A.
+- Do not block ordinary Pilot execution while waiting for later ablation stages.
 - Use fresh-session reconstruction; prior chat memory must not be part of the
   test.
 - Run one ablation at a time.
@@ -242,7 +272,7 @@ Current state and history must remain unambiguous; Human-facing continuation mus
 For one Work Unit, classify each current file as authority/current-state/history/projection and test reconstruction without relying on one candidate redundant projection.
 
 **Evidence**  
-Kencleng Pilot #2 repeated updates to `manifest.md`, `control-surface.md`, Work Graph, Events, and `kencleng-development-tracker.md`. A current artifact audit found that the project tracker has a defensible unique coarse cross-slice role, but its detailed Slice-2 Run/frontier narrative substantially overlaps the Work Unit manifest, Control Surface, Work Graph, and Events. Current candidate guidance now defines explicit ownership boundaries; the remaining safety question is whether thinner projections preserve fresh-session and Human situational awareness in real use.
+Kencleng Pilot #2 repeated updates to `manifest.md`, `control-surface.md`, Work Graph, Events, and `kencleng-development-tracker.md`. A current artifact audit found that the project tracker has a defensible unique coarse cross-slice role, but its detailed Slice-2 Run/frontier narrative substantially overlaps the Work Unit manifest, Control Surface, Work Graph, and Events. After `OIR-S2-002-006`, one Orchestrator reconciliation updated Event, manifest, Work Graph, Control Surface, Parent Outcome, and tracker; the observed end-to-end handoff took roughly 20 minutes, with tool/network latency not isolated. Treat the duration as supporting friction evidence, not proof of a model/runtime performance defect. Current candidate guidance now defines explicit ownership boundaries; the remaining safety question is whether thinner projections preserve fresh-session and Human situational awareness in real use.
 
 ### SR-003 — Allow related decision surfaces to remain in one Run longer
 
