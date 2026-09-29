@@ -26,6 +26,33 @@ Code anchors are coordinates, not frozen truth. Do not copy routine code bodies 
 
 Do not develop solution options yet. Progress updates can be terse and non-blocking after each area.
 
+Before asking to continue to Stage 3, classify the progression effect of every
+material Finding in plain language:
+
+- **informational** — useful evidence, but no current decision/progression impact;
+- **decision-relevant** — solutioning may continue, but the Finding must shape or
+  surface a decision;
+- **blocking** — the affected scope cannot safely progress until the stated
+  condition/action is resolved;
+- **needs further evidence** — the current evidence is insufficient to decide
+  whether or how to progress;
+- **deferable** — unresolved, but current task/scope can progress safely and the
+  deferred trigger/owner is explicit.
+
+These are Exploration progression labels, not new protocol state enums.
+
+A Finding is not a Blocker merely because it is unresolved, surprising, or
+important. State the exact affected scope and progression consequence. If only
+part of the work is blocked, keep safe unaffected solutioning open.
+
+The Stage-2 boundary summary must tell the human:
+
+1. what was found;
+2. what is actually blocked, if anything;
+3. whether Stage 3 can proceed safely and why;
+4. what must happen next if it cannot;
+5. what confirmation or redirection is needed from the human.
+
 ## Stage 3 — Solutioning
 
 After the human confirms Stage 2, evaluate solution options/trade-offs. Record:
