@@ -69,6 +69,25 @@ Write durable Stage-2 evidence under {TASK_PATH}/1-exploration/logs/. Report
 progress after each area so the human can redirect, but do not require a new
 approval between every area unless asked.
 
+At Stage-2 completion, do not leave the human to infer whether a Finding blocks
+solutioning. Give a compact progression summary for each material Finding:
+
+- what was found and why it matters;
+- whether it is informational, decision-relevant, blocking, needs further
+  evidence, or safely deferable for the current task;
+- exactly what scope/milestone it blocks, if any;
+- whether Stage 3 can proceed safely despite it, and why;
+- the concrete next action/owner when Stage 3 should not proceed yet.
+
+These labels describe the Finding's effect on current progression; they are not
+new canonical orchestration enums. A material Finding does not automatically
+become a Blocker. Treat it as a Blocker only when it creates an active inability
+to progress the affected scope.
+
+Then explicitly ask the human to either confirm Stage 2 and proceed to Stage 3,
+or redirect the analysis. Do not ask for confirmation without first explaining
+the progression consequence of the Findings.
+
 STAGE 3 — SOLUTIONING (only after human confirms Stage 2)
 Compare viable options/trade-offs and record the chosen direction. Preserve
 material rejected alternatives and the rationale/consequence that prevents a
