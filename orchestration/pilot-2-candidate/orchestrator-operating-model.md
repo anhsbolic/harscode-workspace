@@ -462,6 +462,17 @@ reproducibility where the Run meaning depends on exact evidence, current-effecti
 resolution where ordinary guidance should evolve safely, and baseline references
 where the purpose is merely to detect material drift.
 
+Current-effective guidance still needs provenance. At dispatch, the Orchestrator
+should make the material guidance revision actually resolved by the Participant
+reconstructable without turning that revision into an assignment pin. If guidance
+changes during the same Run, follow the drift/reconciliation rules in
+`participant-execution-continuation.md`; do not silently reinterpret prior
+execution under newer guidance.
+
+This distinction is important:
+
+> **semantic pinning controls assignment meaning; provenance capture records what
+> was actually relied upon.**
 
 ## Participant Profile discovery
 
