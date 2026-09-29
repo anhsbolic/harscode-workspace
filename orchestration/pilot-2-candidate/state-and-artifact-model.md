@@ -1,7 +1,9 @@
 # Pilot #2 Candidate — Orchestration State & Artifact Model
 
 > Status: PILOT #2 CANDIDATE / NON-AUTHORITATIVE
-> Scope: Group A checkpoint only. This is a minimal durable-state hypothesis for Pilot #2, not a finalized storage/schema contract.
+> Scope: Group A checkpoint only. This is an earlier durable-state design snapshot, not a finalized storage/schema contract.
+>
+> Interpretation: use `README.md` in this directory for current candidate ownership. Canonical state semantics now come from `../protocol-v0.1.md`; current Work Unit/projection discipline is refined by `orchestrator-operating-model.md`. Physical layout examples in this file are illustrative, not mandatory.
 
 ## Goal
 
@@ -9,16 +11,19 @@ Make current orchestration state unambiguous and reconstructable without turning
 
 ## Minimal artifact roles
 
-Pilot #2 needs six logical artifact roles:
+This checkpoint modeled six logical concerns:
 
 1. **Parent Outcome**
 2. **Work Graph**
 3. **Work Unit record**
 4. **Event log**
-5. **Run directory**
-6. **Control Surface**
+5. **Run evidence**
+6. **Control Surface projection**
 
-A material Decision may additionally use a dedicated Decision artifact.
+These concerns do not imply six mandatory separately persisted files. Current
+candidate guidance requires durable/reconstructable semantics and lets physical
+storage remain project-defined. A material Decision may additionally use a
+dedicated Decision artifact when that adds durable value.
 
 ## Candidate layout
 
@@ -116,11 +121,11 @@ Record material facts such as:
 
 Do not use the global Event log for every file read, shell command, or tool call. Detailed execution telemetry belongs with the Run.
 
-## Run directory
+## Run evidence
 
 A Run is one workflow execution occurrence.
 
-Its directory owns:
+When a project uses a Run directory, it may contain:
 
 - Orchestrator-generated invocation;
 - workflow-owned durable artifacts;
@@ -147,7 +152,9 @@ Approval evidence may cause an Orchestrator state transition, but Decision and W
 
 ## Control Surface
 
-The Control Surface is a Human/operator projection of current state.
+The Control Surface is a Human/operator projection of current state. The
+projection must be derivable when needed; a persisted `control-surface.md`
+file is an implementation choice rather than a universal requirement.
 
 It may show:
 
@@ -197,14 +204,14 @@ Pilot #1 demonstrated why this separation is needed:
 
 The candidate model treats those as structural state/projection drift, not isolated copy-editing mistakes.
 
-## Open item for later protocol revision
-
-Scheduling currently has:
-
-```text
-PARKED | QUEUED | DISPATCHED | RUNNING
-```
+## Resolved historical item — terminal scheduling
 
 Pilot #1 incorrectly produced `Scheduling: DONE`.
 
-Pilot #2 should not invent a new enum ad hoc. The protocol review should later decide how scheduling is represented when execution status is terminal (for example, non-applicable/null versus another explicit state).
+This item is no longer open. `orchestration/protocol-v0.1.md` now defines
+scheduling as an active scheduling posture only. When a Work Unit is terminal
+(`DONE` or `CANCELLED`), scheduling is omitted, null, or otherwise represented
+as non-applicable; no terminal scheduling enum is invented.
+
+Keep the Pilot #1 defect here as historical evidence, not as an unresolved
+candidate question.
