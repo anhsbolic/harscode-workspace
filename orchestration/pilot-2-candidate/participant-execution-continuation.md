@@ -412,6 +412,11 @@ The Participant records the decision as observed evidence; it does not become th
 
 The Orchestrator later reconciles the decision into durable project/orchestration state without requiring duplicate approval merely because the decision occurred inside a Participant Session.
 
+If the Decision changes authority-owned project truth, the Handoff is still only
+decision evidence and routing context. It must not become the canonical authority
+artifact by convenience. The Orchestrator must route or verify the corresponding
+authority-artifact update before dependent completion is claimed.
+
 
 ## Orchestrator reconciliation after terminal Handoff
 
@@ -423,10 +428,15 @@ The Orchestrator should perform a coordination-level reconciliation before updat
 2. compare the Handoff against the Run Invocation objective, scope, completion condition, and expected outputs;
 3. resolve material durable evidence rather than relying on narrative claims alone;
 4. reconcile Findings, Decisions, Blockers, and their ownership/routing implications;
-5. check whether material authority or assignment-defining input drift invalidates the completion claim;
-6. evaluate the Work Unit completion/workflow consequence;
-7. update canonical Work Unit current state and record material Events;
-8. recompute the runnable frontier.
+5. for each material Decision, determine whether it is execution-local or
+   authority-affecting, and if authority-affecting identify the owning
+   authoritative artifact/surface that must be updated;
+6. check whether material authority or assignment-defining input drift invalidates the completion claim;
+7. verify that required authority synchronization is complete before treating
+   dependent work as fully reconciled;
+8. evaluate the Work Unit completion/workflow consequence;
+9. update canonical Work Unit current state and record material Events;
+10. recompute the runnable frontier.
 
 Reconciliation checks coordination sufficiency. It must not turn the Orchestrator into a hidden Reviewer or Verifier. When technical correctness or independent verification remains unresolved, route the appropriate Role.
 
