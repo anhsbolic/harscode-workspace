@@ -93,6 +93,18 @@ Compare viable options/trade-offs and record the chosen direction. Preserve
 material rejected alternatives and the rationale/consequence that prevents a
 later agent from reopening a settled choice accidentally.
 
+When asking the human/owner to decide, do not present a raw option list. Use:
+- Problem — the concrete unresolved question.
+- Current context — only the evidence/constraints needed for the decision.
+- Options — normally at most two materially distinct viable paths.
+- Recommendation — the preferred path when evidence supports one.
+- Why — material rationale, consequence, and risk.
+- Decision ask — the exact direction/approval required.
+
+Use more than two options only when an additional path is materially distinct.
+If evidence is insufficient to recommend or decide, say what is missing and
+route the evidence need instead of forcing a premature choice.
+
 Keep source evidence and decisions durable in
 {TASK_PATH}/1-exploration/logs/; do not rely on chat memory alone. The raw-doc
 shape should follow the evidence rather than a forced per-file template.
