@@ -232,6 +232,21 @@ When a Blocker is opened or reconciled, the Orchestrator should make explicit:
 - severity;
 - safe unaffected work that remains runnable.
 
+When surfacing that active Blocker to the Human, use the same compact portable
+signal as workflow Participants:
+
+```text
+[SCOPED BLOCKER DETECTED]
+
+Blocks: <exact affected scope>
+Does not block: <safe unaffected work, or "none materially useful">
+Next route: <smallest concrete resolution route>
+Owner: <next-action owner>
+```
+
+This is a visibility convention only. It does not create a new Blocker type,
+status, severity, or requirement to emit a `[NO BLOCKER]` counterpart.
+
 Do not automatically:
 
 - mark the whole Work Unit `BLOCKED` when only one downstream surface is
