@@ -93,7 +93,7 @@ Kencleng Pilot #2 `WU-S2-002` artifact growth and repeated Run-local summaries.
 
 ### SR-002 — Reduce duplicate current-state projections
 
-**Status:** `OBSERVED`
+**Status:** `EXPERIMENT_CANDIDATE`
 
 **Observed cost**  
 The same coordination changes are repeatedly reflected across Work Unit manifest, Control Surface, Work Graph, Events, and project tracker, creating update cost and drift opportunities.
@@ -114,7 +114,7 @@ Current state and history must remain unambiguous; Human-facing continuation mus
 For one Work Unit, classify each current file as authority/current-state/history/projection and test reconstruction without relying on one candidate redundant projection.
 
 **Evidence**  
-Kencleng Pilot #2 repeated updates to `manifest.md`, `control-surface.md`, Work Graph, Events, and `kencleng-development-tracker.md`.
+Kencleng Pilot #2 repeated updates to `manifest.md`, `control-surface.md`, Work Graph, Events, and `kencleng-development-tracker.md`. A current artifact audit found that the project tracker has a defensible unique coarse cross-slice role, but its detailed Slice-2 Run/frontier narrative substantially overlaps the Work Unit manifest, Control Surface, Work Graph, and Events. Current candidate guidance now defines explicit ownership boundaries; the remaining safety question is whether thinner projections preserve fresh-session and Human situational awareness in real use.
 
 ### SR-003 — Allow related decision surfaces to remain in one Run longer
 
@@ -143,7 +143,7 @@ Kencleng Pilot #2 repeated O2/O3 and adjacent Open-Item routing.
 
 ### SR-004 — Make dedicated readiness artifacts optional
 
-**Status:** `OBSERVED`
+**Status:** `EXPERIMENT_CANDIDATE`
 
 **Observed cost**  
 A dedicated readiness-reconciliation artifact was useful during Pilot #2 transition, but could become a repeated ceremony if treated as mandatory for every Slice.
@@ -164,7 +164,7 @@ The resulting readiness state, gaps, decisions, and next frontier must remain du
 On a later bounded Slice, perform readiness reconciliation without a dedicated file and test fresh-session reconstruction.
 
 **Evidence**  
-Kencleng Pilot #2 bounded Slice 2 readiness reconciliation.
+Kencleng Pilot #2 bounded Slice-2 `readiness-reconciliation.md` was valuable as transition evidence: it proved reuse of the existing foundation, bounded authority mapping, and the five-profile baseline. After readiness, however, the same artifact also restated Authority Map, Profile Registry, Work Unit/frontier, and projection-sync state that have narrower current owners. This supports treating readiness as behavior/invariant and any dedicated file as a one-time checkpoint rather than a live projection. The no-dedicated-file path still needs a later fresh-session reconstruction test before `SAFE_TO_ADOPT`.
 
 ### SR-005 — Slim Work Unit manifest historical narrative
 
