@@ -30,6 +30,14 @@ Do not reinterpret that precedence as permission to skip required phase artifact
 - optional `WORK_UNIT_PATH` when a dedicated Harscode Space exists
 - optional `TARGET_REVISION` and `WORKFLOW_REVISION`
 
+`TARGET_REVISION` is normally the observed target-repository baseline used for
+provenance/drift detection. It does not automatically pin every repository file
+for the whole Run.
+
+`WORKFLOW_REVISION` is workflow provenance. Ordinary applicable workflow
+guidance remains current-effective unless the Invocation explicitly marks an
+exact workflow/guidance revision as assignment-defining.
+
 The target project still supplies its own authority/spec/task sources and live repository context.
 
 ## Path translation
