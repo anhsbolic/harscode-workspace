@@ -51,6 +51,61 @@ The Orchestrator must re-read the current Authority Map when:
 
 The Orchestrator must not infer permanent universal authority merely because the project currently has a single Human owner.
 
+### Decision propagation and authority synchronization
+
+A valid Human/owner Decision is durable decision evidence, but it does not
+automatically update every authoritative artifact that depends on it.
+
+When a Decision establishes or changes what should be true in an authority-owned
+concern, the Orchestrator must identify the owning authoritative artifact/surface
+and ensure the Decision is propagated there before dependent completion is
+claimed.
+
+Use the canonical direction:
+
+```text
+Finding / decision surface
+→ valid Authority Decision
+→ owning authoritative artifact update/reconciliation
+→ downstream Work Unit / contract / implementation reconciliation
+```
+
+The Decision event and the authority-artifact update are distinct:
+
+- the **Decision** records who decided what, under which authority context and
+  scope;
+- the **authority update** makes the current authoritative artifact reflect that
+  Decision;
+- downstream reconciliation makes dependent work conform to the updated
+  authority.
+
+Do not ask the Human to repeat the Decision merely to permit the artifact update.
+If the Decision is already valid and sufficiently explicit, the remaining work is
+reconciliation.
+
+Do not silently let a Run Handoff, Event, Control Surface entry, or Orchestrator
+summary become replacement authority merely because it contains the latest
+wording. Those surfaces may point to the Decision, but the owning authoritative
+artifact must be updated when the Decision changes canonical project truth.
+
+The Orchestrator owns routing and completion checks for this propagation. It does
+not thereby gain authorship authority over every target artifact. If the owning
+artifact belongs to a workflow Role or protected Human-owned surface, route the
+mechanical update through the applicable owner/authorized actor.
+
+Authority synchronization should be proportional:
+
+- if a Decision is execution-local and does not change project authority, no
+  canonical authority update is required;
+- if it narrows an already-settled obligation without changing authority, update
+  only the execution/current-state surfaces that actually own that meaning;
+- if it establishes/changes Product, Design, Security/Privacy, API/Contract, or
+  other authority-owned truth, the owning authority artifact must become
+  current-effective before dependent work is considered fully reconciled.
+
+A Work Unit must not be marked complete while a material authority-affecting
+Decision is known but its required authority synchronization is still pending.
+
 ### Authority Discovery and Synchronization
 
 Authority discovery is progressive and event-driven, not a one-time immutable project setup and not a recurring sprint ceremony.
