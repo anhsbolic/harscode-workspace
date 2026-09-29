@@ -115,7 +115,15 @@ Durable artifacts should include `WORK_UNIT_ID` and `RUN_ID` in provenance when 
 
 Ordinal folder names are never execution chronology in orchestrated mode.
 
-Returning to a phase requires a new `RUN_ID` and `RUN_PATH`. Preserve earlier Run evidence.
+Returning to a phase after the prior execution occurrence ended requires a new
+`RUN_ID`, new Participant identity, fresh Participant Session/context, and new
+`RUN_PATH`. Preserve earlier Run evidence and reconstruct the new assignment
+from durable inputs; do not resume the prior Participant's conversation as
+hidden state.
+
+Immediate Session replacement while the same active Run/execution occurrence is
+continuing is different: it preserves the Run and Participant and reconstructs
+from the active Invocation plus the applicable continuation checkpoint.
 
 ## Findings, Decisions, and Blockers
 
