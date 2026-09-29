@@ -34,9 +34,21 @@ Do not reinterpret that precedence as permission to skip required phase artifact
 provenance/drift detection. It does not automatically pin every repository file
 for the whole Run.
 
-`WORKFLOW_REVISION` is workflow provenance. Ordinary applicable workflow
-guidance remains current-effective unless the Invocation explicitly marks an
-exact workflow/guidance revision as assignment-defining.
+`WORKFLOW_REVISION` is workflow provenance. When available, it should identify
+the Harscode/workflow revision actually resolved for dispatch so later
+reconstruction can tell which current-effective guidance the Participant relied
+on.
+
+Recording `WORKFLOW_REVISION` does **not** by itself pin ordinary workflow
+guidance. Ordinary applicable workflow guidance remains current-effective unless
+the Invocation explicitly marks an exact workflow/guidance revision as
+assignment-defining.
+
+If the same Run later continues in a replacement Session and current-effective
+workflow guidance has changed, preserve the prior observed revision and check the
+material delta before continuing. A non-material guidance update may be adopted
+with provenance; a material change that alters assignment meaning or safety must
+be reconciled under the active Run rules rather than silently applied.
 
 The target project still supplies its own authority/spec/task sources and live repository context.
 
