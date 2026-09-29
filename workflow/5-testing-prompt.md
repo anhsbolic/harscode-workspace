@@ -171,7 +171,7 @@ coverage.
 - Human decision: <human-owned acceptance/decision needed now or "none">
 - Open / deferred: <blocking failures/follow-ups or "none">
 - Recommended next step: PR when passed and human gates are satisfied; otherwise Build/Patch using the specific patch plan
-- Session transition: if patching, explicitly say whether to return to the existing healthy Build session or start a fresh Build/Patch session and why; for PR, state whether a fresh session is useful based on context fitness
+- Session transition: if patching under orchestration, start a new Build/Patch Run/Participant with a fresh Participant Session re-grounded on the patch plan; outside orchestrated mode, use continuation fitness to decide whether a healthy Build session can be reused; for PR, use a new Run/Participant when PR work is orchestrated, otherwise apply context fitness
 - Context pointers: final Techplan + test report + patch plan/final diff as applicable
 ```
 
