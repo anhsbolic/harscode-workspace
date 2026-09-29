@@ -50,6 +50,12 @@ Testing. Re-ground on parent Techplan + current task (if any) + the specific
 patch plan + relevant live code/diff. Do not import the whole reviewer/tester
 conversation as hidden authority.
 
+When this is an orchestrated re-entry after a prior Build occurrence already
+ended, execute it as a new Build/Patch Run with a new Participant and fresh
+Participant Session/context. Reconstruct from the new Run Invocation and durable
+inputs; do not resume the prior Build Participant's chat/session as execution
+state.
+
 Remember which phase requested the patch. After the narrow patch, return to
 that requesting phase unless the patch materially invalidates the Techplan or
 broadens scope enough to justify a different route. Do not automatically create
@@ -123,7 +129,7 @@ necessary for this iteration.
 - Human decision: <decision needed now or "none">
 - Open / deferred: <material blocker/deferred item or "none">
 - Recommended next step: Code Review after initial build; return to the requesting Review/Testing phase after a patch
-- Session transition: <plain-language action + reason; e.g. start fresh Code Review/Testing for independence, continue this Build session for another focused iteration, or return to/restart Build/Patch as appropriate>
+- Session transition: <plain-language action + reason; continue this Session only for another focused iteration inside the same active Build Run; when a later phase re-enters Build under orchestration, use the new Run/Participant with a fresh Session context>
 - Context pointers: parent Techplan + current task/patch plan + changed files/tests only
 ```
 
