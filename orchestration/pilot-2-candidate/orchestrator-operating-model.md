@@ -384,6 +384,17 @@ The Orchestrator must preserve these semantic owners:
 A tracker/dashboard/summary may exist for usability, but it is derived unless
 project authority explicitly gives it unique ownership.
 
+When a project-level tracker legitimately owns **coarse cross-slice/domain
+delivery state**, keep that ownership narrow. It may own which Slice is active
+and high-level earned delivery milestones, while detailed Work Unit state, Run
+frontier, blockers, authority synchronization, and Run chronology remain with
+their orchestration owners. Prefer concise pointers from the tracker instead of
+copying the current Slice's Run-by-Run narrative.
+
+A tracker that repeats manifest / Control Surface / Work Graph detail without
+unique project-level meaning is a derived projection and should not create an
+independent synchronization obligation.
+
 If a projection conflicts with its owner, the owner wins and the projection is
 stale. Update only surfaces whose owned/derived meaning changed; do not rewrite
 all status artifacts after every Run.
