@@ -2,6 +2,8 @@
 
 > Status: PILOT #2 CANDIDATE / NON-AUTHORITATIVE
 > Scope: Group E checkpoint only. This document records CRTV conclusions about Session fitness, continuation, and recovery. It does not override canonical context/session guidance.
+>
+> Interpretation: this remains supporting guidance for Session fitness/recovery and Orchestrator reconstruction. Current Run/Participant/Session lifecycle mechanics are owned by `participant-execution-continuation.md`; use this file for deeper rationale only where those mechanics do not already settle the question.
 
 ## Purpose
 
