@@ -127,12 +127,19 @@ At Stage-3 completion, output:
 - Session transition: <plain-language continue/fresh action + reason>
 - Context pointers: <source/spec paths + code anchors likely needed next>
 
-Recommend a fresh Techplan session when this session was compacted/reset,
-accumulated substantial dead ends/unrelated investigation, had major human
-redirection, or cannot name the current durable authorities cleanly. Otherwise
-say explicitly that Techplan synthesis can continue in this session because
-continuation fitness remains healthy. Do not expose only a CONTINUE/FRESH enum
-or use a fuzzy task-size label as the deciding rule.
+When this phase is running as an orchestrated Run, Stage-3 completion ends
+the Explorer execution occurrence. Techplan synthesis must start as a new
+Techplan Run/Participant with a fresh Participant Session/context, reconstructed
+from durable Exploration artifacts and current authority.
+
+Outside orchestrated mode, recommend a fresh Techplan session when this session
+was compacted/reset, accumulated substantial dead ends/unrelated investigation,
+had major human redirection, or cannot name the current durable authorities
+cleanly. Otherwise say explicitly that Techplan synthesis can continue in this
+session because continuation fitness remains healthy.
+
+Do not expose only a CONTINUE/FRESH enum or use a fuzzy task-size label as the
+deciding rule.
 ```
 
 ## Notes
