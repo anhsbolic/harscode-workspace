@@ -62,9 +62,50 @@ Profile/project boundary
 
 The Invocation routes to current-effective truth rather than copying Product, Techplan, contract, or guidance content unnecessarily.
 
-Pin what defines what the Run means; resolve ordinary execution guidance as current-effective.
+Use three distinct input postures rather than treating every pointer as either
+"pinned" or "latest":
 
-Assignment-defining material commonly includes the pinned Participant Profile revision, approved Techplan/contract/spec revisions that define the Run, and authority Decisions when their exact provenance matters. Generic project guidance, coding conventions, reusable best practices, and other ordinary scoped guidance should normally remain current-effective rather than being indiscriminately pinned.
+1. **Assignment-defining pinned input** — exact revision/provenance that defines
+   what this Run was asked to execute. Changing it materially may change the Run
+   meaning.
+2. **Execution baseline reference** — target repository / working-state revision
+   used to detect drift or establish the starting point. It is evidence of the
+   baseline, not a universal freeze of every file for the entire Run.
+3. **Current-effective guidance** — ordinary project/workflow guidance resolved
+   from the applicable current route unless its exact revision is itself part of
+   the assignment contract.
+
+Pin what defines what the Run means; baseline what helps detect execution drift;
+resolve ordinary guidance as current-effective.
+
+Assignment-defining material commonly includes:
+
+- the pinned Participant Profile revision;
+- approved Techplan / contract / spec revisions whose exact content defines the
+  bounded assignment;
+- authority Decisions whose provenance materially determines what must be true;
+- a specific patch plan / review Finding / test focus when the Run exists
+  specifically to act on that exact evidence.
+
+A target repository revision such as `TARGET_REVISION` normally establishes the
+execution baseline observed at dispatch. It does **not** by itself mean every
+repository file is semantically pinned for the duration of the Run. Expected
+Participant-owned edits, generated artifacts, or unrelated concurrent changes
+must be interpreted according to scope and drift relevance.
+
+Generic project guidance, coding conventions, reusable best practices,
+current-effective Harscode workflow guidance, and concern-specific routed
+guidance should normally remain current-effective rather than being
+indiscriminately pinned.
+
+Pin ordinary guidance only when reproducibility/safety requires the Participant
+to execute under that exact guidance revision and changing it would materially
+change the assignment meaning. Do not pin guidance merely because a commit SHA is
+available.
+
+At dispatch, the Invocation should make the posture discoverable for material
+inputs. A reader should be able to tell whether a pointer is assignment-defining,
+baseline-only, or current-effective without guessing.
 
 ## Invocation stability
 
