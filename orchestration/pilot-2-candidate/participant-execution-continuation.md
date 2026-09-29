@@ -384,7 +384,8 @@ A minimal Handoff should make discoverable:
 - verification performed, not performed, not applicable, or still unverified as applicable;
 - Findings;
 - Human/owner Decisions observed, with provenance when applicable;
-- Blockers;
+- Blockers, including the exact affected scope and safe unaffected work when
+  known;
 - remaining and explicitly unverified work/concerns;
 - recommended continuation;
 - Learning Proposal pointer or `None`.
@@ -427,19 +428,20 @@ The Orchestrator should perform a coordination-level reconciliation before updat
 1. validate Run / Work Unit / Participant identity and provenance;
 2. compare the Handoff against the Run Invocation objective, scope, completion condition, and expected outputs;
 3. resolve material durable evidence rather than relying on narrative claims alone;
-4. reconcile Findings, Decisions, Blockers, and their ownership/routing implications;
-5. when multiple Decisions appear to overlap or conflict, compare their authority
+4. reconcile Findings, Decisions, Blockers, and their ownership/routing implications, including the exact affected scope and safe unaffected work for each active Blocker;
+5. when a Blocker is scoped, preserve unrelated runnable work rather than expanding the Blocker to the whole Work Unit without evidence;
+6. when multiple Decisions appear to overlap or conflict, compare their authority
    areas, owners, scopes, effective contexts, and explicit supersession before
    deciding which is current-effective; do not infer global recency precedence;
-6. for each material Decision, determine whether it is execution-local or
+7. for each material Decision, determine whether it is execution-local or
    authority-affecting, and if authority-affecting identify the owning
    authoritative artifact/surface that must be updated;
-7. check whether material authority or assignment-defining input drift invalidates the completion claim;
-8. verify that required authority synchronization is complete before treating
+8. check whether material authority or assignment-defining input drift invalidates the completion claim;
+9. verify that required authority synchronization is complete before treating
    dependent work as fully reconciled;
-9. evaluate the Work Unit completion/workflow consequence;
-10. update canonical Work Unit current state and record material Events;
-11. recompute the runnable frontier.
+10. evaluate the Work Unit completion/workflow consequence;
+11. update canonical Work Unit current state and record material Events;
+12. recompute the runnable frontier.
 
 Reconciliation checks coordination sufficiency. It must not turn the Orchestrator into a hidden Reviewer or Verifier. When technical correctness or independent verification remains unresolved, route the appropriate Role.
 
