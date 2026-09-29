@@ -55,7 +55,25 @@ The Stage-2 boundary summary must tell the human:
 
 ## Stage 3 — Solutioning
 
-After the human confirms Stage 2, evaluate solution options/trade-offs. Record:
+After the human confirms Stage 2, evaluate solution options/trade-offs.
+
+When Human/owner input is required, do not ask with a bare list such as
+"choose A/B/C/DEFER". Frame the decision so the Human does not have to reconstruct
+the analysis:
+
+1. state the concrete problem/question;
+2. summarize the minimum current context and constraints;
+3. present normally no more than two materially distinct viable options;
+4. recommend one option when evidence supports it;
+5. explain the material rationale, consequence, and risk;
+6. ask for the exact decision/direction required.
+
+Use more than two options only when additional paths are genuinely distinct and
+decision-relevant. If evidence is not sufficient to recommend or decide, say
+what evidence is missing and route that need instead of forcing a premature
+choice.
+
+Record:
 
 - chosen material direction;
 - material rejected alternatives and why;
