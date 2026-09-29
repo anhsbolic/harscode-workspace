@@ -2,6 +2,8 @@
 
 > Status: PILOT #2 CANDIDATE / NON-AUTHORITATIVE
 > Scope: Group A checkpoint only. This document captures the minimum CRTV observability and local execution hypothesis for Pilot #2.
+>
+> Interpretation: supporting hypothesis/evidence. Current Human-Assisted coordination posture is owned by `orchestrator-operating-model.md`; Run lifecycle and permission mechanics are owned by their narrower candidate documents.
 
 ## Execution hypothesis
 
