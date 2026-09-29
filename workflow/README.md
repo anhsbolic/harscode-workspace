@@ -37,7 +37,9 @@ Phase weight is intentionally uneven. Techplan is a high-stakes execution contra
 
 Key principle: **smallest sufficient context that preserves correctness**. A fresh session re-grounds from durable state; a same session may reuse active, unchanged context without mechanically rereading it.
 
-The default transition intent is not “one session per phase” and not “one session for the feature.” Exploration → Techplan is adaptive; Build, Review, and Testing retain authority/independence boundaries. See `context-management.md` instead of duplicating the matrix here.
+Outside orchestrated execution, the default transition intent is not “one session per phase” and not “one session for the feature”; Exploration → Techplan may remain adaptive from continuation fitness.
+
+When a phase is dispatched under Orchestrator Protocol v0.1, Run/Participant boundaries take precedence over ordinary same-session reuse: a new phase or later phase re-entry is a new Run/Participant with a fresh Participant execution context, while immediate Session replacement inside the same active Run may preserve the Participant. Build, Review, and Testing retain their authority/independence boundaries in both modes. See `context-management.md` instead of duplicating the full matrix here.
 
 ## Domain-grouped projects (optional)
 
