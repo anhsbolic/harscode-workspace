@@ -160,7 +160,7 @@ At completion, report:
 - Independent Techplan review: Skip | Recommend | Required by project policy — <reason>
 - Decomposition: Skip | Consider — <reason>
 - Recommended next step: human Techplan gate; invoke independent review/decomposition only when the recommendation/human judgement warrants it
-- Session transition: <plain-language continue/fresh action + reason; Build is fresh-preferred after Approval>
+- Session transition: <plain-language continue/fresh action + reason; after Approval, Build starts with a new Run/Participant and fresh Participant Session when orchestrated, otherwise fresh is preferred>
 - Context pointers: techplan path + only source anchors needed for unresolved follow-up
 ```
 
