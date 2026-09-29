@@ -288,6 +288,23 @@ Invocation additions fall into three classes:
 2. **Derived execution focus** — a narrow restatement of an already-settled obligation, with provenance to the source artifact. Orchestrator-owned.
 3. **New substantive obligation** — a new requirement, risk, test obligation, or design assumption not already settled. Must not be injected silently; route it through the appropriate Finding/Planning/Authority mechanism.
 
+For material Invocation inputs, the Orchestrator should also make the input
+posture explicit:
+
+- **assignment-defining pinned** — exact revision/provenance defines the Run;
+- **execution baseline** — revision establishes starting/drift-detection context;
+- **current-effective** — resolve the applicable guidance/source at execution
+  time.
+
+Do not use a repository commit SHA as shorthand for "everything is pinned."
+Likewise, do not leave an assignment-defining contract floating on "latest" when
+the exact approved revision determines what the Participant must execute.
+
+The selected posture should follow semantic necessity, not convenience:
+reproducibility where the Run meaning depends on exact evidence, current-effective
+resolution where ordinary guidance should evolve safely, and baseline references
+where the purpose is merely to detect material drift.
+
 
 ## Participant Profile discovery
 
