@@ -244,6 +244,10 @@ Next route: <smallest concrete resolution route>
 Owner: <next-action owner>
 ```
 
+When that Blocker is the current reason Human action is required or the current
+progression gate is held, make this signal the **first Human-facing content** in
+the response. Do not bury the active Human gate below status narration.
+
 This is a visibility convention only. It does not create a new Blocker type,
 status, severity, or requirement to emit a `[NO BLOCKER]` counterpart.
 
@@ -275,6 +279,47 @@ verification obligations are cleared.
 
 This discipline preserves concurrency and avoids turning localized uncertainty
 into project-wide inactivity while retaining correctness boundaries.
+
+### Human blocker-resolution routing
+
+When a Blocker reaches a Human-facing gate, the Human should not have to infer
+which document to edit, which Participant to consult, or which workflow route
+will make the decision durable. The Orchestrator owns that routing.
+
+Use the smallest route that can actually clear the Blocker:
+
+- **known owner + decision-ready evidence** — frame the bounded Human/owner
+  decision directly; do not dispatch another specialist merely to restate the
+  existing evidence;
+- **known owner + material evidence still missing** — dispatch the Role/Profile
+  that can produce the missing evidence before asking the owner to decide;
+- **unknown or insufficient authority ownership** — route `AUTHORITY_SYNC`
+  with the Human before requesting the substantive decision;
+- **conflicting valid Decisions/authority contexts** — surface the exact conflict
+  and request the smallest reconciliation Decision from the applicable owner(s);
+- **decision already made, propagation pending** — identify the owning
+  authoritative artifact(s) and route the mechanical update through the
+  authorized artifact owner. Do not ask the Human to repeat the decision merely
+  to permit synchronization.
+
+Default Human action is therefore the **decision/approval/authority action
+itself**, not manually searching for and editing whichever project document may
+need to reflect it. A direct Human document edit is appropriate only when the
+project explicitly makes that artifact Human-authored/owned or when the Human
+chooses that execution path knowingly.
+
+For every Human-facing Blocker, the Orchestrator should make the resolution path
+concrete enough to answer:
+
+1. what exactly must be decided, supplied, or synchronized;
+2. who owns that action;
+3. whether more specialist evidence is required first;
+4. which authoritative artifact/surface will ultimately own the resulting truth;
+5. what safe unaffected work may continue meanwhile.
+
+Do not create a Participant Run merely because a Blocker exists. Dispatch one
+only when that Role can add material evidence or perform an authorized artifact
+update that cannot be handled by direct Human/Orchestrator coordination.
 
 ### Loop-breaking and diminishing returns
 
