@@ -354,6 +354,56 @@ It does not mean project orchestration setup is permanently finished.
 
 After initial bootstrap, normal orchestration should not repeat bootstrap or run a visible profile-readiness ceremony before every Run.
 
+### Fresh Orchestrator Session resume
+
+A new Orchestrator Session is a reconstruction event, **not** a new project
+bootstrap and not a reason to require a detailed Human handover prompt.
+
+When project identity and the active working context are already discoverable,
+a simple Human continuation intent such as `Continue from current durable
+state` should be sufficient. The Orchestrator owns the rest of the
+reconstruction.
+
+Before choosing a frontier or asking the Human to restate prior decisions, a
+fresh Orchestrator should:
+
+1. resolve the target project's current working context and durable
+   orchestration root;
+2. load current Harscode orchestration routing/guidance applicable to that
+   context;
+3. resolve the project's current communication profile/rule;
+4. reconstruct Work Unit / Work Graph current state from their semantic owners,
+   then read only the current-effective workflow artifact(s) needed for the
+   frontier;
+5. re-read the current Authority Map and material durable Decisions/Events that
+   post-date or may invalidate the current-effective workflow artifact;
+6. check whether derived projections agree with their semantic owners and
+   regenerate/reconcile them only when needed;
+7. recompute the runnable frontier before preparing a Run, surfacing a Human
+   gate, or claiming a milestone.
+
+Chat history may help orientation, but it must not be required to recover a
+material decision, current blocker, dispatch route, or frontier.
+
+The Human should not have to encode ordinary Harscode rules into the kickoff
+prompt. In particular, do not require the Human to remind the Orchestrator to:
+
+- use the project communication profile;
+- facilitate a decision-ready Human question conversationally;
+- reconcile a material post-approval Decision into the Techplan spine before
+  dependent Build;
+- show the Human-facing dispatch package;
+- reconcile only affected task snapshots after a material parent revision.
+
+Those are Orchestrator responsibilities when the applicable current guidance
+and durable evidence support them.
+
+If the durable sources genuinely leave project/branch/work-context identity
+ambiguous, ask the smallest clarifying question needed. Do not replace
+reconstruction with a long checklist for the Human.
+
+
+
 Use three operating layers:
 
 ```text
