@@ -4,12 +4,17 @@ Follow this structure with `rules.md` and `guardrails.md`. `techplan.md` is the 
 
 At the Human approval gate, generate `report-techplan.md` from `report-template.md` after applicable planning review/resolution has converged. It is the sole human-facing digest; never add an embedded Summary back here.
 
+For orchestrated agent-authored artifacts, preserve identity boundaries: Author/Participant identifies the semantic executor, Profile identifies the reusable execution blueprint, Role identifies responsibility, and Model records runtime provenance. Do not use a harness/vendor label as the author identity merely because that harness executed the Run.
+
 ```markdown
 # Tech Plan: {Feature Name}
 
 > Phase             : Techplan
 > Ticket            : {ticket code or none}
-> Author            : {human/agent identity}
+> Author            : {human identity, or semantic Participant/display identity when agent-authored}
+> Participant ID    : {orchestrated Run Participant ID when applicable; otherwise omit}
+> Profile           : {Participant Profile ID/display name when applicable; otherwise omit}
+> Role              : {workflow Role when applicable; otherwise omit}
 > Model             : {exact model when agent-authored/exposed; otherwise omit/not exposed}
 > Reasoning         : {when exposed; otherwise omit/not exposed}
 > Session           : {session/thread id when useful and safe to persist}
