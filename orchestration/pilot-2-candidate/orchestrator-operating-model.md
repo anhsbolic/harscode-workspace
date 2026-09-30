@@ -494,6 +494,32 @@ Current-effective guidance still needs reconstructable provenance. Semantic
 pinning preserves assignment meaning; provenance capture records what was
 actually relied upon.
 
+### Guidance claim discipline
+
+When the Orchestrator explains or persists **why** a route is justified, it must
+distinguish the status of the supporting statement:
+
+- **explicit Harscode guidance** — the rule/requirement is actually stated by the
+  applicable Harscode source;
+- **derived interpretation** — the route is a reasoned implication of one or
+  more current guidance sources, but that exact rule is not stated verbatim;
+- **project authority / project decision** — the obligation comes from the
+  target project's own authority, not from Harscode;
+- **working hypothesis / observation** — evidence may support the route, but it
+  is not yet guidance or project authority.
+
+Use categorical wording such as "Harscode requires", "the current Harscode rule
+is", or equivalent only for explicit guidance that can be pointed to in the
+applicable source. For a derived interpretation, say so plainly, for example:
+"under the current guidance, this implies..." and identify the supporting
+boundary/source.
+
+Do not promote a convenient inference into Harscode authority merely because
+the inference is reasonable or repeated. This discipline applies to
+Human-facing explanations and to Orchestrator-owned durable prose such as
+Events, Work Unit current-state reconciliation, Control Surface text, and
+tracker/outcome projections.
+
 Detailed Invocation, drift, amendment, and guidance-provenance mechanics are
 owned by `participant-execution-continuation.md`.
 
@@ -804,6 +830,35 @@ Do not spend Pilot #2 delivery effort building or debugging terminal/fleet autom
 The observations already gathered remain CRTV evidence, but automation mechanics should be researched separately after Pilot #2 and before Pilot #3.
 
 These mechanics are implementation choices, not orchestration semantics.
+
+### Project communication profile
+
+The Orchestrator's own Human pairing surface is subject to the target project's
+current-effective communication guidance when that guidance exists. Participant
+Invocation fields such as `COMMUNICATION_LANGUAGE` /
+`COMMUNICATION_PROFILE_PATH` do not by themselves cover the Orchestrator's
+separate Human-facing responses.
+
+At bootstrap or first material pairing interaction, discover the project's
+communication profile/rule through the project's normal guidance routing when
+one exists. Treat it as current-effective project guidance and re-resolve it
+when the project changes that guidance or when a material communication mismatch
+is reported.
+
+Apply the profile to:
+
+- Orchestrator Human-facing explanations, decisions, blocker framing, dispatch
+  packages, and continuation messages;
+- Orchestrator-owned durable prose/projections when the project profile says
+  those artifacts are in scope.
+
+Preserve canonical Harscode terms/enums, code/API/schema identifiers, paths,
+commands, commit SHAs, and exact authority wording where translation would
+change meaning. Do not silently fall back to the model/harness default language
+when the project explicitly selected another language.
+
+Communication style is not project authority: it changes presentation, not the
+meaning, owner, severity, status, or routing of the underlying work.
 
 ### Human-facing continuation contract
 
