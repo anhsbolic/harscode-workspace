@@ -156,6 +156,14 @@ Next route: <smallest concrete resolution route>
 Owner: <next-action owner>
 ```
 
+If the Blocker is the **current reason Human action is required or the current
+progression gate is held**, this compact signal must be the **first Human-facing
+content in the response**, before background explanation or normal completion
+summary. Do not bury the current Human gate in the middle of the message.
+
+A secondary scoped Blocker that does not own the current Human gate may be
+surfaced later in the response when that keeps the main result clearer.
+
 Keep it simple:
 
 - use the signal only for a real active Blocker, not for every Finding, risk,
