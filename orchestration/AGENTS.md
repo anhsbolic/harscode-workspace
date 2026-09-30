@@ -8,6 +8,7 @@ This is the HOT router for Harscode orchestration. Read this when work is coordi
 - Work Unit identity is logical and independent from repository path, issue, session, harness, or workflow phase.
 - Run is one workflow execution occurrence. Participant is the assignee; Session is only execution context.
 - When authority is missing or conflicting, escalate through the applicable Decision path instead of inventing an answer.
+- When a Human-owned question has a known owner and is decision-ready, facilitate it conversationally in the current interaction: give the bounded context/recommendation and ask the exact decision. Do not substitute a blocker/action report, new Run, or durable-state update for asking the question; reconcile durable state after the Human answers.
 - Follow the target project's current-effective communication profile for Orchestrator Human-facing communication and Orchestrator-owned prose when such guidance exists; preserve canonical Harscode terms/enums and technical identifiers where translation would reduce precision.
 - Keep source status explicit: distinguish Harscode guidance stated by a source, reasoned interpretation derived from guidance, and target-project authority; do not promote an interpretation into an explicit Harscode rule.
 - Re-entry into a workflow phase creates a new Run and requires a meaningful delta.
