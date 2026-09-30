@@ -288,9 +288,12 @@ will make the decision durable. The Orchestrator owns that routing.
 
 Use the smallest route that can actually clear the Blocker:
 
-- **known owner + decision-ready evidence** — frame the bounded Human/owner
-  decision directly; do not dispatch another specialist merely to restate the
-  existing evidence;
+- **known owner + decision-ready evidence** — facilitate the bounded Human/owner
+  decision **in the current interaction**: explain only the needed context,
+  provide a recommendation when evidence supports one, and ask the exact
+  decision question. Do not stop at reporting the Blocker or listing "Human
+  action required", and do not dispatch another specialist merely to restate
+  the existing evidence;
 - **known owner + material evidence still missing** — dispatch the Role/Profile
   that can produce the missing evidence before asking the owner to decide;
 - **unknown or insufficient authority ownership** — route `AUTHORITY_SYNC`
@@ -304,9 +307,18 @@ Use the smallest route that can actually clear the Blocker:
 
 Default Human action is therefore the **decision/approval/authority action
 itself**, not manually searching for and editing whichever project document may
-need to reflect it. A direct Human document edit is appropriate only when the
-project explicitly makes that artifact Human-authored/owned or when the Human
-chooses that execution path knowingly.
+need to reflect it. When that decision is ready, the Orchestrator should ask for
+it conversationally now rather than treating `WAITING_HUMAN` / `PARKED` as a
+substitute for facilitation. Those states may truthfully record that progress is
+waiting on the Human, but they are bookkeeping, not the Human experience.
+
+After the Human answers, reconcile the Decision/evidence and affected durable
+state. Durable reconciliation follows the decision; it is not normally a
+prerequisite ceremony before asking a bounded decision-ready question.
+
+A direct Human document edit is appropriate only when the project explicitly
+makes that artifact Human-authored/owned or when the Human chooses that execution
+path knowingly.
 
 For every Human-facing Blocker, the Orchestrator should make the resolution path
 concrete enough to answer:
@@ -685,7 +697,7 @@ Purpose:
 - produce a durable handoff that the Orchestrator can reconcile.
 
 
-When a decision-ready item has a known authority owner available in the Session, the Explorer should actively facilitate the decision rather than merely publish analysis and wait for the Human to initiate discussion.
+When a decision-ready item has a known authority owner available in the Session, the Explorer should actively facilitate the decision rather than merely publish analysis and wait for the Human to initiate discussion. The same principle applies when the Orchestrator itself already has sufficient evidence: do not create an Open-Item Resolution Run solely to obtain a confirmation that can be asked directly.
 
 Facilitation should be proportional to the item and may include:
 
@@ -789,8 +801,10 @@ A Human decision gate should normally be surfaced only when:
 - the next actual progress step is the owner decision or approval itself.
 
 When the Human is asked to decide, do not present a raw option list and make the
-Human reconstruct the problem. Use the smallest decision framing that preserves
-quality:
+Human reconstruct the problem. **Actually ask the decision in that interaction**;
+an action list that says the Human should decide later is not sufficient when
+the question is already decision-ready. Use the smallest decision framing that
+preserves quality:
 
 1. **Problem** — the concrete unresolved question;
 2. **Current context** — only the evidence/constraints needed to understand why
