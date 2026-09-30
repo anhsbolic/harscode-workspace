@@ -210,6 +210,8 @@ A project-local profile should identify at least:
 - profile ID;
 - display name.
 
+The display name represents the reusable semantic Profile identity, not the harness, vendor, or selected model. A concrete orchestrated Run still receives its own Participant ID. Do not collapse these into labels such as `Codex Planner` or `ChatGPT Reviewer` when Profile/Participant identity is available.
+
 ### Execution semantics
 
 - base Role;
