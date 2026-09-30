@@ -56,6 +56,13 @@ The Orchestrator must not infer permanent universal authority merely because the
 A valid Human/owner Decision is durable decision evidence, but it does not
 automatically update every authoritative artifact that depends on it.
 
+The Human kickoff prompt is **intent**, not a substitute orchestration
+specification. The Human should not need to restate the current frontier,
+blockers, applicable workflow route, model settings, or previously recorded
+decisions merely to make a fresh Orchestrator behave correctly. Those facts
+must be reconstructed from current durable project state and current Harscode
+guidance when they are discoverable there.
+
 When a Decision establishes or changes what should be true in an authority-owned
 concern, the Orchestrator must identify the owning authoritative artifact/surface
 and ensure the Decision is propagated there before dependent completion is
@@ -105,6 +112,52 @@ Authority synchronization should be proportional:
 
 A Work Unit must not be marked complete while a material authority-affecting
 Decision is known but its required authority synchronization is still pending.
+
+### Post-approval material decision routing
+
+A valid Human/owner Decision may be made directly and conversationally without a
+new specialist Run when the owner is known and the question is decision-ready.
+That does **not** mean dependent execution may bypass an authoritative workflow
+artifact that has become stale.
+
+Before dispatching Build from an Approved Techplan, compare the current-effective
+spine against durable Decisions made after that approval. If a later Decision
+materially changes Techplan-owned scope, rules, decisions, risks,
+interface/data contract, verification obligations, or Open Items:
+
+1. keep the previously Approved Techplan as the current-effective predecessor
+   until a replacement revision is approved;
+2. route a fresh Planner Run to reconcile the material delta into a new
+   Draft/In Review spine;
+3. apply the canonical independent Techplan Review / resolution route and
+   regenerate the Human report when the revision reaches its approval gate;
+4. ask the Human to approve the revised Techplan at that artifact gate without
+   asking them to repeat the underlying authority Decision;
+5. only after approval, reconcile any decomposition artifacts derived from the
+   predecessor before dependent Build resumes.
+
+This is not a requirement to replay the entire planning lifecycle after every
+Decision. Use it only when the post-approval delta is material to the execution
+spine.
+
+Existing task files are derived snapshots, not a second contract. After a
+material parent revision, regenerate or explicitly reconcile **only affected**
+task files. Preserve an already accepted split, dependency graph, and manifest
+when their topology has not materially changed. Re-open Human review of the
+decomposition shape only when topology/dependency changes materially or the
+reconciliation discovers a new material boundary.
+
+The intended sequence is therefore:
+
+```text
+decision-ready Human question
+→ conversational Decision
+→ durable authority reconciliation
+→ if Approved spine materially stale: Planner revision
+→ applicable Review / report / Human approval
+→ affected task-snapshot reconciliation
+→ fresh dependent Build
+```
 
 ### Authority Discovery and Synchronization
 
@@ -647,7 +700,7 @@ Orchestrator decides and prepares
 
 The Orchestrator still owns coordination. Human involvement is intentionally limited to mechanical execution and genuine authority/workflow gates.
 
-For each Participant Run, the Orchestrator must provide enough concrete dispatch detail that the Human does not have to reconstruct the workflow. The **Human-facing dispatch response itself** must make these fields visible even when they already exist in the durable Invocation:
+For each Participant Run, the Orchestrator must provide enough concrete dispatch detail that the Human does not have to reconstruct the workflow. This is default behavior, not something the Human should have to request with a corrective prompt. The **Human-facing dispatch response itself** must make these fields visible even when they already exist in the durable Invocation:
 
 - Run;
 - Role / Participant type and Profile;
@@ -938,6 +991,9 @@ Changing terminal, harness, or model in a later pilot must not require changing 
 
 Pilot #2 succeeds when orchestration correctness is demonstrated across real work:
 
+- a fresh Orchestrator Session can resume from durable artifacts from a simple
+  continuation intent, without relying on a detailed Human-written handover or
+  corrective workflow prompt;
 - a fresh Orchestrator Session can resume from durable artifacts;
 - Work Unit decomposition and dependency topology remain evidence-based;
 - runnable frontier and workflow routing are correct;
