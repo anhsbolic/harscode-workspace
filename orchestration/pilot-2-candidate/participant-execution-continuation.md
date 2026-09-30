@@ -650,13 +650,16 @@ Do not introduce a Run Registry merely because a Participant Profile Registry ex
 
 The Human remains a mechanical dispatcher in Pilot #2.
 
-For a new assignment, the Orchestrator should provide:
+For a new assignment, the Orchestrator should provide in the Human-facing dispatch response:
 
 - Run;
 - Participant/Profile;
-- model/reasoning;
+- **model/reasoning**;
 - working directory;
-- Invocation pointer or minimal kickoff prompt.
+- Invocation pointer or minimal kickoff prompt;
+- Session posture when relevant.
+
+These fields remain visible to the Human even when duplicated in the durable Invocation. The Human should not have to inspect the Invocation simply to recover mechanical dispatch parameters such as model or reasoning effort.
 
 For immediate Session renewal, the Orchestrator should provide:
 
@@ -670,6 +673,8 @@ For immediate Session renewal, the Orchestrator should provide:
 After a meaningful pause has ended the Run occurrence, later execution must be dispatched as a new Run with concise provenance to the prior Run/Handoff and the meaningful delta.
 
 The Human should not author the handoff, reconstruct workflow routing, or invent the continuation task.
+
+Under the current Pilot #2 Human-Assisted posture, Participant dispatch remains a Human mechanical action. The Orchestrator must not silently substitute harness-native agent/subagent spawning for that action. If automatic dispatch is later tested, treat it as an explicit Human-approved execution-mechanism experiment; do not infer it from harness capability alone.
 
 ## Thin kickoff semantics
 
