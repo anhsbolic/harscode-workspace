@@ -10,7 +10,7 @@ This is the workflow hard-rule/router layer. Do **not** read all of `README.md` 
 - When a phase is dispatched as an orchestrated Run, also load `orchestrated-run-overlay.md`. The overlay changes identity/read-write path semantics only; the canonical phase prompt remains phase authority.
 - Under orchestrated execution, do not carry a Participant/Session across a Run boundary. A new phase or later phase re-entry uses a new Run/Participant and fresh Participant Session/context; only immediate Session replacement inside the same active Run preserves the Participant.
 - Use `context-management.md` for phase/session transitions: durable artifacts over chat memory, progressive disclosure, compact handoff, and Build ownership of patches.
-- When an active Blocker is surfaced to the Human, use the portable `[SCOPED BLOCKER DETECTED]` signal from `context-management.md` with exact blocked scope, safe unaffected work, next route, and owner. Do not use it for ordinary Findings/risks/deferred items.
+- When an active Blocker is surfaced to the Human, use the portable `[SCOPED BLOCKER DETECTED]` signal from `context-management.md` with exact blocked scope, safe unaffected work, next route, and owner. If it is the current Human gate, make that signal the first Human-facing content. Do not use it for ordinary Findings/risks/deferred items.
 - Stop polishing when the next phase can proceed without inventing a material decision. If a later phase hits one anyway, stop/report instead of inventing it.
 - Domain-level prompts apply only to projects that group work by domain; otherwise skip them without ceremony.
 
