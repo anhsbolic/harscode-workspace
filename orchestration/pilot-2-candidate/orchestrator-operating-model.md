@@ -994,7 +994,6 @@ Pilot #2 succeeds when orchestration correctness is demonstrated across real wor
 - a fresh Orchestrator Session can resume from durable artifacts from a simple
   continuation intent, without relying on a detailed Human-written handover or
   corrective workflow prompt;
-- a fresh Orchestrator Session can resume from durable artifacts;
 - Work Unit decomposition and dependency topology remain evidence-based;
 - runnable frontier and workflow routing are correct;
 - Role/Participant boundaries remain isolated;
