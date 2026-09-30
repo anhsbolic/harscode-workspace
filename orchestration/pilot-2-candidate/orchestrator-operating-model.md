@@ -564,16 +564,21 @@ Orchestrator decides and prepares
 
 The Orchestrator still owns coordination. Human involvement is intentionally limited to mechanical execution and genuine authority/workflow gates.
 
-For each Participant Run, the Orchestrator must provide enough concrete dispatch detail that the Human does not have to reconstruct the workflow:
+For each Participant Run, the Orchestrator must provide enough concrete dispatch detail that the Human does not have to reconstruct the workflow. The **Human-facing dispatch response itself** must make these fields visible even when they already exist in the durable Invocation:
 
-- Role / Participant type;
-- model and reasoning effort;
+- Run;
+- Role / Participant type and Profile;
+- **model and reasoning effort**;
 - target working directory when relevant;
 - durable invocation path or exact minimal kickoff prompt;
-- any required Session posture such as fresh vs continuation;
+- required Session posture such as fresh vs continuation;
 - what the Human should report back when the Participant blocks or completes.
 
+Do not require the Human to open the Invocation merely to discover the selected model/effort or other mechanical dispatch settings.
+
 The Human may open the requested terminal/session, select the requested model/effort, paste the Orchestrator-provided invocation pointer/prompt, and interact directly at genuine workflow Human gates. The Human should not invent the workflow route, compose a replacement task, or decide the next Run on behalf of the Orchestrator.
+
+While Pilot #2 remains in Human-Assisted Orchestration posture, the Orchestrator **MUST NOT automatically spawn or dispatch a Participant through harness-native agent/subagent capability**, even when the harness makes that technically possible. Automatic dispatch is a separate execution-mechanism experiment and requires explicit Human opt-in before use. This restriction is about Pilot #2 dispatch mechanics, not about the semantic authority of the Orchestrator to choose the next Run.
 
 After dispatch, supervision remains lightweight:
 
