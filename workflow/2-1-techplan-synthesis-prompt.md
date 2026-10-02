@@ -5,10 +5,11 @@ Canonical entrypoint for turning completed Exploration evidence into an executio
 ## Inputs required before running
 
 - `{HARSCODE_WORKSPACE_ROOT}` — path to this Harscode workspace. Project-level; used to resolve Techplan and best-practice authorities.
-- `{TASK_PATH}` — root working directory for this task. This phase reads `{TASK_PATH}/1-exploration/logs/` and writes `{TASK_PATH}/2-techplan/techplan.md`.
+- `{TASK_PATH}` — root working directory for this task. This phase reads `{TASK_PATH}/1-exploration/logs/` and normally writes `{TASK_PATH}/2-techplan/techplan.md`; a material successor to an already Approved/Implemented plan uses `{TASK_PATH}/2-techplan/techplan.candidate.md` until approval.
 - Completed durable Exploration artifacts in `{TASK_PATH}/1-exploration/logs/`. This phase synthesizes them; it does not silently redo missing Exploration.
 - Applicable target-repo authority/specs — the repo instructions, product/spec sources, and live code/contracts needed to verify project-specific facts must be reachable.
-- Existing `{TASK_PATH}/2-techplan/techplan.md`, if this is a revision rather than first synthesis. Its lifecycle/status controls whether material changes need an explicit gate.
+- Existing `{TASK_PATH}/2-techplan/techplan.md`, if this is a revision rather than first synthesis. Its lifecycle/status controls whether the current file may be edited directly or must remain the current-effective predecessor while a candidate successor is prepared.
+- Existing `{TASK_PATH}/2-techplan/techplan.candidate.md`, when a material post-Approval revision is already in progress. Continue the same logical candidate rather than creating another versioned copy.
 
 ## Prompt
 
@@ -57,6 +58,28 @@ EXPLORATION COVERAGE
   evidence merely for ceremony.
 - Correctness must remain reconstructable from durable artifacts. Do not place
   a decision in the Techplan if it exists only in remembered chat context.
+
+TECHPLAN ARTIFACT LIFECYCLE
+- Before the first Human approval, use one mutable
+  {TASK_PATH}/2-techplan/techplan.md through Draft/In Review synthesis and
+  resolution. A later planning execution occurrence continues that same logical
+  artifact; it does not create a versioned Techplan copy merely for history.
+- If the current `techplan.md` is Approved/Implemented and a proposed change is
+  material under guardrails.md, keep that file unchanged as the current-effective
+  predecessor and prepare/continue exactly one
+  {TASK_PATH}/2-techplan/techplan.candidate.md as the Draft/In Review successor.
+- Multiple planning passes may revise the same candidate until review/resolution
+  converges. Git plus reconstructable revision/provenance pointers are the
+  default content history; do not create `techplan-v2.md` or per-run copies for
+  version history.
+- The candidate does not become current-effective merely because synthesis or
+  review completed. Human approval applies at the Techplan artifact gate. After
+  approval, promote the exact approved candidate through bounded lifecycle
+  reconciliation; do not ask the Human to repeat the underlying approval merely
+  to perform that mechanical promotion.
+- Mechanical corrections that do not change executable meaning follow the
+  guardrail rule and do not require a candidate solely because the current plan
+  is Approved.
 
 SYNTHESIS
 - Classify evidence by function per rules.md §1.
@@ -110,7 +133,8 @@ BEFORE FINALIZING
   silently absent;
 - unresolved material uncertainty is in Open Items rather than guessed;
 - an existing Approved/Implemented Techplan has not been materially changed
-  without the guardrail/human gate required for a contract revision.
+  in place; its material successor, when needed, is isolated in the candidate
+  lifecycle required by guardrails.md.
 
 EARLY ROUTING RECOMMENDATIONS
 Before handoff, recommend whether the human should consider the optional
@@ -136,39 +160,46 @@ Decomposition:
 The decomposition prompt remains responsible for the actual post-Approval gate
 and exact split if invoked.
 
-There is NO embedded Summary in techplan.md. Do not generate report-techplan.md
-during active synthesis/review churn. Generate it only when the current-effective
-Techplan is ready to enter the Human approval gate, after any invoked review/
-resolution path has converged.
+There is NO embedded Summary in Techplan content. Do not generate
+report-techplan.md during active synthesis/review churn. Generate it only when
+the exact Techplan artifact/revision being presented has converged enough to
+enter the Human approval gate, after any invoked review/resolution path has
+converged.
 
-Write the result to {TASK_PATH}/2-techplan/techplan.md using template.md.
-Populate the template's provenance fields only with values actually known or
-exposed; do not invent model/session/revision metadata or persist account/
-credential identifiers. Git history is the default version history.
+Choose the write target from lifecycle state:
+- first synthesis or pre-Approval revision → {TASK_PATH}/2-techplan/techplan.md;
+- material successor to an Approved/Implemented predecessor →
+  {TASK_PATH}/2-techplan/techplan.candidate.md.
 
-Treat the written Techplan as a Draft/In-Review checkpoint until the human gate
-approves it; do not automatically continue into Build merely because synthesis
-completed.
+Write the result using template.md. Populate provenance fields only with values
+actually known or exposed; do not invent model/session/revision metadata or
+persist account/credential identifiers. Git history is the default version
+history.
+
+Treat the written target as Draft/In Review until the human gate approves that
+exact artifact/revision; do not automatically continue into Build merely because
+synthesis completed.
 
 At completion, report:
 
 ## Phase handoff
-- Completed: Techplan synthesized and self-checked (or state what remains)
-- Artifacts: {TASK_PATH}/2-techplan/techplan.md
+- Completed: Techplan synthesized/reconciled and self-checked (or state what remains)
+- Artifacts: <exact Techplan target path>
 - Human decision: approve/revise the Techplan and resolve any material Active Open Item that blocks the implementation direction
 - Open / deferred: <non-blocking unresolved/deferred items or "none">
 - Independent Techplan review: Skip | Recommend | Required by project policy — <reason>
 - Decomposition: Skip | Consider — <reason>
 - Recommended next step: human Techplan gate; invoke independent review/decomposition only when the recommendation/human judgement warrants it
 - Session transition: <plain-language continue/fresh action + reason; after Approval, Build starts with a new Run/Participant and fresh Participant Session when orchestrated, otherwise fresh is preferred>
-- Context pointers: techplan path + only source anchors needed for unresolved follow-up
+- Context pointers: Techplan target path + only source anchors needed for unresolved follow-up
 ```
 
 ## Notes
 
 - `techplan.md` remains agent-executable; context optimization must not reduce contract precision.
+- A material post-Approval candidate is a proposed successor to the same logical Techplan, not a second independent contract.
 - Runtime instructions refer to evolving Techplan sections by semantic name rather than remembered ordinal number.
 - Examples/retro are calibration/history, not mandatory runtime authority.
 - Matching best-practice files are conditional correctness authorities, not cold examples; open them when the task actually triggers them.
-- Generate `report-techplan.md` from `report-template.md` when the current-effective Techplan reaches the Human approval gate after applicable review/resolution convergence; run optional decomposition only when its own gate says it adds value.
+- Generate `report-techplan.md` from `report-template.md` when the exact Techplan target reaches the Human approval gate after applicable review/resolution convergence; run optional decomposition only after a current-effective Approved Techplan exists and the decomposition gate says it adds value.
 - Independent review is a correctness tool for plans that justify its cost, not a ritual substitute for conscious human approval.
