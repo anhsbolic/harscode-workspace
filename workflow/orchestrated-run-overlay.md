@@ -2,7 +2,7 @@
 
 > Applies only when a workflow phase is dispatched under Orchestrator Protocol v0.1.
 
-This file adapts **invocation and durable-path semantics only**. It does not replace the active phase's canonical prompt, authority, verification rules, or phase boundary.
+This file adapts **invocation, durable-path, execution-history, and orchestrated terminal-handoff rendering semantics**. It does not replace the active phase's canonical authority, verification rules, required phase-owned evidence, or phase boundary.
 
 ## Precedence
 
@@ -10,10 +10,12 @@ When orchestration inputs are supplied, use:
 
 ```text
 canonical phase prompt
-+ this overlay for identity/path/history semantics
++ this overlay for identity/path/history and orchestrated terminal-handoff rendering
 ```
 
 If a canonical prompt assumes ordinal `{TASK_PATH}/1-exploration`, `2-techplan`, `3-build`, `4-code-review`, or `5-testing` locations, the explicit orchestrated inputs below take precedence **for where current/prior artifacts are read or written**.
+
+For an orchestrated Participant Run, the `Structured Phase Handoff` section below takes precedence over a canonical prompt's portable Phase Handoff field labels/rendering only. The canonical phase still owns what evidence/results must be produced and what its completion/verification boundary means.
 
 Do not reinterpret that precedence as permission to skip required phase artifacts or phase authority.
 
