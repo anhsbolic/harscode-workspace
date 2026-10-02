@@ -727,31 +727,69 @@ Do not introduce a Run Registry merely because a Participant Profile Registry ex
 
 ## Human-Assisted dispatch
 
-The Human remains a mechanical dispatcher in Pilot #2.
+The Human remains a mechanical dispatcher in Pilot #2. Human-facing dispatch is a compact rendering of an already-prepared durable assignment; it is not a new project artifact, orchestration object, or authority surface. The Run Invocation remains the durable assignment contract.
 
-For a new assignment, the Orchestrator should provide in the Human-facing dispatch response:
+For a new Run that is fully ready for mechanical dispatch, the Orchestrator should render a compact Human-facing card equivalent to:
 
-- Run;
-- Participant/Profile;
-- **model/reasoning**;
-- working directory;
-- Invocation pointer or minimal kickoff prompt;
-- Session posture when relevant.
+```text
+[RUN READY]
 
-These fields remain visible to the Human even when duplicated in the durable Invocation. The Human should not have to inspect the Invocation simply to recover mechanical dispatch parameters such as model or reasoning effort.
+Purpose:
+<one bounded sentence explaining why this Run exists now>
 
-For immediate Session renewal, the Orchestrator should provide:
+Run:
+<RUN_ID> — <Role / Participant Profile>
 
-- same Run;
-- same Participant;
-- same pinned Profile revision;
-- replacement Session posture;
-- base Invocation pointer;
-- latest Continuation Checkpoint.
+Model:
+<model> / <reasoning effort>
 
-After a meaningful pause has ended the Run occurrence, later execution must be dispatched as a new Run with concise provenance to the prior Run/terminal outcome evidence and the meaningful delta.
+Cwd:
+<working directory>
 
-The Human should not author the handoff, reconstruct workflow routing, or invent the continuation task.
+Invocation:
+<durable Invocation pointer>
+
+Kickoff:
+<one copy-pasteable instruction>
+
+Report back:
+<terminal carrier pointer/result or exact scoped discrepancy to return>
+```
+
+Add Session posture only when the Human needs it to dispatch correctly. `Purpose` is orientation, not a second summary of Work Unit history, decisions, source pointers, execution envelope, or completion conditions. Those remain in the durable Invocation.
+
+The Human must be able to recover model/reasoning, cwd, Invocation, kickoff, and expected report-back behavior without opening the Invocation. `Report back` is explicit so the Human does not have to infer what to bring back to the Orchestrator when execution ends or stops on a discrepancy.
+
+A `[RUN READY]` card means all dispatch prerequisites owned outside the Human's mechanical launch action are already satisfied. If the selected model/effort requires explicit Human approval under the runtime registry, obtain that approval first; only then render the Run as ready. Do not combine a still-pending gated-model approval with a card that claims dispatch readiness.
+
+For immediate Session renewal of the same active Run, use a distinct compact rendering equivalent to:
+
+```text
+[SESSION REPLACEMENT READY]
+
+Continue:
+<RUN_ID> — <same Participant / pinned Profile>
+
+Checkpoint:
+<exact Continuation Checkpoint pointer>
+
+Cwd:
+<working directory>
+
+Kickoff:
+<one reconstruction-and-continue instruction>
+
+Report back:
+<next checkpoint or terminal carrier>
+```
+
+Do not restate the full assignment in a replacement-Session card. The base Invocation plus relied-upon Checkpoint remain the durable reconstruction sources.
+
+After a meaningful pause has ended the Run occurrence, later execution is a new Run with concise causal provenance; use the new-Run dispatch rendering rather than a replacement-Session card.
+
+Do not create a default `dispatch.md`, `dispatch-receipt.md`, `launch-record.md`, Human-dispatch YAML, or equivalent artifact merely to preserve this rendering. If actual dispatch chronology is materially relevant, record that consequence through existing Events/coordination state rather than duplicating the Invocation.
+
+The Human should not author the handoff, reconstruct workflow routing, inspect the Invocation merely to recover mechanical launch parameters, or invent the continuation task.
 
 Under the current Pilot #2 Human-Assisted posture, Participant dispatch remains a Human mechanical action. The Orchestrator must not silently substitute harness-native agent/subagent spawning for that action. If automatic dispatch is later tested, treat it as an explicit Human-approved execution-mechanism experiment; do not infer it from harness capability alone.
 
