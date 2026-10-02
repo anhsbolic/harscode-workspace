@@ -21,9 +21,10 @@ Do not reinterpret that precedence as permission to skip required phase artifact
 
 - `WORK_UNIT_ID`
 - `RUN_ID`
-- `RUN_PATH` — durable write root for this Run
+- `RUN_PATH` — durable root for Run-owned execution evidence
 - `PRIOR_ARTIFACTS` — exact current-effective artifacts required by the phase; may be `none`
 - `ROLE`
+- optional `ARTIFACT_TARGET` — stable workflow artifact or artifact set this Run is authorized to create/update when the phase owns state-bearing output outside `RUN_PATH`
 - optional `SPECIALIZATION`
 - optional `PARTICIPANT`
 - optional `SESSION`
@@ -54,7 +55,15 @@ The target project still supplies its own authority/spec/task sources and live r
 
 ## Path translation
 
-Use `RUN_PATH` as the durable destination for artifacts created by the current Run.
+`RUN_PATH` and `ARTIFACT_TARGET` have different meanings:
+
+- `RUN_PATH` owns durable evidence about this execution occurrence;
+- `ARTIFACT_TARGET`, when supplied, identifies stable workflow state that the
+  Run is authorized to create or mutate without making that state a Run-owned
+  copy.
+
+A Run directory should contain evidence about the Run, not copies of every
+workflow artifact the Run happened to touch.
 
 Examples:
 
@@ -63,7 +72,12 @@ Exploration Run
 RUN_PATH/evidence/...
 
 Planning Run
-RUN_PATH/techplan.md
+ARTIFACT_TARGET -> stable techplan.md or techplan.candidate.md
+RUN_PATH -> Run-owned invocation/handoff/evidence only
+
+Decomposition Run
+ARTIFACT_TARGET -> stable tasks/manifest artifact set
+RUN_PATH -> Run-owned invocation/handoff/evidence only
 
 Build Run
 RUN_PATH/report.md
@@ -77,7 +91,20 @@ RUN_PATH/testing-report.md
 RUN_PATH/patch-plan.md when needed
 ```
 
-A target project MAY choose different filenames inside `RUN_PATH` when its orchestration manifest defines them explicitly. The important rule is that one Run does not overwrite evidence from an earlier Run.
+When no `ARTIFACT_TARGET` is supplied, a phase-owned durable output remains
+Run-local only when the active canonical workflow/candidate guidance actually
+defines that output as evidence of the execution occurrence.
+
+A stable workflow artifact does not gain a new logical identity merely because a
+later Run revises it. Preserve exact relied-upon revisions through durable
+revision/provenance pointers rather than copying the whole artifact into each
+Run directory.
+
+A target project MAY choose different filenames inside `RUN_PATH` or a different
+stable workflow-artifact layout when its orchestration manifest defines them
+explicitly. The important rules are that one Run does not overwrite evidence
+from an earlier Run and a Run does not duplicate stable workflow state merely
+for execution chronology.
 
 ## Prior artifacts
 
@@ -95,7 +122,7 @@ Build
   + specific patch plan when re-entering
 
 Review
-→ current-effective Approved Techplan
+→ current-effective Techplan revision under review
   + current diff/scope
   + current batch/task artifact when applicable
 
@@ -109,7 +136,12 @@ Do not rediscover the current-effective artifact by scanning all historical Runs
 
 ## Run identity and provenance
 
-Durable artifacts should include `WORK_UNIT_ID` and `RUN_ID` in provenance when the artifact format permits it, plus Role/Specialization/Participant/Session when known and safe to persist.
+Durable Run evidence should include `WORK_UNIT_ID` and `RUN_ID` in provenance when the artifact format permits it, plus Role/Specialization/Participant/Session when known and safe to persist.
+
+When a Run reads or mutates a stable workflow artifact and exact identity matters
+for review, approval, drift detection, or reconstruction, record a reconstructable
+artifact revision/content identity in the applicable Invocation or execution
+evidence. Do not create a full Run-local copy solely to obtain that provenance.
 
 ## Chronology and re-entry
 
@@ -120,6 +152,10 @@ Returning to a phase after the prior execution occurrence ended requires a new
 `RUN_PATH`. Preserve earlier Run evidence and reconstruct the new assignment
 from durable inputs; do not resume the prior Participant's conversation as
 hidden state.
+
+A later Run may continue work on the same stable `ARTIFACT_TARGET` when normal
+workflow lifecycle rules permit it. New Run identity does not imply a new copy of
+that workflow artifact.
 
 Immediate Session replacement while the same active Run/execution occurrence is
 continuing is different: it preserves the Run and Participant and reconstructs
@@ -139,4 +175,9 @@ The workflow phase reports the item; the target project's orchestration records/
 
 If orchestrated inputs are absent, the canonical prompt's existing `TASK_PATH` contract remains unchanged.
 
-Do not mix implicit legacy ordinal paths and explicit orchestrated Run paths within the same Run.
+Existing historical Run layouts remain valid execution evidence. This overlay
+does not require migration, renaming, or deletion of artifacts produced under an
+earlier orchestrated layout.
+
+Within a newly dispatched Run, do not mix implicit legacy ordinal paths and
+explicit orchestrated bindings for the same artifact identity.
