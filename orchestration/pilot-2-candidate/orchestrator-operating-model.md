@@ -21,7 +21,7 @@ Human approval should remain a decision, not routine orchestration mechanics.
 
 A Human authority decision and an artifact status update are distinct events.
 
-When a Human explicitly approves a workflow artifact at its defined gate, that Human statement is the approval event. A later Participant-owned update that changes artifact metadata/status to reflect that approval is artifact reconciliation, not a second approval.
+When a Human explicitly approves a workflow artifact at its defined gate, that Human statement is the approval event. Any later artifact metadata/status reconciliation reflects that approval; it is not a second approval. Before creating a Participant Run for such reconciliation, apply the current Run-qualification rule: fully deterministic settled reconciliation should remain outside the Participant Run/model path.
 
 Likewise, a valid Human/owner decision made in a relevant Participant Session does not require duplicate approval unless the workflow defines a separate artifact or milestone approval gate, the scope materially changes, authority is mismatched, or newer evidence conflicts with the decision.
 
@@ -96,9 +96,12 @@ wording. Those surfaces may point to the Decision, but the owning authoritative
 artifact must be updated when the Decision changes canonical project truth.
 
 The Orchestrator owns routing and completion checks for this propagation. It does
-not thereby gain authorship authority over every target artifact. If the owning
-artifact belongs to a workflow Role or protected Human-owned surface, route the
-mechanical update through the applicable owner/authorized actor.
+not thereby gain authorship authority over every target artifact. If updating the
+owning artifact requires workflow-Role judgment or protected authorization,
+route the applicable owner/authorized actor. If the remaining mutation is fully
+deterministic under settled inputs and authorized boundaries, use bounded
+fail-closed reconciliation without creating a Participant Run merely for
+propagation.
 
 Authority synchronization should be proportional:
 
@@ -128,9 +131,10 @@ interface/data contract, verification obligations, or Open Items:
 1. keep the previously Approved Techplan as the current-effective predecessor
    until a replacement revision is approved;
 2. route a fresh Planner Run to reconcile the material delta into a new
-   Draft/In Review spine;
+   Draft/In Review successor;
 3. apply the canonical independent Techplan Review / resolution route and
-   regenerate the Human report when the revision reaches its approval gate;
+   regenerate the Human report for the exact successor revision when it reaches
+   its approval gate;
 4. ask the Human to approve the revised Techplan at that artifact gate without
    asking them to repeat the underlying authority Decision;
 5. only after approval, reconcile any decomposition artifacts derived from the
@@ -354,9 +358,11 @@ Use the smallest route that can actually clear the Blocker:
 - **conflicting valid Decisions/authority contexts** — surface the exact conflict
   and request the smallest reconciliation Decision from the applicable owner(s);
 - **decision already made, propagation pending** — identify the owning
-  authoritative artifact(s) and route the mechanical update through the
-  authorized artifact owner. Do not ask the Human to repeat the decision merely
-  to permit synchronization.
+  authoritative artifact(s), classify whether propagation still requires
+  owner/Role judgment or is fully deterministic, then use the smallest
+  authorized path. Do not ask the Human to repeat the decision merely to permit
+  synchronization, and do not create a Participant Run for fully deterministic
+  propagation.
 
 Default Human action is therefore the **decision/approval/authority action
 itself**, not manually searching for and editing whichever project document may
@@ -383,8 +389,10 @@ concrete enough to answer:
 5. what safe unaffected work may continue meanwhile.
 
 Do not create a Participant Run merely because a Blocker exists. Dispatch one
-only when that Role can add material evidence or perform an authorized artifact
-update that cannot be handled by direct Human/Orchestrator coordination.
+only when that Role can add material evidence or judgment, preserve a required
+independent boundary, or perform an update whose correctness still depends on
+Role-specific interpretation. Fully deterministic settled updates remain outside
+the Participant Run path.
 
 ### Loop-breaking and diminishing returns
 
@@ -434,7 +442,12 @@ A loop-break does not require the Orchestrator to become the domain specialist. 
 
 Executes the assigned workflow Role and Run.
 
-Participants produce Run-owned artifacts and evidence. They may recommend the next route, raise Findings, request Decisions, or report Blockers. They do not own project-wide routing or self-promote their Work Unit to a milestone/completion state.
+Participants produce the workflow artifacts and/or Run-owned evidence required by
+their assigned route. A stable workflow artifact does not become Run-owned merely
+because the Participant modifies it. Participants may recommend the next route,
+raise Findings, request Decisions, or report Blockers. They do not own
+project-wide routing or self-promote their Work Unit to a milestone/completion
+state.
 
 ## Orchestrator is not a super-agent
 
@@ -460,8 +473,8 @@ artifacts, independent review evidence, verification evidence, or provenance.
 
 For Pilot #2, make the ownership boundary explicit:
 
-- `techplan.md` is Planner-owned;
-- `report-techplan.md` is Planner-owned and is generated only when the current-effective Techplan reaches the Human approval gate after any invoked review/resolution path converges;
+- `techplan.md` / `techplan.candidate.md` are stable Planner-owned lifecycle artifacts;
+- `report-techplan.md` is Planner-owned derived Human-review evidence generated only when the exact Techplan artifact/revision being presented reaches the Human approval gate after any invoked review/resolution path converges;
 - Code Review verdict/evidence is Reviewer-owned;
 - Testing verdict/evidence is Verifier-owned;
 - the Orchestrator may dispatch, route, reconcile, and project these artifacts, but must not author them on behalf of the owning workflow Role.
@@ -476,7 +489,7 @@ Preserve these boundaries:
 - current-state fields have one current value and are replaced when state changes;
 - Work Graph owns cross-Work-Unit dependency topology;
 - Events own material chronology;
-- Run artifacts/Handoffs own execution evidence;
+- Run artifacts/terminal execution-outcome evidence own execution evidence;
 - Decision/Finding/Blocker artifacts retain their own semantics when applicable.
 
 A Work Unit record should expose the current outcome/scope/completion condition,
@@ -502,7 +515,7 @@ The Orchestrator must preserve these semantic owners:
 - Work Unit current state → current execution/scheduling/horizon and active
   blocker/gate state;
 - Events → material coordination chronology;
-- Run artifacts/Handoffs → Run execution evidence;
+- Run artifacts/terminal execution-outcome evidence → Run execution evidence;
 - Decision/authority artifacts → authority decisions and ownership context;
 - Control Surface → derived Human-facing projection.
 
@@ -622,7 +635,7 @@ The Orchestrator must preserve only the cross-cutting boundary here:
   meaningful-delta provenance;
 - do not fragment a Run merely because a related Finding, bounded Human decision,
   or adjacent sub-question appears inside the same objective;
-- terminal Handoff is Participant evidence, not Work Unit state;
+- terminal execution-outcome evidence (standalone Handoff or a canonical phase-owned carrier) is Participant evidence, not Work Unit state;
 - Orchestrator reconciliation updates coordination state without becoming hidden
   Reviewer/Verifier work;
 - repeated unresolved cause triggers diagnosis/`STALLED`, not mechanical retry;
@@ -664,9 +677,9 @@ escalate merely because a Role is important, file count is large, or a stronger
 model was used previously.
 
 Pairing routing is independent from Participant Run model routing. Generic Run
-model/effort routing and escalation diagnosis are owned by
-`model-routing-and-escalation.md`; concrete pairing model bindings are owned by
-the Human runtime registry.
+model/effort routing, including Run qualification before model selection, and
+escalation diagnosis are owned by `model-routing-and-escalation.md`; concrete
+pairing model bindings are owned by the Human runtime registry.
 
 ## Dedicated local Orchestrator
 
@@ -721,7 +734,7 @@ After dispatch, supervision remains lightweight:
 - the Orchestrator MUST NOT continuously monitor, mirror, or poll the Participant transcript/progress as normal behavior;
 - if the Human reports no problem, orchestration retains the last-known active state rather than claiming guaranteed realtime liveness;
 - if the Human reports a material problem, the Orchestrator diagnoses/routes only as much as needed;
-- if the Human reports that the Participant finished, the Orchestrator reads the durable Run artifacts/handoff, reconciles Work Unit/Event/Control Surface state, and determines the next route.
+- if the Human reports that the Participant finished, the Orchestrator reads the durable Run artifacts/terminal execution outcome, reconciles Work Unit/Event/Control Surface state, and determines the next route.
 
 Direct Human ↔ Participant interaction remains valid at genuine workflow Human gates.
 
