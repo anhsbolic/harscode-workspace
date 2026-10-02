@@ -275,6 +275,82 @@ Escalation does not automatically imply a new Work Unit.
 
 Whether it creates a new Session or Run depends on normal Session/Run semantics and the nature of the re-entry.
 
+### Human-facing escalation approval
+
+Model approval is a Human-facing runtime decision, not a new workflow artifact or authority object. Keep Participant Run escalation distinct from Human ↔ Orchestrator pairing escalation.
+
+For a gated Participant Run route, render a compact approval request equivalent to:
+
+```text
+[MODEL APPROVAL REQUIRED]
+
+Run:
+<RUN_ID> — <Role / Profile>
+
+Requested:
+<model> / <reasoning effort>
+
+Why:
+<bounded capability reason current approved route is insufficient>
+
+Diagnosed as:
+capability insufficiency
+
+Not caused by:
+<context / authority / guidance / environment gaps ruled out>
+
+Scope:
+this Run only
+
+Trigger:
+<material escalation trigger when applicable>
+
+Decision:
+Approve requested model/effort?
+```
+
+For Human ↔ Orchestrator pairing escalation, use a distinct request without inventing a Run:
+
+```text
+[PAIRING ESCALATION APPROVAL REQUIRED]
+
+Concern:
+<bounded coordination problem>
+
+Current:
+<default pairing model>
+
+Requested:
+<escalation model / effort when applicable>
+
+Why:
+<cross-Work-Unit / cross-authority / dependency / repeated-STALLED synthesis reason>
+
+Scope:
+this concern only
+
+Step-down:
+return to default after the concern is resolved
+
+Decision:
+Approve temporary pairing escalation?
+```
+
+Apply these invariants:
+
+- request escalation only after diagnosis shows capability insufficiency for a Participant Run or materially harder coordination synthesis for the pairing; missing context, authority, guidance, or environment capability must be routed as their own problem;
+- name the exact requested model and reasoning effort plus the bounded justification and scope; do not use model rankings, synthetic scores, speculative quality percentages, or “stronger is better” as rationale;
+- if a sufficient non-gated route exists, use it rather than asking for a gated model merely as a preference;
+- Participant approval is scoped to the concrete Run/model/effort use; pairing approval is scoped to the concrete coordination concern;
+- approval does not mutate the Human-owned registry, remove future approval requirements, or establish a future default;
+- bind Participant approval through the existing durable assignment provenance such as `MODEL_APPROVAL`; do not create `model-approval.md`, escalation receipts, or parallel approval state;
+- pairing approval normally remains runtime coordination context; persist an Event/experimental evidence only when materially useful for CRTV/reconstruction;
+- a rejected escalation must not silently fall back to another gated model/effort. Re-route explicitly: continue with an already-sufficient approved route, rescope/decompose, repair context/guidance/environment, or surface that no sufficient approved route currently exists;
+- approval of a stronger model does not decide Session/Run identity. Continue/re-enter according to normal occurrence semantics;
+- escalation is non-sticky. Future Runs perform normal fresh routing; pairing returns to its default route after the bounded concern is resolved unless another current concern independently justifies escalation.
+
+A Human-facing `[RUN READY]` rendering is valid only after every required gated-model approval has been obtained and bound to the assignment. Do not combine “approval pending” with a card that claims dispatch readiness.
+
 ## Run-scoped approval
 
 Approval for a gated model is scoped to the concrete Run/model/effort being dispatched unless Human policy explicitly says otherwise.
