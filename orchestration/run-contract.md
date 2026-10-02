@@ -19,7 +19,8 @@ An orchestrated phase invocation should make these values discoverable:
 
 - `WORK_UNIT_ID` — stable logical Work Unit identifier.
 - `RUN_ID` — unique occurrence identifier for this workflow execution.
-- `RUN_PATH` — durable write location for artifacts produced by this Run.
+- `RUN_PATH` — durable write location for Run-owned execution evidence produced by this Run.
+- `ARTIFACT_TARGET` — optional stable workflow artifact path or artifact set that this Run is authorized to create/update when the phase mutates state whose logical identity outlives the Run. It may be `none` when the phase's durable outputs are themselves Run-owned evidence.
 - `WORK_UNIT_PATH` — optional dedicated Harscode Space root when one exists.
 - `PRIOR_ARTIFACTS` — explicit current-effective prior artifacts required by this phase.
 - `ROLE` — canonical role for the Run.
@@ -42,6 +43,8 @@ An orchestrated phase invocation should make these values discoverable:
 Project-specific authority/task sources remain explicit inputs to the phase.
 
 Dispatch fields operationalize settled authority; they do not create new Product, security, interface, architecture, risk, verification, or workflow authority. When execution discovers a new material obligation, surface it through the applicable Finding/Decision/planning-reconciliation path instead of smuggling it into free-form invocation text.
+
+`ARTIFACT_TARGET` is an assignment binding, not a new authority source. The active workflow/artifact lifecycle still determines who may write the target and whether the current-effective artifact, a candidate successor, or another stable artifact is the valid target. A later Run may be authorized to continue the same logical artifact without making that artifact Run-owned.
 
 Model availability/capability metadata and supported reasoning efforts are runtime context, not Work Unit authority. Resolve model and reasoning effort separately according to `orchestration/local-runtime-config.md`; do not copy the whole local registry into durable Run artifacts unless needed as pilot evidence.
 
@@ -68,7 +71,7 @@ Do not turn these classes into an exhaustive command whitelist unless execution 
 Existing projects may still use `TASK_PATH`. Under orchestration:
 
 - do not infer chronology from numbered child directories;
-- prefer explicit `RUN_PATH` and `PRIOR_ARTIFACTS`;
+- prefer explicit `RUN_PATH`, `ARTIFACT_TARGET` when applicable, and `PRIOR_ARTIFACTS`;
 - when a phase prompt still accepts `TASK_PATH`, it may be used as a compatibility root only if the project maps it unambiguously to the current Work Unit/Run and does not treat its folder order as execution truth.
 
 ## Session continuation
@@ -91,7 +94,9 @@ Session-transition routing follows `workflow/context-management.md`. Do not deri
 
 ## Durable output
 
-A Run writes only its own durable evidence under `RUN_PATH`. It references prior artifacts rather than copying them.
+A Run writes only its own durable execution evidence under `RUN_PATH`. It references prior artifacts rather than copying them.
+
+When `ARTIFACT_TARGET` is bound, the Participant may create/update that stable workflow artifact within the active phase lifecycle and authorization boundary. The target keeps its own logical identity and semantic owner; do not copy it into `RUN_PATH` merely to make the Run self-contained. Preserve exact target revision/content identity in Run provenance when later review, approval, continuation, or reconstruction materially relies on that version.
 
 A Run record should preserve, when known:
 
@@ -109,9 +114,10 @@ Continuation checkpoint when applicable
 Execution envelope or pointer
 Selected model / reasoning effort
 Model routing rationale / approval evidence
+Artifact target when applicable
 Trigger
 Outcome
-Produced artifacts
+Produced artifacts / stable artifacts changed
 Findings / Decisions / Blockers raised
 Next route
 ```
@@ -131,7 +137,7 @@ Immediate Session replacement while the same execution occurrence is still
 active is different: it may preserve the Run and Participant through a
 Continuation Checkpoint.
 
-The current effective Artifact must be explicit when multiple versions/runs exist.
+The current-effective workflow artifact and any active candidate/`ARTIFACT_TARGET` must be explicit when multiple revisions or execution occurrences exist. A new Run may continue the same logical artifact; new Run identity does not require a new artifact identity.
 
 ## Tiny work
 
