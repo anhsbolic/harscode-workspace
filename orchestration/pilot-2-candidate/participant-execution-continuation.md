@@ -23,7 +23,7 @@ Core principles:
 - **Session** — temporary runtime/context container used by that Participant.
 - **Run Invocation** — Orchestrator-owned binding artifact that tells a Participant what Run to execute.
 - **Continuation Checkpoint** — Participant-owned execution-state artifact used when the same Run/Participant continues in a replacement Session.
-- **Participant Execution Handoff** — Participant-owned result/handoff artifact produced when the Run execution occurrence ends.
+- **Participant Execution Handoff** — Participant-owned terminal execution-outcome evidence. It may be a standalone Handoff artifact or be carried by a canonical immutable phase-owned result artifact when that artifact already contains the complete terminal outcome.
 
 A Run is one execution occurrence of a workflow activity, consistent with the canonical protocol.
 
@@ -189,7 +189,7 @@ Run becomes dispatchable
 → Orchestrator creates Invocation
 → Participant executes the Run through one or more Sessions
 → Participant writes Checkpoint when immediate Session renewal is needed
-→ Participant writes terminal Execution Handoff when the Run occurrence ends
+→ Participant persists terminal execution-outcome evidence when the Run occurrence ends
 → Participant terminates
 → Orchestrator reconciles Work Unit / next route
 ```
@@ -218,7 +218,7 @@ A Human/authority decision made while the Participant remains actively executing
 When a Human decision, external dependency, blocker, or another meaningful pause causes the current execution occurrence to end:
 
 ```text
-Participant writes Execution Handoff
+Participant persists terminal execution-outcome evidence
 → current Run execution occurrence ends
 → Orchestrator reconciles Work Unit state
 → Work Unit may become WAITING / WAITING_HUMAN / BLOCKED / PARKED as applicable
@@ -294,13 +294,13 @@ A repeated/new Run created after workflow re-entry should preserve concise prove
 
 Make discoverable when applicable:
 
-- prior relevant Run(s) and Participant Execution Handoff(s);
+- prior relevant Run(s) and terminal execution-outcome evidence, including a standalone Handoff when one was required;
 - relevant review/finding/decision/dependency evidence;
 - meaningful delta that justifies re-entry;
 - newly effective Decision/evidence;
 - current-effective assignment inputs.
 
-Repeated-Run provenance follows causal relevance, not merely chronological adjacency. A later Build/Patch Run may, for example, depend on an earlier Build Handoff plus a Reviewer Finding produced by an intervening Review Run.
+Repeated-Run provenance follows causal relevance, not merely chronological adjacency. A later Build/Patch Run may, for example, depend on an earlier Build terminal outcome plus a Reviewer Finding produced by an intervening Review Run.
 
 The new Run receives a new Run Invocation, Participant identity, and applicable current Profile revision.
 
@@ -417,11 +417,21 @@ A replacement Session must not reconstruct missing state from assumption.
 
 ## Participant Execution Handoff
 
-The Participant owns the Participant Execution Handoff.
+The Participant owns the terminal execution-outcome evidence for its Run.
+`Participant Execution Handoff` is the semantic contract for that terminal
+outcome; it is **not** a requirement that every Run create a separate
+`handoff.md` file.
 
-The Handoff ends the current Run execution occurrence. The Orchestrator then reconciles the Work Unit and determines whether the Work Unit is complete, waiting/blocked, or later requires a repeated/new Run.
+When a canonical immutable phase-owned result artifact already contains the
+complete terminal outcome — for example a review findings artifact, Build report,
+or Testing report whose format includes the phase handoff — that artifact may
+satisfy the terminal Handoff obligation directly. Create a standalone Handoff
+when the Run otherwise has no natural terminal result carrier, such as a Planner
+that mutates a stable Techplan artifact, a decomposition Run that mutates stable
+task snapshots, or an Explorer whose durable evidence is split across multiple
+files without one terminal result artifact.
 
-A minimal Handoff should make discoverable:
+Whichever artifact carries the terminal outcome, it should make discoverable:
 
 - identity/provenance for the Run, Work Unit, Participant, Role/Profile revision;
 - execution outcome;
@@ -446,9 +456,17 @@ Useful execution-outcome semantics may include:
 
 These are Participant execution results, not canonical orchestration-state enums.
 
-Under normal execution, one Run should produce one terminal Participant Execution Handoff. Checkpoints may be multiple, but the terminal Handoff closes the Run occurrence. Material corrections after the Handoff reliance boundary should amend/supersede rather than silently rewrite it.
+Under normal execution, one Run should produce exactly one durable terminal
+execution-outcome carrier. Checkpoints may be multiple, but the terminal outcome
+closes the Run occurrence. Do not create both a complete phase-owned terminal
+report and a second standalone Handoff that merely repeats the same outcome.
+Material corrections after the relied-upon terminal outcome should
+amend/supersede rather than silently rewrite it.
 
-The Handoff summarizes execution evidence and routes the Orchestrator to durable truth; it should not duplicate inspectable source code, full transcripts, copied plans, or raw complete logs.
+The terminal outcome summarizes execution evidence and routes the Orchestrator
+to durable truth; it should not duplicate inspectable source code, full
+transcripts, copied plans, raw complete logs, or the full content of a stable
+workflow artifact that the Run merely changed.
 
 ## Human decisions during Participant execution
 
@@ -458,20 +476,21 @@ The Participant records the decision as observed evidence; it does not become th
 
 The Orchestrator later reconciles the decision into durable project/orchestration state without requiring duplicate approval merely because the decision occurred inside a Participant Session.
 
-If the Decision changes authority-owned project truth, the Handoff is still only
-decision evidence and routing context. It must not become the canonical authority
-artifact by convenience. The Orchestrator must route or verify the corresponding
-authority-artifact update before dependent completion is claimed.
+If the Decision changes authority-owned project truth, the terminal outcome is
+still only decision evidence and routing context. It must not become the
+canonical authority artifact by convenience. The Orchestrator must route or
+verify the corresponding authority-artifact update before dependent completion
+is claimed.
 
 
-## Orchestrator reconciliation after terminal Handoff
+## Orchestrator reconciliation after terminal outcome
 
-A terminal Handoff is Participant evidence, not the resulting Work Unit state.
+A terminal execution outcome is Participant evidence, not the resulting Work Unit state.
 
 The Orchestrator should perform a coordination-level reconciliation before updating canonical Work Unit state:
 
 1. validate Run / Work Unit / Participant identity and provenance;
-2. compare the Handoff against the Run Invocation objective, scope, completion condition, and expected outputs;
+2. compare the terminal outcome against the Run Invocation objective, scope, completion condition, and expected outputs;
 3. resolve material durable evidence rather than relying on narrative claims alone;
 4. reconcile Findings, Decisions, Blockers, and their ownership/routing implications, including the exact affected scope and safe unaffected work for each active Blocker;
 5. when a Blocker is scoped, preserve unrelated runnable work rather than expanding the Blocker to the whole Work Unit without evidence;
@@ -521,7 +540,7 @@ Work Unit continuation
 
 A Session may terminate while the same Run continues only through immediate Session replacement.
 
-When the Participant produces the terminal Execution Handoff for the occurrence, that Run ends.
+When the Participant persists the terminal execution outcome for the occurrence, that Run ends.
 
 If the Work Unit is not yet complete because it is waiting on a Human/owner decision, blocked by a dependency, or requires later re-entry, the Orchestrator updates canonical Work Unit execution/scheduling state rather than keeping the Run alive.
 
@@ -535,7 +554,7 @@ Semantic ownership for this candidate model:
 
 - Run Invocation — Orchestrator;
 - Continuation Checkpoint — Participant;
-- Participant Execution Handoff — Participant;
+- Participant terminal execution outcome / Handoff evidence — Participant; the carrier may be standalone or embedded in the canonical immutable phase-owned result artifact;
 - Session Transition / recovery record — Orchestrator;
 - Run dispatch/result chronology — Orchestrator;
 - Work Unit execution/scheduling state / Work Graph / Control Surface — Orchestrator;
@@ -544,6 +563,11 @@ Semantic ownership for this candidate model:
 - Project Learning promotion — applicable Human/review authority.
 
 One durable artifact should have one semantic owner. Avoid shared-write artifacts whose provenance becomes ambiguous.
+
+A workflow artifact does not become Run-owned merely because a Run modifies it.
+When the orchestrated-run overlay binds a stable `ARTIFACT_TARGET`, that stable
+artifact retains its workflow semantic identity while the Run package records
+only the occurrence-specific assignment and evidence.
 
 ### Run artifact proportionality
 
@@ -556,17 +580,38 @@ preserves the execution meaning and evidence required for correctness**.
 The following remain required when applicable:
 
 - a discoverable Run Invocation before dispatch;
-- the canonical phase-owned artifact(s) required by the active workflow route;
+- the canonical phase-owned artifact(s) required by the active workflow route,
+  stored according to their own lifecycle/ownership semantics rather than copied
+  into the Run merely for provenance;
 - a Continuation Checkpoint only when an actual Session transition/recovery
   requires one;
-- a terminal Participant Execution Handoff when the execution occurrence ends;
+- one durable terminal execution-outcome carrier when the occurrence ends; use a
+  standalone Handoff only when an existing canonical phase-owned result artifact
+  does not already carry the complete terminal outcome;
 - additional evidence artifacts when the evidence is materially useful for
   verification, decision provenance, review, reconstruction, or later reuse.
 
 Do not collapse or remove a canonical phase-owned artifact just to reduce file
-count. For example, a Planner-owned `techplan.md`, Reviewer-owned review
+count. For example, a stable Planner-owned Techplan, Reviewer-owned review
 evidence, or Verifier-owned testing evidence keeps its own semantic ownership
 when the workflow requires it.
+
+Do not create a default `launch-record.md`. The Invocation owns assignment and
+dispatch binding; the terminal outcome owns execution result; material dispatch
+chronology belongs in Events/coordination state when needed. Add another durable
+Run-local provenance file only when it owns material information that those
+surfaces cannot reconstruct.
+
+Do not copy version-controlled source files into a Run-local `baseline/` tree by
+default. Prefer the observed target revision plus relevant paths and exact
+content revision/hash when needed. Preserve an explicit source snapshot only
+when the exact input would otherwise not be durably reconstructable, such as an
+ephemeral or non-versioned external source.
+
+Do not persist a `source-delta.patch` or equivalent patch snapshot by default
+when the delta is reconstructable from durable source revisions/working state.
+Persist an exact patch only when the patch itself becomes a relied-upon object or
+when its source state cannot otherwise be reconstructed safely.
 
 Extra Run-local evidence files should earn their existence by owning material
 information that would otherwise become ambiguous, hard to verify, or expensive
@@ -607,7 +652,7 @@ Examples:
 
 - Invocation reliance boundary — Participant dispatch;
 - Checkpoint reliance boundary — replacement Session dispatch;
-- Handoff reliance boundary — Orchestrator reconciliation;
+- terminal outcome/Handoff reliance boundary — Orchestrator reconciliation;
 - Decision reliance boundary — downstream work acts on it;
 - Learning Proposal reliance boundary — review/promotion begins.
 
@@ -638,11 +683,12 @@ A project-local layout such as:
   runs/
     <run-id>/
       invocation.md
-      checkpoints/
-      handoff.md
+      checkpoints/          # only when an actual Session transition requires them
+      <phase-result>        # when the Run owns a natural immutable result artifact
+      handoff.md            # only when terminal outcome is not carried elsewhere
 ```
 
-is a valid candidate implementation pattern, not a universal Harscode filesystem law.
+is a valid candidate implementation pattern, not a universal Harscode filesystem law. A stable workflow artifact bound through `ARTIFACT_TARGET` may live outside the Run package entirely.
 
 Do not introduce a Run Registry merely because a Participant Profile Registry exists. A separate Run Registry is justified only if deterministic Run-ID resolution cannot be achieved cleanly through the project’s existing orchestration layout/indexing.
 
@@ -670,7 +716,7 @@ For immediate Session renewal, the Orchestrator should provide:
 - base Invocation pointer;
 - latest Continuation Checkpoint.
 
-After a meaningful pause has ended the Run occurrence, later execution must be dispatched as a new Run with concise provenance to the prior Run/Handoff and the meaningful delta.
+After a meaningful pause has ended the Run occurrence, later execution must be dispatched as a new Run with concise provenance to the prior Run/terminal outcome evidence and the meaningful delta.
 
 The Human should not author the handoff, reconstruct workflow routing, or invent the continuation task.
 
