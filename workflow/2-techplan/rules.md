@@ -54,11 +54,11 @@ Do not fabricate a contract merely to fill a template subsection. Mark genuinely
 
 ## 7. Human Report Is Separate and Generated at the Human Gate
 
-`techplan.md` has no embedded Summary/digest. Generate `report-techplan.md` from `report-template.md` when the current-effective Techplan has converged enough to enter the Human approval gate, after applicable planning review/resolution has converged.
+`techplan.md` has no embedded Summary/digest. Generate `report-techplan.md` from `report-template.md` when the **exact Techplan artifact/revision being presented** has converged enough to enter the Human approval gate, after applicable planning review/resolution has converged. Before the first approval this is normally `techplan.md`; for a material successor to an already Approved/Implemented predecessor it may be `techplan.candidate.md` while the predecessor remains current-effective.
 
-Do not generate or maintain the report in parallel with every Draft mutation. The report is derived review evidence, never the execution source of truth.
+Do not generate or maintain the report in parallel with every Draft mutation. The report is derived review evidence, never the execution source of truth, and it does not make a candidate current-effective merely by existing.
 
-If a material Techplan revision changes the Human decision surface, regenerate the report before the next Human approval decision. If an Approved Techplan later changes materially, regenerate it again. Do not hand-patch the digest independently.
+If a material Techplan revision changes the Human decision surface, regenerate the report before the next Human approval decision. If an Approved Techplan later needs a material successor, generate the report for the exact successor revision presented at that gate. Do not hand-patch the digest independently.
 
 ## 8. Open Items Lifecycle
 
