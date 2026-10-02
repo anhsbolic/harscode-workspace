@@ -8,7 +8,8 @@ Independent adversarial verification of a synthesized Techplan. This review must
 
 - `{HARSCODE_WORKSPACE_ROOT}` — path to this Harscode workspace, used to resolve current Techplan authority.
 - `{TASK_PATH}` — root working directory for the task under review.
-- `{TASK_PATH}/2-techplan/techplan.md` — the actual synthesized Techplan; this prompt reviews it and does not replace it.
+- The exact synthesized Techplan artifact under review: normally `{TASK_PATH}/2-techplan/techplan.md` before first approval, or `{TASK_PATH}/2-techplan/techplan.candidate.md` when reviewing a material successor to an already Approved/Implemented predecessor. This prompt reviews the artifact; it does not replace it.
+- A reconstructable revision/content identity for the Techplan artifact under review when available. The durable review evidence must identify the exact revision actually reviewed rather than only a mutable filename.
 - `{TASK_PATH}/1-exploration/logs/` — all durable Exploration evidence for independent fidelity checking. Broad rereading is intentional here when the Complex gate applies.
 - Applicable target-repo source/spec/live-code authority — required for technical-fact spot checks; Exploration prose is not a substitute for current source truth.
 - `diagram-guidelines.md` is conditional and is opened only when the Techplan actually contains a diagram.
@@ -18,15 +19,22 @@ Unlike ordinary cross-phase progressive disclosure, this review intentionally re
 ## Prompt
 
 ```text
-You are independently reviewing a synthesized techplan.md. Do not rewrite it.
-Verify it against the actual durable source evidence and current Techplan
-and target-repo authority, not against your memory or general preference.
+You are independently reviewing the exact Techplan artifact/revision supplied as
+the review target. Do not rewrite it. Verify it against the actual durable source
+evidence and current Techplan and target-repo authority, not against your memory
+or general preference.
+
+Before substantive review, capture:
+- review target path;
+- exact reconstructable revision/content identity when available;
+- whether the target is the pre-Approval `techplan.md` or a post-Approval
+  `techplan.candidate.md` successor.
 
 Read:
 - {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/template.md
 - {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/rules.md
 - {HARSCODE_WORKSPACE_ROOT}/workflow/2-techplan/guardrails.md
-- {TASK_PATH}/2-techplan/techplan.md
+- the exact Techplan artifact/revision supplied as the review target
 - every durable Exploration artifact under {TASK_PATH}/1-exploration/logs/
 - diagram-guidelines.md only if the Techplan includes a diagram
 - target-repo source/spec/live code only where a claim needs independent fact
@@ -34,6 +42,12 @@ Read:
 
 Process narration may be terse/checklist-driven; every finding must include
 location, defect, source evidence, and materiality.
+
+If the mutable Techplan path changes materially after the captured review target
+revision and before the review is completed, do not silently claim the review
+covers the newer content. Finish only against the captured revision when that
+revision remains reconstructable, or stop/re-ground on the newer revision as a
+new review target according to normal review/re-entry semantics.
 
 STEP 0 — COMPLEX GATE
 Is independent review warranted? Treat as Complex when the plan has ≥15
@@ -110,6 +124,7 @@ Output only:
 
 ## Review findings — <task-code>
 **Gate:** <Complex criteria>
+**Review target:** <Techplan path + exact reconstructable revision/content identity when available>
 **Sections resolved:** <current mapping from semantic section names to current template numbers>
 
 ### Blocking
@@ -122,13 +137,13 @@ Output only:
 - <checks that passed, briefly>
 
 ## Phase handoff
-- Completed: independent review gate + review when warranted
+- Completed: independent review gate + review of the captured Techplan revision when warranted
 - Artifacts: <review findings path if one was written; otherwise "review output in current session">
 - Human decision: <approve/revise/waive next planning step as applicable; "none" if no decision is needed now>
 - Open / deferred: <blocking findings or non-blocking follow-up; "none" if none>
 - Recommended next step: one resolution pass then human gate when review ran; human gate directly when the Complex gate says review is not warranted
 - Session transition: <plain-language continue/fresh action + reason; after Approval, Build starts with a new Run/Participant and fresh Participant Session when orchestrated, otherwise fresh is preferred>
-- Context pointers: Techplan + exact source anchors for blocking findings only
+- Context pointers: reviewed Techplan revision + exact source anchors for blocking findings only
 ```
 
 ## What happens with findings
@@ -144,12 +159,15 @@ synthesis
 
 The resolver declares whether the resolution changed material scope, architecture/ownership, business/security/interface semantics, or verification strategy. If yes, re-review runs unless the human gate waives it. If no, the human may still order re-review.
 
+A material resolution creates a newer Techplan revision; the previous review remains evidence about its captured target and must not be presented as review of the newer revision. Re-review, when required, captures the newer revision explicitly.
+
 Non-blocking/mechanical corrections never trigger re-review by themselves. If Build later discovers a material gap, it returns to the Techplan/human gate rather than inventing the decision.
 
 ## Notes
 
 - This Draft prompt does not choose named models; model routing is a separate execution concern.
 - Independence is mandatory at the reviewer/actor-context level even though exact model/client routing stays outside this phase prompt.
+- Exact target revision provenance prevents a mutable stable Techplan path from making historical Review evidence ambiguous; it does not require copying the whole Techplan into the Review Run.
 - Use semantic section names in checks. A prior version hardcoded Techplan section numbers, the template later renumbered, and the review silently checked stale locations; keep this failure-mode rationale when compressing the prompt.
 - Broad Exploration rereading here is deliberate independent verification, not the default pattern for Build/Testing.
 - The reviewer's job is fidelity/correctness, not a second architecture contest after a decision is correctly recorded.
