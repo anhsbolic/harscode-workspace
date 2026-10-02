@@ -15,6 +15,8 @@ Core principles:
 
 > A stronger model must not be used to hide missing context, missing authority, bad guidance, or environment limitations.
 
+> Fully deterministic coordination mechanics do not become low-cost AI Runs merely because a model can perform them.
+
 ## Runtime ownership
 
 The model registry remains Human-owned and Orchestrator-read-only.
@@ -31,12 +33,50 @@ Exact model names are target/local runtime data.
 
 Harscode must not encode assumptions tied to a particular model generation or vendor naming scheme.
 
+## Run qualification precedes model routing
+
+Model routing applies only after coordination has established that the next action
+is genuinely a Participant Run.
+
+Do not create a Run merely because an action changes durable state. Before model
+selection, distinguish workflow execution that needs Role-specific capability,
+material synthesis, implementation judgment, new evidence, or independent
+review/verification from a deterministic reconciliation whose result already
+follows completely from settled durable inputs.
+
+A deterministic reconciliation stays outside Participant model routing when all
+of the following are true:
+
+- the governing inputs/Decision are already settled and explicit;
+- there is one materially valid outcome;
+- preconditions can be checked objectively;
+- the allowed mutation is bounded and mechanically describable;
+- a precondition mismatch can fail closed without guessing intent; and
+- no Human authority, specialist judgment, independent review, or independent
+  verification boundary is being replaced.
+
+Examples include verifying an exact approved artifact revision before a permitted
+lifecycle-status update, promoting an exact Human-approved candidate through a
+bounded lifecycle transition, or rebuilding a genuinely derived projection from
+settled owning state.
+
+When any of the conditions above is false, do not force the action into a
+mechanical path merely to avoid AI cost. Route the smallest appropriate Human,
+Orchestrator-reasoning, or Participant path instead.
+
+Deterministic mechanics remain project-defined implementation choices. This
+guidance does not introduce a new canonical orchestration object, autonomous
+state machine, or workflow engine.
+
 ## Selection order
 
-Model routing should happen after the Run is defined.
+Model routing should happen only after Run qualification succeeds.
 
 ~~~text
-determine next applicable phase
+determine next applicable action
+→ decide whether a Participant Run is actually required
+   → if fully deterministic settled reconciliation: no Participant model route
+   → otherwise continue
 → define Run purpose and scope
 → assign Role / Specialization
 → assess minimum capability needs
@@ -62,7 +102,7 @@ Selection should consider the concrete combination of:
 
 Do not hardcode phase-to-model mappings.
 
-A routine Build may need less capability than a cross-cutting Review, while a difficult Build may need more capability than a mechanical Testing Run.
+A routine Build may need less capability than a cross-cutting Review, while a difficult Build may need more capability than a bounded Testing Run. Work that is fully deterministic should have been removed from the Participant Run path before this comparison occurs.
 
 ## Coarse capabilities
 
@@ -221,21 +261,42 @@ A stronger Orchestrator pairing does not upgrade Participant Runs automatically.
 
 A stronger Participant Run does not upgrade the pairing automatically.
 
+The Orchestrator pairing may request a concern-scoped model and/or reasoning-effort
+escalation when the coordination problem itself requires materially stronger
+cross-Work-Unit synthesis, cross-authority reconciliation, dependency reasoning,
+repeated-STALLED diagnosis, or analysis of multiple interacting constraints.
+This is appropriate when the needed evidence already exists and the hard part is
+coordination synthesis; missing domain evidence should still be routed to the
+appropriate Participant instead.
+
+Any pairing escalation follows the Human-owned runtime registry and requires
+explicit Human approval when that registry marks the requested route as gated.
+The escalation is non-sticky: once the difficult coordination concern is
+resolved, return to the default pairing route unless another current concern
+independently justifies escalation.
+
 ## Independence does not imply stronger model
 
 A fresh Code Review or Testing Session may be required for independence while using the same ordinary-capability model.
 
 These are different decisions: fresh Session for independence versus stronger model for capability need.
 
-## Routine low-cost Runs
+## Bounded low-cost Runs after qualification
 
-Pilot #2 may test lower-cost models on genuinely bounded routine Runs, for example:
+Pilot #2 may test lower-cost models on genuinely bounded Runs that still require
+Participant capability or judgment, for example:
 
-- narrow mechanical reconciliation;
-- derived report generation;
-- straightforward projection/artifact update;
-- small targeted confirmation;
-- clearly scoped low-complexity patch.
+- a small targeted confirmation that requires interpretation rather than a pure
+  mechanical check;
+- a clearly scoped low-complexity patch;
+- bounded repository analysis where current evidence must still be interpreted;
+- a simple workflow-role task whose correct outcome is not mechanically
+  predetermined.
+
+Do not route fully deterministic status propagation, exact-hash reconciliation,
+derived projection refresh, or similarly predetermined bookkeeping through a
+Participant merely to use a cheap model. Those actions should leave the AI Run
+path when their preconditions and allowed mutation are fully mechanical.
 
 Do not force low-cost routing merely to produce savings evidence.
 
@@ -275,10 +336,11 @@ This is runtime maintenance, not a Harscode protocol change.
 
 This model is working when:
 
+- deterministic settled mechanics are removed from Participant model routing rather than merely assigned a cheaper model;
 - routing choices are explainable from concrete Run needs;
-- lower-cost models succeed on appropriately bounded work;
+- lower-cost models succeed on appropriately bounded judgment-requiring work;
 - stronger models are used only when justified;
 - model escalation does not hide authority/context/guidance/environment defects;
 - gated-model Human prompts remain focused and Run-scoped;
 - pairing and Participant model choices remain independent;
-- stronger-model use does not become sticky after the difficult concern ends.
+- pairing/Participant escalation remains concern-scoped and non-sticky after the difficult concern ends.
