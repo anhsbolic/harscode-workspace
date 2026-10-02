@@ -126,6 +126,49 @@ Every terminated orchestrated Participant Run exposes one structured `## Phase h
 
 The terminal handoff is Participant evidence and continuation indexing, not project-wide routing authority. In particular, `Recommended continuation` is advisory; the Orchestrator still reconciles durable state and determines the next route.
 
+## Deterministic reconciliation outside the Run path
+
+Not every durable mutation is a Run.
+
+When the current Run-qualification rules establish that an action is fully determined by settled durable authority/evidence, the Orchestrator may execute or route that action as a bounded deterministic reconciliation **without** creating a Run, Participant, Invocation, Handoff, model route, or new orchestration object.
+
+This direct reconciliation path is permitted only when all of the following remain true:
+
+- governing inputs/Decisions are durable, explicit, current-effective, and sufficient to determine the result;
+- exactly one materially valid result follows from those inputs;
+- preconditions are objectively checkable before mutation;
+- the permitted write surface and allowed delta are mechanically bounded;
+- postconditions are objectively verifiable after mutation;
+- any mismatch can fail closed without choosing among semantic alternatives; and
+- the action does not replace Human authority, protected authorization, specialist judgment, independent Review, or independent Verification.
+
+Use the execution shape:
+
+```text
+resolve settled inputs
+→ check exact preconditions
+→ apply only the authorized bounded mutation
+→ verify exact postconditions / allowed delta
+→ record only the material project consequence when needed
+```
+
+Examples that may qualify when their exact preconditions are satisfied:
+
+- reconcile workflow lifecycle/status metadata to an already-valid Human approval;
+- promote an exact Human-approved candidate artifact while preserving the approved content identity except for explicitly permitted lifecycle metadata;
+- update an exact pointer/reference that is mechanically entailed by settled state;
+- rebuild a genuinely derived projection whose source-to-projection mapping is deterministic.
+
+This path does **not** grant the Orchestrator semantic authorship over project/workflow authority artifacts. It must not be used to draft or rewrite requirements, choose API/data semantics, interpret an ambiguous Decision, decide materiality, accept risk, author a plan, make implementation choices, or perform independent review/verification.
+
+Protected paths/actions remain protected. A deterministic result does not bypass a required Human/protected authorization boundary; obtain the required authorization first, then apply only the permitted mechanical mutation.
+
+On stale input, unexpected target revision, wider-than-allowed delta, conflicting authority, ambiguous result, or failed postcondition: **stop without mutation or further improvisation** when possible, preserve the observed discrepancy, and route the smallest appropriate Human/Orchestrator-reasoning/Participant path. Do not auto-create a Run merely because the mechanical path failed.
+
+The reconciliation itself does not require a default `reconciliation-report.md`, operation registry, or operation log. Git/content revisions and existing durable authority evidence provide normal provenance. Record an existing Event/current-state consequence only when the mutation is materially relevant to reconstruction or routing.
+
+Do not extract a universal reconciliation command/state machine from these semantics until repeated CRTV evidence shows a stable recurring mechanism worth automating.
+
 ## Re-entry
 
 Returning to Exploration, Planning, Build, Review, or Testing after the prior
