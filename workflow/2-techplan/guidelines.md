@@ -11,8 +11,8 @@ Process reference for synthesizing Exploration evidence into `techplan.md`. The 
 3. **Reconcile overlap/conflict** per `rules.md` §2. Genuine contradictions become Open Items.
 4. **Evaluate independent operational sub-components** per `rules.md` §3.
 5. **Read target-repo authority where the plan depends on project-specific convention**, especially interfaces, state/ownership, error semantics, migrations, UI/design, or test/build conventions.
-6. **Write `techplan.md` from `template.md`.** Preserve material decisions/risks/contracts once; use cross-references rather than repeated prose.
-7. **No embedded Summary step.** Once the Techplan reaches Approved, generate `report-techplan.md` separately from `report-template.md`.
+6. **Write the applicable Techplan lifecycle target from `template.md`.** Before first approval, use `{TASK_PATH}/2-techplan/techplan.md`. If an already Approved/Implemented Techplan needs a material successor, preserve that current-effective predecessor and prepare/continue `{TASK_PATH}/2-techplan/techplan.candidate.md` as required by `guardrails.md`. Preserve material decisions/risks/contracts once; use cross-references rather than repeated prose.
+7. **No embedded Summary step.** Once the exact Techplan artifact/revision being presented has converged enough to enter the Human approval gate, generate `report-techplan.md` separately from `report-template.md` **before** the Human approval decision. Do not maintain the report during active synthesis/review churn.
 8. **Use conditional references only when triggered:**
    - `diagram-guidelines.md` when a diagram is warranted;
    - `examples.md` / `techplan-example.md` when tone/shape/detail is genuinely ambiguous;
