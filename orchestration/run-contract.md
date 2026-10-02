@@ -119,8 +119,12 @@ Trigger
 Outcome
 Produced artifacts / stable artifacts changed
 Findings / Decisions / Blockers raised
-Next route
+Terminal Phase Handoff carrier
 ```
+
+Every terminated orchestrated Participant Run exposes one structured `## Phase handoff` in its terminal outcome carrier. The exact continuation fields and semantics are owned by `pilot-2-candidate/participant-execution-continuation.md` and applied through `workflow/orchestrated-run-overlay.md`; do not duplicate that full definition here.
+
+The terminal handoff is Participant evidence and continuation indexing, not project-wide routing authority. In particular, `Recommended continuation` is advisory; the Orchestrator still reconciles durable state and determines the next route.
 
 ## Re-entry
 
