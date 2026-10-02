@@ -431,30 +431,65 @@ that mutates a stable Techplan artifact, a decomposition Run that mutates stable
 task snapshots, or an Explorer whose durable evidence is split across multiple
 files without one terminal result artifact.
 
-Whichever artifact carries the terminal outcome, it should make discoverable:
+For every terminated orchestrated Participant Run, whichever artifact carries
+the terminal outcome MUST contain exactly one compact `## Phase handoff` with
+these fixed continuation fields:
 
-- identity/provenance for the Run, Work Unit, Participant, Role/Profile revision;
-- execution outcome;
-- durable outputs;
-- verification performed, not performed, not applicable, or still unverified as applicable;
-- Findings;
-- Human/owner Decisions observed, with provenance when applicable;
-- Blockers, including the exact affected scope and safe unaffected work when
-  known;
-- remaining and explicitly unverified work/concerns;
-- recommended continuation;
-- Learning Proposal pointer or `None`.
+```markdown
+## Phase handoff
+- Outcome: ...
+- Result refs: ...
+- Findings: ...
+- Decision requests: ...
+- Blockers: ...
+- Open / unverified: ...
+- Recommended continuation: ...
+- Context refs: ...
+```
 
-The Participant may recommend a next route but must not create the next Run, mark a Work Unit complete, or self-promote a milestone.
+The fields have these semantics:
 
-Useful execution-outcome semantics may include:
+- **Outcome** — how this Run occurrence ended. It describes execution occurrence
+  completion, not Work Unit completion, milestone promotion, or downstream
+  authorization. Use concise occurrence semantics such as `COMPLETED`,
+  `STALLED`, or `FAILED` when they fit the actual result.
+- **Result refs** — materially relevant terminal/stable outputs plus exact
+  reconstructable revision/content identity when later reliance requires it.
+  This is not a touched-file inventory. Do not copy stable workflow artifacts
+  into the Run merely to make the handoff self-contained.
+- **Findings** — material observed problems/evidence raised by the Run, preferably
+  by pointer to their durable owning evidence when one exists. Use `none` when
+  there are no material Findings.
+- **Decision requests** — unresolved material authority choices that require an
+  identified owner/Human decision. Keep these distinct from Findings and
+  Blockers; use concise exact asks or durable Decision pointers rather than a
+  narrative restatement.
+- **Blockers** — active inability to progress, including the exact affected scope
+  and safe unaffected work when known. A scoped blocker must not be silently
+  widened to the whole Work Unit.
+- **Open / unverified** — material uncertainty, deferred obligations, or evidence
+  not yet established. Open or unverified work is not automatically a Blocker.
+- **Recommended continuation** — Participant-local advice about the smallest
+  useful continuation. It is a routing signal, not routing authority: the
+  Participant must not create the next Run, mark a Work Unit complete, promote a
+  milestone, or authorize downstream work through this field.
+- **Context refs** — only the smallest durable pointers needed to reopen the
+  relevant evidence or authority context. Do not reproduce the full source set.
 
-- assigned work completed;
-- partial execution;
-- blocked;
-- waiting on external/Human decision.
+The structured Phase Handoff is an index into durable evidence, not a second
+phase report. It should not duplicate detailed test output, full findings, copied
+plans, source diffs, complete logs, or the full content of stable workflow
+artifacts that already have their own semantic owner.
 
-These are Participant execution results, not canonical orchestration-state enums.
+The Orchestrator may reconcile or route directly from the structured Phase
+Handoff when it is sufficient. When it is not sufficient, selectively open the
+referenced durable evidence rather than requiring every terminal handoff to
+restate it.
+
+Do not add a generic `Session transition` field to this terminal shape. Once the
+terminal outcome is persisted, the Run occurrence ends; later Session/Run posture
+is Orchestrator routing. This does not remove portable non-orchestrated phase
+handoff wording from canonical workflow prompts.
 
 Under normal execution, one Run should produce exactly one durable terminal
 execution-outcome carrier. Checkpoints may be multiple, but the terminal outcome
@@ -463,10 +498,8 @@ report and a second standalone Handoff that merely repeats the same outcome.
 Material corrections after the relied-upon terminal outcome should
 amend/supersede rather than silently rewrite it.
 
-The terminal outcome summarizes execution evidence and routes the Orchestrator
-to durable truth; it should not duplicate inspectable source code, full
-transcripts, copied plans, raw complete logs, or the full content of a stable
-workflow artifact that the Run merely changed.
+Historical Runs and terminal artifacts remain valid evidence and require no
+backfill solely to adopt this structured shape.
 
 ## Human decisions during Participant execution
 
