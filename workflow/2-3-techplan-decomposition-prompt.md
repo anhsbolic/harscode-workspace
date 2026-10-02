@@ -56,7 +56,10 @@ Choose the least-surprising axis that reflects the actual work. Do not choose
 an axis merely because it is available:
 
 - Dependency / sequence — use when task B genuinely cannot execute until task A
-  establishes a prerequisite contract/data/schema/component.
+  establishes a prerequisite contract/data/schema/component. When this axis is
+  used, declare the observable condition that makes the dependency satisfied;
+  do not rely on task ordering or predecessor completion alone when a narrower
+  prerequisite is what downstream execution actually needs.
 - Component / module — use when separate modules can be changed/reviewed with
   little implementation-context overlap and no hard dependency.
 - Vertical layer — use when persistence/business/interface layers form useful
@@ -83,11 +86,27 @@ Each task file must include:
 - parent rule/decision/risk/contract IDs that govern the task;
 - scoped implementation detail and code anchors needed for this task;
 - hard dependency task(s), only when genuinely required;
+- for every hard dependency, the explicit observable satisfaction condition the
+  predecessor must establish before this task may cross the dependent boundary,
+  plus the durable evidence expected to establish that condition when known;
 - scoped verification obligations the task must satisfy before handoff;
 - any explicit NOT-in-this-task boundary needed to prevent scope bleed.
 
 Do not invent missing provenance metadata or persist account/credential
 identifiers. Git history is the default version history.
+
+A dependency condition may point to an observable artifact revision, accepted
+Decision/contract result, verified generated output, completed migration/schema
+result, or another durable prerequisite. Do not invent a universal enum such as
+`BUILD_COMPLETE`, `REVIEW_APPROVED`, or `VERIFIED` merely to normalize wording.
+Use the smallest condition that actually gates downstream correctness.
+
+A predecessor task being broadly "done" does not automatically satisfy a hard
+dependency unless predecessor completion is itself the declared condition. A
+hard dependency may be satisfied earlier when its narrower required result has
+already been durably established. If evidence does not establish the declared
+condition unambiguously, treat the dependency as not yet satisfied rather than
+guessing.
 
 A task must be executable from:
 
@@ -113,20 +132,29 @@ split exposes a material decision/risk/contract/verification item missing from
 the parent spine, STOP: the Techplan needs revision/human gate (and possibly
 re-review), not a hidden child-task fix.
 
-Do not reinterpret an approved decision while decomposing. Do not generate or
-regenerate the human-facing report here; `report-techplan.md` is independent
-of whether decomposition runs.
+Do not reinterpret an approved decision while decomposing. Dependency
+satisfaction wording must operationalize settled parent meaning, not invent a
+new Product/API/architecture/verification obligation. If defining the condition
+requires new material semantics, STOP and reconcile the parent Techplan/authority
+first.
+
+Do not generate or regenerate the human-facing report here;
+`report-techplan.md` is independent of whether decomposition runs.
 
 STEP 4 — GENERATE THE MANIFEST LAST
 Write a manifest under {TASK_PATH}/2-techplan/tasks/ containing:
 - compact provenance under the same rule as task files;
 - task file list + short purpose;
 - chosen splitting axis + rationale;
-- dependency graph/order, or explicit `no hard dependency` where appropriate;
+- dependency graph plus explicit satisfaction condition for each hard edge, or
+  explicit `no hard dependency` where appropriate;
 - parent Techplan back-reference;
 - any shared contract/risk IDs that multiple tasks must coordinate around.
 
 The manifest is an execution map at generation time, not a progress ledger.
+A rendered label such as `SATISFIED` may be derived from the declared condition
+and durable evidence during orchestration, but the manifest must not become a
+second progress/state tracker.
 Do not add done/in-progress status tracking. Model/client routing also does not
 belong here unless an active target/harness execution profile explicitly owns
 and requests that metadata.
@@ -137,7 +165,7 @@ At completion, report:
 - Completed: decomposition gate + generated task set/manifest when warranted
 - Artifacts: <task/manifest paths or "none">
 - Human decision: <review/accept the split when files were generated; "none" when decomposition was skipped>
-- Open / deferred: <contract gap discovered or "none">
+- Open / deferred: <contract/dependency-condition gap discovered or "none">
 - Recommended next step: human check of the split when generated, then Build; otherwise Build after Approved Techplan
 - Session transition: <plain-language action + reason; Build starts with a new Run/Participant and fresh Participant Session when orchestrated, otherwise fresh is preferred>
 - Context pointers: parent Techplan + first/current task + declared hard dependency only
@@ -149,12 +177,15 @@ At completion, report:
 - **Not reinterpretation.** Child tasks execute approved decisions; they do not make new material ones.
 - **Spine first.** The Approved Techplan remains the cross-task authority.
 - **No shadow contracts.** A material decision/risk/contract/verification obligation cannot live only in a child task.
+- **Condition-explicit dependencies.** A hard dependency states the observable predecessor result required by the dependent boundary; ordering or predecessor completion alone is insufficient when a narrower prerequisite exists.
+- **No dependency state machine.** Satisfaction is derived from declared condition + durable evidence; do not add task-level lifecycle machinery merely to track it.
 - **No progress ledger.** The manifest describes execution structure, not project status.
 - **No split-by-size rule.** Split only on independently useful execution/review/context boundaries.
 
 ## Notes
 
 - Techplan synthesis should already have emitted an early `Skip | Consider` decomposition recommendation; this prompt owns the actual post-Approval gate when invoked.
-- A human should review the decomposition shape before Build begins; a syntactically valid split can still choose a poor boundary.
+- A human should review the decomposition shape, including hard-dependency conditions, before Build begins; a syntactically valid split can still choose a poor boundary.
+- Planner/decomposition owns task-level dependency semantics; Orchestrator scheduling evaluates the declared conditions but must not materially reinterpret them.
 - If later Code Review/Testing shows that a child task depended on a material decision absent from the parent spine, reopen/fix the Techplan and regenerate affected task files. Do not patch one child into becoming a second source of truth.
-- Task files are snapshots derived from an Approved plan. If a material parent contract changes, regenerate or explicitly reconcile affected task files before continuing.
+- Task files are snapshots derived from an Approved plan. If a material parent contract changes, regenerate or explicitly reconcile affected task files before continuing. Re-open decomposition-shape review when the change materially alters task boundaries, dependency topology, or satisfaction conditions.
