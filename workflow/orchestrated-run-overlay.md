@@ -171,13 +171,72 @@ When a phase surfaces a material item:
 
 The workflow phase reports the item; the target project's orchestration records/control surface own its current coordination state.
 
+## Structured Phase Handoff
+
+Every terminated orchestrated Participant Run MUST expose exactly one compact
+`## Phase handoff` in its terminal outcome carrier. This does **not** require a
+new artifact: the carrier may be an existing phase-owned immutable result such as
+a Build report, Review findings, or Testing report, or a standalone Handoff when
+no natural terminal result carrier exists.
+
+Use these fixed continuation fields:
+
+```text
+Outcome
+Result refs
+Findings
+Decision requests
+Blockers
+Open / unverified
+Recommended continuation
+Context refs
+```
+
+Field semantics:
+
+- **Outcome** describes how the Run occurrence ended, not Work Unit completion,
+  milestone state, or permission to continue downstream. Use concise occurrence
+  semantics such as `COMPLETED`, `STALLED`, or `FAILED` when they fit the actual
+  result.
+- **Result refs** point to materially relevant terminal/stable outputs and exact
+  revisions when later reliance requires them. They are not a touched-file
+  inventory and must not copy stable artifacts into `RUN_PATH`.
+- **Findings**, **Decision requests**, and **Blockers** remain semantically
+  distinct. Use pointers to durable owning evidence when available; concise
+  inline wording is acceptable when the handoff itself is the owning terminal
+  evidence.
+- **Blockers** identify the affected scope and safe unaffected work when known;
+  do not silently widen a scoped blocker to the whole Work Unit.
+- **Open / unverified** records material uncertainty, deferred evidence, or
+  verification not yet established. Open/unverified work is not automatically a
+  Blocker.
+- **Recommended continuation** is Participant-local advice only. It does not
+  create the next Run, choose project-wide routing, promote a milestone, or
+  authorize downstream work.
+- **Context refs** contain only the smallest durable pointers needed to reopen
+  relevant evidence or authority context. Do not restate the full source set.
+
+The structured Phase Handoff is an index into durable execution/project truth,
+not a second report. Do not repeat detailed test output, full findings, copied
+plans, source diffs, or evidence that already has an owning artifact.
+
+The Orchestrator may reconcile or route directly from the structured handoff when
+it is sufficient. When it is not sufficient, selectively open the referenced
+evidence rather than requiring every terminal handoff to reproduce it.
+
+Do not add a separate `Session transition` field to this terminal shape. Run
+termination already ends the execution occurrence; subsequent Session/Run
+posture is resolved by Orchestrator routing. Portable non-orchestrated workflow
+handoffs may retain their existing canonical wording.
+
 ## Legacy compatibility
 
 If orchestrated inputs are absent, the canonical prompt's existing `TASK_PATH` contract remains unchanged.
 
 Existing historical Run layouts remain valid execution evidence. This overlay
-does not require migration, renaming, or deletion of artifacts produced under an
-earlier orchestrated layout.
+does not require migration, renaming, deletion, or backfill of artifacts produced
+under an earlier orchestrated layout, including historical handoffs that predate
+the structured Phase Handoff shape.
 
 Within a newly dispatched Run, do not mix implicit legacy ordinal paths and
 explicit orchestrated bindings for the same artifact identity.
