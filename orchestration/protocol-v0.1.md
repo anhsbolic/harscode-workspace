@@ -20,7 +20,7 @@ Transform approved product intent into coordinated, verifiable delivery while pr
 - **Decision** — governance question/result; not itself work.
 - **Finding** — observed evidence/problem; may affect multiple Work Units.
 - **Blocker** — active inability to progress; always has next-action ownership.
-- **Dependency** — causal prerequisite, HARD or SOFT.
+- **Dependency** — causal prerequisite, HARD or SOFT, scoped to a dependent execution boundary and satisfied by an explicit observable condition established through durable evidence.
 - **Artifact** — durable output of a Run or Decision.
 - **Event** — material chronological fact.
 - **Project Learning** — promoted reusable evidence-backed knowledge; not authority.
@@ -129,7 +129,38 @@ Scheduling describes active scheduling posture only. When a Work Unit is termina
 
 ## Dependencies and blockers
 
-Dependency types may include AUTHORITY, CONTRACT, DELIVERY, DATA, ENVIRONMENT, VERIFICATION, HUMAN_DECISION, and EXTERNAL. Scope dependencies to the affected Work Unit/batch rather than blocking unrelated work.
+Dependency types may include AUTHORITY, CONTRACT, DELIVERY, DATA, ENVIRONMENT, VERIFICATION, HUMAN_DECISION, and EXTERNAL.
+
+A dependency edge must identify the smallest dependent execution boundary whose correctness/readiness actually depends on the prerequisite, plus an explicit observable satisfaction condition. The boundary may be an entire Work Unit when that is genuinely true, but must not be widened to the whole Work Unit merely for convenience.
+
+Conceptually:
+
+```text
+Dependency
+├── prerequisite / predecessor
+├── dependent Work Unit
+├── dependent boundary
+├── strength: HARD | SOFT
+├── satisfaction condition
+└── durable evidence establishing the condition, when established
+```
+
+The satisfaction condition may reference an observable milestone, artifact revision, Decision/acceptance, verification evidence, or another durable result. Do not introduce a universal satisfaction enum until repeated execution evidence shows one is useful.
+
+Dependency semantics:
+
+- **HARD** — until the declared satisfaction condition is established by durable evidence, the declared dependent boundary must not be crossed;
+- **SOFT** — the condition may influence ordering, scheduling, or recommendation, but its absence does not by itself prohibit execution;
+- predecessor `DONE` does not automatically satisfy every outgoing edge unless that edge explicitly defines predecessor completion as its condition;
+- an edge may become satisfied before the predecessor Work Unit is `DONE` when the required observable condition is already established;
+- if the declared condition cannot be established unambiguously from durable evidence, treat satisfaction as not established rather than guessing;
+- a rendered label such as `SATISFIED` is a derived projection of the declared condition plus durable evidence, not an independent dependency state source.
+
+The Orchestrator evaluates dependency satisfaction against the declared condition and evidence when recomputing the runnable frontier. It must not invent or materially reinterpret Product, API/contract, architecture, risk, or verification semantics merely to make an edge schedulable. Material changes to the condition or dependent boundary require reconciliation by the semantic owner of that meaning and, when they materially alter execution topology, the applicable decomposition/Work Graph review path.
+
+Cross-Work-Unit dependency topology and its current declared conditions are owned by the Work Graph. Task-level dependency conditions are owned by the applicable planning/decomposition artifact. Neither surface becomes authority for domain/contract meaning that belongs elsewhere.
+
+Do not add a dependency state machine, dependency registry, or scheduler solely to represent these semantics.
 
 Every active Blocker records classification, affected work, severity, next-action owner, required action, evidence/source, and safe unaffected work.
 
