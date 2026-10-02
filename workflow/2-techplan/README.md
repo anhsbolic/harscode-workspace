@@ -14,7 +14,7 @@ This folder owns the portable rules for turning Exploration evidence into an exe
 | `examples.md` | Tone/detail calibration | Cold — open only when shape/detail is ambiguous |
 | `techplan-example.md` | Full finished example | Cold |
 | `retro.md` | Historical failures and lessons | Cold — do not load every run; recurring lessons belong in stable rules |
-| `report-template.md` | Post-Approval human-facing report | Conditional — only after Approval/report generation |
+| `report-template.md` | Human-approval-gate digest template | Conditional — only when the exact Techplan artifact/revision is ready to enter the Human approval gate |
 | `report-techplan-example.md` | Human-report example | Cold |
 
 The canonical synthesis entrypoint is `../2-1-techplan-synthesis-prompt.md`. It already carries the execution process; do not recursively read every file in this folder before synthesis.
@@ -31,13 +31,23 @@ The canonical synthesis entrypoint is `../2-1-techplan-synthesis-prompt.md`. It 
 ```text
 Exploration durable evidence
         ↓
-Techplan synthesis
+Techplan synthesis / revision
         ↓
-techplan.md — execution-grade authoritative spine
+techplan.md — Draft/In Review for the first approval lifecycle
+        │
+        ├─ material successor after an existing approval
+        │  → techplan.candidate.md while the Approved predecessor remains current-effective
+        │
+        ↓
+exact Techplan artifact/revision reaches Human approval gate
+        ↓
+report-techplan.md — derived human-facing digest generated before the Human approval decision
+        ↓
+Human approval + bounded lifecycle reconciliation
+        ↓
+techplan.md — current-effective Approved execution-grade spine
         ↓ optional after Approval
 2-techplan/tasks/* — scoped execution slices; never a replacement for material spine decisions
-        ↓ after Approval
-report-techplan.md — human-facing digest generated from the Techplan
 ```
 
-`techplan.md` is written for execution and engineering review: **complete, unambiguous, execution-grade, non-redundant**. The separate report is the reviewer digest; do not add an embedded Summary back into the Techplan.
+`techplan.md` is the stable execution spine once current-effective; a material post-Approval candidate is a proposed successor to that same logical Techplan, not a second independent contract. The separate report is the reviewer digest for the exact revision at the Human gate; do not add an embedded Summary back into the Techplan and do not treat the report as a separate approval object.
