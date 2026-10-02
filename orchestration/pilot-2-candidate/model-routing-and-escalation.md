@@ -68,6 +68,53 @@ Deterministic mechanics remain project-defined implementation choices. This
 guidance does not introduce a new canonical orchestration object, autonomous
 state machine, or workflow engine.
 
+### Deterministic coordination execution boundary
+
+Passing Run qualification into the deterministic path authorizes only a bounded
+mechanical consequence of already-settled truth. It does not transfer semantic
+authorship to the Orchestrator.
+
+The deterministic path must preserve these invariants:
+
+1. **No new canonical object** — do not represent the action as a mechanical Run,
+   reconciliation Run, synthetic Participant, new status family, or operation
+   registry merely because a durable mutation occurs.
+2. **Settled inputs** — all inputs that determine the result are durable,
+   explicit, current-effective, and authority-valid before mutation begins.
+3. **Single valid result** — one materially valid outcome follows from those
+   inputs; if multiple interpretations/outputs remain materially plausible, the
+   action requires reasoning/authority rather than mechanical execution.
+4. **Check → mutate → verify → fail closed** — objective preconditions are checked
+   before mutation, only the allowed delta is applied, objective postconditions
+   are checked afterward, and mismatch stops the path without guessing intent.
+5. **Bounded write authority** — only the exact surface/fields already authorized
+   by settled authority/workflow lifecycle may change. A settled Decision does
+   not grant broad authorship over the owning artifact.
+6. **No semantic synthesis** — lifecycle metadata reconciliation, exact candidate
+   promotion, mechanically entailed pointer changes, and genuinely derived
+   projection refreshes may qualify; drafting requirements, choosing API/data
+   semantics, deciding materiality, making implementation choices, or accepting
+   risk do not.
+7. **Existing provenance surfaces** — do not create a Run package, Invocation,
+   Handoff, default reconciliation report, or operation log. Use Git/content
+   revisions and existing authority evidence; record a normal Event/current-state
+   consequence only when materially needed for reconstruction/routing.
+8. **Failure routes upward** — stale/mismatched input, unexpected target revision,
+   wider-than-permitted delta, ambiguity, conflicting authority, or failed
+   postcondition stops mechanical execution. The Orchestrator then chooses the
+   smallest appropriate Human, Orchestrator-reasoning, or Participant route; it
+   must not improvise a semantic answer or auto-create a Run solely because the
+   mechanical attempt failed.
+
+A deterministic result also does not bypass protected-path/action authorization.
+If a required Human/protected authorization applies, obtain it first; then perform
+only the mechanically entailed mutation inside that authorized boundary.
+
+`orchestration/run-contract.md` owns the concrete non-Run execution shape and
+provenance expectations for this path. Do not build a universal reconciliation
+CLI/state machine until repeated CRTV evidence shows a stable recurring
+mechanism worth extracting.
+
 ## Selection order
 
 Model routing should happen only after Run qualification succeeds.
@@ -337,6 +384,7 @@ This is runtime maintenance, not a Harscode protocol change.
 This model is working when:
 
 - deterministic settled mechanics are removed from Participant model routing rather than merely assigned a cheaper model;
+- deterministic reconciliation is fail-closed, bounded to already-authorized mutation, and does not gain semantic authorship by convenience;
 - routing choices are explainable from concrete Run needs;
 - lower-cost models succeed on appropriately bounded judgment-requiring work;
 - stronger models are used only when justified;
