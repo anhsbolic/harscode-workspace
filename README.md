@@ -181,7 +181,7 @@ Active personal system. Harscode uses **Continuous Real-Task Validation (CRTV)**
 
 The workflow-v2 line on `main` remains the current **operational default** after two materially different real Kencleng validation runs with positive correctness/outcome evidence.
 
-This branch adds **Orchestrator Protocol v0.1 as a Pilot Candidate**. It is not promoted operational authority yet. Validate it through a real Kencleng delivery slice, record protocol friction/outcome evidence, remediate from evidence, and only then decide whether it should replace or extend the current `main` behavior.
+This branch adds **Orchestrator Protocol v0.1 as a Pilot Candidate**. It is not promoted operational authority yet. Kencleng Slice 2 Pilot #2 development is on Human HOLD while Post-Pilot #2 evaluation proceeds. The [Post-Pilot #2 roadmap](audits/orchestrator-v0.1-post-pilot-2-roadmap.md) owns this episode's progress, evidence, and next action; promotion to `main` awaits an explicit evidence-based decision.
 
 ## License
 
