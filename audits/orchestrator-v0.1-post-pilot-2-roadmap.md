@@ -1,165 +1,162 @@
 # Orchestrator v0.1 — Post-Pilot #2 Roadmap
 
-> Status: Stages 0–1 COMPLETE; Stage 2 DECISION-READY — positioning candidate menunggu keputusan Anhar; stages 3–7 belum dimulai.
-> Scope: progress dan keputusan episode Post-Pilot #2 pada branch `pilot/orchestrator-v0.1`; bukan runtime guidance atau canonical Harscode policy.
-> Next action: Anhar menerima atau mengoreksi satu positioning candidate Stage 2 di bawah; setelah itu catat exact decision sebelum Stage 3.
+> Status: Stages 0–2 COMPLETE; Stage 3 NEXT; Stages 4–7 PENDING.
+> Scope: the Post-Pilot #2 evaluation episode on `pilot/orchestrator-v0.1`. This is a progress and decision record, not runtime guidance or canonical Harscode policy.
+> Next action: audit the lifecycle and artifacts against delivered outcomes, the Stage 1 assurance floor, and the Stage 2 positioning.
 
-## Objective dan batas
+## Objective and boundaries
 
-Tingkatkan **correct product capability per unit coordination effort** tanpa melemahkan authority, safety, reconstructability, dan necessary independent evidence. Ukur hasil produk dan biaya koordinasi bersama; jumlah artefak atau Run saja bukan ukuran keberhasilan.
+Increase **correct product capability per unit of coordination effort** without weakening authority, safety, reconstructability, or necessary independent evidence. Assess delivered capability and coordination cost together; artifact and Run counts alone are not success measures.
 
-Kencleng Slice 2 Pilot #2 sedang **Human HOLD**. Evaluation/reporting boleh berjalan; development Pilot #2, termasuk prepared `EXP-S2-008-001`, tidak boleh di-dispatch. Resume memerlukan instruksi Human eksplisit dan rekonstruksi durable state. Branch ini tetap Pilot Candidate; jangan promote ke `main` selama episode ini belum menghasilkan promotion decision.
+Kencleng Slice 2 Pilot #2 development is under **Human HOLD**. Evaluation and reporting may continue; the prepared `EXP-S2-008-001` must not be dispatched. Development resumes only on explicit Human instruction after current durable state is reconstructed. This branch remains a Pilot Candidate; do not promote it to `main` without a separate evidence-based promotion decision.
 
-## Source dan status klaim awal
+Use these claim classes throughout this record:
 
-| Kelas | Pernyataan dan anchor | Implikasi |
-|---|---|---|
-| Observation / evidence | Kencleng `validation-04-orchestrator-slice-2@8b9a0503d0c92f60434d704a3796b7329b0adebe`: `docs/project/kencleng-development-tracker.md` (Current WU-S2-003 update), `docs/project/slice-2-progress-workflow-evaluation-2026-10-05.md`, dan `docs/project/slice-2-harscode-evaluation-evidence-2026-10-05.md`. Tracker mencatat HOLD; evaluasi mencatat hasil produk, assurance, friction, serta batas pengukuran. | Ini snapshot evidence; baca current project state lagi sebelum setiap resume/CRTV. Angka 126 Run directories/401 files/507,312 whitespace words dan minimum 44 Human hours punya batas metode dalam lampiran; bukan estimasi biaya total atau Run yang completed. |
-| Observation / authority | Harscode `pilot/orchestrator-v0.1@63ec4e0fd4f45a9820939ff8e568031236ce98f4`: `README.md` Status, `orchestration/AGENTS.md`, `orchestration/protocol-v0.1.md`, `orchestration/pilot-2-candidate/README.md`. `main@b64fa11082a094d0e1b6e9488c20eac1c7f9777b` adalah operational baseline. | Candidate guidance tidak otomatis menjadi policy operational. Target-project truth tetap milik Kencleng. |
-| Hypothesis | Assurance dan authority cukup kuat, tetapi product/contract readiness yang belum converged, ditambah execution dan orchestration misses, memperbesar avoidable workflow cost. | Diagnosis ini perlu diuji dengan evidence per penyebab; jangan menyimpulkan semua Review, artefak, atau gates berlebih. |
-| Working decision | Anhar meminta HOLD, episode evaluasi ini, roadmap 0–7, dan penundaan promotion. | Berlaku sebagai arah kerja episode; tidak menetapkan Harscode policy baru atau acceptance Kencleng. |
-| Settled decision | Belum ada keputusan settled Post-Pilot #2 tentang identity, vNext semantics, atau promotion. | Catat decision, owner, evidence, dan exact revision di sini ketika benar-benar settled. |
+| Class | Meaning in this episode |
+|---|---|
+| Observation / evidence | A fact supported by the identified repository revision and artifact, within that artifact's stated scope. |
+| Hypothesis | A plausible explanation or desired property that still needs testing. |
+| Working decision | Anhar's direction for this episode; it does not change operational Harscode or Kencleng authority by itself. |
+| Settled episode decision | Anhar's explicit decision recorded here for subsequent analysis; a separate governed change is required to alter runtime or canonical policy. |
 
-Dokumen ini adalah **satu progress ledger** episode: perbarui status, checklist, next action, evidence links/revisions, dan decision record di sini. Jangan menduplikasi current Kencleng state atau memindahkan project truth ke Harscode. Git history menyimpan perubahan; jangan menimpa evidence historis tanpa jejak.
+This file is the **single progress record** for the episode. Update its status, next action, evidence revisions, checklists, and decision record. Kencleng remains the owner of its product truth and current delivery state. Git history preserves revisions; do not silently rewrite historical evidence.
 
-## Frozen Stage 0 baseline
+## Stage 0 — Frozen evidence baseline
 
-Baseline ini adalah **historical evaluation snapshot**, bukan current authorization untuk melanjutkan Kencleng. Exact Harscode candidate-guidance revision sebelum roadmap ialah [`63ec4e0`](https://github.com/anhsbolic/harscode-workspace/tree/63ec4e0fd4f45a9820939ff8e568031236ce98f4); operational `main` ialah [`b64fa11`](https://github.com/anhsbolic/harscode-workspace/tree/b64fa11082a094d0e1b6e9488c20eac1c7f9777b). Kencleng HOLD/evaluation commit ialah [`8b9a050`](https://github.com/anhsbolic/kencleng/tree/8b9a0503d0c92f60434d704a3796b7329b0adebe) pada `validation-04-orchestrator-slice-2`. Harscode refs diverifikasi terhadap remote sebelum roadmap dibuat; Kencleng `8b9a050` diverifikasi terhadap remote saat freeze. Checkout pembacaan bersih.
+The baseline is a **historical evaluation snapshot**, not authorization to resume Kencleng. Harscode candidate guidance before this roadmap is [`63ec4e0`](https://github.com/anhsbolic/harscode-workspace/tree/63ec4e0fd4f45a9820939ff8e568031236ce98f4); operational `main` is [`b64fa11`](https://github.com/anhsbolic/harscode-workspace/tree/b64fa11082a094d0e1b6e9488c20eac1c7f9777b). The Kencleng HOLD and evaluation commit is [`8b9a050`](https://github.com/anhsbolic/kencleng/tree/8b9a0503d0c92f60434d704a3796b7329b0adebe) on `validation-04-orchestrator-slice-2`. Harscode refs were checked against the remote before the roadmap was created; Kencleng `8b9a050` was checked when this baseline was frozen. The read checkouts were clean.
 
-**Evidence index pada Kencleng `8b9a050`:** [tracker](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/kencleng-development-tracker.md), [evaluation report](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/slice-2-progress-workflow-evaluation-2026-10-05.md), [evidence inventory and methods](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/slice-2-harscode-evaluation-evidence-2026-10-05.md), [Work Graph](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/work-graph.md), [Events](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/events.md), [WU003 manifest](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/manifest.md), [WU008 manifest](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-008/manifest.md), dan [prepared Invocation](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-008/runs/EXP-S2-008-001/invocation.md). Untuk Stage 1, mulai dari report dan lampiran; ikuti links ke exact Run evidence, bukan menyimpulkan dari nama direktori.
+**Evidence index at Kencleng `8b9a050`:** [development tracker](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/kencleng-development-tracker.md), [evaluation report](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/slice-2-progress-workflow-evaluation-2026-10-05.md), [evidence inventory and method](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/slice-2-harscode-evaluation-evidence-2026-10-05.md), [Work Graph](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/work-graph.md), [Events](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/events.md), [WU003 manifest](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/manifest.md), [WU008 manifest](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-008/manifest.md), and the [prepared Invocation](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-008/runs/EXP-S2-008-001/invocation.md). Start with the report and inventory, then follow their anchors to exact Run evidence.
 
-- **Observed state:** tracker, Work Graph, Events, dan manifests selaras: WU003/WU008 `ACTIVE / PARKED`, `EXP-S2-008-001` prepared/undispatched. `CONTRACT_READY` dan `FRONTEND_MOCK_VERIFIED` earned dalam scope masing-masing; `BACKEND_VERIFIED`, `INTEGRATED_VERIFIED`, dan Slice completion belum earned. Exact WU003 [candidate](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/techplan.candidate.md) tetap Draft / In Review; SHA-256 `e895a1da8b90e7f88c449651a9a46add59e1a1d610cce3cc7b739d0c12c30315` cocok dengan bytes pada commit. [RV10 findings](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-010/review-findings-1.md) dan launch record juga cocok dengan hash di Events. OI9 acceptance, exact candidate approval, dan positive migration-design Review tetap open.
-- **Measurement boundary:** appendix menghitung 126 Run directories, 401 Space files, dan 507,312 whitespace words dari snapshot **`7e731f9` plus working tree setelah HOLD, sebelum event/report evaluasi ditambahkan**. Commit `8b9a050` memuat final report dan state HOLD; jangan klaim jumlah kata appendix direproduksi persis dari commit final, atau direktori Run = completed/dispatched Run. Minimum 44 Human hours adalah self-report untuk 11 tanggal kalender 2026-09-25–2026-10-05, bukan timesheet.
-- **Evidence gaps:** tidak ada pemisahan actual Human time per phase versus Kencleng/Harscode, total AI cost/tokens, comparable before/after task, causal savings, atau full technical/security re-review. Evaluasi tidak menjalankan tests/runtime baru. Ini membatasi confidence dan desain ukuran Stage 5; bukan alasan menghapus gate assurance.
+- **Observed state:** the tracker, Work Graph, Events, and manifests agree: WU003 and WU008 are `ACTIVE / PARKED`; `EXP-S2-008-001` is prepared but undispatched. `CONTRACT_READY` and `FRONTEND_MOCK_VERIFIED` were earned within their stated scopes. `BACKEND_VERIFIED`, `INTEGRATED_VERIFIED`, and Slice completion were not earned. The WU003 [candidate](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/techplan.candidate.md) remains Draft / In Review. Its SHA-256 `e895a1da8b90e7f88c449651a9a46add59e1a1d610cce3cc7b739d0c12c30315` and the hashes of [RV10 findings](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-010/review-findings-1.md) and launch record matched the committed bytes and Events. OI9 source acceptance, exact candidate approval, and positive migration-design Review remain open.
+- **Measurement boundary:** the inventory reports 126 Run directories, 401 Space files, and 507,312 whitespace-delimited words from `7e731f9` plus a working tree after HOLD and before the evaluation event/report additions. Commit `8b9a050` contains the final report and HOLD state; the inventory's word count is not asserted to reproduce exactly from that final commit. A Run directory does not establish dispatch or completion. The minimum 44 Human hours across 11 calendar dates, 2026-09-25 to 2026-10-05, are self-reported, not a timesheet.
+- **Evidence gaps:** no measured Human time by phase or split between Kencleng and Harscode, total AI cost/tokens, comparable before/after task, causal savings, or full technical/security re-review. The evaluation did not execute new tests or runtime checks. These gaps limit confidence and the Stage 5 measurement design; they do not justify removing assurance gates.
 
-## Stage 1 diagnosis — evidence-backed, episode-scoped
+## Stage 1 — Evidence-backed episode diagnosis
 
-Sample dipilih dari critical path dan positive outcome, bukan dari jumlah file. Pada Kencleng `8b9a050`, independent [RV-S2-003-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-005/review-findings-1.md) menemukan enam blocking schema/design gaps; [RV-S2-003-008](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-008/review-findings-1.md) menemukan replay `status_token` yang tidak dapat dipenuhi oleh one-way verifier. Itu **necessary assurance**: defect material ditemukan sebelum schema write. [TST-S2-004-001](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-004/runs/TST-S2-004-001/testing-report-001.md) memberi independent frontend mock evidence dan menyatakan batas backend/integration/security secara eksplisit. Exact Human/source acceptance, protected Tier-0 authorization, dan durable decision provenance juga menjaga authority; jangan dihitung otomatis sebagai waste.
+The sample follows the critical path and a positive outcome, not artifact volume. Independent [RV-S2-003-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-005/review-findings-1.md) found six blocking schema/design gaps; [RV-S2-003-008](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-008/review-findings-1.md) found that a one-way verifier could not supply the required replay `status_token`. These Reviews provided **necessary assurance** before schema writes. [TST-S2-004-001](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-004/runs/TST-S2-004-001/testing-report-001.md) provided independent frontend mock evidence while explicitly preserving backend, integration, and security limits. Exact Human/source acceptance, protected Tier-0 authorization, and durable decision provenance likewise protect authority and should not automatically be treated as waste.
 
-Avoidable cost tampak pada [BLD-S2-003-002](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/BLD-S2-003-002/report.md), yang di-dispatch sebelum prerequisite migration-design Review yang sudah tertulis terpenuhi; Participant berhenti aman tanpa production write. [TP-S2-006-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-006/runs/TP-S2-006-005/report-techplan.md) memperbaiki Human report yang sebelumnya kehilangan applicable Interface Contract; Human digest-nya perlu, repair Run-nya dapat dicegah dengan first-pass completeness. [TP-S2-002-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-002/runs/TP-S2-002-005/launch-record.md) hanya menyelaraskan status ke approval yang sudah durable; ini mengikuti posture saat itu, sedangkan current `orchestration/run-contract.md` sudah mengizinkan bounded deterministic reconciliation bila semua pre/postconditions terpenuhi. Pengulangan frontier pada beberapa surface tercatat di [Stage A baseline](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/experiments/current-state-simplification/stage-a-baseline.md); saat itu surface masih setuju, jadi tidak boleh mengklaim sudah terjadi routing failure.
+Avoidable effort is visible in [BLD-S2-003-002](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/BLD-S2-003-002/report.md): dispatch occurred before a migration-design Review already required by the plan; the Participant safely stopped before production writes. [TP-S2-006-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-006/runs/TP-S2-006-005/report-techplan.md) repaired a Human report missing an applicable Interface Contract. The digest was valuable; the repair Run was avoidable with first-pass completeness. [TP-S2-002-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-002/runs/TP-S2-002-005/launch-record.md) only aligned status with a durable approval under the posture in effect then. Current `orchestration/run-contract.md` permits bounded deterministic reconciliation when its full preconditions are met. The [Stage A baseline](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/experiments/current-state-simplification/stage-a-baseline.md) recorded repeated frontier state across surfaces, although those surfaces still agreed at that checkpoint.
 
-**Empat root causes prioritas untuk episode ini** (urut menurut critical-path impact dan bukti mekanisme, bukan jam/cost terukur):
+**Four priority root causes** for this episode, ranked by critical-path effect and evidence of mechanism rather than measured cost:
 
-1. **Cross-surface contract readiness terlambat.** WU002 `CONTRACT_READY` cukup untuk baseline contract, tetapi combined recovery/admission/storage scenarios baru membuka gap melalui RV005 dan RV008; WU005–008 dibentuk untuk concern yang berbeda, dengan WU008 masih parked/unaccepted. **Confidence:** tinggi untuk rework path, rendah untuk besaran biaya. **Batas:** sebagian owner decisions dan replay semantics memang baru muncul; tidak semua harus settled sejak Exploration. **Uji vNext:** sebelum dependent Build, jalankan beberapa scenario lintas source/API/persistence yang relevan; ukur open owner decisions dan material re-entry sesudah approval tanpa menunda scope independen yang sudah ready.
-2. **Batch dispatch tidak selalu memeriksa prerequisite yang sudah diketahui.** BLD003002 memakai approval model/pairing tetapi tidak membawa positive migration-design Review yang disyaratkan plan; fail-closed Participant mencegah write. **Confidence:** tinggi untuk satu miss ini, belum cukup untuk klaim frekuensi sistemik. **Batas:** protected pairing dan migration Review tetap perlu; BLD003001 menghasilkan bounded cap projection meski whole spine belum selesai. **Uji vNext:** cek exact prerequisites untuk batch yang akan dijalankan dari existing plan/state sebelum dispatch; hitung Build yang STALLED karena gate tertulis terlewat dan capability/evidence yang dihasilkan per batch.
-3. **First-pass artifact fidelity/completeness lemah pada beberapa handoff.** Missing Interface Contract memicu TP006005; [RV-S2-003-009](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-009/review-findings-1.md) menemukan predecessor approval ditulis seolah berlaku pada successor. **Confidence:** tinggi untuk repeat repair, tidak ada model/time comparison. **Batas:** independent Review tetap bernilai karena menangkap salah reliance boundary; RV10 atas correction diminta Human, bukan universal required loop. **Uji vNext:** periksa applicable sections, authority/status provenance, exact approval target, dan file anchors sebelum handoff; catat repair Run yang hanya mengisi omitted required output atau salah provenance.
-4. **Current-state projection dan mechanical lifecycle work terlalu sering ditulis ulang.** Stage A melihat frontier terulang pada manifest, Work Graph, Control Surface, Parent Outcome, tracker, dan Events; evaluasi menemukan prepared WU008 pointer HEAD/path stale. TP002005 menunjukkan status-only Participant path yang sekarang bisa dihindari secara kondisional. **Confidence:** tinggi untuk pengulangan dan contoh drift, rendah untuk effort savings. **Batas:** beberapa surface punya reader/function berbeda dan Stage A tidak menemukan contradiction; current deterministic path sudah ada, jadi belum perlu automation framework baru. **Uji vNext:** pakai owner per current fact dan pointer/projection yang cukup, lalu minta fresh session rekonstruksi frontier; ukur contradiction/stale pointer dan status-only Run yang lolos kriteria deterministic, tanpa menghapus event/provenance material.
+1. **Late convergence across product and contract surfaces.** WU002's `CONTRACT_READY` baseline supported contract planning, but combined recovery, admission, and storage scenarios exposed further gaps through RV005 and RV008. WU005–008 address distinct concerns; WU008 remains parked and unaccepted. Confidence is high in the rework path, low in its cost magnitude. Some decisions genuinely emerged later. Test a few relevant cross-source/API/persistence scenarios before dependent Build; observe open owner decisions and material post-approval re-entry without delaying independently ready work.
+2. **Known batch prerequisites were missed at dispatch.** BLD003002 had model approval and Human pairing but lacked the required positive migration-design Review. The Participant's fail-closed stop preserved safety. Confidence is high for this incident, not for a systemic frequency claim. Preserve Review and protected pairing. Check exact prerequisites from existing plan/state before each affected batch; observe stalls caused by already-stated gates and capability/evidence produced per batch.
+3. **First-pass artifact fidelity and completeness failed at some handoffs.** The omitted Interface Contract caused TP006005; [RV-S2-003-009](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-009/review-findings-1.md) found predecessor approval described as if it covered a successor. Confidence is high in repeated repair, without model/time comparison. Independent Review remains valuable for catching an incorrect reliance boundary; RV10 on the correction was Human-requested, not a universal required loop. Check applicable sections, provenance, approval target, and real anchors before handoff; observe Runs that only repair omitted required content or provenance.
+4. **Current-state projections and mechanical lifecycle updates were repeated.** Stage A found frontier state across manifests, Work Graph, Control Surface, Parent Outcome, tracker, and Events; the evaluation later found a stale HEAD/path pointer in prepared WU008. TP002005 is a conditional example of a status-only Participant path now avoidable under current guidance. Confidence is high in duplication and observed drift, low in effort savings. The surfaces have different readers/functions, and Stage A found no contradiction; a new automation framework is not warranted. Keep one owner per current fact and sufficient pointers/projections; test fresh-session reconstruction and observe contradictions, stale pointers, and qualifying status-only Runs without removing material event history.
 
-**Assurance floor untuk Stage 2–5:** Human/project authority dan exact acceptance tetap mengendalikan product/security/source truth; protected writes memerlukan izin yang berlaku; material plan/schema/code changes mendapat independent Review dan applicable Testing; unfulfilled prerequisite harus fail closed; current state dan material history harus dapat direkonstruksi dari durable sources. Tidak ada bukti yang mendukung penghapusan gate hanya untuk menurunkan hitungan Run. Magnitude/ROI empat penyebab di atas belum terukur; Stage 5 harus menguji efeknya terhadap capability **dan** safety.
+**Assurance floor for Stages 2–5:** named Human/project owners retain material product, security, source, and risk authority; protected writes require applicable authorization; material plan/schema/code changes receive independent Review and applicable Testing; unmet prerequisites fail closed; current state and material history remain reconstructable from durable sources. No evidence supports deleting gates merely to reduce Run counts. The magnitude and ROI of the four causes remain unmeasured; Stage 5 must evaluate capability and safety together.
 
-## Stage 2 positioning candidate — awaiting Anhar
+## Stage 2 — Harscode positioning
 
-**Source status:** rekomendasi hasil pembacaan [`README.md`](../README.md), [`orchestration/protocol-v0.1.md`](../orchestration/protocol-v0.1.md), [`orchestrator-operating-model.md`](../orchestration/pilot-2-candidate/orchestrator-operating-model.md), [`workflow/AGENTS.md`](../workflow/AGENTS.md), [`product-design/README.md`](../product-design/README.md), dan diagnosis Stage 1. Ini belum settled decision atau perubahan canonical guidance. `main` tetap operational baseline; Human-Assisted dedicated Orchestrator adalah posture Pilot #2, bukan syarat universal untuk menggunakan Harscode.
+**Settled for this evaluation episode by Anhar; not a change to `main` or candidate runtime policy:**
 
-**Rekomendasi identity:** Harscode adalah **panduan kerja modular untuk pengembangan software berbantuan AI, dari intent/authority proyek yang cukup jelas sampai capability yang diverifikasi**. Ia membantu Human dan agents menjaga keputusan dan sumber otoritatif, membatasi pekerjaan, menyimpan state yang dapat direkonstruksi, serta menghasilkan evidence yang proporsional dengan risiko. Kriteria evaluasi vNext adalah correct capability per coordination effort dengan assurance floor Stage 1.
+> Harscode Workspace helps people build software with AI while preserving product intent, demonstrating that the result is correct, and adapting the way of working to the task.
 
-**Authority dan koordinasi:** product/domain truth serta keputusan material Design, API, Security/Privacy, dan risk dimiliki owner yang dinamai proyek; Harscode menyediakan cara merutekan dan mengeksekusi keputusan itu. Human dapat menjadi Participant. Orchestrator agent, bila dipakai, mengoordinasikan Work Units/Runs, memfasilitasi pertanyaan decision-ready, dan merekonsiliasi durable state; ia tidak mendapat authority material atau menggantikan Explorer/Planner/Implementer/Reviewer/Verifier. Engineering workflow tetap dapat dipakai langsung tanpa Orchestrator. Physical Space, UI, model, dan dispatch mechanism adalah pilihan implementasi sesuai kebutuhan.
+Three values express the positioning:
 
-| Uji applicability | Jalur minimum yang cukup | Boundary yang diuji |
-|---|---|---|
-| Backend-only dengan product/API contract sudah accepted | Project truth → engineering Exploration → Techplan → Build → Review/Testing sesuai canonical applicability → exact delivery evidence; load best-practices terkait. | Tidak memerlukan product-brand/UI cycle atau Orchestrator/Space hanya karena Harscode dipakai. Security/financial gates tetap mengikuti risiko nyata. |
-| End-to-end delivery dengan UI direction masih open dan dependensi lintas stack | Project owner menetapkan product truth → conditional product-design authority → engineering per bounded outcome; Orchestrator bila coordination topology memang perlu → integration dan independent evidence. | “End-to-end” mencakup design-to-engineering delivery untuk intent proyek, bukan mengambil alih strategi produk, market validation, atau project-specific truth. Frontend mock proof tidak menjadi real integration proof. |
-| Bounded maintenance/bug fix | Project authority/current code → applicable engineering route dan bukti perubahan yang cukup. | Tidak otomatis membuat Work Graph, dedicated Space, Participant Profile, atau seluruh phase sebagai ceremony; phase applicability tetap mengikuti canonical workflow. |
+1. **Human-led direction.** Project owners retain meaningful decisions. Product intent, decisions, and current state remain explicit and durable across sessions, so a new person, agent, or model can reconstruct what matters.
+2. **Trustworthy outcomes.** Correctness takes priority over speed. Surface problems early with scrutiny proportionate to risk, and support material claims with independent, scoped evidence. Speed should come from less avoidable rework, not weaker assurance.
+3. **Adaptable without lock-in.** Apply the parts of Harscode relevant to the work. The core meaning survives changes in model, tool, interface, and scope; physical layout and dispatch mechanics remain replaceable choices.
 
-**Challenge yang perlu disadari:** frasa “end-to-end product development” terlalu luas bila dibaca sebagai Harscode pemilik product discovery sampai business outcome. Current authority hanya mendukung reusable guidance dari project-owned intent ke verified software delivery, dengan product-design support saat diperlukan. Positioning yang lebih luas memerlukan authority dan real evidence baru; jangan dipromosikan dari wording roadmap ini.
+This is a value and applicability statement, not a claim that every current prompt already supports every use case. It is intended to span bounded backend, frontend, and verification work through cross-functional delivery. In particular, the current canonical Testing prompt assumes a prior Approved Techplan and Build/Review; Stage 3 must audit verification-only fit rather than silently asserting it. “End-to-end” here means design-to-engineering delivery for project-owned intent where those concerns apply; project product strategy and domain truth stay with their named owners.
 
-**Decision request untuk Anhar:** terima atau koreksi rekomendasi identity, Human/Orchestrator posture, dan batas “end-to-end” sebagai **satu positioning decision**. Jika diterima, catat exact wording sebagai settled *episode decision* di dokumen ini. Itu tetap belum mengubah operational `main` atau candidate runtime policy; Stage 3 memakai keputusan tersebut sebagai lensa audit.
+A Human may be a Participant. An Orchestrator agent is an optional coordinator when Work Unit/Run topology adds value: it facilitates decision-ready questions and durable-state reconciliation without receiving material project authority or replacing specialist roles. The dedicated, Human-Assisted Orchestrator is the current Pilot #2 posture, not a universal prerequisite for using Harscode.
 
-## Roadmap
+## Roadmap and checklist
 
 ### 0. Freeze Pilot #2 evidence baseline — COMPLETE
 
-- **Objective:** tetapkan snapshot yang dapat direkonstruksi dan batas klaimnya.
-- **Inputs/evidence:** exact Harscode dan Kencleng revisions di atas; tracker HOLD, evaluation report, inventory, Work Graph/Events/Run anchors yang dirujuk report.
-- **Decisions:** apa yang masuk baseline, mana self-report/inventory versus runtime verdict, dan apa yang belum terukur.
-- **Exit criteria:** exact refs dan evidence anchors diverifikasi; status HOLD/milestone/gates tercatat tanpa mengubah Kencleng state; gaps serta measurement limits eksplisit.
-- **Output:** baseline evidence index dan open evidence gaps di dokumen ini.
-- [x] Temukan source HOLD, evaluasi, inventory, dan dua repository revisions awal.
-- [x] Verifikasi exact refs/anchors serta catat final baseline dan evidence gaps.
-- [x] Baseline dapat dibaca fresh session dari immutable refs dan evidence index di atas.
+- **Objective:** establish a reconstructable snapshot and claim limits.
+- **Inputs/evidence:** the exact revisions and Kencleng state, report, inventory, Work Graph, Events, and Run anchors above.
+- **Decision:** distinguish inventory and self-report from runtime verdicts; name what remains unmeasured.
+- **Exit criteria:** exact refs and selected anchors verified; HOLD, milestones, gates, and evidence gaps explicit without changing Kencleng.
+- **Output:** the frozen evidence index and limits above.
+- [x] Locate the HOLD record, evaluation, inventory, and repository revisions.
+- [x] Verify exact refs/anchors and record evidence gaps.
+- [x] Make the baseline reconstructable by a fresh session without chat history.
 
 ### 1. Separate necessary assurance cost from avoidable workflow cost — COMPLETE
 
-- **Objective:** identifikasi 3–5 root causes utama, dampak, dan confidence.
-- **Inputs/evidence:** baseline Stage 0; contoh review yang menemukan defect material, late contract changes, status-only work, premature dispatch, repeated state/projection updates, fidelity repairs.
-- **Decisions:** biaya yang menjaga correctness/authority/safety versus biaya yang dapat dihindari; hubungan sebab-akibat yang supported versus dugaan.
-- **Exit criteria:** tiap root cause punya concrete episode anchors, counterexample/batas, serta mekanisme perbaikan yang bisa diuji; tidak mengklaim time/cost savings yang belum diukur.
-- **Output:** ranked cause map dan assurance floor.
-- [x] Klasifikasikan sample critical path, bukan seluruh file berdasarkan jumlahnya saja.
-- [x] Catat empat root causes prioritas, confidence/batas, uji vNext, dan assurance floor di atas sebagai working diagnosis episode.
+- **Objective:** identify the leading root causes without discarding the assurance that found real defects.
+- **Inputs/evidence:** Stage 0 and sampled Reviews, Build, Testing, report repair, status-only work, and state projections.
+- **Decision:** four episode-scoped causes above; confidence in mechanism is distinct from unknown cost magnitude.
+- **Exit criteria:** each cause has concrete anchors, a counterexample or limit, and an observable test; no unmeasured savings claim.
+- **Output:** ranked cause map and assurance floor above.
+- [x] Classify a critical-path sample rather than treating artifact count as cost.
+- [x] Record four causes, confidence, limits, test ideas, and the assurance floor.
 
-### 2. Settle Harscode identity dan positioning — AWAITING ANHAR
+### 2. Settle Harscode identity and positioning — COMPLETE FOR THIS EPISODE
 
-- **Objective:** jelaskan problem utama, Human versus orchestration-agent posture, dan modular applicability dari backend-only sampai end-to-end product development.
-- **Inputs/evidence:** cause map; `README.md`/current operational authority; Pilot #2 operator/Participant evidence dan target-project boundary.
-- **Decisions:** identity yang cukup presisi untuk memandu vNext; bagian yang invariant versus optional/conditional.
-- **Exit criteria:** statement yang bisa diuji terhadap kasus backend-only dan end-to-end; Human authority, product truth, dan agent coordination boundary tidak ambigu.
-- **Output:** explicit identity/positioning decision record di sini, bukan perubahan runtime policy otomatis.
-- [x] Uji framing terhadap backend-only, end-to-end, dan bounded maintenance; check terhadap authority serta counterexample Pilot #2.
-- [ ] Anhar menerima/mengoreksi wording dan boundary; catat settled episode decision, owner, dan rationale.
+- **Objective:** state the primary value, Human/Orchestrator posture, and modular applicability.
+- **Inputs/evidence:** Stages 0–1; current `README.md`, `orchestration/protocol-v0.1.md`, `workflow/AGENTS.md`, and `product-design/README.md`; Anhar's discussion and decision.
+- **Decision:** the one-sentence positioning and three values above, owned by Anhar for this evaluation episode.
+- **Exit criteria:** Human and project authority remain clear; backend-only and cross-functional delivery fit the wording; verification-only remains an explicit current-fit question.
+- **Output:** the settled episode positioning above, with no silent change to operational or candidate runtime guidance.
+- [x] Test the framing against bounded and cross-functional scopes and the Pilot #2 counterexample.
+- [x] Record Anhar's wording and scope decision; keep implementation fit for Stage 3.
 
-### 3. Audit lifecycle dan artifact dari outcome — PENDING
+### 3. Audit lifecycle and artifacts against outcomes — NEXT
 
-- **Objective:** nilai setiap handoff/artefak terhadap capability, assurance, dan reconstructability yang diberikannya.
-- **Inputs/evidence:** Stage 0–2; actual Pilot #2 artifacts dan current owners untuk Exploration, Techplan, Review, Build, Testing, Work Unit, Run, Participant Profile, Invocation, dan Orchestration.
-- **Decisions:** keep/refine/remove/conditional per concern, berdasarkan function dan failure mode; pisahkan semantic/authority requirement dari file layout atau tooling mechanism.
-- **Exit criteria:** tiap concern punya tujuan, cost, observed failure, necessary evidence/gate, dan kandidat penyederhanaan dengan containment.
-- **Output:** outcome-oriented audit matrix, dengan references ke owning guidance; belum mengedit protected/canonical guidance.
-- [ ] Audit Exploration, Techplan, Review, Build, dan Testing.
-- [ ] Audit Work Unit, Run, Participant Profile, Invocation, dan Orchestration.
+- **Objective:** assess each handoff and artifact by the capability, assurance, and reconstructability it provides.
+- **Inputs/evidence:** Stages 0–2 and actual Pilot #2 artifacts; current owners for Exploration, Techplan, Review, Build, Testing, Work Unit, Run, Participant Profile, Invocation, and Orchestration.
+- **Decisions:** keep, refine, remove, or make conditional by concern; distinguish semantic and authority needs from storage or tooling choices.
+- **Exit criteria:** each concern has its purpose, cost, observed failure, necessary evidence/gate, and a bounded simplification candidate. Include a verification-only applicability check.
+- **Output:** an outcome-oriented audit matrix with pointers to owning guidance; no protected or canonical edits.
+- [ ] Audit Exploration, Techplan, Review, Build, and Testing, including verification-only fit.
+- [ ] Audit Work Unit, Run, Participant Profile, Invocation, and Orchestration.
 
-### 4. Design minimal Harscode vNext candidate — PENDING
+### 4. Design a minimal Harscode vNext candidate — PENDING
 
-- **Objective:** buat perubahan sekecil mungkin yang mengatasi root causes tanpa kehilangan assurance floor.
-- **Inputs/evidence:** identity decision dan audit matrix.
-- **Decisions:** candidate semantics, explicit non-goals, authority owner, migration/reversibility, dan perubahan mana yang perlu proposal/protected approval.
-- **Exit criteria:** tiap perubahan punya causal rationale, expected effect, safeguard, observable test, serta fallback; tidak ada framework baru tanpa problem nyata.
-- **Output:** bounded candidate spec/proposals pada owning repo area; tautkan exact revisions di sini.
-- [ ] Pilih perubahan minimal dan petakan owner/gate.
-- [ ] Review consistency terhadap operational `main` dan target-project authority.
+- **Objective:** address proven causes with the smallest sufficient changes while preserving the assurance floor.
+- **Inputs/evidence:** Stage 2 positioning and Stage 3 audit matrix.
+- **Decisions:** candidate semantics, non-goals, authority owners, reversibility, and which changes require governed proposals or protected approval.
+- **Exit criteria:** each change has a causal rationale, expected effect, safeguard, observable test, and fallback; no framework without a demonstrated need.
+- **Output:** bounded candidate guidance/proposals in their owning areas, linked by exact revision here.
+- [ ] Select minimal changes and map owners/gates.
+- [ ] Check consistency with operational `main` and target-project authority.
 
-### 5. Bounded CRTV with explicit measures — PENDING
+### 5. Run bounded CRTV with explicit measures — PENDING
 
-- **Objective:** uji candidate dalam real task yang disetujui Human dan comparable sebisanya.
-- **Inputs/evidence:** frozen candidate revision, baseline Stage 0, authorized target scope, current project state, required independent verification.
-- **Decisions:** scope dan stop conditions sebelum run; data apa yang feasible dicatat tanpa telemetry framework.
-- **Exit criteria:** ada observed capability outcome dan safety/authority evidence; catat coordination effort (Human time bila tersedia, Run/re-entry beserta sebab, prerequisite misses, duplicated work, first-pass completeness), serta perbedaan scope dan missing data.
-- **Output:** CRTV report dengan exact refs dan outcome versus cost; bukan pass/fail dari jumlah dokumen atau target savings arbitrer.
-- [ ] Predeclare scope, measures, assurance floor, dan stop conditions.
-- [ ] Jalankan hanya setelah authorization/resume yang berlaku; kumpulkan evidence.
+- **Objective:** test an authorized candidate on real work with a scope that is comparable where possible.
+- **Inputs/evidence:** frozen candidate revision, Stage 0 baseline, authorized target scope, current project state, and required independent verification.
+- **Decisions:** predeclare scope, stop conditions, and feasible measures without building a telemetry platform.
+- **Exit criteria:** observe capability and safety/authority evidence; record coordination effort, re-entry reasons, missed prerequisites, duplicated work, first-pass completeness, and scope/data limitations.
+- **Output:** an exact-revision CRTV report comparing outcomes and cost, without arbitrary document-count or savings thresholds.
+- [ ] Predeclare scope, measures, assurance floor, and stop conditions.
+- [ ] Execute only after applicable authorization/resume and collect evidence.
 
 ### 6. Keep / Refine / Reject — PENDING
 
-- **Objective:** evaluasi tiap candidate change dari hasil CRTV, bukan preferensi desain.
-- **Inputs/evidence:** Stage 5 report, deviations, regressions, dan independent findings.
-- **Decisions:** keep/refine/reject per change, confidence, unresolved risk, dan perlu/tidaknya eksperimen tambahan.
-- **Exit criteria:** keputusan menyebut observed effect, downside, dan evidence limit; refinement yang material kembali ke bounded CRTV.
-- **Output:** decision record serta exact candidate revision yang diterima atau ditolak.
-- [ ] Putuskan tiap change; jangan mempromosikan hypothesis sebagai proven.
+- **Objective:** judge each candidate change by CRTV results.
+- **Inputs/evidence:** Stage 5 report, deviations, regressions, and independent findings.
+- **Decisions:** keep, refine, or reject each change with confidence and unresolved risk.
+- **Exit criteria:** each decision names observed effects, downside, and evidence limits; material refinement returns to bounded CRTV.
+- **Output:** decision record and exact accepted or rejected candidate revision.
+- [ ] Decide each change without treating a hypothesis as proven.
 
-### 7. Promotion decision — PENDING
+### 7. Make a promotion decision — PENDING
 
-- **Objective:** putuskan apakah dan apa yang layak dipromosikan ke `main`.
-- **Inputs/evidence:** Stage 6 decisions; compatibility/authority review; current `main` dan branch revisions; outstanding risks.
-- **Decisions:** promote, partial promote, atau defer/reject oleh Anhar; scope dan urutan proposal/merge jika berlaku.
-- **Exit criteria:** keputusan eksplisit dengan exact changes, assurance evidence, containment/fallback, dan unresolved items; tidak ada silent promotion.
-- **Output:** promotion decision record di sini; merge/operational status berubah hanya lewat action terpisah yang authorized.
-- [ ] Presentasikan promotion case dan residual risks untuk Human decision.
-- [ ] Catat keputusan dan exact revisions; eksekusi promotion hanya bila diotorisasi.
+- **Objective:** decide whether any candidate change belongs on `main`.
+- **Inputs/evidence:** Stage 6 decisions, authority/compatibility review, current `main` and pilot revisions, and outstanding risks.
+- **Decisions:** Anhar chooses promotion, partial promotion, or deferral/rejection, including scope and governed merge order.
+- **Exit criteria:** an explicit decision names exact changes, assurance evidence, containment/fallback, and unresolved items; no silent promotion.
+- **Output:** a promotion decision record here; operational status changes only through a separately authorized action.
+- [ ] Present the promotion case and residual risks for Human decision.
+- [ ] Record the decision and exact revisions; execute promotion only if authorized.
 
-## Parked sampai semantics settled
+## Parked until semantics are settled
 
-- `workspace.harscode.dev` dan public documentation/productization.
+- `workspace.harscode.dev` and public documentation/productization.
 - Graph/memory management.
-- Big tooling/automation framework.
+- A large tooling or automation framework.
 
-Reopen item hanya jika evidence baru menunjukkan ia perlu untuk correctness/operability episode ini atau setelah Stage 2–4 settle relevant semantics. Catat alasan di decision record sebelum mengubah scope.
+Reopen an item only if new evidence shows it is necessary for correctness or operability in this episode, or after relevant Stage 2–4 semantics are settled. Record the reason before changing scope.
 
 ## Decision record
 
 | Date | Class | Decision / status | Evidence and owner |
 |---|---|---|---|
-| 2026-10-05 | Working decision | HOLD Kencleng Slice 2 development; Post-Pilot #2 evaluation proceeds; no promotion now. | Anhar instruction; Kencleng tracker at `8b9a050`. |
-| 2026-10-05 | Evaluation baseline | Freeze Stage 0 pada Harscode `63ec4e0`/`main@b64fa11` dan Kencleng `8b9a050`; appendix tetap dibaca sebagai pre-report snapshot `7e731f9` plus working tree. | Exact refs/anchors dan selected hashes diverifikasi; evidence index dan limits di atas. Ini bukan policy atau resume decision. |
-| 2026-10-05 | Working diagnosis | Stage 1 memprioritaskan empat root causes di atas; assurance floor dipertahankan untuk audit dan CRTV. | Kencleng `8b9a050` report plus sampled Run artifacts; Harscode `orchestration/run-contract.md` current candidate semantics. Bukan settled Harscode policy atau measured causal savings. |
-| 2026-10-05 | Recommendation pending | Stage 2 positioning candidate di atas menunggu keputusan Anhar. | Current Harscode `main`/pilot guidance dan Stage 1 diagnosis; belum mengubah operational/canonical policy. |
+| 2026-10-05 | Working decision | HOLD Kencleng Slice 2 development; evaluate Post-Pilot #2; do not promote now. | Anhar; Kencleng tracker at `8b9a050`. |
+| 2026-10-05 | Evaluation baseline | Freeze Stage 0 at Harscode `63ec4e0` / `main@b64fa11` and Kencleng `8b9a050`; read the inventory as a pre-report `7e731f9`-plus-working-tree snapshot. | Exact refs, selected anchors, hashes, and limits above; no policy or resume decision. |
+| 2026-10-05 | Working diagnosis | Prioritize the four Stage 1 causes while preserving the assurance floor. | Kencleng `8b9a050` report and sampled Runs; current pilot `orchestration/run-contract.md`. No measured causal savings or canonical change. |
+| 2026-10-05 | Settled episode decision | Adopt the Stage 2 positioning and three values above; keep Harscode repository prose in professional English. | Anhar's discussion in this session. This settles the evaluation lens, not operational or candidate runtime policy. |
