@@ -1,8 +1,8 @@
 # Orchestrator v0.1 — Post-Pilot #2 Roadmap
 
-> Status: Stage 0 — evidence baseline belum dibekukan; stages 1–7 belum dimulai.
+> Status: Stage 0 COMPLETE — baseline dibekukan; Stage 1 berikutnya, stages 2–7 belum dimulai.
 > Scope: progress dan keputusan episode Post-Pilot #2 pada branch `pilot/orchestrator-v0.1`; bukan runtime guidance atau canonical Harscode policy.
-> Next action: bekukan exact Harscode/Kencleng revisions serta evidence dan batas klaim pada Stage 0 sebelum diagnosis atau redesign.
+> Next action: klasifikasikan sample critical path menjadi necessary assurance cost versus avoidable workflow cost, lalu uji 3–5 root causes pada Stage 1.
 
 ## Objective dan batas
 
@@ -22,9 +22,19 @@ Kencleng Slice 2 Pilot #2 sedang **Human HOLD**. Evaluation/reporting boleh berj
 
 Dokumen ini adalah **satu progress ledger** episode: perbarui status, checklist, next action, evidence links/revisions, dan decision record di sini. Jangan menduplikasi current Kencleng state atau memindahkan project truth ke Harscode. Git history menyimpan perubahan; jangan menimpa evidence historis tanpa jejak.
 
+## Frozen Stage 0 baseline
+
+Baseline ini adalah **historical evaluation snapshot**, bukan current authorization untuk melanjutkan Kencleng. Exact Harscode candidate-guidance revision sebelum roadmap ialah [`63ec4e0`](https://github.com/anhsbolic/harscode-workspace/tree/63ec4e0fd4f45a9820939ff8e568031236ce98f4); operational `main` ialah [`b64fa11`](https://github.com/anhsbolic/harscode-workspace/tree/b64fa11082a094d0e1b6e9488c20eac1c7f9777b). Kencleng HOLD/evaluation commit ialah [`8b9a050`](https://github.com/anhsbolic/kencleng/tree/8b9a0503d0c92f60434d704a3796b7329b0adebe) pada `validation-04-orchestrator-slice-2`. Harscode refs diverifikasi terhadap remote sebelum roadmap dibuat; Kencleng `8b9a050` diverifikasi terhadap remote saat freeze. Checkout pembacaan bersih.
+
+**Evidence index pada Kencleng `8b9a050`:** [tracker](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/kencleng-development-tracker.md), [evaluation report](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/slice-2-progress-workflow-evaluation-2026-10-05.md), [evidence inventory and methods](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/slice-2-harscode-evaluation-evidence-2026-10-05.md), [Work Graph](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/work-graph.md), [Events](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/events.md), [WU003 manifest](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/manifest.md), [WU008 manifest](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-008/manifest.md), dan [prepared Invocation](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-008/runs/EXP-S2-008-001/invocation.md). Untuk Stage 1, mulai dari report dan lampiran; ikuti links ke exact Run evidence, bukan menyimpulkan dari nama direktori.
+
+- **Observed state:** tracker, Work Graph, Events, dan manifests selaras: WU003/WU008 `ACTIVE / PARKED`, `EXP-S2-008-001` prepared/undispatched. `CONTRACT_READY` dan `FRONTEND_MOCK_VERIFIED` earned dalam scope masing-masing; `BACKEND_VERIFIED`, `INTEGRATED_VERIFIED`, dan Slice completion belum earned. Exact WU003 [candidate](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/techplan.candidate.md) tetap Draft / In Review; SHA-256 `e895a1da8b90e7f88c449651a9a46add59e1a1d610cce3cc7b739d0c12c30315` cocok dengan bytes pada commit. [RV10 findings](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-010/review-findings-1.md) dan launch record juga cocok dengan hash di Events. OI9 acceptance, exact candidate approval, dan positive migration-design Review tetap open.
+- **Measurement boundary:** appendix menghitung 126 Run directories, 401 Space files, dan 507,312 whitespace words dari snapshot **`7e731f9` plus working tree setelah HOLD, sebelum event/report evaluasi ditambahkan**. Commit `8b9a050` memuat final report dan state HOLD; jangan klaim jumlah kata appendix direproduksi persis dari commit final, atau direktori Run = completed/dispatched Run. Minimum 44 Human hours adalah self-report untuk 11 tanggal kalender 2026-09-25–2026-10-05, bukan timesheet.
+- **Evidence gaps:** tidak ada pemisahan actual Human time per phase versus Kencleng/Harscode, total AI cost/tokens, comparable before/after task, causal savings, atau full technical/security re-review. Evaluasi tidak menjalankan tests/runtime baru. Ini membatasi confidence dan desain ukuran Stage 5; bukan alasan menghapus gate assurance.
+
 ## Roadmap
 
-### 0. Freeze Pilot #2 evidence baseline — IN PROGRESS
+### 0. Freeze Pilot #2 evidence baseline — COMPLETE
 
 - **Objective:** tetapkan snapshot yang dapat direkonstruksi dan batas klaimnya.
 - **Inputs/evidence:** exact Harscode dan Kencleng revisions di atas; tracker HOLD, evaluation report, inventory, Work Graph/Events/Run anchors yang dirujuk report.
@@ -32,8 +42,8 @@ Dokumen ini adalah **satu progress ledger** episode: perbarui status, checklist,
 - **Exit criteria:** exact refs dan evidence anchors diverifikasi; status HOLD/milestone/gates tercatat tanpa mengubah Kencleng state; gaps serta measurement limits eksplisit.
 - **Output:** baseline evidence index dan open evidence gaps di dokumen ini.
 - [x] Temukan source HOLD, evaluasi, inventory, dan dua repository revisions awal.
-- [ ] Verifikasi exact refs/anchors serta catat final baseline dan evidence gaps.
-- [ ] Tandai Stage 0 selesai hanya setelah snapshot bisa dibaca fresh session tanpa chat history.
+- [x] Verifikasi exact refs/anchors serta catat final baseline dan evidence gaps.
+- [x] Baseline dapat dibaca fresh session dari immutable refs dan evidence index di atas.
 
 ### 1. Separate necessary assurance cost from avoidable workflow cost — PENDING
 
@@ -117,3 +127,4 @@ Reopen item hanya jika evidence baru menunjukkan ia perlu untuk correctness/oper
 | Date | Class | Decision / status | Evidence and owner |
 |---|---|---|---|
 | 2026-10-05 | Working decision | HOLD Kencleng Slice 2 development; Post-Pilot #2 evaluation proceeds; no promotion now. | Anhar instruction; Kencleng tracker at `8b9a050`. |
+| 2026-10-05 | Evaluation baseline | Freeze Stage 0 pada Harscode `63ec4e0`/`main@b64fa11` dan Kencleng `8b9a050`; appendix tetap dibaca sebagai pre-report snapshot `7e731f9` plus working tree. | Exact refs/anchors dan selected hashes diverifikasi; evidence index dan limits di atas. Ini bukan policy atau resume decision. |
