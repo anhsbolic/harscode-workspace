@@ -1,8 +1,8 @@
 # Orchestrator v0.1 — Post-Pilot #2 Roadmap
 
-> Status: Stage 0 COMPLETE — baseline dibekukan; Stage 1 berikutnya, stages 2–7 belum dimulai.
+> Status: Stages 0–1 COMPLETE — evidence baseline dan diagnosis episode tercatat; Stage 2 berikutnya, stages 3–7 belum dimulai.
 > Scope: progress dan keputusan episode Post-Pilot #2 pada branch `pilot/orchestrator-v0.1`; bukan runtime guidance atau canonical Harscode policy.
-> Next action: klasifikasikan sample critical path menjadi necessary assurance cost versus avoidable workflow cost, lalu uji 3–5 root causes pada Stage 1.
+> Next action: uji Harscode identity/positioning terhadap kasus backend-only dan end-to-end pada Stage 2, lalu minta Anhar settle boundary yang material.
 
 ## Objective dan batas
 
@@ -32,6 +32,21 @@ Baseline ini adalah **historical evaluation snapshot**, bukan current authorizat
 - **Measurement boundary:** appendix menghitung 126 Run directories, 401 Space files, dan 507,312 whitespace words dari snapshot **`7e731f9` plus working tree setelah HOLD, sebelum event/report evaluasi ditambahkan**. Commit `8b9a050` memuat final report dan state HOLD; jangan klaim jumlah kata appendix direproduksi persis dari commit final, atau direktori Run = completed/dispatched Run. Minimum 44 Human hours adalah self-report untuk 11 tanggal kalender 2026-09-25–2026-10-05, bukan timesheet.
 - **Evidence gaps:** tidak ada pemisahan actual Human time per phase versus Kencleng/Harscode, total AI cost/tokens, comparable before/after task, causal savings, atau full technical/security re-review. Evaluasi tidak menjalankan tests/runtime baru. Ini membatasi confidence dan desain ukuran Stage 5; bukan alasan menghapus gate assurance.
 
+## Stage 1 diagnosis — evidence-backed, episode-scoped
+
+Sample dipilih dari critical path dan positive outcome, bukan dari jumlah file. Pada Kencleng `8b9a050`, independent [RV-S2-003-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-005/review-findings-1.md) menemukan enam blocking schema/design gaps; [RV-S2-003-008](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-008/review-findings-1.md) menemukan replay `status_token` yang tidak dapat dipenuhi oleh one-way verifier. Itu **necessary assurance**: defect material ditemukan sebelum schema write. [TST-S2-004-001](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-004/runs/TST-S2-004-001/testing-report-001.md) memberi independent frontend mock evidence dan menyatakan batas backend/integration/security secara eksplisit. Exact Human/source acceptance, protected Tier-0 authorization, dan durable decision provenance juga menjaga authority; jangan dihitung otomatis sebagai waste.
+
+Avoidable cost tampak pada [BLD-S2-003-002](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/BLD-S2-003-002/report.md), yang di-dispatch sebelum prerequisite migration-design Review yang sudah tertulis terpenuhi; Participant berhenti aman tanpa production write. [TP-S2-006-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-006/runs/TP-S2-006-005/report-techplan.md) memperbaiki Human report yang sebelumnya kehilangan applicable Interface Contract; Human digest-nya perlu, repair Run-nya dapat dicegah dengan first-pass completeness. [TP-S2-002-005](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-002/runs/TP-S2-002-005/launch-record.md) hanya menyelaraskan status ke approval yang sudah durable; ini mengikuti posture saat itu, sedangkan current `orchestration/run-contract.md` sudah mengizinkan bounded deterministic reconciliation bila semua pre/postconditions terpenuhi. Pengulangan frontier pada beberapa surface tercatat di [Stage A baseline](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/experiments/current-state-simplification/stage-a-baseline.md); saat itu surface masih setuju, jadi tidak boleh mengklaim sudah terjadi routing failure.
+
+**Empat root causes prioritas untuk episode ini** (urut menurut critical-path impact dan bukti mekanisme, bukan jam/cost terukur):
+
+1. **Cross-surface contract readiness terlambat.** WU002 `CONTRACT_READY` cukup untuk baseline contract, tetapi combined recovery/admission/storage scenarios baru membuka gap melalui RV005 dan RV008; WU005–008 dibentuk untuk concern yang berbeda, dengan WU008 masih parked/unaccepted. **Confidence:** tinggi untuk rework path, rendah untuk besaran biaya. **Batas:** sebagian owner decisions dan replay semantics memang baru muncul; tidak semua harus settled sejak Exploration. **Uji vNext:** sebelum dependent Build, jalankan beberapa scenario lintas source/API/persistence yang relevan; ukur open owner decisions dan material re-entry sesudah approval tanpa menunda scope independen yang sudah ready.
+2. **Batch dispatch tidak selalu memeriksa prerequisite yang sudah diketahui.** BLD003002 memakai approval model/pairing tetapi tidak membawa positive migration-design Review yang disyaratkan plan; fail-closed Participant mencegah write. **Confidence:** tinggi untuk satu miss ini, belum cukup untuk klaim frekuensi sistemik. **Batas:** protected pairing dan migration Review tetap perlu; BLD003001 menghasilkan bounded cap projection meski whole spine belum selesai. **Uji vNext:** cek exact prerequisites untuk batch yang akan dijalankan dari existing plan/state sebelum dispatch; hitung Build yang STALLED karena gate tertulis terlewat dan capability/evidence yang dihasilkan per batch.
+3. **First-pass artifact fidelity/completeness lemah pada beberapa handoff.** Missing Interface Contract memicu TP006005; [RV-S2-003-009](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/.harscode-spaces/s2-guest-donation-truthful-state/WU-S2-003/runs/RV-S2-003-009/review-findings-1.md) menemukan predecessor approval ditulis seolah berlaku pada successor. **Confidence:** tinggi untuk repeat repair, tidak ada model/time comparison. **Batas:** independent Review tetap bernilai karena menangkap salah reliance boundary; RV10 atas correction diminta Human, bukan universal required loop. **Uji vNext:** periksa applicable sections, authority/status provenance, exact approval target, dan file anchors sebelum handoff; catat repair Run yang hanya mengisi omitted required output atau salah provenance.
+4. **Current-state projection dan mechanical lifecycle work terlalu sering ditulis ulang.** Stage A melihat frontier terulang pada manifest, Work Graph, Control Surface, Parent Outcome, tracker, dan Events; evaluasi menemukan prepared WU008 pointer HEAD/path stale. TP002005 menunjukkan status-only Participant path yang sekarang bisa dihindari secara kondisional. **Confidence:** tinggi untuk pengulangan dan contoh drift, rendah untuk effort savings. **Batas:** beberapa surface punya reader/function berbeda dan Stage A tidak menemukan contradiction; current deterministic path sudah ada, jadi belum perlu automation framework baru. **Uji vNext:** pakai owner per current fact dan pointer/projection yang cukup, lalu minta fresh session rekonstruksi frontier; ukur contradiction/stale pointer dan status-only Run yang lolos kriteria deterministic, tanpa menghapus event/provenance material.
+
+**Assurance floor untuk Stage 2–5:** Human/project authority dan exact acceptance tetap mengendalikan product/security/source truth; protected writes memerlukan izin yang berlaku; material plan/schema/code changes mendapat independent Review dan applicable Testing; unfulfilled prerequisite harus fail closed; current state dan material history harus dapat direkonstruksi dari durable sources. Tidak ada bukti yang mendukung penghapusan gate hanya untuk menurunkan hitungan Run. Magnitude/ROI empat penyebab di atas belum terukur; Stage 5 harus menguji efeknya terhadap capability **dan** safety.
+
 ## Roadmap
 
 ### 0. Freeze Pilot #2 evidence baseline — COMPLETE
@@ -45,15 +60,15 @@ Baseline ini adalah **historical evaluation snapshot**, bukan current authorizat
 - [x] Verifikasi exact refs/anchors serta catat final baseline dan evidence gaps.
 - [x] Baseline dapat dibaca fresh session dari immutable refs dan evidence index di atas.
 
-### 1. Separate necessary assurance cost from avoidable workflow cost — PENDING
+### 1. Separate necessary assurance cost from avoidable workflow cost — COMPLETE
 
 - **Objective:** identifikasi 3–5 root causes utama, dampak, dan confidence.
 - **Inputs/evidence:** baseline Stage 0; contoh review yang menemukan defect material, late contract changes, status-only work, premature dispatch, repeated state/projection updates, fidelity repairs.
 - **Decisions:** biaya yang menjaga correctness/authority/safety versus biaya yang dapat dihindari; hubungan sebab-akibat yang supported versus dugaan.
 - **Exit criteria:** tiap root cause punya concrete episode anchors, counterexample/batas, serta mekanisme perbaikan yang bisa diuji; tidak mengklaim time/cost savings yang belum diukur.
 - **Output:** ranked cause map dan assurance floor.
-- [ ] Klasifikasikan sample critical path, bukan seluruh file berdasarkan jumlahnya saja.
-- [ ] Settle 3–5 root causes dan assurance floor berbasis evidence.
+- [x] Klasifikasikan sample critical path, bukan seluruh file berdasarkan jumlahnya saja.
+- [x] Catat empat root causes prioritas, confidence/batas, uji vNext, dan assurance floor di atas sebagai working diagnosis episode.
 
 ### 2. Settle Harscode identity dan positioning — PENDING
 
@@ -128,3 +143,4 @@ Reopen item hanya jika evidence baru menunjukkan ia perlu untuk correctness/oper
 |---|---|---|---|
 | 2026-10-05 | Working decision | HOLD Kencleng Slice 2 development; Post-Pilot #2 evaluation proceeds; no promotion now. | Anhar instruction; Kencleng tracker at `8b9a050`. |
 | 2026-10-05 | Evaluation baseline | Freeze Stage 0 pada Harscode `63ec4e0`/`main@b64fa11` dan Kencleng `8b9a050`; appendix tetap dibaca sebagai pre-report snapshot `7e731f9` plus working tree. | Exact refs/anchors dan selected hashes diverifikasi; evidence index dan limits di atas. Ini bukan policy atau resume decision. |
+| 2026-10-05 | Working diagnosis | Stage 1 memprioritaskan empat root causes di atas; assurance floor dipertahankan untuk audit dan CRTV. | Kencleng `8b9a050` report plus sampled Run artifacts; Harscode `orchestration/run-contract.md` current candidate semantics. Bukan settled Harscode policy atau measured causal savings. |
