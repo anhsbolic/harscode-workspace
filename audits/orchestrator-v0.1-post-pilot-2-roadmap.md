@@ -1,8 +1,8 @@
 # Orchestrator v0.1 — Post-Pilot #2 Roadmap
 
-> Status: Stages 0–1 COMPLETE — evidence baseline dan diagnosis episode tercatat; Stage 2 berikutnya, stages 3–7 belum dimulai.
+> Status: Stages 0–1 COMPLETE; Stage 2 DECISION-READY — positioning candidate menunggu keputusan Anhar; stages 3–7 belum dimulai.
 > Scope: progress dan keputusan episode Post-Pilot #2 pada branch `pilot/orchestrator-v0.1`; bukan runtime guidance atau canonical Harscode policy.
-> Next action: uji Harscode identity/positioning terhadap kasus backend-only dan end-to-end pada Stage 2, lalu minta Anhar settle boundary yang material.
+> Next action: Anhar menerima atau mengoreksi satu positioning candidate Stage 2 di bawah; setelah itu catat exact decision sebelum Stage 3.
 
 ## Objective dan batas
 
@@ -47,6 +47,24 @@ Avoidable cost tampak pada [BLD-S2-003-002](https://github.com/anhsbolic/kenclen
 
 **Assurance floor untuk Stage 2–5:** Human/project authority dan exact acceptance tetap mengendalikan product/security/source truth; protected writes memerlukan izin yang berlaku; material plan/schema/code changes mendapat independent Review dan applicable Testing; unfulfilled prerequisite harus fail closed; current state dan material history harus dapat direkonstruksi dari durable sources. Tidak ada bukti yang mendukung penghapusan gate hanya untuk menurunkan hitungan Run. Magnitude/ROI empat penyebab di atas belum terukur; Stage 5 harus menguji efeknya terhadap capability **dan** safety.
 
+## Stage 2 positioning candidate — awaiting Anhar
+
+**Source status:** rekomendasi hasil pembacaan [`README.md`](../README.md), [`orchestration/protocol-v0.1.md`](../orchestration/protocol-v0.1.md), [`orchestrator-operating-model.md`](../orchestration/pilot-2-candidate/orchestrator-operating-model.md), [`workflow/AGENTS.md`](../workflow/AGENTS.md), [`product-design/README.md`](../product-design/README.md), dan diagnosis Stage 1. Ini belum settled decision atau perubahan canonical guidance. `main` tetap operational baseline; Human-Assisted dedicated Orchestrator adalah posture Pilot #2, bukan syarat universal untuk menggunakan Harscode.
+
+**Rekomendasi identity:** Harscode adalah **panduan kerja modular untuk pengembangan software berbantuan AI, dari intent/authority proyek yang cukup jelas sampai capability yang diverifikasi**. Ia membantu Human dan agents menjaga keputusan dan sumber otoritatif, membatasi pekerjaan, menyimpan state yang dapat direkonstruksi, serta menghasilkan evidence yang proporsional dengan risiko. Kriteria evaluasi vNext adalah correct capability per coordination effort dengan assurance floor Stage 1.
+
+**Authority dan koordinasi:** product/domain truth serta keputusan material Design, API, Security/Privacy, dan risk dimiliki owner yang dinamai proyek; Harscode menyediakan cara merutekan dan mengeksekusi keputusan itu. Human dapat menjadi Participant. Orchestrator agent, bila dipakai, mengoordinasikan Work Units/Runs, memfasilitasi pertanyaan decision-ready, dan merekonsiliasi durable state; ia tidak mendapat authority material atau menggantikan Explorer/Planner/Implementer/Reviewer/Verifier. Engineering workflow tetap dapat dipakai langsung tanpa Orchestrator. Physical Space, UI, model, dan dispatch mechanism adalah pilihan implementasi sesuai kebutuhan.
+
+| Uji applicability | Jalur minimum yang cukup | Boundary yang diuji |
+|---|---|---|
+| Backend-only dengan product/API contract sudah accepted | Project truth → engineering Exploration → Techplan → Build → Review/Testing sesuai canonical applicability → exact delivery evidence; load best-practices terkait. | Tidak memerlukan product-brand/UI cycle atau Orchestrator/Space hanya karena Harscode dipakai. Security/financial gates tetap mengikuti risiko nyata. |
+| End-to-end delivery dengan UI direction masih open dan dependensi lintas stack | Project owner menetapkan product truth → conditional product-design authority → engineering per bounded outcome; Orchestrator bila coordination topology memang perlu → integration dan independent evidence. | “End-to-end” mencakup design-to-engineering delivery untuk intent proyek, bukan mengambil alih strategi produk, market validation, atau project-specific truth. Frontend mock proof tidak menjadi real integration proof. |
+| Bounded maintenance/bug fix | Project authority/current code → applicable engineering route dan bukti perubahan yang cukup. | Tidak otomatis membuat Work Graph, dedicated Space, Participant Profile, atau seluruh phase sebagai ceremony; phase applicability tetap mengikuti canonical workflow. |
+
+**Challenge yang perlu disadari:** frasa “end-to-end product development” terlalu luas bila dibaca sebagai Harscode pemilik product discovery sampai business outcome. Current authority hanya mendukung reusable guidance dari project-owned intent ke verified software delivery, dengan product-design support saat diperlukan. Positioning yang lebih luas memerlukan authority dan real evidence baru; jangan dipromosikan dari wording roadmap ini.
+
+**Decision request untuk Anhar:** terima atau koreksi rekomendasi identity, Human/Orchestrator posture, dan batas “end-to-end” sebagai **satu positioning decision**. Jika diterima, catat exact wording sebagai settled *episode decision* di dokumen ini. Itu tetap belum mengubah operational `main` atau candidate runtime policy; Stage 3 memakai keputusan tersebut sebagai lensa audit.
+
 ## Roadmap
 
 ### 0. Freeze Pilot #2 evidence baseline — COMPLETE
@@ -70,15 +88,15 @@ Avoidable cost tampak pada [BLD-S2-003-002](https://github.com/anhsbolic/kenclen
 - [x] Klasifikasikan sample critical path, bukan seluruh file berdasarkan jumlahnya saja.
 - [x] Catat empat root causes prioritas, confidence/batas, uji vNext, dan assurance floor di atas sebagai working diagnosis episode.
 
-### 2. Settle Harscode identity dan positioning — PENDING
+### 2. Settle Harscode identity dan positioning — AWAITING ANHAR
 
 - **Objective:** jelaskan problem utama, Human versus orchestration-agent posture, dan modular applicability dari backend-only sampai end-to-end product development.
 - **Inputs/evidence:** cause map; `README.md`/current operational authority; Pilot #2 operator/Participant evidence dan target-project boundary.
 - **Decisions:** identity yang cukup presisi untuk memandu vNext; bagian yang invariant versus optional/conditional.
 - **Exit criteria:** statement yang bisa diuji terhadap kasus backend-only dan end-to-end; Human authority, product truth, dan agent coordination boundary tidak ambigu.
 - **Output:** explicit identity/positioning decision record di sini, bukan perubahan runtime policy otomatis.
-- [ ] Uji framing terhadap dua bentuk project dan counterexample Pilot #2.
-- [ ] Catat decision, owner, rationale, dan unresolved questions.
+- [x] Uji framing terhadap backend-only, end-to-end, dan bounded maintenance; check terhadap authority serta counterexample Pilot #2.
+- [ ] Anhar menerima/mengoreksi wording dan boundary; catat settled episode decision, owner, dan rationale.
 
 ### 3. Audit lifecycle dan artifact dari outcome — PENDING
 
@@ -144,3 +162,4 @@ Reopen item hanya jika evidence baru menunjukkan ia perlu untuk correctness/oper
 | 2026-10-05 | Working decision | HOLD Kencleng Slice 2 development; Post-Pilot #2 evaluation proceeds; no promotion now. | Anhar instruction; Kencleng tracker at `8b9a050`. |
 | 2026-10-05 | Evaluation baseline | Freeze Stage 0 pada Harscode `63ec4e0`/`main@b64fa11` dan Kencleng `8b9a050`; appendix tetap dibaca sebagai pre-report snapshot `7e731f9` plus working tree. | Exact refs/anchors dan selected hashes diverifikasi; evidence index dan limits di atas. Ini bukan policy atau resume decision. |
 | 2026-10-05 | Working diagnosis | Stage 1 memprioritaskan empat root causes di atas; assurance floor dipertahankan untuk audit dan CRTV. | Kencleng `8b9a050` report plus sampled Run artifacts; Harscode `orchestration/run-contract.md` current candidate semantics. Bukan settled Harscode policy atau measured causal savings. |
+| 2026-10-05 | Recommendation pending | Stage 2 positioning candidate di atas menunggu keputusan Anhar. | Current Harscode `main`/pilot guidance dan Stage 1 diagnosis; belum mengubah operational/canonical policy. |
