@@ -1,8 +1,8 @@
 # Orchestrator v0.1 — Post-Pilot #2 Roadmap
 
-> Status: Stages 0–2 COMPLETE; Stage 3 NEXT; Stages 4–7 PENDING.
+> Status: Stages 0–2 COMPLETE; Stage 3 IN PROGRESS (first-pass audit recorded); Stages 4–7 PENDING.
 > Scope: the Post-Pilot #2 evaluation episode on `pilot/orchestrator-v0.1`. This is a progress and decision record, not runtime guidance or canonical Harscode policy.
-> Next action: audit the lifecycle and artifacts against delivered outcomes, the Stage 1 assurance floor, and the Stage 2 positioning.
+> Next action: validate the Stage 3 first-pass gaps against a bounded clean-seed handoff design, then define the smallest candidate and predeclared Pilot #3 measures before execution.
 
 ## Objective and boundaries
 
@@ -62,6 +62,32 @@ This is a value and applicability statement, not a claim that every current prom
 
 A Human may be a Participant. An Orchestrator agent is an optional coordinator when Work Unit/Run topology adds value: it facilitates decision-ready questions and durable-state reconciliation without receiving material project authority or replacing specialist roles. The dedicated, Human-Assisted Orchestrator is the current Pilot #2 posture, not a universal prerequisite for using Harscode.
 
+## Stage 3 — First-pass outcome audit (working evaluation)
+
+This is an audit of current fit, not a runtime rule or a finding that each mechanism is costly. Current phase semantics come from [`workflow/`](../workflow/AGENTS.md), [product-design handoff](../product-design/design-to-engineering-handoff.md), [protocol](../orchestration/protocol-v0.1.md), [Run contract](../orchestration/run-contract.md), and the [Pilot #2 bootstrap](../orchestration/pilot-2-candidate/project-orchestration-bootstrap.md). Observed Pilot #2 failures and limits are in Stage 1 and the [Kencleng evaluation](https://github.com/anhsbolic/kencleng/blob/8b9a0503d0c92f60434d704a3796b7329b0adebe/docs/project/slice-2-progress-workflow-evaluation-2026-10-05.md). No effort or savings is measured per mechanism; Run-directory and word counts are not causal cost estimates.
+
+| Concern | Job and evidence / fit | Preserve; bounded candidate to test |
+|---|---|---|
+| Product scope and readiness, before engineering | Product/design handoff classifies design readiness; bootstrap can route an ambiguous near-term objective. Neither gives a sufficient method for choosing a delivery outcome from an upstream seed and checking its product dependencies before a task enters Exploration. Pilot #2 exposed material product/contract decisions downstream; this does not prove every later discovery was preventable. | Keep project-owned product decisions and design standards. Test Human-led release-outcome/slice selection followed by selected-slice dependency, business-process, state/data-flow, UX-use, acceptance, and owner-decision checks. Leave implementation mechanics and bounded technical probes to engineering. Do not require whole-product completeness. |
+| Exploration | Establishes task/current-state gaps and durable evidence; its [entrypoint](../workflow/1-exploration-kickoff-prompt.md) expects a task or authoritative requirement. Running it to choose product scope risks turning technical discovery into product authority. | Keep task-focused gap evidence and the Human checkpoint. Enter only with a sufficiently bounded approved product objective; return material product gaps to their owner instead of looping through engineering phases. |
+| Techplan | Makes an execution-grade contract. Pilot #2 needed repeated material revision as decisions converged; 49 Techplan Run directories alone do not measure waste. | Keep the plan and approval semantics. Test risk-triggered cross-source scenarios and first-pass completeness before dependent Build; do not add a universal scenario template or plan every implementation detail. |
+| Independent Techplan and code Review | Plan Reviews found blocking schema/replay gaps; frontend Review/Testing contributed scoped assurance. Review count alone cannot establish excess. | Keep independence where the risk gate applies and review the exact current target/diff. Re-review material changes, not automatically every mechanical correction; do not weaken protected or Human gates. |
+| Build | Converts an approved contract into capability. A backend Build stopped safely after dispatch because its already-stated migration-design prerequisite was missed. | Keep fail-closed behavior and focused verification. Check the specific batch's plan, dependency, Review, and authorization prerequisites before dispatch; do not require whole-Work-Unit completion to start an independently ready batch. |
+| Testing | Supplies independent observable evidence; Pilot #2 frontend mock verification did not establish backend integration or delivery. The [current Testing entrypoint](../workflow/5-testing-prompt.md) assumes an Approved Techplan and preceding Build/Code Review. | Keep real-interface and risk-scoped evidence with explicit claim limits. Test verification-only applicability separately; do not claim QA-only fit or force it through an invented prior Build/Techplan. |
+| Work Unit | Coordinates a bounded outcome and scoped dependencies. WU003's combined backend concerns made achievable batch boundaries difficult; that is not proof that a mandatory smaller hierarchy would help. | Keep outcome identity and observable completion. Split only where distinct outcomes/dependencies materially improve routing; otherwise make batch scope and gates explicit in the owning plan. |
+| Run | Preserves distinct execution occurrences and re-entry history. Status-only Runs and report repairs occurred, while several Reviews yielded substantive findings. | Require meaningful delta for a new execution occurrence. Use [bounded deterministic reconciliation](../orchestration/run-contract.md#deterministic-reconciliation-outside-the-run-path) only when its full preconditions hold; preserve material events and independent evidence. |
+| Participant Profile | Reusable capability blueprint, not product authority. The Pilot #2 baseline had near-term specialist context; this evidence does not show that Profiles themselves caused the measured overhead. | Reuse or create only when selected work establishes a real recurring capability need. Do not precreate backend/frontend/QA profiles from the clean product seed alone. |
+| Invocation | Binds exact Run inputs, authority, paths, and execution limits. The inventory attributes about 101k words to Invocation files but does not classify their necessary versus duplicated content. | Preserve executable identity, authorization, current-effective inputs, and stop conditions. Point to owned sources instead of repeating broad current-state narrative; test fresh-session reconstruction before shortening further. |
+| Orchestration | Coordinates dependencies and Human decisions without creating project authority. Pilot #2 exposed a missed known batch gate, repeated state projections, and a stale pointer. | Keep one current owner per fact, bounded pre-dispatch checks, and direct facilitation of decision-ready Human questions. Avoid a new scheduler, mandatory Space, or product-decision authority for the Orchestrator. |
+
+**Interpretation and unresolved checks.** The leading upstream gap is a product-to-engineering boundary, not proof that every downstream phase should be shortened. Current bootstrap readiness covers authority, profile, runtime, and orchestration state for a near-term objective; it must not be relabeled as proof that the objective's product dependencies are settled. Review/Testing safeguards bought observable value and form the Stage 1 assurance floor. Validate the matrix with an actual fresh-session clean-seed handoff and a verification-only case before closing Stage 3; record material counterevidence rather than promoting this first pass into policy.
+
+**Pilot #3 preparation, not execution authorization.** Anhar approved a clean Kencleng product seed on the orphan branch [`pilot/3-clean-seed@54ded3b`](https://github.com/anhsbolic/kencleng/tree/54ded3bb05b5c0dabbfec78bb29ee49a1a18a8bd). Its [product intent](https://github.com/anhsbolic/kencleng/blob/54ded3bb05b5c0dabbfec78bb29ee49a1a18a8bd/docs/product/product-intent.md) and reusable design standards are upstream input; the branch does not carry prior delivery scope, code, or Pilot #2 artifacts. This is practical branch/context isolation, not deletion of other refs in the same repository. Pilot #2 history remains evaluation evidence on the Harscode side, not target-project input for slice selection. No Pilot #3 slice, readiness verdict, agent profile, or engineering Run has been selected here.
+
+The working method to test is: **approved seed → Human-led release outcome and slice candidates → Human-selected slice → proportionate product/dependency readiness for that slice → bounded engineering handoff → applicable Exploration/Techplan/Build/Review/Testing**. Harscode may facilitate and challenge; Anhar retains product decisions. A minimal durable project-owned decision/handoff record should identify the selected outcome, dependency/shortcut rationale, applicable design use, acceptance, owner decisions, remaining technical probes, and what engineering may decide. Its physical format and any new role/workflow remain open. Do not reuse the Pilot #2 scope or assert that a candidate slice is engineering-ready merely because the clean seed exists.
+
+Before any bounded Pilot #3 trial, predeclare the selected scope, exact candidate revision, applicable safeguards, stop conditions, and feasible observations: material product decisions discovered after engineering entry; missed versus genuinely emergent dependencies; first-pass handoff completeness; Run re-entry and reason; Human coordination time with its measurement limits; delivered capability and independent evidence; protected-gate/claim-limit compliance; and fresh-session reconstruction. Compare to Pilot #2 only as a non-equivalent historical stress-test baseline, not a causal speedup estimate.
+
 ## Roadmap and checklist
 
 ### 0. Freeze Pilot #2 evidence baseline — COMPLETE
@@ -95,15 +121,16 @@ A Human may be a Participant. An Orchestrator agent is an optional coordinator w
 - [x] Test the framing against bounded and cross-functional scopes and the Pilot #2 counterexample.
 - [x] Record Anhar's wording and scope decision; keep implementation fit for Stage 3.
 
-### 3. Audit lifecycle and artifacts against outcomes — NEXT
+### 3. Audit lifecycle and artifacts against outcomes — IN PROGRESS
 
 - **Objective:** assess each handoff and artifact by the capability, assurance, and reconstructability it provides.
-- **Inputs/evidence:** Stages 0–2 and actual Pilot #2 artifacts; current owners for Exploration, Techplan, Review, Build, Testing, Work Unit, Run, Participant Profile, Invocation, and Orchestration.
+- **Inputs/evidence:** Stages 0–2 and actual Pilot #2 artifacts; current owners for product/design handoff, Exploration, Techplan, Review, Build, Testing, Work Unit, Run, Participant Profile, Invocation, and Orchestration; approved clean-seed revision for Pilot #3 preparation.
 - **Decisions:** keep, refine, remove, or make conditional by concern; distinguish semantic and authority needs from storage or tooling choices.
 - **Exit criteria:** each concern has its purpose, cost, observed failure, necessary evidence/gate, and a bounded simplification candidate. Include a verification-only applicability check.
-- **Output:** an outcome-oriented audit matrix with pointers to owning guidance; no protected or canonical edits.
-- [ ] Audit Exploration, Techplan, Review, Build, and Testing, including verification-only fit.
-- [ ] Audit Work Unit, Run, Participant Profile, Invocation, and Orchestration.
+- **Output:** the first-pass outcome matrix and Pilot #3 preparation hypothesis above; no protected or canonical edits. Closure still requires targeted validation.
+- [x] Audit product-to-engineering boundary, Exploration, Techplan, Review, Build, and Testing at first-pass resolution, including verification-only fit.
+- [x] Audit Work Unit, Run, Participant Profile, Invocation, and Orchestration at first-pass resolution.
+- [ ] Validate the clean-seed handoff and verification-only counterexample; refine/close the matrix only on evidence.
 
 ### 4. Design a minimal Harscode vNext candidate — PENDING
 
@@ -118,12 +145,12 @@ A Human may be a Participant. An Orchestrator agent is an optional coordinator w
 ### 5. Run bounded CRTV with explicit measures — PENDING
 
 - **Objective:** test an authorized candidate on real work with a scope that is comparable where possible.
-- **Inputs/evidence:** frozen candidate revision, Stage 0 baseline, authorized target scope, current project state, and required independent verification.
+- **Inputs/evidence:** frozen candidate revision, Stage 0 historical baseline, authorized Pilot #3 target scope from the clean seed, and required independent verification.
 - **Decisions:** predeclare scope, stop conditions, and feasible measures without building a telemetry platform.
 - **Exit criteria:** observe capability and safety/authority evidence; record coordination effort, re-entry reasons, missed prerequisites, duplicated work, first-pass completeness, and scope/data limitations.
 - **Output:** an exact-revision CRTV report comparing outcomes and cost, without arbitrary document-count or savings thresholds.
 - [ ] Predeclare scope, measures, assurance floor, and stop conditions.
-- [ ] Execute only after applicable authorization/resume and collect evidence.
+- [ ] Execute only after applicable Pilot #3 authorization and collect evidence; this does not resume Pilot #2.
 
 ### 6. Keep / Refine / Reject — PENDING
 
@@ -160,3 +187,5 @@ Reopen an item only if new evidence shows it is necessary for correctness or ope
 | 2026-10-05 | Evaluation baseline | Freeze Stage 0 at Harscode `63ec4e0` / `main@b64fa11` and Kencleng `8b9a050`; read the inventory as a pre-report `7e731f9`-plus-working-tree snapshot. | Exact refs, selected anchors, hashes, and limits above; no policy or resume decision. |
 | 2026-10-05 | Working diagnosis | Prioritize the four Stage 1 causes while preserving the assurance floor. | Kencleng `8b9a050` report and sampled Runs; current pilot `orchestration/run-contract.md`. No measured causal savings or canonical change. |
 | 2026-10-05 | Settled episode decision | Adopt the Stage 2 positioning and three values above; keep Harscode repository prose in professional English. | Anhar's discussion in this session. This settles the evaluation lens, not operational or candidate runtime policy. |
+| 2026-10-06 | Working decision | Prepare Pilot #3 from an approved upstream product/design seed without importing Pilot #2 delivery context; derive release scope and slices anew with Anhar. | Anhar; Kencleng orphan root `pilot/3-clean-seed@54ded3b`. No Pilot #2 resume or Pilot #3 execution decision. |
+| 2026-10-06 | Working evaluation | Record the Stage 3 first-pass matrix and bounded product-to-engineering handoff hypothesis; keep canonical and candidate runtime guidance unchanged pending validation. | Current Harscode guidance and Kencleng `8b9a050` evaluation; no measured per-mechanism cost or causal improvement claim. |
