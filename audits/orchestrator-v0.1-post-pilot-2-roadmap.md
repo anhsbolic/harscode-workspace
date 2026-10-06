@@ -2,7 +2,7 @@
 
 > Status: Stages 0–2 COMPLETE; Stage 3 IN PROGRESS (first-pass audit recorded); Stages 4–7 PENDING.
 > Scope: the Post-Pilot #2 evaluation episode on `pilot/orchestrator-v0.1`. This is a progress and decision record, not runtime guidance or canonical Harscode policy.
-> Next action: design the smallest product-to-engineering candidate and a real fresh-context trial; preserve the desk-check limits below before closing Stage 3 or authorizing Pilot #3 execution.
+> Next action: review the bounded handoff candidate and fresh-context trial below with Anhar, then run the trial separately before closing Stage 3 or authorizing Pilot #3 execution.
 
 ## Objective and boundaries
 
@@ -95,6 +95,27 @@ The working method to test is: **approved seed → Human-led release outcome and
 
 Before any bounded Pilot #3 trial, predeclare the selected scope, exact candidate revision, applicable safeguards, stop conditions, and feasible observations: material product decisions discovered after engineering entry; missed versus genuinely emergent dependencies; first-pass handoff completeness; Run re-entry and reason; Human coordination time with its measurement limits; delivered capability and independent evidence; protected-gate/claim-limit compliance; and fresh-session reconstruction. Compare to Pilot #2 only as a non-equivalent historical stress-test baseline, not a causal speedup estimate.
 
+### Bounded handoff candidate for trial — not runtime guidance
+
+**Trigger and input.** Use when a project has approved upstream product intent/design direction but no approved near-term delivery outcome or when a selected outcome's product dependencies are not yet sufficiently understood. Read only the target project's current authority and applicable Harscode candidate guidance. Do not load another branch's historical delivery artifacts as target authority.
+
+**Human-led scope shaping.** Identify one or two plausible actor outcomes from the approved product intent, with their value, trust implications, and upstream dependencies. Challenge whether an outcome is deliverable without substituting fixtures or operator action for the product decision/process being claimed. Recommend a direction only to the extent evidence supports it; ask Anhar for the specific release outcome and bounded success condition. Do not select a slice, create an implementation Work Unit, or claim readiness on the Human's behalf.
+
+**Selected-slice readiness, only after that decision.** For the selected outcome, trace backward to the minimum credible prerequisites: actors and decision rights; business-process and state transitions; data meaning/provenance and consequential flows; applicable design standards versus slice-specific UX; acceptance/learning evidence; material dependencies and the truthfulness of any shortcuts; open decisions and owners. Resolve material product/design/authority choices upstream. Keep database schema, storage mechanism, API shape, component architecture, and ordinary technical implementation in engineering unless a technical probe is needed to expose a product consequence. A bounded probe has a question, owner, observable result, and stop point; it must not quietly become Build.
+
+**Handoff rule.** The selected work is ready to enter engineering only when a fresh agent can identify the bounded outcome, governing product decisions, minimum credible dependency path, acceptance evidence, permitted technical freedoms, and remaining bounded probes without inventing a material product/design/authority decision. Otherwise route the smallest open decision to its owner and hold only the dependent work. This is not a requirement to settle the whole product or finish every capability within the slice before starting independently ready work.
+
+**Durable output and non-goals.** Record the Human-approved outcome and slice boundary, dependency/shortcut rationale, applicable design use, acceptance, owner decisions, and open probes in the appropriate project-owned authority or one small linked handoff record if no current owner captures the transition. Its format is replaceable; do not create a parallel Product Authority, mandatory profile, new hierarchy, or orchestration Space merely for this trial. Engineering findings may return only affected product decisions upstream; they do not automatically restart the whole sequence.
+
+### Fresh-context trial protocol — prepared, not run
+
+1. Start a separate fresh task with a shallow single-branch checkout of Kencleng `pilot/3-clean-seed@54ded3b`. Supply only this bounded handoff section from the exact Harscode revision as **experimental trial instructions**, not as promoted runtime policy. Provide no prior Kencleng delivery branch, Pilot #2 transcript, or remembered slice order as target input. A same-thread reread is not a fresh-context test; Git repository access to other refs remains a known isolation limit.
+2. Prompt the agent neutrally: “Help me prepare Kencleng's first bounded delivery from the current product and design authority. No release goal or slice has been selected. Do not implement or create an engineering plan. Show the most useful next product decision and why.” Stop before Anhar answers. This first pass tests authority reading and decision facilitation, not slice quality or engineering readiness.
+3. Inspect whether it names the authoritative seed, distinguishes product intent from delivery scope and design examples, presents no more than two reasoned outcome candidates, traces material dependencies backward, challenges a misleading shortcut, and asks one decision-ready Human question. A self-selected slice, inherited Pilot #2 order, fabricated acceptance, premature Work Unit/Run, or claim of engineering readiness fails the boundary test even if the recommendation sounds plausible.
+4. If the first pass is sound, continue only with Anhar's real answer. Evaluate the selected-slice readiness result for missing product decisions, dependency truthfulness, proportionality, and a reconstructable handoff. Do not treat a synthetic Human answer as project authority. Record the exact revisions, prompts, decisions, failures, and Human effort before judging the candidate.
+
+**Separate verification-only check.** The QA-only entry-contract gap is real at document level but need not block this clean-seed product handoff trial. Test it later on an existing implementation with approved behavior and an observable interface, not on the code-free seed. Preserve independent evidence and no-production-fix boundaries; do not manufacture a Techplan/Build report just to satisfy the current Testing prompt.
+
 ## Roadmap and checklist
 
 ### 0. Freeze Pilot #2 evidence baseline — COMPLETE
@@ -138,6 +159,7 @@ Before any bounded Pilot #3 trial, predeclare the selected scope, exact candidat
 - [x] Audit product-to-engineering boundary, Exploration, Techplan, Review, Build, and Testing at first-pass resolution, including verification-only fit.
 - [x] Audit Work Unit, Run, Participant Profile, Invocation, and Orchestration at first-pass resolution.
 - [x] Desk-check the clean-seed boundary and a verification-only counterexample against current guidance; record limits without treating the checks as executed pilot evidence.
+- [x] Prepare a bounded product-to-engineering handoff candidate and fresh-context trial protocol without changing runtime guidance or choosing a Kencleng slice.
 - [ ] Run a bounded fresh-context trial for each gap and refine/close the matrix only on observed evidence.
 
 ### 4. Design a minimal Harscode vNext candidate — PENDING
