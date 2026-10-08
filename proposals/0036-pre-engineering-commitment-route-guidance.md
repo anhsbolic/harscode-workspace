@@ -79,18 +79,36 @@ Proposed root `AGENTS.md` routing addition:
   → pre-engineering/AGENTS.md.
 ```
 
-Proposed root `README.md` mental model:
+Proposed root `README.md` routing model:
 
 ```text
-project product/domain truth
-→ pre-engineering when product behavior / requirement meaning is materially open
-→ product-design when product-brand/UI/UX authority is materially open
-→ engineering Exploration
-→ Techplan
-→ Build / Review / Testing / PR
+                         ┌─ pre-engineering/
+                         │  when product behavior /
+project product truth ───┤  requirement meaning is materially open
+                         │
+                         ├─ product-design/
+                         │  when product-brand / UI / UX
+                         │  authority is materially open
+                         │
+                         └─ engineering Exploration
+                            when upstream meaning is ready enough
 ```
 
-Both upstream areas are conditional. Their relative order is not universally fixed; use the authority that owns the unresolved question.
+`pre-engineering/` and `product-design/` are **conditional sibling upstream routes**, not mandatory sequential phases.
+
+They may expose gaps owned by the other route:
+
+```text
+pre-engineering
+→ material product-brand / UI / UX ambiguity
+→ product-design
+
+product-design
+→ missing product / behavioral semantics
+→ return to project Product Authority / pre-engineering
+```
+
+Neither route may silently take authority owned by the other.
 
 ### 3. Add `pre-engineering/AGENTS.md`
 
@@ -112,6 +130,9 @@ not yet concrete enough for engineering to proceed without inventing meaning.
 - Distinguish capability / product behavior from feature / surface / implementation.
 - Do not solve technical architecture, API, database, component, or implementation design here.
 - A ready commitment may progress without resolving unrelated blocked future commitments.
+- Default to one active commitment route at a time.
+- A minimum prerequisite behavior may travel inside the active commitment only when it is materially required for dependency closure and the combined scope remains meaningful, semantically ready enough, truthful, and bounded.
+- Reaching durable pre-engineering handoff does **not** prove that a prerequisite's real product behavior has been implemented / delivered.
 - Interaction exploration precedes confirmed behavior; confirmed behavior precedes requirements.
 - Derive Experience Requirements and Engineering Requirements from the same confirmed behavior.
 - Durable correctness must not depend on remembered chat context.
@@ -166,6 +187,35 @@ A commitment is ELIGIBLE when it is:
 
 If multiple independent items are ELIGIBLE, choosing execution order among them is not another readiness state.
 
+### Dependency semantics
+
+Dependency closure is about the **real product behavior required for the active commitment's claim**, not merely the existence of an upstream specification / handoff.
+
+```text
+prerequisite reaches durable pre-engineering handoff
+≠ prerequisite is implemented
+≠ prerequisite is delivered / real in the product
+≠ downstream dependency automatically satisfied
+```
+
+A completed prerequisite handoff proves that the prerequisite behavior is sufficiently defined for engineering; it does not prove that the behavior exists in delivery.
+
+For an active commitment whose prerequisite is not yet real, valid options are:
+
+```text
+WAIT
+→ keep the commitment dependency-blocked until the prerequisite becomes real
+
+or
+
+INCLUDE
+→ carry only the minimum required prerequisite behavior inside the active commitment
+   when the combined claim remains meaningful, semantically ready enough,
+   dependency-closed enough, truthful, and bounded
+```
+
+Do not use the INCLUDE option to pull unrelated future scope into the commitment.
+
 ### 5. Add `pre-engineering/commitment-route.md`
 
 Proposed runtime loop:
@@ -210,6 +260,8 @@ Classify surfaced ambiguity as appropriate:
 - PARKED — NOT NEEDED YET
 
 Resolve only blockers required for the active commitment to remain truthful.
+
+Default to one active commitment route at a time. This is not rigid isolation: a minimum prerequisite behavior may be included when the active product claim cannot otherwise become dependency-closed, but only if the combined commitment still passes the readiness / boundedness gates.
 
 #### Confirmed Product Behavior
 
@@ -291,7 +343,9 @@ Read, in order:
 2. the current progress dashboard if one exists (navigation only, not authority);
 3. the owning representative scenario / commitment definition;
 4. the commitment's eligibility decision and material dependencies;
-5. any completed dependency handoff that is actually required for this commitment.
+5. the current state of every material prerequisite actually required for this commitment, distinguishing:
+   - pre-engineering definition / handoff state; and
+   - real product implementation / delivery state when known.
 
 Do not rely on previous chat memory.
 
@@ -299,7 +353,8 @@ First report:
 - active commitment and product claim;
 - current route position;
 - authority already settled;
-- material dependencies;
+- material dependencies, including whether each is merely defined / handed off versus actually real / delivered;
+- whether any minimum prerequisite behavior must travel inside this commitment for truthful dependency closure;
 - what is explicitly open / parked;
 - the next stage exit question.
 
@@ -311,6 +366,8 @@ Rules:
 - checkpoint each material approved decision in its owning durable artifact;
 - verify persistence before continuing;
 - do not resolve unrelated blocked future commitments;
+- do not treat a prerequisite Stage 7 / handoff-complete state as proof that its real product behavior is delivered;
+- include minimum prerequisite behavior only when required for dependency closure and still bounded;
 - do not cross into architecture / implementation;
 - update the progress dashboard only after owning artifacts change;
 - stop at durable engineering handoff.
@@ -352,7 +409,8 @@ Key rules:
 - blocked future commitments may remain parked while another commitment progresses;
 - the dashboard updates **after** the owning artifact changes;
 - route completion means pre-engineering completion, not real implementation / delivery;
-- downstream dependencies are not satisfied merely because an upstream commitment reached handoff.
+- downstream dependencies are not satisfied merely because an upstream commitment reached handoff;
+- when useful, show prerequisite definition / handoff state separately from real delivery state so the dashboard does not create fake dependency closure.
 
 ### 8. Keep project retrospectives out of runtime guidance
 
@@ -379,6 +437,7 @@ The proposal also preserves existing Harscode boundaries:
 - target project owns product/domain truth;
 - `product-design/` continues to own reusable product-brand/UI/UX authority-building;
 - `pre-engineering/` would own product-behavior concretization and handoff discipline;
+- `pre-engineering/` and `product-design/` are sibling conditional routes, not a fixed sequence;
 - `workflow/` continues to own engineering Exploration onward;
 - engineering keeps architecture / implementation mechanics.
 
