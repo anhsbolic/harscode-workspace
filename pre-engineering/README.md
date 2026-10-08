@@ -27,6 +27,21 @@ If product-design exposes missing product / behavioral semantics, return that co
 
 Neither route may silently take authority owned by the other.
 
+## Commitment-scoped authority
+
+A target project may keep whole-product Product Authority compact while approving commitment-specific product behavior / requirements that are binding for downstream work in that bounded commitment.
+
+```text
+whole-product Product Authority
++
+Human-approved commitment-specific behavior / requirements
+→ binding downstream within that commitment
+```
+
+This does not let Harscode create project Product Truth. The target project must explicitly establish the scope, approval, and precedence.
+
+“Not whole-product canonical” must not be interpreted as “optional for engineering.”
+
 ## When to use this area
 
 Use pre-engineering when current project Product Truth is directionally correct but engineering would still have to invent material product meaning, for example:
@@ -151,6 +166,27 @@ route complete
 
 See `commitment-route.md` for the execution discipline.
 
+## Handoff completion vs cold-start validation
+
+Pre-engineering route completion and independent handoff consumption are distinct:
+
+```text
+durable handoff prepared + Human-approved
+→ PRE-ENGINEERING ROUTE COMPLETE
+
+later:
+fresh engineering session consumes the handoff independently
+→ COLD-START HANDOFF VALIDATION EVIDENCE
+```
+
+Cold-start validation is **not another pre-engineering stage**.
+
+The handoff should be complete enough that a fresh engineering reader should be able to begin without reconstructing the original product conversation. The first independent engineering session tests that claim empirically.
+
+If cold-start consumption exposes a material missing decision or unusable handoff gap, feed that evidence back upstream and reopen only what is necessary.
+
+Projects may continue observing the same commitment through engineering and verified real-product behavior, but those are lifecycle observations owned by downstream engineering / verification artifacts, not extensions of the pre-engineering stage model.
+
 ## Decision classifications
 
 Use classifications only when they help preserve ownership and avoid silent guessing:
@@ -188,12 +224,14 @@ Checkpoint substantive approved product decisions in their owning target-project
 
 Verify the persisted state before continuing when the decision materially changes the active commitment.
 
-A derived progress dashboard may improve navigation but does not become authority. See `control-tower.md`.
+A derived progress dashboard may improve navigation but does not become authority. Readiness, blocker, waiting, dependency, engineering, and verification states must come from their owning artifact / evidence source before the dashboard reflects them. See `control-tower.md`.
 
 ## Maturity
 
 This guidance is under Continuous Real-Task Validation.
 
 Do not freeze project-specific stage labels, templates, or artifact shapes into universal policy merely because one validation run used them successfully.
+
+One complete pre-engineering route demonstrates pre-engineering route execution. By itself it does **not** prove independent cold-start consumption, implementation / delivery correctness, preservation of behavior in the real product, or universal validity of every exact artifact / stage mechanism.
 
 Preserve the reusable semantics; revise the guidance when materially different real tasks expose a stronger model.
