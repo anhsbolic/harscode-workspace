@@ -1,6 +1,6 @@
 # harscode-workspace
 
-A portable, project-agnostic work manual for moving product intent into reliable software with AI agents. It separates **product-design authority**, **delivery orchestration**, **engineering workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
+A portable, project-agnostic work manual for moving product intent into reliable software with AI agents. It separates **pre-engineering product-behavior discipline**, **product-design authority**, **delivery orchestration**, **engineering workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
 
 ## Mental model
 
@@ -12,26 +12,38 @@ AI agents do not reliably compound context across sessions. Durable quality come
 - **verification** — what proves the result;
 - **human gates** — where unresolved material decisions stop.
 
-A useful shorthand is:
+A useful routing model is:
 
 ```text
-product/domain truth
-→ product design when materially open
-→ engineering exploration
-→ techplan
-→ build / patch
-→ code review
-→ testing
-→ pull request
+                         ┌─ pre-engineering/
+                         │  when product behavior /
+product/domain truth ────┤  requirement meaning is materially open
+                         │
+                         ├─ product-design/
+                         │  when product-brand / UI / UX
+                         │  authority is materially open
+                         │
+                         └─ engineering exploration
+                            when upstream meaning is ready enough
+                                  ↓
+                               techplan
+                                  ↓
+                        build / review / testing / PR
 ```
 
-Not every task needs upstream product-design work. The point is to make that boundary explicit so implementation does not become accidental product or design authority.
+`pre-engineering/` and `product-design/` are conditional sibling upstream routes, not mandatory sequential phases. Use the route that owns the unresolved question so engineering does not become accidental product or design authority.
 
 ## Structure
 
 ```text
 AGENTS.md                  lightweight root router + hard rules
 AUTHORING.md               standard for writing Harscode guidance itself
+pre-engineering/           upstream product-behavior concretization + handoff discipline
+  AGENTS.md                pre-engineering router + hard rules
+  README.md                scope, authority, usage model
+  commitment-route.md      depth-first commitment route
+  kickoff-prompt.md        fresh-session commitment bootstrap
+  control-tower.md         optional non-authoritative progress dashboard guidance
 product-design/            upstream product-brand/UI/UX authority-building guidance
   AGENTS.md                product-design router + hard rules
   kickoff-prompt.md        collaborative design-discussion entrypoint
@@ -54,6 +66,12 @@ harness-optimization/      translation into Codex/Claude/etc mechanisms
 human-pairing/             Human-facing operator handbook for pairing, approvals, and session hygiene
 proposals/                 one protected-guidance proposal log
 ```
+
+### `pre-engineering/`
+
+Owns reusable upstream discipline for turning project-owned Product / Domain Truth into bounded confirmed product behavior, traceable Experience + Engineering Requirements, and a durable engineering handoff.
+
+Use it when product semantics are directionally clear but engineering would still have to invent material product behavior, state meaning, consequences, or requirements. It is conditional, does not own project Product Truth, and stops before architecture / implementation.
 
 ### `product-design/`
 
@@ -83,11 +101,15 @@ Human-facing operating guidance for working with Harscode/Orchestrator without t
 
 ## Product-to-engineering authority boundary
 
-Harscode deliberately separates four kinds of reusable authority:
+Harscode deliberately separates these reusable authority areas:
 
 ```text
 product/domain truth
 → owned by the target project
+
+pre-engineering/
+→ how open product behavior becomes bounded confirmed behavior,
+  traceable requirements, and durable engineering handoff
 
 product-design/
 → how open product truth becomes coherent product-brand/UI/UX authority
@@ -98,6 +120,8 @@ workflow/
 best-practices/
 → reusable technical correctness knowledge used during that work
 ```
+
+`pre-engineering/` and `product-design/` are sibling conditional routes. Either may expose a gap owned by the other; neither may silently absorb the other's authority.
 
 This prevents existing code, prototypes, generated visuals, or old implementations from becoming accidental current authority merely because they exist.
 
@@ -124,6 +148,7 @@ See `AUTHORING.md` for documentation-writing rules and `workflow/context-managem
 
 | Area | Direct edit on ordinary project task? | Change mechanism |
 |---|---|---|
+| `pre-engineering/` | No | root `proposals/`, `general` tier |
 | `product-design/` | No | root `proposals/`, `general` tier |
 | `best-practices/` | No | root `proposals/`, `general` tier |
 | protected `workflow/2-techplan/` files | No | root `proposals/`, `techplan-protected` tier |
@@ -139,16 +164,17 @@ One proposal folder, one numbering sequence. See `proposals/README.md`.
 
 1. Make Harscode reachable from the target project and set `{HARSCODE_WORKSPACE_ROOT}`.
 2. Use `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the routing entrypoint.
-3. If product/design authority is materially open, use `product-design/kickoff-prompt.md` and the product-design guidance until the needed authority is implementation-ready. If design authority is already sufficiently clear, skip this step.
-4. If the target project is using Orchestrator Protocol v0.1, route through `orchestration/AGENTS.md` and dispatch a Run using `workflow/orchestrated-run-overlay.md`; otherwise start the engineering task directly from the active canonical prompt under `workflow/`.
-5. Optional domain-grouped projects may run domain sequencing before the first feature.
-6. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
-7. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
-8. Build executes the Approved Techplan (plus current decomposed task when applicable) and reopens live code at recorded anchors.
-9. Code Review runs independently. Findings needing code changes create a patch plan and return to Build authority.
-10. Testing runs independently. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
-11. Create the PR from final repository state + durable evidence.
-12. Optional domain-grouped projects may run domain closure after feature testing completes.
+3. If product behavior / requirement meaning is materially open, use `pre-engineering/AGENTS.md` and the applicable pre-engineering guidance until a bounded commitment has a durable engineering handoff. Skip this route when product behavior is already sufficiently concrete.
+4. If product-brand / UI / UX authority is materially open, use `product-design/kickoff-prompt.md` and the product-design guidance until the needed authority is implementation-ready. Pre-engineering and product-design are sibling routes; use either or both only when their owning ambiguity exists.
+5. If the target project is using Orchestrator Protocol v0.1 for engineering delivery, route through `orchestration/AGENTS.md` and dispatch a Run using `workflow/orchestrated-run-overlay.md`; otherwise start the engineering task directly from the active canonical prompt under `workflow/`.
+6. Optional domain-grouped projects may run domain sequencing before the first feature.
+7. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
+8. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
+9. Build executes the Approved Techplan (plus current decomposed task when applicable) and reopens live code at recorded anchors.
+10. Code Review runs independently. Findings needing code changes create a patch plan and return to Build authority.
+11. Testing runs independently. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
+12. Create the PR from final repository state + durable evidence.
+13. Optional domain-grouped projects may run domain closure after feature testing completes.
 
 Session/context details live in `workflow/context-management.md`; do not infer same/fresh session solely from task size.
 
