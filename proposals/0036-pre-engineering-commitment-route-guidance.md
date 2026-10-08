@@ -1,6 +1,6 @@
 # Add reusable pre-engineering commitment-route guidance
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-10-08
 **Protection Tier:** general
 **Triggered by:** Kencleng Pilot #3 produced one complete real commitment route from product-semantic readiness through interaction exploration, confirmed behavior, requirements, and durable engineering handoff. The run also exposed a repeatability requirement: future commitments should be able to run in separate sessions without relying on remembered conversation.
