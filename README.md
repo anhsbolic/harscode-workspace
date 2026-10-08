@@ -205,9 +205,15 @@ Patch authority still belongs to Build/Patch even when Review or Testing discove
 
 Active personal system. Harscode uses **Continuous Real-Task Validation (CRTV)**: changes are evaluated through real product/engineering work, individual executions are validation runs, and evidence from those runs drives revisions while proven quality remains the floor.
 
-The workflow-v2 line on `main` remains the current **operational default** after two materially different real Kencleng validation runs with positive correctness/outcome evidence.
+The workflow line on `main` remains the current **operational default**. Orchestrator Protocol v0.1 remains a **Pilot Candidate** and has not been promoted to operational authority.
 
-This branch adds **Orchestrator Protocol v0.1 as a Pilot Candidate**. It is not promoted operational authority yet. Kencleng Slice 2 Pilot #2 development is on Human HOLD while Post-Pilot #2 evaluation proceeds. The [Post-Pilot #2 roadmap](audits/orchestrator-v0.1-post-pilot-2-roadmap.md) owns this episode's progress, evidence, and next action; promotion to `main` awaits an explicit evidence-based decision.
+This branch, `pilot/orchestrator-v0.1-c1`, is an **experimental integration baseline for Kencleng Pilot #3 C1 engineering**. It combines the current operational Harscode baseline from `main` with the preserved Orchestrator v0.1 candidate lineage so C1 can validate real orchestrated engineering execution against current guidance.
+
+This branch does not make Orchestrator v0.1 canonical Harscode authority.
+
+Historical Pilot #2 / Post-Pilot #2 artifacts remain evidence and design history. They do not own the current Kencleng C1 objective, product semantics, engineering authorization, or delivery state.
+
+Current C1 project truth and delivery authority remain owned by the applicable durable artifacts in the Kencleng target repository.
 
 ## License
 
