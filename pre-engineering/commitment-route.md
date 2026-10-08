@@ -175,6 +175,8 @@ Audit:
 
 Stage / route completion packages; it does not reinterpret.
 
+If the target project has explicitly approved commitment-specific behavior / requirements as binding within this commitment, the handoff must identify that scoped authority clearly. “Not whole-product canonical” must not be treated as permission for downstream engineering to ignore it.
+
 A fresh engineering reader should be able to answer from durable artifacts:
 
 - What product claim is being handed off?
@@ -200,14 +202,38 @@ current Product / Domain Authority
 
 ### Handoff exit
 
-The route is complete when a fresh engineering reader can begin without reconstructing the original chat and without inventing a material product decision.
+The pre-engineering route is complete when the durable handoff is:
+
+- sufficiently complete by inspection to support a fresh engineering reader without requiring the original chat;
+- explicit about binding scoped authority, open / parked scope, and engineering decision space;
+- Human-approved when the project requires that gate.
 
 ```text
+handoff prepared + Human-approved
+→ PRE-ENGINEERING ROUTE COMPLETE
+
 route complete
+≠ independent cold-start consumption already observed
 ≠ implemented
 ≠ delivered
 ≠ prerequisite automatically real for downstream commitments
 ```
+
+### Cold-start handoff validation
+
+The first independent fresh engineering session provides a separate validation result:
+
+```text
+fresh engineering reader
++ durable handoff
+→ can / cannot begin without reconstructing the original conversation
+```
+
+This is **validation evidence**, not another pre-engineering stage.
+
+If cold-start consumption reveals a material missing decision, authority ambiguity, or unusable handoff gap, feed that evidence upstream and reopen only the affected concern.
+
+A successful pre-engineering route by itself demonstrates route execution and handoff preparation. It does not by itself prove implementation / delivery correctness, preservation of the behavior in the real product, or universal validity of the exact artifact / stage mechanism.
 
 If implementation later reveals a material product-semantic gap, return it upstream rather than silently redefining behavior downstream.
 
