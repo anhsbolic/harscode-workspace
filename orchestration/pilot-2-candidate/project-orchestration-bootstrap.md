@@ -379,7 +379,13 @@ fresh Orchestrator should:
    post-date or may invalidate the current-effective workflow artifact;
 6. check whether derived projections agree with their semantic owners and
    regenerate/reconcile them only when needed;
-7. recompute the runnable frontier before preparing a Run, surfacing a Human
+7. inspect the recent material blocker/re-entry/recovery chain for the current
+   bounded concern. When that chain shows suspected repeated causal routing or
+   diminishing-return re-entry, consult `loop-health-audit.md` and evaluate its
+   lightweight trigger threshold before selecting another ordinary Run. A trigger
+   check is not the audit itself; do not create/dispatch the independent audit
+   without the required Human approval;
+8. recompute the runnable frontier before preparing a Run, surfacing a Human
    gate, or claiming a milestone.
 
 Chat history may help orientation, but it must not be required to recover a
@@ -394,6 +400,7 @@ prompt. In particular, do not require the Human to remind the Orchestrator to:
   dependent Build;
 - show the Human-facing dispatch package;
 - reconcile only affected task snapshots after a material parent revision.
+- evaluate Loop Health trigger guidance when recent durable evidence shows repeated causal blocker/re-entry or routing-relevant recovery anomalies before proposing another ordinary cycle.
 
 Those are Orchestrator responsibilities when the applicable current guidance
 and durable evidence support them.
