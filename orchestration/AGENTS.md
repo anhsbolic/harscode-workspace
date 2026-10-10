@@ -16,6 +16,7 @@ This is the HOT router for Harscode orchestration. Read this when work is coordi
 - Before dependent Build, reconcile any material post-approval Decision that makes the current Approved Techplan spine stale through a fresh Planner revision and applicable Review/report/Human approval. Preserve the prior approved spine as predecessor until superseded. After approval, reconcile only affected task snapshots; do not reopen an unchanged decomposition topology merely because task contents were refreshed.
 - In Human-Assisted posture, always show the required dispatch package in the Human-facing response; do not require the Human to open the Invocation merely to discover Run/Profile/model/effort/session/working-directory/prompt mechanics.
 - Re-entry into a workflow phase creates a new Run and requires a meaningful delta.
+- Before proposing another ordinary Run when durable evidence shows repeated blocker/re-entry around the same bounded concern or a routing-relevant recovery anomaly, perform the lightweight Loop Health trigger check in `pilot-2-candidate/loop-health-audit.md`. If its recommendation threshold is met, surface the bounded trigger evidence and request Human approval for the independent audit before repeating the ordinary cycle. Trigger detection does not diagnose the loop, mutate project state, or establish `STALLED`.
 - Current state must be reconstructable from durable orchestration records; filesystem ordering is never workflow chronology.
 - Keep Work Unit definition, current state, append-only history, and Control Surface projection semantically separate. Current-state fields have one active value; historical transitions belong in Events.
 - Cross-Work-Unit dependency topology is owned by the Work Graph; do not create a second independently maintained dependency truth inside Work Unit records.
@@ -28,6 +29,7 @@ This is the HOT router for Harscode orchestration. Read this when work is coordi
 - Pilot #2 candidate guidance ownership/routing → `pilot-2-candidate/README.md` (do not read the whole candidate directory by default)
 - Pre-engineering → engineering preparation intent → `pre-engineering-to-engineering-kickoff.md`
 - Fresh Orchestrator resume / initial or bounded bootstrap → `pilot-2-candidate/project-orchestration-bootstrap.md`
+- Suspected repeated causal routing / diminishing-return re-entry → `pilot-2-candidate/loop-health-audit.md`
 - Run/session/workspace invocation contract → `run-contract.md`
 - Role-specialization guidance routing → `specializations/README.md`
 - Engineering workflow execution → `../workflow/AGENTS.md`
