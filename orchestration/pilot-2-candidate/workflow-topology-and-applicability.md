@@ -272,6 +272,8 @@ same unresolved cause repeatedly
 
 Loop count alone is not a quality metric.
 
+When strict escalation criteria in `loop-health-audit.md` are satisfied, route the bounded concern through that Human-approved independent diagnostic before repeating the ordinary cycle. Ordinary loop classification remains owned here; `loop-health-audit.md` owns the escalated trigger, diagnostic, verdict, and resume contract.
+
 ## CRTV note on Testing whole-Techplan reread
 
 Current Testing guidance intentionally retains a fresh end-to-end Techplan consistency read during initial workflow-v2 validation.
