@@ -39,7 +39,8 @@ candidate layer**. It does not grant project or Human decision authority.
 | Run execution envelope and permission routing | `run-execution-envelope-and-permissions.md` | Authorization classes and Human/Orchestrator/Participant routing. |
 | Dependency-driven parallelism, milestones, rendezvous, scoped invalidation | `parallelism-and-rendezvous.md` | Semantic parallelism is separate from machine-level concurrency. |
 | Verification ownership, traceability, specialized verification triggers | `verification-strategy-and-traceability.md` | Complements canonical Techplan/Build/Testing guidance. |
-| Workflow phase applicability, patch/re-entry routing, loop interpretation | `workflow-topology-and-applicability.md` | Does not override canonical phase prompts. |
+| Workflow phase applicability, patch/re-entry routing, ordinary loop interpretation | `workflow-topology-and-applicability.md` | Does not override canonical phase prompts. When strict loop-health escalation triggers are met, route to `loop-health-audit.md` rather than duplicating the diagnostic protocol here. |
+| Loop-health trigger thresholds, Human-gated independent diagnostic audit, audit verdict/resume contract | `loop-health-audit.md` | Experimental diagnostic owner only. Does not create a new protocol state, replace canonical `STALLED`, or authorize project mutations. |
 
 ## Supporting / contextual candidate documents
 
