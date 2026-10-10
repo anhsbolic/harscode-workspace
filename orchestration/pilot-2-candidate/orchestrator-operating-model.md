@@ -438,6 +438,8 @@ Do not use `STALLED` merely because an issue is difficult or because a Human dec
 
 A loop-break does not require the Orchestrator to become the domain specialist. It may synthesize the evidence already produced and recommend a coordination direction, but new specialist analysis remains owned by the applicable Participant.
 
+For suspected non-converging routing, the Orchestrator remains the detector/router rather than the independent auditor. When objective evidence satisfies the experimental threshold in `loop-health-audit.md`, present the bounded trigger evidence and request Human approval before creating or dispatching a fresh Reviewer Loop Health Audit. Do not mark the Work Unit `STALLED` merely because the audit trigger fires.
+
 ### Participant
 
 Executes the assigned workflow Role and Run.
