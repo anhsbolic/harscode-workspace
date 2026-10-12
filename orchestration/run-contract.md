@@ -66,6 +66,27 @@ HUMAN_REQUIRED
 
 Do not turn these classes into an exhaustive command whitelist unless execution evidence later justifies stronger machinery.
 
+## Binding discipline
+
+Exact content identity is required only when later execution materially relies
+on that exact content.
+
+Distinguish assignment-defining inputs from mutable coordination/context
+references.
+
+Assignment-defining inputs such as the applicable approved contract or plan,
+task or patch scope, authority decision, contract/spec revision, or exact review
+target may be exact-bound when drift would change the assignment.
+
+Mutable orchestration records such as Work Unit current-state projections,
+append-only Events, Control Surface projections, scheduling metadata, and
+approval/dispatch lifecycle fields must not be exact-bound merely to prove
+freshness when ordinary lifecycle updates are expected before execution.
+
+A changed coordination/context reference requires checking whether its material
+meaning invalidates the assignment; byte drift alone is not sufficient. Do not
+weaken fail-closed behavior for actual semantic drift.
+
 ## Compatibility with legacy TASK_PATH
 
 Existing projects may still use `TASK_PATH`. Under orchestration:

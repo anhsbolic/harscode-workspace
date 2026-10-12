@@ -23,6 +23,7 @@ This is the HOT router for Harscode orchestration. Read this when work is coordi
 - Keep Work Unit definition, current state, append-only history, and Control Surface projection semantically separate. Current-state fields have one active value; historical transitions belong in Events.
 - Cross-Work-Unit dependency topology is owned by the Work Graph; do not create a second independently maintained dependency truth inside Work Unit records.
 - Orchestrated Runs receive identity, current-effective inputs, execution-envelope authority, model-routing evidence, and Session-continuation hooks through `run-contract.md`. These dispatch fields operationalize settled authority; they do not create new project/workflow authority.
+- When preparing a Run, exact-bind only inputs whose exact content defines or guards the assignment. Do not create self-invalidating Invocations by treating expected approval, dispatch, scheduling, Event append, or projection updates as semantic input drift.
 - Load only the smallest applicable knowledge for the current role, specialization, task scope, and workflow phase.
 
 ## Routing

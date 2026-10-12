@@ -108,6 +108,21 @@ explicitly. The important rules are that one Run does not overwrite evidence
 from an earlier Run and a Run does not duplicate stable workflow state merely
 for execution chronology.
 
+## Binding purpose
+
+Exact identity and current-context reference serve different purposes.
+
+Participant preflight must fail on material drift in assignment-defining inputs,
+such as the current approved contract/plan, task or patch scope, authority
+decision, contract/spec revision, or exact implementation/review target when the
+assignment relies on that content.
+
+Mutable orchestration context may still be referenced for routing and
+reconstruction, but ordinary lifecycle byte changes in Work Unit projections,
+Events, Control Surface, scheduling, approval, or dispatch metadata do not by
+themselves invalidate the assignment. Inspect their material consequence rather
+than failing solely on hash mismatch.
+
 ## Prior artifacts
 
 Where the canonical prompt says to read an artifact from an ordinal `TASK_PATH` phase directory, use the corresponding explicit entry in `PRIOR_ARTIFACTS`.
