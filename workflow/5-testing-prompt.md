@@ -32,6 +32,15 @@ recurring-pattern/calibration need.
 Process narration is terse; the testing report is complete evidence.
 
 STEP 0 — SWEEP, DON'T REDO
+
+Before execution, classify the material prerequisites for this Testing scope.
+Distinguish verification executable now, Human-performed verification, known
+environment/setup prerequisites, and intentionally deferred work. If a known
+missing prerequisite makes the stated Run outcome impossible, stop before
+pretending to run that outcome and return it for prerequisite resolution or
+explicit scope correction. Do not require unrelated environment completeness
+for a bounded Testing assignment.
+
 Treat the Build report's named tests/coverage as claims:
 - run/spot-check existing named coverage rather than rewriting equivalent tests;
 - close its Deferred/not-tested and Flagged items first;

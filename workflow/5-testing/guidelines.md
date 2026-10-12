@@ -15,6 +15,34 @@ Use the Techplan Testing Checklist's `Why / risk if skipped` rationale to choose
 
 When Testing re-enters after a narrow patch, verify the affected finding/gap first. Re-run broad/final suites when the Techplan or target repo assigns them to Testing, when the patch materially changes the relevant risk/scope, or when a broader suite is required to establish final compatibility. Do not replay unrelated expensive checks solely because another Testing round began.
 
+## Verification prerequisites and environment readiness
+
+Verification readiness is scoped to the intended verification outcome.
+
+Before final or real-interface verification, identify only the material
+execution prerequisites declared by the Techplan and target-repo authority:
+tool/runtime availability, required services/data, test-owned fixtures,
+credential/account presence, external connectivity/provider setup, and
+Human-performed interaction where applicable.
+
+A known missing prerequisite that makes the intended verification outcome
+impossible must not be discovered only after dispatch if it was already
+durably knowable. Resolve the prerequisite first or explicitly narrow the
+Testing assignment.
+
+Do not require every environment prerequisite to exist before any Testing can
+run. A bounded Testing Run may proceed on executable verification while
+carrying unavailable scenarios forward, provided it does not claim the broader
+acceptance those scenarios are required to establish.
+
+Testing may create bounded, reversible, test-owned fixtures/environment when
+authorized. Durable, shared, or security-sensitive provisioning and external
+account configuration remain with their owning project/Human authority.
+
+Unknown availability may be probed early when safe and cheap. Known missing
+prerequisites are not equivalent to implementation failure. Do not persist
+secret values merely to establish readiness.
+
 ## Test Focus Pointer
 
 Read the Techplan Test Focus Pointer. Each relevant specialized row must include an Exploration evidence anchor.

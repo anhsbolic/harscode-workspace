@@ -5,6 +5,16 @@
 - [ ] Latest build/patch report read first; named coverage spot-checked rather than blindly recreated.
 - [ ] Build report Deferred/Flagged items were addressed or explicitly carried forward.
 
+## Verification readiness
+
+- [ ] Material prerequisites for the intended verification scope were checked.
+- [ ] Known missing prerequisites were resolved or explicitly excluded from the
+      Run's claimed outcome before execution.
+- [ ] Ephemeral test-owned setup is distinguished from durable/shared/security-
+      sensitive provisioning.
+- [ ] Missing environment evidence is not reported as implementation failure.
+- [ ] Secret values were not persisted merely to prove configuration readiness.
+
 ## Rule coverage
 
 - [ ] Every Techplan Rules & Validation rule has meaningful verification.
