@@ -149,6 +149,11 @@ evidence. Do not create a full Run-local copy solely to obtain that provenance.
 
 Ordinal folder names are never execution chronology in orchestrated mode.
 
+A terminal Phase Handoff closes that execution occurrence. Additional evidence
+from a later attempt must belong to a fresh Run rather than a retry child or
+supplemental execution appended to the terminated Run. Human authorization for
+another attempt does not change that chronology.
+
 Returning to a phase after the prior execution occurrence ended requires a new
 `RUN_ID`, new Participant identity, fresh Participant Session/context, and new
 `RUN_PATH`. Preserve earlier Run evidence and reconstruct the new assignment

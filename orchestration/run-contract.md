@@ -171,6 +171,19 @@ Do not extract a universal reconciliation command/state machine from these seman
 
 ## Re-entry
 
+Run terminality is monotonic. Once an execution occurrence has emitted its
+terminal outcome / structured Phase Handoff, that Run is closed. A later Human
+instruction to retry, continue, recover, or "try again" authorizes another
+attempt; it does not reopen the terminated Run. Returning to that phase requires
+a new Run, Participant, fresh Participant Session/context, and Run path under the
+normal re-entry rules.
+
+Bounded recovery may remain inside the same Run only while the execution
+occurrence is still active and the recovery remains within the Run's authority
+and execution envelope. A recoverable command, harness, or environment failure
+does not need to terminate the Run merely because an authorized retry is needed;
+but once terminal evidence is emitted, later attempts belong to a fresh Run.
+
 Returning to Exploration, Planning, Build, Review, or Testing after the prior
 execution occurrence ended creates a new Run. Never overwrite the prior Run
 merely to make the directory look linear.
