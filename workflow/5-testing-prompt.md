@@ -81,6 +81,15 @@ Respect the Testing Checklist's primary ownership:
 - Human-owned rows must remain an explicit external decision/gate; agent
   automation cannot mark them passed.
 
+Verification ownership and execution mode are separate. When a Testing-owned
+scenario materially requires Human-only interaction or private account control,
+prepare a bounded Human-performed verification with explicit observable
+PASS/FAIL criteria rather than forcing unreliable automation. Record the
+Human's result as Human-attested evidence; never present it as independently
+executed by the agent, and never infer observations the Human did not report.
+Human-attested evidence satisfies the obligation only when the owning contract
+permits that evidence mode.
+
 Cover applicable:
 - happy path;
 - negative cases;
@@ -135,6 +144,11 @@ missing from the pointer, record it explicitly as Techplan drift.
 ## 1. Test Coverage
 | Rule / scenario | Category | Observable verification | Result |
 |---|---|---|---|
+
+For Human-performed verification, label the result explicitly, for example
+`PASS — Human-attested`, `FAIL — Human-attested`, or
+`NOT ESTABLISHED — Human report incomplete/conflicting`. This label records
+the evidence basis; it is not a new protocol status.
 
 Cite Rules & Validation rule IDs where applicable. Do not silently omit an
 unexercisable rule.

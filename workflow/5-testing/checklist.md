@@ -21,6 +21,21 @@ For every relevant/`Yes` Techplan Test Focus Pointer row:
 - [ ] Deliberately expensive primitives use test-appropriate cost/work factors.
 - [ ] A suspected sensitive area missing from the pointer is reported as Techplan drift, not silently retrofitted into planning history.
 
+## Human-performed verification
+
+- [ ] Human-performed mode is used only where faithful verification materially
+      requires Human interaction/account control or the agent cannot safely
+      exercise the interface.
+- [ ] The scenario and observable PASS/FAIL criteria were defined before asking
+      the Human to execute it.
+- [ ] No password, token, authorization code, secret, or unnecessary sensitive
+      data was requested or persisted.
+- [ ] Human-reported results are labeled Human-attested and are not represented
+      as agent-independent execution.
+- [ ] No unreported sub-result was inferred from a broader Human PASS.
+- [ ] The owning contract permits Human-performed evidence for any obligation
+      treated as satisfied.
+
 ## Errors
 
 - [ ] Applicable error category/external behavior is correct.

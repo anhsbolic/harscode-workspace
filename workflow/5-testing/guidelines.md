@@ -44,6 +44,38 @@ Every Techplan Rules & Validation rule needs meaningful coverage. Existing passi
 
 Build-owned rows may be spot-checked according to risk rather than blindly rerun in full. Human-owned rows remain explicit external gates; agent automation cannot mark them passed.
 
+## Human-performed verification
+
+Verification ownership and execution mode are distinct.
+
+A Testing-owned verification may be performed by the Human when faithful
+execution materially depends on private credentials or account control,
+interactive browser/provider/device behavior, Human-only consent/MFA, or
+another interface the agent cannot safely and faithfully exercise.
+
+Do not use Human-performed verification merely to avoid practical agent
+verification that is safe, representative, and required.
+
+For a Human-performed verification, Testing must:
+
+- define the bounded scenario, prerequisites, expected observable behavior, and
+  PASS/FAIL criteria before execution;
+- tell the Human not to provide passwords, tokens, authorization codes,
+  secrets, or other unnecessary sensitive material;
+- ask the Human to execute and report only the relevant observation/result;
+- record the result explicitly as Human-attested evidence;
+- not claim that the agent independently executed or verified the scenario;
+- not infer unreported sub-results from a broader Human PASS;
+- treat ambiguous, incomplete, or materially conflicting evidence as not
+  established.
+
+Human-attested evidence may satisfy an obligation only when its owning contract
+permits Human-performed evidence for that obligation. It does not replace
+required automated, agent-executed, specialist, or independent evidence.
+
+This is distinct from a Human-owned rule or decision: a verification may remain
+Testing-owned while its faithful execution is Human-performed.
+
 If a contracted rule cannot be exercised through any real observable entry point, report the mismatch.
 
 ## Error verification
