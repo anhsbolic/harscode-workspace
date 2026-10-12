@@ -1,6 +1,6 @@
 # 0042 — Claim-scoped verification and phase applicability
 
-**Status:** Proposed
+**Status:** Accepted - Anhar
 **Date:** 2026-10-12
 **Protection Tier:** general
 **Triggered by:** Kencleng Pilot #3 C1 CRTV after repeated Review/Testing/security-routing work exposed a mismatch between proportional-verification guidance and how downstream phases can still be interpreted as chronology-driven rituals. The concrete evidence includes narrow patch/re-review loops, verification intentionally deferred until faithful FE/backend integration exists, and Human questions about whether required checks may be omitted, deferred, or accepted as residual risk.

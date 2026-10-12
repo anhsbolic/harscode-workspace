@@ -66,6 +66,58 @@ HUMAN_REQUIRED
 
 Do not turn these classes into an exhaustive command whitelist unless execution evidence later justifies stronger machinery.
 
+## Claim-scoped independent phase applicability
+
+Review and Testing are default independent engineering concerns, not unconditional
+chronology obligations. Before dispatching either phase, identify:
+
+```text
+claim / acceptance boundary under consideration
+→ evidence required by current authority, risk, and dependency conditions
+→ current evidence that remains sufficient and applicable
+→ material evidence still missing, stale, or disputed
+→ independent phase/check that materially closes that gap
+```
+
+Workflow chronology alone is not sufficient justification for a Run. When an
+independent phase is genuinely not applicable, record the N/A routing decision
+outside a nonexistent Run. Once a Review or Testing Run is invoked, its
+canonical phase contract remains authoritative.
+
+Do not use bare `skip` as durable verification semantics. Resolve the actual
+meaning:
+
+- **not applicable** — the phase/check does not materially apply to the current
+  claim;
+- **satisfied by current evidence** — no rerun is needed; cite the current
+  evidence and why it remains applicable;
+- **deferred** — the obligation remains for a later declared boundary; it is
+  not PASS and blocks only claims/dependencies that require it;
+- **owning-authority obligation change/waiver** — the owner changes/removes a
+  previously required verification obligation; reconcile the owning authority
+  when material;
+- **residual-risk acceptance** — the owning Human/project authority knowingly
+  permits progression despite absent/failing evidence; preserve the risk and
+  affected boundary without calling the technical behavior verified.
+
+If the intended meaning or owner is unclear, stop for the applicable Decision
+rather than guessing.
+
+Human/project authority may change requirements, defer evidence, waive an
+obligation within its authority, or accept residual risk. It cannot manufacture
+technical evidence: verification not performed does not become PASS. Human
+authority also cannot override external/project authority it does not own.
+
+Missing verification blocks only the dependent boundary whose declared
+satisfaction condition requires it. A HARD dependency remains unsatisfied while
+its required evidence is absent unless the semantic owner legitimately changes
+the condition/requirement and that authority is reconciled first. Residual-risk
+acceptance does not silently satisfy the old evidence condition.
+
+Do not add `WAIVED`, `DEFERRED`, or `SKIPPED` protocol statuses for these
+semantics; use existing Decisions, authority artifacts, dependency conditions,
+phase applicability, and durable evidence.
+
 ## Binding discipline
 
 Exact content identity is required only when later execution materially relies

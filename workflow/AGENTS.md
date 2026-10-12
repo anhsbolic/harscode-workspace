@@ -12,6 +12,8 @@ This is the workflow hard-rule/router layer. Do **not** read all of `README.md` 
 - Use `context-management.md` for phase/session transitions: durable artifacts over chat memory, progressive disclosure, compact handoff, and Build ownership of patches.
 - When an active Blocker is surfaced to the Human, use the portable `[SCOPED BLOCKER DETECTED]` signal from `context-management.md` with exact blocked scope, safe unaffected work, next route, and owner. If it is the current Human gate, make that signal the first Human-facing content. Do not use it for ordinary Findings/risks/deferred items.
 - Stop polishing when the next phase can proceed without inventing a material decision. If a later phase hits one anyway, stop/report instead of inventing it.
+- Code Review and Testing are independent verification concerns, not automatic chronology rituals. Determine applicability from the current claim, contract/risk/dependency requirements, current evidence, and the material independent value the phase would add. When a phase is N/A, record that decision outside a fake phase execution; once invoked, follow its canonical prompt completely.
+- A Human defer/waiver/risk decision does not create technical evidence. Keep missing evidence explicit and scope any acceptance/progression claim to what the current evidence plus owning authority actually support.
 - Domain-level prompts apply only to projects that group work by domain; otherwise skip them without ceremony.
 
 ## Routing
@@ -22,6 +24,6 @@ This is the workflow hard-rule/router layer. Do **not** read all of `README.md` 
 - Independent Techplan review → `2-2-techplan-review-prompt.md` only when its gate applies
 - Techplan decomposition → `2-3-techplan-decomposition-prompt.md` only when its gate applies
 - Build/Patch → `3-build-prompt.md`
-- Code Review → `4-code-review-prompt.md`
-- Testing → `5-testing-prompt.md`
+- Code Review → `4-code-review-prompt.md` when independent Review is applicable to the current diff/claim
+- Testing → `5-testing-prompt.md` when independent Testing is applicable to the current acceptance claim
 - Pull Request → `6-pull-request/` (no root prompt today)

@@ -171,9 +171,11 @@ One proposal folder, one numbering sequence. See `proposals/README.md`.
 7. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
 8. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
 9. Build executes the Approved Techplan (plus current decomposed task when applicable) and reopens live code at recorded anchors.
-10. Code Review runs independently. Findings needing code changes create a patch plan and return to Build authority.
-11. Testing runs independently. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
+10. Code Review runs independently when the current diff/claim materially benefits from independent review. Findings needing code changes create a patch plan and return to Build authority.
+11. Testing runs independently when the current acceptance claim requires independent evidence not already supplied by current authoritative evidence. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
 12. Create the PR from final repository state + durable evidence.
+
+Build → Review → Testing remains the default engineering path, not an unconditional chronology rule. Independent Review/Testing applicability is claim-scoped: current contract/risk/dependency conditions determine what evidence is required and whether the phase materially supplies it. If an independent phase is genuinely N/A, record that routing decision rather than creating a ceremonial phase Run. Existing evidence may be reused when still current/applicable; deferred or Human-accepted missing evidence must never be relabeled as technical PASS.
 13. Optional domain-grouped projects may run domain closure after feature testing completes.
 
 Session/context details live in `workflow/context-management.md`; do not infer same/fresh session solely from task size.

@@ -1,6 +1,8 @@
 # Code Review Prompt
 
-Independent one-shot review of the current implementation after Build. Run all four review passes against the same explicit current diff/scope; do not edit production code in this phase.
+Independent one-shot review of the current implementation after Build. This prompt assumes Review applicability has already been established from the current diff/claim, material risk, unresolved review question, or target-project requirement; do not invoke it merely because Build ended. A mechanical/narrow delta may be Review N/A when settled authority and current evidence make independent reasoning materially unnecessary.
+
+Once Review is invoked, run all four review passes against the same explicit current diff/scope; do not edit production code in this phase. Applicability is conditional; internal Review discipline is not.
 
 ## Inputs required before running
 

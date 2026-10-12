@@ -1,6 +1,8 @@
 # Testing Prompt
 
-Independent verification after Build and Code Review. Testing confirms observable correctness and closes verification gaps; it is not a replay of every earlier phase.
+Independent verification for an applicable current acceptance scope after implementation and any applicable Code Review. Testing confirms observable correctness and closes verification gaps; it is not a replay of every earlier phase.
+
+This prompt assumes Testing applicability has already been established. A Testing Run may be N/A when no current acceptance claim requires independent evidence uniquely supplied here, target-project authority does not mandate the phase, and all relevant required evidence is already current through authoritative equivalent mechanisms.
 
 ## Inputs required before running
 
@@ -31,7 +33,20 @@ recurring-pattern/calibration need.
 
 Process narration is terse; the testing report is complete evidence.
 
-STEP 0 — SWEEP, DON'T REDO
+STEP 0 — CLAIM SCOPE, THEN SWEEP
+
+State the exact claim/acceptance boundary this Testing Run is intended to
+support. Classify relevant verification as:
+- current evidence that remains sufficient and can be reused;
+- fresh independent evidence required here;
+- deferred evidence whose faithful observable boundary comes later;
+- evidence still required/blocking for this claim;
+- Human-owned decisions or Human-performed scenarios.
+
+Do not use bare "skip" as evidence semantics. Distinguish not applicable,
+satisfied by current evidence, deferred, owning-authority obligation
+change/waiver, and residual-risk acceptance. Deferred/waived/risk-accepted
+technical evidence is not PASS unless separately established.
 
 Before execution, classify the material prerequisites for this Testing scope.
 Distinguish verification executable now, Human-performed verification, known
@@ -183,6 +198,13 @@ report; do not grow examples.md for every bug.
 
 ## Verdict
 Pass | Pass with flagged follow-ups | Fail — send back to Build
+
+The verdict applies only to the declared Testing claim/scope. Do not imply
+broader acceptance whose required evidence remains deferred or unestablished.
+`Pass with flagged follow-ups` is valid only when those follow-ups are
+non-blocking for the declared accepted scope. A Human residual-risk decision may
+authorize progression within its authority, but it does not turn missing or
+failing technical evidence into a Testing PASS.
 
 If not a clean Pass, distinguish blocking failures from non-blocking follow-up
 and state whether each is a new gap or a regression of previously claimed

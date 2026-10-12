@@ -15,6 +15,34 @@ Use the Techplan Testing Checklist's `Why / risk if skipped` rationale to choose
 
 When Testing re-enters after a narrow patch, verify the affected finding/gap first. Re-run broad/final suites when the Techplan or target repo assigns them to Testing, when the patch materially changes the relevant risk/scope, or when a broader suite is required to establish final compatibility. Do not replay unrelated expensive checks solely because another Testing round began.
 
+## Claim scope and omitted evidence
+
+Testing verifies a declared claim/acceptance boundary, not an abstract requirement
+that every possible check run. At entry, state what exact claim this Testing
+scope is intended to support and which current evidence is being relied on.
+
+When a check is not run, preserve its actual semantics:
+
+- **not applicable** — it does not materially apply to the current claim;
+- **satisfied by current evidence** — reuse/cite current evidence and why it
+  remains applicable;
+- **deferred** — the obligation remains for a later observable/integration
+  boundary and is not PASS;
+- **owning-authority obligation change/waiver** — the owner changes/removes the
+  requirement; reconcile the owning authority when material;
+- **residual-risk acceptance** — the owning Human/project authority permits
+  progression despite absent/failing evidence; the technical behavior remains
+  unverified unless separately established.
+
+If a Human instruction uses bare `skip` and the meaning matters to acceptance,
+ask which of these semantics is intended instead of guessing. Human authority
+cannot manufacture technical evidence, and cannot override authority it does
+not own.
+
+A missing/deferred check blocks only a claim or dependency boundary that
+actually requires that evidence. Do not widen it into a whole-feature blocker
+merely because the item remains open.
+
 ## Verification prerequisites and environment readiness
 
 Verification readiness is scoped to the intended verification outcome.
@@ -112,7 +140,7 @@ Where relevant, verify expected error category, actionable external behavior/mes
 
 ## Final verification
 
-Before Pass:
+Before Pass for the declared scope:
 
 - run target-repo required final build/lint/test commands;
 - verify migration/schema collision where applicable;
@@ -123,6 +151,12 @@ Before Pass:
 The fresh Techplan read is intentionally retained during the initial workflow-v2 validation runs. Remove/narrow it only with evidence that quality is preserved.
 
 If a broad check is intentionally not rerun because its evidence remains current and another phase/authoritative mechanism already owns it, record that omission and why it is safe. Verification economy is explicit evidence selection, not silent skipping.
+
+A `Pass` or `Pass with flagged follow-ups` supports only the declared scope.
+Any deferred/unestablished evidence required for a broader acceptance remains
+open. Human residual-risk acceptance may authorize progression within the
+owner's authority, but Testing must not represent the missing/failing evidence
+as technically passed.
 
 ## Findings and patches
 
