@@ -117,6 +117,33 @@ Session-transition routing follows `workflow/context-management.md`. Do not deri
 
 A Run writes only its own durable execution evidence under `RUN_PATH`. It references prior artifacts rather than copying them.
 
+### Evidence sufficiency
+
+Durable Run evidence should preserve the smallest sufficient evidence set that
+allows later reconstruction of material claims, decisions, failures, and
+verification results.
+
+Prefer:
+- semantic result/disposition;
+- exact materially relied-upon source/revision identities;
+- command/tool/environment provenance when it affects trust;
+- selected raw captures whose contents are needed for independent inspection.
+
+Do not mechanically persist every stdout/stderr stream, cache, downloaded
+source/archive, temporary helper, generated intermediate, or duplicate byte
+sequence merely because it existed during execution.
+
+When multiple executions produce identical raw content, preserve each execution
+fact/provenance, but one canonical raw capture may be referenced by its content
+identity when that remains sufficient.
+
+Preserve more raw evidence when it is non-reproducible, disputed,
+security-sensitive, failure-defining, or otherwise necessary to substantiate a
+material claim.
+
+Evidence minimization must not erase uncertainty, failures, or audit-relevant
+facts, and must never justify dropping evidence required by project authority.
+
 When `ARTIFACT_TARGET` is bound, the Participant may create/update that stable workflow artifact within the active phase lifecycle and authorization boundary. The target keeps its own logical identity and semantic owner; do not copy it into `RUN_PATH` merely to make the Run self-contained. Preserve exact target revision/content identity in Run provenance when later review, approval, continuation, or reconstruction materially relies on that version.
 
 A Run record should preserve, when known:

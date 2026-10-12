@@ -123,6 +123,19 @@ Events, Control Surface, scheduling, approval, or dispatch metadata do not by
 themselves invalidate the assignment. Inspect their material consequence rather
 than failing solely on hash mismatch.
 
+## Run evidence discipline
+
+`RUN_PATH` is an evidence set, not an execution dump.
+
+Retain result-bearing evidence and materially necessary raw captures. Reference
+stable or reproducible sources by exact identity instead of copying them, and
+avoid multiple Run-local copies of identical bytes when one canonical capture
+plus execution provenance is sufficient.
+
+Do not use evidence minimization to hide uncertainty, failures, or
+audit-relevant facts, and retain any raw evidence explicitly required by the
+active project/risk authority.
+
 ## Prior artifacts
 
 Where the canonical prompt says to read an artifact from an ordinal `TASK_PATH` phase directory, use the corresponding explicit entry in `PRIOR_ARTIFACTS`.
