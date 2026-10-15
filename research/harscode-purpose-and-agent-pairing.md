@@ -12,6 +12,35 @@
 
 Quality, authority, safety, and reconstructable state remain important; orchestration/automation, fixed stages, Space, and parallel execution are not goals in themselves.
 
+## 1A. Station 1 — Rediscover Purpose (working draft, awaiting Anhar review)
+
+**Progress:** IN DISCUSSION. Draft recorded on 2026-10-15; not an approved purpose, policy or change to main.
+
+**Proposed purpose (not canonical):**
+
+> Harscode is a foundation for Anhar to work with AI agents as competent, adaptive, trustworthy engineering partners. It should help understand and solve software engineering problems—whether bounded and clear or still ambiguous—through fit-for-purpose solutions, proportionate engineering rigor, visible reasoning and evidence, reliable continuity, and appropriate Human authority. Workflow, knowledge, specialization, state, and tools serve outcomes rather than constituting goals.
+
+**Five proposed success dimensions (qualitative until validated):**
+
+1. **Engineering quality:** correct, secure, maintainable, risk-appropriate outcomes with honest evidence.
+2. **Fit and feasibility:** evaluate solution and execution feasibility; choose no more complexity than actual constraints demand.
+3. **Effective pairing:** Anhar gains useful reasoning, challenge, practical execution, and judgment without becoming the perpetual dispatcher, prompt engineer, or process clerk.
+4. **Visibility and trust:** clarify what is being done, why, what is proven/unproven, relevant risks, and precise Human decision points.
+5. **Continuity and efficiency:** important settled intent/decisions/evidence reconstruct across agents/sessions while avoiding unnecessary rediscovery, rereading, and ceremony; current source still checked when material.
+
+**Boundaries and non-goals, proposed:**
+
+- Applicable to a narrow backend task, ambiguous investigation, or larger development effort; **no required end-to-end product pipeline**.
+- Explore/Plan/Build/Review/Testing/PR is a useful engineering heuristic; **not a mandatory global phase sequence**.
+- Orchestrator, Space, strict Work Unit/Run lifecycle, parallelism, workflow automation, dashboard, and particular storage layout are **optional hypotheses/implementation mechanisms**, not intrinsic purpose. A problem with no matching Space remains valid Agent Pairing input.
+- Specialist profiles and non-LLM tools may help when task needs them; neither is mandatory or yet proven as a universal mechanism.
+- Simplicity is constrained by real correctness, security, authority, independent verification where warranted, and reconstructability. Less documentation or fewer Runs alone are **not** success metrics.
+- Harscode owns reusable collaboration/engineering guidance; the target project retains its own product/design/security/implementation truth.
+
+**Material tensions to test later, not decide at Station 1:** guidance depth versus LLM cognitive load; agent autonomy versus authority/safety; durable continuity versus artifact proliferation; collaboration benefit versus coordination cost. Existing main guidance and pilot ideas must be evaluated by actual results, not protected by sunk cost or discarded based only on impressions.
+
+**Station 1 review question:** Does this purpose accurately prioritize your intended engineering partnership and its boundaries? Review with Anhar before recording station exit or moving to Station 2.
+
 ## 2. Starting point — evidence and limits
 
 - Harscode operational main at branch creation: c762a27aee622c247c2a408d932e762076e3588c. Main has portable pre-engineering, optional product-design, engineering phase guidance, best practices, harness translation, durable context and verification semantics. Anhar reports positive practical results using it on bounded backend tasks; this does not prove all tasks or all LLM configurations.
@@ -42,14 +71,14 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 | Station | Focus | Progress | Exit evidence |
 | --- | --- | --- | --- |
 | 0 — Current Reality | Establish honest starting baseline | BASELINE RECORDED | main/pilot distinction, known evidence and uncertainty captured here |
-| 1 — Rediscover Purpose | Purpose, user needs, boundaries, non-goals | NEXT | Reviewed purpose statement and evaluation criteria, no mandatory architecture |
+| 1 — Rediscover Purpose | Purpose, user needs, boundaries, non-goals | IN DISCUSSION — draft pending Anhar review | Reviewed purpose statement and evaluation criteria, no mandatory architecture |
 | 2 — Understand Human–Agent Pairing | Actual desired interactions and capabilities | NOT STARTED | Clear behavioral needs across bounded and ambiguous cases |
 | 3 — Reality Check Harscode | Audit value and burden of main guidance, pilot, research | NOT STARTED | Evidence map: working, uncertain, costly, redundant, unnecessary |
 | 4 — Smallest Sufficient Model | Compare ways to satisfy established needs | NOT STARTED | One testable working hypothesis with trade-offs, not a complete new framework |
 | 5 — Real-Usage Validation | Limited representative engineering tasks | NOT STARTED | Evidence on quality, Human burden, feasibility, visibility, rediscovery and cost |
 | 6 — Evidence-Based Commitment | Decide what belongs in operational Harscode | NOT STARTED | Anhar-approved decision grounded in real results; changes only with explicit authorization |
 
-**Current location:** Station 0 baseline recorded. Station 1 is next; its purpose has not yet been formally settled.
+**Current location:** Station 1 active; working purpose and evaluation criteria recorded but not yet approved. Do not advance until purpose review is complete.
 
 ## 5. Working decisions and unresolved hypotheses
 
@@ -80,4 +109,4 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 
 At the next session, read **this file** as the current retrospective checkpoint, verify live repository authority where material, and continue from the indicated station. Update only material findings/agreements/transitions in this file. Keep observations, hypotheses, Anhar working decisions, and durable canonical Harscode changes explicitly distinct.
 
-**Immediate next action:** Discuss Station 1 — Rediscover Purpose, producing a concise reviewed working purpose/boundaries/evaluation-criteria statement. Do not start architecture redesign or implementation.
+**Immediate next action:** Anhar reviews the Station 1 purpose/boundaries/evaluation-criteria draft. Update any material correction, then mark Station 1 reviewed and proceed to Station 2 only on explicit agreement. Do not redesign architecture or implement yet.
