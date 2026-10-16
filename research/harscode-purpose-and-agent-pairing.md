@@ -57,6 +57,13 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 
 **Explicit exclusions:** No audit of whether current main/pilot already satisfies the needs (Station 3); no Space, Orchestrator, Profile architecture or tool design (Station 4); no validation experiments (Station 5). No assumption that collaboration must involve coordination, parallelism or a predefined Space.
 
+**Additional pairing concerns from Anhar (2026-10-16; research observations, not approved policy):**
+
+- Communication should be natural but use a concise, readable and sufficiently consistent decision-summary format when discussing material problems. Preserve problem, relevant evidence, tradeoffs, recommendation, decisions and next actions without ceremonial headings on every message.
+- Human should supply task-appropriate inputs and prerequisites (requirements, bug symptoms, constraints and material approvals). Agent should challenge insufficient or contradictory inputs before execution. An unclear problem remains a valid starting point for investigation.
+- Avoid material planning or redesign during an execution assignment. Distinguish ordinary implementation judgment from discovery of an unresolved material contract, authority, security, or architectural choice. The latter warrants a scoped stop and owner decision; it should not be resolved silently within execution.
+- Need to investigate whether communication and readiness expectations should differ by task type, without prescribing one universal form, session split or new workflow mechanism.
+
 **Scope status:** Proposed by assistant for Anhar review; not yet an Anhar-approved Station 2 scope.
 
 ## 2. Starting point — evidence and limits
