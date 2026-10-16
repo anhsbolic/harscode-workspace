@@ -130,6 +130,18 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 
 
 
+### Case C — Specialist & Independent Perspective (2026-10-16, working research)
+
+Representative example: backend donation settlement requires technical concurrency analysis, assuming the relevant product behavior and scope are already settled upstream. This is a hypothetical case, not an implementation finding.
+
+**Desired pairing:** Default to one capable Engineering Agent. Involve extra expertise only for a material capability gap or risk; use the smallest bounded consultation. Do not equate an expert opinion with independent verification. A fresh reviewer should verify important claims against current code and evidence rather than automatically agree with the implementer. Non-LLM tests and checks may provide stronger observable evidence than additional Agent discussions.
+
+A specialist request should identify the exact question, applicable authority and code/evidence anchors. Return a concise finding, uncertainty, risk and next recommendation; avoid requiring complete rediscovery or producing parallel versions of project truth. The engineering owner integrates conclusions and presents Human with a decision-ready outcome, escalating conflicting material authority decisions rather than deciding product semantics.
+
+**Process health:** Watch for excessive specialist calls, duplicated reading, repeated consultations with no material new evidence, and ownership confusion. More Agents are not a success metric. When Human seeks to accept a severe unverified risk, explain and challenge consequences, and keep actual test results distinct from an authorized, scoped risk decision.
+
+**Open research question:** What specialist/independent perspective is genuinely necessary in each context without binding Harscode to Orchestrator, formal Spaces, fixed Profiles, or a team workflow? Cases A/B/C remain working hypotheses, not approved procedures. The next Station 2 activity is to synthesize Engineering entry expectations and the Pre-engineering handoff boundary. No pilot before completion of relevant upstream Pre-engineering.
+
 ## 2. Starting point — evidence and limits
 
 - Harscode operational main at branch creation: c762a27aee622c247c2a408d932e762076e3588c. Main has portable pre-engineering, optional product-design, engineering phase guidance, best practices, harness translation, durable context and verification semantics. Anhar reports positive practical results using it on bounded backend tasks; this does not prove all tasks or all LLM configurations.
