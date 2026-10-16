@@ -72,6 +72,28 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 - Preserve the bounded decision, owner, affected claim/delivery boundary, remaining failure/evidence gap, rationale and follow-up ownership in minimally sufficient durable state. Do not create a universal risk score or obligatory ceremony from this research observation.
 - Existing reference, **not automatic solution**: operational main Testing supports `Pass with flagged follow-ups` and explicit blocking versus nonblocking findings; experimental pilot Proposal 0042 separates evidence reuse, deferral, authority waiver/contract change and Human residual-risk acceptance. The remaining research question is whether Human–Agent Pairing makes this usable without excessive process overhead.
 
+**Clarification agreed in conversation (2026-10-16): high-risk pushback when Human wants to ignore a finding**
+
+- Agent must actively flag high-consequence risk and challenge a request to ignore it with specific evidence, scope, uncertainty, plausible consequences and safer options. Strength of pushback should scale with severity and irreversibility.
+- An owning Human may make a documented, scoped residual-risk acceptance within legitimate authority; this does not turn failing/absent evidence into PASS, authorize other delivery boundaries, or override legal/project/external requirements. Once a legitimate informed decision is settled, do not repeatedly reopen it without materially new evidence.
+
+### Case A — Clear Engineering Task: working pairing expectations (2026-10-16)
+
+**Research status:** Example behavioral hypothesis for Station 2. Not a canonical workflow, input template, approval gate, or implementation design.
+
+**Representative task:** Update a backend API validation defect against existing applicable spec/contract.
+
+**Desired collaboration:**
+1. Human communicates intended change and points to task/project context, constraints and expected acceptance (directly or via durable authority). Agent should not demand repeating discoverable information.
+2. Agent inspects relevant current repo authority/code and checks whether execution prerequisites are sufficiently settled; when material facts conflict/missing, explain what decision is needed. A task can be investigated even if it is not implementation-ready.
+3. If ready, Agent executes the agreed scope using ordinary local implementation judgment and appropriate tests, without silently redoing product/architecture/security/contract planning. If a material premise is invalidated, stop the affected part and return the ownership decision.
+4. Agent communicates concise outcome, changes, actual verification results, open gaps, residual risks and any precise Human decision. Avoid an extra artifact when already durable evidence suffices.
+5. If Human seeks to proceed with imperfect verification, Agent assesses each failed/unknown check by consequence and accepted scope, pushes back especially on severe risks, separates evidence from scoped Human acceptance and delivery authorization, and preserves only necessary durable decision/evidence pointers.
+
+**What we are seeking to learn:** the minimum Human input/Agent readiness discussion and meaningful outcome reporting for a bounded task; what local autonomy means; when independent verification/specialization is actually needed; and how to notice process cost without adding ceremony. No requirement for named workflow phases, a separate planning Session, Orchestrator, a Space, or an automatic profile.
+
+**Case A status:** First pass documented; not yet validated or explicitly signed off by Anhar. Case B (ambiguous investigation) is the next contrasting situation after discussion.
+
 **Scope status:** Proposed by assistant for Anhar review; not yet an Anhar-approved Station 2 scope.
 
 ## 2. Starting point — evidence and limits
