@@ -43,6 +43,22 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 
 **Station 1 exit:** Approved by Anhar, 2026-10-16. Purpose, six evaluation dimensions and boundaries are agreed for this retrospective. No architecture, implementation mechanism or operational Harscode guidance has been approved by this decision.
 
+## 1B. Station 2 — Understand Human–Agent Pairing (scope proposal, not yet approved)
+
+**Started:** 2026-10-16. **Progress:** IN DISCUSSION — scope clarification. This is a requirements/experience inquiry, not design of a new workflow or architecture.
+
+**Core question:** Given a bounded or ambiguous engineering concern, what collaboration and Agent behavior would genuinely help Anhar reach a trustworthy, feasible outcome with proportionate process cost?
+
+**Proposed inquiry boundaries:** (1) starting interaction/task ambiguity; (2) reasoning, challenge and fit-solution discovery; (3) Agent autonomy, Human authority, specialists and non-LLM tools; (4) visibility, durable continuity and process-health awareness; (5) useful completion, evidence and handoff.
+
+**Representative situations, not mandatory phases:** (A) well-defined backend task; (B) ambiguous engineering investigation; (C) work requiring additional specialist/independent verification. Cases are probes for behavior, not full end-to-end implementation tests at this station.
+
+**Expected minimal exit evidence:** One compact account of desired Agent behaviors across the representative cases, Human–Agent authority/intervention boundaries, visibility/continuity needs, and material unresolved questions. Avoid additional documents, run structures and fixed process stages unless demonstrated necessary.
+
+**Explicit exclusions:** No audit of whether current main/pilot already satisfies the needs (Station 3); no Space, Orchestrator, Profile architecture or tool design (Station 4); no validation experiments (Station 5). No assumption that collaboration must involve coordination, parallelism or a predefined Space.
+
+**Scope status:** Proposed by assistant for Anhar review; not yet an Anhar-approved Station 2 scope.
+
 ## 2. Starting point — evidence and limits
 
 - Harscode operational main at branch creation: c762a27aee622c247c2a408d932e762076e3588c. Main has portable pre-engineering, optional product-design, engineering phase guidance, best practices, harness translation, durable context and verification semantics. Anhar reports positive practical results using it on bounded backend tasks; this does not prove all tasks or all LLM configurations.
@@ -75,13 +91,13 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 | --- | --- | --- | --- |
 | 0 — Current Reality | Establish honest starting baseline | BASELINE RECORDED | main/pilot distinction, known evidence and uncertainty captured here |
 | 1 — Rediscover Purpose | Purpose, user needs, boundaries, non-goals | COMPLETE — Anhar approved 2026-10-16 | Reviewed purpose statement and evaluation criteria, no mandatory architecture |
-| 2 — Understand Human–Agent Pairing | Actual desired interactions and capabilities | NEXT — NOT STARTED | Clear behavioral needs across bounded and ambiguous cases |
+| 2 — Understand Human–Agent Pairing | Actual desired interactions and capabilities | IN DISCUSSION — scope draft | Clear behavioral needs across bounded and ambiguous cases |
 | 3 — Reality Check Harscode | Audit value and burden of main guidance, pilot, research | NOT STARTED | Evidence map: working, uncertain, costly, redundant, unnecessary |
 | 4 — Smallest Sufficient Model | Compare ways to satisfy established needs | NOT STARTED | One testable working hypothesis with trade-offs, not a complete new framework |
 | 5 — Real-Usage Validation | Limited representative engineering tasks | NOT STARTED | Evidence on quality, Human burden, feasibility, visibility, rediscovery and cost |
 | 6 — Evidence-Based Commitment | Decide what belongs in operational Harscode | NOT STARTED | Anhar-approved decision grounded in real results; changes only with explicit authorization |
 
-**Current location:** Station 1 complete; Station 2 is next (not yet started). Continue with human–agent interaction needs before evaluating solutions.
+**Current location:** Station 1 complete and approved; Station 2 active (scope under discussion, not approved). Continue with human–agent interaction needs before evaluating solutions.
 
 ## 5. Working decisions and unresolved hypotheses
 
@@ -116,4 +132,4 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 
 At the next session, read **this file** as the current retrospective checkpoint, verify live repository authority where material, and continue from the indicated station. Update only material findings/agreements/transitions in this file. Keep observations, hypotheses, Anhar working decisions, and durable canonical Harscode changes explicitly distinct.
 
-**Immediate next action:** Begin Station 2 — Understand Human–Agent Pairing by grounding desired interactions in concrete bounded and ambiguous engineering situations. Do not design or implement a new architecture yet.
+**Immediate next action:** Confirm or adjust Station 2 scope, then examine the first representative pairing situation (a bounded engineering task). Do not design or implement a new architecture yet.
