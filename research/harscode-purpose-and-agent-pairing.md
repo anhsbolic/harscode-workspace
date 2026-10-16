@@ -94,6 +94,28 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 
 **Case A status:** First pass documented; not yet validated or explicitly signed off by Anhar. Case B (ambiguous investigation) is the next contrasting situation after discussion.
 
+### Case B — Ambiguous Engineering Problem: working pairing expectations (2026-10-16)
+
+**Research status:** First-pass collaboration hypothesis under Station 2, not an approved workflow, Space, universal input form, mandatory Session split, or implementation plan.
+
+**Representative example:** Human observes sporadic donation API latency and asks for investigation/recommendation without authorizing a code change. Root cause, solution and implementation acceptance criteria are not yet known.
+
+**Expected Human contribution:** Describe known symptoms and business/engineering concern, available evidence pointers, environmental constraints and allowed access/actions where known. Not knowing root cause or solution is valid; Human should not have to invent those facts to invoke pairing. Clarify material missing information when the Agent cannot obtain it independently.
+
+**Expected Agent behavior:**
+1. Interpret the actual problem and desired help before assuming implementation. Use available repository/project knowledge and accessible evidence; ask only questions whose answers matter to safe next action.
+2. Separate **observations / verified evidence / competing hypotheses / unknowns / proposed next diagnostic step**. Do not imply an unverified diagnosis is fact.
+3. Act proactively within authorized, risk-proportionate investigation scope. A read-only or safely bounded technical diagnostic may be appropriate before the solution is known; production access, sensitive-data exposure, destructive writes or broader changes need applicable authorization.
+4. Narrow uncertainty using the smallest useful inspection, reproduction, profiling or experiment. Consider consequences and simpler alternatives before suggesting a fashionable fix. Bring material product/contract/architecture/security choices to their owning authority.
+5. Communicate concise, reconstructable findings and direction with evidence pointers, confidence limits, risks, recommendations and exact Human decision if required, not exhaustive narration or a default Techplan.
+6. Know when to stop: evidence is sufficient for the next legitimate decision; a targeted experiment is identified; a genuine blocker requires the Human; or more identical work has weak expected informational delta. Avoid endless reruns, duplicated artifacts, repeated discovery and needless specialist escalation.
+7. Keep **investigation**, **material solution decisions**, and **authorized implementation** semantically distinct, without requiring separate Sessions or artifacts for each. Investigation may include technical actions but is not implicit permission for a production code change. When the solution becomes implementation-ready, verify prerequisites/authority before implementing.
+8. If a high-consequence risk is discovered, highlight it promptly and push back proportionately on suggestions to ignore it. Preserve technical evidence separately from any legitimately scoped Human residual-risk acceptance.
+
+**What is not yet proven:** Which minimal input/readiness/summary conventions give the best LLM performance, and when a specialized agent or non-LLM diagnostic tool is beneficial. Station 3 audits existing main/pilot fit; Station 4 evaluates mechanisms.
+
+**Case B status:** Working first pass recorded; awaiting critique from Anhar. Case C (additional specialist/independent perspective) remains to discuss.
+
 **Scope status:** Proposed by assistant for Anhar review; not yet an Anhar-approved Station 2 scope.
 
 ## 2. Starting point — evidence and limits
@@ -169,4 +191,4 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 
 At the next session, read **this file** as the current retrospective checkpoint, verify live repository authority where material, and continue from the indicated station. Update only material findings/agreements/transitions in this file. Keep observations, hypotheses, Anhar working decisions, and durable canonical Harscode changes explicitly distinct.
 
-**Immediate next action:** Confirm or adjust Station 2 scope, then examine the first representative pairing situation (a bounded engineering task). Do not design or implement a new architecture yet.
+**Immediate next action:** Review/adjust Case B's ambiguous-problem pairing expectations, then continue to Case C (specialist or independent perspective) to finish the representative Station 2 behaviors. Do not design or implement a new architecture yet.
