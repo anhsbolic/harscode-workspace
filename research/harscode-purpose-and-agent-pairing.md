@@ -223,6 +223,64 @@ A specialist request should identify the exact question, applicable authority an
 
 **Station 3 progress:** ACTIVE — first-pass repository census and preliminary findings recorded; full review / Anhar exit decision outstanding.
 
+## 1E. Station 3 pivot and Part 01 — Purpose-First Capability & Evidence Framework (2026-10-16)
+
+**Decision provenance:** Anhar explicitly approved a **purpose-first pivot** and the **six-part Station 3 plan** on 2026-10-16. For *future model evaluation*, every existing Harscode document/phase/Space/Profile/Run construct is an evidence source or candidate mechanism, **not** an architecture that must survive. This does **not** revoke current operational authority: `main` still governs existing Harscode runtime use; target projects own their Product/Domain/Design/Security/implementation truth; tests and observed execution remain factual evidence. There is no approval to rewrite `main`, create a new architecture, or start another engineering pilot.
+
+**Approved six-part Station 3 structure (research organization, not runtime workflow):**
+1. Capability Baseline & Evaluation Framework.
+2. Knowledge, Best Practices & Context Architecture — all existing knowledge/harness/root guidance in coverage.
+3. Engineering Process, Authority & Input/Output Boundaries — all workflow guidance plus relevant pre-engineering and product-design boundaries.
+4. Experimental Branches — historical workflow-v2; earlier and C1 Orchestrator pilots; deferred Space research.
+5. Cross-Cutting Engineering Pairing Assessment — compare capabilities against Cases A/B/C and real historical evidence; **not** a new pilot.
+6. Station 3 Synthesis & Decision Review — recommendations for Station 4, not an architecture selection.
+
+### Part 01 — Evaluation baseline (COMPLETE as first-pass research framework; effectiveness unvalidated)
+
+**Source:** Station 1 purpose and six approved success dimensions (§1A); Station 2 approved pairing/engineering entry expectations and process-boundary clarification (§1C). The following IDs are **evaluation lenses only**, not roles, Services, Spaces, phases, mandatory document templates or compulsory status objects.
+
+**Capability map:**
+
+| ID | Necessary observable capability / receiving behavior | What Part 02–05 should look for as evidence |
+| --- | --- | --- |
+| C01 | **Action-relative intake and capability readiness** — accept incomplete symptoms for authorized investigation; before other actions identify required inputs, uncertainty, authority and Agent/tool capability; distinguish missing input vs missing owner decision vs capability gap. | Concrete entrypoints and stop/routing rules; historical examples of correct acceptance/rejection; incidents of guessing or Human providing missing Agent capability. Case A/B/C. |
+| C02 | **Truth/authority boundaries and product-to-engineering entry** — preserve owning project Product/Domain semantics, approvals, constraints, dependencies, open decisions and cold-start consumability without forcing upstream architecture. | Actual pre-engineering handoff requirements and recipient-side interpretation; traceable authority/contract evidence; cases where engineering invented or correctly returned product decisions. |
+| C03 | **Uncertainty-reducing technical investigation** — discriminate observations, hypotheses, evidence and unknowns; explore only inside authorized diagnostic scope and stop when sufficient for the next decision. | Cases of ambiguous problem handling, discriminating investigation and evidence trace; speculative diagnoses, unsupported implementation or endless diagnostic loops. Case B. |
+| C04 | **Fit-for-purpose technical judgment** — compare viable options, feasibility and downstream impacts proportional to stakes; avoid fashionable/unneeded complexity. | Real trade-off/decision evidence and resulting corrections or rework; cases where extra architecture helped or failed to earn its complexity. A/B/C. |
+| C05 | **Scoped execution and receiver-ready outputs** — apply settled contracts with local implementation discretion; recognize changed premises, return material decisions, and deliver consumable output/evidence for next concern. | Build/patch evidence, contract drift handling, meaningful handoffs, rework from insufficient outputs, unclear completion or unjustified handoff artifacts. Case A. |
+| C06 | **Engineering correctness, risk-matched verification and genuine independence** — preserve relevant security/data integrity, maintainability, real test results and separation of creator/verifier when warranted. | Actual defects caught/missed, current tests/diffs, material-risk coverage, independent review findings, unverified claims, safeguarding controls and verification cost; don't infer correctness solely from guidance. A/C. |
+| C07 | **Human authority, decision-ready visibility and scoped risk acceptance** — communicate the important what/why/proven/unknown/risks/action; challenge high-risk proposals, but distinguish technical FAIL/NOT RUN from authorized Human residual-risk decisions. | Approval and decision provenance, intervention burden, unresolved owner choices, factual verification verdicts and accepted boundaries; evidence of bypassed or redundant gates. A/B/C. |
+| C08 | **Capability-matched specialization and targeted knowledge/tool use** — use smallest sufficient expertise, guidance and tooling; avoid loading all best practices or creating narrow reusable Profiles on speculative grounds. | Knowledge routing accuracy and context loading, specialist value added, missed applicable safety guidance, unnecessary role/profile creation, tool-vs-Agent trade-offs. C. |
+| C09 | **Durable, reconstructable and context-efficient continuity** — preserve load-bearing decisions/evidence/ownership across sessions while allowing selective reads and independent grounding. | Cold-start reconstruction, stale/duplicate authority, forced transcript recall, repeated broad reads, lost decision context, actual context/cost evidence. A/B/C. |
+| C10 | **Proportional process health and convergence** — spot repeated low-information activity, duplicative artifacts/verification, excessive Human dispatch and coordination churn; stop without losing required assurance. | Real sequences showing new evidence vs repetition, time/usage when grounded, intervention patterns, valuable independent checks vs ritual, fallback when expected benefit is uncertain. A/B/C. |
+
+**Cross-cutting safeguards (apply wherever material, not new independent modules):** Security/privacy/access and destructive-operation authorization; target-project truth; scoped Human owner authority; authentic current/live evidence; correctness and real maintainability. A small/cheap approach is unacceptable if it removes a material safeguard. Conversely, high document count alone is not proof of dysfunction.
+
+**Evidence discipline for all subsequent parts:**
+- **E1 — observed execution:** source-linked actual task/run/commit/test/review/decision evidence. State its exact task, conditions, period, outcome and limitations. The strongest source for *actual behavior*, but still scoped; one success does not prove general capability.
+- **E2 — historical validation/retrospective:** bounded recorded findings, metrics and witnessed effects, with the originating execution when available. Do not confuse author claims or retrospective attribution with independently established causality.
+- **E3 — current guidance/contract:** what `main` (or an explicitly labeled experimental branch) says Agents *should* do. It proves documented intent/availability, **not** compliance, usability or successful delivery.
+- **E4 — reasoned hypothesis/inference:** plausible benefit, defect or simplification without validating execution evidence; keep expressly uncertain. A suggestion, repeated discussion, directory name, Profile taxonomy, or deferred Space proposal is not proof.
+- Evidence types can conflict. Trace back to owning authority/current evidence and mark the unresolved conflict instead of silently selecting the convenient account.
+
+**Per-capability evaluation questions:**
+1. Which real user/engineering problem and Station 1/2 expectation does this serve? Is it universally necessary or task/concern conditional?
+2. What **documented behavior** exists now, from which exact active or experimental source? What was actually **observed** and at what scope?
+3. Does the receiver have enough valid input, authority, capability and a useful output contract? What is the observed failure or uncertainty?
+4. What accuracy/security/maintainability, Human load, context/coordination and reversibility consequences follow? Do not fabricate token/time savings or infer cost from file/Run counts alone.
+5. Is the value intrinsic to the **capability**, or only a property of a replaceable workflow, directory, Profile, Run, Space or tool implementation? Could current guidance or a smaller mechanism already supply it?
+6. Record a provisional assessment with evidence, confidence limits and next discriminating verification—not an architecture redesign.
+
+**Provisional classification vocabulary (Part 06 owns synthesis/decisions):**
+- **Retain:** demonstrated necessary property/safeguard or mechanism with benefit/cost evidence sufficient *for stated scope*; retaining capability does not mean preserving identical implementation.
+- **Rethink:** real need or benefit, but current mechanism may be overbuilt, weakly fitting or expensive; seek smaller alternatives, preserve safety.
+- **Discard candidate:** evidence indicates the mechanism provides negligible marginal value or unacceptable trade-offs *for the relevant case*; requires impact and safety analysis before actual removal.
+- **Unknown:** evidence insufficient, applicability unclear or material claims in conflict. Never silently classify absence of evidence as failure/success or turn experimental discussion into canonical policy.
+
+**Audit method:** Map each current/research document to its intended role (HOT routing, conditional/WARM authority, COLD example/history, Draft/experimental/derived, project-owned source). Inspect all in coverage at inventory/role level, then deepen source reads/cross-reference checks for material decisions, risk/safety, authority conflicts, or likely failure modes. A text-only audit cannot verify runtime LLM behavior. Reuse existing inventory/evidence (§1D) without replaying reads merely for ceremony. For Parts 02–05, record only traceable deltas in this same checkpoint unless a materially different artifact proves necessary.
+
+**Part 01 exit self-check:** Six Station 1 quality dimensions are represented (quality: C05/C06; fit: C03/C04; pairing: C01/C07/C08; visibility: C07; continuity: C02/C09; process health: C08/C10). All Station 2 Case A/B/C needs and upstream boundary/capability readiness are included. Framework demands evidence without presupposing old architecture, and distinguishes operational authority from research design freedom. **Part 01 complete as evaluation preparation, not evidence that any mechanism works.** Part 02 can consume this framework without a new form, phase gate or pilot.
+
 ## 2. Starting point — evidence and limits
 
 - Harscode operational main at branch creation: c762a27aee622c247c2a408d932e762076e3588c. Main has portable pre-engineering, optional product-design, engineering phase guidance, best practices, harness translation, durable context and verification semantics. Anhar reports positive practical results using it on bounded backend tasks; this does not prove all tasks or all LLM configurations.
@@ -256,12 +314,12 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 | 0 — Current Reality | Establish honest starting baseline | BASELINE RECORDED | main/pilot distinction, known evidence and uncertainty captured here |
 | 1 — Rediscover Purpose | Purpose, user needs, boundaries, non-goals | COMPLETE — Anhar approved 2026-10-16 | Reviewed purpose statement and evaluation criteria, no mandatory architecture |
 | 2 — Understand Human–Agent Pairing | Engineering Pairing behaviors + upstream handoff expectations | COMPLETE — Anhar approved 2026-10-16 | Clear behavioral needs across bounded and ambiguous cases |
-| 3 — Reality Check Harscode | Audit all main guidance + relevant pilot mechanisms against Station 2 | ACTIVE — initial inventory/evidence map | Evidence map: working, uncertain, costly, redundant, unnecessary |
+| 3 — Purpose-First Capability & Evidence Assessment | Six-part reassessment of all main guidance and relevant experiments against Station 1–2, without architecture inheritance | ACTIVE — Part 01 complete; Part 02 next | Evidence map: working, uncertain, costly, redundant, unnecessary |
 | 4 — Smallest Sufficient Model | Compare ways to satisfy established needs | NOT STARTED | One testable working hypothesis with trade-offs, not a complete new framework |
 | 5 — Real-Usage Validation | Limited engineering tasks; requires completed relevant pre-engineering handoff before any pilot | NOT STARTED — PILOT GATED | Evidence on quality, Human burden, feasibility, visibility, rediscovery and cost |
 | 6 — Evidence-Based Commitment | Decide what belongs in operational Harscode | NOT STARTED | Anhar-approved decision grounded in real results; changes only with explicit authorization |
 
-**Current location:** Station 2 approved and complete; Station 3 ACTIVE since 2026-10-16, with operational main documentation inventory and preliminary supported observations recorded in §1D. No operational main update or pilot authorization; Station 5 stays gated on relevant upstream pre-engineering.
+**Current location:** Station 2 approved; Station 3 has Anhar-approved purpose-first pivot and six-part plan. Part 01 evaluation framework completed on 2026-10-16 (§1E), Part 02 knowledge/context assessment next. Earlier documentation scan (§1D) is reusable evidence, not a mandate to preserve its architecture. Operational main unchanged; Station 5 pilot gated on completed relevant pre-engineering.
 
 ## 5. Working decisions and unresolved hypotheses
 
@@ -276,6 +334,8 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 **Station 2 scope / Station 5 prerequisite (2026-10-16, Anhar):** Engineering Pairing only for the current episode, preserving pre-engineering handoff boundaries. No next engineering pilot before relevant pre-engineering for its bounded commitment is complete and its owning approvals/handoff are available. Engineering input needs are consumer criteria for judging pre-engineering output sufficiency, not a mandate to move engineering design upstream.
 
 **Station 2 approval (2026-10-16, Anhar):** Approved section 1C Engineering Pairing Expectations with explicit recipient-side input sufficiency and capability fit. Every meaningful concern-to-concern transition should expose sufficient input/output/authority/acceptance semantics; a receiving Agent must identify missing prerequisites or capability mismatch and route appropriately, never guess a material decision. These are approved retrospective behavioral expectations only, not new canonical runtime mechanics. Station 2 closed, Station 3 next.
+
+**Station 3 purpose-first pivot and plan approval (2026-10-16, Anhar):** Future Harscode architecture is not constrained to current main/workflow/Space/Orchestrator/Profiles. Treat all existing documents and branches as evidence/candidate mechanisms for the redesign question while honoring current main's operational authority and target-project owning truth. Conduct Station 3 in six agreed research parts. Part 01 §1E establishes the evidence/capability lens; no new pilot or main implementation is authorized.
 
 **Still open:**
 - What concrete Human–Agent Pairing behavior best serves different classes of problem?
@@ -300,4 +360,4 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 
 At the next session, read **this file** as the current retrospective checkpoint, verify live repository authority where material, and continue from the indicated station. Update only material findings/agreements/transitions in this file. Keep observations, hypotheses, Anhar working decisions, and durable canonical Harscode changes explicitly distinct.
 
-**Immediate next action:** Continue Station 3 with the receiver-side input/output and capability-fit audit of main, then do a focused comparative evidence/cost audit of pilot Orchestrator C1 and the deferred Space hypothesis. Use workflow-v2/earlier pilot only for meaningful historical lineage. No pilot, no operational main changes.
+**Immediate next action:** Station 3 Part 02 — assess all best-practices and harness/root knowledge as a routed capability system against §1E (coverage, content relevance, authority, applicability, draft/derived status, security, context cost); deepen the two suspicious Go primary-guidance paths in §1D. Use historical validation as bounded evidence. No pilot or main changes.
