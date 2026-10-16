@@ -116,6 +116,12 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 
 **Case B status:** Working first pass recorded; awaiting critique from Anhar. Case C (additional specialist/independent perspective) remains to discuss.
 
+**Scope focus under consideration (2026-10-16; not approved):**
+
+Anhar raised that pre-engineering and engineering have different inputs, authority and agent behavior. Recommended Station 2 focus: engineering pairing, including clear implementation tasks, ambiguous technical investigation, verification and scoped Human risk acceptance. Technical investigation of API latency is still engineering, not product requirement discovery.
+
+Pre-engineering pairing and product behavior/requirement shaping remain distinct and are not being redesigned in this station. When engineering exposes unresolved product meaning, the agent must recognize and route the gap to its owning authority instead of making that product decision inside implementation. Station 3 should inspect upstream only where it affects engineering handoff; further pre-engineering research can be considered separately. Station 1 broad purpose remains unchanged.
+
 **Scope status:** Proposed by assistant for Anhar review; not yet an Anhar-approved Station 2 scope.
 
 ## 2. Starting point — evidence and limits
