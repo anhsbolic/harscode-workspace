@@ -64,6 +64,14 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 - Avoid material planning or redesign during an execution assignment. Distinguish ordinary implementation judgment from discovery of an unresolved material contract, authority, security, or architectural choice. The latter warrants a scoped stop and owner decision; it should not be resolved silently within execution.
 - Need to investigate whether communication and readiness expectations should differ by task type, without prescribing one universal form, session split or new workflow mechanism.
 
+**Additional pairing concern: scoped Human residual-risk acceptance (2026-10-16; research input, not approved implementation):**
+
+- Anhar expects Agent to carry out planned execution and risk-proportionate verification honestly, but not all imperfect results must be rejected automatically. Authorized Humans may accept residual risk and permit a specifically bounded next step/delivery when they understand the consequences.
+- Keep **technical verification outcome**, **owning-authority risk/requirement decision**, and **permission to progress/release** distinct. Example: 7 of 10 tests pass does not prove a 70% safety level; characterize each remaining case as FAIL / NOT RUN / INCONCLUSIVE / DEFERRED based on evidence, and determine material risk and blocking scope individually.
+- Anhar's characterization of a finding as "minor" is input for challenge, not proof. Agent should surface concrete failure impact, security/privacy/data-integrity implications, uncertainty, alternatives and recommended decision. An authorized Human may accept residual risk but cannot turn failed/unperformed checks into technical PASS or override boundaries governed by another authority, law, mandatory compliance or still-unsatisfied HARD conditions. If approved acceptance criteria must change, reconcile the owning contract through valid authority rather than claiming the original condition was met.
+- Preserve the bounded decision, owner, affected claim/delivery boundary, remaining failure/evidence gap, rationale and follow-up ownership in minimally sufficient durable state. Do not create a universal risk score or obligatory ceremony from this research observation.
+- Existing reference, **not automatic solution**: operational main Testing supports `Pass with flagged follow-ups` and explicit blocking versus nonblocking findings; experimental pilot Proposal 0042 separates evidence reuse, deferral, authority waiver/contract change and Human residual-risk acceptance. The remaining research question is whether Human–Agent Pairing makes this usable without excessive process overhead.
+
 **Scope status:** Proposed by assistant for Anhar review; not yet an Anhar-approved Station 2 scope.
 
 ## 2. Starting point — evidence and limits
