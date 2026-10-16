@@ -20,13 +20,14 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 
 > Harscode is a foundation for Anhar to work with AI agents as competent, adaptive, trustworthy engineering partners. It should help understand and solve software engineering problems—whether bounded and clear or still ambiguous—through fit-for-purpose solutions, proportionate engineering rigor, visible reasoning and evidence, reliable continuity, and appropriate Human authority. Workflow, knowledge, specialization, state, and tools serve outcomes rather than constituting goals.
 
-**Five proposed success dimensions (qualitative until validated):**
+**Six proposed success dimensions (qualitative until validated):**
 
 1. **Engineering quality:** correct, secure, maintainable, risk-appropriate outcomes with honest evidence.
 2. **Fit and feasibility:** evaluate solution and execution feasibility; choose no more complexity than actual constraints demand.
 3. **Effective pairing:** Anhar gains useful reasoning, challenge, practical execution, and judgment without becoming the perpetual dispatcher, prompt engineer, or process clerk.
 4. **Visibility and trust:** clarify what is being done, why, what is proven/unproven, relevant risks, and precise Human decision points.
 5. **Continuity and efficiency:** important settled intent/decisions/evidence reconstruct across agents/sessions while avoiding unnecessary rediscovery, rereading, and ceremony; current source still checked when material.
+6. **Process health and proportionality:** engineering outcomes must be achieved without unjustified artifact proliferation, Runs/re-entries, redundant verification/context work, repetitive Human coordination, or non-converging loops. Judge cost against meaningful progress, new evidence, risk reduction, and necessary assurance—not raw activity counts. Harscode should be able to recognize and surface unhealthy patterns before reflexively continuing.
 
 **Boundaries and non-goals, proposed:**
 
@@ -34,10 +35,11 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 - Explore/Plan/Build/Review/Testing/PR is a useful engineering heuristic; **not a mandatory global phase sequence**.
 - Orchestrator, Space, strict Work Unit/Run lifecycle, parallelism, workflow automation, dashboard, and particular storage layout are **optional hypotheses/implementation mechanisms**, not intrinsic purpose. A problem with no matching Space remains valid Agent Pairing input.
 - Specialist profiles and non-LLM tools may help when task needs them; neither is mandatory or yet proven as a universal mechanism.
-- Simplicity is constrained by real correctness, security, authority, independent verification where warranted, and reconstructability. Less documentation or fewer Runs alone are **not** success metrics.
+- Simplicity is constrained by real correctness, security, authority, independent verification where warranted, and reconstructability. Less documentation or fewer Runs alone are **not** success metrics. Conversely, an eventually correct result does **not** automatically excuse disproportionate process cost.
+- **Process-health diagnostic is a desired capability, not an agreed dedicated workflow, dashboard, scoring system, mandatory audit Run, or monitoring platform.** Relevant signals include duplicative artifacts, repeated low-informational-delta Runs, recurring causal loops, excessive Human interventions, and unnecessary rediscovery/reverification. Interpret them with task context and risk; avoid treating a high count as proof of failure.
 - Harscode owns reusable collaboration/engineering guidance; the target project retains its own product/design/security/implementation truth.
 
-**Material tensions to test later, not decide at Station 1:** guidance depth versus LLM cognitive load; agent autonomy versus authority/safety; durable continuity versus artifact proliferation; collaboration benefit versus coordination cost. Existing main guidance and pilot ideas must be evaluated by actual results, not protected by sunk cost or discarded based only on impressions.
+**Material tensions to test later, not decide at Station 1:** guidance depth versus LLM cognitive load; agent autonomy versus authority/safety; durable continuity versus artifact proliferation; collaboration benefit versus coordination cost; outcome correctness versus process burden. Diagnose process health proportionately **without creating a self-defeating diagnostic ceremony**. Existing main guidance and pilot ideas must be evaluated by actual results, not protected by sunk cost or discarded based only on impressions.
 
 **Station 1 review question:** Does this purpose accurately prioritize your intended engineering partnership and its boundaries? Review with Anhar before recording station exit or moving to Station 2.
 
@@ -63,6 +65,7 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 10. Specialized Agent Profiles are a promising preference: find appropriate capabilities for a problem without mandating persistent personalities, premature Space fitting, or a readiness ceremony.
 11. Non-LLM tools may be useful where they are simpler or more reliable; avoid building a tooling platform without evidence.
 12. A Space, if ever useful, should arise from a genuine bounded input/output responsibility. **An ambiguous or unmatched problem must still be serviceable by Agent Pairing without a pre-existing Space.**
+13. (2026-10-16 clarification) Correct engineering outcomes must be **balanced with healthy, proportionate execution**. Harscode should recognize potentially excessive artifacts, Runs, re-entry, redundant verification, repetitive Human coordination, and similar process overhead; do not mistake raw activity counts for diagnosis or assume the existing experimental Loop Health Audit mechanism is required.
 
 ## 4. Station map and progress
 
@@ -94,6 +97,7 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 - Which pilot capabilities have separable value without its orchestration protocol?
 - Whether Space has any necessary semantic value beyond direct Agent Pairing and explicit bounded outputs.
 - What evidence is sufficient to assess improvement without creating a monitoring bureaucracy?
+- What is the minimum viable way to **notice and diagnose unhealthy process cost** without mandating an additional Run, report, scoring service, or ceremony? Existing experimental `orchestration/pilot-2-candidate/loop-health-audit.md` covers a narrower repeated-loop case; it is research material, not a selected solution.
 
 ## 6. Source pointers
 
@@ -102,6 +106,7 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 - Main context management: https://github.com/anhsbolic/harscode-workspace/blob/main/workflow/context-management.md
 - Pilot Orchestrator: https://github.com/anhsbolic/harscode-workspace/tree/pilot/orchestrator-v0.1-c1
 - Pilot Participant Profiles: https://github.com/anhsbolic/harscode-workspace/blob/pilot/orchestrator-v0.1-c1/orchestration/pilot-2-candidate/participant-profile-discovery.md
+- Pilot Loop Health Audit (experimental, narrow scope): https://github.com/anhsbolic/harscode-workspace/blob/pilot/orchestrator-v0.1-c1/orchestration/pilot-2-candidate/loop-health-audit.md
 - Space research: https://github.com/anhsbolic/harscode-workspace/blob/pilot/orchestrator-v0.1-c1/proposals/0041-space-oriented-work-model-research-hypothesis.md
 - Kencleng C1: https://github.com/anhsbolic/kencleng/tree/pilot/3-c1-engineering
 
