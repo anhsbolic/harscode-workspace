@@ -142,6 +142,14 @@ A specialist request should identify the exact question, applicable authority an
 
 **Open research question:** What specialist/independent perspective is genuinely necessary in each context without binding Harscode to Orchestrator, formal Spaces, fixed Profiles, or a team workflow? Cases A/B/C remain working hypotheses, not approved procedures. The next Station 2 activity is to synthesize Engineering entry expectations and the Pre-engineering handoff boundary. No pilot before completion of relevant upstream Pre-engineering.
 
+**Additional Case C concerns raised by Anhar (2026-10-16; research input):**
+
+- Excessive active knowledge/guidance may impose context cost and increase risks from irrelevant or conflicting assumptions. Distinguish the model's general capability from the amount of task-time material loaded; greater background knowledge alone is not proof of greater bias.
+- Determine useful specialization granularity empirically. Candidate default: a reusable, evidence-backed capability such as Go Backend Engineer, with narrowly routed concurrency/database guidance only when the actual concern triggers it; do not create a separate concurrency expert Profile solely because one task touches concurrency.
+- Require a distinct specialist only when capability, risk, independence or recurring need materially justifies additional context transfer/coordination cost. Too narrow a profile taxonomy can itself create work and bias.
+- Do **not** load all best-practices documents to make an Agent or Profile seem qualified. Load minimum stable role/project guidance plus the specific applicable concern guidance and live evidence. Preserve essential security/authority detail when actually triggered.
+- This is a candidate approach, not an approved Profile architecture. In Station 3, compare it with existing main `best-practices/AGENTS.md` conditional routing and experimental Profile Discovery's required-versus-routed guidance. In real-use validation, test correctness, context load and handoff cost, rather than assuming less context is always better.
+
 ## 2. Starting point — evidence and limits
 
 - Harscode operational main at branch creation: c762a27aee622c247c2a408d932e762076e3588c. Main has portable pre-engineering, optional product-design, engineering phase guidance, best practices, harness translation, durable context and verification semantics. Anhar reports positive practical results using it on bounded backend tasks; this does not prove all tasks or all LLM configurations.
@@ -217,4 +225,4 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 
 At the next session, read **this file** as the current retrospective checkpoint, verify live repository authority where material, and continue from the indicated station. Update only material findings/agreements/transitions in this file. Keep observations, hypotheses, Anhar working decisions, and durable canonical Harscode changes explicitly distinct.
 
-**Immediate next action:** Finish Station 2 Engineering Pairing inquiry with Case C, then synthesize a compact Engineering Entry Expectations / Pre-engineering Handoff boundary for later evaluation. Do not start an engineering pilot before the relevant upstream pre-engineering is complete and do not design/implement a new architecture yet.
+**Immediate next action:** Synthesize Engineering Pairing Expectations and consumer-side Engineering Entry Expectations / Pre-engineering Handoff boundary across Cases A/B/C. Keep Case C specialization granularity provisional and do not begin a pilot before relevant upstream pre-engineering completes.
