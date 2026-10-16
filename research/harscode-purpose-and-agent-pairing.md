@@ -116,13 +116,19 @@ Quality, authority, safety, and reconstructable state remain important; orchestr
 
 **Case B status:** Working first pass recorded; awaiting critique from Anhar. Case C (additional specialist/independent perspective) remains to discuss.
 
-**Scope focus under consideration (2026-10-16; not approved):**
+**Approved research scope and pilot prerequisite (2026-10-16, Anhar; working retrospective decision):**
 
-Anhar raised that pre-engineering and engineering have different inputs, authority and agent behavior. Recommended Station 2 focus: engineering pairing, including clear implementation tasks, ambiguous technical investigation, verification and scoped Human risk acceptance. Technical investigation of API latency is still engineering, not product requirement discovery.
+- **Station 2–5 primary subject is Engineering Pairing.** Full Pre-engineering Pairing design/evaluation is outside this episode; the Pre-engineering → Engineering input/output boundary remains expressly in scope. This is not removal of pre-engineering from Harscode, nor an operational policy change to main.
+- **Do not start another engineering pilot until the relevant pre-engineering for the selected pilot work is completed**, with a durable handoff and applicable owning-Human approval. The broader product need not be fully specified; the specific bounded commitment to be piloted does need its appropriate upstream meaning settled. If prerequisites are incomplete, remain in research/readiness work rather than starting the engineering pilot.
+- **Engineering's needed entry inputs should inform what pre-engineering must hand off.** Start with consumer requirements: confirmed intended product behavior, product/domain invariants, relevant Experience and Engineering Requirements, applicable authority/approvals, known constraints/dependencies, acceptance meaning, open/out-of-scope concerns, and decisions explicitly left to Engineering.
+- **Avoid upstream solution-lock:** pre-engineering should not author engineering-owned architecture, schema/API/transaction mechanism, implementation plan or technical verification strategy unless already binding through project authority. Engineering itself must inspect current code/environment, assess technical feasibility, shape solution and establish execution-grade technical plans.
+- **Validation boundary:** Pre-engineering route completion (prepared + approved handoff) is distinct from independent engineering cold-start handoff consumption. Per current main pre-engineering guidance, the first independent engineering read can still reveal a real gap and route it upstream; it should not be treated as implicit license to invent missing Product Truth.
+- **Roadmap:** Station 2 characterizes Engineering Agent behavior and intake needs. Station 3 checks existing guidance against them including only material pre-engineering/engineering boundary fit. Station 4 may form a minimal engineering model. **Station 5 is gated** by completed relevant upstream pre-engineering; no pilot is authorized merely by reaching Station 5. Station 6 commits only with sufficient evidence/Anhar approval.
+- **Historical observation from Anhar:** important issues in two earlier pilot episodes arose in pre-engineering. This motivates the sequencing decision but is not, by itself, quantified causal attribution.
 
-Pre-engineering pairing and product behavior/requirement shaping remain distinct and are not being redesigned in this station. When engineering exposes unresolved product meaning, the agent must recognize and route the gap to its owning authority instead of making that product decision inside implementation. Station 3 should inspect upstream only where it affects engineering handoff; further pre-engineering research can be considered separately. Station 1 broad purpose remains unchanged.
+**Station 2 scope status:** Engineering-only focus and upstream-before-pilot gate approved by Anhar. The detailed five-area inquiry/case behaviors remain working drafts under review; no new architecture or pilot is approved.
 
-**Scope status:** Proposed by assistant for Anhar review; not yet an Anhar-approved Station 2 scope.
+
 
 ## 2. Starting point — evidence and limits
 
@@ -156,13 +162,13 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 | --- | --- | --- | --- |
 | 0 — Current Reality | Establish honest starting baseline | BASELINE RECORDED | main/pilot distinction, known evidence and uncertainty captured here |
 | 1 — Rediscover Purpose | Purpose, user needs, boundaries, non-goals | COMPLETE — Anhar approved 2026-10-16 | Reviewed purpose statement and evaluation criteria, no mandatory architecture |
-| 2 — Understand Human–Agent Pairing | Actual desired interactions and capabilities | IN DISCUSSION — scope draft | Clear behavioral needs across bounded and ambiguous cases |
+| 2 — Understand Human–Agent Pairing | Engineering Pairing behaviors + upstream handoff expectations | IN DISCUSSION — engineering focus approved | Clear behavioral needs across bounded and ambiguous cases |
 | 3 — Reality Check Harscode | Audit value and burden of main guidance, pilot, research | NOT STARTED | Evidence map: working, uncertain, costly, redundant, unnecessary |
 | 4 — Smallest Sufficient Model | Compare ways to satisfy established needs | NOT STARTED | One testable working hypothesis with trade-offs, not a complete new framework |
-| 5 — Real-Usage Validation | Limited representative engineering tasks | NOT STARTED | Evidence on quality, Human burden, feasibility, visibility, rediscovery and cost |
+| 5 — Real-Usage Validation | Limited engineering tasks; requires completed relevant pre-engineering handoff before any pilot | NOT STARTED — PILOT GATED | Evidence on quality, Human burden, feasibility, visibility, rediscovery and cost |
 | 6 — Evidence-Based Commitment | Decide what belongs in operational Harscode | NOT STARTED | Anhar-approved decision grounded in real results; changes only with explicit authorization |
 
-**Current location:** Station 1 complete and approved; Station 2 active (scope under discussion, not approved). Continue with human–agent interaction needs before evaluating solutions.
+**Current location:** Station 1 complete; Station 2 in discussion with Engineering-only research focus approved on 2026-10-16. Any Station 5 engineering pilot is blocked until relevant pre-engineering is completed. Continue clarifying engineering intake/pairing needs before evaluating solutions.
 
 ## 5. Working decisions and unresolved hypotheses
 
@@ -173,6 +179,8 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 - Evaluate proportionally to real consequence. Protect safeguards, avoid premature complexity and speculation; use real Kencleng usage as evidence, not automatic project-agnostic policy.
 
 **Station 1 approval (2026-10-16, Anhar):** Approved the purpose, boundaries/non-goals and all six success dimensions (Engineering Quality; Fit & Feasibility; Effective Pairing; Visibility & Trust; Continuity & Efficiency; Process Health & Proportionality) as the **retrospective evaluation baseline**. Station 1 is closed; proceed to Station 2. No promotion into operational main or commitment to an implementation architecture.
+
+**Station 2 scope / Station 5 prerequisite (2026-10-16, Anhar):** Engineering Pairing only for the current episode, preserving pre-engineering handoff boundaries. No next engineering pilot before relevant pre-engineering for its bounded commitment is complete and its owning approvals/handoff are available. Engineering input needs are consumer criteria for judging pre-engineering output sufficiency, not a mandate to move engineering design upstream.
 
 **Still open:**
 - What concrete Human–Agent Pairing behavior best serves different classes of problem?
@@ -197,4 +205,4 @@ These are retrospective learning checkpoints, **not** Harscode runtime workflow 
 
 At the next session, read **this file** as the current retrospective checkpoint, verify live repository authority where material, and continue from the indicated station. Update only material findings/agreements/transitions in this file. Keep observations, hypotheses, Anhar working decisions, and durable canonical Harscode changes explicitly distinct.
 
-**Immediate next action:** Review/adjust Case B's ambiguous-problem pairing expectations, then continue to Case C (specialist or independent perspective) to finish the representative Station 2 behaviors. Do not design or implement a new architecture yet.
+**Immediate next action:** Finish Station 2 Engineering Pairing inquiry with Case C, then synthesize a compact Engineering Entry Expectations / Pre-engineering Handoff boundary for later evaluation. Do not start an engineering pilot before the relevant upstream pre-engineering is complete and do not design/implement a new architecture yet.
