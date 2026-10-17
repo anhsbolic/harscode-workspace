@@ -1,5 +1,21 @@
 # Harscode Purpose & LLM-Fit Retrospective — Working State
 
+## CURRENT-EFFECTIVE RESEARCH FRONTIER — 2026-10-17
+
+> **Status:** Anhar-approved research reconciliation (2026-10-17), not canonical Harscode policy or operational guidance. **Read this before historical Station 3 progress/status claims below.** The original older sections remain as dated research history, not as current execution instructions.
+>
+> **Owning progress checkpoint:** [Station 3 Closeout and Station 4 Active Frontier](checkpoints/station3-closeout-station4-active-2026-10-17.md). This checkpoint supersedes older "Station 3 Part 02 next" / "Station 4 not started" statements in this file; preserve the older evidence but do not follow its stale next-action route.
+
+- **Station 1/2:** Anhar-approved retrospective purpose and Engineering Pairing expectations; target project retains product truth.
+- **Station 3:** Parts 01–06 CLOSED / APPROVED **as research assessment**, not operational remediation. Part 02: 75 primary best practices assessed; P1 16, P2 50, P3 9; 16 P1 + 5 P2 replacement research drafts approved, three initial pilots separate; 12 higher-risk, 33 applicability and nine normalization candidates have no replacement drafts. No main changes.
+- **Station 4:** ACTIVE. ABEE v0.1 is an approved **research candidate**, not selected architecture. Paper adversarial critique completed; feasibility superiority not proven. Dedicated coordinator is a conditional challenger, not mandatory. **Station 4 cannot exit until Anhar's pre-exit audit.** Anhar requests a *human/assistant tabletop walkthrough of one simple engineering use case* before exit; **this is not a coding-Agent test or pilot**.
+- **Station 5:** NOT STARTED / GATED. The product-driven engineering pilot still requires relevant completed pre-engineering handoff and owning approval. Synthetic fixture preparation does not meet this condition.
+- **Station 6:** NOT STARTED; no promotion decision.
+- **Verification status:** Blind risk classification, cold-start recovery, standalone ambiguous diagnosis-only comparison, coordinator comparison and Agent runtime tests **not run**. Synthetic fixtures and examiner material exist only as separate local research inputs; do not claim their existence as execution evidence.
+- **Authority:** Operational Harscode `main@c762a27aee622c247c2a408d932e762076e3588c` at this checkpoint; branch `research/harscode-purpose-llm-fit` is research only. Git HEADs should be reverified whenever material.
+- **Next action:** Tabletop ABEE v0.1 walkthrough; challenge what changes from workflow-v2 / Orchestrator and identify any material gap; then Anhar pre-exit audit. Do not expand model/fixtures or dispatch a pilot by default. Future repository writes require separate explicit permission.
+
+
 **Status:** Active research / retrospective; non-operational.
 **Started:** 2026-10-15 (Asia/Jakarta).
 **Human decision-maker:** Anhar.
