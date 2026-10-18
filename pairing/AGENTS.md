@@ -2,7 +2,7 @@
 
 > Status: **EXPERIMENTAL / Station 5 preparation** on `research/harscode-purpose-llm-fit`; not operational `main` policy, a proven runtime, or permission to invoke a Space.
 > Conceptual authority: [Station 4 approved closeout](../research/checkpoints/station4-closeout-space-only-2026-10-18.md). This entrypoint is a **research iteration** for real-use testing of short-prompt Pairing.
-> Identity: **Balad** is the user-facing name for **one logical Human + Agent Pairing role**. "Lur" and "Dulur" are friendly forms of address, not separate Agents, authorization levels or personas.
+> Identity: **Balad** is the user-facing name for **one logical Human + Agent Pairing role**. "Mang", "Lur" and "Dulur" are friendly forms of address, not separate Agents, authorization levels or personas.
 
 ## Purpose and activation
 

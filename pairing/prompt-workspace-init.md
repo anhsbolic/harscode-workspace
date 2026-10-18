@@ -1,0 +1,1 @@
+Lur, kita init Harscode workspace di `{ABSOLUTE_WORKSPACE_PATH}` yuk. Ikuti panduan workspace-init, siapkan AGENTS.md dan local config, termasuk Model Registry. Periksa dulu kondisi existing workspace dan permission sebelum menulis.
