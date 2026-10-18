@@ -1,5 +1,7 @@
 # Station 3 Closeout and Station 4 Active Frontier — 2026-10-17
 
+> **Historical approved checkpoint as of 2026-10-17.** Current Station 4 working frontier and post-tabletop Anhar corrections are in [Station 4 Space-Oriented Research Frontier — 2026-10-18](station4-space-oriented-working-frontier-2026-10-18.md). This earlier ABEE-first next action is superseded for new research sessions; its approval and findings remain dated evidence. Do not mistake this historical route for current instructions.
+
 **Status:** APPROVED RESEARCH CHECKPOINT (Anhar, 2026-10-17); non-operational. This is a durable research progress record, **not** a replacement of `main` policy and **not** implementation/pilot authorization. The owning durable research file is [harscode-purpose-and-agent-pairing.md](../harscode-purpose-and-agent-pairing.md). Historical statuses in that file reflect their writing time; its new current-effective frontier supersedes them.
 
 ## Intent and epistemic boundaries

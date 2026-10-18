@@ -1,6 +1,22 @@
 # Harscode Purpose & LLM-Fit Retrospective — Working State
 
-## CURRENT-EFFECTIVE RESEARCH FRONTIER — 2026-10-17
+## CURRENT-EFFECTIVE RESEARCH FRONTIER — 2026-10-18
+
+> **Status:** Current-session Anhar corrections and working research direction; **not** an approved Harscode architecture, `main` change, implementation/pilot authorization, or Station 4 exit. **Read first.**
+>
+> **Owning checkpoint:** [Station 4 Space-Oriented Research Frontier — 2026-10-18](checkpoints/station4-space-oriented-working-frontier-2026-10-18.md). It supersedes the *active route* of the 2026-10-17 research frontier and ABEE-first next-action instructions. The 2026-10-17 checkpoint and ABEE material remain valid dated research history, **not** the present design recommendation.
+
+- **Stations 1–3:** prior approved research conclusions remain as documented below; no operational promotion.
+- **Station 4:** ACTIVE / NOT EXITED. The present **working candidate** is a Space-oriented production capability model, developed through human tabletop and conceptual coherence/pre-exit discussion after challenge to ABEE single-Agent default. This is **not a final approved architecture**.
+- **Agent and Space:** capability-matched reusable Agent Profiles; Spaces own coherent bounded production outcomes, may contain multiple Agents (e.g. Builder/Reviewer/Tester) and accept/produce strict external contracts; execution can be manual. Avoid a mandatory workflow engine, Space catalog, registry or orchestration mechanism.
+- **Responsibility boundary — Anhar correction:** Space is deliberately *upstream-blind*. Human + Agent Pairing owns upstream content quality, change/version coordination, material decisions, next-Space selection and risk/outcome-based Human involvement. A Space verifies its own input contract conformance, performs its own scoped work, and delivers truthful output; no mandatory upstream semantic audit or ambient drift monitoring. Its **own** guardrails/authorization still bind.
+- **Internal assurance:** internal reviewer/tester evaluates the **Space's output against its accepted input and promised outcome**, not the substantive correctness of upstream decisions. Independence for required claims remains real; Builder does not waive applicable mandatory checks.
+- **State/storage:** candidate sibling `harscode-state` for Harscode operational continuity, separate from `harscode-workspace` definitions and project-owned repository truth. Two relevant levels: Human–Agent Pairing current-effective commitment snapshot and active concrete Space execution working state. Current-effective/last-state-first, with historical evidence only on demand and retained where consequence justifies it; do not automatically create permanent records for every session/Run. Assume local state availability for **initial piloting**; remote recovery/backup/storage mechanism is deferred. If state is actually lost, Human + Agent Pairing reconstructs from remaining sources or explicitly redefines it, with unknown checks/permissions never promoted to PASS/authorized.
+- **Audit/gate status:** Conceptual pre-exit challenge has been performed in discussion and produced findings/corrections; it is **not a final Anhar exit decision**. Previous ABEE pre-exit evaluator/fixture draft remains historical/proposed, with its empirical-before-exit versus Station 5 validation boundary still to be reconciled explicitly—not silently marked PASS or abolished.
+- **Station 5:** NOT STARTED / GATED by relevant project pre-engineering, scoped owning authority and approval; no new code-Agent pilot. **Station 6:** NOT STARTED.
+- **Next:** scrutinize the latest-state sufficiency/minimum evidence and remaining pre-exit audit scope with Anhar; seek explicit Station 4 exit decision only after reconciliation. No writes to Harscode `main`, target project, or operational state were authorized by this research checkpoint.
+
+## HISTORICAL RESEARCH FRONTIER — 2026-10-17 (superseded; preserve as dated evidence)
 
 > **Status:** Anhar-approved research reconciliation (2026-10-17), not canonical Harscode policy or operational guidance. **Read this before historical Station 3 progress/status claims below.** The original older sections remain as dated research history, not as current execution instructions.
 >
