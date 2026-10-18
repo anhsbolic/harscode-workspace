@@ -1,5 +1,7 @@
 # Station 4 — Space-Oriented Research Frontier and Human Corrections (2026-10-18)
 
+> **Historical working checkpoint, superseded for current routing.** Station 4 is now **CLOSED / Anhar-approved for conceptual readiness**, per [Station 4 closeout decision](station4-closeout-space-only-2026-10-18.md). All OPEN/PENDING statements below describe the **pre-closeout working state**; preserve as research evidence, not current execution instructions. Station 5 remains gated; no pilot/operational promotion is implied.
+
 **Status:** CURRENT-EFFECTIVE WORKING RESEARCH CHECKPOINT; Anhar's corrections are explicit current-session design constraints, **not** an approved final architecture, operational Harscode policy, pilot authorization, or Station 4 exit.  
 **Branch scope:** `research/harscode-purpose-llm-fit` only; authoritative operational Harscode remains `main`.  
 **Lineage:** [2026-10-17 Station 3 closeout / Station 4 ABEE frontier](station3-closeout-station4-active-2026-10-17.md) and [owning retrospective](../harscode-purpose-and-agent-pairing.md). Preserve prior Station 1–3 research approval/history; do not rewrite it as if Space had been selected then.

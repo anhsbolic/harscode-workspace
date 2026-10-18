@@ -1,6 +1,20 @@
 # Harscode Purpose & LLM-Fit Retrospective — Working State
 
-## CURRENT-EFFECTIVE RESEARCH FRONTIER — 2026-10-18
+## CURRENT-EFFECTIVE RESEARCH FRONTIER — 2026-10-18 (Station 4 CLOSED)
+
+> **Status:** Anhar-approved **Station 4 conceptual research closeout**; this is **not** operational Harscode policy, empirically validated architecture, a project pilot authorization, or a `main` promotion. **Read first.**
+>
+> **Owning decision:** [Station 4 Closeout — Space-Only Conceptual Candidate Ready for Station 5](checkpoints/station4-closeout-space-only-2026-10-18.md). The earlier [Station 4 working frontier](checkpoints/station4-space-oriented-working-frontier-2026-10-18.md) and ABEE checkpoint are preserved as dated research evidence; their "Station 4 OPEN" / "next pre-exit audit" instructions are historical.
+
+- **Stations 1–3:** previously CLOSED/APPROVED as research; no `main` changes.
+- **Station 4:** **CLOSED / APPROVED for conceptual readiness**, explicitly approved by Anhar on 2026-10-18 after tabletop, coherence audit, F1–F4 corrections and small/large/fresh-session thought experiments. **Selected for Station 5 research piloting:** Space-only task execution, **not** proven or operational architecture.
+- **Boundary:** Human + Agent Pairing owns external judgment, quality of upstream content, version/routing coordination, risk-based decision/acceptance and current-effective state; **does not execute engineering production**. All task execution is within a bounded Space with strict external input/output contracts; one/multiple Specific Agents communicate/work internally. Space is upstream-blind, enforces its own assignment and guardrails, and returns truthful output/evidence. Required independent assurance remains truly independent.
+- **Cost/continuity:** Space formation is an accepted up-front potentially cross-project reusable investment; per-invocation ceremony proportionate including small one-Agent Spaces, **no direct Specific Agent alternate protocol**. Candidate sibling `harscode-state` owns current-effective pairing state and concrete active Space working state, separate from project authority. Read latest valid snapshot first; history/evidence only on demand where materially necessary. Initial pilot may assume local state available; stronger recovery infrastructure is deferred.
+- **Pre-exit audit disposition:** Conceptual audit is sufficient for **this conceptual Station 4 exit**; ABEE-specific blind Agent evaluator/fixture gate was a prior proposed candidate-specific test, not performed and not silently claimed PASS. Empirical claims and falsification targets explicitly move to Station 5.
+- **Station 5:** **NOT STARTED / GATED.** Requires a real current project-owned bounded commitment and applicable pre-engineering/authorization, plus explicit approval of pilot scope and writes. Historical C1 is context, not automatically the next live pilot. **Station 6:** NOT STARTED; no promotion.
+- **Next:** read-only Station 5 pilot-entry readiness review; recommend one smallest useful real-pilot target and obtain Anhar's separate execution approval. Do not create a registry, workflow engine, Space code or operational state as part of research closeout.
+
+## HISTORICAL RESEARCH FRONTIER — 2026-10-18 (Station 4 pre-closeout; superseded)
 
 > **Status:** Current-session Anhar corrections and working research direction; **not** an approved Harscode architecture, `main` change, implementation/pilot authorization, or Station 4 exit. **Read first.**
 >
