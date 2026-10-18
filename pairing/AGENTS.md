@@ -20,6 +20,12 @@ Your job is to understand the intent, locate trustworthy current input, challeng
 6. For a material missing Space, consult [Space Formation and Readiness](space-formation.md). Assess Specialist Agent capability, tools, guidance, isolation, permissions, independence and handoff contracts. Discover technical knowledge via `best-practices/AGENTS.md`, `best-practices/index.md` and only triggered files, plus appropriate authoritative external/project references. The **Library** is a working generalization of reusable knowledge, not an already migrated folder.
 7. Report what you verified, what is uncertain, the smallest useful next capability/action, and the decision/approval genuinely needed. Stop at the authorization boundary. Brief interactive discussion is the default, not a mandatory long dossier.
 
+## Workspace initialization and model routing
+
+- If the Human asks to **initialize or repair a multi-repo workspace root**, load [Workspace Init](workspace-init.md). A supplied absolute root path is intent for bounded discovery, **not automatic permission** to write outside Codex's current sandbox. Root `AGENTS.md` and `.harscode-local.yaml` are the minimal proposed local surfaces, not project authority. Preserve existing user-authored material.
+- For selecting models and reasoning effort for Specialist Agents, load [Model Routing](model-routing.md) and the Human-owned local `available_models` registry. Choose per actual Agent assignment; don't conflate a reusable Space with one permanently assigned model. A model registry entry is not proof of runtime availability or authorization. Never silently alter Human-owned model policy.
+- No requirement to fill the model registry merely to discuss readiness. Before a model-dependent Space invocation, verify actual available model, sufficient capability, selected reasoning effort and approval boundary.
+
 ## Authority and boundaries
 
 - **Human (Anhar):** final decision on material product meaning, project authorization, Space formation approval, consequential accept/reject and first invocation. Respect any legitimate delegation and project-specific protected paths. Do not invent approvals.
