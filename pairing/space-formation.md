@@ -12,21 +12,51 @@ Input can be an approved product commitment, PRD, TRD, task/issue, research ques
 Assess:
 - Is substantive **product meaning** missing, contradicted or genuinely unaccepted? If yes, identify exact evidence and owner; the route may be Human decision or a proposed bounded product-oriented Space for analysis, without granting it product approval authority.
 - Are architecture, API, database, identity-provider, user-flow or implementation details merely **engineering/design freedom intentionally left open**? If so, do not claim product immaturity. A solution-forming responsibility may be justified if Builder cannot safely take the available inputs without material engineering decisions.
-- Does an existing Space match the desired production outcome and contract? Prefer **reuse**, then **adapt**, then **form** a new Space only when the necessary capability is actually missing.
+- What **end-to-end outcome and acceptance evidence** would make this commitment complete? Identify material missing product decisions without pretending open engineering design choices are blockers. Space reuse/adaptation/formation is assessed **after** the outcome/dependency chain is sketched, not used to dictate the chain.
 
 One Space has one **coherent bounded production responsibility**, not necessarily one task, old workflow stage, Agent or phase. It may contain internal work stages and several agents if outcomes, contracts, context and assurance are genuinely cohesive. A dedicated Space must pay for extra formation/coordination cost through capability fit, trustworthy separation or reuse value.
 
-## 2. Compose a justifiable input → output chain
+## 2. Establish end-to-end I/O chain integrity before Space mapping
 
-For the current commitment, describe the **first decision/action-ready production outcome** and what must exist before it. Where warranted, map the next plausible outcome(s) as dependencies. Do not hardcode a global Product → Solution → Build → Review → Test pipeline.
+**Start from the accepted Human/project commitment and work toward the intended verified end condition**, not from a preselected first Space or familiar workflow phases. Build a **provisional outcome dependency graph** sufficient to explain how the commitment could become complete. A logical outcome is not automatically a Space, an Agent, a file, a phase or an invocation.
 
-At every proposed Space boundary, identify:
-- **Input**: named/artifact reference(s), owning source/version or acceptance provenance, necessary content/state, authorization, schema/semantic conditions and a **checkable conformance rule**. Conformant does not mean semantically correct upstream; Balad owns that judgment.
-- **Responsibility**: what this Space produces, what decisions are delegated internally, and what cannot be decided.
-- **Output**: concrete deliverables, invariants/acceptance evidence, tested/untested claims, limitations and next-space-compatible handoff.
-- **Handoff**: who assesses acceptance, what requires Human judgment, and whether a downstream Space can consume the result without inventing material decisions.
+- **Entry:** name the current-effective source authority and accepted commitment/requirements, including its version or pinned baseline and material preconditions.
+- **Outcomes and edges:** identify the necessary produced results and why the next consumer needs them. Model real independent/parallel production, branches and **join points** where several results must be compatible before a downstream outcome is valid.
+- **End condition:** identify the actual delivered result, independent/appropriate assurance evidence and owning Human/project acceptance needed to justify completion. The final verified outcome is not automatically a Space.
+- **Conditional territory:** mark uncertain downstream choices, dependencies or paths as **conditional/unresolved**, with the evidence or decision needed to firm them up. Make the overall logical path visible without pretending downstream contracts are fixed in advance.
+- **No phase pipeline:** do not force Solution → Backend → Frontend → Review → Test or any other universal sequence. Some assignments need one coherent Space, others parallel capabilities, and some stop at a Human decision. Graph shape comes from required results, not tool convenience.
 
-A missing input/uncertain downstream branch should be recorded as **conditional**, not padded with speculative Spaces. For C1, approved Stage 5/6 product meaning must be respected; cold-start sufficiency should be inspected, not assumed perfect or automatically reopened.
+For each **material handoff / graph edge**, assess:
+
+| Concern | Checkable question |
+| --- | --- |
+| Producer | Which accountable production responsibility can actually supply the needed output? |
+| Output and provenance | What exact result/artifact/state/evidence is produced, by which source/version and under what authority? |
+| Consumer | Which downstream responsibility consumes it and why? |
+| Input conformance | What schema, semantics, invariants, acceptance status, version and permission must hold before the consumer can use it? |
+| Failure/gap | If incomplete, stale, incompatible, missing or rejected, who resolves it and where does the chain stop/escalate? |
+
+**Integrity checks:** no required output without an identified producer or justified external source; no consumer whose mandatory input is unexplained; no parallel branch merging without compatible contracts; no required end-condition/acceptance obligation without a path to credible verification evidence. Verification must test against **upstream owning acceptance/requirements directly**, not only against a possibly mistaken solution contract. Balad judges upstream semantic authority and cross-Space handoffs; each invoked Space validates **its own received input conformance**, not the whole upstream project.
+
+Distinguish:
+- **Structurally covered (provisional):** all *known necessary* outcomes have a plausible connected dependency/assurance path, and uncertainty is clearly bounded. This is **not** proof that future outputs exist or that every downstream detail is settled.
+- **Execution-validated:** actual authorized producers supplied outputs, real consumers accepted compatible versions, and tests/reviews demonstrate the relevant end-condition claims. A diagram, proposal or declared PASS is insufficient.
+
+Keep a compact graph (ASCII, Mermaid or simple dependency table) when it aids technical judgment; do **not** add a mandatory graph store, schema, Space catalog or workflow engine.
+
+### Map graph responsibilities to existing Spaces, then formation candidates
+
+**Only after the outcome graph is understood**, inspect actually accessible, current Space definitions and their authoritative scope, status, I/O contract, capability/knowledge/assurance bounds and runnable evidence. Check the real Harscode research/operational sources and any explicitly configured local Space definition location; a folder name, guide or historical experiment is **not** evidence that a reusable formed Space exists. If no usable existing Space is found, report that rather than inventing reuse.
+
+For each material responsibility, classify **reuse / adapt / form / conditional / unresolved** and explain the fit:
+- **Reuse:** actual existing definition with compatible purpose, input/output obligations, status and project-binding requirements; do not equate "exists" with "ready to invoke".
+- **Adapt:** an existing capability can be changed within a coherent scope; material contract/authority changes still need approval.
+- **Form:** no suitable capability exists; propose a distinct bounded responsibility that justifies formation cost, not a relabelled workflow phase.
+- **Conditional/unresolved:** downstream design/authority/evidence is too uncertain to commit; show what determines its eventual mapping.
+
+**Space boundaries need not match graph nodes.** A Space can own multiple tightly coupled results, while one logical outcome may require several Space outputs. Compare minimal compositions based on coherent contracts, safe execution, reuse and assurance independence. Avoid premature proliferation, but never merge responsibilities solely to reduce Space count at the expense of real authority/security/independence boundaries.
+
+After mapping, choose the **nearest justified formation frontier** and detail only what its actual input contract and execution-readiness review require. Leave other mapped Spaces provisional until new evidence warrants formation. Human approves formation separately from invocation, and neither is granted by a clean dependency graph.
 
 ## 3. Required logical content of a formed Space
 
@@ -63,11 +93,13 @@ Verify **actual** harness mechanics at formation: whether the relevant repositor
 
 ## 6. Report format and completion claims
 
-Report only the granularity needed for Human judgment:
-- **Verified input/readiness** — accepted authority, material gaps versus open engineering choices.
-- **Composition reasoning** — minimum justified Space responsibilities and immediate/conditional I/O dependencies; consider reuse/adaptation before creating.
-- **First formation candidate** — rationale, Agent capabilities, knowledge/tool needs, independent assurance and contract outline.
-- **Blockers / permission request** — exact gap and what Human decision/write scope is needed.
+Report **conclusion and recommended next action first** in direct language. For substantive composition reviews, provide only the structure needed for Human judgment:
+- **Authority and end-condition readiness:** source/baseline, accepted outcome, verified versus unknown.
+- **Provisional end-to-end outcome graph:** producer-to-consumer edges, actual parallelism/joins, assurance/acceptance path and clearly conditional segments. Do not imply graph nodes are preapproved Spaces.
+- **Material chain gaps and capability mapping:** missing/incompatible I/O, acceptance obligations without verification, and real existing-Space evidence versus adapt/form/conditional candidates.
+- **First actionable frontier:** smallest justified formation candidate or other next decision, its input/output boundary and Specialist/knowledge/runtime needs; blockers and exact Human approval/write scope.
+
+Use small tables/diagrams when they improve precision, with short reasoning for non-obvious choices. Do not demand a four-part dossier for a simple exchange or claim execution validation from a provisional chain.
 
 Use precise states: **PROPOSED** (analysis only), **FORMED / UNVERIFIED** (definition exists, capability unproven), **READINESS-CHECKED** (state exactly which checks passed), **INVOCATION-AUTHORIZED** (only after valid approval), **OUTPUT VERIFIED** (only from actual execution evidence). These are **communication labels**, not a mandatory workflow engine or file-state schema.
 
