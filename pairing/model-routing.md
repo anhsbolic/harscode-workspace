@@ -1,64 +1,70 @@
 # Balad Model Routing — Station 5 Research v0
 
-> **Status:** Experimental guidance for Balad and formed Spaces on `research/harscode-purpose-llm-fit`. Not operational `main` policy, a Codex-native model config, or an automatic execution/approval mechanism.
-> **Authority:** Human owns usable model policy; Balad recommends bounded choices and respects gating. See [Workspace Init](workspace-init.md), [Space Formation](space-formation.md), and relevant Codex guidance in `../harness-optimization/codex/`.
+> **Status:** Experimental guidance on `research/harscode-purpose-llm-fit`. Not Harscode operational `main` policy, native Codex configuration, an execution engine or an automatic authorization mechanism.
+> **Authority:** Human owns `available_models` inventory and all model/effort policy. Balad reads the registry, assesses task fit, proposes routes and respects Human gates. See [Workspace Init](workspace-init.md) and [Space Formation](space-formation.md).
 
-## Why a local registry
+## Intent and scope
 
-Model selection should be **per concrete Specialist Agent assignment / invocation need**, not one permanent model per Space or a hardcoded model assigned to old workflow stages. One Space may contain a solution specialist, builder and independent reviewer with materially different requirements. A *reusable Agent Profile* describes capability demand, while *local runtime binding* resolves available model and reasoning effort for the task.
+Select **a model + configured reasoning effort for each real Specialist Agent assignment**, not one immutable model per Space or one model per old workflow phase. Reusable Agent capability requirements differ from local invocation binding. A configured registry is **Human-declared policy**, not runtime proof of access, competence, pricing, outcome quality or session identity.
 
-The local registry is a Human-approved **policy and discoverability surface**, not proof of current availability, skill, price, latency, guaranteed performance or permission. Do not construct a model catalog service or keep duplicate registries.
+Station 5 initially targets one configured `codex-cli` harness. Do not introduce a multi-harness catalog, vendor adapters, automatic fallback, a runtime dispatcher or a model leaderboard before real requirements justify them.
 
-## Registry ownership and proposed shape
+## Human-owned model inventory
 
-Add entries to `<workspace-root>/.harscode-local.yaml` only after the Human confirms applicable locally offered models. All examples below are **illustrative placeholders**, **not claims of available real models**:
+`<workspace-root>/.harscode-local.yaml` contains `available_models`. Only the Human decides which model IDs are offered, their task-suitability hints, relative cost preference and each permitted effort's approval state.
+
+Balad:
+- MAY read the registry, inspect runtime evidence **on request or when necessary to verify an impending route**, point out mismatches and **propose** a change.
+- MUST NOT autonomously populate the registry during `workspace-init`, self-approve a model or effort, silently broaden availability, or alter the Human's policy to facilitate dispatch.
+- MAY mechanically apply **exact Human-approved changes** after separate scoped write authorization; Human remains the authorizing owner. A Human can instead edit the local YAML directly.
+- MUST NOT treat a missing/empty/old-style entry as unrestricted permission.
+
+## Registry shape and unambiguous effort policy
+
+This is a **generic example**, not a claim that any example-model ID exists:
 
 ```yaml
 available_models:
-  - id: example-standard-model
+  - id: example-model
     capabilities: [reasoning, coding, repository-work]
-    supported_reasoning_efforts: [low, medium, high]
+    reasoning_efforts:
+      low: allowed
+      medium: allowed
+      high: human_approval
     cost_tier: standard
-    approval_required: false
-
-  - id: example-advanced-model
-    capabilities: [reasoning, architecture, cross-cutting-analysis, coding]
-    supported_reasoning_efforts: [medium, high]
-    cost_tier: high
-    approval_required: true
 ```
 
-Minimum fields:
-- `id`: exact identifier that the chosen local runtime actually understands; verify against Codex/session/provider access, not merely online model catalogs.
-- `capabilities`: coarse **Human-assessed** suitability tags, not benchmark truth; refine from observed task evidence.
-- `supported_reasoning_efforts`: actual runtime-supported selectable values. They are model and harness dependent; check live.
-- `cost_tier`: **Human-declared relative resource/latency/usage preference**, e.g. low/standard/high; not an invented exact API price or guarantee.
-- `approval_required`: Human-defined model-use gate, separate from project/Space permissions and protected work approvals.
+Per entry:
+- `id`: exact local runtime-recognized identifier. Confirm against the current Codex installation and user access when routing.
+- `capabilities`: coarse Human-assessed suitability hints, **not proven benchmarks**. Examples: `reasoning`, `coding`, `repository-work`, `cross-cutting-analysis`. Avoid presenting `security-risk` as a guaranteed model capability; the assignment's risk and assurance duties are separate.
+- `reasoning_efforts`: one mapping from **runtime-supported effort name** to the Human's **selection policy** for that *model+effort* pair:
+  - `allowed`: Balad may select this pairing without an **additional model/effort-choice approval**. This is not permission to form/invoke a Space or bypass tool/path/project safeguards.
+  - `human_approval`: before selecting or dispatching this pairing for a concrete invocation, Balad must obtain Human approval for that exact choice and scope. If the approval is absent or expired/outside scope, stop and ask. Approval must not silently carry over to unrelated work.
+- **Absent effort**: not configured/eligible. Do not infer it from vendor documentation or earlier runtime observations. A key being present expresses Human-configured support and policy, but **actual** runtime support/access must still be checked when material.
+- `cost_tier`: Human-selected relative resource preference (`low`, `standard`, `high`), not an exact bill, performance ranking or entitlement guarantee.
 
-**Ownership:** Balad may discover available models, compare vendor/runtime documentation, spot stale metadata and **propose** a registry update. It must not quietly add/remove models, elevate capabilities, change cost tier or approval requirements, or mark an unverified model as verified. Human approval of a change precedes applying it. Avoid treating a previous pilot's real-looking model identifiers, cost labels or reasoning values as current inventory.
+**No separate blanket `approval_required`, `supported_reasoning_efforts`, or `auto_select_efforts` in this schema.** Their old combinations are ambiguous and **not a recognized grant** under this candidate. Existing configs using old fields require explicit Human reconciliation before a model-dependent invocation; don't silently translate `approval_required: false` to universal `allowed`.
 
-Registry may remain empty during read-only formation assessment; if no usable authorized model is configured, Balad may recommend capabilities and list the gap but **cannot claim a model-routed Space ready for invocation**.
+This policy is **fail-closed**: unknown status values, duplicate model entries, unsupported effort names, conflicting old and new fields, missing approval evidence, or runtime mismatch cause `NOT READY` for the affected pairing. Do not choose another model/effort silently to evade a gate.
 
-## Model selection algorithm (reasoning guidance, not automation)
+## Selection, approval and runtime binding
 
-1. **Identify actual assignment:** first determine whether a Space/Agent needs execution at all. Do not select a model before the task, accepted I/O contract, Agent capability demands and assurance boundary are understood.
-2. **Assess sufficient capability:** consider reasoning complexity, uncertainty, repo breadth, product/technical risk, code/test/tool needs, independence obligations, context pressure and empirically known strengths/weaknesses. A stronger model cannot correct missing authority, an absent tool or compromised review independence.
-3. **Filter by authorized inventory:** eligible models must be Human-approved, capable enough **for this task**, actually accessible to the selected Codex runtime, and compatible with required tools, reasoning effort, and approval constraints. Model declaration alone is not executable proof.
-4. **Choose fit-for-purpose:** among sufficiently safe candidates, prefer lower practical cost/latency/usage, without sacrificing correctness or material safeguards. Choose a sufficient supported reasoning effort, not automatically maximum. Harder design/review may justify a different model from routine implementation even inside one Space.
-5. **Explain a consequential route:** for an actual invocation, state Specialist Agent/assignment, model, effort, basis for sufficiency, significant uncertainty and approvals; keep the rationale short when obvious.
-6. **Fail closed on a material gap:** if no approved suitable model is available or runtime support is unverified, mark routing **NOT READY**, propose the minimum registry/evidence/permission change, and ask the Human. Do not silently downgrade, upgrade to a gated model, or invent a fallback.
-7. **At invocation, verify effective binding:** resolve the actual selected model/effort with native Codex controls and check the observed session config where possible. A recommendation in YAML or Markdown is **not** a runtime switch. Record what was actually used with task output evidence when material.
+1. **Determine the actual assignment** and accepted Space I/O contract first; no model routing merely because Balad is coordinating settled facts.
+2. Identify material complexity, uncertainty, code/tool requirements, risk, independence/assurance duties and concrete Specialist capability needs. A larger effort does not inherently make a model safe for a security-critical task.
+3. Read the Human-owned registry. Filter for sufficient task fit, supported local runtime, configured `reasoning_efforts`, and applicable project constraints. A model absent from the registry is not eligible.
+4. Among sufficiently capable, permitted candidates, favor the lower suitable resource/latency effort **without weakening correctness or required assurance**. Use real execution evidence to calibrate suitability. Do not automatically maximize effort.
+5. For `allowed`, proceed with **model-choice selection only** if the separate Space formation/invocation and tool permissions are valid. For `human_approval`, present **model ID + effort + concrete task/scope + reason** and wait for explicit Human authorization before initiating that exact pairing.
+6. Before invocation, verify the effective model/effort using the harness's **native** controls and report what was observed. The Harscode YAML cannot select/provision Codex models, provide credentials or bypass runtime/sandbox security.
+7. If no suitable, authorized or runnable pairing exists, mark the **affected invocation NOT READY**, state the smallest gap and ask the Human. No silent downgrade, unapproved upgrade, or substitute model.
 
-## Balad model versus Specialist model
+**Independent review/verification is an execution-assurance boundary**, not automatically achieved by changing model IDs or effort. Two Specialist Agents sharing one model can still have materially independent context depending on actual verified execution setup; different IDs alone do not prove independence.
 
-Balad operates as **one logical external Pairing role**. Its current Codex session model may be operator-selected independently. Do not introduce mandatory `balad.default_model` or `escalation_model` fields before a concrete usage problem justifies them; keep the v0 config small. If Balad lacks reasoning capability for a consequential judgment, it should report the limitation and recommend Human-led session/model selection rather than claiming it can secretly upgrade itself.
+## Balad session versus Specialist invocation
 
-Specialist model choice occurs at **Space binding/invocation**, not by global permanent assignment. Balad may recommend it during formation; the Space uses it only once formed, input-ready and invocation-authorized. For a multi-Agent Space, select per Specialist when runtime supports it; if a shared-model limitation exists, disclose that limitation and adjust the design/assurance honestly. Do not claim independent assurance solely because two Agents have distinct model IDs.
+Balad is **one logical Human-facing Pairing role**. The Human's Balad Codex session model can be chosen separately; do not invent default/escalation model fields. Specialist model/effort is decided at Space binding and checked again at invocation. The first C1 Space invocation remains separately Human-authorized even if its model+effort policy is `allowed`.
 
-## Evaluation and calibration
+## Evidence and evolution
 
-Maintain the smallest useful evidence of suitability: actual C1 task quality, rejected/accepted errors, verified outcomes, unexpected cost/latency, runtime failures and Human assessment. Avoid a speculative benchmark/rating system or synthetic model leaderboard before meaningful real comparisons. Changing the registry does not change project product authority or retrospectively upgrade a failed run to PASS.
+Treat the Human's local CLI catalog observations as scoped evidence of available effort names, not proof that a model succeeded during a session. For each consequential route, preserve only the evidence needed to know what was **selected, approved and actually used**. Do not claim a plausible registry as empirical capability validation.
 
-## Runtime boundary
-
-Codex supports model selection and model-dependent reasoning controls through its own CLI/config/session mechanisms. **`.harscode-local.yaml` is a Harscode metadata file, not Codex's native `config.toml`.** No shell command or specific model ID should be assumed without verifying the operator's installed CLI and current runtime support. The local model registry cannot grant network/filesystem permissions, bypass Human approval, or provision a model absent from the user's access.
+Future multi-harness support (e.g., OpenCode with provider/model IDs and variants) remains a separate possible extension. Do not normalize unrelated harness variant semantics into Codex effort names without verifying the need and runtime behavior.

@@ -23,7 +23,7 @@ Your job is to understand the intent, locate trustworthy current input, challeng
 ## Workspace initialization and model routing
 
 - If the Human asks to **initialize or repair a multi-repo workspace root**, load [Workspace Init](workspace-init.md). A supplied absolute root path is intent for bounded discovery, **not automatic permission** to write outside Codex's current sandbox. Root `AGENTS.md` and `.harscode-local.yaml` are the minimal proposed local surfaces, not project authority. Preserve existing user-authored material.
-- For selecting models and reasoning effort for Specialist Agents, load [Model Routing](model-routing.md) and the Human-owned local `available_models` registry. Choose per actual Agent assignment; don't conflate a reusable Space with one permanently assigned model. A model registry entry is not proof of runtime availability or authorization. Never silently alter Human-owned model policy.
+- For selecting models and reasoning effort for Specialist Agents, load [Model Routing](model-routing.md) and the Human-owned local `available_models` registry. **Human populates and controls inventory plus per-effort gates; Balad does not autonomously set them up**. Choose per actual Agent assignment; `reasoning_efforts` maps each configured effort to `allowed` or `human_approval`. A model registry entry is not proof of runtime availability, permission to invoke a Space, or unrestricted effort choice. Never silently alter Human-owned policy.
 - No requirement to fill the model registry merely to discuss readiness. Before a model-dependent Space invocation, verify actual available model, sufficient capability, selected reasoning effort and approval boundary.
 
 ## Authority and boundaries

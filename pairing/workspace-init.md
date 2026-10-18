@@ -21,7 +21,7 @@ Example Human intent: "Lur, init Harscode workspace di <absolute-path>, cek yang
 
 1. **Locate:** Resolve the supplied absolute root path; confirm it exists, is the intended directory, and contains the expected Harscode research checkout. Do not infer a user home path, create a new root or change current Git branches. Inspect symlinks and out-of-root references before trusting paths or writing.
 2. **Ground:** Read current `harscode-workspace/AGENTS.md`, `pairing/AGENTS.md`, relevant research guidance, existing root `AGENTS.md` and `.harscode-local.yaml` if present. Discover project repositories from actual directories, not assumed names. Verify Harscode research branch/ref and project branch where needed; report mismatches rather than silently checking out.
-3. **Plan:** Propose only the precise root files to create or minimally reconcile, preserving user/local instructions and any existing config. Show unexpected conflicts and ask the Human before replacing competing instructions, changing user-authored model policy, moving files or expanding write scope.
+3. **Plan:** Propose only the precise root files to create or minimally reconcile, preserving user/local instructions and any existing config. For a missing config initialize `available_models: []` and let the Human populate its entries later. Show unexpected conflicts and ask the Human before replacing competing instructions, changing user-authored model policy, moving files or expanding write scope.
 4. **Authorize and write:** Only after explicit Human authorization for these **root-local files**, perform bounded file creation/editing. When starting Codex in `harscode-workspace/`, its default sandbox may not allow writes to the parent root; do not bypass permissions with symlink tricks, blanket unsafe flags or command delegation. Request a safe scoped approval or have Human apply the proposed patch if necessary.
 5. **Verify:** Check created file content and path resolution, routing to Balad and project-owned `AGENTS.md`, no accidental repository changes, no secret leakage and idempotent behavior when invoked again. Distinguish **workspace routing ready** from **model routing ready** and **Space invocation ready**.
 6. **Handoff:** Tell the Human how to start a new Codex CLI session **at workspace root**, and that a normal short Balad prompt may now be used. Do not bootstrap Space operational state or dispatch work.
@@ -56,13 +56,15 @@ projects:
 runtime:
   harness: codex-cli
 
-# Human-owned registry; fill only from verified/approved local availability.
+# Human-owned model inventory and per-effort selection policy.
+# Balad leaves it empty during workspace initialization.
 available_models: []
 ```
 
-- The model registry is part of **minimum structural config** because Balad will later select models for Specialist Agents in Spaces. An empty registry is valid for initial workspace discovery and **read-only Pairing assessment**, but **not sufficient for model routing or execution readiness**.
-- Do not fabricate model IDs, tool availability, costs or supported reasoning levels from the previous Orchestrator pilot. Balad may ask for actual model availability and propose model entries; the Human explicitly accepts/edits registry metadata before it becomes selectable.
-- `available_models` entry semantics and selection are owned by [Model Routing](model-routing.md), not by this local setup file. Do not add separate default/escalation models or a full launcher registry until a real need is demonstrated.
+- The model registry is part of **minimum structural config** because Balad will later select models for Specialist Agents in Spaces. An empty registry is valid for initial workspace discovery and **read-only Pairing assessment**, but **not sufficient for model-dependent Space invocation**.
+- **Human owns and populates `available_models`**, including model IDs, qualitative capability hints, cost tiers and each configured model+effort policy. Workspace initialization must **not** discover/fill models by default, copy entries from an old pilot or grant unrestricted usage. Balad may identify gaps and offer an exact proposed change; only Human-approved edits may be applied within separately authorized write scope.
+- The current schema uses `reasoning_efforts: {effort: allowed | human_approval}` per model; see [Model Routing](model-routing.md) for authoritative research semantics. Do **not** emit legacy `approval_required`, `supported_reasoning_efforts` or `auto_select_efforts` in new configs. An existing old-style registry needs explicit Human reconciliation, not silent conversion.
+- Do not add default/escalation models, model registries per project, or a launcher service until real use justifies them.
 - An actual Codex model/effort must be selected through the runtime's supported controls; writing Harscode YAML **does not switch or provision** Codex models.
 - `harscode_state_root` is **only a path pointer**. Never auto-create `harscode-state` contents, a snapshot, audit history or a Run registry.
 - Project entries name local repositories and location, not their product authority, branch selection, approved task or identity.
@@ -80,7 +82,7 @@ Report concrete observed:
 - Files **created / updated / unchanged / blocked**.
 - Root Balad routing and each configured relative path successfully resolved (or why not).
 - Runtime harness declaration versus actual CLI/tool availability, including unverified claims.
-- Model registry status: missing, empty, Human-confirmed, or environment-invalid; do not equate config presence with availability.
+- Model registry status: missing, empty, Human-configured, needing legacy-policy reconciliation, or runtime-invalid; do not equate config presence with availability or a runnable route.
 - Next safe action and any required scoped Human decision.
 
 `workspace-init` is complete only for the checks actually performed. It **never** certifies a formed Space, appropriate model selection, valid C1 project authority, or authorized execution.
