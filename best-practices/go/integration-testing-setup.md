@@ -1,54 +1,44 @@
-# go/examples.md
+# Go Integration Testing with Real Dependencies
 
-> Real-world references for files in `go/`. Kept separate from the principle
-> files themselves so those stay project-agnostic — this file is where the
-> concrete, implementation-level detail lives instead.
->
-> Entries added only via `proposals/` review (see `proposals/README.md`) —
-> not agent-appendable directly, unlike `techplan/examples.md`.
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** Go integration verification of database constraints, transactions, persistence, HTTP wiring or external adapters.
+> **Triggers:** integration test, PostgreSQL, test database, migration, transaction, contract, build tag.
 
----
+## 01 — Applicability
 
-## For: `integration-testing-setup.md`
+Use integration tests for behavior that fakes cannot establish: actual SQL, schema constraints, transaction visibility, concurrency across database connections, and end-to-end adapter/transport integration. Pure functions and isolated policies can use unit tests.
 
-**Context:** Kencleng backend, account domain, MFA TOTP task (#06).
-Testing-phase report on the DB-backed integration suite for enroll/
-confirm/disable MFA.
+## 02 — Principle / Rule
 
-**What happened:** an integration test helper
-(`TestMfaBackupCode_SingleUseAndDisabledInvalid_RealDB`) opened a
-transaction as a no-op probe — `tx, _ := svc.tx.BeginTx(ctx); _ = tx` —
-and never committed or rolled it back. That single leaked `pgx.Tx` held
-a pooled connection in transaction state for the rest of the test
-binary's life. Combined with a genuinely long, separate concurrent-DB
-test (100 goroutines confirming MFA against the same real Postgres
-instance), the pool was exhausted quickly enough that a subsequent
-`go test -tags=integration -run 'TestMfa...'` run **hung past a 240 s
-timeout** with no explicit `-timeout` set to fail it fast.
+- Run consequential integration tests against a suitably isolated real dependency and schema version; never point tests at production or reuse shared live data without explicit permission.
+- Make environment prerequisites, invocation command, migrations and cleanup deterministic enough to reproduce evidence.
+- **Build tags are a project choice**, not a universal Go requirement. If isolated with `//go:build integration`, use `go test -tags=integration ./...`; tests behind the tag do not run during ordinary `go test ./...`.
+- Verify observable committed state and the relevant negative path, not just mocked method calls.
+- Do not silently report integration PASS when a missing database caused tests to be skipped.
 
-It got worse from there: the hung test binary didn't fully exit when
-the run was aborted. A later, entirely unrelated chained command
-(`go build && go vet && go test ...`, 180 s budget) also timed out —
-not because build/vet/the new test run were themselves slow, but
-because the orphaned `account.test` process from the earlier hang was
-still alive and still contending for connections against the same
-database. Only after that orphan process was manually killed did
-ordinary unit runs return to their normal ~7 s.
+## 03 — Rationale & Risk
 
-**Disposition:** the tx leak was fixed (explicit deferred
-rollback/commit) but, notably, the fix itself was **not re-verified by
-execution** in the same session — it was compile-checked only, per
-direction to skip the integration/race runs rather than risk another
-hang. The fix landed in the codebase carrying an explicit "unverified"
-flag in the testing report until a follow-up run confirms it.
+Mocks can conceal invalid SQL, migrations, isolation mistakes and lack of constraints. Non-isolated tests pollute state or produce order-dependent false positives. A misleading skipped suite is not evidence.
 
-**Generalizable takeaway:** a leaked transaction in test code doesn't
-fail loudly — it fails as a hang, and specifically as a hang that gets
-worse over the life of a test binary (each additional leaked tx eats
-one more pooled connection) and can bleed into completely unrelated
-later commands if the process isn't confirmed dead. The fix isn't just
-"remember to commit" — it's structural: guard every test-helper
-`BeginTx` with `defer`, always run DB-backed suites with an explicit
-`-timeout` so a leak fails fast and visibly instead of hanging
-silently, and treat "confirm no orphan test process before the next
-DB-backed run" as a real step, not an edge case.
+## 04 — Application Guidance
+
+1. Define a separate, disposable test database/namespace; use a known migration state and intentionally nonproduction credentials.
+2. Establish test preconditions and teardown. When tests run in parallel, isolate data per test or use independent databases; a shared cleanup can erase another test's evidence.
+3. Prefer explicit fixture creation and assertions on committed rows, relationships, error categories and post-failure state.
+4. For HTTP integration, exercise real handlers and service wiring; when authentication/authorization matters, test genuine trust boundaries rather than injecting an omnipotent fake.
+5. Record commands, test environment and exact skipped/failing cases. Tag or separate heavy suites only if doing so helps predictable execution.
+6. Keep previously documented historical Kencleng examples in historical evidence, not as portable primary test principles.
+
+## 05 — Verification
+
+At minimum run the focused integration command against the prepared database; check actual DB state after success and forced failure. For concurrent invariants launch truly overlapping transactions and assert one legal outcome; separately add `-race` where shared-memory races are plausible. State what did not run.
+
+## 06 — Boundaries & Trade-offs
+
+Real dependencies increase cost and setup. A small isolated unit test may be sufficient for pure behavior. Not every integration test needs a container runner or special build tag. Integration tests are necessary where DB correctness is claimed but not sufficient to prove full security/UX correctness.
+
+## References
+
+- https://pkg.go.dev/cmd/go#hdr-Build_constraints
+- https://go.dev/doc/articles/race_detector
+- https://www.postgresql.org/docs/current/transaction-iso.html

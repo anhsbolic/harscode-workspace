@@ -1,55 +1,42 @@
-> **Location:** `best-practices/restapi/idempotency-and-versioning.md`
+# REST API Idempotency, Retry and Compatibility
 
-# Idempotency & API Versioning
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** State-changing HTTP endpoints, retries, and contract evolution.
+> **Triggers:** POST, create, retry, duplicate, idempotency key, timeout, versioning, API compatibility.
 
-## 1. Non-idempotent POST endpoints double-execute under retry
+## 01 — Applicability
 
-**Principle:** Clients (and infra — load balancers, mobile apps with flaky networks, retry middleware) retry requests that time out, without knowing whether the original request actually succeeded server-side. A `POST` that isn't idempotent will duplicate side effects (double charge, duplicate order, duplicate email) on retry.
+Apply when network retries, duplicate user actions, proxy replay, concurrent submissions or API contract changes can create an observable effect. Read-only endpoints and explicitly safe methods have different obligations from create/mutate operations.
 
-**Why this happens:** the endpoint's logic is written for the "happy path — one call, one execution" and idempotency is treated as an edge case to handle later, if at all.
+## 02 — Principle / Rule
 
-### Bad
-```go
-func (h *Handler) CreateOrder(w http.ResponseWriter, r *http.Request) {
-    order := parseOrder(r)
-    id := h.repo.Insert(ctx, order) // every call inserts a new row
-    respondJSON(w, order)
-}
-```
-A client that times out waiting for the response and retries creates two orders.
+- Identify the requested operation's **observable effect** and whether repeat submissions may execute it more than once.
+- Do not assume an ordinary `POST` is idempotent. For operations where duplicates matter, design and verify an applicable deduplication, uniqueness, idempotency-key or recovery strategy.
+- Treat timeout/network failure after dispatch as **outcome unknown**, not automatically failed or safe to repeat.
+- If using an idempotency key, scope it to the correct principal/operation, bind it to request meaning, define retention and concurrency behavior, and replay a compatible result; do not let the same key authorize a different payload.
+- Keep clients/server aligned with the actual accepted OpenAPI contract. Distinguish additive from breaking changes, and plan compatible rollout or versioning when needed.
 
-### Good
-```go
-func (h *Handler) CreateOrder(w http.ResponseWriter, r *http.Request) {
-    idempotencyKey := r.Header.Get("Idempotency-Key")
-    if existing, found := h.repo.FindByIdempotencyKey(ctx, idempotencyKey); found {
-        respondJSON(w, existing) // return the original result, don't re-execute
-        return
-    }
-    order := parseOrder(r)
-    h.repo.InsertWithIdempotencyKey(ctx, order, idempotencyKey)
-    respondJSON(w, order)
-}
-```
-The client generates a unique key per logical operation (not per HTTP attempt) and sends it on every retry of that same operation.
+## 03 — Rationale & Risk
 
-**Checklist:**
-- Any `POST`/`PATCH` endpoint that creates a resource or has a side effect with real-world consequences (payment, notification, external system call) should support an idempotency key.
-- `GET`, `PUT` (full replace), and `DELETE` are idempotent by HTTP semantics already — don't add unnecessary idempotency-key machinery there, but verify the implementation actually honors that semantics (a `PUT` that appends instead of replaces silently breaks the contract).
+Retry-after-timeout can create duplicate resources/grants, while blindly suppressing replays can strand valid requests. Contract drift can make a client interpret an incomplete/failed operation as success.
 
----
+## 04 — Application Guidance
 
-## 2. Breaking changes without a versioning strategy force lockstep client/server deploys
+1. State whether multiple identical create requests should return one resource, a conflict, or multiple independent resources; derive this from owning requirements.
+2. Choose DB uniqueness/transaction guarantees for domain invariants; layer idempotency keys if API semantics and retry behavior call for them. They solve different problems.
+3. For a stored key, enforce atomic claim/result recording or equivalent concurrency-safe semantics; define response for concurrent in-flight duplicates and payload mismatch.
+4. On uncertain client outcome, prefer a safe status lookup or properly scoped retry mechanism rather than a blind second create.
+5. Keep method, status, error and response-body semantics synchronized with the contract, including conflict and retry conditions.
 
-**Principle:** Removing a field, changing a field's type, or changing validation rules on an existing endpoint breaks any client still expecting the old contract — and REST has no built-in mechanism (unlike GraphQL's deprecation directive) to warn clients before it happens.
+## 05 — Verification
 
-### Bad
-Editing `GET /v1/orders/{id}` response shape in place — renaming `total` to `totalAmount` — with no transition period. Every client (mobile app in app-store review, external partner integration) breaks simultaneously at deploy time.
+Test same-key/same-payload replay, same-key/different-payload denial, simultaneous requests, timeout after commit, error before commit, expiry/retention rules and multiple principals **only where that mechanism is selected**. Assert actual durable effects; check OpenAPI/client response compatibility.
 
-### Good
-- **Additive changes** (new optional field, new endpoint) ship without versioning concerns.
-- **Breaking changes** get a new version (`/v2/orders/{id}`) or, for smaller contracts, an explicit deprecation window: keep both old and new fields present simultaneously, document the migration, remove the old field only after confirming no active clients depend on it (via access logs / header telemetry).
+## 06 — Boundaries & Trade-offs
 
-**Checklist:**
-- Before changing an existing endpoint's response shape, classify the change: additive (safe) vs breaking (needs versioning or deprecation window).
-- Track which API version(s) active clients are actually calling (via logs or an explicit version header) before removing anything — "probably nobody uses the old field" is not a verification step.
+A generic best practice cannot demand idempotency keys on every endpoint. Domain uniqueness does not equal user-intent replay deduplication. Retention and request identity carry storage/privacy costs. No automatic version bump is required for every additive API change.
+
+## References
+
+- https://www.rfc-editor.org/rfc/rfc9110.html
+- https://www.rfc-editor.org/rfc/rfc9457.html

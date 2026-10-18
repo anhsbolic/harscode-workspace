@@ -1,45 +1,42 @@
-# go/examples.md
+# Go Concurrency and Race Verification
 
-> Real-world references for files in `go/`. Kept separate from the principle
-> files themselves so those stay project-agnostic — this file is where the
-> concrete, implementation-level detail lives instead.
->
-> Entries added only via `proposals/` review (see `proposals/README.md`) —
-> not agent-appendable directly, unlike `techplan/examples.md`.
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** Go shared-memory concurrency, concurrent HTTP requests, transaction races and race-sensitive invariants.
+> **Triggers:** goroutine, concurrency, data race, locking, duplicate request, transaction conflict, go test -race.
 
----
+## 01 — Applicability
 
-## For: `testing-concurrency.md`
+Use when goroutines share mutable data, requests can overlap, or correctness depends on ordering and concurrent effects. Distinguish *Go data races* from *database logical races*: neither test class replaces the other.
 
-**Context:** Kencleng backend, account domain, MFA TOTP task (#06).
-Testing-phase report comparing a full-package `-race` run against a
-scoped one, same package, same session.
+## 02 — Principle / Rule
 
-**What happened:** `go test -race ./internal/domain/account/...` — the
-full account package, unscoped — took **319 s (5.3 min)**. The account
-package's non-MFA tests are a heavy bcrypt-backed unit suite
-(registration/login run real `bcrypt.GenerateFromPassword`/
-`CompareHashAndPassword` at production-equivalent cost, and the
-register timing-parity tests deliberately burn comparable bcrypt on
-every branch to defend against timing attacks) — the race detector
-roughly doubles all of that instrumentation cost on top.
+- Avoid unsynchronized shared-memory read/write access; prefer clear ownership, synchronization or message passing as fits the actual design.
+- Run `go test -race` on targeted packages/test suites when shared-memory concurrency matters. The race detector only detects races on **executed paths**, not all possible races.
+- Test application/database invariants under genuinely overlapping operations (duplicate requests, concurrent claims, conflicting updates), not merely sequential calls or a race-detector pass.
+- Bound goroutine lifetime and ensure tests wait for spawned work to finish; do not create timing-only tests that routinely pass without exercising the contested interleaving.
 
-The same MFA-specific race coverage, scoped with `-run 'TestMfa'`
-against the exact same package, took **17 s** — roughly 19x faster,
-for tests that themselves hadn't changed at all. The slowdown was
-entirely attributable to unscoped `-race` picking up every other test
-in the package, most of which had nothing to do with what was actually
-being verified.
+## 03 — Rationale & Risk
 
-**Generalizable takeaway:** `-race`'s cost isn't fixed per test — it's
-proportional to everything caught in scope, and scope is controllable
-two ways, not just one. Package-level scoping (`./internal/x/...` vs
-`./...`) is the coarse lever; `-run` scoping by test name is the fine
-one, and the two compound — a package that's slow for reasons entirely
-unrelated to the code actually under test (here: bcrypt cost in
-sibling tests) is exactly where `-run` scoping earns back the most
-time. This is concrete evidence for `testing-concurrency.md`'s
-checklist item on scoping race runs to areas with genuine
-shared-state/concurrency risk: scope to the *tests*, not just the
-package, when a package mixes concurrency-relevant code with
-unrelated, independently-slow tests.
+A concurrent map access can panic or corrupt state. A race-free Go program can still allow a database check-then-insert conflict, duplicate effect or lost update. Arbitrary sleeps make flaky tests and provide weak concurrency coverage.
+
+## 04 — Application Guidance
+
+1. Identify specific shared state and invariants, then choose synchronization/ownership intentionally.
+2. Use barriers/channels or test-controlled coordination to cause meaningful overlap; assert legal final states and exactly-once outcomes only where required.
+3. Run focused tests with `-race` when supported and repeat stress cases where useful; capture race reports and treat observed races as failures.
+4. For PostgreSQL races, use real separate connections/transactions, actual isolation levels and constraints; see `../postgresql/transactions-and-locking.md` and `integration-testing-setup.md`.
+5. Assert failure/timeout cleanup so goroutines and locks cannot survive the test unboundedly.
+
+## 05 — Verification
+
+Document test command, number/type of concurrent actors, whether actual overlap was demonstrated, invariant assertions, detector result and environment. A passing `-race` run is **not** proof that all interleavings or cross-process/DB races are safe.
+
+## 06 — Boundaries & Trade-offs
+
+Race instrumentation increases runtime/memory use and is not available identically on every platform. Pure single-threaded code need not acquire concurrency tests by ritual. Historical product-specific examples may illustrate one failure but must not replace portable normative guidance.
+
+## References
+
+- https://go.dev/doc/articles/race_detector
+- https://go.dev/doc/security/best-practices
+- https://www.postgresql.org/docs/current/transaction-iso.html

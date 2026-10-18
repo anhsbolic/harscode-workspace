@@ -1,66 +1,44 @@
-# api-client-centralization.md
+# React API Client Boundaries
 
-**Location:** `react/api-client-centralization.md`
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** Browser/frontend HTTP request handling, credential modes, CSRF, retries and error contracts.
+> **Triggers:** fetch, API client, session, cookie, bearer, CSRF, 401, retry, OpenAPI, credentials.
 
-**Principle**
-Every state-changing request needs the same handful of things attached correctly: the in-memory access token, the CSRF/custom header the backend expects on state-changing endpoints, and `credentials: 'include'` for the auth cookie to travel. If each component calls `fetch` directly, these requirements get re-implemented at every call site — and it only takes one page missing one header to silently break CSRF protection or auth for that one flow, in a way that's easy to miss in review because the fetch call "looks normal." A single, centralized client is what makes `restapi/csrf-and-cookie-security.md` and `pwa/token-storage-and-refresh.md`'s guarantees actually hold everywhere, instead of being true only where someone remembered to apply them.
+## 01 — Applicability
 
-**Bad**
-```ts
-// components/DonationForm.tsx
-async function submitDonation(payload: DonationPayload) {
-  const res = await fetch('/api/donations', {
-    method: 'POST',
-    body: JSON.stringify(payload),
-    // no Authorization header, no CSRF header, no credentials — this one call
-    // silently drops all three unless someone remembers to add them here too
-  });
-  return res.json();
-}
-```
-```ts
-// components/CampaignEdit.tsx — a different page, adds credentials but forgets the CSRF header
-async function updateCampaign(id: string, payload: CampaignPayload) {
-  const res = await fetch(`/api/campaigns/${id}`, {
-    method: 'PATCH',
-    body: JSON.stringify(payload),
-    credentials: 'include', // present here, but the header below still isn't
-  });
-  return res.json();
-}
-```
+Use when several frontend calls need common transport/error behavior. Authentication transport, cookie policy, token refresh and CSRF defenses depend on **the chosen backend/session design**. Do not import a previous project's security contract by copying its client wrapper.
 
-**Good**
-```ts
-// lib/api/client.ts — single point every request goes through
-async function apiFetch(path: string, init: RequestInit = {}) {
-  const token = getAccessToken(); // in-memory, per token-storage-and-refresh.md
-  const isMutating = init.method && init.method !== 'GET';
+## 02 — Principle / Rule
 
-  const res = await fetch(path, {
-    ...init,
-    credentials: 'include', // auth cookie travels on every request, always
-    headers: {
-      ...init.headers,
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...(isMutating ? { 'X-Requested-With': 'kencleng-frontend' } : {}), // CSRF header, only where required
-    },
-  });
+- Centralize genuine shared mechanics (base URL, safe error parsing, consistent response typing, correlation/tracing, applicable credentials) **where it reduces drift**. Do not force a single global wrapper for unrelated APIs.
+- Attach authentication and CSRF headers/cookies **only according to the active backend contract and threat model**. Neither in-memory bearer token, `credentials: "include"`, nor `X-Requested-With` is universally required or sufficient to defeat CSRF.
+- Never put raw secrets in URLs/logs; do not expose untrusted server error text directly in the UI.
+- An auth-refresh flow must **actually retry** the original permitted request after successful refresh if the contract promises it; cap refresh/retry attempts and guard against loops.
+- A failed or unknown-response state-changing request cannot be blindly replayed; establish idempotency/replay safety first.
+- Treat client role visibility as UX only; protected decisions remain backend-authorized.
 
-  if (res.status === 401) {
-    await tryRefreshOnce(); // one retry after a silent refresh, not a retry loop
-  }
-  return res;
-}
+## 03 — Rationale & Risk
 
-// every fetch function in lib/api/ goes through apiFetch, never a raw fetch() call
-export const submitDonation = (payload: DonationPayload) =>
-  apiFetch('/api/donations', { method: 'POST', body: JSON.stringify(payload) });
-```
+A hardcoded template can silently choose a cookie+bearer architecture, leak token headers across origins, retry a non-idempotent create, or hide a broken 401-refresh path. Blind reuse of header conventions may create security theater rather than a real defense.
 
-**Checklist**
-- [ ] There is exactly one low-level request function (`apiFetch` or equivalent) that attaches the auth token, the CSRF/custom header, and `credentials: 'include'` — every typed fetch function in `lib/api/` calls through it, none call `fetch` directly
-- [ ] The CSRF/custom header is attached based on HTTP method (state-changing verbs), not hardcoded per endpoint — so a newly added mutation gets it automatically, not by remembering to copy it
-- [ ] A 401 response triggers exactly one silent-refresh retry, not an unbounded retry loop and not silence (a failed refresh should surface as a logged-out state, not a hung request)
-- [ ] No component or hook constructs its own `fetch` call for anything hitting the app's own backend — direct `fetch` usage outside the centralized client is treated as a review flag, not a style nitpick
-- [ ] Response error shapes (422 vs 5xx vs network failure) are normalized once in the centralized client, so every caller handles the same shape instead of each component parsing errors differently
+## 04 — Application Guidance
+
+1. Bind the client to the selected API origin and OpenAPI operations, accepted status/error shape, and actual browser/server boundary.
+2. Choose credentials mode based on same-origin/cross-origin deployment and session policy; enforce allowed origins server-side. If cookies are sent automatically for state changes, adopt an actual CSRF defense (e.g. origin checks and suitable token/header scheme), not just a decorative header.
+3. On 401, refresh only where the chosen protocol permits it, deduplicate concurrent refresh attempts when needed, and replay **at most once** only when request body and effect semantics are safely repeatable.
+4. Treat network uncertainty and application errors separately. Map failures to truthful UI states rather than always assuming creation failed.
+5. Keep generated API types consistent with the source contract; avoid handwritten competing success/error meanings.
+
+## 05 — Verification
+
+Exercise actual 2xx, expected 4xx, 401 refresh success/failure, forbidden origin/CSRF, concurrent refresh, replay prevention for mutation, timeout/unknown result and token-free logging. Confirm request method/body/headers on a real retry when enabled. Omit auth-refresh tests if no refresh protocol is selected; record non-applicability.
+
+## 06 — Boundaries & Trade-offs
+
+A simple server-rendered application may not need an elaborate API client. Cookie sessions and bearer tokens require different defenses. This guidance does not choose an identity provider, authentication architecture, token lifecycle or refresh strategy.
+
+## References
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+- https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html
+- https://www.rfc-editor.org/rfc/rfc9110.html

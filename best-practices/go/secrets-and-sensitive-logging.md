@@ -1,59 +1,43 @@
-> **Location:** `best-practices/go/secrets-and-sensitive-logging.md`
+# Go Secrets and Sensitive Data in Logs
 
-# Secrets & Sensitive Data in Logs and Errors
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** Go application logging, errors, HTTP diagnostics, personal data and credential handling.
+> **Triggers:** secret, PII, token, logging, log.Printf, slog, fmt, MarshalJSON, redaction, error chain.
 
-## 1. Logging an error value can leak whatever sensitive data it wraps
+## 01 — Applicability
 
-**Principle:** An error returned from an upstream call (HTTP client, DB driver, third-party SDK) can embed response bodies, headers, or query parameters — which may contain tokens, API keys, or PII. Logging `err` directly assumes the error's string representation is safe, which is often not verified.
+Use whenever a service logs identities, requests, errors or object structs; treat authentication, identity and sensitive personal data as higher-risk. Apply the owning project's retention, privacy, incident and audit obligations.
 
-### Bad
-```go
-resp, err := paymentClient.Charge(ctx, req)
-if err != nil {
-    logger.Error(ctx, "payment failed", err) // err might embed the full request/response, including card data or tokens
-    return err
-}
-```
+## 02 — Principle / Rule
 
-### Good
-```go
-resp, err := paymentClient.Charge(ctx, req)
-if err != nil {
-    logger.Error(ctx, "payment failed",
-        zap.String("order_id", req.OrderID),
-        zap.String("error_code", classifyError(err)), // a sanitized, known-safe classification
-    )
-    return fmt.Errorf("payment charge failed for order %s: %w", req.OrderID, err) // %w still fine for errors.Is/As internally, just don't print the full chain to an untrusted sink
-}
-```
+- Never log raw credentials, tokens, session IDs, signing keys, private payloads, unnecessary PII or full user-controlled bodies.
+- Treat wrapped errors and formatted structs as **potentially sensitive**. Formatting with `%+v` or serializing entire structs can expose fields not obvious at the callsite.
+- Prefer an explicit allowlist of safe structured fields (event name, bounded error category, trace/correlation ID, permitted pseudonymous reference) rather than a broad object dump.
+- Do **not** change a model's `MarshalJSON` solely for log redaction when the same serialization may be used for API responses, persistence or signatures. Separate log projection or explicit logger attributes from canonical serialization.
+- Prevent log injection by structuring user input or escaping control characters when unavoidable; logging an error is not proof it has been sanitized.
 
-**Checklist:**
-- Before logging an error from a third-party client/SDK verbatim, check whether that client's error type can embed request/response payloads — if so, log a sanitized summary (error code, category) instead of the raw error string.
-- This applies especially to payment gateways, auth providers, and any client interacting with systems that handle credentials or PII — assume the error *can* contain sensitive data unless the client's documentation says otherwise.
+## 03 — Rationale & Risk
 
----
+Error chains may include SQL strings, URLs with query credentials, connection strings and identifying fields. A serializer-based redaction patch can accidentally corrupt expected API or storage data while masking an observability issue.
 
-## 2. Logging a struct wholesale (`%+v`, full JSON marshal) leaks any sensitive field it contains
+## 04 — Application Guidance
 
-**Principle:** `fmt.Sprintf("%+v", user)` or `json.Marshal(user)` dumps every field, including ones that shouldn't appear in logs (password hashes, tokens, national ID numbers, full card numbers). This is easy to introduce during debugging and easy to forget to remove.
+1. Classify each logged field by purpose and exposure; keep identity/authorization decisions auditable without raw secrets.
+2. Define a minimal safe event schema: action, result, non-sensitive reason category, permitted resource reference and correlation ID.
+3. For error logging, report a stable error code/category and bounded operation name; inspect library error types before emitting their `Error()` text.
+4. Ensure client-facing errors use safe public messages while internal trace details stay access-controlled.
+5. Test logging through both success and failure paths; audit debug middleware, panic handling, HTTP clients and third-party libraries for payload logging.
+6. When a project requires PII audit data, store in the appropriate controlled channel with explicit safeguards; do not quietly omit legally material evidence or expose it in ordinary application logs.
 
-### Bad
-```go
-logger.Info(ctx, fmt.Sprintf("processing user: %+v", user)) // dumps every field, including user.PasswordHash, user.NationalID
-```
+## 05 — Verification
 
-### Good
-```go
-logger.Info(ctx, "processing user", zap.String("user_id", user.ID)) // only the fields actually needed for debugging context
-```
-For types that are frequently at risk of being logged wholesale (auth-related structs especially), implement a custom `String()`/`MarshalJSON()` method that redacts sensitive fields by default, so even an accidental `%v`/`%+v` doesn't leak them:
-```go
-func (u User) String() string {
-    return fmt.Sprintf("User{ID: %s, Email: %s}", u.ID, maskEmail(u.Email)) // no PasswordHash, no NationalID
-}
-```
+Capture representative logs from successful requests, rejected authorization, malformed input, SQL errors and retries. Seed synthetic secret markers and assert they never appear in logs, traces, metrics or client responses. Verify API and persistence serialization remain unchanged by logging-only redaction.
 
-**Checklist:**
-- Never log a struct via `%+v`/`%v`/wholesale JSON marshal if it contains credentials, tokens, or PII — log specific, deliberately chosen fields instead.
-- For structs that hold sensitive fields by design (user credentials, payment info, auth tokens), consider a custom `String()`/`MarshalJSON()` that redacts by default, as a defense against accidental wholesale logging elsewhere in the codebase.
-- Treat this as part of code review for any new struct with fields like password, token, secret, national ID, card number — check every place that struct gets logged.
+## 06 — Boundaries & Trade-offs
+
+Over-redaction can hinder diagnosis; use bounded, authorized correlation instead of raw payloads. Encryption at rest does not make logs safe. This document is not an organization's full privacy/audit retention policy.
+
+## References
+
+- https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html
+- https://go.dev/doc/security/best-practices

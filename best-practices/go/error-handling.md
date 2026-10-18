@@ -1,49 +1,43 @@
-# Error Handling & Contract Correctness
+# Go Error Handling and Result Contracts
 
-## 1. Never return a valid result alongside a non-nil error
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** Go service/repository/HTTP error contracts and partial operations.
+> **Triggers:** error, partial result, transaction, rollback, io.Reader, HTTP status, sentinel, error wrapping.
 
-**Principle:** A function returning `(result, error)` must guarantee: `err == nil` → `result` can be trusted, `err != nil` → `result` must be entirely ignored by the caller. Don't let `result` already be populated before the error has even been checked.
+## 01 — Applicability
 
-**Why this happens:** the `return x, someCall(...)` pattern looks clean and "correct" at a glance, especially when writing multi-return functions quickly. But Go evaluates both operands before the `return` executes — `x` is computed and bound regardless of what `someCall(...)` returns.
+Apply when an operation can partially complete, returns `(value, error)`, crosses boundaries or exposes failure to clients. The correct handling depends on the **documented function contract**, not a universal rule that any value accompanying an error is invalid.
 
-### Bad
-```go
-return computedResult, ths.doSideEffectingWrite(ctx, params)
-```
-`computedResult` is already non-nil even if `doSideEffectingWrite` fails. A caller that only logs the error and continues using `computedResult` will act on a value that was never actually persisted or validated.
+## 02 — Principle / Rule
 
-### Good
-```go
-if err := ths.doSideEffectingWrite(ctx, params); err != nil {
-    return nil, tracerr.Wrap(err)
-}
-return computedResult, nil
-```
-The write and the return are separate statements. If the write fails, the result is dropped along with it — there's no window where a caller can grab a stale value.
+- Define explicitly whether values accompanying a non-nil error are meaningful. Default to treating them as unusable **unless the API contract specifies otherwise**.
+- Partial result plus error can be legitimate, e.g. `io.Reader.Read` can return bytes together with a non-nil error; preserve valid partial data when its contract requires it.
+- Do not claim a failed operation succeeded because some preliminary work or response data exists. Distinguish committed, rolled back, partially completed and uncertain outcomes.
+- Wrap errors with `%w` when callers need classification; use `errors.Is/As` for stable handling. Do not expose raw internal errors to external clients.
+- Prefer explicit named constants for materially meaningful error codes/state labels rather than scattered magic strings.
 
-**Checklist:**
-- Any time you write `return a, b` where `b` is a call to another function (not a plain error literal) → check whether `a` can become stale if `b` fails. If so, split into two statements.
+## 03 — Rationale & Risk
 
----
+Blanket discarding of every partial value breaks APIs where the data is useful; blanket use of returned values after errors invents success. Accidental error swallowing, public leakage and incorrect retry decisions can violate product-state truth.
 
-## 2. Named constants for load-bearing literals
+## 04 — Application Guidance
 
-**Principle:** String/number literals whose meaning is tied to another contract in the system (another function's output format, a path convention, a key naming scheme, etc.) should be a named constant near their source of truth — not a bare literal repeated in multiple places.
+1. Write per-boundary contracts for success, validation failure, authorization denial, conflict, retryable failure, and uncertain completion as applicable.
+2. For repository and transaction functions, if atomic failure is promised, return no success payload and ensure rollback/commit outcome is correctly represented.
+3. For streaming/chunk APIs, process any contractually valid bytes before handling `err` (including `io.EOF` semantics).
+4. Map internal errors to safe client-facing codes; log only permitted bounded diagnostic fields.
+5. Separate transient from permanent failures only where justified; retries of state-changing requests require idempotency or reconciliation as appropriate.
 
-### Bad
-```go
-if strings.HasPrefix(field, "meta.") {
-```
-`"meta."` must exactly match the prefix emitted by whatever produces `field`. If that source changes its format (`meta.foo` → `meta/foo`), this check silently breaks with no compile-time error and no test failure unless someone happens to exercise this exact path.
+## 05 — Verification
 
-### Good
-```go
-// constants.go — placed near the code that owns the format
-const MetaFieldPrefix = "meta."
+Test error paths with and without partial values, committed versus rolled-back state, client-safe error responses and retry classification. For any function exposing an uncertain outcome, verify consumers do not blindly present success or duplicate effects.
 
-if strings.HasPrefix(field, MetaFieldPrefix) {
-```
+## 06 — Boundaries & Trade-offs
 
-**Checklist:**
-- A literal that appears in more than one place, or whose value derives from another function's contract (not a business value that genuinely never changes), should be a constant.
-- Place the constant near its source of truth, with a comment noting what it's coupled to, so a future change to that source is more likely to surface this dependency.
+Avoid forcing a single monolithic error taxonomy. Some APIs legitimately return partial data; other business commands must remain strictly atomic. Go language conventions do not decide project product-success semantics.
+
+## References
+
+- https://pkg.go.dev/io#Reader
+- https://pkg.go.dev/errors
+- https://pkg.go.dev/net/http#Client.Do

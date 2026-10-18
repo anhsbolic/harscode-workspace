@@ -1,91 +1,45 @@
-> **Location:** `best-practices/postgresql/transactions-and-locking.md`
+# PostgreSQL Transactions, Isolation and Locking
 
-# Transactions & Locking
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** PostgreSQL operations with multi-write consistency, concurrent decisions, lock contention or retry.
+> **Triggers:** transaction, atomicity, consistency, race, SELECT FOR UPDATE, isolation, deadlock, outbox.
 
-## 1. Long-running transactions block autovacuum and hold locks longer than intended
+## 01 — Applicability
 
-**Principle:** A transaction that does an external call (HTTP request, message publish, slow computation) *inside* a DB transaction holds row/table locks and prevents autovacuum from cleaning up dead tuples for the entire duration — not just the DB work.
+Use when a defined product invariant spans multiple DB operations or concurrent requests can invalidate a check-then-write. Identify the *observable product invariant first*. Do not infer a mandatory technology/transaction shape from a product-level requirement; select the mechanism after inspecting the actual storage and failure boundaries.
 
-**Why this happens:** wrapping "update DB, then notify downstream" in one transaction feels safer (atomicity), but a slow or hanging downstream call turns a millisecond-scale DB operation into a lock held for seconds or longer.
+## 02 — Principle / Rule
 
-### Bad
-```go
-tx, _ := db.BeginTx(ctx, nil)
-tx.Exec(ctx, "UPDATE orders SET status = $1 WHERE id = $2", "confirmed", orderID)
-err := notifyClient.Publish(ctx, event) // network call, inside the transaction
-if err != nil {
-    tx.Rollback()
-    return err
-}
-tx.Commit()
-```
-The row lock on `orders` is held for the entire network round-trip to the notification service.
+- Commit an all-or-nothing DB consequence atomically where the invariant requires it, using a transaction or another proven equivalent guarantee.
+- Keep transactions short; do not perform slow network calls, user interactions or external notification sends while holding DB locks.
+- Understand isolation: PostgreSQL Read Committed can observe different committed data across commands in one transaction. A preceding `SELECT` alone does not reserve a future right to write.
+- Enforce race-sensitive uniqueness/invariants with appropriate constraints, conditional writes, row locks or stronger isolation **as the chosen policy requires**.
+- Lock resources in a consistent order when multiple rows are locked. Handle deadlock (`40P01`) and serialization (`40001`) aborts by retrying the **whole transaction** only when bounded and safe.
+- A DB commit is not atomic with an external side effect. Use outbox or other durable coordination when reliable post-commit delivery is actually required.
 
-### Good
-```go
-tx, _ := db.BeginTx(ctx, nil)
-tx.Exec(ctx, "UPDATE orders SET status = $1 WHERE id = $2", "confirmed", orderID)
-if err := tx.Commit(); err != nil {
-    return err
-}
-// notify after commit — if this fails, handle via outbox/retry, not by rolling back a committed DB change
-if err := notifyClient.Publish(ctx, event); err != nil {
-    logger.Error(ctx, "notify failed, will retry via outbox", err)
-}
-```
-For guaranteed delivery, use the transactional outbox pattern (write the event to an outbox table in the same transaction, publish it asynchronously afterward) rather than calling the external system inline.
+## 03 — Rationale & Risk
 
-**Checklist:**
-- Never make a network call to an external system inside an open DB transaction.
-- If "DB write + external notify" must be atomic in effect, use the outbox pattern, not a wider transaction.
+A partial write can claim success without its required companion write. Two requests can both pass a pre-check and race to create invalid results. Long transactions increase contention and affect vacuum cleanup; inconsistent lock order causes deadlocks. Retrying only the failed statement within an aborted transaction is not a correct recovery.
 
----
+## 04 — Application Guidance
 
-## 2. Row-level locking (`SELECT ... FOR UPDATE`) without a consistent lock order causes deadlocks
+1. Write the invariant as an assertion against committed/observable state; identify which rows/constraints need to participate.
+2. Choose a single transaction for same-DB dependent writes when it provides the correct guarantee. Verify operations use the same transaction handle and rollback on error.
+3. Where concurrent creation must be unique, consider database UNIQUE/EXCLUDE constraints with domain-appropriate keys; a read-before-insert is not sufficient by itself.
+4. For concurrent updates to existing rows, evaluate conditional `UPDATE ... WHERE ... RETURNING`, explicit row locking, or Serializable with whole-transaction retry. Each has different cost and semantics.
+5. Define a truthful result for uncertain commit/network outcomes; an idempotency/reconciliation strategy may be needed at the API boundary.
+6. Emit external effects *after* commit or through a durable outbox, depending on the guarantee actually required.
 
-**Principle:** When two transactions lock the same set of rows in different orders, Postgres detects the deadlock and kills one of them — but this shows up as a runtime error your application must handle, not a compile-time guarantee.
+## 05 — Verification
 
-### Bad
-```go
-// Transaction A: locks order 1, then order 2
-// Transaction B: locks order 2, then order 1
-tx.Exec(ctx, "SELECT * FROM orders WHERE id = $1 FOR UPDATE", orderID1)
-tx.Exec(ctx, "SELECT * FROM orders WHERE id = $1 FOR UPDATE", orderID2)
-```
-If two code paths lock the same rows in different orders, under concurrent load this deadlocks intermittently — hard to reproduce, easy to miss in review.
+In a real PostgreSQL integration environment, test forced failure after the first dependent write, rollback visibility, concurrent attempts at violating the invariant, duplicate requests, locking/deadlock-sensitive ordering and commit uncertainty where relevant. Record isolation level, actual commands and evidence. Unit mocks cannot prove DB isolation/constraints.
 
-### Good
-Always acquire locks in a consistent order (e.g., always by ascending primary key) across every code path that locks multiple rows:
-```go
-ids := []int{orderID1, orderID2}
-sort.Ints(ids)
-for _, id := range ids {
-    tx.Exec(ctx, "SELECT * FROM orders WHERE id = $1 FOR UPDATE", id)
-}
-```
+## 06 — Boundaries & Trade-offs
 
-**Checklist:**
-- Any code path that locks more than one row in the same table must lock in a fixed, deterministic order.
-- Handle deadlock errors (`40P01`) with a bounded retry — don't treat them as unrecoverable.
+A single transaction does not solve external-system atomicity; Serializable is not a universal default; row locks cannot enforce every conceptual/real-world uniqueness property. Do not invent conflict detection or legal-identity matching from a generic DB guideline. Evaluate contention and retry safety in the actual project.
 
----
+## References
 
-## 3. Default transaction isolation (Read Committed) allows non-repeatable reads within one transaction
-
-**Principle:** Postgres defaults to `READ COMMITTED`. Two `SELECT`s of the same row within the same transaction can return different results if another transaction commits a change in between — this is easy to forget when reasoning about "the transaction sees a consistent snapshot."
-
-### Bad
-```go
-tx, _ := db.BeginTx(ctx, nil)
-balance := getBalance(tx, accountID) // reads 100
-// ... some other logic runs, another transaction commits a withdrawal ...
-if balance >= 100 {
-    debit(tx, accountID, 100) // still thinks balance is 100, now overdraws
-}
-```
-
-### Good
-Use `SELECT ... FOR UPDATE` to lock the row for the duration of the transaction when a read-then-write decision depends on a value staying consistent, or explicitly raise isolation to `REPEATABLE READ`/`SERIALIZABLE` for the transaction when the business logic requires a consistent snapshot across multiple statements — and handle the resulting serialization failure (`40001`) with a retry.
-
-**Checklist:**
-- If a transaction reads a value and later makes a decision based on that value still being true, either lock the row (`FOR UPDATE`) or use a stronger isolation level — don't rely on Read Committed's default behavior silently being "good enough."
+- https://www.postgresql.org/docs/current/transaction-iso.html
+- https://www.postgresql.org/docs/current/explicit-locking.html
+- https://www.postgresql.org/docs/current/ddl-constraints.html

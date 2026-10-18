@@ -1,61 +1,42 @@
-# state-ownership-and-derivation.md
+# React State Ownership and Derivation
 
-Location: `react/state-ownership-and-derivation.md`
+> **Status:** Station 5 C1 research revision candidate; experimental branch only, not operational `main`.
+> **Scope:** React/Next.js state across local interaction, forms, URLs and server-owned data.
+> **Triggers:** useState, useEffect, derived state, server data, cache, form, pending mutation, role display, Zustand.
 
-Principle Before introducing state, determine whether the value needs independent ownership at all. A value that is a deterministic projection of existing state should be derived, not stored and synchronized as another source of truth.
+## 01 — Applicability
 
-When independent ownership is required, place state according to its authority, lifetime, and sharing semantics, using the narrowest owner that satisfies those requirements. Server-authoritative data stays with the data-fetching owner already responsible for it — server render/loader, query cache, or equivalent — rather than being copied into client state for convenience. Navigation state that should be shareable, bookmarkable, or participate in back/forward navigation should generally be URL-owned when appropriate and non-sensitive. Form-lifecycle values belong with the form; ephemeral interaction belongs locally. Shared client state is appropriate only when genuinely client-owned state must span or outlive its natural component boundary.
+Use when deciding whether a value should be stored, derived, fetched or shared. Particularly important for consequential submit flows, delayed server responses and durable server-authoritative identity/role information.
 
-Bad
+## 02 — Principle / Rule
 
-```
-function RecordPage({ id }) {
-  const { data: record } = useRecord(id);
-  const setRecord = useRecordStore((state) => state.setRecord);
-  const [isActionable, setIsActionable] = useState(false);
+- Do not duplicate independently stored state that can be derived deterministically from authoritative inputs during rendering.
+- Place genuine state according to **authority and lifetime**: short-lived interaction locally; form edits with form state; navigation/shareable non-sensitive state in URL when appropriate; server-owned data in an authoritative fetch/cache; global client stores only for genuinely shared client state.
+- A server-successful mutation is not established merely because a button was pressed or an optimistic UI changed. Derive durable success from an actual authoritative response/state.
+- Treat pending, failed, uncertain and completed transitions distinctly when their product meaning differs; avoid contradictory booleans and duplicated copies of current server state.
+- Never put tokens, personal secrets or privileged authorization decisions into client state as if storage or visibility were security authority.
 
-  useEffect(() => {
-    if (record) setRecord(record); // duplicates server-owned data
-  }, [record, setRecord]);
+## 03 — Rationale & Risk
 
-  useEffect(() => {
-    setIsActionable(
-      Boolean(record?.status === 'ACTIVE' && record.remaining > 0)
-    );
-  }, [record]); // deterministic projection stored as another state
-}
-```
+Mirrored props or duplicated query/global state become stale. Premature local success UI can claim a durable server consequence that did not commit. Over-globalization creates synchronization and privacy costs.
 
-Good
+## 04 — Application Guidance
 
-```
-function RecordPage({ id }) {
-  const { data: record } = useRecord(id);
+1. Ask who owns the truth, how long it must live, who consumes it and whether it can be derived.
+2. Compute derived display values from source state, e.g. `const fullName = first + " " + last`, instead of synchronizing extra `useState`.
+3. Store form drafts separately from accepted server data; after mutation invalidate/refetch or apply contract-valid cache updates as needed.
+4. If optimistic updates are appropriate, distinguish provisional UI from confirmed outcome, implement rollback and handle request-unknown states honestly.
+5. Keep a single source for identity/resource role state; server-side authorization remains independently enforced.
 
-  // record remains owned by its data-fetching layer;
-  // isActionable has no independent owner
-  const isActionable =
-    record?.status === 'ACTIVE' && record.remaining > 0;
+## 05 — Verification
 
-  ...
-}
-```
+Test editing, success, validation failure, network loss, duplicate submit, navigation/reload and stale-cache refresh where relevant. Verify a transient success message is not the sole durable evidence of server-owned state. Run browser-level checks where displayed trust/status meaning matters.
 
-Ownership decision order
+## 06 — Boundaries & Trade-offs
 
-1. Can the value be derived reliably from state that already exists? If yes, derive it instead of introducing another owner.
-2. Is an external or server data source authoritative? Keep the value with the existing data-fetching owner rather than mirroring it into client state.
-3. Should navigation state be shareable, bookmarkable, or participate in back/forward navigation? Consider URL ownership when appropriate and non-sensitive.
-4. Does the value exist for the lifecycle of a form? Keep it with the form.
-5. Is it ephemeral interaction state whose consumers share a natural component owner? Keep it local or lift it only to that owner.
-6. Use shared client state only when the value is genuinely client-owned and its required lifetime or consumers exceed a natural local boundary.
+This is not a ban on local copies of editable form data, nor a mandate to use any state library. Avoid needless request storms caused by aggressive invalidation. State architecture should follow actual client/server contract and project rendering model.
 
-Checklist
+## References
 
-* [ ] No deterministic value is stored solely so an effect can synchronize it with another value
-* [ ] Server/external authoritative data is not mirrored into global client state merely for convenient access
-* [ ] Share/bookmark/back-forward semantics are considered before navigation-relevant state is kept only in memory
-* [ ] Sensitive state is not moved into the URL merely for persistence or convenience
-* [ ] Form-lifecycle state stays with the form unless another lifetime is explicitly required
-* [ ] Ephemeral UI state starts at the narrowest meaningful owner rather than defaulting to context/global state
-* [ ] Shared client state has a concrete lifetime or cross-tree requirement that local ownership cannot satisfy
+- https://react.dev/learn/choosing-the-state-structure
+- https://react.dev/learn/sharing-state-between-components
