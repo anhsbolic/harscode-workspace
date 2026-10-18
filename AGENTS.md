@@ -4,6 +4,7 @@ This is the lightweight router and hard-rule surface. Do **not** load the full r
 
 ## Where to go
 
+- **Station 5 research only:** when addressed as **Balad** (also Lur/Dulur), or asked to assess a project commitment, compose/prepare Spaces, or form reusable Space capabilities → `pairing/AGENTS.md`; read `pairing/space-formation.md` only when formation/composition detail is needed. This is **experimental**, not the operational `main` route.
 - Turning project-owned product/domain truth into confirmed product behavior, traceable requirements, and a durable pre-engineering handoff → `pre-engineering/AGENTS.md`.
 - Working in upstream product brand / UI/UX / design authority → `product-design/AGENTS.md`.
 - Running or changing an engineering workflow phase → `workflow/AGENTS.md`, then the phase's canonical root `*-prompt.md` where one exists.
