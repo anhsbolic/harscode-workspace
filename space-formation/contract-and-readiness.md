@@ -17,7 +17,7 @@ For the **one coherent external responsibility** of the Space, make these indepe
 
 1. **Identity/scope/version:** what the capability is for; explicitly excluded work; owning definition, status and intended reuse context.
 2. **Generic input contract:** required/optional inputs, form/type, provenance/approval/version constraints, cross-input consistency requirements, scoped authorization and refusal for nonconforming input.
-3. **Generic output contract:** produced output type, form/format, invariants, quality, evidence/verification obligations, owner/consumer handoff and traceable source/revision.
+3. **Generic output contract:** required/conditional output **artifact kinds** and their own conformance/producer/consumer ownership, form/format, invariants, evidence obligations and versioned external handoff. A Space may produce multiple typed artifacts for different consumers; do not require one physical output file or one artifact per Agent.
 4. **Result semantics:** what complete, partial, failed, unknown or blocked means; what must *not* be claimed as successful; where stop/escalation occurs.
 5. **Internal composition:** the **Space Coordinator Agent** role as the Human-invoked internal work coordinator (not automatically a separate native process), why one/more Specialists are needed, bounded assignments, source access, independent review and capability/knowledge requirements.
 6. **Execution boundary and modes:** `supervised` is the **default**. `autonomous` requires explicit Human choice for the **concrete invocation**. Define Human visibility/continuation milestones separately from non-waivable consequence-based approval gates; specify permitted paths/actions, tool and isolation requirements, and what enforcement has been verified.
@@ -25,6 +25,27 @@ For the **one coherent external responsibility** of the Space, make these indepe
 8. **Readiness/assurance and Human Approval Gates:** determine during formation which consequential transitions require Human authority, what exact artifact/decision revision and evidence are presented, what action is blocked, and when approval becomes valid/invalid; include output acceptance as separate from execution authorization.
 
 The list defines *content*, not eight files or eight mandatory process stages. Use proportionate precision; don't require a full threat model for a low-risk file-format conversion, and don't hand-wave security when a Space can grant privileged access.
+
+### Minimum cross-Space handoff semantics
+
+A producing Space returns an **inspectable delivery package**: one logical handoff with zero or more individually addressable payload artifacts, as required by its output contract and concrete assignment. The package can be a document section/index plus linked files; **no mandatory JSON/YAML schema, file count, directory, artifact registry or global validator** is implied. An empty payload is valid only for a truthful blocked/failed report, never for a falsely complete required output.
+
+Every handed-off package must make these **minimum facts discoverable** (explicitly `unknown`, `not performed` or `not applicable` where true, never an invented value):
+
+| Required handoff fact | Meaning |
+| --- | --- |
+| **Producer and contract identity** | Space capability/definition revision, concrete invocation/binding ref, declared output contract/type and version or immutable owning ref |
+| **Payload artifact index** | Each artifact's logical type/purpose, real location + immutable/reconstructable revision, accountable producer/owning authority, intended consumer(s) and linked output-contract obligation; distinguish **required**, conditional, supporting or not produced |
+| **Input provenance** | Pinned owning original sources and material upstream artifact revisions supporting the payload; no replacement of project authority with a summary |
+| **Delivery and evidence** | Result/completeness with required-artifact coverage, actual validation/review evidence refs and limits; distinguish performed checks from proposed tests |
+| **Decision and acceptance standing** | Delegated/proposed/unresolved decisions, applicable Human gate decisions tied to revision/scope, **whether downstream use is authorized** separately from production COMPLETE |
+| **Consumption constraints** | Exact blockers, missing content/format, allowed scope, relevant compatibility dependencies and revalidation conditions if artifacts change |
+
+This is an **external handoff contract**, not a prescribed internal Specialist artifact format. The producing Space's reusable output contract defines the semantic guarantees and which payload artifacts are required or conditional. The **owning project** resolves actual artifact locations, canonical authority, approval and protected-write policy. A package index does **not** create authority over an underlying project artifact.
+
+**Multiple consumers / shared interface example:** A solution-design Space may expose a versioned **API interface contract** for a Frontend Space and Backend Space as a linked payload alongside its solution decision bundle. The output must name the interface contract's owning authority, current decision/approval standing, exact revision, coverage and both consumers. FE and BE must check the **same compatible authoritative interface baseline**, not independently infer endpoints, errors or schemas. A narrative O2 design contract does **not** automatically become an approved machine-readable OpenAPI file; creating/updating a protected formal spec needs project authorization. API artifacts are conditional on actual consumers and constraints, **not universal mandatory files**. A downstream implementation may produce code, migrations or tests instead, each indexed with its own conformance and evidence.
+
+A consumer checks both the generic **output artifact type/guarantee → input requirement** and the concrete **artifact revision/authority/content → assignment binding**. A well-formed envelope never implies an artifact is approved, complete or safe to consume. If a required shared artifact is missing, contradicted, unapproved or version-incompatible, hold only the dependent consumption and record the exact gap.
 
 ### Human Approval Gate Contract (formation-time semantic requirement)
 

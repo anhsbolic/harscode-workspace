@@ -13,7 +13,11 @@ Artifact **semantics** are stable; Markdown with addressable headings/tables is 
 | Content | Checkable decisions, boundaries, formats and references appropriate to this artifact kind |
 | Result/evidence | Complete/partial/blocked/failed, check executed vs proposed, unresolved items and next valid action |
 
-Keep **one owning file for a decision**, reference rather than duplicate it in other artifacts. Intermediate X1 may be stored as a separate working record; the bundle can link to it. Git history is default artifact revision history where tracked. A section-ID plus pinned file SHA is an acceptable anchor for pilot output; don't invent unneeded databases or IDs.
+Keep **one owning file for a decision** and **one accountable authority for a shared interface revision**; reference rather than duplicate competing canonical content in other artifacts. Intermediate X1 may be stored as a separate working record; the bundle can link to it. An index of linked domain artifacts is a handoff aid, not a project-truth duplicate. Git history is default artifact revision history where tracked. A section-ID plus pinned file SHA is an acceptable anchor for pilot output; don't invent unneeded databases or IDs.
+
+## Cross-Space payload indexing
+
+When an S1 artifact (or addressable O1–O5 section) is offered for downstream consumption, include it in the [Solution Delivery Bundle index](delivery-bundle.md) with kind/contract obligation, owning producer and project authority, exact content ref/revision, relevant original source revisions, intended consumer(s), evidence, decision/approval standing and specific constraints. Additional API, state or experience documents are **consumer-driven**, not required for their own sake. A `COMPLETE` S1 delivery never implies a listed payload has Human acceptance or that FE/BE have validated it.
 
 ## Decision record semantics
 

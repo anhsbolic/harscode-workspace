@@ -25,7 +25,7 @@ The Space is accountable for a **coherent solution**, not for creating features,
 ## External contracts
 
 - [Generic input and conformance](contracts/input.md): accepted scoped authority, target revision, constraints and assignment permissions; reject missing/contradictory material inputs.
-- [Generic output](contracts/output.md): material decisions, cross-boundary responsibilities/interfaces, state/experience semantics, downstream verification obligations, trace and review/evidence, unresolved items with accurate delivery verdict.
+- [Generic output](contracts/output.md): material decisions, cross-boundary responsibilities/interfaces, state/experience semantics, downstream verification obligations, trace and review/evidence, unresolved items with accurate delivery verdict. When consumers require separately addressable contracts (e.g., shared FE/BE API interface), list them as typed payload artifacts with explicit authority/approval standing; S1 is not automatically permitted to modify project-owned OpenAPI.
 - Each output distinguishes **produced/reviewed** from **Human accepted for downstream use**. Output may be high quality but not yet authorized as binding project contract.
 - The Space may choose details within expressly delegated solution authority. It must escalate material product changes, security approvals and unresolved inter-consumer contract obligations.
 
@@ -43,7 +43,7 @@ The Space is accountable for a **coherent solution**, not for creating features,
 ## Artifacts, knowledge, execution requirements and state
 
 - [Artifact format and traceability](artifacts/format-and-traceability.md) describes reusable artifact semantics, identifiers, provenance and contract checks, not a universal parser.
-- [Delivery bundle](artifacts/delivery-bundle.md) is the format for durable, consumer-oriented final output.
+- [Delivery bundle](artifacts/delivery-bundle.md) owns the logical external handoff, including a revision-pinned index of **multiple typed, consumer-relevant artifacts**. [Shared minimum handoff semantics](../../space-formation/contract-and-readiness.md) govern cross-Space discoverability; no fixed file count or mandatory API document is implied.
 - Specialist-local guidance, guardrails and knowledge and Coordinator-local profile/guidance/guardrails/kickoff are under [agents](composition/responsibilities.md); local guidance cannot create competing authoritative truth.
 - [Kickoff and preflight](invocation/kickoff-prompt.md), [state/handoff](invocation/state-and-handoff.md), and [harness-neutral execution requirements](composition/execution-requirements.md) define capability needs and truthful readiness checks. Harness-native translations are owned outside the Space by Harscode `harness-optimization/`; project/runtime bindings supply actual tool, model, context and permission details. This Space does not create a scheduler or automatic Agent dispatcher. Coordinator responsibilities are declared, not proof of native Agent installation.
 
