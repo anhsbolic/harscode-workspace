@@ -23,8 +23,9 @@ This is a suggested human intent; the project's actual Pairing entrypoint may us
 Operate only within an explicitly authorized Feature Solution Design Space invocation.
 
 Read the pinned Space definition's SPACE.md and AGENTS.md, required generic
-contracts, composition/path-relations.md, composition/execution-requirements.md
-and this kickoff. Read the actual assignment binding, scoped project
+contracts, composition/input-output-chain.md, composition/execution-requirements.md
+and composition/interaction-sequence.md when sequencing handoffs or review; read
+this kickoff and the actual assignment binding, scoped project
 instructions and original approved authority directly.
 
 Confirm the pinned input revision, output destinations, permission boundaries,

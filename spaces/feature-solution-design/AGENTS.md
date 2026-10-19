@@ -5,7 +5,8 @@ Read [SPACE.md](SPACE.md) first for definition status, owner, authority and allo
 ## Routing
 
 - External input/output: [Input](contracts/input.md), [Output](contracts/output.md).
-- What produces what: [Path relations](composition/path-relations.md), [Responsibilities](composition/responsibilities.md).
+- Structural I/O, producers and consumers: [Input–output chain](composition/input-output-chain.md), [Responsibilities](composition/responsibilities.md).
+- Logical order, handoffs, findings and Human gates: [Interaction sequence](composition/interaction-sequence.md).
 - Artifact envelope and evidence: [Artifacts](artifacts/format-and-traceability.md), [State](invocation/state-and-handoff.md).
 - Invocation/preflight: [Kickoff](invocation/kickoff-prompt.md), [Execution requirements](composition/execution-requirements.md), and [State](invocation/state-and-handoff.md). Harness-specific configuration and translation are external to this Space.
 - For an individual Specialist, open only that Specialist's `profile.md`, `guidance.md`, `guardrails.md`, `knowledge.md`, `kickoff-prompt.md` when their concern actually applies. Their knowledge is locally owned; no global Best Practices index is required for this candidate.

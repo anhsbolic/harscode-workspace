@@ -1,6 +1,6 @@
 # S1 Specialist Composition — Proposed
 
-Four **bounded specialist responsibilities** are proposed for first real-use calibration; they are not guarantees of four configured runtime Agents, fixed model IDs, or a universal staffing minimum. Agent package changes should follow evidence. The Space coordinator composes/checks their outputs, but is not a fifth automatically-created Agent.
+Four **bounded specialist responsibilities** are proposed for first real-use calibration; they are not guarantees of four configured runtime Agents, fixed model IDs, or a universal staffing minimum. Agent package changes should follow evidence. The Space coordinator composes/checks their outputs, but is not a fifth automatically-created Agent. The [input–output chain](input-output-chain.md) owns the structural producer/consumer map; the [interaction sequence](interaction-sequence.md) illustrates the bounded temporal flow and conditional review loop.
 
 | Specialist / package | Consumes | Produces and owns | Does not own |
 | --- | --- | --- | --- |
@@ -23,4 +23,4 @@ Each package owns scoped `profile.md`, `guidance.md`, `guardrails.md`, `knowledg
 
 ## Space coordinator responsibility
 
-Validate original input package against [generic input](../contracts/input.md); pin revision; establish versioned writing/evidence paths and approved Specialist assignments; ensure outputs are actually delivered and handoffs conformed; request scoped correction; return the final [bundle](../artifacts/delivery-bundle.md). No software scheduler, automatic promotion or shell dispatch is implied.
+Validate original input package against [generic input](../contracts/input.md); pin revision; establish versioned writing/evidence paths and approved Specialist assignments; ensure outputs are actually delivered and handoffs conformed; request scoped correction; return the final [bundle](../artifacts/delivery-bundle.md). No software scheduler, automatic promotion or shell dispatch is implied. Follow the chain's input/output dependencies and the sequence's authorization/review boundaries without treating either diagram as a prescribed harness mechanism.

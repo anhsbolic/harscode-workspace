@@ -31,7 +31,7 @@ The Space is accountable for a **coherent solution**, not for creating features,
 
 ## Physical composition
 
-[Path relation graph](composition/path-relations.md) maps input → responsible Specialist → intermediate output → reviewer/consumer. [Responsibilities](composition/responsibilities.md) defines the proposed four scoped Specialist packages: Requirements Analyst, Solution Architect, Experience Specialist and Solution Reviewer. These are draft capability responsibilities, **not proof that four independently runnable Specialist Agents exist**. The Space coordinator is an internal responsibility, not an assumed service/Agent.
+[Input–output chain](composition/input-output-chain.md) maps authoritative inputs → responsible Specialists → intermediate/final artifacts and consumers; [interaction sequence](composition/interaction-sequence.md) illustrates authorized kickoff, execution handoffs, review feedback and separate Human acceptance. [Responsibilities](composition/responsibilities.md) defines the proposed four scoped Specialist packages: Requirements Analyst, Solution Architect, Experience Specialist and Solution Reviewer. These are draft capability responsibilities, **not proof that four independently runnable Specialist Agents exist**. The Space coordinator is an internal responsibility, not an assumed service/Agent.
 
 ## Artifacts, knowledge, execution requirements and state
 
