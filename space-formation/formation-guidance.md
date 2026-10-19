@@ -29,9 +29,9 @@ Not every report needs a formal file. A concise table and graph can be enough. B
 
 Use the current project as a **concrete test case**, not the embedded definition of the reusable Space. Reject attractive abstractions lacking a present, testable benefit. Conversely, do not weaken strict contract semantics just to accommodate every possible project.
 
-**4. Design the Space definition.** Apply the contract floor in [contract-and-readiness.md](contract-and-readiness.md), define the smallest credible Specialist capabilities and ownership of internal work, and bind only task-relevant knowledge/constraints. A Specialist Agent profile is declarative until the selected runtime's actual routing, tools, context isolation, permissions and capability are tested. Define harness-neutral capability needs here; apply Human-owned model/effort rules through the concrete invocation's Pairing/runtime binding (for the current C1 pilot, see [pairing/model-routing.md](../pairing/model-routing.md)). Do not hardcode a harness, silently populate model inventory or weaken Space requirements to fit a tool.
+**4. Design the Space definition.** Apply the contract floor in [contract-and-readiness.md](contract-and-readiness.md), define the smallest credible Specialist capabilities and ownership of internal work, and bind only task-relevant knowledge/constraints. A Coordinator or Specialist Agent profile is declarative until the selected runtime's actual routing, tools, context isolation, permissions, pause/resume and capabilities are tested. Define **Coordinator role, supervised-default/autonomous-explicit modes and consequence-based Human Approval Gates** in the reusable Space; bind actual models/efforts through **Human-authorized invocation/runtime setup** (Balad may advise using [model-routing](../pairing/model-routing.md) but does not select/dispatch). Do not hardcode a harness, silently populate model inventory or weaken Space requirements to fit a tool.
 
-**5. Review readiness before formation approval.** Show Anhar the proposed reusable I/O, boundaries, downstream generic-port fit, C1 or other project binding example, failure conditions, Agent composition rationale, actual versus unverified mechanics, and smallest viable validation experiment. Distinguish true security and independent-assurance blockers from harmless design freedom. Ask for **one scoped formation decision**; formation and invocation are distinct permissions.
+**5. Review readiness before formation approval.** Show Anhar the proposed reusable I/O, Coordinator and Specialist boundaries, **explicit mandatory/conditional Human gates including evidence/revision and blocked transitions**, supervised review milestones, downstream generic-port fit, project binding example, failure conditions, actual versus unverified runtime mechanics, and smallest viable validation experiment. Distinguish true security and independent-assurance blockers from harmless design freedom. Ask for **one scoped formation decision**; formation and invocation are distinct permissions.
 
 **6. Persist an approved definition at its owning research location.** Preserve inspectable source, references and version/revision, but do not assume a fixed Space registry, generator, directory convention or `harscode-state` implementation. The physical storage model remains replaceable. A formation commit can establish a definition; it cannot by itself establish operability.
 
@@ -40,14 +40,14 @@ Use the current project as a **concrete test case**, not the embedded definition
 - proposed change, expected benefit and compatibility impact on current/future consumers;
 - whether a non-breaking addition, new version, scoped override, or different capability is warranted.
 
-Route improvement proposals through Balad to Anhar + ChatGPT; only the owning Human approves reusable definition changes. Do not retroactively change an active invocation's pinned contract or disguise project-specific exceptions as generic improvements.
+Return improvement proposals to the Human. The Human may ask Balad for advisory analysis and bring proposals to the Human-led formation process; Balad cannot route instructions to a Coordinator. Only the owning Human approves reusable definition changes. Do not retroactively change an active invocation's pinned contract or disguise project-specific exceptions as generic improvements.
 
 ## Important decision boundaries
 
 - **Product/domain truth:** owned by the target project/Human, never silently invented by a new Space or Harscode guidance.
-- **Pairing composition:** Balad still maps whole-goal outcome dependencies and identifies missing capability, but **formation design belongs here**.
+- **Pairing composition:** Balad advises the Human on whole-goal dependencies, missing capabilities and compatibility, but neither invokes nor communicates with Space Coordinator Agents. **Formation design belongs here**.
 - **Formation:** creates/revises a reusable declarative capability after Human approval; does not dispatch engineering production.
-- **Invocation:** separately scoped, after input conformance, actual harness readiness and required security approvals.
+- **Invocation:** initiated directly by the Human to the Coordinator with `supervised` by default or explicit `autonomous`, after formation, actual harness readiness and required authorization. Both modes enforce consequence-based Human gates.
 - **Acceptance:** executing Space reports truthful evidence; the authorized project/Human owner accepts or rejects the outcome.
 
 ## Stop when sufficient

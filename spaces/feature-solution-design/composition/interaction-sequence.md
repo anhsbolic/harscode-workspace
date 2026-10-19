@@ -1,16 +1,15 @@
-# S1 Interaction Sequence — Logical Invocation, Handoffs and Review (Proposed)
+# S1 Interaction Sequence — Human-Direct Coordinator and Specialist Flow (Proposed)
 
-> **Purpose:** Show **who acts when**, what each actor consumes/produces, material branches, review feedback and external Human decisions during a bounded invocation. This is an **illustrative logical sequence**, not a universal workflow engine, fixed session count, automatic authorization or proof that a particular runtime can dispatch these roles.
-> **Companion:** [Input–output chain](input-output-chain.md) is the static producer–consumer and artifact map. [Space](../SPACE.md), [input](../contracts/input.md), and [output](../contracts/output.md) contracts own the normative semantics.
+> **Status:** Logical **harness-neutral** first-use interaction, not a native CLI configuration, executable workflow engine, or evidence of real dispatch.
+> **External boundary:** **Human ↔ Space Coordinator Agent**. Balad may give the Human independent advice or review already-produced evidence on request, but has **no operational messages to the Coordinator**. Compare [input–output chain](input-output-chain.md) for static dependencies and [Human Approval Gates](human-approval-gates.md) for binding stop conditions.
 
-## Actors, messages and artifact checkpoints
+## Execution and approval boundaries
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor H as Human
-    participant P as Pairing
-    participant C as Space Coordinator
+    participant C as S1 Coordinator Agent
     participant S as Project Sources
     participant RA as Requirements Analyst
     participant SA as Solution Architect
@@ -18,95 +17,80 @@ sequenceDiagram
     participant RV as Solution Reviewer
     participant A as Project Artifacts
 
-    H->>P: Request preparation for an approved project commitment
-    P->>S: Locate current I1/I2/I3 and consumer expectations
-    P-->>H: Present proposed I4 scope, readiness and approval gates
+    H->>C: Ask for S1 preflight directly and choose mode if not supervised
+    C->>S: Check formed definition, I1-I4 sources and runtime requirements
+    C-->>H: Report readiness, proposed scope and Human gates
 
-    alt Missing inputs, runtime capability or necessary authority
-        P-->>H: BLOCKED / NOT READY, no invocation
-    else Preflight sufficient for an explicit decision
-        H->>P: Authorize concrete I4 invocation and write scope
-        P->>C: Bind pinned I1-I4 and approved output destinations
-        C->>S: Verify input revisions, access and conformance
+    alt Formation or required preflight conditions not ready
+        C-->>H: BLOCKED or NOT READY, no internal execution
+    else Prerequisites checked
+        H->>C: Authorize exact I4 invocation and write scope
+        C->>A: Record Human approval, pinned inputs and execution mode
 
-        alt Material input or authorization mismatch
-            C-->>P: BLOCKED with source and owner of gap
-            P-->>H: Request resolution, do not produce solution
-        else Inputs conform and work is authorized
-            C->>RA: Assign I1-I4 and X1 destination
-            RA->>S: Read original approved behavior and constraints
-            RA->>A: Persist X1 source and obligation map
-            RA-->>C: Return X1 revision and any open authority gaps
+        C->>RA: Assign approved I1-I4 to produce X1
+        RA->>S: Read original source authority directly
+        RA->>A: Persist X1 revision and findings
+        RA-->>C: Return X1 ref and unresolved authority issues
 
-            C->>SA: Assign X1 and applicable I2/I3
-            SA->>S: Inspect current architecture and source anchors
-            SA->>A: Persist O1 shared decisions and O2 interface contracts
-            SA-->>C: Return O1/O2 revisions and unresolved decisions
+        opt Supervised mode, X1 observation milestone
+            C-->>H: Show X1 ref, findings and next assignment
+            H->>C: Continue, revise or stop within authorized scope
+        end
 
-            C->>ES: Assign X1, O1/O2 and applicable design sources
-            ES->>S: Read original behavior and UI/UX authority
-            ES->>A: Persist O3 experience and state contracts
-            ES-->>C: Return O3 revision and contract mismatches
+        C->>SA: Assign X1 plus I2/I3 to produce O1 and O2
+        SA->>A: Persist O1 and O2 revisions
+        SA-->>C: Return architecture contracts and unknowns
+        C->>ES: Assign X1, O1/O2 and original design authority
+        ES->>S: Read relevant original design source
+        ES->>A: Persist O3 experience/state revision
+        ES-->>C: Return O3 and any interface mismatch
 
-            opt Material experience/interface mismatch
-                C->>SA: Route exact O1/O2 issue to its owning producer
-                SA->>A: Update affected O1/O2 within approved scope
-                C->>ES: Reconcile O3 against current O1/O2
-                ES->>A: Update affected O3 revision
+        opt Material Product Authority or protected action gate
+            C-->>H: Hold affected downstream action, present gate evidence and revision
+            alt Exact Human authorization is valid
+                H->>C: Approve scoped decision or protected action
+                C->>A: Record gate ID, approved revision and permitted resume
+            else Denied, missing or stale decision
+                C-->>H: BLOCKED for affected action, preserve available evidence
+                Note over C,RV: Do not execute work depending on unresolved gate
             end
+        end
 
-            C->>RV: Assign current X1/O1/O2/O3 and original I1/I2/I4
-            RV->>S: Read original approved authority DIRECTLY
-            RV->>A: Inspect versioned producer outputs
-            RV->>A: Persist O4 obligations and O5 review findings
-            RV-->>C: Return revision-scoped conformance result
+        opt Supervised mode, solution-contract observation milestone
+            C-->>H: Show O1/O2/O3 refs, deltas and proposed independent review
+            H->>C: Continue, revise or stop within authorized scope
+        end
 
-            opt Reviewer finds material defects
-                alt Human-owned decision or permission required
-                    C-->>P: BLOCKED or PARTIAL, exact unresolved decision
-                    P-->>H: Request decision before affected production
-                else Scoped producer correction is allowed
-                    opt X1 source map is affected
-                        C->>RA: Return source/trace finding
-                        RA->>A: Persist corrected X1 revision
-                    end
-                    opt O1 or O2 contract is affected
-                        C->>SA: Return exact solution finding
-                        SA->>A: Persist corrected O1/O2 revision
-                    end
-                    opt O3 experience contract is affected
-                        C->>ES: Return exact experience finding
-                        ES->>A: Persist corrected O3 revision
-                    end
-                    C->>RV: Re-review affected edges and current versions
-                    RV->>S: Recheck affected original source anchors
-                    RV->>A: Persist updated O4/O5 review evidence
-                    RV-->>C: Return revised verdict or remaining blockers
-                end
-            end
+        C->>RV: Assign current X1/O1/O2/O3 plus ORIGINAL I1/I2/I4
+        RV->>S: Independently inspect original approved authority
+        RV->>A: Check current versioned producer outputs
+        RV->>A: Persist O4 obligations and O5 review findings
+        RV-->>C: Return review evidence and limitations
 
-            C->>A: Assemble actual revision-pinned O1-O5 bundle
-            C-->>P: Handoff result, artifact refs and limits
-            P-->>H: Present bundle, request separate output acceptance
+        opt Review findings require authorized corrections
+            C->>SA: Route affected O1/O2 issue to owning producer if relevant
+            C->>ES: Route affected O3 issue to owning producer if relevant
+            C->>RA: Route affected X1 issue to owning producer if relevant
+            Note over C,RA: Revisions only where affected and authorized
+            C->>RV: Request re-review of actually changed artifact edges
+            RV-->>C: Return updated O4/O5 refs or unresolved blocker
+        end
 
-            alt Human accepts concrete output for downstream
-                H->>P: Record acceptance of exact output revision
-                P-->>H: Coordinate future consumer compatibility
-            else Human requests changes or has not decided
-                H-->>P: Keep delivery unaccepted, route next action
-            end
+        C->>A: Assemble actual revision-pinned output and gate evidence
+        C-->>H: Deliver result, O1-O5 refs, blockers and verification limits
+
+        alt Human accepts concrete revision for downstream
+            H->>C: Record final acceptance for exact output revision
+        else Human defers or requests changes
+            H->>C: Record nonacceptance and authorized next action if any
         end
     end
 ```
 
-## How to read this sequence
+## Interpretation
 
-1. **Human gates are separate.** An approved Space **formation** is a prerequisite outside the diagram. The initial invocation approval shown above is separate from the later Human decision to accept a concrete produced solution for downstream use.
-2. **Pairing versus Space.** Pairing coordinates upstream authority and external compatibility. The authorized Space checks received input conformance, performs bounded work and returns truthful output. Neither role can create product authority from a summary.
-3. **Urutan logis, bukan scheduling kaku.** The depicted producer checkpoints expose key dependencies; Architect and Experience Specialist may collaborate or overlap when a concrete assignment allows it. No mandated native Agent count, fixed session transitions, or runtime dispatcher is defined.
-4. **Independent review.** Reviewer must independently read I1/I2 originals and the current X1/O1/O2/O3 revisions. Reviewer owns O4/O5, not producer output corrections. Independence requires runtime/context evidence, not different role labels alone.
-5. **Bounded feedback.** Each finding returns only to its owning producer and triggers review of affected revisions. Human-owned decisions and material security approvals cannot be replaced with automatic retry or indefinite correction loops. A remaining gap yields PARTIAL/BLOCKED rather than fictitious COMPLETE.
-6. **Real artifact ownership.** `Project Sources` and `Project Artifacts` are logical representations of target-project authoritative sources and approved artifact locations; the diagram does not allocate a new storage engine or directory. Persist actual refs/versions according to [state](../invocation/state-and-handoff.md).
-7. **Outcome honesty.** `COMPLETE` describes S1 design-delivery conformance, not feature implementation, runtime integration, Human acceptance, or downstream compatibility proof. Other truthful states and evidence limits remain valid.
-
-Use [execution requirements](execution-requirements.md), [responsibilities](responsibilities.md) and [kickoff](../invocation/kickoff-prompt.md) when moving from the diagram to an actually authorized assignment.
+- **Formed Space + direct invocation first.** A file/profile does not instantiate an Agent. The Human initiates the Coordinator only after separate formation, actual runtime readiness and concrete scope authorization. Default mode is `supervised`. `autonomous` is valid only when explicitly selected by Human; the Coordinator cannot promote itself.
+- **Supervision is not authorization.** In supervised mode, milestone `continue` steers ordinary work but **does not approve Product Authority, protected changes or final downstream acceptance**. The optional supervision pauses may be configured proportionately for the actual pilot.
+- **Approval gates always apply.** In either mode, G1/G2 material decisions or protected actions pause the **affected dependent work** until exact Human authorization; other independent authorized work may continue. The diagram's following lines never override a BLOCKED gate.
+- **No fixed Agent topology.** Runtime may use isolated subagents or explicit sessions after verification. These depicted messages express responsibility, not proof of native orchestration or automatic secure pause/resume. Reviewer must receive original authority independently and cannot revise producer output.
+- **Real outputs and Human acceptance:** retain actual producer revisions, review findings, gate decisions and limitations. The final acceptance applies to an exact bundle revision; the Coordinator cannot self-approve. No Balad-to-Coordinator operational channel exists.

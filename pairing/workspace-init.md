@@ -24,7 +24,7 @@ Example Human intent: "Lur, init Harscode workspace di <absolute-path>, cek yang
 3. **Plan:** Propose only the precise root files to create or minimally reconcile, preserving user/local instructions and any existing config. For a missing config initialize `available_models: []` and let the Human populate its entries later. Show unexpected conflicts and ask the Human before replacing competing instructions, changing user-authored model policy, moving files or expanding write scope.
 4. **Authorize and write:** Only after explicit Human authorization for these **root-local files**, perform bounded file creation/editing. When starting Codex in `harscode-workspace/`, its default sandbox may not allow writes to the parent root; do not bypass permissions with symlink tricks, blanket unsafe flags or command delegation. Request a safe scoped approval or have Human apply the proposed patch if necessary.
 5. **Verify:** Check created file content and path resolution, routing to Balad and project-owned `AGENTS.md`, no accidental repository changes, no secret leakage and idempotent behavior when invoked again. Distinguish **workspace routing ready** from **model routing ready** and **Space invocation ready**.
-6. **Handoff:** Tell the Human how to start a new Codex CLI session **at workspace root**, and that a normal short Balad prompt may now be used. Do not bootstrap Space operational state or dispatch work.
+6. **Handoff:** Tell the Human how to start a new Codex CLI session **at workspace root** for advisory Balad usage. Separate Space Coordinator sessions are initiated **directly by the Human** after formation, readiness and invocation approval; Balad does not request or coordinate them. Do not bootstrap Space operational state or dispatch work.
 
 ## Workspace-root AGENTS.md — minimum intended behavior
 
@@ -33,7 +33,7 @@ Keep it short. It should:
 - Route `workspace-init` requests to `harscode-workspace/pairing/workspace-init.md`; model choice requests to `harscode-workspace/pairing/model-routing.md`.
 - Point to `.harscode-local.yaml` for non-authoritative local path and runtime/model metadata. This file is **not** native Codex configuration or an authorization grant.
 - Instruct agents to read each target repository's own root/scoped `AGENTS.md` and owning project authority before project actions; parent instructions do not override protected project paths or Human decisions.
-- State that research-only Space-oriented guidance does **not** replace Harscode `main` globally, and Balad's default readiness discussion is read-only.
+- State that research-only Space-oriented guidance does **not** replace Harscode `main` globally, Balad's work is advisory-only, and Balad cannot invoke/request/coordinate with a Space Coordinator Agent.
 
 Do not copy entire Balad guidance into workspace-root `AGENTS.md`. Avoid duplicate policy and don't shadow an existing root instruction without meaningful reconciliation.
 
@@ -61,7 +61,7 @@ runtime:
 available_models: []
 ```
 
-- The model registry is part of **minimum structural config** because Balad will later select models for Specialist Agents in Spaces. An empty registry is valid for initial workspace discovery and **read-only Pairing assessment**, but **not sufficient for model-dependent Space invocation**.
+- The model registry is part of **minimum structural config** because a separately Human-invoked Space Coordinator/runtime may need to select eligible models for assigned Agents. Balad only advises the Human about choices; it does **not** select or dispatch Specialists. An empty registry is valid for initial workspace discovery and **read-only Pairing assessment**, but **not sufficient for model-dependent Space invocation**.
 - **Human owns and populates `available_models`**, including model IDs, qualitative capability hints, cost tiers and each configured model+effort policy. Workspace initialization must **not** discover/fill models by default, copy entries from an old pilot or grant unrestricted usage. Balad may identify gaps and offer an exact proposed change; only Human-approved edits may be applied within separately authorized write scope.
 - The current schema uses `reasoning_efforts: {effort: allowed | human_approval}` per model; see [Model Routing](model-routing.md) for authoritative research semantics. Do **not** emit legacy `approval_required`, `supported_reasoning_efforts` or `auto_select_efforts` in new configs. An existing old-style registry needs explicit Human reconciliation, not silent conversion.
 - Do not add default/escalation models, model registries per project, or a launcher service until real use justifies them.

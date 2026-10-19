@@ -10,7 +10,7 @@ The deliverable is an inspectable **implementation-consumable Solution Delivery 
 | O2 | Interfaces and state/invariant contracts | Consumer/producer responsibilities, data/API interactions and error/result semantics, state ownership, persistence/consistency requirements, authorization/trust boundaries and version expectations to the extent required for safe implementation |
 | O3 | Experience/interaction contracts | Pre-effect consequence disclosure, action availability, success/incomplete/conflict/unauthorized states, durable user-visible meaning and relevant applicable UI/UX authority without inventing product commitments |
 | O4 | Verification obligations | Each acceptance/invariant mapped to expected validation observable(s), responsible future verification boundary, risk/negative-path coverage, required independent evidence and known unavailable test mechanisms |
-| O5 | Review, trace and handoff evidence | Original source refs+revisions → all O1–O4 decisions/output sections; internal cross-output review findings, unresolved blockers, checker provenance, output revision and consumer-specific readiness limits |
+| O5 | Review, trace and handoff evidence | Original source refs+revisions → all O1–O4 decisions/output sections; internal review findings, relevant Human gate IDs/decisions with exact artifact revisions, unresolved blockers, checker provenance, output revision and consumer-specific readiness limits |
 
 Logical O1–O5 can be sections of one deliverable or linked files: semantic coverage is mandatory, file count is not. Each component must be addressable by stable heading/ID. Real machine-readable OpenAPI or other downstream artifacts may be produced **only when authorized and required**; otherwise provide the explicit intended contract and note that the formal specification is pending.
 
@@ -28,7 +28,7 @@ Before reporting **COMPLETE / candidate for Human acceptance**:
 
 - **Production result:** `COMPLETE`, `PARTIAL`, `BLOCKED`, `FAILED`; verification can additionally be `UNVERIFIED` with scope.
 - **Decision standing per material item:** `APPROVED SOURCE` (existing authority), `DELEGATED DECISION` (within assignment scope), `PROPOSED / HUMAN REVIEW REQUIRED`, `UNRESOLVED`, or `REJECTED / SUPERSEDED`. These are annotations, not a new operational workflow engine.
-- **Human acceptance:** independently records `ACCEPTED FOR DOWNSTREAM`, `CHANGES REQUESTED`, or `NOT YET DECIDED`. A complete Space deliverable is **not** automatically approved project specification.
+- **Human acceptance:** independently records `ACCEPTED FOR DOWNSTREAM`, `CHANGES REQUESTED`, or `NOT YET DECIDED`. Human acceptance binds an exact output revision; a complete deliverable, supervised continuation, or autonomous execution is **not** automatically accepted project specification.
 - **Evidence level:** `DESIGN REVIEWED` / `NOT REVIEWED`; never call design-only evidence `RUNTIME VERIFIED`.
 
 The output path/revision, approved downstream bindings and any mutable state belong to the concrete invocation, not this generic file.

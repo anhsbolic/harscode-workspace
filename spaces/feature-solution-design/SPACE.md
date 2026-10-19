@@ -16,7 +16,7 @@ The Space is accountable for a **coherent solution**, not for creating features,
 ## Authority, permissions, and exclusions
 
 - The authorized **Human owner** controls formation, reusable-contract changes and material approvals. The Human authorized for the concrete project assignment controls its invocation approval. AI collaborators may help design or review, but do not acquire ownership or self-approval authority.
-- Balad identifies/pins project authority and coordinates external handoff; no autonomous Space definition authoring by Balad.
+- **Balad is Human-facing advisory only** for authority, candidate capability and compatibility. It cannot invoke, request dispatch from, communicate with or coordinate the S1 Space Coordinator Agent. **Human directly invokes and reviews S1**; no implicit Pairing → Space execution channel.
 - Target-project Human-approved product meaning, requirements, design authority and protected writes take precedence over solution preferences and Agent-local best practices.
 - **Allowed in formation draft:** design, contract reasoning, documentation, solution review and bounded preflight planning.
 - **Potential authorized invocation:** read specified project sources, analyze current baseline and write solution artifacts only to approved project-owned locations; shared OpenAPI/spec changes are **not** automatically authorized. No feature-code or privileged auth/role implementation writes.
@@ -31,14 +31,21 @@ The Space is accountable for a **coherent solution**, not for creating features,
 
 ## Physical composition
 
-[Input–output chain](composition/input-output-chain.md) maps authoritative inputs → responsible Specialists → intermediate/final artifacts and consumers; [interaction sequence](composition/interaction-sequence.md) illustrates authorized kickoff, execution handoffs, review feedback and separate Human acceptance. [Responsibilities](composition/responsibilities.md) defines the proposed four scoped Specialist packages: Requirements Analyst, Solution Architect, Experience Specialist and Solution Reviewer. These are draft capability responsibilities, **not proof that four independently runnable Specialist Agents exist**. The Space coordinator is an internal responsibility, not an assumed service/Agent.
+[Input–output chain](composition/input-output-chain.md) maps authoritative inputs → responsible Specialists → intermediate/final artifacts and consumers; [interaction sequence](composition/interaction-sequence.md) illustrates authorized kickoff, execution handoffs, review feedback and separate Human acceptance. [Responsibilities](composition/responsibilities.md) defines the **[Space Coordinator Agent](agents/space-coordinator/profile.md)** and four scoped Specialist roles: Requirements Analyst, Solution Architect, Experience Specialist and Solution Reviewer. The Coordinator owns internal task coordination, not Product Authority or independent review. All Agent definitions remain **declarative and UNVERIFIED** until real runtime evidence demonstrates execution and required isolation.
+
+## Execution modes and Human gates
+
+- **Supervised (default):** the Human interacts directly with S1 Coordinator, reviews material milestone artifacts and authorizes continuation at the selected supervision points. Routine supervision `continue` does **not** approve a material project decision.
+- **Autonomous:** only when **explicitly selected by the Human for the concrete invocation**. Coordinator may handle internal authorized Specialist routing without optional review pauses, but may not ignore declared Human gates or expand runtime authority.
+- [S1 Human Approval Gates](composition/human-approval-gates.md) distinguish formation, invocation, conditional owner decisions/protected actions and final downstream acceptance. **Consequential transitions**, not each Specialist handoff, trigger mandatory approval in **both modes**. All gate evidence and permitted resume scopes are revision-bound. Mode choice cannot waive a gate.
+- Coordinator and Specialist capabilities are **harness-neutral**. Actual Codex/subagent dispatch, context independence and secure pause/resume are unverified and belong to Harscode-level harness translation and invocation binding, not Space policy.
 
 ## Artifacts, knowledge, execution requirements and state
 
 - [Artifact format and traceability](artifacts/format-and-traceability.md) describes reusable artifact semantics, identifiers, provenance and contract checks, not a universal parser.
 - [Delivery bundle](artifacts/delivery-bundle.md) is the format for durable, consumer-oriented final output.
-- Specialist-local guidance, guardrails and knowledge are under [agents](composition/responsibilities.md); agent knowledge may duplicate another Agent, but cannot create competing authoritative truth.
-- [Kickoff and preflight](invocation/kickoff-prompt.md), [state/handoff](invocation/state-and-handoff.md), and [harness-neutral execution requirements](composition/execution-requirements.md) define capability needs and truthful readiness checks. Harness-native translations are owned outside the Space by Harscode `harness-optimization/`; project/runtime bindings supply actual tool, model, context and permission details. This Space does not create a scheduler or automatic Agent dispatcher.
+- Specialist-local guidance, guardrails and knowledge and Coordinator-local profile/guidance/guardrails/kickoff are under [agents](composition/responsibilities.md); local guidance cannot create competing authoritative truth.
+- [Kickoff and preflight](invocation/kickoff-prompt.md), [state/handoff](invocation/state-and-handoff.md), and [harness-neutral execution requirements](composition/execution-requirements.md) define capability needs and truthful readiness checks. Harness-native translations are owned outside the Space by Harscode `harness-optimization/`; project/runtime bindings supply actual tool, model, context and permission details. This Space does not create a scheduler or automatic Agent dispatcher. Coordinator responsibilities are declared, not proof of native Agent installation.
 
 ## Quality, failure and evolution
 
@@ -46,4 +53,4 @@ Output is potentially consumable only when every applicable source invariant is 
 
 Use **COMPLETE** for conforming delivery with explicitly declared limits; **PARTIAL** when only some required artifacts are produced; **BLOCKED** for missing authority/approval/preconditions; **FAILED** for unsuccessful production; **UNVERIFIED** when claimed checks were not run. No result state implies Human acceptance or runtime verification without evidence.
 
-A future change to generic contracts or Agent knowledge requires review of actual affected consumers; pin active invocation definitions, do not silently mutate them. Any first real-use test requires separate Human-authorized invocation after formation approval and evidence that the selected runtime can satisfy the Space's declared execution requirements. A project's concrete owner/approver is resolved from its current authoritative binding.
+A future change to generic contracts or Agent knowledge requires review of actual affected consumers; pin active invocation definitions, do not silently mutate them. Any first real-use test requires **Human-direct** invocation after separate formation approval, declared mode and gates, and evidence that the selected runtime can satisfy the Space's requirements. A project's concrete owner/approver is resolved from its current authoritative binding.

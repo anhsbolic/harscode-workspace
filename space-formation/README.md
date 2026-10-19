@@ -19,10 +19,11 @@ Formation quality is a **design claim** until actual harness and project use ver
 | Project authority intake, end-to-end outcome/I/O chain, existing capability discovery, generic-vs-bound fit and gap reporting | **Balad / Pairing** in the project-facing session |
 | Evaluate the formation request, challenge generalization, design/iterate reusable Space definition and contract | **Anhar + ChatGPT**, applying this guidance |
 | Formation approval and consequential contract changes | **Anhar** |
-| Validate selected runtime mechanics, input conformance, bounded execution and real delivery evidence | **Authorized Space / relevant execution actor**, with Balad coordinating external handoffs |
+| Prepare direct invocation and authorize material gates | **Human**, optionally informed by Balad's advisory assessment |
+| Validate selected runtime mechanics, check received input conformance, coordinate internal Specialists, enforce gates and return evidence | **Human-invoked Space Coordinator Agent / authorized runtime actor**, not Balad |
 | Accept or reject the project outcome and any material product meaning | **Project-owning Human / authority**, Anhar for the current C1 pilot |
 
-Balad **does not form/edit declarative Spaces or configure Specific Agents** under this Station 5 working boundary. It may explain needed capability and send a **Formation Request**. The Human may change this allocation in a later explicit decision, not through implied formation approval.
+Balad is **advisory-only**: it may explain a capability gap or propose a **Formation Request to the Human-led formation process**, but may not invoke, request execution from, communicate with, or coordinate a Space Coordinator Agent. Only the Human directly initiates a Space invocation; Space execution does not flow through Balad.
 
 ## Guidance routing
 
@@ -39,9 +40,9 @@ Project-specific assignments, B1–B7 or other project semantics belong to the *
 Real project need + Balad's I/O-chain / capability-gap report
   → review effective sources and actual existing Space definitions
   → decide reuse / adapt / propose new formation
-  → generalize a bounded, strict Space contract and Agent capabilities
+  → generalize strict Space contract, Coordinator role and consequence-based Human Approval Gates
   → Human reviews/approves the formation definition
-  → separately authorized harness/runtime readiness check and invocation
+  → Human directly starts selected Coordinator in supervised mode (default) or explicitly autonomous mode only after scoped authorization and runtime readiness
   → observed outcome, consumer handoff, failures and improvement proposals
   → Human-reviewed revision of reusable Space as warranted
 ```
@@ -50,6 +51,6 @@ Do not demand formation every time a project has a gap: a Human decision, bounde
 
 ## State and governance
 
-Keep the distinction **research proposal → approved declarative definition → readiness-checked capability → execution-validated use**. These are reporting claims, not a new state machine. Formation approval does **not** approve invocation, protected engineering writes, contract changes in a running assignment or promotion to `main`.
+Keep the distinction **research proposal → approved declarative definition → readiness-checked capability → execution-validated use**. Human approval gates attach to consequential transitions in **both** execution modes, not routinely to every Specialist handoff. Human decisions must be bound to exact artifact revision/scope; material revision invalidates affected approval. Supervised review milestones are separate from binding approval gates. These are reporting claims, not a new state machine. Formation approval does **not** approve invocation, protected engineering writes, contract changes in a running assignment or promotion to `main`.
 
 When this experimental area changes materially, document the rationale and Human decision in its owning research context. Operational promotion would require the applicable Harscode authoring/proposal governance, separate from this pilot.

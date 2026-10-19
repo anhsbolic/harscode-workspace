@@ -1,11 +1,11 @@
 # Balad Model Routing — Station 5 Research v0
 
 > **Status:** Experimental guidance on `research/harscode-purpose-llm-fit`. Not Harscode operational `main` policy, native Codex configuration, an execution engine or an automatic authorization mechanism.
-> **Authority:** Human owns `available_models` inventory and all model/effort policy. Balad reads the registry, assesses task fit, proposes routes and respects Human gates. See [Workspace Init](workspace-init.md), [Pairing Composition](space-formation.md) and [Human-led Space Formation](../space-formation/contract-and-readiness.md).
+> **Authority:** Human owns `available_models` inventory, model/effort policy and Space invocation. Balad may inspect and **advise** on model fit but does not select/bind a model for a Space Coordinator or Specialist, invoke a Space or coordinate dispatch. See [Workspace Init](workspace-init.md), [Pairing Composition](space-formation.md) and [Human-led Space Formation](../space-formation/contract-and-readiness.md).
 
 ## Intent and scope
 
-Select **a model + configured reasoning effort for each real Specialist Agent assignment**, not one immutable model per Space or one model per old workflow phase. Reusable Agent capability requirements differ from local invocation binding. A configured registry is **Human-declared policy**, not runtime proof of access, competence, pricing, outcome quality or session identity.
+Support **Human-directed selection** of a model + configured reasoning effort for each real Coordinator/Specialist assignment, not one immutable model per Space or one model per old workflow phase. Balad's use of this guidance is advisory only. Reusable Agent capability requirements differ from local invocation binding. A configured registry is **Human-declared policy**, not runtime proof of access, competence, pricing, outcome quality or session identity.
 
 Station 5 initially targets one configured `codex-cli` harness. Do not introduce a multi-harness catalog, vendor adapters, automatic fallback, a runtime dispatcher or a model leaderboard before real requirements justify them.
 
@@ -14,9 +14,9 @@ Station 5 initially targets one configured `codex-cli` harness. Do not introduce
 `<workspace-root>/.harscode-local.yaml` contains `available_models`. Only the Human decides which model IDs are offered, their task-suitability hints, relative cost preference and each permitted effort's approval state.
 
 Balad:
-- MAY read the registry, inspect runtime evidence **on request or when necessary to verify an impending route**, point out mismatches and **propose** a change.
+- MAY read the registry and inspected evidence **on Human request**, point out mismatches and **recommend** a model/effort or a registry change; this advice does not bind a Space.
 - MUST NOT autonomously populate the registry during `workspace-init`, self-approve a model or effort, silently broaden availability, or alter the Human's policy to facilitate dispatch.
-- MAY mechanically apply **exact Human-approved changes** after separate scoped write authorization; Human remains the authorizing owner. A Human can instead edit the local YAML directly.
+- MAY mechanically apply **exact Human-approved local configuration edits** after separate scoped write authorization for those files only. This is not permission to open/request a Coordinator session or assign models to Agents.
 - MUST NOT treat a missing/empty/old-style entry as unrestricted permission.
 
 ## Registry shape and unambiguous effort policy
@@ -35,11 +35,11 @@ available_models:
 ```
 
 Per entry:
-- `id`: exact local runtime-recognized identifier. Confirm against the current Codex installation and user access when routing.
+- `id`: exact local runtime-recognized identifier. The Human-invoked Coordinator/runtime operator verifies actual access before executing assignments.
 - `capabilities`: coarse Human-assessed suitability hints, **not proven benchmarks**. Examples: `reasoning`, `coding`, `repository-work`, `cross-cutting-analysis`. Avoid presenting `security-risk` as a guaranteed model capability; the assignment's risk and assurance duties are separate.
 - `reasoning_efforts`: one mapping from **runtime-supported effort name** to the Human's **selection policy** for that *model+effort* pair:
-  - `allowed`: Balad may select this pairing without an **additional model/effort-choice approval**. This is not permission to form/invoke a Space or bypass tool/path/project safeguards.
-  - `human_approval`: before selecting or dispatching this pairing for a concrete invocation, Balad must obtain Human approval for that exact choice and scope. If the approval is absent or expired/outside scope, stop and ask. Approval must not silently carry over to unrelated work.
+  - `allowed`: the Human-invoked Coordinator/runtime actor may use that model+effort **within a separately authorized invocation and granted tool/scope**, without an additional model-choice approval. Balad may recommend but cannot dispatch or bind this selection.
+  - `human_approval`: before the Coordinator/runtime actor selects or dispatches this pairing, **Human approval for that exact model+effort and concrete task scope** is required. If absent, expired or out of scope, stop; Balad cannot approve, request dispatch or silently obtain a broader grant.
 - **Absent effort**: not configured/eligible. Do not infer it from vendor documentation or earlier runtime observations. A key being present expresses Human-configured support and policy, but **actual** runtime support/access must still be checked when material.
 - `cost_tier`: Human-selected relative resource preference (`low`, `standard`, `high`), not an exact bill, performance ranking or entitlement guarantee.
 
@@ -49,11 +49,11 @@ This policy is **fail-closed**: unknown status values, duplicate model entries, 
 
 ## Selection, approval and runtime binding
 
-1. **Determine the actual assignment** and accepted Space I/O contract first; no model routing merely because Balad is coordinating settled facts.
+1. The **Human-invoked Coordinator/runtime actor** determines the authorized assignment and relevant Space I/O contract. Balad may give Human-only advisory fit analysis, never operational routing or dispatch.
 2. Identify material complexity, uncertainty, code/tool requirements, risk, independence/assurance duties and concrete Specialist capability needs. A larger effort does not inherently make a model safe for a security-critical task.
 3. Read the Human-owned registry. Filter for sufficient task fit, supported local runtime, configured `reasoning_efforts`, and applicable project constraints. A model absent from the registry is not eligible.
 4. Among sufficiently capable, permitted candidates, favor the lower suitable resource/latency effort **without weakening correctness or required assurance**. Use real execution evidence to calibrate suitability. Do not automatically maximize effort.
-5. For `allowed`, proceed with **model-choice selection only** if the separate Space formation/invocation and tool permissions are valid. For `human_approval`, present **model ID + effort + concrete task/scope + reason** and wait for explicit Human authorization before initiating that exact pairing.
+5. For `allowed`, the authorized Coordinator may make **model-choice selection only** within the valid invocation and tool permissions. For `human_approval`, present **model ID + effort + concrete task/scope + reason** to the Human and wait for exact approval; neither mode bypasses this gate.
 6. Before invocation, verify the effective model/effort using the harness's **native** controls and report what was observed. The Harscode YAML cannot select/provision Codex models, provide credentials or bypass runtime/sandbox security.
 7. If no suitable, authorized or runnable pairing exists, mark the **affected invocation NOT READY**, state the smallest gap and ask the Human. No silent downgrade, unapproved upgrade, or substitute model.
 
@@ -61,7 +61,7 @@ This policy is **fail-closed**: unknown status values, duplicate model entries, 
 
 ## Balad session versus Specialist invocation
 
-Balad is **one logical Human-facing Pairing role**. The Human's Balad Codex session model can be chosen separately; do not invent default/escalation model fields. Specialist model/effort is decided at Space binding and checked again at invocation. The first C1 Space invocation remains separately Human-authorized even if its model+effort policy is `allowed`.
+Balad is **one logical Human-facing advisory role**. Its own session model is separate from Coordinator/Specialist runtime settings. The Human directly invokes the Coordinator (`supervised` unless the Human explicitly selects `autonomous`); actual model/effort binding and tool checks belong to that authorized execution context. Balad does not invoke, assign, request dispatch from or communicate with any Coordinator Agent. An `allowed` model entry does not override Human Approval Gates.
 
 ## Evidence and evolution
 

@@ -7,7 +7,7 @@
 | Layer | Source/owner | Contract question |
 | --- | --- | --- |
 | **Reusable Space capability** | Human-approved Harscode experimental Space definition | Which classes of input are accepted, what bounded production is permitted, and which exact output types, quality and evidence are guaranteed or honestly refused? |
-| **Concrete invocation binding** | Current owning project sources + scoped Human authorization, coordinated by Balad | Which project-specific values, desired behavior, repo revision, permissions and acceptance evidence instantiate that contract **without changing its generic meaning**? |
+| **Concrete invocation binding** | Current owning project sources + **Human-direct** authorization to the Space Coordinator (Balad advisory only) | Which project-specific values, desired behavior, repo revision, permissions and acceptance evidence instantiate that contract **without changing its generic meaning**? |
 
 Project-agnostic does **not** mean unconstrained. Define strict generic quality/format/conformance obligations. Do not store feature-specific endpoint lists, Kencleng semantics or historical solution decisions in a reusable definition.
 
@@ -19,12 +19,22 @@ For the **one coherent external responsibility** of the Space, make these indepe
 2. **Generic input contract:** required/optional inputs, form/type, provenance/approval/version constraints, cross-input consistency requirements, scoped authorization and refusal for nonconforming input.
 3. **Generic output contract:** produced output type, form/format, invariants, quality, evidence/verification obligations, owner/consumer handoff and traceable source/revision.
 4. **Result semantics:** what complete, partial, failed, unknown or blocked means; what must *not* be claimed as successful; where stop/escalation occurs.
-5. **Internal composition:** why one/more Specialist Agents are needed, bounded assignments and shared/isolated context, independent checks where required, model/effort/tool/knowledge constraints.
-6. **Execution boundary:** permissible paths/actions, project binding, sandbox/tool dependencies, sensitive-change Human approvals, and which enforcement is actually verified versus only described.
+5. **Internal composition:** the **Space Coordinator Agent** role as the Human-invoked internal work coordinator (not automatically a separate native process), why one/more Specialists are needed, bounded assignments, source access, independent review and capability/knowledge requirements.
+6. **Execution boundary and modes:** `supervised` is the **default**. `autonomous` requires explicit Human choice for the **concrete invocation**. Define Human visibility/continuation milestones separately from non-waivable consequence-based approval gates; specify permitted paths/actions, tool and isolation requirements, and what enforcement has been verified.
 7. **Durable output and evolution:** return artifacts/evidence consumers can inspect without old chat; approved definition versus invocation state; version/change impact and improvement-request path.
-8. **Readiness/assurance:** which conditions must be tested before invocation, including honest treatment of independence/security, and who can accept resulting outputs.
+8. **Readiness/assurance and Human Approval Gates:** determine during formation which consequential transitions require Human authority, what exact artifact/decision revision and evidence are presented, what action is blocked, and when approval becomes valid/invalid; include output acceptance as separate from execution authorization.
 
 The list defines *content*, not eight files or eight mandatory process stages. Use proportionate precision; don't require a full threat model for a low-risk file-format conversion, and don't hand-wave security when a Space can grant privileged access.
+
+### Human Approval Gate Contract (formation-time semantic requirement)
+
+For each materially consequential transition, specify **(a) trigger** (decision or output), **(b) required evidence** and immutable/reconstructable artifact revision, **(c) authorized Human/owning authority**, **(d) blocked downstream action**, **(e) exact resume scope and condition** including material-change invalidation. A valid decision must be recorded at an approved durable location and checked against the affected output revision before proceeding. Missing, stale, denied or scope-mismatched approval → affected work **BLOCKED** in both modes; never infer consent from silence, `autonomous` mode, an earlier formation decision or an unrelated approval.
+
+**Supervised continuation checkpoint** is distinct: the Human can inspect intermediate assignments/results and say `continue` at meaningful milestones selected for the actual invocation. This is operational steering, **not** automatic acceptance of a Specialist's output as a binding project decision. Do not demand Human approval after every Agent handoff. In autonomous mode, Coordinator advances ordinary authorized work but still halts at all mandatory Human gates. Require concrete sandbox/tool enforcement proportionate to risk; a prompt-based pause alone does not guarantee secure prevention.
+
+**Illustrative Builder, not a formed capability:** after a Planning Specialist produces a reviewed Techplan, **Human approval of that Techplan's exact revision** is required **before Build work using it**. The Coordinator may autonomously plan/review, but cannot dispatch the gated Build action until approval and associated write scope are valid. A material Techplan revision invalidates the affected approval. Security/protected changes may impose additional conditional gates; final delivery acceptance is separate. An S1 solution-design-only Space does **not** inherit this Builder gate automatically.
+
+**Coordinator / authority:** Human invokes the Space Coordinator directly. Balad may advise on choices and inspect provided results but cannot dispatch, request action from, resume, or communicate directly with Coordinator. Coordinator cannot self-approve gates or change the mode or approval rules unilaterally. Mode, pinned sources, gate decisions and continuation permissions belong to the concrete invocation's durable state, not to ChatGPT memory.
 
 ### Example: REST API Production capability (illustrative, not a formed Space)
 
@@ -51,7 +61,7 @@ For each material **producer output → consumer input** edge, compare:
 
 At parallel joins, verify that **all required outputs and versioned interfaces** are jointly compatible. Independent assurance must also consume **original acceptance authority** directly; it may reject a solution that is internally consistent but violates that authority.
 
-If compatibility fails, identify the first broken producer/consumer edge, affected outcome, and whether the remedy belongs to project binding, contract adaptation/versioning, Human product decision, or a genuinely new capability. Balad owns cross-Space coordination; an invoked Space validates its **own received input conformance**.
+If compatibility fails, identify the first broken producer/consumer edge, affected outcome, and whether the remedy belongs to project binding, contract adaptation/versioning, Human product decision, or a genuinely new capability. Balad may **advise the Human** about cross-Space compatibility, but does not coordinate execution or handoffs with Space Coordinators. Each Human-invoked Space validates its own received input conformance.
 
 ## Definition approval versus operational claims
 
@@ -68,4 +78,4 @@ These are descriptive **claims**, not an imposed sequential state machine. A Spa
 
 ## Improvement without silent contract drift
 
-An internal Specialist or Space may suggest a change to generic I/O, quality checks, model binding, knowledge or composition based on actual work. Return **evidence + proposed delta + affected upstream/downstream contracts + migration/version impact**. Balad reports/routes it; Anhar + ChatGPT review the reusable change. Protected project meaning and active invocation scope cannot change just because an internal Agent recommended improvement.
+An internal Specialist or Space may suggest a change to generic I/O, quality checks, model binding, knowledge or composition based on actual work. Return **evidence + proposed delta + affected upstream/downstream contracts + migration/version impact** to the Human. The Human may consult Balad for advisory review and independently bring the proposal to Human-led formation review; Balad does not contact the Coordinator. Protected project meaning and active invocation scope cannot change just because an internal Agent recommended improvement.

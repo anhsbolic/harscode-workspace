@@ -1,7 +1,7 @@
 # Pairing — Space Composition and Formation Request (Station 5 Research)
 
 > **Status:** EXPERIMENTAL / **bounded C1 Formation Request trial accepted** (2026-10-19); see [trial closeout](../research/checkpoints/station5-balad-formation-request-closeout-2026-10-19.md). This is Balad's **project-facing discovery/reporting contract**, not operational `main` policy, cross-project proof, Space Formation design guidance or permission to author definitions. Tested revision: `dfc0857`; Git revisions identify later guidance changes.
-> **Formation owner:** Anhar + ChatGPT under [space-formation/](../space-formation/README.md). First invocation requires separate authorization.
+> **Formation owner:** Anhar + ChatGPT under [space-formation/](../space-formation/README.md). First invocation is performed by the Human through a separately authorized Space Coordinator session, never requested or executed by Balad.
 > **Example kickoff:** [End-to-End Space I/O Chain Kickoff Prompt](space-composition-kickoff-prompt.md) — optional short Human prompt, not a required dossier.
 
 ## Balad's responsibility
@@ -37,4 +37,4 @@ The report may propose a **first candidate**, but must not specify a definitive 
 
 Lead with a **short verdict**. For substantive composition, usually present (a) a compact whole-chain diagram, (b) a generic I/O + project-binding + reuse map and (c) material edge compatibility/gaps plus the next formation request. Skip irrelevant detail and don't repeat C1 requirements as an engineering design dossier. Explain uncertainty and stop at the authorization boundary.
 
-Project-specific implementation choices belong to the authorized producing Space/assignment. Balad's chain remains provisional until actual consumers receive and check real outputs.
+Project-specific implementation choices belong to the Human-invoked producing Space/assignment. Balad's chain remains provisional until actual consumers receive and check real outputs. Balad does not send Formation Requests to a Space Coordinator, instruct a Coordinator, dispatch Specialists, manage an execution handoff, or resume work; the Human may independently use Balad's advisory assessment to prepare a direct Space invocation.

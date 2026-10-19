@@ -7,13 +7,13 @@
 | I1 | Approved, bounded behavior/requirements and original acceptance obligations | Inspectable owning source, approved status, scope, revision; distinguish product authority from navigation/evidence |
 | I2 | Current project/design/architecture/security constraints | Applicable source + revision, precedence and protected-write/permission rules; technology choices are project binding, not generic Space policy |
 | I3 | Target repository and current implementation baseline | Exact repository, branch/ref and target SHA (or immutable equivalent); read access, known active contracts and environment facts |
-| I4 | Invocation assignment, consumers and scoped authorization | Explicit objective, required output destinations and consumer expectations, allowed actions and material Human gates; actual runtime suitability is separately checked against execution requirements |
+| I4 | **Human-direct** invocation assignment, consumers and scoped authorization | Exact Human-approved objective, required output/state destinations, downstream consumer expectations, allowed actions and material Human gates, selected mode (`supervised` unless explicit Human `autonomous`), authority and decision evidence; actual runtime suitability is separately checked against execution requirements |
 
 Optional: supporting research and examples that are clearly marked non-authoritative; dependencies or real prior output from another approved Space; relevant live technical evidence. Do not require a fixed PRD/TRD format or a pre-existing API.
 
 ## Acceptance and refusal
 
-The Space checks existence, provenance, ownership and cross-input consistency **for the received assignment**; Balad still owns prior upstream composition and does not delegate product-quality judgment as a mandatory re-audit. Reject/hold if material authority is missing, the target revision is ambiguous, inputs conflict about binding product meaning, an expected consumer cannot be identified, or required access/permission is absent. Record the exact gap instead of inventing missing semantics.
+The Space checks existence, provenance, ownership and cross-input consistency **for the Human-direct received assignment**; Balad may provide prior upstream composition **advice to the Human**, but does not invoke or coordinate S1 and does not delegate product-quality judgment as a mandatory re-audit. Reject/hold if material authority is missing, the target revision is ambiguous, inputs conflict about binding product meaning, an expected consumer cannot be identified, or required access/permission is absent. Record the exact gap instead of inventing missing semantics.
 
 **Design freedom** (auth implementation, route shape, database schema, detailed state representation) is not itself missing Product Authority. Produce a reasoned solution within project-owned constraints, and escalate only decisions actually owned by Human or material risk gates.
 

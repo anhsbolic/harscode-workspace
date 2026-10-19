@@ -11,14 +11,14 @@
 
 ## Minimum reconstructable record
 
-Record the invocation's actual ID/reference or descriptive key, Space definition SHA, target repo/ref/SHA, source authority refs, assignment scope and approved write locations, Human invocation/privileged gates, assigned Specialist responsibilities and actual runtime-binding reference (including model/effort where observed and permitted), current accepted intermediate/final artifact refs, blocking facts/findings, next owner/action and last checked revisions.
+Record the actual Human-direct invocation key, pinned Space definition SHA, target repo/ref/SHA and source refs, approved scope and write locations, **mode (supervised unless explicit Human autonomous)**, Coordinator and Specialist assignments, runtime-binding/evidence (including permitted model/effort if observed), **each triggered Human gate with artifact revision, authority, decision, blocked action and permitted resume**, non-approval supervision checkpoints, current intermediate/final artifact refs, blockers, next owner/action and last checked revisions.
 
 Do not invent runtime statuses. Describe observed `not started`, `in progress`, `awaiting decision`, `delivered/reviewed` and `blocked` in prose. `COMPLETE`/etc. describe output conformance separately. A row of checkboxes is not proof of a tool invocation.
 
 ## Recovery and change
 
 1. Inspect current target repo and Space definition revision. Locate the actual invocation state owner and existing accepted output refs; if none exists, do not pretend continuity.
-2. Compare current sources with pinned input revisions. Material upstream change → Balad coordinates rebind/review; Specialist cannot silently substitute new authority.
+2. Compare current sources with pinned input revisions. A material upstream change → **Coordinator pauses affected work and asks the Human** to authorize any rebind/review; Balad may separately advise the Human but does not control or coordinate this invocation.
 3. Resume only from accepted artifacts and revalidate changed dependencies, scoped authorization, selected runtime readiness and affected reviewer checks. Do not rely on a prior chat's implicit agreement.
 4. If a material artifact is missing/unreadable, report blocker and owner; don't reproduce imagined decisions to fill a gap.
 
@@ -30,9 +30,12 @@ Project input revision:
 Completed output refs + actual checks:
 Produced but unverified/partial refs:
 Open blockers and affected consumer:
+Execution mode + explicit Human mode decision/ref:
+Supervision checkpoint and continue/revise/stop evidence (if any):
+Human approval gate ID + exact subject revision, decision, blocked action, permitted resume:
 Human decision/approval required:
 Current invocation state owner/ref:
 Next authorized action + owner:
 ```
 
-When no current-effective state storage path is available, submit a concrete proposed path for Anhar approval at preflight. Never create a central Run registry, workspace root state or project truth mirror merely to satisfy this template.
+When no current-effective state storage path is available, submit a concrete proposed path to the **authorized Human** for approval at preflight. Never create a central Run registry, workspace root state or project truth mirror merely to satisfy this template.

@@ -1,54 +1,56 @@
-# S1 Kickoff — Harness-Neutral Human and Space Preflight
+# S1 Kickoff — Human-Direct Coordinator Preflight (Harness-Neutral)
 
-> **Status:** TEMPLATE for a PROPOSED / UNFORMED reusable Space. **Do not invoke** until the authorized Human has approved a pinned definition, actual runtime suitability has been checked against [execution requirements](../composition/execution-requirements.md), and the relevant Human has separately authorized the concrete project assignment.
+> **Status:** Informational TEMPLATE for PROPOSED / UNFORMED S1. It grants **no** formation, invocation, protected-write or model approval. The Human must approve a pinned Space definition **separately** before any real invocation.
 
-## Human-to-Pairing request (after formation)
-
-```text
-Siapkan penggunaan Feature Solution Design Space untuk [approved project commitment].
-
-Temukan current project authority dan pinned baseline. Periksa input/output
-contract S1 dan kesesuaian binding, lokasi artifact/state, Specialist
-capability requirements, independence, izin runtime, dan batas keputusan Human.
-
-Laporkan preflight, risiko/blockers, dan authorization yang diperlukan.
-Jangan mulai Space execution sebelum invocation ini disetujui.
-```
-
-This is a suggested human intent; the project's actual Pairing entrypoint may use different wording. Natural language is **not** authorization.
-
-## Space assignment entry (after scoped invocation authorization)
+## Human → Space Coordinator (preflight request)
 
 ```text
-Operate only within an explicitly authorized Feature Solution Design Space invocation.
+Saya ingin menyiapkan Feature Solution Design Space untuk [approved project commitment].
 
-Read the pinned Space definition's SPACE.md and AGENTS.md, required generic
-contracts, composition/input-output-chain.md, composition/execution-requirements.md
-and composition/interaction-sequence.md when sequencing handoffs or review; read
-this kickoff and the actual assignment binding, scoped project
-instructions and original approved authority directly.
+Sebagai Space Coordinator Agent, lakukan preflight saja: cek approved
+formation revision, current project I1-I4 sources/commit, generic I/O,
+execution requirements, intended consumers, artifact/state locations,
+applicable Human Approval Gates, reviewer independence and runtime
+permissions. Mode default supervised. Autonomous hanya jika aku
+memilihnya eksplisit untuk invocation ini.
 
-Confirm the pinned input revision, output destinations, permission boundaries,
-current durable state owner, Specialist capability fit and independent reviewer
-context against actual runtime observations. Report BLOCKED and stop if a
-material precondition or required Human approval is absent.
-
-Assign bounded responsibilities using composition/responsibilities.md. Give
-each responsible Specialist its profile, relevant local guidance/guardrails/
-knowledge, exact input revisions and authorized output paths. The runtime
-adapter/launcher is external; do not assume these Markdown files instantiate
-native agents or grant tools/models.
-
-Preserve source → intermediate → output → reviewer traceability. Route material
-findings to the owning producer; the reviewer reads original project authority.
-Assemble only actually available, checked artifacts into the delivery bundle.
-
-Do not implement production features, modify product meaning, bypass privileged
-approval, infer a valid runtime claim, or treat internal review as integrated
-product assurance. Return real output refs, observed conformance and
-independence, blockers, Human acceptance required, and next action.
+Jangan jalankan Specialist dulu. Kembalikan evidence, BLOCKED/NOT READY
+jika ada, serta precise invocation authorization yang dibutuhkan.
 ```
 
-Actual harness-specific launch commands, model/effort policy, sandbox controls and session/subagent mechanics are **not** defined by this Space. They belong to Harscode-level harness translation plus the authorized project/runtime binding. If the chosen runtime cannot satisfy a material execution requirement, report NOT READY rather than silently weakening it.
+A natural request is not execution authorization. **Balad is optional Human-only advisor** for earlier capability assessment or later artifact review; Balad must not invoke, ask Coordinator to execute, route Specialist work or become the execution intermediary.
 
-Use [state and handoff](state-and-handoff.md) only when staging preflight/operation; kickoff is not automatic execution.
+## Human → Space Coordinator (after formation, preflight, and explicit invocation authorization)
+
+```text
+Act as the Space Coordinator Agent for an explicitly HUMAN-AUTHORIZED
+Feature Solution Design Space invocation. Read the pinned definition,
+agents/space-coordinator/profile.md, guardrails.md, guidance.md,
+composition/responsibilities.md, composition/input-output-chain.md,
+composition/human-approval-gates.md, contracts/input.md, contracts/output.md,
+composition/execution-requirements.md and current Human invocation binding.
+
+Confirm actual permission to run and output/state revision locations.
+Apply supervised mode by default. Switch to autonomous only if the
+Human explicitly authorized autonomous for this invocation and mode
+evidence is recorded. Neither mode overrides a mandatory Human gate.
+
+Assign scoped Specialist work using task-local source revisions,
+profiles, knowledge and approved destinations. Pause for supervised
+Human review at agreed meaningful milestones, distinguishing ordinary
+continue from binding material approval. In autonomous mode you may
+coordinate routine work within scope but MUST pause at consequence-based
+Human approval gates. Verify reviewer independence and source fidelity.
+
+Write real X1 and O1-O5 artifacts and current-effective handoff state
+where approved. If any material input, runtime capability, permission
+or gate is missing, BLOCK only the affected dependent work and report
+the exact Human decision required. No feature implementation, product
+authority changes, unapproved protected writes or invented PASS.
+
+Return artifact refs, versions, internal review evidence, limitations
+and any approval request DIRECTLY to the Human. Human downstream
+acceptance is separate from output production.
+```
+
+This is a **semantic entry template**, not a CLI command, launcher, orchestration engine or evidence that native Codex subagents/permissions/pause-resume are configured. Harness-native mechanisms belong outside the reusable Space; actual runtime observations are required before claims of readiness.

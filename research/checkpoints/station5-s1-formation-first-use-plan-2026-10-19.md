@@ -1,6 +1,6 @@
 # Station 5 — S1 Formation Candidate and First-Use Test Plan (2026-10-19)
 
-> Status: **PROPOSED / UNFORMED**. No S1 formation approval, invocation, runtime proof or C1 engineering has occurred.
+> Status: **PROPOSED / UNFORMED**. No S1 formation approval, invocation, runtime proof or C1 engineering has occurred. Coordinator/mode/gate working decision: [2026-10-19 checkpoint](station5-human-direct-coordinator-gates-2026-10-19.md).
 > Owner and decision-maker: Anhar.
 
 ## Scope
@@ -27,14 +27,14 @@ This matrix tests **solution contract quality**, not C1 implementation. A strong
 
 ## Formation and first-use gates
 
-1. **Formation approval:** Anhar reviews the candidate's external I/O, path graph, Agent-owned knowledge and permissions, material failure semantics and physical layout. Only explicit approval of a pinned commit establishes a **FORMED** definition.
-2. **Codex readiness:** Confirm actually available CLI and Agent/context mechanism, model+reasoning effort allowed in Human-owned local registry, reviewer isolation, actual permissions and approved write destinations. Unavailable components are NOT READY. A declarative agent profile does not dispatch anything.
-3. **Invocation authorization:** Anhar approves C1-specific input SHA, concrete artifact and state locations, allowed writes, output expectations and required high-risk gates. This is separate from formation.
-4. **Real-use evidence:** Run S1 using the approved C1 inputs. Capture X1 and O1–O5 with original-source trace, Agent/review provenance, actual conformance, cost/context observations and failure modes. Review a consumer-style cold-start reading of the resulting bundle and pin artifact refs.
+1. **Formation approval:** Human reviews candidate external I/O, both diagrams, **Coordinator Agent**, Specialist ownership, **S1 consequence-based Human Approval Gates**, agent-owned knowledge, permissions and failure semantics. Only explicit approval of a pinned commit establishes a **FORMED** definition.
+2. **Codex readiness:** Confirm actual CLI and Agent/context mechanics, model+effort eligibility, Reviewer isolation, effective write boundaries, **Human-direct Coordinator conversation, supervised checkpoint behavior and gate pause/resume enforcement**. Autonomous remains unproven unless separately tested. Unavailable material capability is NOT READY; a role profile does not dispatch anything.
+3. **Human-direct invocation authorization:** Human directly starts the Coordinator and approves C1-specific input SHA, concrete artifact/state locations, allowed writes, output expectations and mode (`supervised` default; `autonomous` only when explicitly chosen), plus conditional material/protected gates. **Balad cannot request or coordinate execution.** This is separate from formation.
+4. **Real-use evidence:** In a separately authorized Human-direct S1 execution, capture X1 and O1–O5 with original-source trace, Coordinator/Specialist provenance, supervision observations, triggered gate decisions and revision-bound resume, conformance, costs and real failure modes. Review a consumer-style cold-start reading of the resulting bundle and pin artifact refs.
 5. **Review and revise:** Compare actual output with matrix; classify deficiencies as reusable contract, Agent knowledge, harness, project binding or authorization defects. Revise only evidenced gaps and review compatibility. **Do not form S2/S3/S4/S5 as prerequisite** to assess S1's first output.
 
 ## Remaining decisions before invocation
 
-Exact definition SHA to approve; actual output/artifact location within Kencleng or another legitimate project-owned place; current-effective invocation state owner; individual Specialist model/effort and context mechanism; sandbox/write permissions; evidence owner; and C1-specific protected security approvals where any proposed action touches protected implementation. No values are preauthorized by this plan.
+Exact definition SHA to approve; Human-direct invocation/selected mode, output/artifact location within Kencleng or another legitimate project-owned place; current-effective invocation state owner; Coordinator/Specialist model+effort and context mechanisms; observable Reviewer isolation, Human gate pause/resume behavior, sandbox/write permissions and evidence owner. C1-specific protected/security approvals stay Human-owned. Balad is advisory-only, not a dispatcher. No values are preauthorized by this plan.
 
-The candidate's `invocation/kickoff-prompt.md` is an informational template before formation and preflight; do not use it as a launcher today.
+The candidate's `invocation/kickoff-prompt.md` and Coordinator prompt are informational templates before formation and preflight; do not use them as a launcher today.
