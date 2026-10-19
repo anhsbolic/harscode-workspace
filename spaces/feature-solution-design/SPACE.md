@@ -1,7 +1,7 @@
 # Feature Solution Design — Reusable Space Candidate
 
 > **Status:** PROPOSED / UNFORMED; research draft, no readiness or invocation evidence.
-> **Owner:** Anhar
+> **Owner role:** Human. The concrete owner and approval authority are identified in the applicable formation decision, not hardcoded into this reusable definition.
 > **Capability identity:** `feature-solution-design`
 > **Definition revision:** the Git commit containing this definition; pin exact SHA when approved. No semantic version number is claimed yet.
 > **Formation basis:** Balad's accepted C1 capability-gap request; experimental [formation guidance](../../space-formation/README.md).
@@ -15,7 +15,7 @@ The Space is accountable for a **coherent solution**, not for creating features,
 
 ## Authority, permissions, and exclusions
 
-- Anhar owns formation, reusable-contract changes, material approvals and first invocation decision. ChatGPT may collaborate on design, not own the Space.
+- The authorized **Human owner** controls formation, reusable-contract changes and material approvals. The Human authorized for the concrete project assignment controls its invocation approval. AI collaborators may help design or review, but do not acquire ownership or self-approval authority.
 - Balad identifies/pins project authority and coordinates external handoff; no autonomous Space definition authoring by Balad.
 - Target-project Human-approved product meaning, requirements, design authority and protected writes take precedence over solution preferences and Agent-local best practices.
 - **Allowed in formation draft:** design, contract reasoning, documentation, solution review and bounded preflight planning.
@@ -46,4 +46,4 @@ Output is potentially consumable only when every applicable source invariant is 
 
 Use **COMPLETE** for conforming delivery with explicitly declared limits; **PARTIAL** when only some required artifacts are produced; **BLOCKED** for missing authority/approval/preconditions; **FAILED** for unsuccessful production; **UNVERIFIED** when claimed checks were not run. No result state implies Human acceptance or runtime verification without evidence.
 
-A future change to generic contracts or Agent knowledge requires review of actual affected consumers; pin active invocation definitions, do not silently mutate them. First C1 test is a separate Anhar-authorized experiment after formation approval and actual Codex readiness evidence.
+A future change to generic contracts or Agent knowledge requires review of actual affected consumers; pin active invocation definitions, do not silently mutate them. Any first real-use test requires separate Human-authorized invocation after formation approval and actual Codex readiness evidence. A project's concrete owner/approver is resolved from its current authoritative binding.

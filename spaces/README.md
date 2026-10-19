@@ -2,7 +2,7 @@
 
 > Status: EXPERIMENTAL candidate definitions on `research/harscode-purpose-llm-fit`, not Harscode `main` or a proven catalog.
 
-A Space is a bounded reusable production capability with an inspectable external input/output contract, internal responsibility map, and honest evidence. Formation is approved by Anhar; a definition does not grant project write permissions, model access, Codex dispatch, or invocation.
+A Space is a bounded reusable production capability with an inspectable external input/output contract, internal responsibility map, and honest evidence. Formation requires approval from the authorized Human owner; a definition does not grant project write permissions, model access, Codex dispatch, or invocation.
 
 ## Current candidates
 
@@ -11,7 +11,7 @@ A Space is a bounded reusable production capability with an inspectable external
 
 ## Routing and authority
 
-- [Space Formation guidance](../space-formation/README.md) owns formation criteria and Anhar's approval boundary.
+- [Space Formation guidance](../space-formation/README.md) owns formation criteria and the Human formation-approval boundary.
 - [Balad Pairing](../pairing/AGENTS.md) owns project-facing composition, actual definition discovery, invocation coordination, version/consumer compatibility, and Formation Requests. Balad does not author reusable definitions.
 - Each Space owns its approved generic contract, internal Specialist packages and declared harness binding. Project-specific inputs/outputs and approved product meanings remain with the target project.
 - Only a definition with explicit Human formation approval + pinned Git revision can be called FORMED. Do not infer formation from the presence of files here.

@@ -12,7 +12,7 @@ Read [SPACE.md](SPACE.md) first for definition status, owner, authority and allo
 
 ## Hard rules
 
-1. This tree is **PROPOSED / UNFORMED** until Anhar separately approves a pinned definition revision. Reading it grants no invocation.
+1. This tree is **PROPOSED / UNFORMED** until the authorized Human owner separately approves a pinned definition revision. Reading it grants no invocation.
 2. The Space's external contract is technology-neutral; concrete assignments must honor target-project stack and architecture. No Kencleng C1 content becomes reusable Space truth.
 3. Follow current project authority and approved acceptance directly; Agent-local knowledge never overrides applicable project/Space contracts, security boundaries, or permission gates.
 4. Scope is **solution production**, not project Product Authority change, feature code, deployment, end-to-end product assurance or downstream execution.

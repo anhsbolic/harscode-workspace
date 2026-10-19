@@ -1,6 +1,6 @@
 # S1 Kickoff — Human and Space Preflight
 
-> **Status:** TEMPLATE for a PROPOSED / UNFORMED research Space. **Do not invoke** until Anhar approves a pinned definition, confirms Codex readiness and separately authorizes this project assignment.
+> **Status:** TEMPLATE for a PROPOSED / UNFORMED research Space. **Do not invoke** until the authorized Human has approved a pinned definition, actual Codex readiness has been checked, and the relevant Human separately authorizes the concrete project assignment.
 
 ## Human-to-Balad request (after formation)
 
