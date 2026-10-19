@@ -29,7 +29,7 @@ Example Human intent: "Lur, init Harscode workspace di <absolute-path>, cek yang
 ## Workspace-root AGENTS.md — minimum intended behavior
 
 Keep it short. It should:
-- Route "Balad", "Lur", "Dulur", Human–Agent Pairing and Space readiness/formation requests to `harscode-workspace/pairing/AGENTS.md`; load `space-formation.md` only when triggered.
+- Route "Balad", "Lur", "Dulur", Human–Agent Pairing, Space composition and **Formation Requests** to `harscode-workspace/pairing/AGENTS.md`; load `pairing/space-formation.md` only when triggered. **Reusable Space Formation design is owned by Anhar + ChatGPT** under `harscode-workspace/space-formation/AGENTS.md`, not Balad's Codex session.
 - Route `workspace-init` requests to `harscode-workspace/pairing/workspace-init.md`; model choice requests to `harscode-workspace/pairing/model-routing.md`.
 - Point to `.harscode-local.yaml` for non-authoritative local path and runtime/model metadata. This file is **not** native Codex configuration or an authorization grant.
 - Instruct agents to read each target repository's own root/scoped `AGENTS.md` and owning project authority before project actions; parent instructions do not override protected project paths or Human decisions.

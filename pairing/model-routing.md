@@ -1,7 +1,7 @@
 # Balad Model Routing — Station 5 Research v0
 
 > **Status:** Experimental guidance on `research/harscode-purpose-llm-fit`. Not Harscode operational `main` policy, native Codex configuration, an execution engine or an automatic authorization mechanism.
-> **Authority:** Human owns `available_models` inventory and all model/effort policy. Balad reads the registry, assesses task fit, proposes routes and respects Human gates. See [Workspace Init](workspace-init.md) and [Space Formation](space-formation.md).
+> **Authority:** Human owns `available_models` inventory and all model/effort policy. Balad reads the registry, assesses task fit, proposes routes and respects Human gates. See [Workspace Init](workspace-init.md), [Pairing Composition](space-formation.md) and [Human-led Space Formation](../space-formation/contract-and-readiness.md).
 
 ## Intent and scope
 
