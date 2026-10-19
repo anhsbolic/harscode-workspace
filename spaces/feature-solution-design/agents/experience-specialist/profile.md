@@ -10,6 +10,6 @@
 
 **Exclusions:** product meaning inventions, pixel-level visual production, frontend code, copy treated as approved without authority, auth/access enforcement implementation and final integrated UX assurance.
 
-**Model/effort recommendation:** strong applied experience/state reasoning and usability semantics; medium typical, high when trust/security/failure states are substantially coupled and Human model-policy allows it.
+**Execution capability need:** applied experience/state reasoning and usability semantics, including rigorous handling of consequential trust, security and failure paths. Runtime selection and available compute settings are separately bound and verified.
 
 Use [guidance](guidance.md), [guardrails](guardrails.md), [Agent-owned knowledge](knowledge.md), [kickoff](kickoff-prompt.md) and Space [output](../../contracts/output.md).

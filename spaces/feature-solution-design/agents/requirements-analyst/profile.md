@@ -8,6 +8,6 @@
 
 **Consumers:** Solution Architect, Experience Specialist, Solution Reviewer (with separate original sources). **No authority** to modify original requirements, choose new product meaning, define final API or make approval decisions.
 
-**Suggested model/effort:** strong source comprehension, retrieval fidelity and traceability; medium ordinarily, high when authority conflicts are material. Actual assignment eligibility is decided by Human-owned model registry and Codex evidence.
+**Execution capability need:** strong source comprehension, retrieval fidelity and traceability. Material authority conflicts require deeper independent source comparison. The authorized runtime binding selects an eligible model/compute setting and records its actual capability/permission evidence.
 
 Open [guidance](guidance.md), [guardrails](guardrails.md), [local knowledge](knowledge.md), [kickoff](kickoff-prompt.md) when the assignment triggers them; Space I/O remains [input](../../contracts/input.md) and [output](../../contracts/output.md).

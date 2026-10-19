@@ -1,39 +1,53 @@
-# S1 Kickoff — Human and Space Preflight
+# S1 Kickoff — Harness-Neutral Human and Space Preflight
 
-> **Status:** TEMPLATE for a PROPOSED / UNFORMED research Space. **Do not invoke** until the authorized Human has approved a pinned definition, actual Codex readiness has been checked, and the relevant Human separately authorizes the concrete project assignment.
+> **Status:** TEMPLATE for a PROPOSED / UNFORMED reusable Space. **Do not invoke** until the authorized Human has approved a pinned definition, actual runtime suitability has been checked against [execution requirements](../composition/execution-requirements.md), and the relevant Human has separately authorized the concrete project assignment.
 
-## Human-to-Balad request (after formation)
-
-```text
-Lur, siapkan penggunaan Feature Solution Design Space untuk [approved project commitment].
-
-Temukan current project authority dan pinned baseline, periksa input/output contract S1 dan kesesuaian binding, lokasi artifact/state, available Specialist/runtime model permissions, serta batas keputusan yang perlu persetujuan.
-
-Laporkan preflight, risiko/blockers, dan authorization yang diperlukan. Jangan mulai Space execution sebelum invocation ini disetujui.
-```
-
-## First Codex Space-session entry (after scoped invocation authorization)
+## Human-to-Pairing request (after formation)
 
 ```text
-You are operating within an explicitly authorized Feature Solution Design Space invocation.
+Siapkan penggunaan Feature Solution Design Space untuk [approved project commitment].
 
-Read the pinned Harscode Space definition's SPACE.md, AGENTS.md, contracts/input.md,
-contracts/output.md, composition/path-relations.md and this kickoff.
-Read the current target project's scoped instructions and approved input authority referenced by the binding.
-Verify repo/commit, read/write scope, models, evidence/state owner, and independent review arrangement against the recorded authorization.
-If any material precondition fails, report BLOCKED and stop. Do not silently repair permissions or change branches.
+Temukan current project authority dan pinned baseline. Periksa input/output
+contract S1 dan kesesuaian binding, lokasi artifact/state, Specialist
+capability requirements, independence, izin runtime, dan batas keputusan Human.
 
-Within scope, assign bounded specialist responsibilities per composition/responsibilities.md
-and their task-specific kickoff prompts. Each specialist must receive exact input and
-output references; do not treat a profile as a native Codex invocation.
-Keep output provenance and handoff state durable, ensure original authority reaches
-the reviewer, and assemble the delivery bundle only from actual checked outputs.
-
-Do not implement production features, grant privileged authority, or claim original
-requirements changed. Return the real output refs, observed conformance, blockers,
-Human acceptance required, and next action.
+Laporkan preflight, risiko/blockers, dan authorization yang diperlukan.
+Jangan mulai Space execution sebelum invocation ini disetujui.
 ```
 
-A natural short Human request is a convenience, **not authorization**. On first C1 pilot, use explicit separate Human gates for formation and invocation; the local model registry can only authorize model+effort selection under its rules, not the Space or project writes.
+This is a suggested human intent; the project's actual Pairing entrypoint may use different wording. Natural language is **not** authorization.
 
-Read [state/handoff](state-and-handoff.md) and [Codex binding](../harness/codex.md) only when staging real preflight/operation; do not turn preflight into automatic execution.
+## Space assignment entry (after scoped invocation authorization)
+
+```text
+Operate only within an explicitly authorized Feature Solution Design Space invocation.
+
+Read the pinned Space definition's SPACE.md and AGENTS.md, required generic
+contracts, composition/path-relations.md, composition/execution-requirements.md
+and this kickoff. Read the actual assignment binding, scoped project
+instructions and original approved authority directly.
+
+Confirm the pinned input revision, output destinations, permission boundaries,
+current durable state owner, Specialist capability fit and independent reviewer
+context against actual runtime observations. Report BLOCKED and stop if a
+material precondition or required Human approval is absent.
+
+Assign bounded responsibilities using composition/responsibilities.md. Give
+each responsible Specialist its profile, relevant local guidance/guardrails/
+knowledge, exact input revisions and authorized output paths. The runtime
+adapter/launcher is external; do not assume these Markdown files instantiate
+native agents or grant tools/models.
+
+Preserve source → intermediate → output → reviewer traceability. Route material
+findings to the owning producer; the reviewer reads original project authority.
+Assemble only actually available, checked artifacts into the delivery bundle.
+
+Do not implement production features, modify product meaning, bypass privileged
+approval, infer a valid runtime claim, or treat internal review as integrated
+product assurance. Return real output refs, observed conformance and
+independence, blockers, Human acceptance required, and next action.
+```
+
+Actual harness-specific launch commands, model/effort policy, sandbox controls and session/subagent mechanics are **not** defined by this Space. They belong to Harscode-level harness translation plus the authorized project/runtime binding. If the chosen runtime cannot satisfy a material execution requirement, report NOT READY rather than silently weakening it.
+
+Use [state and handoff](state-and-handoff.md) only when staging preflight/operation; kickoff is not automatic execution.

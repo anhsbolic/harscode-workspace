@@ -7,7 +7,7 @@ Read [SPACE.md](SPACE.md) first for definition status, owner, authority and allo
 - External input/output: [Input](contracts/input.md), [Output](contracts/output.md).
 - What produces what: [Path relations](composition/path-relations.md), [Responsibilities](composition/responsibilities.md).
 - Artifact envelope and evidence: [Artifacts](artifacts/format-and-traceability.md), [State](invocation/state-and-handoff.md).
-- Invocation/preflight: [Kickoff](invocation/kickoff-prompt.md); Codex translation: [Codex binding](harness/codex.md).
+- Invocation/preflight: [Kickoff](invocation/kickoff-prompt.md), [Execution requirements](composition/execution-requirements.md), and [State](invocation/state-and-handoff.md). Harness-specific configuration and translation are external to this Space.
 - For an individual Specialist, open only that Specialist's `profile.md`, `guidance.md`, `guardrails.md`, `knowledge.md`, `kickoff-prompt.md` when their concern actually applies. Their knowledge is locally owned; no global Best Practices index is required for this candidate.
 
 ## Hard rules
@@ -19,3 +19,4 @@ Read [SPACE.md](SPACE.md) first for definition status, owner, authority and allo
 5. Reviewer must receive original authority directly and review current outputs without relying on producer narrative. Reviewer does not modify production artifacts.
 6. Failure, partial, contradiction, missing authorization, or unknown must be reported truthfully; never claim validated runtime or human approval.
 7. Output and state must be reconstructable from pinned artifacts; chat memory is not authoritative. Prefer smallest task-relevant reads.
+8. Space and Specialist files must not assume a particular harness, its model/effort enum, native subagent mechanics or sandbox configuration. Translate execution requirements externally and verify concrete readiness.

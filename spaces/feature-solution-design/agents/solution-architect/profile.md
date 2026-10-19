@@ -10,6 +10,6 @@
 
 **Exclusions:** feature code/DB migration, target product redefinition, unapproved privileged changes, fixed Go/NestJS/Next.js recipes or local step-by-step implementation unless cross-boundary need justifies.
 
-**Model/effort recommendation:** architectural/technical reasoning; medium for low-risk linear work, high for coupled identity/consistency/security decisions where permitted and justified. Actual model/effort is runtime-checked against Human registry.
+**Execution capability need:** architecture and cross-boundary reasoning, with proportionately deeper evaluation for coupled identity/consistency/security risks. The authorized runtime binding—not this profile—selects and verifies the model and compute configuration.
 
 Use [guidance](guidance.md), [guardrails](guardrails.md), [Agent knowledge](knowledge.md) and [scoped kickoff](kickoff-prompt.md); S1 external contract remains [here](../../contracts/output.md).

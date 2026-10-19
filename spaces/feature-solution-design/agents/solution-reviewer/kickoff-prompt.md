@@ -19,4 +19,4 @@ recheck revised affected edges and report limits. Never claim S1 internal
 review equals integrated product acceptance.
 ```
 
-The prompt is not permission to claim a separate model, a security audit, an authorized Space invocation or an independent Codex process without actual runtime evidence.
+The prompt is not permission to claim a separate model, a security audit, an authorized Space invocation or an independently isolated execution context without actual runtime evidence.

@@ -1,17 +1,17 @@
 # S1 Invocation State and Handoff — Proposed
 
-**State is an evidence/continuity requirement, not a scheduler or global state machine.** A fresh Codex session should reconstruct the next safe action from durable project output plus a small current-effective invocation record.
+**State is an evidence/continuity requirement, not a scheduler or global state machine.** A fresh authorized session in any suitable harness should reconstruct the next safe action from durable project output plus a small current-effective invocation record.
 
 ## Authority separation
 
-- **Definition:** Harscode `spaces/feature-solution-design/` at pinned approved Git commit, with Agent packages, contracts and harness guidance.
+- **Definition:** Harscode `spaces/feature-solution-design/` at pinned approved Git commit, with Agent packages, contracts and harness-neutral execution requirements.
 - **Project truth/accepted solution:** target project repository at explicit output path/revision. Material decisions become project-binding only with valid project/Human authority.
 - **Active coordination:** one small current-effective invocation record at an **approved writable location**; possible `harscode-state/` only if actually present, accessible and explicitly authorized. No assumption it is initialized.
 - **Chat/session transcripts:** optional evidence, not current-effective truth.
 
 ## Minimum reconstructable record
 
-Record the invocation's actual ID/reference or descriptive key, Space definition SHA, target repo/ref/SHA, source authority refs, assignment scope and approved write locations, Human invocation/privileged gates, chosen agents/model+efforts with actual availability evidence where performed, current accepted intermediate/final artifact refs, blocking facts/findings, next owner/action and last checked revisions.
+Record the invocation's actual ID/reference or descriptive key, Space definition SHA, target repo/ref/SHA, source authority refs, assignment scope and approved write locations, Human invocation/privileged gates, assigned Specialist responsibilities and actual runtime-binding reference (including model/effort where observed and permitted), current accepted intermediate/final artifact refs, blocking facts/findings, next owner/action and last checked revisions.
 
 Do not invent runtime statuses. Describe observed `not started`, `in progress`, `awaiting decision`, `delivered/reviewed` and `blocked` in prose. `COMPLETE`/etc. describe output conformance separately. A row of checkboxes is not proof of a tool invocation.
 
@@ -19,7 +19,7 @@ Do not invent runtime statuses. Describe observed `not started`, `in progress`, 
 
 1. Inspect current target repo and Space definition revision. Locate the actual invocation state owner and existing accepted output refs; if none exists, do not pretend continuity.
 2. Compare current sources with pinned input revisions. Material upstream change → Balad coordinates rebind/review; Specialist cannot silently substitute new authority.
-3. Resume only from accepted artifacts and revalidate changed dependencies, scoped authorization, model availability and affected reviewer checks. Do not rely on a prior chat's implicit agreement.
+3. Resume only from accepted artifacts and revalidate changed dependencies, scoped authorization, selected runtime readiness and affected reviewer checks. Do not rely on a prior chat's implicit agreement.
 4. If a material artifact is missing/unreadable, report blocker and owner; don't reproduce imagined decisions to fill a gap.
 
 ## Handoff record (on meaningful boundaries only)

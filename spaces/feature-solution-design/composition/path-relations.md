@@ -1,6 +1,6 @@
 # S1 Input → Specialist → Output Path Relations — Proposed
 
-This is an **inspectable responsibility and evidence DAG**, not a mandatory sequential engine. Node/edge labels are semantic contracts, not assumed files, job IDs or Codex-native Agent objects.
+This is an **inspectable responsibility and evidence DAG**, not a mandatory sequential engine. Node/edge labels are semantic contracts, not assumed files, job IDs or native Agent objects in any particular harness.
 
 ## Internal production paths
 
@@ -71,4 +71,4 @@ The reviewer must receive *original I1/I2*, not only X1 or producer descriptions
 
 ## Scheduling and independence
 
-P2 and P3 may collaborate/iterate on shared decisions, but they cannot produce contradictory accepted contracts. P4 must be sufficiently isolated from production reasoning to credibly check against originals; prefer a fresh context when supported. If actual Codex mechanics cannot supply independence, report the limitation, do not fabricate it. No hard-coded four-session requirement or parallelism.
+P2 and P3 may collaborate/iterate on shared decisions, but they cannot produce contradictory accepted contracts. P4 must be sufficiently isolated from production reasoning to credibly check against originals; prefer a fresh context when supported. If the selected runtime cannot provide demonstrable independence, report the limitation, do not fabricate it. No hard-coded four-session requirement or parallelism.

@@ -1,6 +1,6 @@
 # Space Contract, Compatibility and Readiness
 
-> This is a **semantic contract floor** for reusable Spaces, not a universal YAML schema, mandatory file template, Space catalog, workflow engine or claim of tested Codex mechanics.
+> This is a **semantic contract floor** for reusable Spaces, not a universal YAML schema, mandatory file template, Space catalog, workflow engine or claim of tested runtime mechanics.
 
 ## Two independently inspectable layers
 

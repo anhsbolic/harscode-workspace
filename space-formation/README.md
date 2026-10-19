@@ -16,10 +16,10 @@ Formation quality is a **design claim** until actual harness and project use ver
 
 | Responsibility | Owner |
 | --- | --- |
-| Project authority intake, end-to-end outcome/I/O chain, existing capability discovery, generic-vs-bound fit and gap reporting | **Balad / Pairing** in the project-facing Codex session |
+| Project authority intake, end-to-end outcome/I/O chain, existing capability discovery, generic-vs-bound fit and gap reporting | **Balad / Pairing** in the project-facing session |
 | Evaluate the formation request, challenge generalization, design/iterate reusable Space definition and contract | **Anhar + ChatGPT**, applying this guidance |
 | Formation approval and consequential contract changes | **Anhar** |
-| Validate actual Codex mechanics, input conformance, bounded execution and real delivery evidence | **Authorized Space / relevant execution actor**, with Balad coordinating external handoffs |
+| Validate selected runtime mechanics, input conformance, bounded execution and real delivery evidence | **Authorized Space / relevant execution actor**, with Balad coordinating external handoffs |
 | Accept or reject the project outcome and any material product meaning | **Project-owning Human / authority**, Anhar for the current C1 pilot |
 
 Balad **does not form/edit declarative Spaces or configure Specific Agents** under this Station 5 working boundary. It may explain needed capability and send a **Formation Request**. The Human may change this allocation in a later explicit decision, not through implied formation approval.
@@ -29,7 +29,7 @@ Balad **does not form/edit declarative Spaces or configure Specific Agents** und
 - [AGENTS.md](AGENTS.md) — concise authoring/authority rules.
 - [formation-guidance.md](formation-guidance.md) — how to analyze a real gap, decide capability boundaries, generalize and iteratively form a Space.
 - [contract-and-readiness.md](contract-and-readiness.md) — strict generic I/O, concrete assignment binding, inter-Space compatibility, readiness and evidence.
-- [Proposed reusable Space packages](../spaces/README.md) — inspectable candidate definitions; formation requires Anhar's separate approval.
+- [Proposed reusable Space packages](../spaces/README.md) — inspectable candidate definitions; formation requires Anhar's separate approval. Space definitions own **harness-neutral** execution requirements; Harscode-level `harness-optimization/` translates them to a selected runtime after applicable proposal approval.
 
 Project-specific assignments, B1–B7 or other project semantics belong to the **invocation binding / target project**, not this guidance or reusable Space definition. Space definitions, if approved, need their own owning research location and reconstructable version; no permanent catalog or physical layout is presumed.
 
@@ -41,7 +41,7 @@ Real project need + Balad's I/O-chain / capability-gap report
   → decide reuse / adapt / propose new formation
   → generalize a bounded, strict Space contract and Agent capabilities
   → Human reviews/approves the formation definition
-  → separately authorized Codex readiness check and invocation
+  → separately authorized harness/runtime readiness check and invocation
   → observed outcome, consumer handoff, failures and improvement proposals
   → Human-reviewed revision of reusable Space as warranted
 ```

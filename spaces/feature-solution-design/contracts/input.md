@@ -7,7 +7,7 @@
 | I1 | Approved, bounded behavior/requirements and original acceptance obligations | Inspectable owning source, approved status, scope, revision; distinguish product authority from navigation/evidence |
 | I2 | Current project/design/architecture/security constraints | Applicable source + revision, precedence and protected-write/permission rules; technology choices are project binding, not generic Space policy |
 | I3 | Target repository and current implementation baseline | Exact repository, branch/ref and target SHA (or immutable equivalent); read access, known active contracts and environment facts |
-| I4 | Invocation assignment, consumers and scoped authorization | Explicit objective, required output destinations and consumer expectations, allowed actions, material Human gates, model/effort policy where relevant |
+| I4 | Invocation assignment, consumers and scoped authorization | Explicit objective, required output destinations and consumer expectations, allowed actions and material Human gates; actual runtime suitability is separately checked against execution requirements |
 
 Optional: supporting research and examples that are clearly marked non-authoritative; dependencies or real prior output from another approved Space; relevant live technical evidence. Do not require a fixed PRD/TRD format or a pre-existing API.
 
@@ -23,5 +23,5 @@ Kencleng C1 binds Stage 5/6 approved requirements, Stage 7 navigation, root/scop
 
 ## Do not assume
 
-- The existence of a formed downstream Space, concrete consumer contract, initialized state directory, model registry eligibility, native Codex Agent dispatch, or permission to edit `api/` solely because Harscode guidance describes them.
+- The existence of a formed downstream Space, concrete consumer contract, initialized state directory, configured or authorized Specialist execution, or permission to edit a shared project contract solely because Harscode guidance describes them.
 - A model's nominal capability, approved formation or historical successful engineering flow proves runtime competence.

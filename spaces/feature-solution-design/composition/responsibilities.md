@@ -1,6 +1,6 @@
 # S1 Specialist Composition — Proposed
 
-Four **bounded specialist responsibilities** are proposed for first real-use calibration; they are not guarantees of four configured Codex agents, fixed model IDs, or a universal staffing minimum. Agent package changes should follow evidence. The Space coordinator composes/checks their outputs, but is not a fifth automatically-created Agent.
+Four **bounded specialist responsibilities** are proposed for first real-use calibration; they are not guarantees of four configured runtime Agents, fixed model IDs, or a universal staffing minimum. Agent package changes should follow evidence. The Space coordinator composes/checks their outputs, but is not a fifth automatically-created Agent.
 
 | Specialist / package | Consumes | Produces and owns | Does not own |
 | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ Each package owns scoped `profile.md`, `guidance.md`, `guardrails.md`, `knowledg
 - **Agent-owned knowledge** guides technique, not authority; it may duplicate another package to keep context local. Search this package's knowledge by relevant trigger; no mandatory global `best-practices/index.md` scan.
 - Cross-Agent invariants are transmitted through I1/I2, scoped task requests, X1, explicit O1–O4 relations, reviewer checking and consumer conformance—not a new global invariant registry.
 - Material conflict: do not pick whichever Agent seems more convincing; identify the owning input/decision and escalate when not delegated.
-- Model/effort needs are **recommendations** based on task capability/risk; actual runtime choice is bound to Human-owned `.harscode-local.yaml` inventory and [model routing](../../../pairing/model-routing.md).
+- Specialist profiles describe required reasoning capabilities, risk sensitivity and review independence, **not** a selected model or harness-specific effort setting. Actual model, effort/compute level, access and permission choices belong to the project/runtime binding under applicable Human policy; see [execution requirements](execution-requirements.md).
 
 ## Space coordinator responsibility
 

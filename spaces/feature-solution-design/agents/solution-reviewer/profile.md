@@ -10,6 +10,6 @@
 
 **Independence:** Fresh context preferred; exact separation must be observed at runtime. Different Agent labels/models alone do not prove independence.
 
-**Model/effort recommendation:** high-fidelity critical reasoning, contradiction detection and source comparison; medium for small linear scope, high for material security/cross-boundary uncertainty if eligible and justified.
+**Execution capability need:** high-fidelity critical reasoning, contradiction detection and source comparison, with increased scrutiny for material security/cross-boundary uncertainty. Runtime compute/model choice and actual isolation are verified separately.
 
 Read [guidance](guidance.md), [guardrails](guardrails.md), [local knowledge](knowledge.md), [kickoff](kickoff-prompt.md), and the Space [output contract](../../contracts/output.md).
