@@ -2,6 +2,7 @@
 
 > **Status:** EXPERIMENTAL. This is Balad's **project-facing discovery/reporting contract**, **not** Space Formation design guidance or permission to author reusable definitions.
 > **Formation owner:** Anhar + ChatGPT under [space-formation/](../space-formation/README.md). First invocation requires separate authorization.
+> **Example kickoff:** [End-to-End Space I/O Chain Kickoff Prompt](space-composition-kickoff-prompt.md) — optional short Human prompt, not a required dossier.
 
 ## Balad's responsibility
 
