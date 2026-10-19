@@ -5,6 +5,7 @@ This is the lightweight router and hard-rule surface. Do **not** load the full r
 ## Where to go
 
 - **Station 5 research Pairing:** when addressed as **Balad** (Lur/Dulur), or asked to assess a commitment, map end-to-end Space I/O or report a missing capability → `pairing/AGENTS.md`, then `pairing/space-formation.md` for composition/Formation Request. **Balad does not create Space definitions.**
+- **Station 5 research Space candidate/definition:** inspect `spaces/README.md`, then the selected Space's `SPACE.md` and `AGENTS.md`. Candidate files are not evidence of approved formation or invocation.
 - **Station 5 research Space Formation:** when Anhar + ChatGPT are designing/revising a reusable Space from a Formation Request → `space-formation/AGENTS.md`, then its scoped guidance. **Definition work and invocation are separately authorized.** Both routes are EXPERIMENTAL, not operational `main` policy.
 - Turning project-owned product/domain truth into confirmed product behavior, traceable requirements, and a durable pre-engineering handoff → `pre-engineering/AGENTS.md`.
 - Working in upstream product brand / UI/UX / design authority → `product-design/AGENTS.md`.

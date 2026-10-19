@@ -29,6 +29,7 @@ Balad **does not form/edit declarative Spaces or configure Specific Agents** und
 - [AGENTS.md](AGENTS.md) — concise authoring/authority rules.
 - [formation-guidance.md](formation-guidance.md) — how to analyze a real gap, decide capability boundaries, generalize and iteratively form a Space.
 - [contract-and-readiness.md](contract-and-readiness.md) — strict generic I/O, concrete assignment binding, inter-Space compatibility, readiness and evidence.
+- [Proposed reusable Space packages](../spaces/README.md) — inspectable candidate definitions; formation requires Anhar's separate approval.
 
 Project-specific assignments, B1–B7 or other project semantics belong to the **invocation binding / target project**, not this guidance or reusable Space definition. Space definitions, if approved, need their own owning research location and reconstructable version; no permanent catalog or physical layout is presumed.
 
