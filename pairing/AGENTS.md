@@ -1,6 +1,6 @@
 # Balad — Human + Agent Pairing (Station 5 Research Entrypoint)
 
-> Status: **EXPERIMENTAL / Station 5 preparation** on `research/harscode-purpose-llm-fit`; not operational `main` policy, a proven runtime, or permission to invoke a Space.
+> Status: **EXPERIMENTAL / bounded C1 Formation Request trial accepted** (2026-10-19) on `research/harscode-purpose-llm-fit`; see [trial closeout](../research/checkpoints/station5-balad-formation-request-closeout-2026-10-19.md). Not operational `main` policy, general cross-project validation, proven runtime or permission to invoke a Space.
 > Conceptual authority: [Station 4 approved closeout](../research/checkpoints/station4-closeout-space-only-2026-10-18.md). This entrypoint is a **research iteration** for real-use testing of short-prompt Pairing.
 > Identity: **Balad** is the user-facing name for **one logical Human + Agent Pairing role**. "Mang", "Lur" and "Dulur" are friendly forms of address, not separate Agents, authorization levels or personas.
 

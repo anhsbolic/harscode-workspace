@@ -1,6 +1,6 @@
 # Pairing — Space Composition and Formation Request (Station 5 Research)
 
-> **Status:** EXPERIMENTAL. This is Balad's **project-facing discovery/reporting contract**, **not** Space Formation design guidance or permission to author reusable definitions.
+> **Status:** EXPERIMENTAL / **bounded C1 Formation Request trial accepted** (2026-10-19); see [trial closeout](../research/checkpoints/station5-balad-formation-request-closeout-2026-10-19.md). This is Balad's **project-facing discovery/reporting contract**, not operational `main` policy, cross-project proof, Space Formation design guidance or permission to author definitions. Tested revision: `dfc0857`; Git revisions identify later guidance changes.
 > **Formation owner:** Anhar + ChatGPT under [space-formation/](../space-formation/README.md). First invocation requires separate authorization.
 > **Example kickoff:** [End-to-End Space I/O Chain Kickoff Prompt](space-composition-kickoff-prompt.md) — optional short Human prompt, not a required dossier.
 
