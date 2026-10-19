@@ -23,7 +23,7 @@ sequenceDiagram
     P-->>H: Present proposed I4 scope, readiness and approval gates
 
     alt Missing inputs, runtime capability or necessary authority
-        P-->>H: BLOCKED / NOT READY; no invocation
+        P-->>H: BLOCKED / NOT READY, no invocation
     else Preflight sufficient for an explicit decision
         H->>P: Authorize concrete I4 invocation and write scope
         P->>C: Bind pinned I1-I4 and approved output destinations
@@ -31,7 +31,7 @@ sequenceDiagram
 
         alt Material input or authorization mismatch
             C-->>P: BLOCKED with source and owner of gap
-            P-->>H: Request resolution; do not produce solution
+            P-->>H: Request resolution, do not produce solution
         else Inputs conform and work is authorized
             C->>RA: Assign I1-I4 and X1 destination
             RA->>S: Read original approved behavior and constraints
@@ -63,7 +63,7 @@ sequenceDiagram
 
             opt Reviewer finds material defects
                 alt Human-owned decision or permission required
-                    C-->>P: BLOCKED or PARTIAL; exact unresolved decision
+                    C-->>P: BLOCKED or PARTIAL, exact unresolved decision
                     P-->>H: Request decision before affected production
                 else Scoped producer correction is allowed
                     opt X1 source map is affected
@@ -87,13 +87,13 @@ sequenceDiagram
 
             C->>A: Assemble actual revision-pinned O1-O5 bundle
             C-->>P: Handoff result, artifact refs and limits
-            P-->>H: Present bundle; request separate output acceptance
+            P-->>H: Present bundle, request separate output acceptance
 
             alt Human accepts concrete output for downstream
                 H->>P: Record acceptance of exact output revision
                 P-->>H: Coordinate future consumer compatibility
             else Human requests changes or has not decided
-                H-->>P: Keep delivery unaccepted; route next action
+                H-->>P: Keep delivery unaccepted, route next action
             end
         end
     end
