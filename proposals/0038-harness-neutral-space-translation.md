@@ -1,6 +1,6 @@
 # Make harness translations consume approved Space execution requirements
 
-**Status:** Proposed
+**Status:** Accepted
 **Date:** 2026-10-19
 **Protection Tier:** general
 **Triggered by:** The first Feature Solution Design Space candidate embedded `spaces/feature-solution-design/harness/codex.md`, conflating reusable capability requirements with one pilot harness's mechanics. Human directed correction: Spaces must be harness-agnostic, with harness optimization owned by Harscode workspace.

@@ -8,7 +8,7 @@
 
 Translation only. Never policy.
 
-Portable rules live in `workflow/` and `best-practices/`. This directory maps them onto Codex-native instruction/session/skill/sandbox behavior.
+Portable rules and capability requirements live in their owning Harscode authority (e.g. `workflow/`, `best-practices/`, and approved reusable `spaces/`). This directory translates only the applicable ones into Codex-native instruction/session/skill/sandbox behavior; a proposed Space definition is not a runtime-ready Agent config.
 
 ## Mapping
 
@@ -37,6 +37,12 @@ Do not create a giant `CODEX.md` or duplicate the same persistent rule across pr
 ## Canonical phase prompts
 
 Start each lifecycle phase from Harscode's canonical root `workflow/*-prompt.md`. A Codex wrapper may resolve variables and add target-repo/execution-profile context; it may not maintain a re-authored lifecycle copy.
+
+## Space and Specialist usage (when triggered)
+
+For an approved/research-authorized Space, read its pinned generic I/O and harness-neutral execution requirements first. Map the actual requirements to the verified, currently available Codex instruction-loading, context/session isolation, permission/sandbox and observability mechanisms documented here. Keep role-specific knowledge with the Space's Specialist package; do not copy it into this harness directory. Bind actual project/model/effort settings in local authorized runtime configuration, not the Space contract or reusable Codex guidance.
+
+A declared Agent profile does not configure or launch a native Codex subagent. If any material Space execution requirement cannot be verified in this Codex version or permission scope, report NOT READY; do not weaken the Space contract or claim independence from a role label. No default backend/frontend/S1 adapter or dispatcher is imposed.
 
 ## Execution profiles
 

@@ -4,13 +4,15 @@ This tree translates existing Harscode policy into harness-native mechanisms. Do
 
 ## Hard rules
 
-- **Translation only. Never policy.** The underlying rule must already exist in `workflow/` or `best-practices/`.
+- **Translation only. Never policy.** The underlying requirement must already exist in the applicable authoritative Harscode source: `workflow/`, `best-practices/`, or an explicitly approved reusable Space definition under `spaces/`. Research candidates may be assessed experimentally within a separately authorized pilot; their unapproved content is not operational Harscode policy.
 - Files in this tree are proposal-gated on ordinary work; use root `proposals/`.
 - Read the specific harness README/file needed for the active mechanism; do not scan unrelated harness tracks.
 - Harness capability/version claims are time-sensitive. Respect each harness README's effective/verified/re-verify disclaimer.
 - Project-specific harness instances/config belong in the target repo or user configuration, not in this reusable translation tree.
 
 ## Routing
+
+- Reusable Space / Specialist execution requirements → inspect the selected, pinned and approved `spaces/<space>/` definition and its harness-neutral execution requirements; then route to the selected harness's relevant mechanism docs. Do not make a harness adapter the Space policy owner.
 
 - Cross-harness output efficiency → `token-optimization.md`
 - Codex → `codex/README.md` and the specific mechanism file it routes to

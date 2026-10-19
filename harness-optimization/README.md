@@ -6,8 +6,8 @@ A third pillar, sibling to `workflow/` and `best-practices/`:
 
 - `workflow/` — **what** to do, by phase (process knowledge)
 - `best-practices/` — **what** is correct, by technology (domain knowledge)
-- `harness-optimization/` — **how** a specific agent harness (Claude Code,
-  Codex, OpenCode CLI, or others added later) executes and enforces the two above
+- `spaces/` — approved reusable capability contracts, internal Specialist responsibilities, Agent-owned knowledge, and harness-neutral execution requirements (currently experimental when not formed).
+- `harness-optimization/` — **how** a particular harness expresses and enforces applicable requirements from their owning sources without changing them.
 
 ## The one rule that keeps this pillar honest
 
@@ -17,14 +17,11 @@ Every file in this tree exists to answer "how do I express an
 already-decided rule in this harness's native mechanism (subagent, hook,
 skill, slash command, config flag)?" — never "what should the rule be?"
 
-If writing a file here requires inventing a new rule, a new threshold, or a
-new exception that doesn't already exist in `workflow/` or
-`best-practices/`, that's a signal the content belongs in one of those two
-pillars first, as its own proposal. `harness-optimization/` translates it
-afterward. This ordering is not optional — a harness config that encodes a
-policy decision no other pillar has made is a second, uncoordinated source
-of truth, the exact failure this workspace's proposal system exists to
-prevent.
+If writing a file here requires inventing a new rule, threshold or exception that does not exist in the relevant owning Harscode source (such as `workflow/`, `best-practices/` or an approved `spaces/` definition), return the question to that owner first rather than creating a second policy through a harness adapter. `harness-optimization/` translates the accepted owning requirement afterward. This ordering is not optional — a harness config that encodes a policy decision absent from its owning authority is a second, uncoordinated source of truth, the exact failure this workspace's proposal system exists to prevent.
+
+## Reusable Space boundary
+
+A reusable Space owns WHAT it must produce, WHAT capabilities and isolation/permissions its Specialists require, and HOW it reports evidence truthfully. This area owns harness-specific translation only after checking actual supported mechanisms; invocation-owned model/effort, permissions, target paths and tested runtime observations stay in user/project binding. An unformed research candidate can guide a scoped experiment, but cannot silently become operational policy or a guaranteed launcher.
 
 `workflow/context-management.md` owns cross-phase context loading, handoff,
 and same/fresh-session intent. Harness session/subagent/skill mechanisms
