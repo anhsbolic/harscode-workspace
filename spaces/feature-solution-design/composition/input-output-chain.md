@@ -1,6 +1,6 @@
 # S1 Input–Output Chain — Static Responsibility and Artifact Flow (Proposed)
 
-> **Purpose:** The inspectable, harness-neutral **structural map** of which authoritative inputs support which Specialist responsibilities and versioned outputs. This is the successor to `path-relations.md`; the path/trace semantics are preserved. It is **not** a required scheduling order, fixed subprocess topology, proof of configured Agents, or runtime evidence.
+> **Purpose:** The inspectable, harness-neutral **structural map** of which authoritative inputs support which Specialist responsibilities and versioned outputs. It preserves the path and traceability semantics of S1's structural producer–consumer relationships. It is **not** a required scheduling order, fixed subprocess topology, proof of configured Agents, or runtime evidence.
 > **Companion:** [Interaction sequence](interaction-sequence.md) describes a possible bounded invocation's temporal flow, including Human gates, feedback and handoff.
 
 ## Artifact and producer–consumer graph
