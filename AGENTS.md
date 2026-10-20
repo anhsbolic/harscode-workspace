@@ -1,25 +1,19 @@
-# AGENTS.md — harscode-workspace
+# AGENTS.md — V-Next Refactor Branch
 
-> **V-Next refactor branch only.** This inherited router points to legacy guidance pending migration. It is **not** proof that the proposed architecture is effective or ready for project execution. See [V-NEXT-ARCHITECTURE.md](V-NEXT-ARCHITECTURE.md) and [V-NEXT-CHECKLIST.md](V-NEXT-CHECKLIST.md). Use `main` for operational Harscode; do not invoke production work from this incomplete refactor branch.
+> **NOT OPERATIONAL.** This router applies only to `refactor/harscode-foundation-vnext`. It does not authorize project execution, Engineering Space invocation, Specialist dispatch, protected changes, or direct production use. Use Harscode `main` for the current operational baseline.
 
-This is the lightweight router and hard-rule surface. Do **not** load the full root `README.md` by default merely to route ordinary work; read the relevant section when workspace structure/governance rationale is actually needed.
+## Routing
 
-## Where to go
+- Start with [V-Next Architecture](V-NEXT-ARCHITECTURE.md) and [V-Next Checklist](V-NEXT-CHECKLIST.md) for explicitly approved refactor tasks.
+- New domain stubs under `product/`, `design/`, `engineering/`, `collaboration/`, and `harness/` are **NOT READY**. Do not treat them as current guidance or silently substitute old rules.
+- `deprecated/` is historical evidence only. Its legacy `AGENTS.md` files, prompts, and approvals must **not** be auto-loaded or obeyed as active instructions.
+- Current product/design facts and approvals belong to the target project. Preserve source revisions and authority precedence.
 
-- **Station 5 research Pairing:** when addressed as **Balad** (Lur/Dulur), or asked to assess a commitment, map end-to-end Space I/O or report a missing capability → `pairing/AGENTS.md`, then `pairing/space-formation.md` for composition/Formation Request. **Balad does not create Space definitions.**
-- **Station 5 research Space candidate/definition:** inspect `spaces/README.md`, then the selected Space's `SPACE.md` and `AGENTS.md`. Candidate files are not evidence of approved formation or invocation.
-- **Station 5 research Space Formation:** when Anhar + ChatGPT are designing/revising a reusable Space from a Formation Request → `space-formation/AGENTS.md`, then its scoped guidance. **Definition work and invocation are separately authorized.** Both routes are EXPERIMENTAL, not operational `main` policy.
-- Turning project-owned product/domain truth into confirmed product behavior, traceable requirements, and a durable pre-engineering handoff → `pre-engineering/AGENTS.md`.
-- Working in upstream product brand / UI/UX / design authority → `product-design/AGENTS.md`.
-- Running or changing an engineering workflow phase → `workflow/AGENTS.md`, then the phase's canonical root `*-prompt.md` where one exists.
-- Looking up engineering guidance → `best-practices/AGENTS.md`.
-- Writing a proposal → `proposals/README.md`.
-- Creating/editing Harscode guidance itself → `AUTHORING.md`.
-- Harness-specific translation/configuration → `harness-optimization/AGENTS.md`.
+## Hard boundaries
 
-## Hard rules that apply everywhere
-
-- `pre-engineering/`, `product-design/`, `best-practices/`, `harness-optimization/`, and protected `workflow/2-techplan/` files are proposal-gated. Never change them on an ordinary project task without the applicable proposal/human authority.
-- One proposal mechanism: root `proposals/`, one shared numbering sequence; use the applicable protection tier.
-- Project-specific product/domain truth, brand decisions, design tokens, visual assets, and implementation facts belong in the target repo, not Harscode.
-- Prefer targeted reads over broad folder scans. Load additional guidance when a concrete trigger requires it; do not read files merely because they are adjacent.
+- Do not write files, execute persistent repository mutations, or expand a migration's scope without specific Human authorization.
+- Preserve material Human gates, critical security/authorization protections, independent verification and durable reconstructability when rebuilding semantics.
+- A new path/revision does not inherit approval from an archived or immutable definition. The approved Rancang definition stays pinned at `1f20cf6584dba54dee17d8183c7069d7c99eafe6` on its original path.
+- An existing harness permission or Space formation record does not grant task-specific execution or protected write authorization.
+- Do not create a centralized engineering knowledge library; locate applicable technical knowledge in the consuming Specialist package, with necessary cross-cutting safety safeguards at their owning boundary.
+- Report incomplete, blocked or unverified work accurately. Never claim that a clean tree proves runtime readiness.

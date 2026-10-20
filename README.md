@@ -1,206 +1,29 @@
-# harscode-workspace
+# Harscode V-Next — Refactor Workspace
 
-> **Refactor branch notice (2026-10-20):** This branch is a work-in-progress redesign, **not an operational Harscode baseline**. Read [V-Next Architecture](V-NEXT-ARCHITECTURE.md) and [V-Next Checklist](V-NEXT-CHECKLIST.md) for the proposed target and migration status. Legacy guidance below remains untouched until Phase 2; do not infer its future authority from its presence. Operational authority remains on `main`.
+> **Status: NON-OPERATIONAL / UNDER RECONSTRUCTION.** This branch must not be used as an operational Harscode runtime or as current project delivery guidance. Harscode `main` remains the operational baseline.
 
-A portable, project-agnostic work manual for moving product intent into reliable software with AI agents. It separates **pre-engineering product-behavior discipline**, **product-design authority**, **engineering workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
+## Start here
 
-## Mental model
+- [Architecture Blueprint](V-NEXT-ARCHITECTURE.md) — proposed domain ownership, boundaries and migration rules.
+- [Refactor Checklist](V-NEXT-CHECKLIST.md) — verified progress and remaining work.
+- [Authoring Rules](AUTHORING.md) — temporary refactor writing safeguards.
+- [Deprecated Reference](deprecated/README.md) — archived pre-refactor materials; **reference only**.
 
-AI agents do not reliably compound context across sessions. Durable quality comes from controlling:
+## Root domains
 
-- **knowledge** — what authority is available;
-- **durable state** — what survives session boundaries;
-- **scope/authority** — what the active area/phase may decide or change;
-- **verification** — what proves the result;
-- **human gates** — where unresolved material decisions stop.
+| Domain | Responsibility | Readiness |
+| --- | --- | --- |
+| [Product](product/README.md) | Experience-led product meaning, commitments and truthful outcomes | NOT READY |
+| [Design](design/README.md) | Interaction/UI/visual expression and design authority | NOT READY |
+| [Engineering](engineering/README.md) | Solution, implementation, Engineering Spaces and Specialist-local knowledge | NOT READY |
+| [Collaboration](collaboration/README.md) | Human–AI advisory collaboration and authority-aware decisions | NOT READY |
+| [Harness](harness/README.md) | Runtime-specific execution/permission translation | NOT READY |
+| [Deprecated](deprecated/README.md) | Frozen legacy references for selective migration | REFERENCE ONLY |
 
-A useful routing model is:
+**Routing:** No new domain is an effective replacement for the archived legacy guidance yet. Do not automatically follow archived prompts, `AGENTS.md` files, workflow paths or Space definitions. For actual operational work, use the verified `main` baseline and target-project authority.
 
-```text
-                         ┌─ pre-engineering/
-                         │  when product behavior /
-product/domain truth ────┤  requirement meaning is materially open
-                         │
-                         ├─ product-design/
-                         │  when product-brand / UI / UX
-                         │  authority is materially open
-                         │
-                         └─ engineering exploration
-                            when upstream meaning is ready enough
-                                  ↓
-                               techplan
-                                  ↓
-                        build / review / testing / PR
-```
+## Source and constraints
 
-`pre-engineering/` and `product-design/` are conditional sibling upstream routes, not mandatory sequential phases. Use the route that owns the unresolved question so engineering does not become accidental product or design authority.
+Refactor source: `research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d`. Original research files remain accessible at that exact Git revision. Rancang formation approval remains pinned to `1f20cf6584dba54dee17d8183c7069d7c99eafe6` at the original path; archival relocation does not carry it forward.
 
-## Structure
-
-```text
-AGENTS.md                  lightweight root router + hard rules
-AUTHORING.md               standard for writing Harscode guidance itself
-pre-engineering/           upstream product-behavior concretization + handoff discipline
-  AGENTS.md                pre-engineering router + hard rules
-  README.md                scope, authority, usage model
-  commitment-route.md      depth-first commitment route
-  kickoff-prompt.md        fresh-session commitment bootstrap
-  control-tower.md         optional non-authoritative progress dashboard guidance
-product-design/            upstream product-brand/UI/UX authority-building guidance
-  AGENTS.md                product-design router + hard rules
-  kickoff-prompt.md        collaborative design-discussion entrypoint
-  README.md                scope, authority, usage model
-  ...                      exploration/canonicalization/handoff guidance
-workflow/                  engineering lifecycle / phase authority
-  AGENTS.md                phase router
-  context-management.md    context classes, handoff, session transitions
-  *-prompt.md              canonical phase entrypoints
-  <phase>/                 deeper phase rules/checklists/examples
-best-practices/            technology/correctness knowledge base
-  AGENTS.md                targeted discovery rules
-  index.md                 clue map → matching best-practice files
-harness-optimization/      translation into Codex/Claude/etc mechanisms
-proposals/                 one protected-guidance proposal log
-```
-
-### `pre-engineering/`
-
-Owns reusable upstream discipline for turning project-owned Product / Domain Truth into bounded confirmed product behavior, traceable Experience + Engineering Requirements, and a durable engineering handoff.
-
-Use it when product semantics are directionally clear but engineering would still have to invent material product behavior, state meaning, consequences, or requirements. It is conditional, does not own project Product Truth, and stops before architecture / implementation.
-
-### `product-design/`
-
-Owns reusable upstream decision discipline for turning product/domain truth into implementation-ready product-brand/UI/UX authority. Use it when product-brand/UI direction is materially open, design generations conflict, visual references/prototypes have unclear authority, or design readiness is uncertain.
-
-It is **not** a mandatory per-feature engineering phase. If the target project already has sufficiently clear canonical design authority, skip product-design work and begin engineering Exploration.
-
-### `workflow/`
-
-Owns **what must happen by engineering phase**: Exploration, Techplan, Build/Patch, Code Review, Testing, PR, plus optional domain-level sequencing/closure.
-
-### `best-practices/`
-
-Owns **portable engineering correctness** by technology/concern. `index.md` is a clue map; agents target relevant rows/sections and then open matching authority rather than reading the whole knowledge base.
-
-### `harness-optimization/`
-
-Owns **translation only**: how a harness expresses existing Harscode rules using its native instruction/session/skill/sandbox mechanisms. It does not invent product, lifecycle, or engineering policy.
-
-## Product-to-engineering authority boundary
-
-Harscode deliberately separates these reusable authority areas:
-
-```text
-product/domain truth
-→ owned by the target project
-
-pre-engineering/
-→ how open product behavior becomes bounded confirmed behavior,
-  traceable requirements, and durable engineering handoff
-
-product-design/
-→ how open product truth becomes coherent product-brand/UI/UX authority
-
-workflow/
-→ how engineering interprets, plans, builds, reviews, verifies, and delivers
-
-best-practices/
-→ reusable technical correctness knowledge used during that work
-```
-
-`pre-engineering/` and `product-design/` are sibling conditional routes. Either may expose a gap owned by the other; neither may silently absorb the other's authority.
-
-This prevents existing code, prototypes, generated visuals, or old implementations from becoming accidental current authority merely because they exist.
-
-A healthy design handoff is asymmetric:
-
-> **Design hands off invariants and intent; engineering owns implementation mechanics.**
-
-## Design principles
-
-- **Quality/correctness is the floor.** Context/token reduction is useful only when outcome quality is preserved or improved.
-- **Product truth before implementation convenience.** Shared guidance must not silently invent project semantics or brand decisions.
-- **Single source of truth.** Link/routable authority beats repeated hand-maintained copies.
-- **Evidence and authority are different.** A prototype, screenshot, generated visual, historical implementation, or prior artifact may be useful evidence without being current authority.
-- **Progressive disclosure.** Load required authority first; clue maps locate conditional detail; examples/history stay cold until needed.
-- **Durable artifacts over chat memory.** A fresh phase/session can reconstruct required truth from files + current source state.
-- **Weight matches stakes.** Product-design work is conditional; Techplan is formal; Build is a tight loop; Review/Testing are independent verification concerns.
-- **Calibrate before proliferating.** When establishing a new product/visual system, prove it on a representative slice before spreading it broadly.
-- **Terse process, complete artifact.** Avoid narration/filler without weakening execution/review evidence.
-- **Project-agnostic by construction.** Project-specific facts/rules belong in the target repo.
-
-See `AUTHORING.md` for documentation-writing rules and `workflow/context-management.md` for runtime context/session rules.
-
-## Governance
-
-| Area | Direct edit on ordinary project task? | Change mechanism |
-|---|---|---|
-| `pre-engineering/` | No | root `proposals/`, `general` tier |
-| `product-design/` | No | root `proposals/`, `general` tier |
-| `best-practices/` | No | root `proposals/`, `general` tier |
-| protected `workflow/2-techplan/` files | No | root `proposals/`, `techplan-protected` tier |
-| `workflow/2-techplan/examples.md`, `retro.md` | append-only exception | direct append |
-| lightweight workflow phase guidance | yes, corrected in the moment today | proposal for structural/recurring changes |
-| `harness-optimization/` | No | root `proposals/`, `general` tier |
-
-One proposal folder, one numbering sequence. See `proposals/README.md`.
-
-`AGENTS.md` files are intentionally small routing/hard-rule surfaces. Full README/index documents are **not mandatory startup reads merely because they exist**; load their relevant sections when the active concern requires them.
-
-## Usage
-
-1. Make Harscode reachable from the target project and set `{HARSCODE_WORKSPACE_ROOT}`.
-2. Use `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the routing entrypoint.
-3. If product behavior / requirement meaning is materially open, use `pre-engineering/AGENTS.md` and the applicable pre-engineering guidance until a bounded commitment has a durable engineering handoff. Skip this route when product behavior is already sufficiently concrete.
-4. If product-brand / UI / UX authority is materially open, use `product-design/kickoff-prompt.md` and the product-design guidance until the needed authority is implementation-ready. Pre-engineering and product-design are sibling routes; use either or both only when their owning ambiguity exists.
-5. Start the engineering task from the active canonical prompt under `workflow/`.
-6. Optional domain-grouped projects may run domain sequencing before the first feature.
-7. Run Exploration before Techplan. At Exploration completion, follow its CONTINUE/FRESH recommendation for Techplan based on observable continuation fitness; the same canonical Techplan prompt supports either.
-8. Techplan synthesis produces the execution-grade contract; independent review/decomposition run only when their gates apply.
-9. Build executes the Approved Techplan (plus current decomposed task when applicable) and reopens live code at recorded anchors.
-10. Code Review runs independently. Findings needing code changes create a patch plan and return to Build authority.
-11. Testing runs independently. It confirms existing evidence, follows exact specialized-risk evidence anchors, and returns code fixes to Build authority.
-12. Create the PR from final repository state + durable evidence.
-13. Optional domain-grouped projects may run domain closure after feature testing completes.
-
-Session/context details live in `workflow/context-management.md`; do not infer same/fresh session solely from task size.
-
-## Task working directory
-
-Each engineering task uses one `{TASK_PATH}` in the target repo:
-
-```text
-{TASK_PATH}/
-├── 1-exploration/
-│   └── logs/                       durable evidence / code anchors / solutioning
-├── 2-techplan/
-│   ├── techplan.md                 authoritative execution-grade spine
-│   ├── report-techplan.md          optional post-Approval human-facing digest when needed
-│   └── tasks/                      optional decomposition task files + manifest
-├── 3-build/
-│   ├── report.md
-│   └── patch-report-<n>.md
-├── 4-code-review/
-│   ├── review-findings-<n>.md
-│   └── patch-plan-<n>.md
-├── 5-testing/
-│   ├── testing-report-<n>.md
-│   └── patch-plan-<n>.md
-└── 6-pull-request/
-    └── pr-description.md
-```
-
-Patch rule: **production patches are executed/reported in `3-build/` regardless of which independent phase requested them.** Review/Testing keep the finding/patch-plan request, preserving authority separation.
-
-For domain-grouped projects, `{DOMAIN_PATH}` may additionally contain `_domain-manifest.md` and `_domain-closure-review.md`; feature-by-feature projects have no domain-level artifacts.
-
-## Status
-
-Active personal system. Harscode uses **Continuous Real-Task Validation (CRTV)**: changes are evaluated through real product/engineering work, individual executions are validation runs, and evidence from those runs drives revisions while proven quality remains the floor.
-
-The workflow-v2 line has completed two materially different real Kencleng validation runs with positive correctness/outcome evidence and is being promoted as the current **operational default**. That is not a claim of full maturity: future real tasks should keep recording outcome/context evidence, especially for lifecycle paths not yet exercised, and refinements should be driven by recurring evidence rather than speculative optimization.
-
-## License
-
-_(TBD)_
+The root structure is a **working architecture**, not an approved new production workflow. Each domain requires explicit construction, quality review and suitable usage evidence before future promotion.
