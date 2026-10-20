@@ -1,5 +1,7 @@
 # AGENTS.md — harscode-workspace
 
+> **V-Next refactor branch only.** This inherited router points to legacy guidance pending migration. It is **not** proof that the proposed architecture is effective or ready for project execution. See [V-NEXT-ARCHITECTURE.md](V-NEXT-ARCHITECTURE.md) and [V-NEXT-CHECKLIST.md](V-NEXT-CHECKLIST.md). Use `main` for operational Harscode; do not invoke production work from this incomplete refactor branch.
+
 This is the lightweight router and hard-rule surface. Do **not** load the full root `README.md` by default merely to route ordinary work; read the relevant section when workspace structure/governance rationale is actually needed.
 
 ## Where to go

@@ -1,5 +1,7 @@
 # harscode-workspace
 
+> **Refactor branch notice (2026-10-20):** This branch is a work-in-progress redesign, **not an operational Harscode baseline**. Read [V-Next Architecture](V-NEXT-ARCHITECTURE.md) and [V-Next Checklist](V-NEXT-CHECKLIST.md) for the proposed target and migration status. Legacy guidance below remains untouched until Phase 2; do not infer its future authority from its presence. Operational authority remains on `main`.
+
 A portable, project-agnostic work manual for moving product intent into reliable software with AI agents. It separates **pre-engineering product-behavior discipline**, **product-design authority**, **engineering workflow**, **engineering knowledge**, and **harness translation** so agents can load the smallest relevant authority instead of carrying one giant prompt.
 
 ## Mental model

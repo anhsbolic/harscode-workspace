@@ -1,0 +1,95 @@
+# Harscode V-Next — Refactor Checklist
+
+> **Status:** WORKING TRACKER — this refactor branch only; not an operational workflow.
+> **Baseline:** \`research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d\`
+> **Blueprint:** [V-Next Architecture](V-NEXT-ARCHITECTURE.md)
+
+Mark items complete only after repository evidence. Do not interpret a checked design activity as a runtime/quality PASS.
+
+## Phase 0 — Isolate and protect authority
+
+- [x] Verify research and operational baseline revisions.
+- [x] Create dedicated branch from the verified research HEAD.
+- [x] Record immutable Rancang formation pin, project ownership boundary, and historical standing.
+- [x] Mark this branch as unfinished and non-operational.
+- [ ] Confirm final blueprint and archive execution scope with Human before mass moves.
+
+**Exit:** Source history and operational behavior remain intact. No legacy files moved.
+
+## Phase 1 — Define target ownership
+
+- [x] Propose \`product/\`, \`design/\`, \`engineering/\`, \`collaboration/\`, \`harness/\`, \`deprecated/\`.
+- [x] Document concern ownership and non-ownership.
+- [x] Record Product experience semantics vs Design expression.
+- [x] Record Balad advisory vs Human execution vs Engineering Space/Harness authority.
+- [x] Record Specialist-local engineering knowledge and allowed intentional redundancy.
+- [x] Document legacy dispositions and migration/promotion constraints.
+- [ ] Human reviews exact blueprint before treating it as the Phase 2 migration contract.
+
+**Exit:** Domain ownership is explicit. Specific subtrees remain demand-driven.
+
+## Phase 2 — Archive legacy and reset navigation
+
+- [ ] Verify branch HEAD, pending modifications, source tree completeness, and migration scope.
+- [ ] Move legacy top-level directories into \`deprecated/legacy/\`, preserving file contents and lineage.
+- [ ] Establish \`deprecated/README.md\` (reference-only; no fallback authority).
+- [ ] Replace inherited root routing and authoring/navigation where applicable.
+- [ ] Create only the minimum active domain entrypoints; explicitly mark unbuilt guidance NOT READY.
+- [ ] Audit moved relative links, pinned SHA references, protected paths, and missing sources.
+- [ ] Verify the migration diff and checkpoint before further content changes.
+
+**Exit:** Legacy is reference-only; branch is clearly incomplete; no hidden runtime dependency on legacy.
+
+## Phase 3 — Rebuild Product
+
+- [ ] Reassess product authority formation and sufficiency from actor/value/truth.
+- [ ] Rebuild experience discovery before commitment selection.
+- [ ] Rebuild commitments, eligibility, dependency closure and acceptance boundaries.
+- [ ] Preserve commitment-scoped actor journeys, failure paths and product truth.
+- [ ] Keep implementation suitability separate from product outcome suitability.
+- [ ] Validate with Kencleng C1 and a fresh-context reader.
+
+## Phase 4 — Rebuild Design
+
+- [ ] Separate product experience semantics from interaction/UI/brand expression.
+- [ ] Curate relevant principles, patterns and evidence governance.
+- [ ] Verify design authority, accessibility and handoff boundaries.
+
+## Phase 5 — Rebuild Collaboration
+
+- [ ] Rebuild Balad as cross-domain Human advisory guidance.
+- [ ] Preserve Human-direct Space authorization, decision ownership and durable continuity.
+- [ ] Remove embedded harness mechanics into their proper owner.
+- [ ] Test short-intent, fresh-session advisory behavior.
+
+## Phase 6 — Rebuild Engineering
+
+- [ ] Define Engineering Space capability and formation criteria.
+- [ ] Review Rancang reuse, amendment and approval standing from the pinned definition.
+- [ ] Rebuild contracts, Specialist responsibilities, verification and handoffs.
+- [ ] Curate engineering knowledge into relevant Specialist packages only.
+- [ ] Preserve critical security/authorization safeguards and real evidence obligations.
+- [ ] Review which legacy workflow rules are still necessary; avoid one-to-one phase migration.
+
+## Phase 7 — Rebuild Harness
+
+- [ ] Rebuild target-specific Codex/Claude/other harness adapters from verified capabilities.
+- [ ] Separate permission mechanisms, semantic authorizations and Human gates.
+- [ ] Validate one actual runtime binding; report deviations honestly.
+
+## Phase 8 — Governance and cleanup
+
+- [ ] Review change/approval mechanisms proportionally without default per-domain proposal systems.
+- [ ] Validate root/domain routers, dead links, duplicate rules and effective standing.
+- [ ] Ensure deprecated material is not a live dependency.
+- [ ] Remove redundant active guidance only after semantic preservation review.
+
+## Phase 9 — End-to-end evidence and promotion
+
+- [ ] Test fresh-session authority reconstruction across Product/Design/Collaboration/Engineering/Harness.
+- [ ] Trace one C1 experience from product meaning to bounded engineering input without inventing authority.
+- [ ] Execute an authorized bounded engineering run and verify revisioned output and consumer compatibility.
+- [ ] Record successes, failures, deviations and unresolved risks.
+- [ ] Obtain distinct Human decisions for research baseline replacement and any \`main\` promotion.
+
+**Global gate:** Never equate documentation completeness, formation approval, or clean directory structure with runtime correctness.
