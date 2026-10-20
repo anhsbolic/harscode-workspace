@@ -6,6 +6,7 @@
 
 - [Architecture Blueprint](ARCHITECTURE.md) — proposed domain ownership, boundaries and migration rules.
 - [Refactor Checklist](REFACTOR-CHECKLIST.md) — verified progress and remaining work.
+- [Integrated Verification](FOUNDATION-VERIFICATION.md) — source-level results, open validation and authority findings.
 - [Authoring Rules](AUTHORING.md) — temporary refactor writing safeguards.
 - [Deprecated Reference](deprecated/README.md) — archived pre-refactor materials; **reference only**.
 
