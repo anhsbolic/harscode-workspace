@@ -82,9 +82,9 @@ Mark items complete only after repository evidence. Do not interpret a checked d
 
 ## Phase 7 — Rebuild Harness
 
-- [ ] Rebuild target-specific Codex/Claude/other harness adapters from verified capabilities.
-- [ ] Separate permission mechanisms, semantic authorizations and Human gates.
-- [ ] Validate one actual runtime binding; report deviations honestly.
+- [x] Rebuild harness-neutral binding requirements and the Codex adapter as research guidance; vendor-native details are not asserted without live inventory. Other adapters remain demand-driven.
+- [x] Separate native permissions, semantic authorizations and Human gates.
+- [ ] Validate an actual runtime binding **after foundation reconstruction**, using live tool/model/sandbox evidence; no runtime PASS claimed.
 
 ## Phase 8 — Governance and cleanup
 
