@@ -1,8 +1,8 @@
-# Harscode V-Next — Refactor Checklist
+# Harscode Foundation Refactor — Checklist
 
 > **Status:** WORKING TRACKER — this refactor branch only; not an operational workflow.
 > **Baseline:** `research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d`
-> **Blueprint:** [V-Next Architecture](V-NEXT-ARCHITECTURE.md)
+> **Blueprint:** [Foundation Refactor Architecture](ARCHITECTURE.md)
 
 Mark items complete only after repository evidence. Do not interpret a checked design activity as a runtime/quality PASS.
 

@@ -1,6 +1,6 @@
-# Harscode V-Next — Refactor Authoring Rules
+# Harscode Foundation Refactor — Authoring Rules
 
-> **Status: TEMPORARY / REFACTOR ONLY.** These rules govern new guidance drafted on the isolated V-Next branch. They are not an operational replacement for Harscode `main`.
+> **Status: TEMPORARY / REFACTOR ONLY.** These rules govern new guidance drafted on the isolated Foundation Refactor branch. They are not an operational replacement for Harscode `main`.
 
 ## Quality rules
 
@@ -21,4 +21,4 @@
 - The original pinned Rancang definition remains authoritative only for its historical approved research scope; a moved or modified definition requires its own review.
 - Do not duplicate the old `proposals/` mechanism by default. Use targeted review and Git revision evidence proportionate to consequence.
 
-See [Architecture Blueprint](V-NEXT-ARCHITECTURE.md) and [Refactor Checklist](V-NEXT-CHECKLIST.md).
+See [Architecture Blueprint](ARCHITECTURE.md) and [Refactor Checklist](REFACTOR-CHECKLIST.md).

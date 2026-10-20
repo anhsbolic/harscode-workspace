@@ -1,4 +1,4 @@
-# Collaboration — V-Next
+# Collaboration — Foundation Refactor
 
 > **Status: NOT READY.** The cross-domain pairing guidance has not been rebuilt.
 
@@ -10,4 +10,4 @@
 
 **Next work:** Rebuild the smallest useful cross-domain collaboration contract and validate short-intent fresh-session operation.
 
-**Authority:** See [working architecture](../V-NEXT-ARCHITECTURE.md). Operational Harscode remains on `main`.
+**Authority:** See [working architecture](../ARCHITECTURE.md). Operational Harscode remains on `main`.

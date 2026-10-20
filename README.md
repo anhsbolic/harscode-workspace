@@ -1,11 +1,11 @@
-# Harscode V-Next — Refactor Workspace
+# Harscode Foundation Refactor
 
 > **Status: NON-OPERATIONAL / UNDER RECONSTRUCTION.** This branch must not be used as an operational Harscode runtime or as current project delivery guidance. Harscode `main` remains the operational baseline.
 
 ## Start here
 
-- [Architecture Blueprint](V-NEXT-ARCHITECTURE.md) — proposed domain ownership, boundaries and migration rules.
-- [Refactor Checklist](V-NEXT-CHECKLIST.md) — verified progress and remaining work.
+- [Architecture Blueprint](ARCHITECTURE.md) — proposed domain ownership, boundaries and migration rules.
+- [Refactor Checklist](REFACTOR-CHECKLIST.md) — verified progress and remaining work.
 - [Authoring Rules](AUTHORING.md) — temporary refactor writing safeguards.
 - [Deprecated Reference](deprecated/README.md) — archived pre-refactor materials; **reference only**.
 

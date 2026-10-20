@@ -1,4 +1,4 @@
-# Harness — V-Next
+# Harness — Foundation Refactor
 
 > **Status: NOT READY.** No CLI/runtime setup is authorized by this placeholder.
 
@@ -10,4 +10,4 @@
 
 **Next work:** Curate from archived `harness-optimization/` using verified runtime evidence, with capability contracts owned by `engineering/`.
 
-**Authority:** See [working architecture](../V-NEXT-ARCHITECTURE.md). Operational Harscode remains on `main`.
+**Authority:** See [working architecture](../ARCHITECTURE.md). Operational Harscode remains on `main`.

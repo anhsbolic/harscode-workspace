@@ -1,6 +1,6 @@
-# Product — V-Next Research Guidance
+# Product — Research Guidance
 
-> **Status:** WORKING / RESEARCH-ONLY. Rebuilt for evaluation on `refactor/harscode-foundation-vnext`; not approved operational Harscode policy.
+> **Status:** WORKING / RESEARCH-ONLY. Rebuilt for evaluation on `refactor/harscode-foundation`; not approved operational Harscode policy.
 > **Owner:** Harscode Product guidance. Product decisions and truth for any actual product remain with its owning project.
 > **Applies to:** Product discovery, Product Authority assessment, commitment selection, commitment-scoped experience clarification, and product-to-consumer handoff.
 > **Precedence:** Current target-project approved authority first; this research guidance cannot amend it. Legacy material under `deprecated/` is evidence only.
@@ -59,4 +59,4 @@ A commitment may be one indivisible product outcome while requiring multiple bou
 - Product handoff is not an implementation, a production release, or proof that a downstream consumer can execute.
 - Any claim of successful independent cold-start consumption needs a separate fresh-reader test; a document review is not that test.
 
-See [V-Next Architecture](../V-NEXT-ARCHITECTURE.md) and [Refactor Checklist](../V-NEXT-CHECKLIST.md) for refactor standing.
+See [Foundation Refactor Architecture](../ARCHITECTURE.md) and [Refactor Checklist](../REFACTOR-CHECKLIST.md) for refactor standing.

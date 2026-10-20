@@ -1,6 +1,6 @@
 # Deprecated Legacy Reference
 
-> **Status: DEPRECATED / REFERENCE ONLY.** This subtree is not an active source of Harscode policy, executable guidance, Space permission, or a fallback for unfinished V-Next domains.
+> **Status: DEPRECATED / REFERENCE ONLY.** This subtree is not an active source of Harscode policy, executable guidance, Space permission, or a fallback for unfinished Foundation Refactor domains.
 
 ## Contents
 
@@ -10,7 +10,7 @@
 
 ## Use and migration
 
-1. Read active V-Next guidance only when the owning domain explicitly marks it ready. At this checkpoint all five active domain stubs are **NOT READY**.
+1. Read active Foundation Refactor guidance only when the owning domain explicitly marks it ready. At this checkpoint Product is **WORKING / RESEARCH-ONLY**; Design, Engineering, Collaboration, and Harness are **NOT READY**.
 2. Refer to `legacy/` only when an approved refactor task needs specific historical semantics or evidence. Do **not** automatically read or follow legacy `AGENTS.md`, kickoff prompts, proposals, or workflows.
 3. Migration into a new owning domain requires review of meaning, dependencies, security protections and Human authority. A file move does not transfer approval or canonical standing.
 4. Historical Rancang / `feature-solution-design` formation approval remains pinned to commit `1f20cf6584dba54dee17d8183c7069d7c99eafe6` at its **original** `spaces/feature-solution-design/` path. The archived copy is not an approved new definition.
@@ -21,4 +21,4 @@
 
 Original research snapshot: `research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d`.
 
-The V-Next migration branch is **non-operational** and may be incomplete between checkpoints.
+The Foundation Refactor migration branch is **non-operational** and may be incomplete between checkpoints.

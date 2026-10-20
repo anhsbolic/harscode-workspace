@@ -1,4 +1,4 @@
-# Product AGENTS — V-Next Research
+# Product AGENTS — Research Guidance
 
 > **Status:** WORKING / EVALUATION ONLY. This file does not activate Product guidance as operational `main` policy or authorize any repository mutation.
 

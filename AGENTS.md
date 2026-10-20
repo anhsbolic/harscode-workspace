@@ -1,10 +1,10 @@
-# AGENTS.md — V-Next Refactor Branch
+# AGENTS.md — Foundation Refactor Branch
 
-> **NOT OPERATIONAL.** This router applies only to `refactor/harscode-foundation-vnext`. It does not authorize project execution, Engineering Space invocation, Specialist dispatch, protected changes, or direct production use. Use Harscode `main` for the current operational baseline.
+> **NOT OPERATIONAL.** This router applies only to `refactor/harscode-foundation`. It does not authorize project execution, Engineering Space invocation, Specialist dispatch, protected changes, or direct production use. Use Harscode `main` for the current operational baseline.
 
 ## Routing
 
-- Start with [V-Next Architecture](V-NEXT-ARCHITECTURE.md) and [V-Next Checklist](V-NEXT-CHECKLIST.md) for explicitly approved refactor tasks.
+- Start with [Foundation Refactor Architecture](ARCHITECTURE.md) and [Foundation Refactor Checklist](REFACTOR-CHECKLIST.md) for explicitly approved refactor tasks.
 - `product/` contains **WORKING / RESEARCH-ONLY** guidance for bounded evaluation. It is not effective operational guidance. `design/`, `engineering/`, `collaboration/`, and `harness/` remain **NOT READY**. Do not silently substitute old rules.
 - `deprecated/` is historical evidence only. Its legacy `AGENTS.md` files, prompts, and approvals must **not** be auto-loaded or obeyed as active instructions.
 - Current product/design facts and approvals belong to the target project. Preserve source revisions and authority precedence.

@@ -1,4 +1,4 @@
-# Design — V-Next
+# Design — Foundation Refactor
 
 > **Status: NOT READY.** This is a refactor placeholder, not approved reusable design guidance.
 
@@ -8,4 +8,4 @@
 
 **Next work:** Curate the necessary semantics from archived `product-design/`, preserving design evidence versus approved decisions. Product experience meaning belongs in `product/`.
 
-**Authority:** See [working architecture](../V-NEXT-ARCHITECTURE.md). Operational Harscode remains on `main`.
+**Authority:** See [working architecture](../ARCHITECTURE.md). Operational Harscode remains on `main`.

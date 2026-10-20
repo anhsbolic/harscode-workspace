@@ -1,11 +1,11 @@
-# Harscode V-Next — Architecture Blueprint
+# Harscode Foundation Refactor — Architecture Blueprint
 
 > **Status:** WORKING DESIGN — refactor branch only; not operational policy or a validated runtime.
 > **Date:** 2026-10-20
 > **Source:** `research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d`
 > **Operational baseline (unchanged):** `main@c762a27aee622c247c2a408d932e762076e3588c`
-> **Refactor branch:** `refactor/harscode-foundation-vnext`
-> **Companion:** [V-Next Checklist](V-NEXT-CHECKLIST.md)
+> **Refactor branch:** `refactor/harscode-foundation`
+> **Companion:** [Foundation Refactor Checklist](REFACTOR-CHECKLIST.md)
 
 ## Objective
 

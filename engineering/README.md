@@ -1,4 +1,4 @@
-# Engineering — V-Next
+# Engineering — Foundation Refactor
 
 > **Status: NOT READY.** No Engineering Space or executable engineering procedure is currently authorized by this tree.
 
@@ -10,4 +10,4 @@
 
 **Rancang:** Historical formation approval applies only to `spaces/feature-solution-design/` at immutable commit `1f20cf6584dba54dee17d8183c7069d7c99eafe6`. This placeholder does not approve a replacement capability.
 
-**Authority:** See [working architecture](../V-NEXT-ARCHITECTURE.md). Operational Harscode remains on `main`.
+**Authority:** See [working architecture](../ARCHITECTURE.md). Operational Harscode remains on `main`.
