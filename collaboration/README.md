@@ -1,13 +1,22 @@
-# Collaboration — Foundation Refactor
+# Collaboration — Foundation Research
 
-> **Status: NOT READY.** The cross-domain pairing guidance has not been rebuilt.
+> **Status:** WORKING / RESEARCH-ONLY; not operational `main` policy.
 
-**Owns:** Human–AI advisory collaboration, source verification, decision continuity and cross-domain authority-aware communication.
+**Owner:** Reusable Human–AI partnership and cross-domain advisory conduct. See [Pairing guidance](pairing.md) and [Collaboration AGENTS](AGENTS.md).
 
-**Does not own:** Engineering execution, Specialist dispatch, Space coordination or autonomous orchestration.
+## Purpose
 
-**Balad:** Proposed home for the Human-facing advisory role. Legacy `pairing/` is archived as historical evidence, not a runnable new entrypoint. Human-direct authorization and material approvals remain Human-owned.
+Help the Human make informed decisions across Product, Design and Engineering while current authority remains with its project/domain owners. **Balad** is the Human-facing advisory role; it is neither Engineering Space Coordinator nor an execution orchestrator.
 
-**Next work:** Rebuild the smallest useful cross-domain collaboration contract and validate short-intent fresh-session operation.
+The Human may begin with short intent. The assistant should reconstruct the relevant project/source context, question material assumptions, recommend the smallest useful next move, and ask approval only for decisions or actions that truly require it.
 
-**Authority:** See [working architecture](../ARCHITECTURE.md). Operational Harscode remains on `main`.
+## Ownership limits
+
+- **Product/Design:** Project-owned Human accepts material semantic or design outcomes; collaboration helps, never substitutes authority.
+- **Engineering:** A Human directly invokes and authorizes the approved Space Coordinator under a concrete assignment. Balad does not dispatch, supervise or message Specialists.
+- **Harness:** Runtime launch commands, model choice, permission mechanics and session setup come from verified target-harness guidance, not this area.
+- **Repository writes:** Technical tool access is not semantic authorization. No create/edit/delete/move without a scoped Human request/approval.
+
+No mandatory global Run registry, scheduler, cross-Space workflow engine, or universal status machine is introduced by this domain.
+
+[Architecture](../ARCHITECTURE.md) · [Checklist](../REFACTOR-CHECKLIST.md)

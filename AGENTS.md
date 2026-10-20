@@ -5,7 +5,7 @@
 ## Routing
 
 - Start with [Foundation Refactor Architecture](ARCHITECTURE.md) and [Foundation Refactor Checklist](REFACTOR-CHECKLIST.md) for explicitly approved refactor tasks.
-- `product/` contains **WORKING / RESEARCH-ONLY** guidance for bounded evaluation. It is not effective operational guidance. `design/`, `engineering/`, `collaboration/`, and `harness/` remain **NOT READY**. Do not silently substitute old rules.
+- `product/` contains **WORKING / RESEARCH-ONLY** guidance for bounded evaluation. It is not effective operational guidance. `design/` and `collaboration/` now contain **WORKING / RESEARCH-ONLY** guidance; `engineering/` and `harness/` remain **NOT READY**. Do not silently substitute old rules.
 - `deprecated/` is historical evidence only. Its legacy `AGENTS.md` files, prompts, and approvals must **not** be auto-loaded or obeyed as active instructions.
 - Current product/design facts and approvals belong to the target project. Preserve source revisions and authority precedence.
 

@@ -50,9 +50,9 @@ Mark items complete only after repository evidence. Do not interpret a checked d
 - [x] Preserve commitment-scoped actor journeys, failure paths and product truth.
 - [x] Keep implementation suitability separate from product outcome suitability.
 - [x] Run a source-traced C1 semantic stress test (same-session documentation inspection; **not** independent cold-start evidence).
-- [ ] Run an independent fresh-context consumer reading test and record its findings before claiming Product guidance validated.
+- [ ] Evaluate Product guidance in the combined post-refactor verification and the later Kencleng Product Authority revisit (not a Phase 3 construction gate).
 
-**Independent test prepared (not run):** [Product C1 cold-read protocol](product/COLD-READ-VALIDATION.md), pinned to Harscode `643fde68` and Kencleng `91fad854`. Execute in a genuinely fresh session and score the result before closing Phase 3.
+**Validation sequencing decision (2026-10-20):** Complete all foundation domains first; verify together afterward. The earlier isolated C1 cold-read fixture was removed from the active Product area as premature. Its prior revision remains in Git history; later verification may use a fresh protocol.
 
 **Candidate guidance (WORKING / RESEARCH-ONLY):** [Product entrypoint](product/README.md), [foundation](product/foundation.md), [experiences and commitments](product/experiences-and-commitments.md), [handoff](product/handoff.md).
 
@@ -60,16 +60,16 @@ Mark items complete only after repository evidence. Do not interpret a checked d
 
 ## Phase 4 — Rebuild Design
 
-- [ ] Separate product experience semantics from interaction/UI/brand expression.
-- [ ] Curate relevant principles, patterns and evidence governance.
-- [ ] Verify design authority, accessibility and handoff boundaries.
+- [x] Separate product experience semantics from interaction/UI/brand expression.
+- [x] Curate relevant principles, patterns and evidence governance.
+- [x] Review design authority, accessibility and handoff boundaries at source level; independent effectiveness verification deferred.
 
 ## Phase 5 — Rebuild Collaboration
 
-- [ ] Rebuild Balad as cross-domain Human advisory guidance.
-- [ ] Preserve Human-direct Space authorization, decision ownership and durable continuity.
-- [ ] Remove embedded harness mechanics into their proper owner.
-- [ ] Test short-intent, fresh-session advisory behavior.
+- [x] Rebuild Balad as cross-domain Human advisory guidance.
+- [x] Preserve Human-direct Space authorization, decision ownership and durable continuity.
+- [x] Remove harness-specific launch mechanics from Collaboration; Harness reconstruction pending.
+- [ ] Test short-intent, fresh-session advisory behavior in combined post-refactor verification.
 
 ## Phase 6 — Rebuild Engineering
 
