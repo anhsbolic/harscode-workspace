@@ -44,12 +44,17 @@ Mark items complete only after repository evidence. Do not interpret a checked d
 
 ## Phase 3 — Rebuild Product
 
-- [ ] Reassess product authority formation and sufficiency from actor/value/truth.
-- [ ] Rebuild experience discovery before commitment selection.
-- [ ] Rebuild commitments, eligibility, dependency closure and acceptance boundaries.
-- [ ] Preserve commitment-scoped actor journeys, failure paths and product truth.
-- [ ] Keep implementation suitability separate from product outcome suitability.
-- [ ] Validate with Kencleng C1 and a fresh-context reader.
+- [x] Reassess product authority formation and sufficiency from actor/value/truth.
+- [x] Rebuild experience discovery before commitment selection.
+- [x] Rebuild commitments, eligibility, dependency closure and acceptance boundaries.
+- [x] Preserve commitment-scoped actor journeys, failure paths and product truth.
+- [x] Keep implementation suitability separate from product outcome suitability.
+- [x] Run a source-traced C1 semantic stress test (same-session documentation inspection; **not** independent cold-start evidence).
+- [ ] Run an independent fresh-context consumer reading test and record its findings before claiming Product guidance validated.
+
+**Candidate guidance (WORKING / RESEARCH-ONLY):** [Product entrypoint](product/README.md), [foundation](product/foundation.md), [experiences and commitments](product/experiences-and-commitments.md), [handoff](product/handoff.md).
+
+**C1 source-trace probe — 2026-10-20:** Kencleng `pilot/station5-c1-space-only@91fad854301265357ba69e76182eb5c82ae71049`. Target-project [Product Intent](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/product/product-intent.md) owns whole-product truth; [Stage 3B](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/product/pilot-3-stage-3b-commitment-sequencing.md) selects C1; [Stage 4](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/product/pilot-3-stage-4-c1-interaction-exploration.md) gives supporting actor-experience evidence, not competing Product Authority. [Approved Stage 5 B1–B7](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/product/pilot-3-stage-5-c1-confirmed-behavior.md) and [Stage 6 XR/ER](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/product/pilot-3-stage-6-c1-requirements.md) bind C1-specific meaning. The experience anchor preserves start without external proof, pre-effect disclosure, attributable Organization + initial Owner success together, durable inspection, no upgrade of Organization-provided truth, and truthful incomplete/known-conflict paths. Recovery is optional; conflict detection, external legal adjudication, UI form, API, and transaction design were not assumed. The [Rancang interim review](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/project/station5-c1-s1-interim-closeout.md) shows unresolved solution coupling, not an approved product split or implementation. **Outcome:** Source consistency probe PASS; independent reader/consumer-fit evidence NOT TESTED. No Kencleng edits.
 
 ## Phase 4 — Rebuild Design
 

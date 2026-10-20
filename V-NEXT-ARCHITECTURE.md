@@ -70,7 +70,7 @@ For this research refactor, Space formation and execution target **engineering w
 
 ## Legacy disposition
 
-All legacy top-level directories are intended for temporary archival under `deprecated/legacy/` in **Phase 2**, not during this blueprint phase. Preserve relative structure for traceability; moving files may break relative links and must not rewrite historical approval claims.
+All legacy top-level directories were archived under `deprecated/legacy/` during **Phase 2** (checkpoint `9f8b6cb898fddce959b812748ebecfcb030efcf7`), retaining their original Git object identities. Preserve relative structure for traceability; moving files may break relative links and must not rewrite historical approval claims.
 
 | Legacy area | Planned treatment |
 | --- | --- |
