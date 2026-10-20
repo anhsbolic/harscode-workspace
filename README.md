@@ -15,12 +15,12 @@
 | --- | --- | --- |
 | [Product](product/README.md) | Experience-led product meaning, commitments and truthful outcomes | WORKING — RESEARCH EVALUATION ONLY |
 | [Design](design/README.md) | Interaction/UI/visual expression and design authority | WORKING — RESEARCH ONLY |
-| [Engineering](engineering/README.md) | Solution, implementation, Engineering Spaces and Specialist-local knowledge | NOT READY |
+| [Engineering](engineering/README.md) | Solution, implementation, Engineering Spaces and Specialist-local knowledge | WORKING — RESEARCH ONLY |
 | [Collaboration](collaboration/README.md) | Human–AI advisory collaboration and authority-aware decisions | WORKING — RESEARCH ONLY |
 | [Harness](harness/README.md) | Runtime-specific execution/permission translation | NOT READY |
 | [Deprecated](deprecated/README.md) | Frozen legacy references for selective migration | REFERENCE ONLY |
 
-**Routing:** Product guidance is a working research candidate only; Engineering and Harness remain NOT READY. No new domain is an effective replacement for archived operational guidance. Do not automatically follow archived prompts, `AGENTS.md` files, workflow paths or Space definitions. For actual operational work, use the verified `main` baseline and target-project authority.
+**Routing:** Product guidance is a working research candidate only; Harness remains NOT READY. No new domain is an effective replacement for archived operational guidance. Do not automatically follow archived prompts, `AGENTS.md` files, workflow paths or Space definitions. For actual operational work, use the verified `main` baseline and target-project authority.
 
 ## Source and constraints
 

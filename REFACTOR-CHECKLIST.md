@@ -73,12 +73,12 @@ Mark items complete only after repository evidence. Do not interpret a checked d
 
 ## Phase 6 — Rebuild Engineering
 
-- [ ] Define Engineering Space capability and formation criteria.
-- [ ] Review Rancang reuse, amendment and approval standing from the pinned definition.
-- [ ] Rebuild contracts, Specialist responsibilities, verification and handoffs.
-- [ ] Curate engineering knowledge into relevant Specialist packages only.
-- [ ] Preserve critical security/authorization safeguards and real evidence obligations.
-- [ ] Review which legacy workflow rules are still necessary; avoid one-to-one phase migration.
+- [x] Define Engineering Space capability and formation criteria.
+- [x] Reconstruct Rancang as NOT FORMED research candidate; preserve exact historical approval standing.
+- [x] Draft candidate Rancang I/O, Specialist-local reasoning, gates and verification responsibility; execution not authorized.
+- [x] Place scoped solution-architecture and independent-review knowledge in the Rancang Specialist packages; unneeded legacy technology guidance stays archived.
+- [x] Preserve critical security/authorization and truthful evidence obligations in active Engineering contracts.
+- [x] Rebuild concern-based production/verification responsibilities instead of copying legacy phase workflow.
 
 ## Phase 7 — Rebuild Harness
 
