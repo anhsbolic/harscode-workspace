@@ -1,6 +1,6 @@
 # Harscode Foundation Refactor — Architecture Blueprint
 
-> **Status:** WORKING DESIGN — refactor branch only; not operational policy or a validated runtime.
+> **Status:** RECONSTRUCTED RESEARCH FOUNDATION — integrated verification pending; not operational policy or a validated runtime.
 > **Date:** 2026-10-20
 > **Source:** `research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d`
 > **Operational baseline (unchanged):** `main@c762a27aee622c247c2a408d932e762076e3588c`
@@ -72,7 +72,7 @@ For this research refactor, Space formation and execution target **engineering w
 
 All legacy top-level directories were archived under `deprecated/legacy/` during **Phase 2** (checkpoint `9f8b6cb898fddce959b812748ebecfcb030efcf7`), retaining their original Git object identities. Preserve relative structure for traceability; moving files may break relative links and must not rewrite historical approval claims.
 
-| Legacy area | Planned treatment |
+| Legacy area | Disposition and selective successor |
 | --- | --- |
 | `audits/` | Historical reference only; retire active copies once evidence links are retained |
 | `best-practices/` | Retire central library; selectively distill into relevant Engineering Space/Specialist guidance |
@@ -91,8 +91,12 @@ All legacy top-level directories were archived under `deprecated/legacy/` during
 - Phase 0–1: establish an isolated branch, pin source revisions, define domain owners and checkpoints. **No legacy moves or behavioral changes.**
 - Phase 2: archive the old tree, declare archival content reference-only, update root navigation, preserve links/pins and make unbuilt domains explicitly **NOT READY**. Never silently fall back to legacy.
 - Later: rebuild one domain at a time, reviewing exact migrated semantics and downstream consumers. Design/readiness claims require independent evidence where consequence demands it.
-- Gate each migration on authority/reference correctness, original semantic coverage, meaningful negative-path safeguards, and fresh-session reconstruction.
+- Gate each construction commit on authority/reference correctness, material semantic coverage and negative-path safeguards. Defer **independent fresh-context consumption and effectiveness validation** until after all domains are reconstructed, then test cross-domain reasoning and actual runner properties.
 - Promote back to research, and eventually to `main`, **only via separate Human decisions and verified evidence**.
+
+## Current construction standing
+
+All five active areas are **WORKING / RESEARCH-ONLY**. Rancang under `engineering/spaces/feature-solution-design/` is a **new NOT FORMED candidate**, not a replacement approved Space; its historical formation approval remains pinned to the old revision and path. Specialist-local knowledge exists only for the candidate's scoped responsibilities; unused technology best practices remain archived until a real consumer justifies migration. No Product/Design/Collaboration runtime or Engineering Space is authorized by this branch. Independent fresh-reader, actual harness binding, usage effectiveness, and any promotion decision remain untested/deferred.
 
 ## Refactor success criteria
 

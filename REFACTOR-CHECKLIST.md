@@ -88,12 +88,16 @@ Mark items complete only after repository evidence. Do not interpret a checked d
 
 ## Phase 8 — Governance and cleanup
 
-- [ ] Review change/approval mechanisms proportionally without default per-domain proposal systems.
-- [ ] Validate root/domain routers, dead links, duplicate rules and effective standing.
-- [ ] Ensure deprecated material is not a live dependency.
-- [ ] Remove redundant active guidance only after semantic preservation review.
+- [x] Clarify proportional, concern-owned change control in root AUTHORING.md; no default per-domain proposal systems.
+- [x] Check active root/domain routers, 68 relative Markdown links across 29 active documents (no broken targets); independent reader evidence remains Phase 9.
+- [x] Confirm no active runtime/authority fallback to archived guidance; historical evidence links remain explicitly non-operative.
+- [x] Review active scope/status, remove stale NOT READY claims in active routing, and retain only necessary local safeguard repetition.
 
-## Phase 9 — End-to-end evidence and promotion
+**Construction closeout (2026-10-20):** Phase 0–8 source reconstruction is complete **for research evaluation**, not for operational activation. Five domains have working entrypoints; Rancang's reconstructed candidate is NOT FORMED; unused legacy technology guidance remains under `deprecated/` rather than becoming a central library or fictitious Specialist capability. Structural audit: 29 active Markdown docs, 68 internal relative links valid, 257 archived legacy blobs preserved, no outdated version-label branding in active guidance. This is a source-integrity review, **not** a fresh-reader, runtime or effectiveness PASS. Human acceptance/promotion and all actual capability tests remain distinct.
+
+## Phase 9 — Integrated verification, Kencleng revisit, and promotion decision
+
+**Sequencing:** Complete all foundation documentation first. Then separately review cross-domain correctness/authority and fresh-context use. Revisit Kencleng Product Authority with the reconstructed Product guidance **after** refactor evaluation; do not automatically overwrite current approved Kencleng authority. Finally test an authorized bounded Engineering Space/runtime if a suitable assignment exists; promotion to research or `main` is a separate Human decision.
 
 - [ ] Test fresh-session authority reconstruction across Product/Design/Collaboration/Engineering/Harness.
 - [ ] Trace one C1 experience from product meaning to bounded engineering input without inventing authority.
