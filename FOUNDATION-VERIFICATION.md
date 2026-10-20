@@ -56,3 +56,50 @@ The pilot C1 branch is therefore **valuable experimental evidence, not current K
 - Make separate Human decisions for research baseline replacement and any promotion to operational Harscode `main`.
 
 **Scope conclusion:** Structural/source integrity PASS; overall integrated verification **PARTIAL** until real-use evidence. No automatic promotion.
+
+## Full audit addendum — 2026-10-20
+
+> **Status:** HUMAN-APPROVED FINDING RECORD / RESEARCH ONLY.
+> **Audited revision:** `refactor/harscode-foundation@3ca19481f449ba50988a3b18a9dc1d3342d7bf94`.
+> **Operational comparator:** Harscode `main@c762a27aee622c247c2a408d932e762076e3588c`.
+> **Human-approved scope:** Record audit findings only. **No authorization** to remediate, alter architecture, activate a Space, change Kencleng, or promote any branch.
+> **Method:** Same-session repository and guidance review; not an independent runtime or fresh-context evaluation.
+
+The earlier F1–F3 findings refer to the initial integrated source audit. **FA-01–FA-05** below identify findings from the subsequent full-scope audit; neither numbering scheme overwrites the other.
+
+### Verdict
+
+**Research continuation: ACCEPTABLE. Operational replacement: BLOCKED. Overall verification: PARTIAL.**
+
+Five domain boundaries appear coherent at the source level. The migration preserves historical evidence, but documentation integrity does not prove functional equivalence, instruction-loading isolation, successful Engineering execution, or effective Human gates.
+
+### Findings
+
+| ID | Severity | Verified basis | Standing and smallest useful next evidence |
+| --- | --- | --- | --- |
+| **FA-01** | **HIGH — promotion blocker** | Nine archived `AGENTS.md` files, including the legacy root, remain in `deprecated/legacy/`. Harnesses with directory-scoped instruction loading may treat archived instructions as active when operating inside that subtree, despite its reference-only label. | **POTENTIAL instruction-contamination risk; no incident observed.** Define and test an inert archival approach before operational promotion, preserving immutable historical records. |
+| **FA-02** | **HIGH — promotion blocker** | Harscode operational `main` has 38 `workflow/` files, including nine `*-prompt.md` entrypoints. The foundation branch has no active `workflow/` equivalent and its new Engineering Space is not formed. | **Operational coverage NOT ESTABLISHED.** Verify real-task execution, consumer handoffs and essential protections before claiming replacement fitness. Do not restore old workflow mechanically. |
+| **FA-03** | **MEDIUM — capability/standing gap** | The pinned historical Rancang definition contains 37 files covering Coordinator, Specialist profiles, gates, artifacts and handoffs. The reconstructed candidate contains four files: entrypoint, contract, two Specialist-local knowledge notes. | **NOT FORMED; not functionally equivalent by evidence.** Add only responsibilities/contracts justified by real execution needs, followed by exact-revision Human formation review if pursued. |
+| **FA-04** | **MEDIUM — evidence gap** | Source trace, documentation review and link checks do not demonstrate independent understanding, real Product/Design/Collaboration usefulness, actual permission containment, reviewer independence or accepted Engineering output. | **NOT TESTED.** Obtain relevant real-use evidence. Product/Design work does not require a CLI-style test; Engineering runtime evidence requires an authorized task. |
+| **FA-05** | **LOW — documentation precision** | Some active wording retains prior phase markers (`product/AGENTS.md` says “during Phase 3”) or states that integrated verification is pending without distinguishing the completed source-level audit. | **Minor cleanup only.** Correct locally when useful; do not change authority or gates under a wording edit. |
+
+### Evidence boundaries
+
+- **Preserved legacy:** 257 archived blobs and 306 source tree entries (excluding `.gitignore`) match the source research snapshot by Git object SHA/mode/type. The files were **relocated**, not retained at their original working paths.
+- **FA-01 is conditional:** Nine archived scoped `AGENTS.md` files are observable in the Git tree. Actual instruction loading depends on the selected harness and working-directory context; no contamination incident was reproduced.
+- **FA-02 is an inventory comparison:** The old workflow count does not prove each old phase or prompt should survive. The missing *replacement evidence*, not a folder mismatch alone, blocks promotion.
+- **FA-03 approval boundary:** The [historical approved definition](https://github.com/anhsbolic/harscode-workspace/tree/1f20cf6584dba54dee17d8183c7069d7c99eafe6/spaces/feature-solution-design) and [formation decision](deprecated/legacy/research/checkpoints/station5-s1-formation-approval-2026-10-19.md) concern the immutable historical revision. The [reconstructed Rancang candidate](engineering/spaces/feature-solution-design/README.md) does not inherit approval or runtime readiness.
+- **Knowledge locality:** New Engineering knowledge is scoped to relevant Rancang Specialists; unused old technology guidance is deliberately archived, not centralized.
+- **Current Kencleng authority:** Kencleng `main@e32916b597412094976e3e6263095e861ec18391` remains the operational Product/MVP authority. Historical pilot C1 is experimental evidence, not current MVP authorization.
+
+### Disposition and gates
+
+| Activity | Audit disposition |
+| --- | --- |
+| Continue Harscode Foundation research | **MAY PROCEED** |
+| Revisit Kencleng Product Authority from current `main` | **MAY PROCEED — READ ONLY** |
+| Modify Kencleng Product Authority | **SEPARATE HUMAN DECISION REQUIRED** |
+| Use the reconstructed Rancang as a formed/runnable Space | **NOT AUTHORIZED** |
+| Promote foundation refactor to Harscode operational `main` | **BLOCKED** until FA-01/FA-02 have evidence-based resolution, relevant execution/consumer fitness is demonstrated and the Human separately approves promotion |
+
+**No remediation was executed by this addendum.** Approved finding documentation is not authorization for design changes, protected writes, Space formation, invocation or operational promotion.
