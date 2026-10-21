@@ -1,6 +1,6 @@
 # Rancang — Feature Solution Design
 
-> **Definition standing:** CURRENT REVISION CANDIDATE / NOT FORMATION APPROVED / NOT RUNTIME READY. See the [prior immutable formation decision](formation-approval-2026-10-20.md) for the previously approved definition.
+> **Formation standing:** FORMATION APPROVED / RESEARCH-ONLY for immutable definition `4b49d0dd0db74cf34a927cadc938ae724676a75a` by Human decision on 2026-10-21. See the [exact-revision approval record](formation-approval-2026-10-21.md). **Runtime:** NOT READY / NOT VERIFIED.
 > **Capability ID:** `feature-solution-design`; Human-facing name **Rancang**.
 > **Scope:** Bounded, coherent engineering **solution design** for an approved product/technical objective; no implementation or product-authority change.
 
@@ -26,4 +26,4 @@ All Agents must give precedence to **current authoritative target-project standa
 
 [Artifact guidance](artifacts/README.md), [logical templates](artifacts/templates.md), and [illustrative typed examples](artifacts/examples.md) help produce traceable X1/O1–O5 and a revisioned consumer-facing bundle. Choose only the representation necessary for actual consumers; current project-owned templates, API conventions and diagram notation prevail. No sample endpoint, authentication choice, lifecycle or topology is a project requirement.
 
-**No formation approval, tested Harness readiness, or production invocation is implied by this revision candidate.**
+**Formation approval applies only to the immutable `4b49d0dd0db74cf34a927cadc938ae724676a75a` definition.** This subsequent approval-status/routing edit is administrative, not a change to its capability or Agent contracts. Formation is not Harness readiness, invocation authorization, project artifact acceptance or operational promotion.
