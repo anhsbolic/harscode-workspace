@@ -136,3 +136,33 @@ flowchart TB
 - Keep branch context explicit: Harscode `refactor/harscode-foundation` is research; Harscode `main` is operational; Kencleng pilot is not Kencleng `main`. No repository authority or runtime activation changes through this file.
 - Follow [Product Handoff](handoff.md) for consumer-readiness; no one-to-one mapping between commitment and Engineering Space is implied.
 - Human approval is required for material changes to Product Authority or promotion of this experimental format into reusable Harscode policy.
+
+
+## 2026-10-21 — Approved Level 2 Kencleng checkpoint and research reframe
+
+> **Standing:** HUMAN-APPROVED **RESEARCH CHECKPOINT** in Kencleng; Harscode records evidence/reframed hypothesis **only**. This section updates the **current experiment position**, not Harscode operational `main` or the reusable guidance in [experiences-and-commitments.md](experiences-and-commitments.md) and [handoff.md](handoff.md).
+> **Project-owned source:** [Kencleng Interconnected Journeys checkpoint](https://github.com/anhsbolic/kencleng/blob/00ccf35d4f2cbec29721a6390a29804e50675760/docs/product/interconnected-journeys/README.md) and [Level 2 network v0.2](https://github.com/anhsbolic/kencleng/blob/00ccf35d4f2cbec29721a6390a29804e50675760/docs/product/interconnected-journeys/level-2-network.md), on **pilot/station5-c1-space-only**. The `00ccf35d4f2cbec29721a6390a29804e50675760` revision is a durable Kencleng pilot research checkpoint, **not** Kencleng operational `main`.
+
+### What changed in the research question
+
+The original format emphasized deriving/selecting a bounded **Commitment** after representative scenarios. Anhar challenged whether that abstraction is necessary. **For this ongoing experiment**, Commitment-based Stage 3B is **paused**; earlier C1 approval/history is **not** revoked. The test is now whether a sufficiently detailed interconnected experience/state network can support responsible **starting-point and dependency sequencing reasoning** and ultimately a bounded, Human-approved input to Rancang, **without a mandatory Commitment artifact or registry**. Whether any extra mediation function is needed remains to be learned.
+
+Anhar accepted **two representational resolutions**, not mandatory delivery phases:
+
+1. **Journey Landscape / helicopter view:** R1 Organization, R2 Campaign, R3 Visitor/Donation, R4 Accountability, plus X1 privileged exception. The previously accepted Stage 3A was adequate at this representative level.
+2. **Interconnected Meaningful Transitions / road-network view:** 26 working nodes (R1 five, R2 eight, R3 seven, R4 six), including local transitions, typed cross-actor dependencies, feedback/re-entry, non-donation, uncertain and failure states, actual Campaign public/eligibility distinction, money-state distinctions, and accountability even with zero Donatur.
+
+Resolution is chosen by **meaningful product consequence**, not domain, screen, CRUD operation or database event. The map should be whole enough to reveal candidate starting paths but not falsely spec the entire product at uniform depth.
+
+### Observations and cautions
+
+- **Observed in the same-session analytical reconstruction:** Initial 19-node decomposition hid material branches and misleading direct links. The reviewed 26-node revision made explicit Organization review/reconsideration, Campaign curation revision loops, publication versus eligibility, changes affecting in-flight contribution, donation fact versus funding/settlement, and accountability beginning before closure and existing without donors. These boundaries were tested against existing accepted Kencleng source semantics; **many were already known in historical Stage 3A/C1**, so this does not prove new domain discovery.
+- **Human decision:** Anhar approved the corrected Level 2 completeness/connection audit as a **Kencleng-specific Product research checkpoint** and authorized durable recording both in Kencleng and Harscode research repositories. The Kencleng directory is intentionally named `docs/product/interconnected-journeys/`, not another `pilot-*` file, but **branch/scope and project authority precedence remain unchanged**.
+- **Not established:** Empirically better sequencing choice, the correct first work item, independent fresh-reader usability, design/engineering consumer fit, actual code/runtime prerequisites, horizontal capabilities/environment readiness, Rancang runtime readiness, or a more efficient generalized Harscode method. Previous graph connectivity counts are not causal or execution evidence.
+- **Preserved boundaries:** Product-led semantic sequencing is not a total roadmap; conditional review is not universal; partial/seeded states do not prove actual delivery. Rancang Engineering technical authority and Human-direct invocation/approval remain separate.
+
+### Explicit pause and next experiment
+
+**Stop after the approved Level 2 checkpoint.** Next, **discuss how to select the first healthy starting point** and the appropriate depth/authority threshold, using the current mapped journeys. Do not automatically name O1, P1, or V1 as first work. **Engineering Readiness & Dependency Reconciliation remains on hold by Anhar's direction.** No Engineering invocation, product roadmap, implementation, Harscode reusable-guidance amendment, or `main` promotion is authorized.
+
+This section supersedes **time-relative next-step expectations** in earlier research notes (e.g., “Stage 2 is next,” “proceed to Commitment-based Stage 3B”) for the **current experiment only**. Historical document content, approvals and source lineages remain available as recorded evidence.
