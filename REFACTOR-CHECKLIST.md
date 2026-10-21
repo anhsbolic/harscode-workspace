@@ -106,4 +106,15 @@ Mark items complete only after repository evidence. Do not interpret a checked d
 - [ ] Record successes, failures, deviations and unresolved risks.
 - [ ] Obtain distinct Human decisions for research baseline replacement and any `main` promotion.
 
+### Kencleng Stage 1 experience-first reconstruction checkpoint — 2026-10-21
+
+**Standing:** Bounded **real-use research evidence**, not a new Harscode standard, Product Authority, fresh-session consumer PASS, or Space/runtime validation.
+
+- **Experiment target:** Kencleng pilot branch `pilot/station5-c1-space-only` (not Kencleng operational `main`). Stage 1 Business / Value Loop reconstructed from pilot Product Intent, with canonical Product Design principles respected within their own concern.
+- **Persisted working outcome:** [Anhar-accepted Stage 1 Business Value Story v0.2](https://github.com/anhsbolic/kencleng/blob/7b8b344e2013f5c5389d84d620b70948a3ebfd1f/docs/product/pilot-3-business-value-loop.md). The existing pilot Stage 1 artifact retains historical content and adds a revisioned checkpoint covering human/business **From → To**, meaningful value, three intersecting business-value threads, main actor/responsibility handoffs, truth boundaries, and open questions. It does **not** alter Kencleng `main` authority or supersede C1-specific commitments.
+- **Observation:** Current [Product Foundation](product/foundation.md) and [Experiences and Commitments](product/experiences-and-commitments.md) could support a coherent Stage 1 human-value narrative without turning Product Design principles into unsupported Product Truth. **Stage 1 sufficient for Stage 2 exploration**, as a Human-accepted working pilot reconstruction; not evidence that cross-actor dependency discovery or Stage 3B commitment convergence already succeeds.
+- **Decision:** **NO REUSABLE PRODUCT GUIDANCE CHANGE YET.** The proposed *Interconnected Journey Blueprint* is a reversible visualization experiment, not a mandatory artifact or canonical Harscode method. Test actor-specific initial situation → outcome continuity and validated cross-actor dependencies through Stage 2–3 before deciding whether guidance needs targeted revision.
+- **Unverified:** Independent fresh-context consumption, actual Kencleng behavior, downstream Rancang suitability, Engineering Space execution, and runtime.
+- **Checkpoint owner:** Harscode Foundation Refactor research; project-specific truth remains in Kencleng. Preserve the Kencleng pilot/main authority boundary.
+
 **Global gate:** Never equate documentation completeness, formation approval, or clean directory structure with runtime correctness.
