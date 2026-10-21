@@ -2,8 +2,8 @@
 
 > **Status:** EXPERIMENTAL / RESEARCH-ONLY — **not canonical or operational Harscode policy**.
 > **Date:** 2026-10-21
-> **Owner:** Harscode Product-method research on \`refactor/harscode-foundation\`.
-> **Test context:** Kencleng \`pilot/station5-c1-space-only\`, *not* Kencleng operational \`main\`.
+> **Owner:** Harscode Product-method research on `refactor/harscode-foundation`.
+> **Test context:** Kencleng `pilot/station5-c1-space-only`, *not* Kencleng operational `main`.
 > **Standing:** Human-approved **permission to experiment and preserve this draft format**, not approval that the method works or must be adopted.
 > **Upstream authority:** The target project's current approved Product Authority determines product truth. Harscode [Product Foundation](foundation.md), [Experiences and Commitments](experiences-and-commitments.md), and [Product Handoff](handoff.md) remain the current reusable **research guidance**. This file cannot amend them by implication.
 
@@ -11,7 +11,7 @@
 
 **Problem:** A Product discussion can describe end-to-end business/domain state changes yet lose the human value narrative, actor-specific starting conditions and cross-actor dependencies on the way to selecting a product commitment. A plausible commitment might therefore be selected before its real prerequisites and downstream meaning have been challenged.
 
-**Hypothesis to test:** A progressively elaborated **Interconnected Journey Blueprint** that connects business value, actor \`From → To\` journeys, meaningful business consequences and typed cross-actor dependencies will help discover appropriately bounded product capabilities/commitments without making Design or Engineering invent missing Product Truth.
+**Hypothesis to test:** A progressively elaborated **Interconnected Journey Blueprint** that connects business value, actor `From → To` journeys, meaningful business consequences and typed cross-actor dependencies will help discover appropriately bounded product capabilities/commitments without making Design or Engineering invent missing Product Truth.
 
 This is **not yet demonstrated** by the accepted Stage 1 result; Stage 2–3 and eventual consumer use remain untested.
 
@@ -19,8 +19,8 @@ This is **not yet demonstrated** by the accepted Stage 1 result; Stage 2–3 and
 
 ## Evidence and starting point
 
-- **Accepted Stage 1 working pilot reconstruction:** [Kencleng Business / Value Loop checkpoint v0.2](https://github.com/anhsbolic/kencleng/blob/7b8b344e2013f5c5389d84d620b70948a3ebfd1f/docs/product/pilot-3-business-value-loop.md), accepted by Anhar on 2026-10-21. It contains the human/business \`From → To\` story, Organization/Campaign, Person and Trust/Evidence threads, main responsibility handoffs, truth boundaries and open questions.
-- **Product authority:** The pilot's \`docs/product/product-intent.md\`; approved Product Design sources inform experience quality **within their own ownership**. Do not transplant their visual patterns into new business rules.
+- **Accepted Stage 1 working pilot reconstruction:** [Kencleng Business / Value Loop checkpoint v0.2](https://github.com/anhsbolic/kencleng/blob/7b8b344e2013f5c5389d84d620b70948a3ebfd1f/docs/product/pilot-3-business-value-loop.md), accepted by Anhar on 2026-10-21. It contains the human/business `From → To` story, Organization/Campaign, Person and Trust/Evidence threads, main responsibility handoffs, truth boundaries and open questions.
+- **Product authority:** The pilot's `docs/product/product-intent.md`; approved Product Design sources inform experience quality **within their own ownership**. Do not transplant their visual patterns into new business rules.
 - **Comparison evidence:** Historical pilot Stage 2–3B and commitment-specific C1 decisions are prior work, *not* the result of this new experiment. Do not treat the Stage 1 reconstruction as automatically superseding approved C1-specific behavior.
 - **Current observation:** The existing Harscode Product Foundation was sufficient to reconstruct Stage 1 without changing reusable guidance. That does **not** prove the proposed Blueprint or downstream Rancang handoff.
 
@@ -39,7 +39,7 @@ The Blueprint is a **logical view**, not a mandatory file type, stage count, dia
 | **Truth, authority and evidence** | What is fact, assertion, bounded judgment, reported, pending, hypothesis, approved or unknown? Who owns a material decision? | Across every relevant connection |
 | **Commitment frontier** | What coherent, meaningful, dependency-closed-enough product outcome is a **candidate** for Human selection? | Only after sufficient journey/dependency exploration |
 
-**Continuity invariant:** Every materially selected capability should have a defensible trace \`product value ↔ actor outcome ↔ interconnected experience / dependency ↔ candidate commitment\`. This need not become a rigid traceability table or a separate user story per technical subtask.
+**Continuity invariant:** Every materially selected capability should have a defensible trace `product value ↔ actor outcome ↔ interconnected experience / dependency ↔ candidate commitment`. This need not become a rigid traceability table or a separate user story per technical subtask.
 
 **Initial situation is not merely motivation.** Example: “wants to donate” is one possible trigger; “has not yet understood a specific Campaign and does not yet have its donation relationship” is closer to a situation. A visitor may also be seeking information without donation intent. Do not claim these motivations were user-research validated.
 
@@ -75,7 +75,7 @@ A dependency can have unknown standing pending verification; don't turn a candid
 
 This demonstrates the notation only; it is **not** a newly approved Kencleng Product rule or a diagram of a mandatory donation flow.
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
   subgraph Organization_Rep["Organization Representative"]
     O["Provides Campaign context and information"]
@@ -100,14 +100,14 @@ flowchart TB
   K -. "Prerequisite: truthful actual state" .-> V
   A -. "Conditional: only if legitimate donation fact exists" .-> D
   D -. "Downstream: Donatur relationship" .-> J
-\`\`\`
+```
 
 **Illustration limitations:** Organization review, Campaign curation, publication and donation eligibility have distinct meanings; this fragment asserts no automatic gate among them. Choosing/attempting donation is not a donation fact, and a donation fact is not automatically a funding consequence.
 
 ## Research execution and checkpoints (not mandatory Harscode phases)
 
 1. **Stage 1 — already accepted for this pilot:** Human/business value story, intersecting value threads, truthful boundaries and responsibility handoffs. Stage 1 need not detail all actor journeys.
-2. **Stage 2 — next experiment:** Derive actor-specific \`initial situation → meaningful outcome\` and responsibilities from the same value anchor. Check that the story remains continuous across affected actors, including non-participation and distinct business roles.
+2. **Stage 2 — next experiment:** Derive actor-specific `initial situation → meaningful outcome` and responsibilities from the same value anchor. Check that the story remains continuous across affected actors, including non-participation and distinct business roles.
 3. **Stage 3 — subsequent experiment:** Explore representative interconnected journeys; challenge prerequisite vs conditional vs downstream edges, absent real capabilities, conflicting authority, negative paths and candidate commitments. Do not presume the old Stage 3B choice is correct *or* incorrect.
 4. **Product → Rancang later:** Test whether selected commitment behavior, acceptance and dependency standing can be consumed without inventing Product Truth. **Detailed interaction/sequence diagrams (Layer 2) are not a required Product deliverable**; Rancang may determine whether they add value, within its authorized scope.
 5. **Per-stage checkpoint:** Compare current Harscode research guidance to the observed problem. Record a specific demonstrated gap and owner before any proposed reusable-guidance revision. No automatic method promotion.
@@ -133,6 +133,6 @@ flowchart TB
 
 - This file preserves a **research method under test**, not Kencleng Product Truth and not an operational Harscode instruction.
 - Any accepted *Kencleng-specific* journey, business behavior or commitment belongs in the appropriate **Kencleng** artifact and exact revision, under the scope of its approval. Harscode may link to research evidence but should not duplicate authoritative product semantics.
-- Keep branch context explicit: Harscode \`refactor/harscode-foundation\` is research; Harscode \`main\` is operational; Kencleng pilot is not Kencleng \`main\`. No repository authority or runtime activation changes through this file.
+- Keep branch context explicit: Harscode `refactor/harscode-foundation` is research; Harscode `main` is operational; Kencleng pilot is not Kencleng `main`. No repository authority or runtime activation changes through this file.
 - Follow [Product Handoff](handoff.md) for consumer-readiness; no one-to-one mapping between commitment and Engineering Space is implied.
 - Human approval is required for material changes to Product Authority or promotion of this experimental format into reusable Harscode policy.
