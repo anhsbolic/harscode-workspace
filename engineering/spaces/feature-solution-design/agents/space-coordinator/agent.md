@@ -1,6 +1,6 @@
-# Rancang Agent — Space Coordinator (Agent-aware Research Proposal)
+# Rancang Agent — Space Coordinator
 
-> **Standing:** DEFINITION REVISION CANDIDATE / NOT RUNTIME READY. This document defines an actor; it does not launch or install one. [Space contracts](../contracts.md) and [coordination rules](../coordination.md) govern shared semantics.
+> **Standing:** Defined Rancang actor contract, not proof of runtime installation or authorization. Read the [Space entrypoint](../../README.md) for exact formation standing. This document defines an actor; it does not launch or install one. [Space contracts](../../contracts.md) and [coordination rules](../../coordination.md) govern shared semantics.
 
 ## Identity, mandate and authority
 

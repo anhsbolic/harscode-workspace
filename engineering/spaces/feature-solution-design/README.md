@@ -1,18 +1,14 @@
-# Rancang — Feature Solution Design (Agent-aware Revision Candidate)
+# Rancang — Feature Solution Design
 
-> **Status:** AGENT-AWARE DEFINITION REVISION PROPOSAL / **NOT APPROVED FOR THIS REVISION** / NOT RUNTIME READY.
+> **Definition standing:** CURRENT REVISION CANDIDATE / NOT FORMATION APPROVED / NOT RUNTIME READY. See the [prior immutable formation decision](formation-approval-2026-10-20.md) for the previously approved definition.
 > **Capability ID:** `feature-solution-design`; Human-facing name **Rancang**.
 > **Scope:** Bounded, coherent engineering **solution design** for an approved product/technical objective; no implementation or product-authority change.
 
-## Approval boundary
+## Authority and applicability
 
-The historical definition was **formation-approved only at immutable Git commit** `1f20cf6584dba54dee17d8183c7069d7c99eafe6`, original path `spaces/feature-solution-design/` in the Harscode research lineage. [Approval record](../../../deprecated/legacy/research/checkpoints/station5-s1-formation-approval-2026-10-19.md).
+This is a project-neutral Engineering solution-design capability; its Agent composition and output contracts do not create Product/Design decisions or project execution permission. A newly changed definition becomes usable as **formed** only after explicit Human approval of its exact revision. Runtime readiness and each actual Human-direct invocation require separate evidence and authorization.
 
-The reconstructed v1 definition at immutable commit `06371fad6a044e53490c6e076b63a06f37e507f8` was **formation-approved for research only** in [the 2026-10-20 decision](formation-approval-2026-10-20.md). This proposed Agent-aware revision is **not covered** by that decision; it requires its own exact-revision review and Human approval. Neither formation decision authorizes runtime or invocation. The older historical definition `1f20cf65...` also has separate, non-transferable approval.
-
-## Formation rationale and limits
-
-The historical C1 pilot exposed a consequential gap for its intended frontend/backend implementation consumers: coupled identity, result/state and experience decisions were drafted but did not converge into an accepted, implementation-consumable solution. Those consumers are **historical pilot consumers**, not current project authorization. This is evidence of a **candidate need**, not proof of repeated demand or Rancang effectiveness. A bounded reusable solution-design capability is justified for review when such cross-consumer coupling cannot be handled safely by one simpler project-local decision. Actual use remains conditional on the Human selecting an eligible assignment.
+The formation case is a consequential gap when multiple implementation consumers must agree on one coherent, source-faithful solution across interface, state, experience and assurance boundaries. For a small local task, use a simpler authorized path; do not invoke a Space merely because it exists. Historical pilot findings and immutable approvals are preserved as research/decision evidence, not active production instructions.
 
 ## Scope and consumer
 
@@ -22,10 +18,12 @@ Potential consumers are the target project's authorized frontend, backend, integ
 
 Definition entrypoints: [External contracts](contracts.md) for I1–I4/X1/O1–O5 and [Coordination and continuity](coordination.md) for accountable roles, Human gates and resumption. Reuse [Engineering formation](../../space-formation.md) and [Harness binding](../../../harness/runtime-binding.md) for generic safeguards.
 
-The Space defines an explicit **Agent roster**: [Space Coordinator](agents/space-coordinator.md), [Requirements Analyst](agents/requirements-analyst.md), [Solution Architect](agents/solution-architect.md), [Experience Specialist](agents/experience-specialist.md), and [Independent Solution Reviewer](agents/solution-reviewer.md). Each Agent has its own mandate, I/O, working guidance, guardrails, local knowledge and scoped assignment/return expectations. These are defined actors, **not five required native sessions**; permitted role combinations depend on the concrete assignment and actual Harness, while independent review must not degrade into self-review. All Agent-specific knowledge belongs with its Agent; there is no parallel `specialists/` directory.
+The Space defines an explicit **Agent roster**: [Space Coordinator](agents/space-coordinator/agent.md), [Requirements Analyst](agents/requirements-analyst/agent.md), [Solution Architect](agents/solution-architect/agent.md), [Experience Specialist](agents/experience-specialist/agent.md), and [Independent Solution Reviewer](agents/solution-reviewer/agent.md). Each Agent has its own mandate, I/O, working guidance, guardrails, local knowledge and scoped assignment/return expectations. These are defined actors, **not five required native sessions**; permitted role combinations depend on the concrete assignment and actual Harness, while independent review must not degrade into self-review. All Agent-specific knowledge belongs with its Agent; there is no parallel `specialists/` directory.
 
-## Known research limitations
+## Knowledge, artifact representations and consumer checks
 
-The prior Kencleng C1 invocation produced useful drafts and independent findings but **no accepted, revisioned solution bundle**. Cross-cutting principal identity, ambiguous outcomes/idempotency, conflict signal ownership and handoff gaps remain evidence of boundedness and readiness risks—not approved new C1 product decisions. See the [Kencleng interim report](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/project/station5-c1-s1-interim-closeout.md).
+All Agents must give precedence to **current authoritative target-project standards** over Space-local methods or examples; see [Space-wide precedence](../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge). Each [Agent package](agents/) contains an actor contract and scoped reference knowledge, not a separate source of Product/Design authority.
 
-**This Agent-aware revision is only a proposal.** The pinned v1 research formation approval remains valid for v1 alone; no revised formation approval, runtime activation, or C1 production invocation is authorized by this package.
+[Artifact guidance](artifacts/README.md), [logical templates](artifacts/templates.md), and [illustrative typed examples](artifacts/examples.md) help produce traceable X1/O1–O5 and a revisioned consumer-facing bundle. Choose only the representation necessary for actual consumers; current project-owned templates, API conventions and diagram notation prevail. No sample endpoint, authentication choice, lifecycle or topology is a project requirement.
+
+**No formation approval, tested Harness readiness, or production invocation is implied by this revision candidate.**

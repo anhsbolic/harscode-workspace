@@ -21,6 +21,14 @@ For a proposed reusable capability, document only what changes the decision:
 
 Keep reusable definitions **project-neutral but strict**. Project-specific API routes, policy, schema or feature choices belong in concrete assignment or target repository. Do not require a fixed PRD/TRD or one source-file format.
 
+## Project standards take precedence over Space base knowledge
+
+For **every** Engineering Space and Agent, reusable technical knowledge, architecture patterns, checklists, sample artifacts and preferred methods are **non-binding defaults**. Before choosing a method or representation, inspect the current target project's owning, effective, approved engineering/design standards, relevant code/conventions and explicit assignment constraints. **Follow applicable project-owned standards even when they contradict Space-local preferences.** Explain the selected project convention in output evidence; do not silently impose an alternative because the Space guidance calls it a best practice.
+
+Distinguish accepted project policy from historical examples, incidental existing code, unapproved proposals and obsolete documents; those are evidence, not automatically binding standards. A project standard can choose technology, notation, API/schema source, error conventions and architecture *within delegated technical authority*, but does not override higher-priority Product/Design acceptance, applicable legal/security protections, protected-path permissions, explicit Space I/O obligations or Human approval gates. If an actual project standard appears to conflict with one of those **material** boundaries, record both exact source revisions, the affected risk and owner; stop only dependent action and seek the authorized Human/security/authority decision. Do not silently obey an unsafe instruction or silently replace project policy with Space taste.
+
+Space-local examples and templates are selectable aids only; use the project's existing templates first where adequate. Record any material deviation and the authority that allowed it. This precedence rule applies regardless of whether the selected harness runs one Agent or several.
+
 ## Two separate compatibility checks
 
 - **Generic compatibility:** Can output type/quality/standing from producer satisfy the downstream Space's declared input contract?

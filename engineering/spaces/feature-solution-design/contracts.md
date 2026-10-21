@@ -1,7 +1,7 @@
-# Rancang Candidate — External Contract and Safeguards
+# Rancang — External Contract and Safeguards
 
-> **Status:** AGENT-AWARE REVISION PROPOSAL / NOT APPROVED FOR THIS REVISION. Research formation approval remains pinned to v1 `06371fad6a044e53490c6e076b63a06f37e507f8` only.
-> **Owner:** Reconstructed Engineering Space proposal; concrete project inputs/outputs belong to their owners.
+> **Applicability:** Definition approval standing is tracked at the Space entrypoint and its exact-revision Human formation decision. This contract alone authorizes no runtime work.
+> **Owner:** Rancang reusable Engineering capability; concrete project inputs/outputs belong to their owners.
 
 ## Required input classes
 
@@ -28,7 +28,7 @@ Before producing solution decisions, the assigned source/authority responsibilit
 | **O4** | **Producer-owned** verification obligations derived from X1, O1–O3, original acceptance, relevant risks and negative paths |
 | **O5** | Original source revision → decisions/output trace, independent review findings and limits, revisioned handoff, Human approval standing and consumers |
 
-Coverage is compulsory when applicable; a five-file bundle is **not** required. A future consumer may require an independently addressable typed API contract; formal OpenAPI/spec edits need separate project authorization. An API shape cannot be invented as an approved project contract.
+Coverage is compulsory when applicable; a five-file bundle is **not** required. Use [artifact guidance and optional representations](artifacts/README.md) only when useful for the actual consumer. **Current project-owned standards/templates prevail over Space examples**, subject to original Product/Design authority, security and Human gates. A consumer may require an independently addressable typed API contract; formal OpenAPI/spec edits need separate project authorization. An API shape cannot be invented as an approved project contract.
 
 ## Bundle and consumer conformance
 
@@ -40,7 +40,7 @@ For each intended consumer, distinguish (a) **generic contract fit** from (b) **
 
 Required functions are owned by explicit [Agent actors](coordination.md): Requirements Analyst (X1), Solution Architect (O1/O2 and applicable O4), Experience Specialist (O3 and applicable O4), Independent Solution Reviewer (O5 findings), and Space Coordinator (revisioned assembly and Human-facing O5 gate/state/handoff). The two producers may jointly author O4, with a named accountable artifact owner. Reviewer independently inspects original I1–I4 and current X1/O1–O4 for acceptance coverage, source fidelity, O4 adequacy and consumer compatibility, without editing producer deliverables. **Agent identity is defined, while runtime instance/session count, context isolation and effective enforcement remain UNVERIFIED.** A producer self-check cannot be independent assurance.
 
-Minimum runtime demands remain: **R1** source fidelity, **R2** bounded artifact writes, **R3** scoped Specialist context/knowledge, **R4** reviewer independence, **R5** versioned handoffs, **R6** enforceable revision-bound Human gates, **R7** truthful executed evidence, **R8** observable Human-direct coordination. Actual readiness is NOT VERIFIED by this document; the [historical definition](../../../deprecated/legacy/spaces/feature-solution-design/composition/execution-requirements.md) is reference evidence, not an effective replacement contract.
+Minimum runtime demands remain: **R1** source fidelity, **R2** bounded artifact writes, **R3** scoped Specialist context/knowledge, **R4** reviewer independence, **R5** versioned handoffs, **R6** enforceable revision-bound Human gates, **R7** truthful executed evidence, **R8** observable Human-direct coordination. Actual readiness is NOT VERIFIED by this document; [Harness runtime binding](../../../harness/runtime-binding.md) owns observed enforcement evidence, not this declarative definition.
 
 Human formation approval is separate from Human-direct invocation. Conditional Human gates stop unresolved owner product decisions and protected/security scope changes. Final Human acceptance of the **exact output revision** is separate from Space completion. Default supervised; autonomous requires explicit separate Human authorization and still obeys hard gates.
 
