@@ -1,6 +1,6 @@
 # Rancang Candidate — External Contract and Safeguards
 
-> **Status:** RESEARCH PROPOSAL / NOT FORMED. This is not the immutable historically approved S1 I/O contract.
+> **Status:** AGENT-AWARE REVISION PROPOSAL / NOT APPROVED FOR THIS REVISION. Research formation approval remains pinned to v1 `06371fad6a044e53490c6e076b63a06f37e507f8` only.
 > **Owner:** Reconstructed Engineering Space proposal; concrete project inputs/outputs belong to their owners.
 
 ## Required input classes
@@ -38,7 +38,7 @@ For each intended consumer, distinguish (a) **generic contract fit** from (b) **
 
 ## Internal responsibility and evidence
 
-Requirements/authority inspection (X1), solution architecture (O1/O2), experience alignment (O3), **producer-owned O4**, and independent critical solution review (findings in O5) are required **functional responsibilities** with accountable owners defined in [Coordination](coordination.md). Solution production and experience alignment may jointly author O4 without adding a Specialist. The Reviewer independently inspects original I1–I4 and current X1/O1–O4 for acceptance coverage, source conformance, verification-obligation adequacy and consumer compatibility; its findings belong in O5, not producer deliverables. The Coordinator owns revisioned assembly and Human-facing O5 gate/state/handoff metadata without modifying Reviewer findings. Actual Specialist identity, number and harness isolation are **unproven**; a producer self-check must not claim independent assurance.
+Required functions are owned by explicit [Agent actors](coordination.md): Requirements Analyst (X1), Solution Architect (O1/O2 and applicable O4), Experience Specialist (O3 and applicable O4), Independent Solution Reviewer (O5 findings), and Space Coordinator (revisioned assembly and Human-facing O5 gate/state/handoff). The two producers may jointly author O4, with a named accountable artifact owner. Reviewer independently inspects original I1–I4 and current X1/O1–O4 for acceptance coverage, source fidelity, O4 adequacy and consumer compatibility, without editing producer deliverables. **Agent identity is defined, while runtime instance/session count, context isolation and effective enforcement remain UNVERIFIED.** A producer self-check cannot be independent assurance.
 
 Minimum runtime demands remain: **R1** source fidelity, **R2** bounded artifact writes, **R3** scoped Specialist context/knowledge, **R4** reviewer independence, **R5** versioned handoffs, **R6** enforceable revision-bound Human gates, **R7** truthful executed evidence, **R8** observable Human-direct coordination. Actual readiness is NOT VERIFIED by this document; the [historical definition](../../../deprecated/legacy/spaces/feature-solution-design/composition/execution-requirements.md) is reference evidence, not an effective replacement contract.
 

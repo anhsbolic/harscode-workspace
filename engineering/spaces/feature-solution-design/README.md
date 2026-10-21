@@ -1,6 +1,6 @@
-# Rancang — Feature Solution Design (Research Candidate)
+# Rancang — Feature Solution Design (Agent-aware Revision Candidate)
 
-> **Status:** RECONSTRUCTED CANDIDATE / **NOT FORMED** / NOT RUNTIME READY.
+> **Status:** AGENT-AWARE DEFINITION REVISION PROPOSAL / **NOT APPROVED FOR THIS REVISION** / NOT RUNTIME READY.
 > **Capability ID:** `feature-solution-design`; Human-facing name **Rancang**.
 > **Scope:** Bounded, coherent engineering **solution design** for an approved product/technical objective; no implementation or product-authority change.
 
@@ -8,7 +8,7 @@
 
 The historical definition was **formation-approved only at immutable Git commit** `1f20cf6584dba54dee17d8183c7069d7c99eafe6`, original path `spaces/feature-solution-design/` in the Harscode research lineage. [Approval record](../../../deprecated/legacy/research/checkpoints/station5-s1-formation-approval-2026-10-19.md).
 
-This redesigned package is a **new candidate**. Its location, reorganized specialists or similar capability name **does not transfer the historical approval**. Human formation review, actual harness readiness and concrete invocation approval remain separate.
+The reconstructed v1 definition at immutable commit `06371fad6a044e53490c6e076b63a06f37e507f8` was **formation-approved for research only** in [the 2026-10-20 decision](formation-approval-2026-10-20.md). This proposed Agent-aware revision is **not covered** by that decision; it requires its own exact-revision review and Human approval. Neither formation decision authorizes runtime or invocation. The older historical definition `1f20cf65...` also has separate, non-transferable approval.
 
 ## Formation rationale and limits
 
@@ -22,10 +22,10 @@ Potential consumers are the target project's authorized frontend, backend, integ
 
 Definition entrypoints: [External contracts](contracts.md) for I1–I4/X1/O1–O5 and [Coordination and continuity](coordination.md) for accountable roles, Human gates and resumption. Reuse [Engineering formation](../../space-formation.md) and [Harness binding](../../../harness/runtime-binding.md) for generic safeguards.
 
-Read the narrowly owned [Solution Architect knowledge](specialists/solution-architect.md) and [Solution Reviewer knowledge](specialists/solution-reviewer.md). These packages do not imply runnable native agents.
+The Space defines an explicit **Agent roster**: [Space Coordinator](agents/space-coordinator.md), [Requirements Analyst](agents/requirements-analyst.md), [Solution Architect](agents/solution-architect.md), [Experience Specialist](agents/experience-specialist.md), and [Independent Solution Reviewer](agents/solution-reviewer.md). Each Agent has its own mandate, I/O, working guidance, guardrails, local knowledge and scoped assignment/return expectations. These are defined actors, **not five required native sessions**; permitted role combinations depend on the concrete assignment and actual Harness, while independent review must not degrade into self-review. All Agent-specific knowledge belongs with its Agent; there is no parallel `specialists/` directory.
 
 ## Known research limitations
 
 The prior Kencleng C1 invocation produced useful drafts and independent findings but **no accepted, revisioned solution bundle**. Cross-cutting principal identity, ambiguous outcomes/idempotency, conflict signal ownership and handoff gaps remain evidence of boundedness and readiness risks—not approved new C1 product decisions. See the [Kencleng interim report](https://github.com/anhsbolic/kencleng/blob/91fad854301265357ba69e76182eb5c82ae71049/docs/project/station5-c1-s1-interim-closeout.md).
 
-**No Human-approved amendment, runtime activation, or C1 production invocation is authorized by this research package.**
+**This Agent-aware revision is only a proposal.** The pinned v1 research formation approval remains valid for v1 alone; no revised formation approval, runtime activation, or C1 production invocation is authorized by this package.
