@@ -1,5 +1,9 @@
 # Interconnected Journey Blueprint — Experimental Research v0
 
+
+> **CURRENT RESEARCH ROUTE UPDATE (2026-10-22):** Historical commitment-specific decisions and artifacts are **not active inputs** for O1, starting-point selection, current Product-output contract derivation, or Rancang handoff. Read Kencleng's [current Product entrypoint](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/README.md) and [independent starting-point/handoff decisions](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/interconnected-journeys/selection-and-handoff-research.md). Product must derive O1 semantics afresh from its owning current Product Intent and Level 2 research map; the earlier O1 PRD draft that repackaged historical requirements is **INVALID as current I1 or conformance proof**. Previous dated paragraphs below are retained as historical decision/evidence snapshots, **not current next-action instructions**. This update does not amend Harscode reusable Product guidance or operational `main`.
+
+
 > **Status:** EXPERIMENTAL / RESEARCH-ONLY — **not canonical or operational Harscode policy**.
 > **Date:** 2026-10-21
 > **Owner:** Harscode Product-method research on `refactor/harscode-foundation`.
