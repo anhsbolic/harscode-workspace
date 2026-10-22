@@ -1,5 +1,7 @@
 # Harscode Foundation Refactor — Integrated Verification
 
+> **CURRENT ROUTE NOTICE (2026-10-22):** This is a dated integrated **historical source-based verification** record. Its former pilot C1 source trace remains accurate as historical evidence only; **do not** treat it as an active starting point, binding O1 requirements or permission for Product/Rancang work. Current independent Kencleng Product research is at [Kencleng Product entry](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/README.md). No operational `main` authority or tested runtime claim changes.
+
 > **Status:** PARTIAL — **SOURCE-LEVEL VERIFIED**, independent consumption and runtime execution **NOT TESTED**.
 > **Date:** 2026-10-20
 > **Evaluator:** Same-session source inspection; **not** independent fresh-context consumption or a separate runtime reviewer.
