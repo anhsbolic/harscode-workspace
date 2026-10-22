@@ -5,6 +5,10 @@
 > **Applies to:** Product discovery, Product Authority assessment, commitment selection, commitment-scoped experience clarification, and product-to-consumer handoff.
 > **Precedence:** Current target-project approved authority first; this research guidance cannot amend it. Legacy material under `deprecated/` is evidence only.
 
+## Current Kencleng research experiment (not general Product policy)
+
+The [current Kencleng Product research route](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/README.md) uses Product Intent + Interconnected Journeys Level 2 for fresh outcome selection and Product elaboration. The [current selection/handoff checkpoint](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/interconnected-journeys/selection-and-handoff-research.md) rejects importing historical commitment-specific requirements into O1 or using a prior draft PRD that repackaged them. It records an approved **working research** Product Output Contract, not effective Harscode policy, a Product Space, or a Rancang invocation. Historical pilot artifacts remain only historical evidence in this experiment; do not auto-consume them as the source of current requirements.
+
 ## Purpose
 
 Help a Human and AI move from a real human problem to a **meaningful, truthful product outcome** that downstream Design and Engineering can consume without inventing Product Truth.
