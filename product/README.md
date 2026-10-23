@@ -1,69 +1,41 @@
-# Product — Research Guidance
+# Product — Phase and Output Catalog
 
-> **Status:** WORKING / RESEARCH-ONLY. Rebuilt for evaluation on `refactor/harscode-foundation`; not approved operational Harscode policy.
-> **Owner:** Harscode Product guidance. Product decisions and truth for any actual product remain with its owning project.
-> **Applies to:** Product discovery, Product Authority assessment, commitment selection, commitment-scoped experience clarification, and product-to-consumer handoff.
-> **Precedence:** Current target-project approved authority first; this research guidance cannot amend it. Legacy material under `deprecated/` is evidence only.
+> **Scope:** Harscode Product guidance, structured in branch `refactor/harscode-foundation`. **Not promoted to operational `main`.** Actual Product truth belongs to the target project's approved artifacts and Human owner.
+> **Core rule:** Product owns meaningful, truthful actor outcomes. Design expresses their approved meaning; Engineering implements it. Phase labels support navigation and traceability, **not a mandatory state machine or six separate files**.
 
-## Current Kencleng research experiment (not general Product policy)
+## Product phases (ordered for navigation)
 
-The [current Kencleng Product research route](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/README.md) uses Product Intent + Interconnected Journeys Level 2 for fresh outcome selection and Product elaboration. The [current selection/handoff checkpoint](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/interconnected-journeys/selection-and-handoff-research.md) rejects importing historical commitment-specific requirements into O1 or using a prior draft PRD that repackaged them. It records an approved **working research** Product Output Contract, not effective Harscode policy, a Product Space, or a Rancang invocation. Historical pilot artifacts remain only historical evidence in this experiment; do not auto-consume them as the source of current requirements.
+| Order | Human-facing phase | Phase ID | Output kind ID | Main output | Owning concern |
+| --- | --- | --- | --- | --- | --- |
+| 1 | [Product Foundation](foundation.md) | `PROD-FND` | `PROD-INTENT` | Product Intent & Value Definition | Purpose, actor/business value, responsibilities, Product principles and truth |
+| 2 | [Product Journey Mapping](journey-mapping.md) | `PROD-JRN` | `PROD-JOURNEYS` | Interconnected Product Journeys | Meaningful actor progression, dependencies and unknowns |
+| 3 | [Outcome Selection](outcome-selection.md) | `PROD-SEL` | `PROD-SELECTION` | Selected Product Outcome | Human selection of a valuable, bounded outcome |
+| 4 | [Outcome Definition](outcome-definition.md) | `PROD-DEF` | `PROD-CONTRACT` | Product Contract | Outcome, success, behavioral obligations, negative paths and acceptance |
+| 5 | [Product Review & Approval](review-and-approval.md) | `PROD-APR` | `PROD-APPROVAL` | Approval Record | Human Decision Gate, exact-revision Product approval |
+| 6 | [Product Handoff](handoff.md) | `PROD-HND` | `PROD-HANDOFF` | Approved Consumer Handoff | Consumer-facing contract, authority and scope without automatic invocation |
 
-## Purpose
+**Codes distinguish types, not runtime states.** Phase code and output type are globally consistent in Harscode. Each project owns a stable **outcome instance key** (example `ORG-01`); append it when tracking scoped artifacts (`PROD-CONTRACT-ORG-01`, `PROD-APPROVAL-ORG-01`). Within-document `SC`/`REQ`/`AC`/`PD` identifiers are project-local. Humans can use plain names in discussion.
 
-Help a Human and AI move from a real human problem to a **meaningful, truthful product outcome** that downstream Design and Engineering can consume without inventing Product Truth.
+Do not create all outputs when the actual problem needs fewer: Product Value Definition may live inside Product Intent; selection can be a durable decision pointer; handoff can point to the approved Product Contract and approval record. No separate stage invocation, registry, six-folder structure, one-to-one Engineering Space assignment, or mandatory completion order is implied.
 
-Product experience is not a final presentation layer. It is a recurring test of what a person **knows, does, experiences, and can validly conclude**. Requirements and invariants protect that meaning; they do not substitute for it.
+## Authority boundaries
 
-## Read by concern
+1. Start from **current target-project approved authority** and its revision. Older conversations, examples and other project artifacts are not Product truth.
+2. **Product Foundation owns value promises.** Journey Mapping connects how value is experienced; Outcome Selection chooses one; Outcome Definition makes scoped semantics and acceptance binding after Human approval. Product Design determines interaction/content/visual expression under those meanings and returns material Product-value gaps to the owner.
+3. Product reconciles upstream Product sources and decisions **before approving** a self-contained contract. Agent tracking codes never hide additional requirements from downstream readers.
+4. **Product approval is not Engineering approval.** Rancang input `I1` may consume an approved Product Contract, but `I2/I3/I4`, actual code/security evidence, consumer-fit and authorization remain separate.
+5. Current formed Rancang v3 still has an upstream source-inspection requirement. The desired Product-side self-contained handoff does **not** amend Rancang on its own; address that under Rancang authority later.
 
-| Current question | Guidance |
-| --- | --- |
-| Is the project's Product Authority clear, sufficient, and genuinely owned? | [Product foundation](foundation.md) |
-| What experiences matter, which outcomes should be committed to, and how are exceptions handled? | [Experiences and commitments](experiences-and-commitments.md) |
-| What must remain accessible and binding when Design or Engineering takes over? | [Product handoff](handoff.md) |
-| Want a consistent Product Contract authoring format to trial against a downstream `I1` consumer? | [English template v0.1](product-contract-template-draft.md) · [Template Bahasa Indonesia v0.1](product-contract-template-id-draft.md) — both research proposals |
-| Need only routing, boundaries, or stop rules? | [Product AGENTS](AGENTS.md) |
+## Templates and guidance
 
-Read the smallest relevant section. No fixed PRD format, persona inventory, stage count, or Product approval ritual is imposed by this research guidance.
+- [Product Contract template — Bahasa Indonesia](templates/product-contract.id.md)
+- [Product Contract template — English](templates/product-contract.en.md)
+- [Agent routing](AGENTS.md)
 
-**Template standing:** The I1-oriented Product Contract Template is a **research proposal**, not operational `main` policy or a mandatory PRD format. A target project's effective Product sources, local document standards, and owning Human remain authoritative. The Kencleng O1 trial is intended to test whether a standard authoring shape improves independent consumption without adding ceremony.
+The template is an authoring option. Actual project Product rules, approval, language and file organization are owned by each target project.
 
-## Conceptual flow (not a mandatory sequence)
+## Current demonstration and evidence limits
 
-```text
-Project-owned purpose, actors, truths and uncertainty
-        ↓
-Actor situations / representative experiences
-        ↓
-Meaningful product outcome candidates and dependency analysis
-        ↓
-Human-selected product commitment
-        ↓
-Commitment-scoped experience: success, exceptions, resulting state
-        ↓
-Approved behavior / semantic obligations / acceptance as needed
-        ↓
-Versioned product handoff to Design and/or Engineering
-```
+[Kencleng Product O1](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/interconnected-journeys/o1-product-contract.md) has an Anhar-approved Product Contract on the Kencleng branch. It supports a concrete authored-output example, **not** universal evidence that the six-phase guidance is fully verified by independent downstream consumption. Historical experiments remain Git history; do not copy past project decisions as generic Harscode policy.
 
-Discovery may reveal new Product Authority gaps. Concrete experience can change the candidate commitment before it is approved. A downstream implementation constraint may reopen only the affected owner decision, with new evidence. This is a model of **reasoning and authority**, not a required workflow engine or one-way waterfall.
-
-## Hard separation
-
-- **Product**: what an actor should meaningfully experience and what the product may truthfully claim.
-- **Design**: how the approved meaning is expressed through interaction, content, UI, accessibility and visual language.
-- **Engineering**: how the approved meaning is implemented and independently verified through executable systems.
-- **Collaboration**: how Human and AI discuss, evaluate, decide and authorize across owners.
-- **Harness**: runtime mechanics, not product semantics.
-
-A commitment may be one indivisible product outcome while requiring multiple bounded engineering design/implementation assignments. Conversely, a single engineering assignment may support several product outcomes. **Do not introduce a Delivery Units policy here**; that concern is still under investigation.
-
-## Use and readiness
-
-- These files are **working proposals for evaluation**, not self-approved Product Authority.
-- The target project's current source and approved commitments remain binding within their actual scope.
-- Product handoff is not an implementation, a production release, or proof that a downstream consumer can execute.
-- Any claim of successful independent cold-start consumption needs a separate fresh-reader test; a document review is not that test.
-
-See [Foundation Refactor Architecture](../ARCHITECTURE.md) and [Refactor Checklist](../REFACTOR-CHECKLIST.md) for refactor standing.
+**Completion:** Product can finish as durable exact-revision approved semantics even while technical dependencies remain unverified. Reopen settled Product decisions only when materially new evidence appears.
