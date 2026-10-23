@@ -82,13 +82,13 @@ Include only material cases. **Defined acceptance** is not evidence that softwar
 
 A spec, mock, diagram, previous implementation or seeded state **does not** prove a required capability is delivered.
 
-## 6. Material OPEN Questions and Blockers
+## 6. Open Decisions & Blockers
 
 | Question and affected claim | Decision owner | Status | Blocking consequence / next legitimate decision |
 | --- | --- | --- | --- |
 | `<specific unanswered Product question>` | `<authorized owner>` | `OPEN, PROPOSED or PARKED` | `<which outcome/SC/REQ/AC cannot be approved, or why not blocking>` |
 
-`OPEN` **does not inherently mean urgent**. Only unanswered questions material to *this contract* and its truthful outcome must be resolved before its exact I1 revision becomes binding. Do not import answers from historical packages by default.
+`OPEN` **does not inherently mean urgent**. Only unanswered questions material to *this contract* and its truthful outcome must be resolved before its exact I1 revision becomes binding. Do not import answers from historical packages by default. **Potential Conflicts**, where relevant, is a category of material conditions to describe precisely for the scoped outcome, not a universal conflict detection obligation.
 
 ## 7. Consumer Readiness and Handoff Boundary
 
@@ -116,6 +116,14 @@ If none exists, write `No additional material information.`
 **Not an escape hatch:** Binding requirements, critical invariants, Success Criteria, acceptance, security boundaries, material blockers and unresolved owner decisions **must stay in their owning sections**. No authority is created by including an extra note.
 
 ---
+
+## Upstream reference note for downstream consumers
+
+**Append the following note (or semantically equivalent text) to each Product Contract:**
+
+> **Upstream references:** Source codes and links in this Product Contract are maintained by Product for provenance, decisions and upstream audit. Downstream consumers, including Rancang, **do not need to dereference or revalidate upstream Product research sources, nor interpret upstream reference IDs to discover additional requirements**. All binding Product semantics for this outcome must be contained in the approved exact-revision Product Contract. `SC`/`REQ`/`AC` identifiers may be used for **internal traceability within this contract**. Checks of actual approval and `I1` revision, internal contract consistency, `I2/I3`, and technical/security constraints remain applicable. Material contradictions return to the owning authority rather than being resolved by reconstructing requirements from upstream research.
+
+**Adoption boundary:** Formed Rancang v3 **currently** mandates original-source inspection. This note expresses the **target handoff model**, not an effective waiver of its formed definition. Removing Rancang upstream Product source re-check requires a separately reviewed, exact-revision formation amendment.
 
 ## Applicability and evaluation
 
