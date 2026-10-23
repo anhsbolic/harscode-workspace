@@ -1,21 +1,23 @@
-# Product AGENTS — Research Guidance
+# Product AGENTS — Phase Routing
 
-> **Status:** WORKING / EVALUATION ONLY. This file does not activate Product guidance as operational `main` policy or authorize any repository mutation.
+> **Scope:** Harscode Product guidance on this branch, not an amendment of operational `main`.
 
-## Scope and routing
+Read [Product phase catalog](README.md) first. Load the **smallest necessary** guidance for the active concern.
 
-- Read [Product README](README.md) to select the relevant concern; avoid loading all guidance by default.
-- Form or challenge product purpose, actors, value and truth → [foundation.md](foundation.md).
-- Explore actor experiences and select or refine commitments → [experiences-and-commitments.md](experiences-and-commitments.md).
-- Prepare product semantics for a downstream consumer → [handoff.md](handoff.md).
+| Human concern | Guidance | Phase |
+| --- | --- | --- |
+| Purpose, actor value, responsibilities, Product truth and sufficiency | [Product Foundation](foundation.md) | `PROD-FND` |
+| Connected actor experiences and value journeys | [Product Journey Mapping](journey-mapping.md) | `PROD-JRN` |
+| Bounded outcome and real dependency selection | [Outcome Selection](outcome-selection.md) | `PROD-SEL` |
+| Self-contained semantics and acceptance | [Outcome Definition](outcome-definition.md) | `PROD-DEF` |
+| Open decisions, consistency and exact-revision approval | [Product Review & Approval](review-and-approval.md) | `PROD-APR` |
+| Consumer-facing approved Product input | [Product Handoff](handoff.md) | `PROD-HND` |
 
-## Boundaries
+## Hard boundaries
 
-- Locate current target-project authoritative artifacts and revisions before substantive decisions. Do not treat chat, mockups, legacy code, or archived Harscode guidance as Product Authority.
-- Product truth and material commitment decisions belong to the authorized Human/project owner. AI may challenge and propose; proposals remain non-binding until accepted and persisted by that owner.
-- Work from actor experience and truthful outcomes, not surface/features, task counts, story templates, or agent invocation shapes.
-- Do not silently infer legal authority, trust, verification, money state, security meaning, or consequential product eligibility from an unrelated success state.
-- Product semantic obligations and Design/Engineering implementation freedom are different. Return material gaps to the owning concern; do not solve them by assuming API, database, screen, authentication or orchestration mechanisms.
-- Preserve applicable negative paths, human authority, evidence provenance, and durable reconstructability.
-- Do not claim a requirement is delivered because a design, handoff, prototype, fixture, or prepared dataset exists.
-- Do not prescribe a `Delivery Unit` taxonomy or one-commitment-to-one-Space mapping during Phase 3.
+- First identify the target project's **current approved primary artifacts, revisions and decision owners**. This guidance is not source of truth for any target project's actual Product semantics.
+- **Value promises belong to Product Foundation**. Design/UX expresses and tests them, and may return material gaps to Product; Design is not authorized to silently decide new business promises.
+- Human authority is required for consequential product behavior. Preserve evidence and provenance; do not inherit historical rules or invent financial, legal, identity, review or security meaning.
+- Selected Product outcomes are independent of Engineering Space count. No mandatory six-step engine, document inventory or fake milestone status.
+- Codes assist traceability, not reader instructions to excavate Product discovery. Approved Product Contract must contain the meaningful binding rules directly.
+- Product Handoff does not approve execution or supply Rancang `I2/I3/I4`. Existing formed Rancang source inspection remains until amended separately.
