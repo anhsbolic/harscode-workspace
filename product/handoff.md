@@ -1,6 +1,6 @@
 # Product-to-Consumer Handoff
 
-> **Status:** WORKING / RESEARCH-ONLY. A semantic completeness test, not a required new packet format or execution stage.
+> **Scope:** Phase `PROD-HND`; output kind `PROD-HANDOFF` — Approved Consumer Handoff. Formal Harscode Product guidance on this branch, not an invocation or change to operational `main`.
 > **Authority:** The target project's accepted product artifacts and exact revisions remain the only binding sources.
 
 ## Goal
@@ -8,6 +8,12 @@
 A Design, Engineering, or Human advisory consumer should reconstruct **the same actor experience and product truth** from durable sources, without chat history or a new product decision.
 
 The handoff must preserve two equally important things: the **human-facing narrative** explaining what is meaningful, and the **approved behavioral constraints/acceptance** protecting its truth. Neither replaces the other.
+
+## Phase output and identifiers
+
+The handoff may be a link to one approved, self-contained `PROD-CONTRACT` artifact plus its `PROD-APPROVAL` exact-revision record and a scope/consumer pointer; **do not create a second duplicate Product Contract** just to fill the handoff type. Use the project-local outcome key with the output code where useful, for example `PROD-HANDOFF-ORG-01`.
+
+The downstream consumer is not asked to reconstruct Product decisions from opaque upstream research codes. Preserve source provenance and exact revision for Product audit, but all binding meaning must be readable directly in the approved Product Contract. **Compatibility limit:** any formed Rancang definition requiring upstream source checks is still binding until amended under its own authority.
 
 ## Minimum answerable questions
 
