@@ -22,9 +22,12 @@ Product experience is not a final presentation layer. It is a recurring test of 
 | Is the project's Product Authority clear, sufficient, and genuinely owned? | [Product foundation](foundation.md) |
 | What experiences matter, which outcomes should be committed to, and how are exceptions handled? | [Experiences and commitments](experiences-and-commitments.md) |
 | What must remain accessible and binding when Design or Engineering takes over? | [Product handoff](handoff.md) |
+| Want a consistent Product Contract authoring format to trial against a downstream `I1` consumer? | [Product Contract Template v0.1 — proposal](product-contract-template-draft.md) |
 | Need only routing, boundaries, or stop rules? | [Product AGENTS](AGENTS.md) |
 
 Read the smallest relevant section. No fixed PRD format, persona inventory, stage count, or Product approval ritual is imposed by this research guidance.
+
+**Template standing:** The I1-oriented Product Contract Template is a **research proposal**, not operational `main` policy or a mandatory PRD format. A target project's effective Product sources, local document standards, and owning Human remain authoritative. The Kencleng O1 trial is intended to test whether a standard authoring shape improves independent consumption without adding ceremony.
 
 ## Conceptual flow (not a mandatory sequence)
 
