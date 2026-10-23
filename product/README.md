@@ -36,6 +36,6 @@ The template is an authoring option. Actual project Product rules, approval, lan
 
 ## Current demonstration and evidence limits
 
-[Kencleng Product O1](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/interconnected-journeys/o1-product-contract.md) has an Anhar-approved Product Contract on the Kencleng branch. It supports a concrete authored-output example, **not** universal evidence that the six-phase guidance is fully verified by independent downstream consumption. Historical experiments remain Git history; do not copy past project decisions as generic Harscode policy.
+[Kencleng Product O1](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/outcomes/org-01/product-contract.md) has an Anhar-approved Product Contract on the Kencleng branch. It supports a concrete authored-output example, **not** universal evidence that the six-phase guidance is fully verified by independent downstream consumption. Historical experiments remain Git history; do not copy past project decisions as generic Harscode policy.
 
 **Completion:** Product can finish as durable exact-revision approved semantics even while technical dependencies remain unverified. Reopen settled Product decisions only when materially new evidence appears.
