@@ -82,13 +82,13 @@ Cakup hanya kasus material. Acceptance yang dirumuskan **bukan bukti** bahwa tes
 
 Dokumen spesifikasi, mock, diagram, implementasi historis, atau seeded data **bukan bukti** prasyarat Product sudah tersedia di runtime.
 
-## 6. Pertanyaan Product OPEN dan Blockers Material
+## 6. Open Decisions & Blockers
 
 | Pertanyaan dan klaim yang terpengaruh | Pemilik keputusan | Status | Konsekuensi blocker / keputusan yang dibutuhkan |
 | --- | --- | --- | --- |
 | `<pertanyaan Product spesifik>` | `<Human yang berwenang>` | `OPEN / PROPOSED / PARKED` | `<SC/REQ/AC terdampak atau alasan tidak blocking>` |
 
-`OPEN` **tidak otomatis mendesak**. Hanya pertanyaan yang material untuk outcome yang sedang dikontrakkan yang harus diselesaikan sebelum revisi `I1` tersebut menjadi binding. Jangan otomatis menyalin keputusan dari paket historis.
+`OPEN` **tidak otomatis mendesak**. Hanya pertanyaan yang material untuk outcome yang sedang dikontrakkan yang harus diselesaikan sebelum revisi `I1` tersebut menjadi binding. Jangan otomatis menyalin keputusan dari paket historis. **Potential Conflicts**, jika relevan, adalah kategori keadaan yang perlu dijelaskan secara spesifik di kontrak hasil, bukan kewajiban mendeteksi semua konflik secara universal.
 
 ## 7. Kesiapan Konsumsi dan Batas Handoff
 
@@ -116,6 +116,14 @@ Jika tidak ada, tulis `Tidak ada informasi material tambahan.`
 **Bukan tempat menyembunyikan aturan:** Requirement mengikat, invariant kritis, Success Criteria, acceptance, batas keamanan, blocker material, dan keputusan Product OPEN tetap berada pada bagian pemiliknya. Catatan tambahan tidak menciptakan authority baru.
 
 ---
+
+## Catatan untuk consumer: referensi upstream
+
+**Tuliskan catatan berikut (atau padanan yang setara) pada akhir setiap Product Contract yang memakai template ini:**
+
+> **Catatan referensi upstream:** Kode dan tautan sumber di dokumen ini digunakan oleh Product untuk provenance, pencatatan keputusan, dan audit upstream. Consumer downstream, termasuk Rancang, **tidak perlu menelusuri atau memvalidasi ulang sumber riset Product maupun mengartikan kode referensi upstream untuk mendapatkan aturan tambahan**. Seluruh makna Product yang mengikat untuk outcome ini harus tertulis langsung dalam Product Contract pada revisi yang disetujui. ID `SC`/`REQ`/`AC` boleh digunakan untuk keterlacakan **di dalam kontrak ini**. Pemeriksaan keaslian approval, revisi `I1`, konsistensi isi kontrak, `I2/I3`, serta constraint keamanan tetap merupakan tanggung jawab consumer sesuai kontrak yang berlaku. Temuan kontradiksi material dikembalikan kepada pemiliknya, bukan diselesaikan dengan menyusun ulang Product requirements dari referensi upstream.
+
+**Batas adopsi:** Definisi Rancang v3 yang sudah mendapat formation approval **masih** mewajibkan pemeriksaan sumber aslinya. Catatan ini menyatakan **target model handoff**; pengecualian upstream Product source re-check untuk Rancang memerlukan amendment dan formation approval baru pada revisi tepat, bukan berlaku otomatis karena template ini.
 
 ## Penerapan dan evaluasi
 
