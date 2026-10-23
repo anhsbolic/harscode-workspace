@@ -4,6 +4,7 @@
 > **Owning concern:** Harscode Product guidance. **Actual Product semantics, approved revisions, and local document conventions belong to the target project and its authorized Human.**
 > **Consumer alignment:** Rancang `I1` at [formed v3 definition `4b49d0dd0db74cf34a927cadc938ae724676a75a`](https://github.com/anhsbolic/harscode-workspace/blob/4b49d0dd0db74cf34a927cadc938ae724676a75a/engineering/spaces/feature-solution-design/contracts.md) — approved for research formation, **not runtime-verified**. Rancang `I2` (Design/architecture/security), `I3` (repository/code/environment), and `I4` (Human-direct assignment/permissions) remain separate.
 > **Research context:** Adapted from a Kencleng I1 template experiment. Kencleng-specific roles, entity semantics and acceptance remain **project-owned**, not generic Harscode requirements.
+> **Language counterpart:** [Bahasa Indonesia — Product Contract Template v0.1](product-contract-template-id-draft.md). Both files use the same logical I1 sections; use one language per Product Contract, not duplicate binding project artifacts.
 > **Design choice:** A consistent **logical content structure**, not a mandatory PRD extension, file count, tooling workflow or one-outcome-to-one-Space mapping. Use project-authoritative templates when they already meet the consumer contract.
 
 ## Artifact identity and authority
