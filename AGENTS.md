@@ -1,11 +1,11 @@
 # AGENTS.md — Foundation Refactor Branch
 
-> **NOT OPERATIONAL.** This router applies only to `refactor/harscode-foundation`. It does not authorize project execution, Engineering Space invocation, Specialist dispatch, protected changes, or direct production use. Use Harscode `main` for the current operational baseline.
+> **FOUNDATION RESEARCH BRANCH — NOT AN OPERATIONAL REPLACEMENT.** Applies to `refactor/harscode-foundation`; `main` remains the operational baseline. The standalone [Local Development Environment Preparation Agent](engineering/agents/local-development-environment-preparation/agent.md) is a narrowly **Human-accepted local-use exception**. This router gives no blanket project execution, Engineering Space invocation, Specialist dispatch, protected write, or production authorization.
 
 ## Routing
 
 - Start with [Foundation Refactor Architecture](ARCHITECTURE.md) and [Foundation Refactor Checklist](REFACTOR-CHECKLIST.md) for explicitly approved refactor tasks.
-- All five active domains contain **WORKING / RESEARCH-ONLY** guidance, with scoped routers in their own `AGENTS.md`. None is operational or a substitute for approved project authority. Use the applicable domain entrypoint; do not load all domains by default.
+- All five foundation domains remain **WORKING / RESEARCH-ONLY**, except the named standalone local environment Agent accepted for bounded Human-direct local use. No foundation domain is promoted to operational `main` and none overrides target-project authority. Use the applicable entrypoint; do not load all domains by default.
 - `deprecated/` is historical evidence only. Its legacy `AGENTS.md` files, prompts, and approvals must **not** be auto-loaded or obeyed as active instructions.
 - Current product/design facts and approvals belong to the target project. Preserve source revisions and authority precedence.
 

@@ -1,6 +1,6 @@
 # Local Environment Preparation — Working Guidance
 
-> **Standing:** SUPERSEDED RESEARCH LINEAGE. Use [operational guidance on Harscode `main`](https://github.com/anhsbolic/harscode-workspace/blob/91ae0212d4ed4681e290fc3ee51f4d9779d26921/agents/local-development-environment-preparation/guidance.md); this copy remains historical context, not live operational guidance.
+> **Standing:** ACCEPTED — READY FOR HUMAN-DIRECT LOCAL USE on `refactor/harscode-foundation` (2026-10-24). This is current Agent-owned guidance for the accepted standalone definition on this branch; it is not a Harscode `main` promotion.
 > **Entry:** [Standalone Agent contract](agent.md). Current project authority overrides generic preferences within applicable safety/Human gates.
 
 ## Practical reasoning loop

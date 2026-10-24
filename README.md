@@ -1,6 +1,6 @@
 # Harscode Foundation Refactor
 
-> **Status: RECONSTRUCTED FOUNDATION / PENDING INTEGRATED VERIFICATION.** All five domains now have working research guidance. This branch is **non-operational**, not a runtime or project-delivery authority. Harscode `main` remains operational.
+> **Status: RECONSTRUCTED FOUNDATION / PENDING INTEGRATED VERIFICATION.** This branch is **not an operational replacement for `main`**. One bounded exception is the Human-accepted [Local Development Environment Preparation Agent](engineering/agents/local-development-environment-preparation/agent.md), ready for Human-direct local use from this branch. The broader foundation remains research-only.
 
 ## Start here
 
@@ -21,7 +21,7 @@
 | [Harness](harness/README.md) | Runtime-specific execution/permission translation | WORKING — RESEARCH ONLY |
 | [Deprecated](deprecated/README.md) | Frozen legacy references for selective migration | REFERENCE ONLY |
 
-**Routing:** All five active domains contain **WORKING / RESEARCH-ONLY** guidance; none is an approved operational replacement. Archived prompts, Agents, workflows and Space definitions are historical references only. For real operational work, use verified `main` and the target project's authority.
+**Routing:** The five foundation domains remain research guidance, not an approved operational replacement. The accepted standalone local-environment Agent is a scoped Human-direct local-use exception **on this branch only**; its acceptance does not authorize other Engineering Spaces or promote the foundation. Historical/archived material is reference only; current operational baseline remains `main`.
 
 ## Source and constraints
 
