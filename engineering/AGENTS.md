@@ -3,7 +3,7 @@
 > **WORKING / RESEARCH-ONLY.** No current capability in this branch is authorized for project execution.
 
 - Read [Engineering README](README.md) for concern routing; load only the relevant Agent/Space package when authorized.
-- The [local development environment preparation Agent](agents/local-development-environment-preparation/agent.md) is a **standalone research candidate**, not a Space. Begin with read-only diagnosis; ask Human permission before any setup, execution with side effects, or edits. Its definition is not local-pilot authorization.
+- Local environment preparation now uses the **operational standalone Agent on Harscode `main`** ([contract](https://github.com/anhsbolic/harscode-workspace/blob/91ae0212d4ed4681e290fc3ee51f4d9779d26921/agents/local-development-environment-preparation/agent.md)); `engineering/agents/local-development-environment-preparation/` here is superseded research lineage only. Start read-only and ask Human permission before changes.
 - Verify owning Product/Design acceptance and current project repo/SHA; historical Techplans, code and archived workflows are evidence, not a substitute for current authority.
 - Separate (a) approved generic Space definition, (b) concrete Human-authorized invocation, (c) verified runner readiness, (d) revisioned production output, (e) Human-accepted downstream contract, and (f) runtime delivery evidence.
 - Do not dispatch a Coordinator/Specialist or modify protected paths without the applicable Human gate and effective tool containment. Writable access is not authorization.

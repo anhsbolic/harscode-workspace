@@ -1,6 +1,6 @@
 # Local Development Environment Preparation — Standalone Agent
 
-> **Standing:** WORKING / RESEARCH-ONLY; candidate Agent definition, not formed or operational.
+> **Standing:** SUPERSEDED RESEARCH LINEAGE. **Operational standalone Agent authority:** [Harscode `main` definition](https://github.com/anhsbolic/harscode-workspace/blob/91ae0212d4ed4681e290fc3ee51f4d9779d26921/agents/local-development-environment-preparation/agent.md), initially Human-accepted for local use on 2026-10-24. This file is retained for research history and is **not** the current invocation source.
 > **Owner:** Reusable Engineering local-environment diagnosis, authorized preparation, and readiness evidence.
 > **Form:** One Human-direct Agent, not an Engineering Space or Coordinator.
 > **Runtime:** NOT VERIFIED. This file grants no invocation, machine access, project write, or Harscode `main` authority.

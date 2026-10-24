@@ -11,7 +11,7 @@ Produce and verify software solutions against current project authority: solutio
 | --- | --- |
 | Create/revise a reusable engineering production capability | [Space formation](space-formation.md) |
 | Prepare bounded work and test that delivered software matches accepted contracts | [Production and verification](production-and-verification.md) |
-| Local development environment readiness (standalone Agent candidate) | [Agent contract](agents/local-development-environment-preparation/agent.md) · [Working guidance](agents/local-development-environment-preparation/guidance.md) — RESEARCH-ONLY, not runtime-verified |
+| Local development environment readiness (standalone Agent) | [Operational Agent on Harscode `main`](https://github.com/anhsbolic/harscode-workspace/blob/91ae0212d4ed4681e290fc3ee51f4d9779d26921/agents/local-development-environment-preparation/agent.md) · [Guidance](https://github.com/anhsbolic/harscode-workspace/blob/91ae0212d4ed4681e290fc3ee51f4d9779d26921/agents/local-development-environment-preparation/guidance.md). Local copies under `engineering/agents/` are **historical research lineage**, not operational definitions. |
 | Rancang solution-design capability (research-formed) | [Rancang entrypoint](spaces/feature-solution-design/README.md) · [Current v3 formation approval](spaces/feature-solution-design/formation-approval-2026-10-21.md) |
 | Mandatory routing and authorization rules | [Engineering AGENTS](AGENTS.md) |
 
