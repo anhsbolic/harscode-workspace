@@ -6,6 +6,7 @@ This is the lightweight router and hard-rule surface. Do **not** load the full r
 
 - Turning project-owned product/domain truth into confirmed product behavior, traceable requirements, and a durable pre-engineering handoff → `pre-engineering/AGENTS.md`.
 - Working in upstream product brand / UI/UX / design authority → `product-design/AGENTS.md`.
+- Preparing or checking a target project's **local development environment** → `agents/local-development-environment-preparation/agent.md` (standalone, Human-direct; **read-only first**, ask permission before installation, service startup, or other changes).
 - Running or changing an engineering workflow phase → `workflow/AGENTS.md`, then the phase's canonical root `*-prompt.md` where one exists.
 - Looking up engineering guidance → `best-practices/AGENTS.md`.
 - Writing a proposal → `proposals/README.md`.

@@ -49,6 +49,10 @@ product-design/            upstream product-brand/UI/UX authority-building guida
   kickoff-prompt.md        collaborative design-discussion entrypoint
   README.md                scope, authority, usage model
   ...                      exploration/canonicalization/handoff guidance
+agents/                    standalone Human-direct engineering utilities
+  local-development-environment-preparation/
+    agent.md               local setup readiness mission, boundaries and evidence
+    guidance.md            practical diagnosis, permission and validation guidance
 workflow/                  engineering lifecycle / phase authority
   AGENTS.md                phase router
   context-management.md    context classes, handoff, session transitions
@@ -76,6 +80,10 @@ It is **not** a mandatory per-feature engineering phase. If the target project a
 ### `workflow/`
 
 Owns **what must happen by engineering phase**: Exploration, Techplan, Build/Patch, Code Review, Testing, PR, plus optional domain-level sequencing/closure.
+
+### `agents/local-development-environment-preparation/`
+
+An **operational standalone Agent for Human-direct local development setup** (initial validation accepted 2026-10-24), separate from feature workflow phases. It inspects local prerequisites, diagnoses gaps, recommends the smallest project-compatible setup, requests Human authorization before changing environment state, and reports scoped readiness evidence. It is not a general machine administrator or an implicit permission grant. [Agent contract](agents/local-development-environment-preparation/agent.md) · [Guidance](agents/local-development-environment-preparation/guidance.md).
 
 ### `best-practices/`
 
@@ -150,6 +158,7 @@ One proposal folder, one numbering sequence. See `proposals/README.md`.
 
 1. Make Harscode reachable from the target project and set `{HARSCODE_WORKSPACE_ROOT}`.
 2. Use `{HARSCODE_WORKSPACE_ROOT}/AGENTS.md` as the routing entrypoint.
+   For local environment preparation, invoke the standalone Agent directly when needed; it is not a mandatory workflow phase.
 3. If product behavior / requirement meaning is materially open, use `pre-engineering/AGENTS.md` and the applicable pre-engineering guidance until a bounded commitment has a durable engineering handoff. Skip this route when product behavior is already sufficiently concrete.
 4. If product-brand / UI / UX authority is materially open, use `product-design/kickoff-prompt.md` and the product-design guidance until the needed authority is implementation-ready. Pre-engineering and product-design are sibling routes; use either or both only when their owning ambiguity exists.
 5. Start the engineering task from the active canonical prompt under `workflow/`.
