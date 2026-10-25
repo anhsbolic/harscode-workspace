@@ -1,7 +1,7 @@
 # Rancang — Engineering Solution Design Space
 
-> **Current approval:** FORMATION APPROVED / RESEARCH-ONLY applies **only** to immutable definition 4b49d0dd0db74cf34a927cadc938ae724676a75a (Human, 2026-10-21). See [original formation approval](formation-approval-2026-10-21.md).
-> **This revision:** MATERIAL AMENDMENT CANDIDATE / NOT FORMATION APPROVED; **runtime NOT VERIFIED**. Research-branch source changes do not inherit the old formation approval.
+> **Current formation standing (administrative update, 2026-10-25):** **FORMATION APPROVED / RESEARCH-ONLY** applies only to immutable vNext six-Agent definition `9663a3fa73ac0101e66764d63af8711f291a66ab`; see [exact vNext Human approval](formation-approval-2026-10-25.md). Earlier formed v3 definition `4b49d0dd0db74cf34a927cadc938ae724676a75a` retains its [historical approval](formation-approval-2026-10-21.md).
+> **Runtime:** **NOT READY / NOT VERIFIED**. This post-approval standing/navigation edit is administrative, not a semantic amendment or a new approved definition revision.
 > **Capability ID:** feature-solution-design. **Human-facing name:** Rancang.
 
 ## Mission and result
@@ -31,7 +31,7 @@ Effective **target-project** Product, Design, Engineering and security authority
 
 ## Defined Agent responsibilities
 
-Rancang vNext proposes **six** defined Agent actors, not six required native sessions:
+The approved Rancang vNext definition specifies **six** Agent roles, not six required native sessions:
 
 1. [Space Coordinator](agents/space-coordinator/agent.md) — accountable for Input → Output Contract, scoped assignments, Human gates and durable handoff.
 2. [Requirements Analyst](agents/requirements-analyst/agent.md) — Engineering Obligation Map.
@@ -44,4 +44,4 @@ Each defined responsibility needs a named accountable actor and actual evidence 
 
 ## Status boundary
 
-This candidate is neither a new exact-revision formation approval nor verified runtime installation. Formation, any actual invocation, Engineering Standard revision, final bundle acceptance, downstream specification changes, and implementation each require their own applicable authority and evidence. Historical examples and pilots are evidence, not policy.
+Formation approval has been recorded only for immutable definition `9663a3fa73ac0101e66764d63af8711f291a66ab`, not later semantic revisions. **Formation does not establish verified runtime installation, Agent independence, invocation or write permission.** Every concrete invocation, Engineering Standard revision, final bundle acceptance, downstream specification adoption, implementation and any promotion to operational `main` requires its own applicable authority and evidence. Historical examples and pilots remain evidence, not policy.
