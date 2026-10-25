@@ -1,31 +1,35 @@
-# Rancang — Artifact Guidance and Representation Priority
+# Rancang — Artifact Guidance and Consumer Representation
 
-> **Applicability:** Optional authoring aids for the [Rancang output contract](../contracts.md); not an independent approval authority, file-layout mandate, serializer or evidence that outputs exist.
+> **Standing:** Rancang vNext material amendment candidate. Optional authoring guidance, NOT a file-layout mandate, separate approval authority or proof outputs exist.
+> **Owner:** [Rancang External Contract](../contracts.md).
 
-## Precedence and selection
+## Representation and precedence
 
-Start with the target project's **current, effective, approved** engineering/Design document standards, API/schema source conventions, diagram notation and existing artifact destinations. **Those project standards take precedence over these Space examples, including where different**, subject to binding Product/Design acceptance, security/protected scope and Human gates. If an artifact format is project-owned and requires a separately approved change, do not edit it without that authorization. See [Space-wide precedence](../../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge).
+Use current **effective** target-project Engineering/Design documentation and interface representation standards first. When a material Engineering Standard needs creation/revision, follow the bounded Architect proposal → independent assessment → exact Human approval → authorized project-owned persistence path in the external contract. A Space-local template is not binding project policy.
 
-Choose a representation based on the consumer's actual question: a simple decision table or Markdown section can suffice; an OpenAPI file, diagram, state chart, event schema or separate document is necessary **only when project standards or the actual consumer justify it**. Do not create a fixed number of output files, mandate a diagram per flow, or insert a new source-of-truth copy merely to fill a template.
+Choose the minimum representation that allows actual consumers to use and verify the design. One named section/anchor can satisfy several logical outputs; a separate machine-readable proposed API schema is needed only where actual consumer requirements justify it. Do not edit the project's canonical feature API/OpenAPI/specification as part of Rancang O2.
 
-## Minimum durable artifact envelope
+## Minimum artifact evidence
 
-Each materially consumable artifact or addressable bundle section needs these logical facts (not mandatory YAML keys):
+Each materially consumable section/payload needs:
 
-| Required fact | Meaning |
+| Fact | Required meaning |
 | --- | --- |
-| Identity, type, owner | Stable ID/anchor, X1 or O1–O5 / supporting contract kind, accountable producer and owner of original authority |
-| Revisions and provenance | Actual source I1–I4 anchors + revisions, formed definition reference, output ref/revision, actual input/output dependencies |
-| Meaning and standing | Material decision/contract, binding source vs delegated proposal vs Human-pending/unresolved status, scope and exclusions |
-| Assurance | Produced vs independently reviewed, executed vs planned verification, exact reviewer/evidence refs and known limits |
-| Consumer handoff | Named consumers, actual format compatibility and project-bound fit checks, blockers and conditions for use |
+| **Identity / producer** | Stable anchor/type and named accountable Agent |
+| **Effective sources** | Accepted work input/standing, applicable standard revisions, project technical baseline where material |
+| **Proposed result** | Exact design decision/interface/experience/verification obligation with proposal vs accepted authority clearly separated |
+| **Revision** | Exact produced artifact/section revision and dependent revisions |
+| **Assessment** | Actual independent Security and Solution Reviewer findings/limitations, when applicable; executed vs NOT RUN evidence |
+| **Consumer standing** | Intended consumers, project-bound compatibility and material blockers/unresolved decisions |
 
-Timestamp, model and Agent/session details should be recorded **only when known, safe and relevant**. Do not invent identifiers, approvals, tool runs or separate metadata files. For an unperformed test write `NOT RUN`, not `PASS`.
+No mandatory metadata file, universal diagram count, copied Product Contract or new registry.
 
-## Solution Delivery Bundle — logical index
+## Revisioned Engineering Solution Handoff
 
-The Coordinator returns a **revision-pinned index** of X1 and applicable O1–O5 plus any separately authorized typed payload. For each entry provide ID/type, owning producer/project authority, exact artifact ref and input revisions, approval/review standing, intended consumers, compatibility evidence, limitations, required decision and next safe action. Index a source contract by reference rather than create a second independently editable canonical version.
+Coordinator returns one index/payload containing the **Engineering Obligation Map (X1)**, applicable **Solution Decisions (O1)**, **Technical Contracts (O2)**, **Experience Contract (O3)**, **Verification Obligations (O4)**, plus **independent Security Findings and Solution Review and Human-facing bundle metadata (O5)**.
 
-`COMPLETE` means the Space fulfilled applicable production and internal review obligations with truthful limits, **not** that the Human accepted the output or the implementation passed tests. If formal project-required artifacts are missing, mark the affected consumer conditional or `BLOCKED`; never treat a draft interface as an accepted OpenAPI schema.
+Keep Security Findings and Solution Review independently owned even when packaged or linked from one document. Reference any authorized Engineering Standards revision by its **owning project source and effective revision**, distinct from a proposed-but-not-effective update.
 
-[Logical templates](templates.md) · [Conditional illustrative examples](examples.md) · [Space I/O and result standing](../contracts.md)
+Rancang production COMPLETE means only internal applicable obligations and required independent review are fulfilled with truthful limits. Human acceptance of exact bundle, canonical feature contract adoption, implementation and runtime verification are separate downstream concerns.
+
+[Logical templates](templates.md) · [Illustrations](examples.md) · [External contract](../contracts.md)

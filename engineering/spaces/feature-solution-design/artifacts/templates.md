@@ -1,47 +1,49 @@
-# Rancang — Logical Artifact Templates (Optional)
+# Rancang — Logical Artifact Content Prompts (Optional)
 
-> **Purpose:** Minimal *content prompts*, not obligatory files or project specifications. Use the actual project's accepted templates/notation first; if none exists, adapt these to the consumer. Each item needs the [artifact envelope](README.md#minimum-durable-artifact-envelope) or a shared, addressable bundle index. Omitted non-applicable fields need a short reason, not filler content.
+> **Purpose:** Content prompts for the [external contract](../contracts.md), not mandatory separate files, project standards or runtime stages. Semantic names are primary; legacy X1/O1–O5 are stable navigation anchors. Use actual current project templates and conventions when applicable.
 
-## X1 — Source and obligation map
+## Engineering Obligation Map (X1)
 
-| Original source/ID + revision | Accepted obligation or negative path | Authority class/owner | In scope? | Consequential interface/experience/verification link | Unknown, delegated or Human-owned decision |
-| --- | --- | --- | --- | --- | --- |
-| `<ref>` | `<precise behavior and non-guarantees>` | `<approved / derived / delegated / historical>` | `<yes/no/conditional>` | `<O1/O2/O3/O4 ref or pending>` | `<owner + affected dependency>` |
-
-Requirements Analyst creates X1; original authority is still read by producers and Reviewer. A line item is not accepted because it appears in this table.
-
-## O1 — Shared solution decision
-
-| Decision ID, linked X1 | Shared issue and actual consumer | Chosen/proposed rule + trade-off | Ownership/invariant | Standing and required Human gate |
+| Accepted effective source / revision | Obligation / non-guarantee / exclusion | Delegated engineering freedom | Consumer and verification consequence | Material unknown and affected owner |
 | --- | --- | --- | --- | --- |
-| `<id/source>` | `<problem>` | `<decision/rationale; material alternative if needed>` | `<owner>` | `<delegated/proposed/blocked>` |
+| source ref | precise commitment or limit | allowed choice | output/verification link | Human decision or Engineering work |
 
-Avoid catalogs of unselected architectures. Record only decisions necessary to avoid incompatible downstream interpretations.
+Requirements Analyst translates binding inputs; it does not reconstruct upstream Product research. A map never replaces effective original authority.
 
-## O2 — Interface, state and invariant contract
+## Shared Solution Decisions (O1)
 
-For each material boundary name producer and consumer; exact inputs, outputs, error/denial/partial/unknown outcomes; identity and authorization enforcement; state/data owner; transaction/consistency/retry requirements if triggered; source/acceptance links and current schema/API owner; proposed-vs-approved standing. If a formal interface is required, link the **actual project-owned** typed artifact and revision. Do not manufacture endpoint details to populate an example.
-
-## O3 — Experience and state contract
-
-| Actor intention/action | Prerequisite or authorization | System-owner state/result (O2 ref) | Truthful user-visible meaning | Failure/unknown/denied path | Acceptance/source + verification link |
-| --- | --- | --- | --- | --- | --- |
-| `<goal/step>` | `<precondition>` | `<actual owner, event/result>` | `<guaranteed and not guaranteed>` | `<only applicable states>` | `<I1/I2 / O4>` |
-
-Experience Specialist aligns with current project Design authority; this is not a pixel/UI-component design template. Include pre-effect disclosure and durable later inspection only where accepted requirements call for them.
-
-## O4 — Verification obligations (producer-owned)
-
-| Source obligation | What observable result would pass/falsify | Negative/risk path | Future evidence boundary and owner | Performed evidence / NOT RUN |
+| Decision, affected input | Required cross-consumer result and rationale | Alternatives / real trade-off if material | Owner / standing | Review and effective standard ref |
 | --- | --- | --- | --- | --- |
-| `<X1 + O1/O2/O3>` | `<expected condition>` | `<relevant failure>` | `<unit/contract/integration/rendered/security owner when applicable>` | `<actual ref or NOT RUN>` |
+| ref | minimal sufficient proposed mechanism | consequential alternatives only | delegated/proposed/approved externally | revision/gate |
 
-Solution Architect and Experience Specialist produce O4 as applicable, with **one named accountable owner**; independent Reviewer assesses adequacy but does not edit it.
+**Bounded Engineering Standard proposal** (conditional O1-linked payload): effective old rule/absence and revision; concrete deficiency; proposed minimum rule and owning project artifact; why feature-level choice cannot suffice; relevant security and consumer impacts; compatibility/migration/rollback where material; independent findings; exact Human proposal/approval/authorized persistence/effective revision. Never silently promote.
 
-## O5 — Independent review and handoff
+## Technical Interface and State Contracts (O2)
 
-**Reviewer findings:** exact original source and output revisions checked; independent-context evidence/limits; source conformance and interface/experience/verification mismatches; severity and affected consumer; assigned producer correction; re-review standing. Never alter X1/O1–O4 to obtain PASS.
+For each material consumer edge specify producer, expected operation/event, inputs/outputs, state/data ownership, authorization point, result/error/denied/partial/unknown outcomes, consistency/idempotency/transaction where material, accepted input links, verification implications and proposed-vs-effective standing. **Handoff proposal only**; not a direct edit of canonical feature API/OpenAPI.
 
-**Coordinator assembly and Human handoff:** actual bundle index/revision, triggered Human gates and their subject revisions, consumer-by-consumer fit (`verified / conditional / blocked / unverified`), result `COMPLETE / PARTIAL / BLOCKED / FAILED`, exact Human acceptance standing and next safe action. **Reviewer owns findings; Coordinator owns assembly**, not reviewer edits or final acceptance.
+## Engineering Experience Contract (O3)
 
-[Artifact envelope and bundle](README.md) · [Representation examples](examples.md)
+| Actor intent/action | Required precondition and system owner | Supported O2 state/result | Truthful visible meaning / non-claim | Applicable negative/unknown paths | Source and O4 link |
+| --- | --- | --- | --- | --- | --- |
+| actual assignment | authority | proposed support | consequence | conditional | ref |
+
+Apply approved Design Standards rather than creating missing Design policy.
+
+## Verification Obligations (O4)
+
+| Obligations and proposed contracts | Observable acceptance / falsifier | Negative / security / reliability path | **Single accountable producer** and future test owner | Actual result or NOT RUN |
+| --- | --- | --- | --- | --- |
+| source+output refs | checkable result | triggered path | names | evidence ref / NOT RUN |
+
+Independent Security Specialist may request changes, but cannot silently rewrite producer-owned O4.
+
+## Independent Findings and Handoff (O5)
+
+**Security Findings (Security Specialist-owned):** original and exact proposal refs; risk/attack surface; severity/evidence; impacted consumer; requested producer safeguard/verification; limits and changed-edge re-assessment.
+
+**Solution Review (Reviewer-owned):** effective originals and exact X1/O1–O4/security findings checked; source conformance; contract/consumer/standards adequacy; evidence/review-independence limits; changed-edge re-review.
+
+**Coordinator Handoff (Coordinator-owned):** resolved distinct assignment ID; source/standards/output exact revisions; accountable producers; applied Human gates and approved/not-effective Engineering Standard changes; consumer-specific restrictions; production result COMPLETE/PARTIAL/BLOCKED/FAILED; exact Human acceptance standing and next safe action.
+
+[Artifact envelope](README.md) · [Contract definitions](../contracts.md)

@@ -1,49 +1,87 @@
-# Rancang — External Contract and Safeguards
+# Rancang — External Input / Output Contract
 
-> **Applicability:** Definition approval standing is tracked at the Space entrypoint and its exact-revision Human formation decision. This contract alone authorizes no runtime work.
-> **Owner:** Rancang reusable Engineering capability; concrete project inputs/outputs belong to their owners.
+> **Standing:** Material Rancang amendment candidate on the research branch. Original formation approval applies only to immutable v3 definition; this revision is **NOT YET FORMATION APPROVED**. This document does not itself authorize invocation, source writes, or runtime claims.
+> **Owner:** Reusable Rancang Engineering Solution Design capability; effective project inputs, standards and accepted artifacts remain owned by the target project.
 
-## Required input classes
+## 1. Input Contract: meaning versus acquisition
 
-| ID | Meaning |
-| --- | --- |
-| **I1** | Approved bounded product/technical objective, behaviors, acceptance and owning source revisions; binding versus evidence explicit |
-| **I2** | Current Design, architecture, security and implementation constraints, source precedence and protected-path policy |
-| **I3** | Exact project repository/ref/SHA, relevant active code/contracts, read access and environment facts |
-| **I4** | **Human-direct** assignment: bounded design responsibility, downstream consumers, output/state paths, permitted tools/writes, mode and consequential Human gates |
+Rancang has **one logical Input Contract**, not a requirement that Human or Product deliver four files. Each category below has an explicit producer/authority and an acquisition path.
 
-Missing or contradictory material authority, inaccessible code, incompatible consumer expectation or unauthorized write scope means REFUSE/BLOCK the affected action. Engineering design freedom is not by itself missing Product Authority.
+| Category | Required meaning | Acquisition and boundary |
+| --- | --- | --- |
+| **Bounded Work Input** | Identifiable objective, intended outcome or defect, binding obligations, observable acceptance, exclusions, scope, standing and effective source revision | Human reference or upstream handoff. For Product-origin work, a self-contained approved Product Contract plus exact-revision approval may suffice. For technical-origin work, an authorized technical objective/defect with sufficient acceptance may suffice. |
+| **Applicable Project Standards** | Effective, materially applicable Product-wide constraints and Design, Engineering and security standards, with their scope/revisions | Discover from project-owned authoritative sources; these are not automatically separate upstream handoff artifacts. Specific approved Design deliverables are binding when the assignment requires them. |
+| **Technical Context** | Relevant current codebase, repository/ref, active interfaces, architecture evidence and consumer constraints, with known freshness/limits | Scoped read-only inspection of target-project sources. Existing implementation is evidence, not Product/Design authority. Local development environment preparation and Harness certification are outside Rancang. |
+| **Human Authorization** | Resolved bounded assignment, tools/actions, write destinations, intended consumers, supervision mode and consequential gates | Obtained through Human-direct invocation. A short identifier is enough to begin permitted discovery; it is **not** blanket production or write authorization. |
 
-## Source-obligation bridge (X1)
+**Input acceptance** checks the relevant declared work input's scope, approval/authorization standing, revision, and sufficient behavioral/technical obligations for a bounded design task. It does **not** audit an upstream Product/Design process, relitigate settled meaning, or reconstruct extra Product policy from old research. The owning approved artifact remains binding in its declared scope.
 
-Before producing solution decisions, the assigned source/authority responsibility maps **original** I1–I3 anchors to accepted behaviors, invariants, acceptance evidence, relevant Design constraints, owners, source revisions, delegated freedoms, and unresolved Human decisions. Call this logical map **X1**; it may be a section of the bundle rather than a separate file or Agent. X1 is a trace aid, not new Product/Design authority. An original-source conflict stays unresolved until its owner decides; a summary cannot override the original.
+**Work readiness** separately assesses applicability of standards and technical facts. Absence of a file is not necessarily absence of a needed rule; absence of a *material* Design/Product decision cannot be filled with Engineering guesses. Lack of an Engineering standard is not an automatic refusal: evaluate whether a delegated solution suffices, then consider bounded Engineering Standards Evolution.
 
-## Required outputs (logical coverage)
+## 2. Entry, sufficiency, and Human questions
 
-| ID | Result |
-| --- | --- |
-| **O1** | Shared material solution decisions, rationale, ownership and meaningful cross-boundary trade-offs |
-| **O2** | Producer/consumer interface, data, authorization, persistence, state, result/error and invariant contracts |
-| **O3** | Interaction/experience contracts protecting approved consequential meaning, uncertain/error/unauthorized states and durable inspectability |
-| **O4** | **Producer-owned** verification obligations derived from X1, O1–O3, original acceptance, relevant risks and negative paths |
-| **O5** | Original source revision → decisions/output trace, independent review findings and limits, revisioned handoff, Human approval standing and consumers |
+Coordinator accepts concise natural-language start/resume plus an identifier and resolves project, artifact standing, prior assignment(s), and authorized scope from accessible durable sources. It asks Human only for genuine ambiguity, unresolvable material input, consequential authorization, or decisions beyond delegated Engineering scope.
 
-Coverage is compulsory when applicable; a five-file bundle is **not** required. Use [artifact guidance and optional representations](artifacts/README.md) only when useful for the actual consumer. **Current project-owned standards/templates prevail over Space examples**, subject to original Product/Design authority, security and Human gates. A consumer may require an independently addressable typed API contract; formal OpenAPI/spec edits need separate project authorization. An API shape cannot be invented as an approved project contract.
+- **Invalid input:** Required bounded authority, binding acceptance or scope is absent/contradictory/unverifiable for affected work; report exact deficiency and hold dependent production. No automatic duty to send work back to an upstream Space.
+- **Valid input with missing external decision:** Report specific blocked solution edge to Human; Product/Design decisions are not made by Rancang. Human may discuss in the same session, but a changed owning authority must be approved and durably effective before being relied upon.
+- **Valid input with unknown Engineering mechanism:** Assigned Agents must investigate substantively within delegated authority; explain tried/reasoned approaches and evidence before returning unresolved. Unknown mechanism alone is not invalid input.
+- **Authorization or capability gap:** Hold only affected actions, state what permission/evidence is missing; recommend Human-scoped specialist assistance if a material gap remains beyond the Space.
 
-## Bundle and consumer conformance
+Independent permitted work may continue without laundering unresolved decisions into approved contracts.
 
-The Solution Delivery Bundle must offer an inspectable, **revision-pinned** index of X1 and applicable O1–O5 sections or linked payloads. For each material payload, identify type/ID, owning producer and source authority, actual artifact ref/revision, input/source revisions, approval or proposal standing, review/evidence standing, intended consumer, outstanding decisions and consumption limits. A section with a stable anchor is sufficient; do not require one file per output. Where a consumer needs a separately addressable formal interface, mark its owner, expected form and authorization/availability instead of silently treating draft O2 as approved OpenAPI.
+## 3. Bounded Engineering Standards Evolution
 
-For each intended consumer, distinguish (a) **generic contract fit** from (b) **current project-bound fit** against that consumer's actual accepted input, source and security constraints. State whether each consumer edge was actually checked, remains conditional, or is blocked, and name the specific missing evidence or decision. Never report that consumer implementation-ready while a binding dependency is unresolved. Human acceptance applies to an exact bundle/payload revision; it is not implied by `COMPLETE` production or internal review. Actual acceptance and compatibility evidence live with the owning project.
+Existing effective Engineering Project Standards are the default authority. Architect checks their **adequacy for the assigned solution**, not their theoretical optimality. No speculative modernization or rewriting project standards for taste.
 
-## Internal responsibility and evidence
+Where a **material** missing, contradictory, unsafe, insufficient, or disproportionately costly Engineering standard would compromise the actual assigned solution:
 
-Required functions are owned by explicit [Agent actors](coordination.md): Requirements Analyst (X1), Solution Architect (O1/O2 and applicable O4), Experience Specialist (O3 and applicable O4), Independent Solution Reviewer (O5 findings), and Space Coordinator (revisioned assembly and Human-facing O5 gate/state/handoff). The two producers may jointly author O4, with a named accountable artifact owner. Reviewer independently inspects original I1–I4 and current X1/O1–O4 for acceptance coverage, source fidelity, O4 adequacy and consumer compatibility, without editing producer deliverables. **Agent identity is defined, while runtime instance/session count, context isolation and effective enforcement remain UNVERIFIED.** A producer self-check cannot be independent assurance.
+1. Solution Architect first checks whether an ordinary delegated feature-level decision can solve the problem.
+2. If not, Architect produces a **bounded standards proposal**: actual deficiency, effective source and revision or explicit absence, proposed smallest sufficient rule/change, alternatives where consequential, security implications, impacted consumers, compatibility/migration/rollback as relevant.
+3. Security Specialist independently examines material security effects; Solution Reviewer assesses necessity and wider contract/consumer fit.
+4. Coordinator presents the **exact proposed standard revision and owning artifact/action** for authorized Human approval.
+5. Only separately authorized writes may persist the approved standard to its project-owned location; Architect may execute such a scoped update inside this Rancang assignment. Approval is not effective persistence.
+6. Reopen the effective revision and revalidate only affected solution outputs, consumer edges and independent reviews.
 
-Minimum runtime demands remain: **R1** source fidelity, **R2** bounded artifact writes, **R3** scoped Specialist context/knowledge, **R4** reviewer independence, **R5** versioned handoffs, **R6** enforceable revision-bound Human gates, **R7** truthful executed evidence, **R8** observable Human-direct coordination. Actual readiness is NOT VERIFIED by this document; [Harness runtime binding](../../../harness/runtime-binding.md) owns observed enforcement evidence, not this declarative definition.
+This conditional capability does **not** grant general Engineering governance authority or permission to update canonical *feature* API/OpenAPI/schema contracts, implementation, protected security code or deployment. Proposed feature-level interface/state contracts remain Rancang handoff payloads for their authorized downstream owners.
 
-Human formation approval is separate from Human-direct invocation. Conditional Human gates stop unresolved owner product decisions and protected/security scope changes. Final Human acceptance of the **exact output revision** is separate from Space completion. Default supervised; autonomous requires explicit separate Human authorization and still obeys hard gates.
+## 4. Engineering Obligation Map (legacy anchor X1)
 
-## Result standing
+Requirements Analyst derives a compact, revision-anchored **Engineering Obligation Map** from the accepted effective work input and materially applicable standards: obligations/invariants, negative paths, exclusions, decision freedoms, verification and consumer implications. It is a trace and derivation aid, not new Product/Design authority or an upstream policy reconstruction. Producer and independent Reviewer re-read effective originals when material.
 
-Production result `COMPLETE / PARTIAL / BLOCKED / FAILED` is distinct from item standing `APPROVED SOURCE / DELEGATED / PROPOSED / UNRESOLVED`, Human acceptance, and evidence scope (`DESIGN REVIEWED` does not mean `RUNTIME VERIFIED`). `COMPLETE` means applicable outputs and internal review obligations are fulfilled with truthful limits, not Human acceptance or runtime verification. `PARTIAL` means some required coverage or evidence remains incomplete; `BLOCKED` means a material authority, permission or consumer-critical dependency prevents the affected action/claim; `FAILED` means attempted production did not succeed. Mark unperformed checks `UNVERIFIED` without upgrading them to independent assurance. No untested output is called implementation-ready if a consumer-critical invariant or contract is unresolved.
+## 5. Output Contract: Engineering Solution Handoff
+
+One coherent, revision-pinned bundle must provide **applicable logical coverage** of the following, with named accountable producers. The legacy anchors X1/O1–O5 remain navigation/trace labels during this amendment; semantic names define the obligations and **do not mandate separate files or execution phases**.
+
+| Semantic output (legacy anchor) | Accountable owner | Acceptance obligation |
+| --- | --- | --- |
+| **Engineering Obligation Map (X1)** | Requirements Analyst | Accepted input → bounded engineering obligations, freedoms, exclusions, negative paths and source links |
+| **Shared Solution Decisions (O1)** | Solution Architect | Material design choices, rationale, cross-consumer invariants; standards proposals/revision refs when needed |
+| **Technical Interface & State Contracts (O2)** | Solution Architect | Consumer/producer behavior, data/state ownership, authorization, consistency, results/errors/unknowns and typed proposals when actually required |
+| **Engineering Experience Contract (O3)** | Experience Specialist | User-visible consequence/state semantics reconciled with Product/Design authority and actual O2 guarantees |
+| **Verification Obligations (O4)** | One named accountable **producer per obligation** | Checkable success/negative/risk outcomes, intended verification owner, performed vs not-run evidence |
+| **Independent Findings and Handoff (O5)** | Security Specialist owns security findings; Solution Reviewer owns independent solution review; Coordinator owns bundle assembly and Human-facing standing | Original/effective source and exact-output review, security-finding disposition, consumer fit, revisioned index, limits and Human gates |
+
+Security Findings are **independently owned evidence**, not additional mandatory file count or an automatically passed security gate. Security Specialist documents proportionate assessment and limitations; risk-heavy scope demands deeper scrutiny. Solution Reviewer checks disposition and coherent overall contract coverage, not a substitute self-made security verdict. If independence or original-source access cannot be demonstrated, it remains **UNVERIFIED**.
+
+Every applicable output/section has an exact source/producer/output revision, decision standing (approved external authority versus delegated proposal), review/evidence status, intended consumer and actionable limitations. Choose the target project's applicable representation; an index/section anchor is sufficient unless the consumer actually requires a separate typed handoff.
+
+**Design handoff fit** and **actual canonical-contract or implementation readiness** are different claims. Rancang never edits the target project's canonical feature API/spec as a consequence of authoring O2; authorized downstream owners incorporate Human-accepted proposals under their own gates.
+
+## 6. Contract conformance and stopping rules
+
+Coordinator is accountable for the **external Input → Output Contract**, including assignment identity, source/output joins, accountable internal Agent returns, required independent review and an inspectable Human-facing bundle. Coordinator does not silently write producers' substantive decisions or rewrite independent findings.
+
+- **COMPLETE**: all applicable production, reconciliation, verification-obligation and independent assessment/review obligations are fulfilled with truthful limits. Not Human acceptance or implementation readiness.
+- **PARTIAL**: required coverage/evidence still incomplete but some meaningful deliverables exist.
+- **BLOCKED**: material authority, authorization or critical dependency prevents affected production/acceptance claims.
+- **FAILED**: attempted production did not succeed.
+
+Distinguish PROPOSED, DELEGATED, HUMAN-ACCEPTED external revisions, UNRESOLVED and actually tested/NOT RUN evidence; do not equate them. If original/standard/solution revision changes, invalidate only affected acceptance or review edges and re-evaluate them.
+
+Human acceptance of exact bundle revision is separate from Rancang COMPLETE and from authorization of downstream canonical contracts or implementation. Runtime enforcement/readiness remains with the selected Harness and its owner, **not** established by this definition.
+
+## 7. Hard exclusions and quality floor
+
+No self-invocation, fabricated approvals or independent review, unapproved protected writes, Product/Design policy decisions, Design Standards creation, local environment setup, Harness certification, feature code/migrations/deployment, canonical feature contract mutation, or general project orchestration. Consequential external decisions go **to Human**; Rancang does not own routing/repair of another authority's artifacts.
+
+Every Engineering Agent must prefer the least additional complexity sufficient for accepted correctness, material security/privacy, reliability, operability and verification needs. A technical unknown calls for substantive effort and evidence, not reflexive refusal; complexity must justify its cost. Do not weaken mandatory safeguards for simplicity.

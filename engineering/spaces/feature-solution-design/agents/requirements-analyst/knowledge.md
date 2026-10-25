@@ -6,7 +6,7 @@
 
 For each material obligation, distinguish: (a) effective approved behavior/acceptance, (b) directly derived consequence, (c) delegated engineering or Design discretion, (d) unresolved owner decision, and (e) illustrative/historical context. Record exact owner, section/ID and revision. An implementation already present in code is evidence of mechanism, not automatically approved behavior. A project may use stories, scenarios, tests, formal rules or other authority shapes—do not require a fixed PRD or numeric ID scheme.
 
-When sources disagree, prefer the project's **effective, appropriately approved** owning source; do not solve a real Product conflict by selecting the easiest technical rule. When project scope explicitly excludes work, do not reintroduce it as a prerequisite merely because a previous implementation supported it.
+For a Product-origin task, consume the **approved self-contained Product Contract and exact approval** as binding scoped Product meaning, not historical upstream research. When effective independently binding sources materially disagree, preserve both revisions and notify Coordinator for Human resolution; do not select the easiest technical rule. When project scope explicitly excludes work, do not reintroduce it as a prerequisite merely because a previous implementation supported it.
 
 ## Derive a checkable X1, not a new product spec
 
@@ -14,7 +14,7 @@ When sources disagree, prefer the project's **effective, appropriately approved*
 - For consequential claims, capture both guarantees and non-guarantees; for a mutation capture failure, partial, ambiguous and denied cases when applicable.
 - Distinguish unknown **business meaning** (may require owner decision) from unknown **engineering mechanism** (often delegated to the project team).
 - Preserve original project terminology; do not substitute Space-preferred actor roles or domain-specific labels for the project’s own roles.
-- Mark source revisions checked, omitted/conditional obligations and consequences for intended consumers. Reviewer independently rereads original sources rather than trusting X1.
+- Mark source revisions checked, omitted/conditional obligations and consequences for intended consumers. Reviewer independently rereads effective accepted work input and relevant standards rather than trusting X1.
 
 ## Quality probes
 

@@ -1,29 +1,45 @@
-# Rancang — Feature Solution Design
+# Rancang — Engineering Solution Design Space
 
-> **Formation standing:** FORMATION APPROVED / RESEARCH-ONLY for immutable definition `4b49d0dd0db74cf34a927cadc938ae724676a75a` by Human decision on 2026-10-21. See the [exact-revision approval record](formation-approval-2026-10-21.md). **Runtime:** NOT READY / NOT VERIFIED.
-> **Capability ID:** `feature-solution-design`; Human-facing name **Rancang**.
-> **Scope:** Bounded, coherent engineering **solution design** for an approved product/technical objective; no implementation or product-authority change.
+> **Current approval:** FORMATION APPROVED / RESEARCH-ONLY applies **only** to immutable definition 4b49d0dd0db74cf34a927cadc938ae724676a75a (Human, 2026-10-21). See [original formation approval](formation-approval-2026-10-21.md).
+> **This revision:** MATERIAL AMENDMENT CANDIDATE / NOT FORMATION APPROVED; **runtime NOT VERIFIED**. Research-branch source changes do not inherit the old formation approval.
+> **Capability ID:** feature-solution-design. **Human-facing name:** Rancang.
 
-## Authority and applicability
+## Mission and result
 
-This is a project-neutral Engineering solution-design capability; its Agent composition and output contracts do not create Product/Design decisions or project execution permission. A newly changed definition becomes usable as **formed** only after explicit Human approval of its exact revision. Runtime readiness and each actual Human-direct invocation require separate evidence and authorization.
+Rancang turns an accepted, bounded Product-origin or authorized technical objective into a coherent, verifiable, implementation-consumable **Engineering Solution Handoff**. Its job is to **solve** delegated Engineering design problems, not merely list missing prerequisites. Shared interfaces, state, experience, authorization, security and verification must agree for the intended consumers.
 
-The formation case is a consequential gap when multiple implementation consumers must agree on one coherent, source-faithful solution across interface, state, experience and assurance boundaries. For a small local task, use a simpler authorized path; do not invoke a Space merely because it exists. Historical pilot findings and immutable approvals are preserved as research/decision evidence, not active production instructions.
+Rancang can prepare and, with exact scoped Human authorization, persist **bounded Engineering Project Standard** additions or revisions materially necessary for its assigned solution. This is a conditional supporting responsibility, not general Engineering governance or a standing mandate to optimize the codebase.
 
-## Scope and consumer
+Rancang never assumes Product or Design authority; it does not produce feature code, migrations, deployment, canonical feature/API specification updates, environment setup, or Harness qualification. Human acceptance of its exact handoff revision is separate from production completion and implementation authorization.
 
-Rancang aims to produce a **versioned, implementation-consumable Solution Delivery Bundle** preserving accepted product experience, interfaces, state, security and verification obligations. It must identify the downstream consumer and exact artifact standing. A project commitment may require multiple assignments; scope fit is a Human/consumer judgment, **not** determined solely by commitment name.
+A small local task may use a simpler permitted Engineering path. An upstream commitment need not map one-to-one to a Rancang assignment.
 
-Potential consumers are the target project's authorized frontend, backend, integration or assurance owners; each must check its actual accepted inputs, not assume generic bundle compatibility implies project binding. Rancang owns design delivery only; it does not own code delivery, Product/Design acceptance or downstream implementation authorization.
+## Human interaction
 
-Definition entrypoints: [External contracts](contracts.md) for I1–I4/X1/O1–O5 and [Coordination and continuity](coordination.md) for accountable roles, Human gates and resumption. Reuse [Engineering formation](../../space-formation.md) and [Harness binding](../../../harness/runtime-binding.md) for generic safeguards.
+Human may say, for example, "Bro Koordinator Rancang, kita mulai kerjain ORG-01" or "kita lanjutin STORY-12." An identifier can refer to an outcome, story, PRD, defect or another project-owned work reference. The [Space Coordinator](agents/space-coordinator/agent.md) discovers its project, effective input, standards, and existing durable Rancang assignment before asking for missing material information. Discovery is not permission to write or to start consequential production.
 
-The Space defines an explicit **Agent roster**: [Space Coordinator](agents/space-coordinator/agent.md), [Requirements Analyst](agents/requirements-analyst/agent.md), [Solution Architect](agents/solution-architect/agent.md), [Experience Specialist](agents/experience-specialist/agent.md), and [Independent Solution Reviewer](agents/solution-reviewer/agent.md). Each Agent has its own mandate, I/O, working guidance, guardrails, local knowledge and scoped assignment/return expectations. These are defined actors, **not five required native sessions**; permitted role combinations depend on the concrete assignment and actual Harness, while independent review must not degrade into self-review. All Agent-specific knowledge belongs with its Agent; there is no parallel `specialists/` directory.
+## Authority and contractual entrypoints
 
-## Knowledge, artifact representations and consumer checks
+- [External Input / Output Contract](contracts.md): work input, standards, technical evidence, authorization, produced solution and acceptance.
+- [Coordination, Human gates and resumption](coordination.md): assignment matching, role ownership, independent review, durable state and Human-facing handoff.
+- [Artifact representations](artifacts/README.md): minimal revision-pinned payloads, not mandatory file count.
+- [Engineering Space formation](../../space-formation.md) and [Harness runtime binding](../../../harness/runtime-binding.md): cross-Space formation and external runtime enforcement expectations.
 
-All Agents must give precedence to **current authoritative target-project standards** over Space-local methods or examples; see [Space-wide precedence](../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge). Each [Agent package](agents/) contains an actor contract and scoped reference knowledge, not a separate source of Product/Design authority.
+Effective **target-project** Product, Design, Engineering and security authority takes precedence over Space-local examples in its own concern. Existing code is technical evidence, not automatically the authority for Product or Design meaning. A missing material Product/Design decision is reported to Human, not invented or routed by Rancang to another authority as an obligation.
 
-[Artifact guidance](artifacts/README.md), [logical templates](artifacts/templates.md), and [illustrative typed examples](artifacts/examples.md) help produce traceable X1/O1–O5 and a revisioned consumer-facing bundle. Choose only the representation necessary for actual consumers; current project-owned templates, API conventions and diagram notation prevail. No sample endpoint, authentication choice, lifecycle or topology is a project requirement.
+## Defined Agent responsibilities
 
-**Formation approval applies only to the immutable `4b49d0dd0db74cf34a927cadc938ae724676a75a` definition.** This subsequent approval-status/routing edit is administrative, not a change to its capability or Agent contracts. Formation is not Harness readiness, invocation authorization, project artifact acceptance or operational promotion.
+Rancang vNext proposes **six** defined Agent actors, not six required native sessions:
+
+1. [Space Coordinator](agents/space-coordinator/agent.md) — accountable for Input → Output Contract, scoped assignments, Human gates and durable handoff.
+2. [Requirements Analyst](agents/requirements-analyst/agent.md) — Engineering Obligation Map.
+3. [Solution Architect](agents/solution-architect/agent.md) — solution decisions, technical contracts, applicable verification obligations and bounded Engineering Standards proposals.
+4. [Experience Specialist](agents/experience-specialist/agent.md) — Engineering Experience Contract and applicable verification obligations, not Design Standards.
+5. [Security Specialist](agents/security-specialist/agent.md) — independent security assessment and findings.
+6. [Independent Solution Reviewer](agents/solution-reviewer/agent.md) — end-to-end contract/coherence assessment and review of security-finding disposition.
+
+Each defined responsibility needs a named accountable actor and actual evidence when assigned. Combining execution roles is a Harness-specific choice only where boundaries remain valid; **independent assurance cannot become producer self-review**. Security and review independence must be observed, never inferred from Agent names.
+
+## Status boundary
+
+This candidate is neither a new exact-revision formation approval nor verified runtime installation. Formation, any actual invocation, Engineering Standard revision, final bundle acceptance, downstream specification changes, and implementation each require their own applicable authority and evidence. Historical examples and pilots are evidence, not policy.

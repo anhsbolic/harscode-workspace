@@ -4,7 +4,7 @@
 
 ## Smallest sufficient coordination
 
-- Anchor I4 to actual formed definition, Human approval, project SHA, original I1–I3, intended consumers, output/state destination and observed Harness permissions. Separate preflight permission from production authorization.
+- Begin with permitted discovery from concise Human intent + identifier. Resolve project, effective work input, standards, exact assignment ID (start/resume), and project-owned durable state before asking for genuinely missing facts. Before production, anchor the exact formed definition, scoped Human authorization, project source/standard/output revisions, consumers, destination and observed permitted execution constraints.
 - Assign each defined responsibility to a named actual Agent/session or documented permitted combination, with input/output revisions and owned artifact. Preserve independent review context when the output demands it.
 - Route only necessary intermediate references; do not copy entire chat history or project corpus into each Specialist. Select knowledge by triggered concern.
 - In `supervised` mode propose only meaningful progress review opportunities, not mandatory approval for every handoff. `continue` never substitutes for consequential Human approval. `autonomous` is explicit per invocation.
@@ -13,6 +13,6 @@
 
 ## Decision or gap triage
 
-Project-standard disagreement with a generic Agent best practice: follow the effective project standard and record why, within delegated authority. Contradiction affecting protected writes, security, Product/Design acceptance or nondelegated constraints: pause only affected work; identify exact sources, owner, required decision and safe parallel progress. Missing actual runtime property: report `NOT READY/UNVERIFIED`; do not treat a written guardrail as tool enforcement.
+Effective Engineering Standard disagreement with generic Agent preference: follow the standard. If Architect demonstrates a material deficiency, coordinate independently reviewed bounded standards proposal and exact Human approval/persistence; never promote a proposal just because Human discussed it. Contradiction affecting protected writes, security, Product/Design acceptance or nondelegated constraints: pause only affected work; identify exact sources, owner, required decision and safe parallel progress. Missing actual runtime property: report `NOT READY/UNVERIFIED`; do not treat a written guardrail as tool enforcement.
 
 [Actor contract](agent.md) · [Artifact bundle guide](../../artifacts/README.md)

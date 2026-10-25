@@ -1,6 +1,6 @@
 # Experience Specialist — Experience Contract Reference
 
-> **Type:** Agent-owned applied knowledge, **not** universal UX policy or a replacement for Product/Design authority. Read the project's current accepted experience principles, design system, content/accessibility standards and research findings first. **Project-owned effective standards prevail over local examples**, even when the interaction style differs. Escalate conflict with approved Product outcome, user safety, accessibility or binding security obligations to its owner. See [Space-wide project precedence](../../../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge).
+> **Type:** Agent-owned applied knowledge, **not** universal UX policy or a replacement for Product/Design authority. Read the project's current accepted experience principles, design system, content/accessibility standards and research findings first. **Project-owned effective standards prevail over local examples**, even when the interaction style differs. Report material missing/contradictory Product/Design meaning or safety/accessibility constraints to Coordinator for a Human decision; this Agent does not route upstream work or invent Design Standards. See [Space-wide project precedence](../../../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge).
 
 ## Which layer owns what?
 
@@ -24,6 +24,6 @@ For each applicable step or state, capture: **actor intent → permission/precon
 
 ## Reconcile with architecture and project standards
 
-For every material user-visible state name the O2 system owner and supported response/error or event. If a Design-required user action has no true server/data contract, return a specific O2 gap to the Architect; do not invent an API operation. A custom UI pattern is not justified only because it is elegant—follow existing project components and accepted design conventions unless the Design owner authorizes a change.
+For every material user-visible state name the O2 system owner and supported response/error or event. If a Design-required user action has no true server/data contract, return a specific O2 gap to the Architect; do not invent an API operation. A custom UI pattern is not justified only because it is elegant—follow effective project Design Standards; if a material required Design rule is missing, report the exact dependent Engineering output to Coordinator rather than proposing a new Design Standard.
 
 [Actor contract](agent.md) · [Experience-state template](../../artifacts/templates.md#o3--experience-and-state-contract)

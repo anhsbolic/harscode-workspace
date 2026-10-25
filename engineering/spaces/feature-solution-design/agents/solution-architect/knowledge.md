@@ -7,7 +7,7 @@
 1. Inspect the *existing* project architecture and effective standards; identify the required product outcome, consumers, latency/reliability, scale, deployment/team constraints, security/privacy, persistence and migration limits.
 2. Define invariants and who owns each state/action. Separate cross-consumer commitments from local implementation freedom. Evaluate real failure modes and reversibility before selecting structures.
 3. Prefer **least additional complexity that meets actual constraints**; maintain required isolation, authorization, transactional correctness and reliability. Record alternatives only where they change a material decision.
-4. When selecting a new mechanism, account for operational load, observability, consistency semantics, incident recovery, data ownership and team ability to maintain it. Prefer project standards unless an actual constraint justifies seeking a scoped exception.
+4. When selecting a new mechanism, account for operational load, observability, consistency semantics, incident recovery, data ownership and team ability to maintain it. Follow current effective standards; challenge them only for evidenced material deficiency in the assigned solution and through bounded, independently reviewed, Human-approved standards evolution.
 
 ## Structural options — alternatives at different levels
 
@@ -25,7 +25,7 @@ These are **deployment/decomposition choices**. Hexagonal, ports-and-adapters, l
 - Specify producer/consumer operations, error/result categories, authorization decision owner, data model meaning, state transitions, consistency and version compatibility to the required implementation depth.
 - Authentication does not prove resource permission; client visibility is not enforcement. Treat retries, duplicates, concurrency, lost responses, partial commits and stale reads when required by the operation.
 - For atomic multi-step outcomes, identify the invariant first, then compare project-supported transaction, idempotency, compensating action or coordination alternatives. Do not invent distributed processing for a local invariant.
-- Shared API source and formal schema are **project-owned**; follow the project's accepted OpenAPI or alternative representation and version. A diagram/example does not authorize editing protected source files.
+- Shared API source and canonical feature schema are **project-owned** by downstream concerns; Rancang O2 is proposed handoff, not authority to edit those files. A bounded, exact Human-approved Engineering *standard* change may be persisted by Architect only with separate scoped permission, re-opened effective revision and affected review.
 - Surface unresolved owner choices and unsupported consumer-critical contracts instead of inventing defaults.
 
 ## Detect overengineering

@@ -1,52 +1,62 @@
-# Rancang — Coordination and Continuity
+# Rancang — Coordination and Durable Continuity
 
-> **Applicability:** Declarative Agent composition only; current formation standing is owned by the [Space entrypoint](README.md). No Agent is installed or invoked by this file.
-> **Owner:** `feature-solution-design` internal accountability. [External I/O](contracts.md) remains the contract authority; [Engineering Space formation](../../space-formation.md) owns general formation and Human approval rules.
+> **Standing:** Rancang vNext material amendment candidate / NOT YET FORMATION APPROVED. [External contract](contracts.md) governs input/output semantics. This file does not install or invoke Agents.
+> **Owner:** Rancang internal accountability. Human directly addresses [Space Coordinator](agents/space-coordinator/agent.md); no external agent, including Balad, has a dispatch channel.
 
-## Human-direct Coordinator boundary
+## 1. Human-direct start and resume
 
-The **Human directly addresses and authorizes** the named [Space Coordinator Agent](agents/space-coordinator/agent.md) for an exact, bounded assignment (I4); Balad may advise the Human but has no dispatch, instruction or supervision channel to this Agent. Coordinator is an **explicit actor with its own contract**, not merely an abstract responsibility; its native runtime process/session topology remains unbound. It must:
+A Human can say "mulai ORG-01" or "lanjutin STORY-12" without supplying full internal fields. Coordinator interprets **start** or **resume** intent, resolves the actual project, work identifier, its standing/revision, and durable Rancang assignment record(s) through permitted discovery. It must not guess across branches, projects, duplicate identifiers or similarly named work.
 
-- Check the exact **formed definition revision**, original I1–I3 provenance, I4 authorization, consumer expectations, output/state destinations and applicable actual harness readiness **before production**. A Human may request preflight within the same Coordinator interaction; preflight permission is not production authorization. If a material prerequisite fails, do not launch production responsibilities.
-- Assign only scoped work; name each logical responsibility's authorized inputs, output owner, destination, source/output revisions and stop conditions. Coordinate corrections and inspect revision joins, without changing Product/Design authority or self-approving protected actions.
-- Preserve independent Reviewer ownership, reconcile applicable findings with producers, check affected revisions again, assemble actual versioned output and return result, limits and decisions **to the Human directly**.
+- **Start:** Locate effective accepted bounded objective and project standards; see whether related Rancang assignment already exists. Define a bounded objective/consumer/output contract rather than assuming one upstream outcome equals one Space invocation.
+- **Resume:** Locate the matching **specific Rancang assignment**, not just the Product/Story identifier. Open its durable state and exact original source/output/approval revisions. If multiple assignments match, ask Human only for the necessary distinction. If no state exists, say so; do not invent former progress or approval.
+- **Discovery versus production:** Permitted read-only discovery is not production, arbitrary external access, autonomous operation or write authority. After discovery, obtain exact Human authorization for material production scope, tools/actions, writing, destinations and consequential gates.
 
-Default mode is Human-direct `supervised`: agreed material progress observations allow `continue / revise / stop` within existing scope; `continue` never means approval of Product meaning or downstream acceptance. `autonomous` requires a separate explicit Human selection for that invocation and never waives mandatory gates. Internal sequencing and number of runtime agents/sessions are harness choices, not this definition.
+The Coordinator may discuss material decisions with Human **in the same session**. A Human statement changing owning Product, Design or Engineering authority must still be durably approved/persisted by its appropriate owner before that change is consumed as effective authority.
 
-## Defined Agent composition and functional ownership
+## 2. Coordinator's contract accountability
 
-Rancang defines five Agent roles, including Coordinator. Each has its own Agent-facing contract (linked per role below) and may be selected/combined per authorized invocation; they are not five mandatory native instances. Coordinator records exactly **which defined Agent responsibilities are assigned to which real actor/session**, each required source/permission and artifact owner, and which role combinations were made. Independent review requires meaningfully independent context and original-source access; a shared producer context cannot be labeled independent. Unselected responsibilities remain owned and must be fulfilled or explicitly marked blocked/not applicable; do not silently omit their outputs.
+Coordinator owns assignment resolution, logical input acceptance, applicability/readiness triage, scoped Specialist delegation, Agent returns and revision joins, protected Human decisions, exact-output handoff and minimum durable state. It **does not** own Product/Design policy, substantive X1/O1–O4 edits, Security Findings, independent Solution Review or Human acceptance.
 
-| Responsibility | Consumes | Owns / delivers | Does not decide |
+Before consequential production: confirm formed exact definition revision, bounded input standing, required constraints and project refs, intended consumers, actual permitted tools/write surfaces, Human approval, and usable externally provided Harness/runtime evidence. **Rancang does not certify the Harness.** No incomplete initial Human utterance is a reason to refuse permitted discovery.
+
+Each assigned internal responsibility receives only relevant original refs, revisioned input, expected output and owner/destination, permitted actions, evidence requirements and stop criteria. Coordinator reconciles changed dependencies, does not rewrite findings, and may protect unaffected work from local blockers. One concrete accountable producer owns each verification obligation.
+
+## 3. Six defined roles
+
+These are six **semantic actors**, not a requirement for six native sessions. Actual tools, context separation and identity require Harness evidence.
+
+| Agent | Consumes | Accountable return | Forbidden responsibility |
 | --- | --- | --- | --- |
-| [Requirements Analyst](agents/requirements-analyst/agent.md) | Original I1–I3 plus I4 scope | X1 original-source obligation, invariant, constraint and open-decision map | Product/Design approval or architecture |
-| [Solution Architect](agents/solution-architect/agent.md) | X1, original applicable I2/I3 and current O3 where relevant | O1 shared decisions, O2 interface/state/security/invariant contracts, and producer-owned O4 jointly with experience alignment | Product meaning or protected writes |
-| [Experience Specialist](agents/experience-specialist/agent.md) | X1, original Product/Design sources and current O1/O2 | O3 truthful actions, consequences, error/uncertain states and relevant accessibility contracts; producer-owned O4 jointly with solution production | New Product commitments, visual implementation or backend auth enforcement |
-| [Solution Reviewer](agents/solution-reviewer/agent.md) | **Original** I1–I4 plus current X1/O1–O4 revisions | Independent O5 findings on source conformance, acceptance and negative-path coverage, O4 adequacy, cross-contract consistency and consumer compatibility | Producer-owned X1/O1–O4 edits or Human acceptance |
-| [Space Coordinator](agents/space-coordinator/agent.md) | Authorized input, outputs, review findings and Human decisions | Assignments, revisioned bundle assembly, gate/state evidence and Human-facing O5 handoff metadata | Reviewer findings, solution content or invocation approval |
+| [Space Coordinator](agents/space-coordinator/agent.md) | Human intent, work/source state, all producer/reviewer returns | Scoped assignments, Human gates, revisioned bundle and acceptance standing | Producer content or independent findings |
+| [Requirements Analyst](agents/requirements-analyst/agent.md) | Accepted bounded work input and materially applicable standards | X1 Engineering Obligation Map | Product/Design reconstruction or solution selection |
+| [Solution Architect](agents/solution-architect/agent.md) | X1, effective technical baseline, applicable Design/security constraints | O1/O2, designated O4, bounded Engineering Standards proposal/update where authorized | Product/Design policy, feature implementation, independent review |
+| [Experience Specialist](agents/experience-specialist/agent.md) | X1, effective Product/Design constraints, current O1/O2 | O3 and designated O4 | Design Standards or UI implementation |
+| [Security Specialist](agents/security-specialist/agent.md) | Effective security obligations, exact proposals/standards change | Independent Security Findings and affected re-assessment | Owning/writing the proposals assessed |
+| [Solution Reviewer](agents/solution-reviewer/agent.md) | Effective originals, X1/O1–O4, Security Findings and consumers | Independent overall O5 review findings | Producer edits, overriding Security Findings |
 
-**O4 remains a producer deliverable** co-authored by Architect and Experience roles as applicable, with one concrete accountable artifact owner. Five **defined Agent actors** do not imply five native sessions; a justified runtime combination preserves every named responsibility and write boundary. Review independence is required; if not evidenced, report `UNVERIFIED` and do not claim completed independent review. Reviewer must inspect original sources, not only producer narratives; findings belong solely to Reviewer, return to owning producers, and materially changed edges must be re-reviewed. Technical knowledge belongs to each Agent package and is non-binding when the effective project-owned standards differ. Verify those standards from original project sources; resolve material conflicts with higher-priority acceptance, security or Human gates at the owning authority. See [Space-wide precedence](../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge).
+Required independent Security/Solution assessments may be proportional to actual risk, but findings and limits must be truthfully represented. A role name alone does not prove independent execution. Unselected role obligations must either be fulfilled under a justified permitted combination or marked inapplicable/blocked with rationale; never silently vanish.
 
-## Consequence-based Human gates
+## 4. Consequential gates, without mandatory approval at every handoff
 
-| Boundary | Trigger and held action | Exact decision/resume evidence |
+| Gate | Held work | Human evidence to continue |
 | --- | --- | --- |
-| Formation (**external**) | No valid exact-revision formation approval; hold invocation of any unapproved revision | Human approval of the exact reusable definition, scope and owner; older approvals do not transfer |
-| Invocation (**external**) | No valid I4 or material preflight readiness; hold production | Human-direct project/definition refs, scope, mode, tools, writes, consumers, output/state owner and required gate authority |
-| Material owner decision (**conditional**) | Unresolved Product/Design meaning, non-delegated cross-consumer contract or consequential risk changes a dependent solution; hold only that dependent work | Named owning Human, original source and affected proposed decision/output revision, explicit choice and allowed continuation |
-| Protected/scope change (**conditional**) | Security, protected specification/path, privilege or authorized action scope would expand; hold that action | Exact path/action/subject revision, authorized Human and permitted tool/write scope; separate actual tool enforcement required |
-| Downstream acceptance (**external**) | Bundle produced but not accepted; hold use as binding accepted solution | Human acceptance of **exact output revision** and scope, or request-changes/defer standing; no implementation authorization implied |
+| **Formation** | No production using materially amended, unapproved Space definition | Explicit Human approval of **exact revised formation** |
+| **Invocation** | Consequential production/writes without scoped authorization | Resolved assignment, work/definition refs, scope, tool/actions, destinations and mode |
+| **External Product/Design decision** | Any dependent solution that would invent/change external semantics | Relevant owning decision and effective approved source revision; discussion may occur in same session |
+| **Engineering Standard evolution** | New or changed standard and dependent binding claims | Reviewed exact proposal, authorized Human decision, permitted write, verified effective project-owned revision |
+| **Protected/scope expansion** | Newly privileged/security/protected actions or expanded work | Explicit Human action/path/revision approval and real tool containment |
+| **Final bundle acceptance** | Treating Rancang's output as Human-accepted binding handoff | Human acceptance of exact bundle revision; separately authorize downstream implementation/spec adoption |
 
-Routine Specialist handoffs or supervised `continue` are **not** mandatory approval gates. Missing, denied, ambiguous, stale or out-of-scope permission remains `BLOCKED` for the affected action. Independent authorized work may proceed if it does not depend on the blocked decision. A material change to input, definition, objective, protected boundary or reviewed output invalidates only affected approval/review edges; recheck the new revision and seek a new Human decision where necessary. The Coordinator may not invent approval, widen scope or bypass a gate in either mode.
+Default is supervised. Human may steer continue/revise/stop in current scope without converting an ordinary checkpoint into approval. Autonomous execution requires separate explicit Human authorization; no mandatory gate disappears. Standards proposals do not silently become project policy; feature API/spec adoption is separately downstream owned.
 
-## Durable state, interruption and resumption
+## 5. Durable assignment identity and resumption
 
-For every authorized production invocation, the **target project** owns a minimum reconstructable record at an approved location, not a central Rancang/Harscode registry. It must identify:
+After each authorized production invocation, preserve minimum reconstructable **target-project-owned** state (one existing document or referenced artifacts is enough):
 
-- Exact formed Space definition revision; project repository/ref/SHA and original I1–I3 source revisions; I4 Human authorization, bounded scope, selected mode, allowed tools/writes and output/state owner.
-- Current X1/O1–O5 artifact refs/revisions, accountable producers, executed versus proposed checks, review independence evidence/limitations, intended consumers and bundle standing.
-- Each material gate's subject revision, owning decision authority, decision/absence, action held, allowed resume scope; current blocker, affected consumer, next safe action/owner, and last validated inputs.
+- Project/repository/ref, distinct **Rancang assignment identity**, upstream work identifiers, exact formed Space definition revision, scoped objective, consumers, authorization and writable destinations.
+- Accepted authoritative work input, effective standards and technical evidence refs/revisions; Agent ownership and actual artifact revisions (X1/O1–O5 plus separately owned Security Findings).
+- Human decisions, proposed/approved Engineering Standards changes and exact effective revisions; performed versus NOT RUN evidence; actual review independence/limitations; affected blockers and next safe action.
 
-On interruption or new session, read that record **and re-open current originals/artifact revisions**; compare against pinned inputs, approval scope and current runner readiness. Resume only unaffected authorized work from actually existing outputs; changed dependencies, missing evidence or invalidated approval block dependent work until revalidated or reauthorized. If state is missing or unreadable, report the gap—do not recreate decisions from chat memory. A record may be one concise artifact or references in existing project state; no mandated directory, status engine, scheduler or background orchestration.
+On resume, re-open state **and real current authority**, compare each material dependency and approval scope; reuse only still-valid outputs/reviews and permitted actions. A change invalidates only affected joins. Chat memory, an earlier assistant answer, or a guessed default branch is not durable project state. If state is missing or unreadable, report the gap and offer a new bounded assignment.
 
-Report `PARTIAL` for genuinely incomplete deliverables, `BLOCKED` for unmet authority/permission/consumer-critical preconditions and `FAILED` for unsuccessful attempted production; describe interruptions without assuming they are failures. Mark checks and reviewer independence `UNVERIFIED` when not observed. None of these declares output Human-accepted or runtime-verified. For native isolation, permissions and source access use [Harness runtime binding](../../../harness/runtime-binding.md); a written stop rule is not enforced containment.
+No global scheduler, registry, status engine or cross-Space orchestration is implied. Report production COMPLETE/PARTIAL/BLOCKED/FAILED according to [external contract](contracts.md), distinct from Human acceptance and runtime verification.
