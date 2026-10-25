@@ -32,4 +32,4 @@ These are **deployment/decomposition choices**. Hexagonal, ports-and-adapters, l
 
 Ask: What concrete requirement fails without this layer/service/event bus/abstraction? Is the risk observed or only hypothetical? What additional coordination, failure surface and migration cost does it create? Can a smaller reversible implementation meet the same invariant? If the proposed mechanism adds complexity without justified benefit, prefer the simpler project-compatible design. Do not weaken critical safeguards just to appear lean.
 
-[Actor contract](agent.md) · [Architecture decision template](../../artifacts/templates.md#o1--shared-solution-decision)
+[Actor contract](agent.md) · [Architecture decision template](../../artifacts/templates.md#shared-solution-decisions-o1)

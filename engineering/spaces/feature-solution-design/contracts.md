@@ -69,11 +69,11 @@ Every applicable output/section has an exact source/producer/output revision, de
 
 ## 6. Contract conformance and stopping rules
 
-Coordinator is accountable for the **external Input → Output Contract**, including assignment identity, source/output joins, accountable internal Agent returns, required independent review and an inspectable Human-facing bundle. Coordinator does not silently write producers' substantive decisions or rewrite independent findings.
+Coordinator is accountable for the **external Input → Output Contract**, including assignment identity, source/output joins, **confirming and recording one accountable producer per applicable O4 obligation**, internal Agent returns, required independent review and an inspectable Human-facing bundle. Producers may propose ownership, but do not unilaterally assign other Agents. Coordinator does not silently write producers' substantive decisions or rewrite independent findings.
 
-- **COMPLETE**: all applicable production, reconciliation, verification-obligation and independent assessment/review obligations are fulfilled with truthful limits. Not Human acceptance or implementation readiness.
-- **PARTIAL**: required coverage/evidence still incomplete but some meaningful deliverables exist.
-- **BLOCKED**: material authority, authorization or critical dependency prevents affected production/acceptance claims.
+- **COMPLETE**: all applicable production, reconciliation, verification-obligation and required independent assessment/review obligations are fulfilled **and no unresolved material finding defeats a binding obligation or consumer-critical solution contract**. Non-blocking findings/limits may remain explicitly recorded. Completing a review or listing an unresolved blocking finding is not sufficient. Not Human acceptance or implementation readiness.
+- **PARTIAL**: required output coverage/evidence or correction remains incomplete but meaningful, accurately scoped deliverables exist; identify the affected consumer/obligation and unresolved finding.
+- **BLOCKED**: material authority, authorization, unresolved blocking finding or critical dependency prevents the affected production/consumer-ready claim; unaffected authorized work may continue.
 - **FAILED**: attempted production did not succeed.
 
 Distinguish PROPOSED, DELEGATED, HUMAN-ACCEPTED external revisions, UNRESOLVED and actually tested/NOT RUN evidence; do not equate them. If original/standard/solution revision changes, invalidate only affected acceptance or review edges and re-evaluate them.

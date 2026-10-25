@@ -26,4 +26,4 @@ For each applicable step or state, capture: **actor intent → permission/precon
 
 For every material user-visible state name the O2 system owner and supported response/error or event. If a Design-required user action has no true server/data contract, return a specific O2 gap to the Architect; do not invent an API operation. A custom UI pattern is not justified only because it is elegant—follow effective project Design Standards; if a material required Design rule is missing, report the exact dependent Engineering output to Coordinator rather than proposing a new Design Standard.
 
-[Actor contract](agent.md) · [Experience-state template](../../artifacts/templates.md#o3--experience-and-state-contract)
+[Actor contract](agent.md) · [Experience-state template](../../artifacts/templates.md#engineering-experience-contract-o3)

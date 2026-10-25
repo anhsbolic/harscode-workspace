@@ -1,6 +1,6 @@
 # Rancang — Illustrative Typed Representations (Not Project Standards)
 
-> **CAUTION:** These are *fictional, conditional examples* for choosing and checking an artifact representation. They are **not** approved project API endpoints, business rules, schemas, security mechanisms, Design requirements or output-format mandates. Use current project-owned conventions and formal standards first. Do not write shared/protected specs without separate authorization. See [artifact precedence](README.md#precedence-and-selection).
+> **CAUTION:** These are *fictional, conditional examples* for choosing and checking an artifact representation. They are **not** approved project API endpoints, business rules, schemas, security mechanisms, Design requirements or output-format mandates. Use current project-owned conventions and formal standards first. Do not write shared/protected specs without separate authorization. See [artifact precedence](README.md#representation-and-precedence).
 
 ## Example A — OpenAPI when the project actually uses HTTP contracts
 

@@ -30,6 +30,6 @@ Coordinator returns one index/payload containing the **Engineering Obligation Ma
 
 Keep Security Findings and Solution Review independently owned even when packaged or linked from one document. Reference any authorized Engineering Standards revision by its **owning project source and effective revision**, distinct from a proposed-but-not-effective update.
 
-Rancang production COMPLETE means only internal applicable obligations and required independent review are fulfilled with truthful limits. Human acceptance of exact bundle, canonical feature contract adoption, implementation and runtime verification are separate downstream concerns.
+Rancang production COMPLETE requires fulfilled applicable obligations and required independent review **without unresolved material findings that defeat binding obligations or consumer-critical contracts**. Non-blocking limits must remain visible; merely recording a blocking finding never satisfies completion. Human acceptance of exact bundle, canonical feature contract adoption, implementation and runtime verification are separate downstream concerns.
 
 [Logical templates](templates.md) · [Illustrations](examples.md) · [External contract](../contracts.md)

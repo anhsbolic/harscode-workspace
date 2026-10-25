@@ -14,4 +14,4 @@
 
 Prioritize material source mismatch, unauthorized decision, missing binding interface, exploitable trust/permission issue, unjustified Engineering Standard change or unobservable acceptance over cosmetic wording. For each finding identify exact source and output revision, risk/severity, consumer consequence and owning producer. Preserve independent Reviewer-owned O5; never silently rewrite X1/O1–O4. After a producer correction, recheck the actual changed edges and invalidated prior approvals. If genuine context separation was not demonstrated, record `INDEPENDENCE UNVERIFIED`.
 
-[Actor contract](agent.md) · [Review findings template](../../artifacts/templates.md#o5--independent-review-and-handoff)
+[Actor contract](agent.md) · [Review findings template](../../artifacts/templates.md#independent-findings-and-handoff-o5)

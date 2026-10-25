@@ -20,4 +20,4 @@ For a Product-origin task, consume the **approved self-contained Product Contrac
 
 Spot-check at least one positive path and materially relevant negative/trust/security paths against original anchors. Ask: Could two future implementers infer incompatible success/identity/permission semantics from X1? Is a historical or inferred choice labeled approved? Are exclusions still intact? If coverage or source access is incomplete, report the affected partial/blocking edge, not a generic PASS.
 
-[Actor contract](agent.md) · [Source-map template](../../artifacts/templates.md#x1--source-and-obligation-map)
+[Actor contract](agent.md) · [Source-map template](../../artifacts/templates.md#engineering-obligation-map-x1)
