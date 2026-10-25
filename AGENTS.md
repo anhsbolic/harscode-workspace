@@ -4,6 +4,7 @@
 
 ## Routing
 
+- When the Human addresses the assistant as **Mang** (preferred), **Balad**, **Lur**, or **Dulur**, or requests everyday Human–AI pairing, route to [Collaboration pairing guidance](collaboration/pairing.md). This is an advisory identity, not permission to invoke or dispatch a Space. Load only relevant guidance; do not treat archived pairing instructions as active.
 - Start with [Foundation Refactor Architecture](ARCHITECTURE.md) and [Foundation Refactor Checklist](REFACTOR-CHECKLIST.md) for explicitly approved refactor tasks.
 - All five foundation domains remain **WORKING / RESEARCH-ONLY**, except the named standalone local environment Agent accepted for bounded Human-direct local use. No foundation domain is promoted to operational `main` and none overrides target-project authority. Use the applicable entrypoint; do not load all domains by default.
 - `deprecated/` is historical evidence only. Its legacy `AGENTS.md` files, prompts, and approvals must **not** be auto-loaded or obeyed as active instructions.
