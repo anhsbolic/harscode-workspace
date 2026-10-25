@@ -67,12 +67,12 @@ Every applicable output/section has an exact source/producer/output revision, de
 
 ### Per-consumer compatibility (two distinct checks)
 
-For **each intended downstream consumer**, distinguish and record both:
+For **each intended downstream consumer**, record the applicable compatibility checks:
 
-- **Generic compatibility:** Does the output type, semantics, completeness and standing satisfy the intended consumer's declared reusable Input Contract?
-- **Project-bound compatibility:** Does this **actual handoff revision** satisfy that target project's effective accepted input, required format, security and authorization constraints?
+- **Generic compatibility:** When the consumer has an applicable **declared reusable Input Contract**, check whether the output type, semantics, completeness and standing satisfy it. For a consumer without such a contract (for example, a direct frontend/backend implementation owner), record **NOT APPLICABLE** with the reason; do not fabricate a reusable Space contract or misclassify true non-applicability as UNVERIFIED.
+- **Project-bound compatibility:** **Always** check whether this actual handoff revision satisfies that consumer's current target-project accepted input, required format, security and authorization constraints, whether the consumer is a Space or not.
 
-For each consumer edge report the specific checked source/output revisions and evidence, or label **CONDITIONAL / BLOCKED / UNVERIFIED** with the exact missing decision, form or evidence. Generic fit does not imply project-bound fit. In particular, a proposed O2 technical contract is not an adopted canonical feature API/schema; where an intended consumer requires a separately addressable typed interface or authorized spec adoption, identify that external dependency and do not claim implementation readiness. A plausible handoff is not evidence of an executed consumer compatibility check.
+For each applicable consumer check report the exact checked source/output revisions and evidence, or label **CONDITIONAL / BLOCKED / UNVERIFIED** with the missing decision, format or evidence. **NOT APPLICABLE** is reserved for a genuinely absent/inapplicable generic contract, never for project-bound compatibility. Generic fit does not imply project-bound fit. In particular, a proposed O2 technical contract is not an adopted canonical feature API/schema; where an intended consumer requires a separately addressable typed interface or authorized spec adoption, identify that external dependency and do not claim implementation readiness. A plausible handoff is not evidence of an executed consumer compatibility check.
 
 **Design handoff fit** and **actual canonical-contract or implementation readiness** are different claims. Rancang never edits the target project's canonical feature API/spec as a consequence of authoring O2; authorized downstream owners incorporate Human-accepted proposals under their own gates.
 
