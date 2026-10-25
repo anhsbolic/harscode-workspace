@@ -65,6 +65,15 @@ Security Findings are **independently owned evidence**, not additional mandatory
 
 Every applicable output/section has an exact source/producer/output revision, decision standing (approved external authority versus delegated proposal), review/evidence status, intended consumer and actionable limitations. Choose the target project's applicable representation; an index/section anchor is sufficient unless the consumer actually requires a separate typed handoff.
 
+### Per-consumer compatibility (two distinct checks)
+
+For **each intended downstream consumer**, distinguish and record both:
+
+- **Generic compatibility:** Does the output type, semantics, completeness and standing satisfy the intended consumer's declared reusable Input Contract?
+- **Project-bound compatibility:** Does this **actual handoff revision** satisfy that target project's effective accepted input, required format, security and authorization constraints?
+
+For each consumer edge report the specific checked source/output revisions and evidence, or label **CONDITIONAL / BLOCKED / UNVERIFIED** with the exact missing decision, form or evidence. Generic fit does not imply project-bound fit. In particular, a proposed O2 technical contract is not an adopted canonical feature API/schema; where an intended consumer requires a separately addressable typed interface or authorized spec adoption, identify that external dependency and do not claim implementation readiness. A plausible handoff is not evidence of an executed consumer compatibility check.
+
 **Design handoff fit** and **actual canonical-contract or implementation readiness** are different claims. Rancang never edits the target project's canonical feature API/spec as a consequence of authoring O2; authorized downstream owners incorporate Human-accepted proposals under their own gates.
 
 ## 6. Contract conformance and stopping rules
@@ -80,7 +89,24 @@ Distinguish PROPOSED, DELEGATED, HUMAN-ACCEPTED external revisions, UNRESOLVED a
 
 Human acceptance of exact bundle revision is separate from Rancang COMPLETE and from authorization of downstream canonical contracts or implementation. Runtime enforcement/readiness remains with the selected Harness and its owner, **not** established by this definition.
 
-## 7. Hard exclusions and quality floor
+## 7. Runtime binding requirements (external to Rancang)
+
+The selected Harness must demonstrate the material, applicable capabilities below before concrete authorized production. This is a **declarative requirement contract for the Harness owner**, not permission or a duty for Rancang to certify/install the runtime.
+
+| ID | Required capability and observable evidence |
+| --- | --- |
+| **R1 — Source fidelity** | Required Agents can inspect current effective originals, relevant standards, actual code evidence and exact source revisions rather than relying on summaries alone. |
+| **R2 — Bounded artifact writes** | Actual tool permissions/write containment respect scoped artifacts and protected paths, or the unenforced boundary is reported accurately and affected writes are held. |
+| **R3 — Scoped Specialist context** | Role-specific references, knowledge and permissions can be supplied without uncontrolled expansion of context or authority. |
+| **R4 — Independent assessments** | Security Specialist and Solution Reviewer can inspect original sources and exact producer outputs in meaningfully independent contexts. Naming two roles is not evidence of independence. |
+| **R5 — Versioned handoffs** | Producer, reviewer, source, output and decision revisions remain traceable across role returns, final bundle and durable project-owned state. |
+| **R6 — Enforceable Human gates** | Exact-revision/action-scoped Human approval and permission controls hold consequential, protected, Engineering Standard and scope-expansion actions until authorized. |
+| **R7 — Truthful executed evidence** | Actual tool/test/review observations and limits are distinguishable from planned, omitted, unverified or simulated work. |
+| **R8 — Observable Human-direct coordination** | Human can invoke and supervise the named Coordinator and observe material gates, results and resumable state; no Balad dispatch or hidden Orchestrator is assumed. |
+
+Assess actual runtime evidence under [Engineering Runtime Binding](../../../harness/runtime-binding.md), with depth proportional to the risks and requirements of the authorized assignment. Missing evidence is **NOT READY / UNVERIFIED**; definition approval does not prove security containment, independent context, resumption or executable readiness. This section specifies properties only and creates no mandatory scheduler, state engine, process topology or environment-preparation responsibility.
+
+## 8. Hard exclusions and quality floor
 
 No self-invocation, fabricated approvals or independent review, unapproved protected writes, Product/Design policy decisions, Design Standards creation, local environment setup, Harness certification, feature code/migrations/deployment, canonical feature contract mutation, or general project orchestration. Consequential external decisions go **to Human**; Rancang does not own routing/repair of another authority's artifacts.
 
