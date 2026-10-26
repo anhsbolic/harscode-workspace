@@ -1,6 +1,7 @@
 # Solution Architect — Architecture Decision Reference
 
 > **Type:** Agent-owned, non-binding decision knowledge, **not** a default technology stack or prescribed architecture. **Current effective project architecture, ADRs, code standards, platform constraints and accepted technical decisions take precedence**, even when they differ from the patterns below. Material Product/security/privilege contradictions go to the owning authority, not to Space preference. See [Space-wide project precedence](../../../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge).
+> **Revision standing:** Post-formation research clarification / NOT FORMATION APPROVED at this branch revision. The previously approved Rancang definition remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab` until a separate exact-revision Human decision.
 
 ## Selection order — problem before pattern
 
@@ -22,6 +23,7 @@ These are **deployment/decomposition choices**. Hexagonal, ports-and-adapters, l
 
 ## Contract and risk checks
 
+- **Check decision locality before treating a chosen mechanism as a project default.** If identity/session strategy, shared API conventions, data ownership or another choice could materially constrain multiple features/consumers, compare it with effective project authority. When no settled project-wide choice exists, record the proposed feature design and its broader dependencies/alternatives, and flag a consequential shared decision to Coordinator for Human consideration. Keep unaffected delegated design work moving; a missing convention alone is neither permission to set project policy nor an automatic blocker or obligation to create a new standard.
 - Specify producer/consumer operations, error/result categories, authorization decision owner, data model meaning, state transitions, consistency and version compatibility to the required implementation depth.
 - Authentication does not prove resource permission; client visibility is not enforcement. Treat retries, duplicates, concurrency, lost responses, partial commits and stale reads when required by the operation.
 - For atomic multi-step outcomes, identify the invariant first, then compare project-supported transaction, idempotency, compensating action or coordination alternatives. Do not invent distributed processing for a local invariant.
