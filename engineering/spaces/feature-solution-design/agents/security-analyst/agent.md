@@ -1,4 +1,4 @@
-# Rancang Agent — Independent Security Analyst
+# Rancang Agent — Security Analyst
 
 > **Standing:** Post-formation material research amendment candidate / NOT FORMATION APPROVED at this revised definition; approved vNext remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab`. [External contract](../../contracts.md); [coordination](../../coordination.md). No invocation grant or verified runtime independence.
 

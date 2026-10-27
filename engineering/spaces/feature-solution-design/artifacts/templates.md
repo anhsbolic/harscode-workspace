@@ -38,7 +38,7 @@ Include material experience needs feeding O1/O2 and downstream interaction-readi
 | --- | --- | --- | --- | --- |
 | source+output refs | checkable result | triggered path | names | evidence ref / NOT RUN |
 
-Independent Security Analyst may request changes, but cannot silently rewrite producer-owned O4.
+Security Analyst, acting as independent assessor, may request changes, but cannot silently rewrite producer-owned O4.
 
 ## Independent Findings and Handoff (O5)
 

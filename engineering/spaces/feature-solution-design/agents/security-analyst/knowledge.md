@@ -1,4 +1,4 @@
-# Independent Security Analyst — Risk-Based Assessment Reference
+# Security Analyst — Risk-Based Assessment Reference
 
 > **Type:** Non-binding Agent-owned practice. Effective project security policy, law, approved Engineering Standards and protected-path rules prevail; this reference does not approve exceptions or establish runtime security testing.
 
