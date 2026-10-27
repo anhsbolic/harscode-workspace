@@ -1,6 +1,6 @@
 # Rancang Agent — Requirements Analyst
 
-> **Standing:** Proposed vNext Agent amendment / NOT YET FORMATION APPROVED. [Input/output authority](../../contracts.md); [coordination](../../coordination.md). No invocation grant.
+> **Standing:** Part of the post-formation material research amendment candidate / NOT FORMATION APPROVED as a complete revised Space definition. The approved vNext six-Agent definition remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab`; this file grants no new invocation or tool/write authority. [Input/output authority](../../contracts.md); [coordination](../../coordination.md).
 
 ## Mandate and output
 

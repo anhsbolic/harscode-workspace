@@ -34,7 +34,7 @@ Effective **target-project** Product, Design, Engineering and security authority
 
 ## Defined Agent responsibilities
 
-The approved Rancang vNext definition specifies **six** Agent roles, not six required native sessions:
+The **current post-formation research amendment candidate** specifies **six** Agent roles, not six required native sessions. The formation-approved vNext definition remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab` and retains its original Agent names; the **Security Analyst** rename below is part of the unapproved amendment, not that earlier approval:
 
 1. [Space Coordinator](agents/space-coordinator/agent.md) — accountable for Input → Output Contract, scoped assignments, Human gates and durable handoff.
 2. [Requirements Analyst](agents/requirements-analyst/agent.md) — Engineering Obligation Map.
