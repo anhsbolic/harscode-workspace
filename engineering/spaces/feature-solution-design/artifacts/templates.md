@@ -16,6 +16,8 @@ Requirements Analyst translates binding inputs; it does not reconstruct upstream
 | --- | --- | --- | --- | --- |
 | ref | minimal sufficient proposed mechanism | consequential alternatives only | delegated/proposed/approved externally | revision/gate |
 
+Where material, include relevant actor/consumer experience constraints, feasible alternatives, total Engineering cost/benefit and disposition of consequential dissent in the O1 decision rationale; no mandatory debate record for straightforward choices.
+
 **Bounded Engineering Standard proposal** (conditional O1-linked payload): effective old rule/absence and revision; concrete deficiency; proposed minimum rule and owning project artifact; why feature-level choice cannot suffice; relevant security and consumer impacts; compatibility/migration/rollback where material; independent findings; exact Human proposal/approval/authorized persistence/effective revision. Never silently promote.
 
 ## Technical Interface and State Contracts (O2)
@@ -28,7 +30,7 @@ For each material consumer edge specify producer, expected operation/event, inpu
 | --- | --- | --- | --- | --- | --- |
 | actual assignment | authority | proposed support | consequence | conditional | ref |
 
-Apply approved Design Standards rather than creating missing Design policy.
+Include material experience needs feeding O1/O2 and downstream interaction-readiness gaps when relevant. Apply approved Design Standards rather than creating missing Design policy; low-fidelity exploration is conditional, not a mandatory new deliverable or permission to issue Design approval.
 
 ## Verification Obligations (O4)
 
@@ -42,8 +44,8 @@ Independent Security Specialist may request changes, but cannot silently rewrite
 
 **Security Findings (Security Specialist-owned):** original and exact proposal refs; risk/attack surface; severity/evidence; impacted consumer; requested producer safeguard/verification; limits and changed-edge re-assessment.
 
-**Solution Review (Reviewer-owned):** effective originals and exact X1/O1–O4/security findings checked; source conformance; contract/consumer/standards adequacy; evidence/review-independence limits; changed-edge re-review.
+**Solution Review (Reviewer-owned):** effective originals and exact X1/O1–O4/security findings checked; source conformance; bidirectional experience/technical adequacy, reasoned material feasibility/value-versus-cost assessment and trade-off recommendation where applicable; contract/consumer/standards adequacy; evidence/review-independence limits; changed-edge re-review.
 
-**Coordinator Handoff (Coordinator-owned):** resolved distinct assignment ID; source/standards/output exact revisions; accountable producers; applied Human gates and approved/not-effective Engineering Standard changes; consumer-specific restrictions; production result COMPLETE/PARTIAL/BLOCKED/FAILED; exact Human acceptance standing and next safe action.
+**Coordinator Handoff (Coordinator-owned):** resolved distinct assignment ID; source/standards/output exact revisions; accountable producers; applied Human gates and approved/not-effective Engineering Standard changes; material unresolved alternatives, Reviewer recommendation, dissent and exact required Human decision when applicable; consumer-specific restrictions; production result COMPLETE/PARTIAL/BLOCKED/FAILED; exact Human acceptance standing and next safe action.
 
 [Artifact envelope](README.md) · [Contract definitions](../contracts.md)
