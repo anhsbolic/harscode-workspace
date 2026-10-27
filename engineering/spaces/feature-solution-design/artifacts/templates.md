@@ -38,11 +38,11 @@ Include material experience needs feeding O1/O2 and downstream interaction-readi
 | --- | --- | --- | --- | --- |
 | source+output refs | checkable result | triggered path | names | evidence ref / NOT RUN |
 
-Independent Security Specialist may request changes, but cannot silently rewrite producer-owned O4.
+Independent Security Analyst may request changes, but cannot silently rewrite producer-owned O4.
 
 ## Independent Findings and Handoff (O5)
 
-**Security Findings (Security Specialist-owned):** original and exact proposal refs; risk/attack surface; severity/evidence; impacted consumer; requested producer safeguard/verification; limits and changed-edge re-assessment.
+**Security Findings (Security Analyst-owned):** original and exact proposal refs; risk/attack surface; severity/evidence; impacted consumer; requested producer safeguard/verification; limits and changed-edge re-assessment.
 
 **Solution Review (Reviewer-owned):** effective originals and exact X1/O1–O4/security findings checked; source conformance; bidirectional experience/technical adequacy, reasoned material feasibility/value-versus-cost assessment and trade-off recommendation where applicable; contract/consumer/standards adequacy; evidence/review-independence limits; changed-edge re-review.
 

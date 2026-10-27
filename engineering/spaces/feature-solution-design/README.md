@@ -40,7 +40,7 @@ The approved Rancang vNext definition specifies **six** Agent roles, not six req
 2. [Requirements Analyst](agents/requirements-analyst/agent.md) — Engineering Obligation Map.
 3. [Solution Architect](agents/solution-architect/agent.md) — solution decisions, technical contracts, applicable verification obligations and bounded Engineering Standards proposals.
 4. [Experience Specialist](agents/experience-specialist/agent.md) — Engineering Experience Contract and applicable verification obligations, not Design Standards.
-5. [Security Specialist](agents/security-specialist/agent.md) — independent security assessment and findings.
+5. [Security Analyst](agents/security-analyst/agent.md) — independent security assessment and findings.
 6. [Independent Solution Reviewer](agents/solution-reviewer/agent.md) — end-to-end contract/coherence assessment and review of security-finding disposition.
 
 Each defined responsibility needs a named accountable actor and actual evidence when assigned. Combining execution roles is a Harness-specific choice only where boundaries remain valid; **independent assurance cannot become producer self-review**. Security and review independence must be observed, never inferred from Agent names.
