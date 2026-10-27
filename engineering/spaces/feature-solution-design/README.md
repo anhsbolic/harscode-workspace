@@ -1,7 +1,7 @@
 # Rancang — Engineering Solution Design Space
 
-> **Current formation standing (administrative update, 2026-10-25):** **FORMATION APPROVED / RESEARCH-ONLY** applies only to immutable vNext six-Agent definition `9663a3fa73ac0101e66764d63af8711f291a66ab`; see [exact vNext Human approval](formation-approval-2026-10-25.md). Earlier formed v3 definition `4b49d0dd0db74cf34a927cadc938ae724676a75a` retains its [historical approval](formation-approval-2026-10-21.md).
-> **This branch revision:** **MATERIAL RESEARCH AMENDMENT CANDIDATE / NOT FORMATION APPROVED** following the approved immutable vNext definition. The prior formation approval does not transfer to these semantic edits.
+> **Current formation standing (administrative update, 2026-10-27):** **FORMATION APPROVED / RESEARCH-ONLY** applies to the exact revised vNext definition `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`; see [current approval](formation-approval-2026-10-27.md). The preceding vNext `9663a3fa73ac0101e66764d63af8711f291a66ab` retains its [historical approval](formation-approval-2026-10-25.md).
+> **This branch revision:** POST-APPROVAL ADMINISTRATIVE STATUS/NAVIGATION update only. The approval applies to the immutable definition at `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`, not later semantic changes.
 > **Runtime:** **NOT READY / NOT VERIFIED**. This revision does not install a Harness, authorize invocation, or change the operational `main` baseline.
 > **Capability ID:** feature-solution-design. **Human-facing name:** Rancang.
 
@@ -34,7 +34,7 @@ Effective **target-project** Product, Design, Engineering and security authority
 
 ## Defined Agent responsibilities
 
-The **current post-formation research amendment candidate** specifies **six** Agent roles, not six required native sessions. The formation-approved vNext definition remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab` and retains its original Agent names; the **Security Analyst** rename below is part of the unapproved amendment, not that earlier approval:
+The **revised formation-approved research definition** at `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` specifies **six** Agent roles, not six required native sessions. The preceding `9663a3fa73ac0101e66764d63af8711f291a66ab` definition retains its historical **Independent Security Specialist** role name:
 
 1. [Space Coordinator](agents/space-coordinator/agent.md) — accountable for Input → Output Contract, scoped assignments, Human gates and durable handoff.
 2. [Requirements Analyst](agents/requirements-analyst/agent.md) — Engineering Obligation Map.
@@ -47,4 +47,4 @@ Each defined responsibility needs a named accountable actor and actual evidence 
 
 ## Status boundary
 
-Formation approval has been recorded only for immutable definition `9663a3fa73ac0101e66764d63af8711f291a66ab`, not later semantic revisions. **Formation does not establish verified runtime installation, Agent independence, invocation or write permission.** Every concrete invocation, Engineering Standard revision, final bundle acceptance, downstream specification adoption, implementation and any promotion to operational `main` requires its own applicable authority and evidence. Historical examples and pilots remain evidence, not policy.
+Revised formation approval is recorded only for immutable definition `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`; the earlier `9663a3fa73ac0101e66764d63af8711f291a66ab` approval remains historical. Later semantic revisions require their own Human decision. **Formation does not establish verified runtime installation, Agent independence, invocation or write permission.** Every concrete invocation, Engineering Standard revision, final bundle acceptance, downstream specification adoption, implementation and any promotion to operational `main` requires its own applicable authority and evidence. Historical examples and pilots remain evidence, not policy.
