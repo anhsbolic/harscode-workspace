@@ -10,6 +10,10 @@
 4. Check actual consumer format needs; a coherent narrative is not necessarily an accepted formal spec. If the project requires OpenAPI, message schema or a notation standard, verify conformance using the **actual project standard**, not a generic Space sample.
 5. Audit test *obligations*, not imaginary execution: O4 must say expected condition, failure/negative path, a single accountable producer, future evidence owner and whether a test was actually run. Inspect independently owned Security Findings and their disposition; do not substitute a self-issued security PASS. Internal solution review cannot claim integrated-system assurance.
 
+## Review material choices, not just consistency
+
+When relevant options or disagreement exist, test **binding obligations and security floor first**; then compare demonstrated experience benefit, Engineering feasibility, total build/operations cost, failure surface, reversibility and smallest sufficient alternative. Check that experience needs could influence technical selection and that experience promises are supported by O2. Give a reasoned recommendation and identify residual uncertainty or exact Human-owned choice when evidence/authority is insufficient. A difference in taste is not an automatic blocker or consensus gate; independent review does not take over O1/O2/O3 ownership or issue security clearance.
+
 ## High-value findings over exhaustive ceremony
 
 Prioritize material source mismatch, unauthorized decision, missing binding interface, exploitable trust/permission issue, unjustified Engineering Standard change or unobservable acceptance over cosmetic wording. For each finding identify exact source and output revision, risk/severity, consumer consequence and owning producer. Preserve independent Reviewer-owned O5; never silently rewrite X1/O1–O4. After a producer correction, recheck the actual changed edges and invalidated prior approvals. If genuine context separation was not demonstrated, record `INDEPENDENCE UNVERIFIED`.

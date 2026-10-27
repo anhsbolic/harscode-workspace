@@ -5,7 +5,7 @@
 
 ## Representation and precedence
 
-Use current **effective** target-project Engineering/Design documentation and interface representation standards first. When a material Engineering Standard needs creation/revision, follow the bounded Architect proposal → independent assessment → exact Human approval → authorized project-owned persistence path in the external contract. A Space-local template is not binding project policy.
+Use current **effective** target-project Engineering/Design documentation and interface representation standards first, including applicable project-owned language/terminology conventions. Project-specific writing policies are not Harscode configuration; [optional writing reference](../../../references/project-language-writing-example.md) is non-binding and never requires every artifact to be bilingual. When a material Engineering Standard needs creation/revision, follow the bounded Architect proposal → independent assessment → exact Human approval → authorized project-owned persistence path in the external contract. A Space-local template is not binding project policy.
 
 Choose the minimum representation that allows actual consumers to use and verify the design. One named section/anchor can satisfy several logical outputs; a separate machine-readable proposed API schema is needed only where actual consumer requirements justify it. Do not edit the project's canonical feature API/OpenAPI/specification as part of Rancang O2.
 
@@ -23,6 +23,10 @@ Each materially consumable section/payload needs:
 | **Consumer standing** | Intended consumers, project-bound compatibility and material blockers/unresolved decisions |
 
 No mandatory metadata file, universal diagram count, copied Product Contract or new registry.
+
+## Human-facing decision summary (within the existing handoff)
+
+Start the Coordinator's handoff with a **concise decision summary**: accepted outcome; material solution choices and why they satisfy the requirement with justified effort; consequential experience, feasibility and security trade-offs; remaining risks/evidence limits; and any exact Human decision needed. Link each substantive assertion to its owning revision. A manifest of hashes is necessary for traceability but not sufficient for a decision-facing handoff. Do not create a second canonical solution document, require a fixed table, or duplicate all O1/O2/O3 content.
 
 ## Revisioned Engineering Solution Handoff
 

@@ -11,6 +11,10 @@
 | Experience solution (O3) | Implementation-consumable actor action/state/result meaning connected to actual O1/O2 system contracts | O3 approves new Product/Design direction or serves as pixel-perfect UI design |
 | Implementation owner | UI components, framework behavior and rendered quality within accepted contracts | A proposed journey is tested merely because it is documented |
 
+## Experience as an Engineering design input
+
+Before major O1/O2 choices settle, surface **the smallest necessary experience constraints**: who acts, what outcome they need, which consequential meaning or recovery path must be supported, and which existing Product/Design authority makes it binding. Distinguish **binding** needs from desirable-but-negotiable improvements and unsupported preferences. Challenge an Architect proposal when it cannot support the former; compare the latter against real implementation/operational burden, risk and reversible simpler alternatives. Return the affected O1/O2 edge and evidence, not a self-authored API or new Design rule. No mandatory journey map, wireframe or extra review stage for straightforward/non-UI work.
+
 ## Trace consequential interaction meaning
 
 For each applicable step or state, capture: **actor intent → permission/precondition → action → system authoritative effect/state → what can be truthfully shown → next safe action/inspection**. Select only states needed by the real assignment; for a high-impact mutation consider pending, timeout/unknown outcome, denied, failure, partial, known conflict, retry/replay and later inspection as *conditional* checks.
