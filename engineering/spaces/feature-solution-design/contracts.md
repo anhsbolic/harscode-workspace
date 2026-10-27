@@ -1,6 +1,6 @@
 # Rancang — External Input / Output Contract
 
-> **Standing:** Material Rancang amendment candidate on the research branch. Original formation approval applies only to immutable v3 definition; this revision is **NOT YET FORMATION APPROVED**. This document does not itself authorize invocation, source writes, or runtime claims.
+> **Standing:** Post-formation material research amendment candidate / **NOT FORMATION APPROVED**. The approved six-Agent vNext definition remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab`; semantic edits on this branch require a separate exact-revision Human formation decision. This document grants no invocation, source writes, or runtime claims.
 > **Owner:** Reusable Rancang Engineering Solution Design capability; effective project inputs, standards and accepted artifacts remain owned by the target project.
 
 ## 1. Input Contract: meaning versus acquisition
@@ -15,6 +15,8 @@ Rancang has **one logical Input Contract**, not a requirement that Human or Prod
 | **Human Authorization** | Resolved bounded assignment, tools/actions, write destinations, intended consumers, supervision mode and consequential gates | Obtained through Human-direct invocation. A short identifier is enough to begin permitted discovery; it is **not** blanket production or write authorization. |
 
 **Input acceptance** checks the relevant declared work input's scope, approval/authorization standing, revision, and sufficient behavioral/technical obligations for a bounded design task. It does **not** audit an upstream Product/Design process, relitigate settled meaning, or reconstruct extra Product policy from old research. The owning approved artifact remains binding in its declared scope.
+
+For user-facing assignments, relevant accepted actor goals, journey consequences and applicable Design constraints are first-class Engineering design inputs, not after-the-fact labels for a selected mechanism. For technical-only assignments, derive the relevant operational/consumer consequences without inventing a user journey or requiring UI exploration. Neither case grants Rancang new Product/Design authority or mandates additional upstream artifacts.
 
 **Work readiness** separately assesses applicability of standards and technical facts. Absence of a file is not necessarily absence of a needed rule; absence of a *material* Design/Product decision cannot be filled with Engineering guesses. Lack of an Engineering standard is not an automatic refusal: evaluate whether a delegated solution suffices, then consider bounded Engineering Standards Evolution.
 
@@ -50,16 +52,18 @@ Requirements Analyst derives a compact, revision-anchored **Engineering Obligati
 
 ## 5. Output Contract: Engineering Solution Handoff
 
-One coherent, revision-pinned bundle must provide **applicable logical coverage** of the following, with named accountable producers. The legacy anchors X1/O1–O5 remain navigation/trace labels during this amendment; semantic names define the obligations and **do not mandate separate files or execution phases**.
+One coherent, revision-pinned bundle must provide **applicable logical coverage** of the following, with named accountable producers. Relevant experience needs and feasibility/cost constraints must inform material solution selection **before those decisions are treated as settled**, with iterative Architect–Experience challenge where useful; output anchors do not dictate a sequential production order. The legacy anchors X1/O1–O5 remain navigation/trace labels during this amendment; semantic names define the obligations and **do not mandate separate files or execution phases**.
 
 | Semantic output (legacy anchor) | Accountable owner | Acceptance obligation |
 | --- | --- | --- |
 | **Engineering Obligation Map (X1)** | Requirements Analyst | Accepted input → bounded engineering obligations, freedoms, exclusions, negative paths and source links |
-| **Shared Solution Decisions (O1)** | Solution Architect | Material design choices, rationale, cross-consumer invariants; standards proposals/revision refs when needed |
+| **Shared Solution Decisions (O1)** | Solution Architect | Material design choices, rationale, relevant experience/consumer constraints, feasibility and proportional alternatives/trade-offs; standards proposals/revision refs when needed |
 | **Technical Interface & State Contracts (O2)** | Solution Architect | Consumer/producer behavior, data/state ownership, authorization, consistency, results/errors/unknowns and typed proposals when actually required |
-| **Engineering Experience Contract (O3)** | Experience Specialist | User-visible consequence/state semantics reconciled with Product/Design authority and actual O2 guarantees |
+| **Engineering Experience Contract (O3)** | Experience Specialist | Relevant actor/consumer experience needs informing O1/O2, truthful action/state/consequence semantics reconciled with actual O2 guarantees, and material downstream interaction-readiness gaps where applicable; no mandatory wireframe or UX design approval |
 | **Verification Obligations (O4)** | One named accountable **producer per obligation** | Checkable success/negative/risk outcomes, intended verification owner, performed vs not-run evidence |
-| **Independent Findings and Handoff (O5)** | Security Specialist owns security findings; Solution Reviewer owns independent solution review; Coordinator owns bundle assembly and Human-facing standing | Original/effective source and exact-output review, security-finding disposition, consumer fit, revisioned index, limits and Human gates |
+| **Independent Findings and Handoff (O5)** | Security Specialist owns security findings; Solution Reviewer owns independent solution review; Coordinator owns bundle assembly and Human-facing standing | Original/effective source and exact-output review, material experience-versus-Engineering trade-off recommendation, security-finding disposition, consumer fit, unresolved decision/limits, revisioned index and Human gates |
+
+Design/readiness consideration is proportional: a material user-facing interaction ambiguity must have a visible owner and disposition under effective project Design rules; Rancang may explain or compare bounded alternatives but does not impose mandatory low-fidelity artifacts, issue Design approval, or take over downstream implementation. A non-UI task needs only materially relevant consumer/operational experience checks.
 
 Security Findings are **independently owned evidence**, not additional mandatory file count or an automatically passed security gate. Security Specialist documents proportionate assessment and limitations; risk-heavy scope demands deeper scrutiny. Solution Reviewer checks disposition and coherent overall contract coverage, not a substitute self-made security verdict. If independence or original-source access cannot be demonstrated, it remains **UNVERIFIED**.
 
@@ -78,9 +82,9 @@ For each applicable consumer check report the exact checked source/output revisi
 
 ## 6. Contract conformance and stopping rules
 
-Coordinator is accountable for the **external Input → Output Contract**, including assignment identity, source/output joins, **confirming and recording one accountable producer per applicable O4 obligation**, internal Agent returns, required independent review and an inspectable Human-facing bundle. Producers may propose ownership, but do not unilaterally assign other Agents. Coordinator does not silently write producers' substantive decisions or rewrite independent findings.
+Coordinator is accountable for the **external Input → Output Contract**, including assignment identity, source/output joins, **confirming and recording one accountable producer per applicable O4 obligation**, internal Agent returns, required independent review and an inspectable Human-facing bundle. Material Architect–Experience disagreement requires bounded examination, an independent Reviewer recommendation and accountable producer disposition; consensus is not a universal gate. If a consequential decision remains unresolved beyond delegated authority or sufficient evidence, hold only the affected edge and present precise alternatives, trade-offs, recommendation, dissent and required Human decision. Producers may propose ownership, but do not unilaterally assign other Agents. Coordinator does not silently write producers' substantive decisions or rewrite independent findings.
 
-- **COMPLETE**: all applicable production, reconciliation, verification-obligation and required independent assessment/review obligations are fulfilled **and no unresolved material finding defeats a binding obligation or consumer-critical solution contract**. Non-blocking findings/limits may remain explicitly recorded. Completing a review or listing an unresolved blocking finding is not sufficient. Not Human acceptance or implementation readiness.
+- **COMPLETE**: all applicable production, reconciliation, verification-obligation and required independent assessment/review obligations are fulfilled **and no unresolved material finding or consequential undecided trade-off defeats a binding obligation or consumer-critical solution contract**. Non-blocking findings/limits may remain explicitly recorded. Completing a review or listing an unresolved blocking finding is not sufficient. Not Human acceptance or implementation readiness.
 - **PARTIAL**: required output coverage/evidence or correction remains incomplete but meaningful, accurately scoped deliverables exist; identify the affected consumer/obligation and unresolved finding.
 - **BLOCKED**: material authority, authorization, unresolved blocking finding or critical dependency prevents the affected production/consumer-ready claim; unaffected authorized work may continue.
 - **FAILED**: attempted production did not succeed.
