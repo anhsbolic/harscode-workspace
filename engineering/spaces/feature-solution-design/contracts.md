@@ -69,6 +69,14 @@ Security Findings are **independently owned evidence**, not additional mandatory
 
 Every applicable output/section has an exact source/producer/output revision, decision standing (approved external authority versus delegated proposal), review/evidence status, intended consumer and actionable limitations. Choose the target project's applicable representation; an index/section anchor is sufficient unless the consumer actually requires a separate typed handoff.
 
+### Consumer entrypoints and consumption boundaries
+
+The Coordinator's **existing revision-pinned handoff** is the navigation entrypoint for each **known intended downstream consumer**, not a second source of solution truth. Using the target project's durable work/assignment reference, a consumer must be able to locate the applicable handoff and exact source, output, review and **Human bundle-acceptance** revisions without relying on chat history or knowing Rancang's physical file layout. Preserve a discoverable pointer in the target-project-owned assignment state or an existing effective work record; do **not** create a mandatory global registry.
+
+For each known intended consumer, make a concise, navigable **consumer entrypoint** indicating: (1) which producer-owned artifact/section anchors and original authority refs it should read, with exact revisions; (2) the proposed/accepted standing of the **exact bundle** and applicable review limits; (3) compatibility evidence and remaining consumer-specific format, canonical contract or Design/Engineering dependencies; and (4) what it may inspect or prepare now versus what requires separate Human acceptance, protected-write or implementation authorization. Link owning artifacts rather than copy their obligations or technical contracts into the handoff. One section or compact mapping is sufficient; **no mandatory `backend-input.md`, per-consumer file, fixed schema or X1/O1–O5 filename convention**.
+
+A proposed or production-COMPLETE bundle is available for **inspection and assessment**, not binding implementation. Human acceptance of the exact bundle does not itself authorize canonical API/spec adoption, implementation or runtime claims. If a future consumer or reusable Space Input Contract was not known or checked, report **NOT CHECKED / UNVERIFIED** for that consumer's actual fit and let its receiving owner assess the effective input; never invent compatibility or treat an unformed Space as a current requirement. Revalidate only affected consumer edges when source, bundle or approval revisions change.
+
 ### Per-consumer compatibility (two distinct checks)
 
 For **each intended downstream consumer**, record the applicable compatibility checks:

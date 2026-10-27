@@ -28,6 +28,12 @@ No mandatory metadata file, universal diagram count, copied Product Contract or 
 
 Start the Coordinator's handoff with a **concise decision summary**: accepted outcome; material solution choices and why they satisfy the requirement with justified effort; consequential experience, feasibility and security trade-offs; remaining risks/evidence limits; and any exact Human decision needed. Link each substantive assertion to its owning revision. A manifest of hashes is necessary for traceability but not sufficient for a decision-facing handoff. Do not create a second canonical solution document, require a fixed table, or duplicate all O1/O2/O3 content.
 
+## Consumer entrypoints (within the existing handoff)
+
+For each **known intended** consumer, point from the exact bundle to the *relevant owning artifacts/sections*, source authority and revisions; show whether the bundle is only proposed or Human-accepted, which consumer compatibility checks were actually performed, outstanding format/spec adoption and authorization requirements, and the **next permitted action**. A backend consumer may need O1/O2, backend-relevant O3/O4 and Security Findings; a frontend consumer may need O3, O2, relevant O4 and Design authority. These are **illustrative slices**, not fixed per-Space input contracts or new mandatory files.
+
+Make the bundle locatable from target-project-owned durable work/assignment references. Downstream must reopen effective project authority and inspect exact producer content; the handoff is a pointer, **not a substitute contract**. An unknown future consumer is not pre-certified; its actual declared Input Contract and project-bound requirements are assessed when the consumer exists. Do not equate Rancang COMPLETE, exact Human acceptance, formal API adoption and permission to implement.
+
 ## Revisioned Engineering Solution Handoff
 
 Coordinator returns one index/payload containing the **Engineering Obligation Map (X1)**, applicable **Solution Decisions (O1)**, **Technical Contracts (O2)**, **Experience Contract (O3)**, **Verification Obligations (O4)**, plus **independent Security Findings and Solution Review and Human-facing bundle metadata (O5)**.
