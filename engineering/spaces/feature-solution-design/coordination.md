@@ -19,7 +19,13 @@ Coordinator owns assignment resolution, logical input acceptance, applicability/
 
 Before consequential production: confirm formed exact definition revision, bounded input standing, required constraints and project refs, intended consumers, actual permitted tools/write surfaces, Human approval, and usable externally provided Harness/runtime evidence. **Rancang does not certify the Harness.** No incomplete initial Human utterance is a reason to refuse permitted discovery.
 
-Each assigned internal responsibility receives only relevant original refs, revisioned input, expected output and owner/destination, permitted actions, evidence requirements and stop criteria. Coordinator reconciles changed dependencies, does not rewrite findings, and may protect unaffected work from local blockers. One concrete accountable producer owns each verification obligation.
+Each assigned internal responsibility receives only relevant original refs, revisioned input, expected output and owner/destination, permitted actions, evidence requirements and stop criteria. For relevant user-facing work, the Coordinator enables experience inputs to reach material technical selection in time; this is not a required sequential phase or separate handoff. Coordinator reconciles changed dependencies, does not rewrite findings, and may protect unaffected work from local blockers. One concrete accountable producer owns each verification obligation.
+
+### Bounded Engineering–Experience challenge and unresolved decisions
+
+- Architect owns O1/O2 mechanisms; Experience owns O3 and surfaces relevant actor/consumer needs early enough to influence material technical choices. They challenge each other against accepted meaning, effective Design/Engineering standards, technical feasibility, security and total Engineering cost. No mandatory debate, fixed iteration count, consensus vote or UX artifact is required when the solution is straightforward.
+- For a consequential disagreement, accountable producers explain the competing approaches, what binding requirements each satisfies, evidence, downside and reversible options. The independent Solution Reviewer evaluates material experience benefit against implementation/operational burden and risks, checks Security Findings, and returns a reasoned recommendation or an evidence/authority gap. The Reviewer does not take ownership of O1/O2/O3 or decide Product/Design policy.
+- Within delegated Engineering discretion, the owning producer records a defensible choice and rationale, including material dissent if relevant; Reviewer assesses it. A mere preference disagreement is not an automatic Human gate. If a material decision cannot be justified or exceeds delegated authority, the Coordinator holds only the dependent edge and presents exact alternatives, rationale, reviewer recommendation, remaining dissent, impact and requested Human decision. Persist any authority-changing decision in its owning project artifact before relying on it.
 
 ## 3. Six defined roles
 
@@ -32,7 +38,7 @@ These are six **semantic actors**, not a requirement for six native sessions. Ac
 | [Solution Architect](agents/solution-architect/agent.md) | X1, effective technical baseline, applicable Design/security constraints | O1/O2, designated O4, bounded Engineering Standards proposal/update where authorized | Product/Design policy, feature implementation, independent review |
 | [Experience Specialist](agents/experience-specialist/agent.md) | X1, effective Product/Design constraints, current O1/O2 | O3 and designated O4 | Design Standards or UI implementation |
 | [Security Specialist](agents/security-specialist/agent.md) | Effective security obligations, exact proposals/standards change | Independent Security Findings and affected re-assessment | Owning/writing the proposals assessed |
-| [Solution Reviewer](agents/solution-reviewer/agent.md) | Effective originals, X1/O1–O4, Security Findings and consumers | Independent overall O5 review findings | Producer edits, overriding Security Findings |
+| [Solution Reviewer](agents/solution-reviewer/agent.md) | Effective originals, X1/O1–O4, Security Findings, material trade-offs and consumers | Independent overall O5 findings and reasoned trade-off recommendation | Producer edits, overriding Security Findings or Human-owned decisions |
 
 Required independent Security/Solution assessments may be proportional to actual risk, but findings and limits must be truthfully represented. A role name alone does not prove independent execution. Unselected role obligations must either be fulfilled under a justified permitted combination or marked inapplicable/blocked with rationale; never silently vanish.
 
@@ -55,7 +61,7 @@ After each authorized production invocation, preserve minimum reconstructable **
 
 - Project/repository/ref, distinct **Rancang assignment identity**, upstream work identifiers, exact formed Space definition revision, scoped objective, consumers, authorization and writable destinations.
 - Accepted authoritative work input, effective standards and technical evidence refs/revisions; Agent ownership and actual artifact revisions (X1/O1–O5 plus separately owned Security Findings).
-- Human decisions, proposed/approved Engineering Standards changes and exact effective revisions; performed versus NOT RUN evidence; actual review independence/limitations; affected blockers and next safe action.
+- Human decisions, proposed/approved Engineering Standards changes and exact effective revisions; material unresolved alternative/reviewer recommendation and affected edge if any; performed versus NOT RUN evidence; actual review independence/limitations; affected blockers and next safe action.
 
 On resume, re-open state **and real current authority**, compare each material dependency and approval scope; reuse only still-valid outputs/reviews and permitted actions. A change invalidates only affected joins. Chat memory, an earlier assistant answer, or a guessed default branch is not durable project state. If state is missing or unreadable, report the gap and offer a new bounded assignment.
 
