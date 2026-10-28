@@ -22,6 +22,29 @@ Before a **concrete Engineering Space invocation**, identify:
 
 Relevant requirements depend on the **approved Space definition**. For historical Rancang reference these were R1–R8; a new candidate cannot claim runtime fitness just because it lists them.
 
+## Local workspace state-path routing (research guidance)
+
+When a task needs to **locate or propose storage for Harscode assignment state and working solution artifacts**, read the operator-owned `<workspace-root>/.harscode-local.yaml`, **if actually accessible**. All relative values resolve from the **directory containing that file**, never from the current shell directory. This local config chooses a *candidate physical destination*, **not** artifact authority, approved scope, automatic directory creation, write permissions or a native Codex configuration. Project-owned source/accepted-output authority and project instructions still prevail.
+
+For a selected `projects.<project_id>`, resolve the location using this order:
+
+1. Explicit `projects.<project_id>.harscode_state_root` override, when configured.
+2. Otherwise `paths.harscode_state_root/<project_id>` as the workspace-level default **candidate**, if configured and accessible.
+3. If no trustworthy candidate can be resolved, report the path gap and ask for the specific destination during assignment authorization. **Do not guess** a project `docs/` directory or silently fall back to an unrelated historical run.
+
+For example, the local Kencleng research override may be:
+
+```yaml
+projects:
+  kencleng:
+    root: ./kencleng
+    harscode_state_root: ./kencleng/docs/engineering
+```
+
+With the example override, an authorized `ORG-01` Rancang assignment can **propose** a new project-conventional location under `kencleng/docs/engineering/`, distinct from earlier run records. A future operator may choose `./harscode-state/kencleng` instead. Neither move changes where effective Product/Design/Engineering decisions are owned. External storage is usable only if its durability, access, versioning and a discoverable project-owned reference satisfy the actual consumers; otherwise report the gap rather than claim downstream readiness. Existing run artifacts are never migrated automatically.
+
+**Awareness versus access:** Balad may consult the resolved path for **advisory discovery**; Human-direct Coordinator resolves the assignment's exact writable destination and provides scoped paths to Specialists. Each Agent that materially needs path context must use this same resolution rule, but **need not load the entire YAML/model registry**. Verify real files, path normalization/symlinks, repository ownership and effective tool permissions before a consequential action. A configured path never authorizes a write, bypasses Human gates or makes an independent review claim true.
+
 ## Execution modes
 
 Default to direct Human-authorized **supervised** work. Autonomous/delegated execution needs separate explicit authorization and effective Human gates. A normal Coordinator session can establish readiness before requesting actual production; do not invent a separate mandatory preflight-only invocation.

@@ -26,7 +26,7 @@ A short request is enough. Do not require a long kickoff form, fixed PRD, task d
 
 ## Handoff and continuity
 
-Any material handoff should specify its owner, exact effective source/revision, desired outcome, dependency state, next consumer, evidence and unresolved decisions. Product/Design accepted meaning remains in target-project owning files; Space execution state belongs to its authorized execution boundary. A dashboard or chat summary is a pointer, never a substitute authority.
+Any material handoff should specify its owner, exact effective source/revision, desired outcome, dependency state, next consumer, evidence and unresolved decisions. Product/Design accepted meaning remains in target-project owning files; Space execution state belongs to its authorized execution boundary. A dashboard or chat summary is a pointer, never a substitute authority. For advisory discovery of Harscode assignment state/artifacts, Balad follows [workspace-local state-path routing](../harness/runtime-binding.md#local-workspace-state-path-routing) using the operator-owned `.harscode-local.yaml` when available; it neither assumes a fixed path nor invokes or writes for a Space.
 
 Use concise, decision-ready writing. A fresh discussion starts from authoritative durable state; do not claim continuity from model memory. Do not impose fresh-session rituals for Product/Design work absent a concrete risk or user need.
 
