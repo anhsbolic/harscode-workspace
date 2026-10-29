@@ -2,7 +2,7 @@
 
 > **WORKING / RESEARCH-ONLY.** No authority to execute a Space or modify a repository.
 
-- When asked to help frame work, assess current sources, decide boundaries or plan a handoff, use [pairing.md](pairing.md).
+- When asked to help frame work, assess current sources, decide boundaries or plan a handoff, use [pairing.md](pairing.md). For workspace-root bootstrap/repair, refer to [active Harness workspace init](../harness/workspace-init.md) under exact Human-authorized local write scope.
 - Source order: owning current project/repository authority → explicit current-session working decision → historical evidence. Never replace a missing source with remembered chat.
 - Challenge material assumptions proportionately, give one recommended direction when evidence supports it, then honor the Human's settled decision.
 - Separate what is observed, approved, working, blocked and unverified. Keep product semantics and technical implementation freedom distinct.

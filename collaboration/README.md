@@ -2,7 +2,7 @@
 
 > **Status:** WORKING / RESEARCH-ONLY; not operational `main` policy.
 
-**Owner:** Reusable Human–AI partnership and cross-domain advisory conduct. See [Pairing guidance](pairing.md) and [Collaboration AGENTS](AGENTS.md).
+**Owner:** Reusable Human–AI partnership and cross-domain advisory conduct. See [Pairing guidance](pairing.md) and [Collaboration AGENTS](AGENTS.md). Workspace-root routing/config bootstrap is owned by [Harness workspace init](../harness/workspace-init.md), not by Balad's Space-dispatch behavior.
 
 ## Purpose
 

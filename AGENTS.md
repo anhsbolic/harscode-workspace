@@ -9,6 +9,7 @@
 - All five foundation domains remain **WORKING / RESEARCH-ONLY**, except the named standalone local environment Agent accepted for bounded Human-direct local use. No foundation domain is promoted to operational `main` and none overrides target-project authority. Use the applicable entrypoint; do not load all domains by default.
 - `deprecated/` is historical evidence only. Its legacy `AGENTS.md` files, prompts, and approvals must **not** be auto-loaded or obeyed as active instructions.
 - Current product/design facts and approvals belong to the target project. Preserve source revisions and authority precedence.
+- For workspace-root `AGENTS.md` / `.harscode-local.yaml` initialization or repair, use [active Harness workspace-init guidance](harness/workspace-init.md), not the frozen legacy `pairing/` bootstrap. Do not alter local operator files without explicit scoped authorization.
 - For a task that needs Harscode assignment state/artifact paths, consult [local workspace path routing](harness/runtime-binding.md#local-workspace-state-path-routing) and the actual operator-owned workspace-root `.harscode-local.yaml` when accessible; project-specific destination overrides are location hints, not authorization. Do not load the full local model registry for unrelated work.
 
 ## Hard boundaries

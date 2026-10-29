@@ -2,7 +2,7 @@
 
 > **WORKING / RESEARCH-ONLY.** Not an executable runtime configuration or permission grant.
 
-- Begin at [Harness README](README.md); consult [runtime-binding.md](runtime-binding.md) for requirements and [codex.md](codex.md) only for actual Codex use.
+- Begin at [Harness README](README.md). For operator-local workspace bootstrap or repair, use [workspace-init.md](workspace-init.md); consult [runtime-binding.md](runtime-binding.md) for state/runtime binding and [codex.md](codex.md) only for actual Codex use.
 - Verify installed/available native capabilities and current target project policy before proposing exact flags, model, effort, skills, tools, sandbox or subagent topology.
 - Do not modify Product/Design/Engineering contracts to match harness convenience. Route unsatisfied mandatory properties to the Human as readiness gaps.
 - Technical sandbox or automation permission is **not** scope authorization. Obtain and preserve exact Human permission for protected writes and consequential transitions.

@@ -38,10 +38,10 @@ For example, the local Kencleng research override may be:
 projects:
   kencleng:
     root: ./kencleng
-    harscode_state_root: ./kencleng/docs/engineering
+    harscode_state_root: ./kencleng/harscode-state
 ```
 
-With the example override, an authorized `ORG-01` Rancang assignment can **propose** a new project-conventional location under `kencleng/docs/engineering/`, distinct from earlier run records. A future operator may choose `./harscode-state/kencleng` instead. Neither move changes where effective Product/Design/Engineering decisions are owned. External storage is usable only if its durability, access, versioning and a discoverable project-owned reference satisfy the actual consumers; otherwise report the gap rather than claim downstream readiness. Existing run artifacts are never migrated automatically.
+With the example override, an authorized `ORG-01` Rancang assignment can **propose** a new location under `kencleng/harscode-state/`, distinct from earlier run records. A future operator may choose `./harscode-state/kencleng` instead. Neither move changes where effective Product/Design/Engineering decisions are owned. External storage is usable only if its durability, access, versioning and a discoverable project-owned reference satisfy the actual consumers; otherwise report the gap rather than claim downstream readiness. Existing run artifacts are never migrated automatically.
 
 **Awareness versus access:** Balad may consult the resolved path for **advisory discovery**; Human-direct Coordinator resolves the assignment's exact writable destination and provides scoped paths to Specialists. Each Agent that materially needs path context must use this same resolution rule, but **need not load the entire YAML/model registry**. Verify real files, path normalization/symlinks, repository ownership and effective tool permissions before a consequential action. A configured path never authorizes a write, bypasses Human gates or makes an independent review claim true.
 

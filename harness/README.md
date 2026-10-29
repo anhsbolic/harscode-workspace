@@ -8,6 +8,7 @@ Translate **already-owned** Engineering Space requirements and repository protec
 
 | Need | Read |
 | --- | --- |
+| Bootstrap or repair workspace-root `AGENTS.md` and `.harscode-local.yaml` | [Workspace init](workspace-init.md) |
 | Bind a concrete engineering assignment to a verified runner or resolve local state paths | [Runtime binding](runtime-binding.md) |
 | Codex-specific concerns and verification triggers | [Codex adapter](codex.md) |
 | Evidence-bounded Rancang supervised pilot posture | [Rancang pilot posture (2026-10-27)](rancang-pilot-posture-2026-10-27.md) |
