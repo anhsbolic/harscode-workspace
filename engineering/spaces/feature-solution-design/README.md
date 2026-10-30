@@ -1,7 +1,7 @@
 # Rancang — Engineering Solution Design Space
 
-> **Current formation standing (administrative update, 2026-10-27):** **FORMATION APPROVED / RESEARCH-ONLY** applies to the exact revised vNext definition `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`; see [current approval](formation-approval-2026-10-27.md). The preceding vNext `9663a3fa73ac0101e66764d63af8711f291a66ab` retains its [historical approval](formation-approval-2026-10-25.md).
-> **This branch revision:** POST-APPROVAL ADMINISTRATIVE STATUS/NAVIGATION update only. The approval applies to the immutable definition at `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`, not later semantic changes.
+> **Approved baseline (2026-10-27):** **FORMATION APPROVED / RESEARCH-ONLY** applies only to definition `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` ([approval](formation-approval-2026-10-27.md)); the earlier `9663a3fa73ac0101e66764d63af8711f291a66ab` remains historical.
+> **Current branch:** FR-01–FR-04 amendment candidate — **NOT FORMATION APPROVED** until separate exact-revision Human approval. Post-approval administrative records do not extend the approved semantics.
 > **Runtime:** **NOT READY / NOT VERIFIED**. This revision does not install a Harness, authorize invocation, or change the operational `main` baseline.
 > **Capability ID:** feature-solution-design. **Human-facing name:** Rancang.
 
@@ -15,7 +15,7 @@ Rancang can prepare and, with exact scoped Human authorization, persist **bounde
 
 Experience and Architect substantively challenge each other's relevant assumptions; independent review examines material value-versus-cost trade-offs, without requiring consensus, a fixed phase order, or a low-fidelity artifact for every task. Unresolved consequential decisions beyond delegated authority go to Human through the Coordinator; unaffected work may continue.
 
-Rancang never assumes Product or Design authority; it does not produce feature code, migrations, deployment, canonical feature/API specification updates, environment setup, or Harness qualification. Human acceptance of its exact handoff revision is separate from production completion and implementation authorization.
+Rancang never assumes Product or Design authority; it does not produce feature code, migrations, deployment, canonical feature/API specification updates, environment setup, or Harness qualification. Human acceptance of its exact handoff revision is separate from production completion and implementation authorization. If an actual known consumer requires a shared machine-readable interface, the proposed O2 must be deterministic enough for independent implementation, with normative behavior and verification obligations for guarantees schemas cannot express. At closeout, provide one effective, self-contained handoff set; temporary check machinery and historical files need not remain current-tree deliverables.
 
 A small local task may use a simpler permitted Engineering path. An upstream commitment need not map one-to-one to a Rancang assignment.
 

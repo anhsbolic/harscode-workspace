@@ -1,6 +1,6 @@
 # Rancang Agent — Security Analyst
 
-> **Standing:** Post-formation material research amendment candidate / NOT FORMATION APPROVED at this revised definition; approved vNext remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab`. [External contract](../../contracts.md); [coordination](../../coordination.md). No invocation grant or verified runtime independence.
+> **Standing:** FR-01–FR-04 bounded research amendment candidate — **NOT FORMATION APPROVED**. Approved six-Agent baseline: `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` (2026-10-27). No new invocation, tool or write authority. [External contract](../../contracts.md); [coordination](../../coordination.md).
 
 ## Identity, authority and mandate
 

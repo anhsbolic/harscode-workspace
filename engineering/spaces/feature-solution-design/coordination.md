@@ -1,6 +1,6 @@
 # Rancang — Coordination and Durable Continuity
 
-> **Standing:** Rancang vNext material amendment candidate / NOT YET FORMATION APPROVED. [External contract](contracts.md) governs input/output semantics. This file does not install or invoke Agents.
+> **Standing:** FR-01–FR-04 bounded research amendment candidate — **NOT FORMATION APPROVED**. Approved baseline: `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`. [External contract](contracts.md) governs semantics; no runtime/invocation grant.
 > **Owner:** Rancang internal accountability. Human directly addresses [Space Coordinator](agents/space-coordinator/agent.md); no external agent, including Balad, has a dispatch channel.
 
 ## 1. Human-direct start and resume
@@ -54,6 +54,14 @@ Required independent Security/Solution assessments may be proportional to actual
 | **Final bundle acceptance** | Treating Rancang's output as Human-accepted binding handoff | Human acceptance of exact bundle revision; separately authorize downstream implementation/spec adoption |
 
 Default is supervised. Human may steer continue/revise/stop in current scope without converting an ordinary checkpoint into approval. Autonomous execution requires separate explicit Human authorization; no mandatory gate disappears. Standards proposals do not silently become project policy; feature API/spec adoption is separately downstream owned.
+
+### Final package and administrative acceptance boundary
+
+Before completion, Coordinator verifies one effective handoff/contract set, independent findings, source/output/approval pins, and a truthful verification summary. Actually required machine-readable O2 must be complete for an affected documentary consumer-ready claim. Do not block documentation-only completion on a future/unformed receiving Space, unexecuted cold-discovery, canonical adoption or runtime implementation; mark these distinct checks NOT CHECKED / UNVERIFIED.
+
+One-off scripts, generated views and verbose check reports are working evidence unless actual reproducibility or consumer requirements justify retention. Finish relevant checks before cleanup, preserve sufficient methods/results/limits/provenance, and retire superseded editable outputs from the effective view while retaining reconstructable historical checkpoints and separately owned decisions. No fixed folder layout, registry, automated cleaner or permanent tooling is implied.
+
+Human acceptance binds an **exact substantive bundle**. For authorized administrative moves/consolidation, preserve original acceptance and identify the distinct packaging revision/hash; compare semantics and repair links, manifest and navigation. Packaging alone never grants new substantive approval, receiver acceptance, canonical adoption or runtime readiness.
 
 ## 5. Durable assignment identity and resumption
 

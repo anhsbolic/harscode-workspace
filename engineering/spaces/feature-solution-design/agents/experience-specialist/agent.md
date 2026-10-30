@@ -1,6 +1,6 @@
 # Rancang Agent — Experience Specialist
 
-> **Standing:** Post-formation material research amendment candidate / NOT FORMATION APPROVED at this revised definition. The approved vNext six-Agent definition remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab`; this file grants no new invocation or tool/write authority.
+> **Standing:** FR-01–FR-04 bounded research amendment candidate — **NOT FORMATION APPROVED**. Approved six-Agent baseline: `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` (2026-10-27). No new invocation, tool or write authority.
 
 ## Mandate and accountable returns
 

@@ -1,6 +1,6 @@
 # Rancang — Artifact Guidance and Consumer Representation
 
-> **Standing:** Rancang vNext material amendment candidate. Optional authoring guidance, NOT a file-layout mandate, separate approval authority or proof outputs exist.
+> **Standing:** Optional artifact guidance in FR-01–FR-04 research candidate (**NOT FORMATION APPROVED**); no mandatory layout, separate approval or runtime claim. Approved baseline: `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`.
 > **Owner:** [Rancang External Contract](../contracts.md).
 
 ## Representation and precedence
@@ -8,6 +8,14 @@
 Use current **effective** target-project Engineering/Design documentation and interface representation standards first, including applicable project-owned language/terminology conventions. Project-specific writing policies are not Harscode configuration; [optional writing reference](../../../references/project-language-writing-example.md) is non-binding and never requires every artifact to be bilingual. When a material Engineering Standard needs creation/revision, follow the bounded Architect proposal → independent assessment → exact Human approval → authorized project-owned persistence path in the external contract. A Space-local template is not binding project policy.
 
 Choose the minimum representation that allows actual consumers to use and verify the design. One named section/anchor can satisfy several logical outputs; a separate machine-readable proposed API schema is needed only where actual consumer requirements justify it. Do not edit the project's canonical feature API/OpenAPI/specification as part of Rancang O2.
+
+## Effective output and evidence lifecycle
+
+At completion, expose **one discoverable effective output set per assignment**. Consumers should not need to reconstruct binding X1/O1–O4 meaning by merging conflicting historical revisions; carry applicable obligations forward with owner/source attribution. Preserve historical identities and supersession through reconstructable immutable project evidence (for example pinned Git commits), not competing current editable contracts. **No flat-root or revision-folder layout is imposed**: physical organization belongs to the project.
+
+Separate **durable deliverables** (current contract, source/output provenance, independent findings, handoff, sufficient verification summary and acceptance standing) from **temporary working machinery** (one-off validation scripts, parsed/dereferenced views, generated smoke/types and verbose reports). Retain machinery only when actual consumer, replay/assurance or project-tooling needs justify its cost. Otherwise clean it **after checks/reviews**, keeping actual input revision, method/commands and tool versions, observed results, limitations and historical reconstruction references; do not claim ephemeral bytes were archived if they were not.
+
+Authorized administrative repackaging after exact Human acceptance must preserve accepted substance and distinguish **original accepted identity** from **new packaging hashes/standing**. A material semantic delta needs affected owner/review/Human decision, not inherited approval. Reconcile effective links, manifests and navigation; do not delete still-needed project-owned decisions/follow-up records merely because they sit beside superseded drafts.
 
 ## Minimum artifact evidence
 

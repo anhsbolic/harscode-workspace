@@ -1,7 +1,7 @@
 # Solution Architect — Architecture Decision Reference
 
 > **Type:** Agent-owned, non-binding decision knowledge, **not** a default technology stack or prescribed architecture. **Current effective project architecture, ADRs, code standards, platform constraints and accepted technical decisions take precedence**, even when they differ from the patterns below. Material Product/security/privilege contradictions go to the owning authority, not to Space preference. See [Space-wide project precedence](../../../../space-formation.md#project-standards-take-precedence-over-space-base-knowledge).
-> **Revision standing:** Post-formation research clarification / NOT FORMATION APPROVED at this branch revision. The previously approved Rancang definition remains pinned to `9663a3fa73ac0101e66764d63af8711f291a66ab` until a separate exact-revision Human decision.
+> **Revision standing:** Non-binding guidance in FR-01–FR-04 research candidate (**NOT FORMATION APPROVED**); approved baseline `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`. Current project authority takes precedence.
 
 ## Selection order — problem before pattern
 
