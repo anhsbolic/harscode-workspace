@@ -21,6 +21,8 @@ For a proposed reusable capability, document only what changes the decision:
 
 Keep reusable definitions **project-neutral but strict**. Project-specific API routes, policy, schema or feature choices belong in concrete assignment or target repository. Do not require a fixed PRD/TRD or one source-file format.
 
+A Space may be technology- or framework-specific when that boundary materially improves correctness, effectiveness, or execution efficiency. Reusability is evaluated within the declared capability boundary; project-neutrality does not require technology-neutrality. Do not broaden a Space for hypothetical cross-technology reuse.
+
 ## Project standards take precedence over Space base knowledge
 
 For **every** Engineering Space and Agent, reusable technical knowledge, architecture patterns, checklists, sample artifacts and preferred methods are **non-binding defaults**. Before choosing a method or representation, inspect the current target project's owning, effective, approved engineering/design standards, relevant code/conventions and explicit assignment constraints. **Follow applicable project-owned standards even when they contradict Space-local preferences.** Explain the selected project convention in output evidence; do not silently impose an alternative because the Space guidance calls it a best practice.
