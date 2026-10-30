@@ -1,7 +1,7 @@
 # Rancang — Engineering Solution Design Space
 
-> **Approved baseline (2026-10-27):** **FORMATION APPROVED / RESEARCH-ONLY** applies only to definition `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` ([approval](formation-approval-2026-10-27.md)); the earlier `9663a3fa73ac0101e66764d63af8711f291a66ab` remains historical.
-> **Current branch:** FR-01–FR-04 amendment candidate — **NOT FORMATION APPROVED** until separate exact-revision Human approval. Post-approval administrative records do not extend the approved semantics.
+> **Current formation standing (2026-10-30):** **FORMATION APPROVED / RESEARCH-ONLY** applies to the immutable FR-01–FR-04 definition `6dfc4be790c526026529ed7ef397c61567809de4` ([approval](formation-approval-2026-10-30.md)). Earlier definitions `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` ([2026-10-27 record](formation-approval-2026-10-27.md)) and `9663a3fa73ac0101e66764d63af8711f291a66ab` remain historically approved.
+> **This branch revision:** Post-approval administrative status/navigation only; the exact Human approval binds `6dfc4be`, not later semantic edits.
 > **Runtime:** **NOT READY / NOT VERIFIED**. This revision does not install a Harness, authorize invocation, or change the operational `main` baseline.
 > **Capability ID:** feature-solution-design. **Human-facing name:** Rancang.
 
@@ -34,7 +34,7 @@ Effective **target-project** Product, Design, Engineering and security authority
 
 ## Defined Agent responsibilities
 
-The **revised formation-approved research definition** at `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` specifies **six** Agent roles, not six required native sessions. The preceding `9663a3fa73ac0101e66764d63af8711f291a66ab` definition retains its historical **Independent Security Specialist** role name:
+The **current formation-approved research definition** at `6dfc4be790c526026529ed7ef397c61567809de4` specifies **six** Agent roles, not six required native sessions. The prior `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` definition also has six roles; the historical `9663a3fa73ac0101e66764d63af8711f291a66ab` used **Independent Security Specialist** as a role name:
 
 1. [Space Coordinator](agents/space-coordinator/agent.md) — accountable for Input → Output Contract, scoped assignments, Human gates and durable handoff.
 2. [Requirements Analyst](agents/requirements-analyst/agent.md) — Engineering Obligation Map.
@@ -47,4 +47,4 @@ Each defined responsibility needs a named accountable actor and actual evidence 
 
 ## Status boundary
 
-Revised formation approval is recorded only for immutable definition `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`; the earlier `9663a3fa73ac0101e66764d63af8711f291a66ab` approval remains historical. Later semantic revisions require their own Human decision. **Formation does not establish verified runtime installation, Agent independence, invocation or write permission.** Every concrete invocation, Engineering Standard revision, final bundle acceptance, downstream specification adoption, implementation and any promotion to operational `main` requires its own applicable authority and evidence. Historical examples and pilots remain evidence, not policy.
+Current formation approval is recorded only for immutable definition `6dfc4be790c526026529ed7ef397c61567809de4`; the earlier `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` and `9663a3fa73ac0101e66764d63af8711f291a66ab` approvals remain historical. Later semantic revisions require their own Human decision. **Formation does not establish verified runtime installation, Agent independence, invocation or write permission.** Every concrete invocation, Engineering Standard revision, final bundle acceptance, downstream specification adoption, implementation and any promotion to operational `main` requires its own applicable authority and evidence. Historical examples and pilots remain evidence, not policy.
