@@ -12,6 +12,7 @@ Produce and verify software solutions against current project authority: solutio
 | Create/revise a reusable engineering production capability | [Space formation](space-formation.md) |
 | Prepare bounded work and test that delivered software matches accepted contracts | [Production and verification](production-and-verification.md) |
 | Local development environment readiness (standalone Agent) | [Accepted Agent definition](agents/local-development-environment-preparation/agent.md) · [Guidance](agents/local-development-environment-preparation/guidance.md). **Human-direct local use accepted on this research branch**; not promoted to `main`. |
+| NextJS Builder implementation capability (research formation candidate) | [NextJS Builder entrypoint](spaces/nextjs-builder/README.md) · [I/O contract](spaces/nextjs-builder/contracts.md) · [formation review packet](spaces/nextjs-builder/formation-review.md). **NOT FORMATION APPROVED / NOT RUNTIME READY.** |
 | Rancang solution-design capability (research-formed) | [Rancang entrypoint](spaces/feature-solution-design/README.md) · [Current FR-01–FR-04 formation approval](spaces/feature-solution-design/formation-approval-2026-10-30.md) |
 | Mandatory routing and authorization rules | [Engineering AGENTS](AGENTS.md) |
 
