@@ -1,7 +1,7 @@
 # NextJS Builder — Formation Review Packet
 
-> **Status:** FINAL CANDIDATE FOR HUMAN EXACT-REVISION REVIEW — NOT FORMATION APPROVED.
-> **Capability:** `nextjs-builder`, Harscode research-only `refactor/harscode-foundation`. Persisting this packet is a request for review, not self-approval or permission to run Agents.
+> **Historical candidate packet:** reviewed and **FORMATION APPROVED / RESEARCH-ONLY** by Anhar on 2026-11-02 for exact definition `323d8c4a19eb1ae497066ff47ce092ee19f0ab94`. See [Human approval record](formation-approval-2026-11-02.md). The candidate content below is retained as original formation rationale; no runtime verification is implied.
+> **Capability:** `nextjs-builder`, Harscode research-only `refactor/harscode-foundation`. This packet was written before Human approval and does not itself authorize Agent invocation.
 
 ## 1. Demand and bounded value
 
@@ -50,8 +50,8 @@ At Kencleng research checkpoint `pilot/station5-c1-space-only@5a5ca4c7128913d49f
 
 Cold downstream discovery **F-01 NOT RUN**; no implicit real backend test or project delivery claims. This is a *candidate validation plan*, not execution or a Kencleng change.
 
-## 7. Decision requested
+## 7. Historical decision request (fulfilled on 2026-11-02)
 
-Anhar reviews the exact committed definition contents ([README](README.md), [contract](contracts.md), [coordination](coordination.md), four Agent profiles and their applied knowledge). Possible verdicts: approve exact immutable definition for **FORMATION APPROVED / RESEARCH-ONLY**, request targeted revision and re-review, or reject. Record the exact commit SHA, scope, limits and decision in a *separate Human approval record* **after** review. Approval will not establish runtime readiness, invocation permission, actual review independence, Kencleng implementation or promotion to operational `main`.
+Anhar accepted the exact immutable candidate `323d8c4a19eb1ae497066ff47ce092ee19f0ab94` for **FORMATION APPROVED / RESEARCH-ONLY** on 2026-11-02. The authoritative decision and its limits are in the [separate formation approval record](formation-approval-2026-11-02.md). Approval does not establish runtime readiness, invocation permission, actual review independence, Kencleng implementation or promotion to operational `main`.
 
-**Provenance:** working decisions were explicitly discussed and approved in the current formation conversation. These are not a substitute for the subsequent exact-revision Human acceptance.
+**Provenance:** prior working decisions are now covered by the exact-revision Human formation acceptance recorded separately. This administrative update is not a substantive formation amendment.

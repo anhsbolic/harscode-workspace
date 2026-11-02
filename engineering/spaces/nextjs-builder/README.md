@@ -1,9 +1,9 @@
 # NextJS Builder — Next.js Frontend Implementation Space
 
-> **Standing:** FORMATION CANDIDATE — READY FOR HUMAN EXACT-REVISION REVIEW; **NOT FORMATION APPROVED**. This is research-only Harscode Foundation, not operational `main`.
+> **Standing (2026-11-02):** **FORMATION APPROVED / RESEARCH-ONLY**, binding the exact immutable definition `323d8c4a19eb1ae497066ff47ce092ee19f0ab94` ([Human approval record](formation-approval-2026-11-02.md)). The definition itself predates the approval; later administrative labels are not new formation revisions. Not operational `main`.
 > **Capability ID:** `nextjs-builder`. **Technology boundary:** Next.js frontend implementation.
 > **Runtime:** NOT VERIFIED / NOT AUTHORIZED. Definition persistence is not invocation, tool access, implementation, testing or deployment permission.
-> **Decision owner:** Anhar. The four defined Agent roles, Primary Outcome, Anti-Slop commitment and explicit API-mode direction are approved *working decisions* from formation discussion; exact Git revision formation acceptance is still a separate Human decision.
+> **Decision owner:** Anhar. The four roles, Primary Outcome, Intentional Craft / Anti-Slop and explicit API-mode direction are included in the exact Human-approved formation above; no authorization to invoke follows automatically.
 
 ## Mission and coherent external result
 
@@ -27,7 +27,7 @@ Parallel mock frontend and backend assignments can finish separately. A later re
 
 ## Defined responsibilities
 
-The four roles are a **working formation decision**, not proof of four native independent runtime sessions:
+The exact Human-approved formation defines four roles; this is **not** proof of four native independent runtime sessions:
 
 1. [Space Coordinator](agents/space-coordinator/agent.md) — external input/output, mode/authorization, producer joins, Human gates and O4 handoff.
 2. [Next.js Engineer](agents/nextjs-engineer/agent.md) — single accountable O1/O2 implementation owner, relevant executed checks and corrections.
@@ -52,9 +52,10 @@ These are formation candidate commitments. Detailed clauses live in the [externa
 
 - [External Input / Output Contract](contracts.md) — I1–I5, O1–O4, API modes, SOP, verification claims and consumer compatibility.
 - [Coordination and internal handoffs](coordination.md) — ownership, independent findings, runtime conditions, gates, resume and stopping rules.
-- [Formation review packet](formation-review.md) — formation concerns, bounded ORG-01 validation example, unverified evidence and exact approval request.
+- [Formation approval record](formation-approval-2026-11-02.md) — exact Human decision, approved definition revision, retained limits and validation posture.
+- [Formation review packet](formation-review.md) — original candidate rationale and bounded ORG-01 validation example; its pre-approval text is historical.
 - [Harscode Space formation](../../space-formation.md) · [Production and verification](../../production-and-verification.md) · [Runtime binding](../../../harness/runtime-binding.md).
 
 **Hard exclusions:** Product/Design policy invention, unauthorized canonical shared API/schema changes, backend ownership, backend protected/security implementation, global orchestration, setup-service actions beyond authorization, arbitrary asset/brand canonicalization, deploy/release claims and Human acceptance. Real integration and endpoint availability do not authorize production deployment.
 
-**Standing boundary:** Candidate is ready for Anhar's repository review, **not** Human exact-revision approval. If the definition changes materially, obtain review/approval of the changed exact revision. Formation approval, a real invocation, Harness readiness, project writes, final implementation acceptance and delivery are separate.
+**Standing boundary:** Anhar approved the exact `323d8c4a19eb1ae497066ff47ce092ee19f0ab94` definition on 2026-11-02. If the definition changes materially, obtain review/approval of the changed exact revision. Formation approval, an actual invocation, Harness readiness, project writes, final implementation acceptance and delivery remain separate.
