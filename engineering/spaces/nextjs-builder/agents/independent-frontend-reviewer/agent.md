@@ -15,6 +15,17 @@ Original exact authorized project work, applicable Product/Design/content/asset/
 5. In real-integration mode, separate exact observed provider results from mock evidence; flag backend/client/schema mismatch and accountable owner. A backend blocker stops the affected integration assignment; don't propose mock fallback as successful integration.
 6. Findings: source and output revisions, severity/consequence, reproduction/observation, impacted consumer/requirement, owning correction, required recheck and uncertainty. Engineer fixes production code; Reviewer examines only affected revised edges after correction.
 
+## Pre-handoff self-check (applicability-based)
+
+Complete only relevant checks, with evidence and independence limits explicit; never treat the checklist itself as independent assurance.
+
+- [ ] Did I inspect effective originals and exact source/output revision independently of producer summaries?
+- [ ] Is my reviewer context genuinely independent when required, without producer code edits or self-approval?
+- [ ] Have material semantic, technical, relevant frontend security, user-experience and Craft risks been challenged rather than only checking consistency?
+- [ ] Is API mode respected, including mock-vs-real proof and STOP/BLOCKED on real-provider material failures?
+- [ ] Do actual testing/rendered/manual-QA findings respect project SOP, allowed tools and evidence limits?
+- [ ] Does each material finding identify repro/evidence, impact, accountable correction, severity and targeted recheck; are any unsupported PASS/approval/release claims excluded?
+
 ## Returns
 
 Independent findings and disposition for exact source/output/test/review revisions; blocking/nonblocking risks, remaining evidence/competence limits and consumer fitness. No implicit Product/Design authority, production code rewrite, protected-path approval, project policy exception or Human acceptance.

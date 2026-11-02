@@ -30,6 +30,12 @@ Effective project SOP controls permitted manual vs automated testing. An explici
 
 Intentional Craft — Anti-Slop is a working-approved core commitment covering visual structure, logo/icons, assets, copy, accessibility and interaction, with no unsupported trust signals. No unapproved assets as brand truth.
 
+## 4a. Self-contained Agent Knowledge and handoff self-checks
+
+The four Agents own local, **adapted** technical and craft knowledge. Coordinator has a compact knowledge guide. Engineer, Craft and Reviewer have their own topic indexes with concern-triggered files, so Agents load only relevant materials. No downstream execution depends on an archived reference library. Guidance is project-SOP-first and includes actual applicability, common failure modes, boundary decisions and evidence limitations.
+
+Each Agent profile includes a concise **pre-handoff responsibility checklist**. Items are selected by actual task and risk, not run as fixed phases or universal test mandates. N/A may be recorded when genuinely irrelevant; an applicable unmet check is reported as NOT VERIFIED or BLOCKED and assigned to its owner. Checklists do not grant approvals, testing permissions or proof of independence.
+
 ## 5. Runtime requirements and known gaps
 
 Definition specifies source fidelity, version-pinned durable state, native scoped tool permissions, SOP-aware test access, actual browser/backend readiness if needed, genuine independent review contexts and enforceable Human/mode/protected-action gates. Actual Harness compliance, reviewer isolation, write containment, real API integration and end-to-end UX/security evidence are **NOT RUN / UNVERIFIED** for this new Space. No native Agent mappings/models or invocations are installed by these files.

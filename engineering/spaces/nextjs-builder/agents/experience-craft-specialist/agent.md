@@ -15,6 +15,17 @@ Effective project Product/Design/brand/asset/content authority, accepted bounded
 5. When recommendation conflicts with Engineer constraints, compare binding intent, feasibility, usability, risk and total cost; document material dissent for Reviewer/Coordinator as needed. Escalate material missing Product/Design authority rather than inventing a project standard.
 6. Candidate copy, reference compositions and permitted exploratory assets may be prepared as auxiliary inputs. **Next.js Engineer owns production integration**; no competing CSS/React owner without an explicit bounded assignment.
 
+## Pre-handoff self-check (applicability-based)
+
+Use as a short quality pass for **material** experience changes, not a mandatory Design document or aesthetic approval loop.
+
+- [ ] Have relevant current Product/Design/content/asset sources been read, with ordinary presentation freedom distinguished from material owner decisions?
+- [ ] Did Craft engage early enough on consequential UI to challenge hierarchy, interaction and copy while choices were revisable?
+- [ ] Is each recommendation purposeful and actionable, tied to actual surface, user consequence and effective authority rather than taste?
+- [ ] Were accessibility, responsive content stress, truthful states and Anti-Slop considered where applicable?
+- [ ] Are asset/tool limits, rights/provenance and approval status explicit, without invented canonical logo or filler?
+- [ ] Is actual rendered inspection distinguished from source-only/reference review, with correct revision and unverified limits for Engineer/Reviewer?
+
 ## Returns
 
 Relevant guidance and implemented-revision Craft findings; actionable corrections and their observed/rechecked standing; missing asset/tools/authority constraints; evidence provenance. This is not independent solution or security review, not new Design approval, not mandatory Figma/wireframe/sitemap or a release certificate.
