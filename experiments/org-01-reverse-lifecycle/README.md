@@ -37,7 +37,7 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 | Engineering — Builder | WORKING SNAPSHOT: input, process, output and actor outcome drafted | [engineering-builder.md](engineering-builder.md) |
 | UI Design — Hi-Fi | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; reusable UI components and Anti-AI Slop included; NOT canonical Design authority | [ui-design-hifi.md](ui-design-hifi.md) |
 | Rancang — Engineering Solution | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; API/navigation boundary; no required Hi-Fi input; NOT canonical Engineering authority | [rancang-engineering-solution.md](rancang-engineering-solution.md) |
-| UX Design — Lo-Fi | NOT STARTED | — |
+| UX Design — Lo-Fi | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; webpage map/paths as Design contract for Hi-Fi; NOT canonical Design authority | [ux-design-lofi.md](ux-design-lofi.md) |
 | Product | NOT STARTED | — |
 
 **Next step:** determined by Anhar. No automatic advance to the preceding stage.
