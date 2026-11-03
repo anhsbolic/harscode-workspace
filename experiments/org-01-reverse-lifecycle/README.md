@@ -17,7 +17,7 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 1. **Work backwards, one stage at a time.** Start with the Engineering — Builder target **Output & Outcome**, then list its **Process**, then the concrete **Inputs**. Move to the preceding stage only when Anhar directs it.
 2. Use **Input → Process → Output → Outcome** for each stage. Keep descriptions high-level and concrete (e.g. API Contract, Hi-Fi screens, web assets, functional frontend), not abstract capability descriptions.
 3. For inputs, distinguish **Wajib** from **Nice to have** for the chosen case. Required information need not mean one separate document per item.
-4. Discuss one stage or one substantive question at a time. Capture the current working result, including assumptions and unresolved decisions; do not treat conversational agreement as project-level approval.
+4. Discuss one stage or one substantive question at a time. Capture the current working result, including assumptions and unresolved decisions; do not treat conversational agreement as project-level approval. **Persist repository updates only after a stage is completed and Anhar explicitly authorizes the write.**
 5. Follow **decision-specific sufficiency, proportional to consequence** (working decision): hypotheses may support bounded exploration if marked; consequential downstream choices need relevant authority/approval proportional to risk. Do not demand completion of all Product Definition for an unrelated next decision.
 6. Keep **Product consequential sequence** distinct from **Design interaction sequence**. Concrete UI and technical mechanics are not silently promoted into Product policy.
 7. Only after this illustrative chain is understood should Anhar decide whether to compare it with existing Harscode/Kencleng artifacts or run real execution evidence. No such comparison or audit is part of the current step.
@@ -35,7 +35,7 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 | Stage in candidate sequence | Experiment standing | Record |
 | --- | --- | --- |
 | Engineering — Builder | WORKING SNAPSHOT: input, process, output and actor outcome drafted | [engineering-builder.md](engineering-builder.md) |
-| UI Design — Hi-Fi | WORKING SNAPSHOT: output, outcome, process; reusable UI components included; input NOT YET DEFINED | [ui-design-hifi.md](ui-design-hifi.md) |
+| UI Design — Hi-Fi | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; reusable UI components and Anti-AI Slop included; NOT canonical Design authority | [ui-design-hifi.md](ui-design-hifi.md) |
 | Rancang — Engineering Solution | NOT STARTED | — |
 | UX Design — Lo-Fi | NOT STARTED | — |
 | Product | NOT STARTED | — |
