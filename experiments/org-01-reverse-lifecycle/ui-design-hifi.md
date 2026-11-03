@@ -1,57 +1,79 @@
 # ORG-01 — UI Design / Hi-Fi
 
-> **Status:** WORKING EXPERIMENT SNAPSHOT — output and process only; input not yet discussed.
-> **Scope:** Hypothetical target for one actor; not accepted Design authority, no UI implementation, no source audit.
-> **Decision owner:** Anhar. **Recorded:** 2026-11-03.
+> **Status:** FINAL WORKING MODEL FOR THIS EXPERIMENT — approved by Anhar for recording on 2026-11-03; **NOT canonical Harscode policy, NOT project Design approval, NOT user-tested**.
+> **Scope:** Illustrative ORG-01 design for a single actor, without auditing or comparing existing ORG-01 documents or implementation.
+> **Owner of experiment decisions:** Anhar. **Branch:** `refactor/harscode-foundation` (research only).
 
-**Actor:** Calon Pembentuk Organisasi.
+**Aktor:** Calon Pembentuk Organisasi.
 
-**Target:** A concrete, visually coherent, understandable and accessible high-fidelity interface design for the actor to form an organization and understand the meaning of becoming its first internal Owner.
+**Tujuan:** Menghasilkan desain antarmuka pembentukan organisasi yang jelas, intuitif, accessible, responsive, konsisten secara visual, dan berkualitas.
 
-## 1. OUTPUT
+## 1. INPUT
 
-1. **Hi-Fi Screen Designs** — organization entry, data entry, review, relevant authentication continuation, and creation result screens.
-2. **Interactive Prototype** — clickable simulation of the actor's primary path and relevant alternate states.
-3. **Responsive Designs** — desktop and mobile layouts.
-4. **UI Interaction States** — loading, input validation, success, failure, empty states when relevant, and uncertain result.
-5. **UI Components & Styles** — form controls, buttons, feedback patterns, typography, colors and spacing.
-6. **Final UI Copywriting** — Indonesian labels, instructions, descriptions and consequential feedback messages.
-7. **Visual Assets** — relevant logos, icons, illustrations and images actually used in the proposed interface.
-8. **Reusable UI Component Library (new or updated as necessary)** — shared components, variants and states used consistently across Hi-Fi screens and prototype; existing components should be reused before creating new ones.
+| Input konkret | Kebutuhan |
+| --- | --- |
+| **UX Flow Diagram** — alur pembentukan organisasi, navigation, review, submit, dan hasil | **Wajib** |
+| **Lo-Fi Wireframes** — struktur layar, penempatan informasi, dan navigasi | **Wajib** |
+| **Product Requirements & Business Rules** — aturan pembentukan, kewenangan `Owner`, keberhasilan dan kegagalan | **Wajib** |
+| **Screen Content & Information** — informasi organisasi, form fields, penjelasan kewenangan dan pesan penting | **Wajib** |
+| **UI States & Interaction Requirements** — default, loading, validation, success, error dan uncertain result | **Wajib** |
+| **Brand & Visual Guidelines** — typography, colors, visual identity dan design principles | **Wajib*** |
+| **Responsive & Accessibility Requirements** — desktop, mobile, contrast, keyboard, focus dan readability | **Wajib** |
+| **Design Quality Criteria / Anti-AI Slop Guidelines** — visual quality, information density, purposeful visuals dan natural copy | **Wajib** |
+| **Existing Design System & UI Component Library** — components, variants, styles dan tokens yang sudah ada | **Wajib jika tersedia** |
+| **Web Assets** — logo, icons, illustrations, images, fonts | **Sesuai kebutuhan desain** |
+| **Visual References / Moodboard** — referensi gaya visual dan composition | **Nice to have** |
+| **Usability Research / User Feedback** — evidence kebutuhan atau kesulitan pengguna | **Nice to have** |
 
-**Practical boundary:** The library is a *Design-level* artifact specifying visual and interaction behavior. It is not implemented framework code. No requirement to build a large new library if existing components and a few local elements suffice.
+*Jika Brand Guidelines belum ada, diperlukan arahan atau kebebasan eksplisit untuk menentukan visual direction. `Wajib` berarti informasi/materialnya harus cukup, tidak harus satu dokumen terpisah. Research yang tersedia tetap dipertimbangkan secara proporsional; status *nice to have* bukan izin mengabaikan evidence yang relevan.*
 
-## 2. OUTCOME (DESIGN-LEVEL TARGET)
+## 2. PROCESS
 
-For the calon pembentuk organisasi, the proposed interface should be:
+1. **Screen & Content Planning** — menentukan screens, content hierarchy, dan informasi yang ditampilkan.
+2. **Visual Direction** — menentukan typography, colors, visual style, composition, dan brand expression.
+3. **Reusable UI Component Design & Management** — reuse existing components; create/extend jika justified; define variants, states, responsive behavior; maintain component library.
+4. **Hi-Fi Screen Design** — mendesain form, review, navigation, authentication continuation, dan result screens.
+5. **Responsive Design** — mendesain desktop/mobile layouts dan adaptasi komponen.
+6. **Interaction & UI States Design** — mendesain default, loading, validation, success, failure, dan unknown states.
+7. **UI Copywriting & Visual Assets** — menyiapkan Bahasa Indonesia yang natural dan visual assets yang diperlukan.
+8. **Interactive Prototyping** — membuat clickable prototype main flow dan relevant alternative states.
+9. **Design Review & Refinement** — visual dan interaction review, accessibility, usability walkthrough, **Anti-AI Slop review**, Human feedback, dan refinement.
 
-1. **Clear** — the actor understands how to begin.
-2. **Intuitive** — steps and available actions are comprehensible.
-3. **Informative** — the actor understands the information and consequences of becoming internal Owner before the outcome becomes effective.
-4. **Transparent** — success, failure and uncertain results are communicated honestly.
-5. **Accessible** — designed for relevant accessibility and device needs.
-6. **Visually coherent** — consistent visual hierarchy, legibility and Kencleng brand expression.
+**Anti-AI Slop** dipertimbangkan sepanjang Visual Direction, Hi-Fi Screen Design, Copywriting, dan Design Review. Contoh review: visual tidak sekadar dekoratif, information hierarchy jelas, copy tidak robotic, UI containers tidak berlebihan, dan setiap kompleksitas punya nilai bagi aktor. Cards, gradients, atau ilustrasi tidak otomatis salah; evaluasi berdasarkan kegunaannya.
 
-These are design aims, **not proven user-usability results**.
+Proses boleh iteratif; prototype review dapat memicu revisi screen, component atau copy.
 
-## 3. PROCESS
+## 3. OUTPUT
 
-1. **Screen & Content Planning** — choose relevant screens and content hierarchy.
-2. **Visual Direction** — establish typography, palette, visual style and composition.
-3. **Reusable UI Component Design & Management** — inventory and reuse existing design components; create or extend only justified components; define variants, states and responsive behavior; maintain consistency in the design library.
-4. **Hi-Fi Screen Design** — design forms, review, sign-in continuation, result screens, navigation and visual hierarchy using the chosen components.
-5. **Responsive Design** — adapt layouts, navigation and components for desktop/mobile.
-6. **Interaction & UI States Design** — define actionable controls, validation, loading and various result states.
-7. **UI Copywriting & Visual Assets** — finalize Indonesian UI copy and prepare needed visual assets.
-8. **Interactive Prototyping** — connect screens and simulate the main/alternate interactions.
-9. **Design Review & Refinement** — walkthrough for clarity, consistency, accessibility and design-level usability; Human visual review, feedback and revisions.
+1. **Hi-Fi Screen Designs** — desain visual final untuk screens yang relevan.
+2. **Interactive Prototype** — clickable prototype dengan alur dan interaksi.
+3. **Responsive Designs** — desktop dan mobile layouts.
+4. **UI Interaction States** — loading, validation, success, failure, empty jika relevan, dan uncertain state.
+5. **UI Components & Styles** — components, typography, colors, spacing dan visual specifications.
+6. **Reusable UI Component Library** — reusable components, variants, states dan interaction specifications yang dibuat atau diperbarui seperlunya.
+7. **Final UI Copywriting** — Bahasa Indonesia natural, jelas, kontekstual.
+8. **Final Visual Assets** — logo, icons, illustrations, images, fonts yang diperlukan.
+9. **Design Review & Acceptance Record** — feedback, revisi, penilaian quality criteria termasuk Anti-AI Slop, dan keputusan Human terhadap desain.
 
-Process is iterative, not a mandatory strict sequence. **Target completion:** a coherent and reviewable Hi-Fi design/prototype with corresponding components and assets, subjected to Human design review. Acceptance and real-user usability evidence remain separate.
+Yang sudah tersedia dan unchanged tidak perlu dibuat ulang. Library komponen adalah *Design-level contract*, bukan implementasi code. Jangan membangun library besar demi satu flow sederhana.
 
-## 4. INPUT
+## 4. OUTCOME — DESIGN-LEVEL TARGET
 
-**NOT YET DEFINED.** This experiment will determine concrete required versus nice-to-have inputs only when Anhar directs the next step.
+Aktor calon pembentuk organisasi mendapat rancangan pengalaman yang:
 
-## Standing
+1. **Clear** — memahami tindakan dan informasi yang diperlukan.
+2. **Intuitive** — alur mudah diikuti tanpa kebingungan yang tidak perlu.
+3. **Informative** — memahami konsekuensi membentuk organisasi dan menjadi `Owner` internal.
+4. **Transparent** — keberhasilan, kegagalan dan ketidakpastian dikomunikasikan jujur.
+5. **Accessible** — mempertimbangkan accessibility dan berbagai ukuran layar.
+6. **Visually Coherent** — konsisten dengan brand, mudah dibaca, tidak generik atau berlebihan.
 
-The inclusion of **Reusable UI Component Design & Management** in Hi-Fi process and outputs is an **explicit working experiment decision** accepted by Anhar in this session, **not** promotion to Harscode canonical policy. This file does not compare or modify current ORG-01 specifications, Design guidance or prior Builder work.
+**Target akhir:** Hi-Fi design matang secara visual, interaction, content dan component consistency; dapat dievaluasi lewat prototype dan telah melalui Human Design Review. Ini adalah *desired design outcome*, **bukan bukti usability nyata, kelulusan implementasi, ataupun approval desain Kencleng**.
+
+## Decision and evidence standing
+
+- Anhar menerima reusable UI component management sebagai bagian Process & Output Hi-Fi (working experiment decision).
+- Anhar menerima Anti-AI Slop sebagai quality criteria Input dan sebagai bagian dari review (working experiment decision).
+- Anhar meng-approve susunan Input → Process → Output → Outcome ini **sebagai working experiment model** dan secara eksplisit mengotorisasi update direktori eksperimen.
+- Model ini belum dibandingkan dengan existing ORG-01 docs, belum menjalani independent review/user test, dan belum dipromosikan menjadi Harscode policy.
+- **Repository update discipline:** Persist eksperimen hanya setelah satu fase selesai dan atas izin eksplisit Anhar. Fase sebelumnya/lainnya tidak otomatis berubah standing.
