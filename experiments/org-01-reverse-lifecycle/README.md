@@ -35,7 +35,7 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 | Stage in candidate sequence | Experiment standing | Record |
 | --- | --- | --- |
 | Engineering — Builder | WORKING SNAPSHOT: input, process, output and actor outcome drafted | [engineering-builder.md](engineering-builder.md) |
-| UI Design — Hi-Fi | NOT STARTED | — |
+| UI Design — Hi-Fi | WORKING SNAPSHOT: output, outcome, process; reusable UI components included; input NOT YET DEFINED | [ui-design-hifi.md](ui-design-hifi.md) |
 | Rancang — Engineering Solution | NOT STARTED | — |
 | UX Design — Lo-Fi | NOT STARTED | — |
 | Product | NOT STARTED | — |
