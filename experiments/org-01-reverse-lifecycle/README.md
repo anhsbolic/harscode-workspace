@@ -38,9 +38,9 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 | UI Design — Hi-Fi | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; reusable UI components and Anti-AI Slop included; NOT canonical Design authority | [ui-design-hifi.md](ui-design-hifi.md) |
 | Rancang — Engineering Solution | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; API/navigation boundary; no required Hi-Fi input; NOT canonical Engineering authority | [rancang-engineering-solution.md](rancang-engineering-solution.md) |
 | UX Design — Lo-Fi | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; webpage map/paths as Design contract for Hi-Fi; NOT canonical Design authority | [ux-design-lofi.md](ux-design-lofi.md) |
-| Product | NOT STARTED | — |
+| Product — Product Definition | FINAL WORKING EXPERIMENT MODEL APPROVED BY ANHAR (2026-11-03): input, process, output & outcome; Actor vs Domain Role and Product authority boundaries; NOT canonical Product authority | [product-definition.md](product-definition.md) |
 
-**Next step:** determined by Anhar. No automatic advance to the preceding stage.
+**Reverse-stage modeling coverage:** all five stages now have a persisted working snapshot; Builder remains a working snapshot and the other four stages are Anhar-approved experiment models. This is **not** approval, validation, or operational promotion of the full lifecycle. **Next step:** determined by Anhar; no automatic audit or comparison.
 
 ## Sources and evidence standing
 
