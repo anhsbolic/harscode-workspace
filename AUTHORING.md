@@ -14,6 +14,7 @@
 8. **Selective migration.** Review and rewrite as needed. Do not mass-copy historical prose merely to fill a new directory.
 9. **Evidence and reversibility.** Verify exact diffs, link changes, permissions, and consumers. Real execution/consumption is necessary before runtime-quality claims.
 10. **Human authority.** Request explicit Human approval for material semantic/contract changes and protected writes. Do not expand a granted refactor scope silently.
+11. **Project-agnostic Harscode documentation.** Harscode-owned reusable definitions, instructions, examples, references and approval prose must not embed a real target project's name, URL, slug, implementation semantics, visual identity, or history. Use neutral placeholders and concern-level examples. Source-specific evidence and operational records belong to their actual owning project, not copied into Harscode. When cleaning historical references, preserve reconstructability through immutable Git history without presenting anonymized prose as an independently verified new source.
 
 ## Change control
 

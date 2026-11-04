@@ -5,7 +5,7 @@
 
 ## Scope and entry
 
-On a Human request to initialize or repair a multi-repository Harscode workspace, prepare **only** its root `AGENTS.md` and `.harscode-local.yaml` unless separate exact write scope is approved. An existing workspace may include `harscode-workspace/`, `kencleng/`, and optional `harscode-state/`; none is a mandatory directory name or an instruction to create/populate state. The workspace root need not be a Git repository.
+On a Human request to initialize or repair a multi-repository Harscode workspace, prepare **only** its root `AGENTS.md` and `.harscode-local.yaml` unless separate exact write scope is approved. An existing workspace may include `harscode-workspace/`, one or more project checkouts, and optional `harscode-state/`; none is a mandatory directory name or an instruction to create/populate state. The workspace root need not be a Git repository.
 
 Human may say "Mang, perbaiki workspace init di sini" when the root is unambiguous from the actual environment, or supply its absolute path. Do not demand a long setup form. An ordinary "Mang, kita kerjain ORG-01 ya" **starts advisory project discovery**, not workspace initialization, a Space invocation or automatic writing.
 
@@ -38,7 +38,7 @@ These are navigation hints for **the actual discovered checkouts**. They do not 
 
 ## Local YAML — minimal shape, not an executable profile
 
-Only create a new config when missing and the Human approves it; retain existing configured values otherwise. Resolve every relative path from the **directory containing the YAML**, never the shell CWD. Example for a workspace with a discovered Kencleng checkout (omit the project entry if it is not actually present):
+Only create a new config when missing and the Human approves it; retain existing configured values otherwise. Resolve every relative path from the **directory containing the YAML**, never the shell CWD. Example for a workspace with a discovered hypothetical project checkout (omit the project entry if no such project is present):
 
 ```yaml
 communication_language: Bahasa Indonesia
@@ -49,9 +49,9 @@ paths:
   harscode_state_root: ./harscode-state
 
 projects:
-  kencleng:
-    root: ./kencleng
-    harscode_state_root: ./kencleng/harscode-state
+  sample-project:
+    root: ./sample-project
+    harscode_state_root: ./sample-project/harscode-state
 
 runtime:
   harness: codex-cli

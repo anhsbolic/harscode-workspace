@@ -27,8 +27,8 @@ This concern guides **rule governance**, not a second Design Standard repository
 
 It **does not** select Product domain truth, feature UX flows/pages/states, feature-specific UI visual acceptance, production component APIs or CSS/framework, release scope, or technical/runtime readiness. Feature work can **propose** reusable rules but cannot silently **promote** them. Existing code, a polished screenshot, a selected-direction reference, and a working draft are different evidence types—not automatic project standards.
 
-## Actual example, not universal policy
+## Non-binding decision illustration
 
-[Kencleng Design Standards source audit](../../experiments/org-01-reverse-lifecycle/a3-project-design-standards-kencleng-gap-matrix.md) found that the pilot project's existing five canonical Design concerns were already sufficiently structured. A stale “OPEN” list was reconciled to later accepted Visual Guidelines; a subsequent **Human-approved exact pilot revision** clarified the Design authority map and five `Owns / Does not own` boundaries. These are **project-specific observations**, not a mandate to copy Kencleng's files, visual language or branch choices to other projects.
+A project may have an early design-direction document whose selection-time decisions were OPEN, followed by later accepted concrete visual standards. Resolve the conflict by pointing older OPEN statements to the effective owning source, **without reselecting the approved design direction**. If the actual document boundaries are unclear, refine the project's existing authority map or ownership headers before inventing another standards system. This illustrates a decision pattern; it is **not** a required document taxonomy, procedure, or claim of independent consumer verification.
 
 No project Standard file, folder, template, brand system or agent is produced by using this Harscode research guide. Actual target-project writes require separate legitimate scope/permissions and approval evidence.

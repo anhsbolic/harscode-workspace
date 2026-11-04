@@ -62,9 +62,9 @@ A real target-project UX/UI/Engineering consumer should discover:
 
 **No required handoff filename, project-standard artifact template, per-rule approval PDF, fixed I/P/O/O outputs, mandatory directory migration or new Space.** A revised original project source plus a clear router and bounded approval record may be sufficient.
 
-## 6. Case evidence and nonclaims
+## 6. Evidence and nonclaims
 
-[Kencleng source audit](../../experiments/org-01-reverse-lifecycle/a3-project-design-standards-kencleng-gap-matrix.md) shows an old Brand Brief's stale OPEN claims after Visual Guidelines resolved concrete choices, then a Human-approved pilot-only Design Authority Map/header clarification. The lessons are **source ownership, temporal coherence, branch-aware authority and minimal correction**. Its Sunlit palette, named fonts, trust rules, document inventory and ORG-01 UI states are **not** generic Harscode Design Standards.
+A design-standard conflict can be resolved by **owner clarification, current-standing reconciliation and a narrowly scoped source correction**, rather than a new design system. Such a source repair must not be interpreted as independent UX/UI consumption, browser or accessibility evidence, or adoption across other project branches. Project-specific audits and visual decisions remain in their respective target-project sources.
 
 A source-consistent project rule still needs actual downstream visual/runtime/usability/consumer proof where that proof matters. Neither a polished UI candidate nor a clean link check substitutes for it.
 

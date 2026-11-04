@@ -32,16 +32,16 @@ For a selected `projects.<project_id>`, resolve the location using this order:
 2. Otherwise `paths.harscode_state_root/<project_id>` as the workspace-level default **candidate**, if configured and accessible.
 3. If no trustworthy candidate can be resolved, report the path gap and ask for the specific destination during assignment authorization. **Do not guess** a project `docs/` directory or silently fall back to an unrelated historical run.
 
-For example, the local Kencleng research override may be:
+For example, an operator-local override for a hypothetical project may be:
 
 ```yaml
 projects:
-  kencleng:
-    root: ./kencleng
-    harscode_state_root: ./kencleng/harscode-state
+  sample-project:
+    root: ./sample-project
+    harscode_state_root: ./sample-project/harscode-state
 ```
 
-With the example override, an authorized `ORG-01` Rancang assignment can **propose** a new location under `kencleng/harscode-state/`, distinct from earlier run records. A future operator may choose `./harscode-state/kencleng` instead. Neither move changes where effective Product/Design/Engineering decisions are owned. External storage is usable only if its durability, access, versioning and a discoverable project-owned reference satisfy the actual consumers; otherwise report the gap rather than claim downstream readiness. Existing run artifacts are never migrated automatically.
+With the example override, a separately authorized sample assignment can **propose** a new location under `sample-project/harscode-state/`, distinct from any existing run records. An operator may instead choose `./harscode-state/sample-project`. Neither move changes where effective Product/Design/Engineering decisions are owned. External storage is usable only if its durability, access, versioning and a discoverable project-owned reference satisfy the actual consumers; otherwise report the gap rather than claim downstream readiness. Existing run artifacts are never migrated automatically.
 
 **Awareness versus access:** Balad may consult the resolved path for **advisory discovery**; Human-direct Coordinator resolves the assignment's exact writable destination and provides scoped paths to Specialists. Each Agent that materially needs path context must use this same resolution rule, but **need not load the entire YAML/model registry**. Verify real files, path normalization/symlinks, repository ownership and effective tool permissions before a consequential action. A configured path never authorizes a write, bypasses Human gates or makes an independent review claim true.
 

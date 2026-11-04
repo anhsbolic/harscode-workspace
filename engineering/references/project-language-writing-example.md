@@ -1,6 +1,6 @@
 # Project Language and Writing Profile — Reusable Reference Example
 
-> **Standing:** Optional, non-binding Harscode reference library entry, **not** Harscode configuration, operational language policy or a Kencleng approval. A target project must own and approve its effective language/terminology conventions. This is a model for project-specific drafting, not a requirement to create a separate profile file.
+> **Standing:** Optional, non-binding Harscode reference library entry, **not** Harscode configuration, operational language policy or a target-project approval. A target project must own and approve its effective language/terminology conventions. This is a model for project-specific drafting, not a requirement to create a separate profile file.
 
 ## A project may adopt rules such as
 

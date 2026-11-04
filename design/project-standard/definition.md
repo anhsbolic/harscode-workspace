@@ -1,7 +1,7 @@
 # Project Design Standards Definition & Evolution
 
 > **Standing:** A3 PROPOSED RESEARCH DEFINITION / HUMAN CONTENT REVIEW PENDING (2026-11-04). Not target-project Design Authority, a required documentation system or Harscode operational policy.
-> **Basis:** [A3 source audit and target concern](../../experiments/org-01-reverse-lifecycle/a3-ui-and-project-standard-deep-audit-and-target-design.md), [Kencleng source/evidence matrix](../../experiments/org-01-reverse-lifecycle/a3-project-design-standards-kencleng-gap-matrix.md). The evidence supports **a minimal open semantic model**, **not** an experiment-proven numbered I/P/O/O contract or fixed artifact list.
+> **Basis:** A reusable concern/authority model inferred from Design Standard evolution needs. The research supports a **minimal open semantic model**, **not** an independently proven numbered I/P/O/O contract or fixed artifact list. Source details from any individual target project remain owned by that project, not this guidance.
 
 ## 1. Purpose and decision boundary
 
@@ -71,11 +71,11 @@ A healthy project Design Standards concern should make rules **discoverable, una
 
 **Feature-specific acceptance ≠ project-wide standard acceptance.** An approved UI component library design may be a **candidate source** for project-wide standards; production React components are Engineering-owned. Approved visual direction is not automatically a production asset or a pixel-level engineering spec.
 
-## 6. Actual case: what Kencleng supports and does not
+## 6. Illustrative standard-evolution issue (not a project precedent)
 
-On Kencleng pilot, a canonical Brand Brief first selected Sunlit Editorial and intentionally left exact colors, typefaces and icons OPEN. Later approved Visual Guidelines set the concrete palette, font roles and utility icon baseline, while the earlier document still said OPEN. The subsequent **minimal correction** aligned the older source to the true later owning decisions; the user's further approval accepted a **targeted responsibility map/header cleanup**, not a brand redesign. See the [Kencleng evidence matrix](../../experiments/org-01-reverse-lifecycle/a3-project-design-standards-kencleng-gap-matrix.md) for pinned branches/commits and evidence.
+Suppose a project first approves **brand direction** but leaves exact typography and colors open. A later, separately approved **visual system** establishes those values. The earlier document may still accurately describe what was open *at the time*, yet mislead current consumers if it continues to claim those values are open **today**. The narrow remedy is to reconcile its current-standing note or pointers to the later effective owner without reopening brand direction.
 
-This case supports **owner clarity + temporal status reconciliation + minimum-change repair**. It does **not** prove a particular universal folder, document count, color system, component-library maturity, cross-project semantics, usability or browser correctness. Kencleng's standards are its own, and pilot branch acceptance does not silently promote anything to Kencleng operational `main`.
+Similarly, if guidance and evidence are mixed in one authority index, clarify which sources are **canonical**, **working supplements** and **reference-only proofs**. These are **hypothetical decision patterns**, not an assertion that a named project's solution or document inventory should be universalized, and not proof of usability or runtime consumer fit.
 
 ## 7. Consumer fit and completion
 
