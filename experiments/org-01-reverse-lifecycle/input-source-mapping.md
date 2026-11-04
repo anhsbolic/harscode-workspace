@@ -66,7 +66,7 @@ flowchart LR
 
 **Key composite input:** `Test & Acceptance Scenarios` receives Product acceptance criteria, Rancang technical verification, project testing conventions and potentially UX interaction cases. `Design System` and `Web Assets` may come directly from project-level sources and/or final Design outputs; in the Builder model they are conditionally required if the accepted design/project requires them.
 
-## 2. UI Design — Hi-Fi (12 recorded inputs)
+## 2. UI Design — Hi-Fi (13 inputs after approved clarification)
 
 ```mermaid
 flowchart LR
@@ -93,36 +93,38 @@ flowchart LR
         direction TB
         I1["1. UX Flow Diagram"]
         I2["2. Lo-Fi Wireframes"]
-        I3["3. Product Requirements & Rules"]
-        I4["4. Screen Content & Information"]
-        I5["5. UI States & Interaction Requirements"]
-        I6["6. Brand & Visual Guidelines"]
-        I7["7. Responsive & Accessibility"]
-        I8["8. Design Quality / Anti-AI Slop"]
-        I9["9. Existing Design System"]
-        I10["10. Web Assets"]
-        I11["11. Visual References / Moodboard"]
-        I12["12. Usability Research / Feedback"]
+        I3["3. Webpage Map & Route Specification"]
+        I4["4. Product Requirements & Rules"]
+        I5["5. Screen Content & Information"]
+        I6["6. UI States & Interaction Requirements"]
+        I7["7. Brand & Visual Guidelines"]
+        I8["8. Responsive & Accessibility"]
+        I9["9. Design Quality / Anti-AI Slop"]
+        I10["10. Existing Design System"]
+        I11["11. Web Assets"]
+        I12["12. Visual References / Moodboard"]
+        I13["13. Usability Research / Feedback"]
     end
-    P --> I3
-    P -.-> I4
+    P --> I4
+    P -.-> I5
     UX1 --> I1
     UX2 --> I2
-    UX3 --> I4
+    UX3 --> I3
+    UX3 --> I5
     UX3 -.-> I1
-    UX4 --> I5
-    UX2 -.-> I7
-    R -.-> I5
-    BR --> I6
-    AC --> I7
-    QC --> I8
-    DS --> I9
-    AS --> I10
-    REF --> I11
-    UR --> I12
+    UX4 --> I6
+    UX2 -.-> I8
+    R -.-> I6
+    BR --> I7
+    AC --> I8
+    QC --> I9
+    DS --> I10
+    AS --> I11
+    REF --> I12
+    UR --> I13
 ```
 
-**Candidate reconciliation gap:** Lo-Fi explicitly outputs **Webpage Map & Route Specification** as a Design contract for Hi-Fi, but the recorded Hi-Fi model has no **separate, explicit named input** for it. The diagram currently shows its contribution through UX Flow and screen content. This is a note for later review, **not** a change to either approved experiment model. Rancang technical constraints may inform Hi-Fi when material; no requirement to finish the entire Rancang stage first. If project Brand Guidelines do not exist, the Hi-Fi working model requires explicit permission to set visual direction.
+**Reconciled cross-stage mapping (2026-11-04, approved by Anhar):** Lo-Fi's **Webpage Map & Route Specification** is now explicitly listed as required Hi-Fi input; accepted webpage paths, page purpose, navigation, and page-vs-state choices remain Design-owned. Rancang may provide material technical constraints for reconciliation without becoming a mandatory predecessor. Brand Guidelines require explicit visual-direction permission if absent.
 
 ## 3. Rancang — Engineering Solution (13 inputs)
 
@@ -237,7 +239,7 @@ flowchart LR
     PATTERN --> I11
 ```
 
-**Candidate mapping gap:** Lo-Fi needs **Content & Information Requirements**, while Product's recorded outputs do not name these as a distinct artifact. Product Contract may supply them, supplemented by project domain sources, but **coverage is not yet verified**. Rancang constraints are optional/conditional: UX exploration does not need to wait for Rancang to finish.
+**Reconciled cross-stage mapping (2026-11-04, approved by Anhar):** Product Contract explicitly includes **consequential Content & Information Requirements** and supplies Lo-Fi input #6. Existing project-level domain information may provide context; Product owns mandatory domain information, while UX owns presentation and interaction. Actual coverage/sufficiency of a concrete project Product Contract still requires future verification. Rancang constraints remain optional/conditional: UX exploration does not need to wait for Rancang to finish.
 
 ## 5. Product — Product Definition (13 inputs)
 
@@ -314,16 +316,24 @@ flowchart LR
 
 A phase finding is **not automatically** a Product Contract change. Reconciliation and relevant Human/Product authority are required for consequential changes.
 
-## Current findings (candidate, not resolved)
+## Lightweight coherence review (2026-11-04)
 
-1. **Non-linear and multi-source:** direct Product → Builder, Lo-Fi → Rancang and Hi-Fi, project standards → multiple consumers, and Product + Rancang + project testing standards → Builder acceptance/testing inputs.
-2. **Project-level sources are first-class:** Codebase, current standards, design systems, evidence and constraints should not be recreated by arbitrary preceding stages. Their actual authority and revisions have not yet been checked.
-3. **Potential Hi-Fi input gap:** Webpage Map & Route Specification is a Lo-Fi output and Hi-Fi Design contract, but is not listed as a separate Hi-Fi input in the current model.
-4. **Potential Lo-Fi input gap:** Content & Information Requirements may be contained in Product Contract, but explicit output coverage is not yet verified.
-5. **Feedback is not auto-approval:** feasibility, user feedback, and implementation evidence may trigger owner review, not silently supersede existing decisions.
+Review of the five experiment working models and candidate mapping yielded three small corrections, **approved by Anhar and reflected in their owning models**:
 
+1. **Lo-Fi → Hi-Fi:** add explicit **Webpage Map & Route Specification** as Hi-Fi input (13 Hi-Fi inputs after change). No new artifact or transfer of webpage-path authority.
+2. **Product → Lo-Fi:** clarify **Content & Information Requirements** within Product Contract for consequential information (not a new output/document); UX owns the grouping and presentation.
+3. **Consumed artifact standing → Builder:** preserve **relevant source revisions, scoped acceptance standing, and material unresolved decisions** with the artifacts used for implementation. No additional approval mechanism.
+
+Other observations:
+
+- **Non-linear and multi-source:** direct Product → Builder, Lo-Fi → Rancang and Hi-Fi, project standards → multiple consumers, and Product + Rancang + project testing standards → Builder acceptance/testing inputs.
+- **Project-level sources are first-class:** codebase, current standards, design systems, evidence and constraints should not be recreated by arbitrary preceding stages. Their actual authority and revisions have not yet been checked.
+- **Shared consumption is not duplicate ownership:** multiple phases may read the same Product Contract, UX Flow or Design System; changes to owner-controlled semantics still require reconciliation.
+- **Feedback is not auto-approval:** feasibility, user feedback and implementation evidence may trigger owner review, not silently supersede existing decisions.
+
+**Coverage count:** 60 mapped candidate inputs across 5 stages (10 Builder + 13 Hi-Fi + 13 Rancang + 11 Lo-Fi + 13 Product). Every input has a candidate source; this does **not** prove those sources exist or are sufficient.
 ## Standing / next review boundary
 
-**Completed:** lightweight candidate reverse mapping for all five phases, diagrammed with Mermaid, including source types and initial gaps. **Not completed:** verified artifact-to-input traceability, full cross-stage coherence analysis, source existence/version/authority verification, specific implementation feasibility or runtime validation.
+**Completed:** candidate reverse mapping for all five phases with Mermaid and a lightweight coherence review, including the three Anhar-approved internal contract clarifications. **Not completed:** verified artifact-to-input traceability, deep cross-stage audit, source existence/version/authority verification, project-specific feasibility, or runtime validation.
 
-Existing five stage working models are deliberately unchanged. Harscode operational `main`, existing Rancang/Product/Design authority, and Kencleng ORG-01 artifacts remain unchanged. Any decision to revise stage models, validate against current project source-of-truth, or promote to operational guidance is a separate future action by Anhar.
+Only the approved clarifications were applied to existing experiment models (Product, Lo-Fi, Hi-Fi, Builder) and this candidate mapping; Rancang model is unchanged. Harscode operational `main`, existing Rancang/Product/Design authority, and Kencleng ORG-01 artifacts remain unchanged. Further changes to stage models, project-specific verification, or operational promotion require separate scoped decisions.
