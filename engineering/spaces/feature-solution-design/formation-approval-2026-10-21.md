@@ -1,5 +1,8 @@
 # Rancang — v3 Research Formation Approval (2026-10-21)
 
+> **Project-agnostic current-tree edition (2026-11-04):** Historical project-case references were minimized. The [exact original source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/spaces/feature-solution-design/formation-approval-2026-10-21.md) remains immutable and is the audit basis for past formation/approval. This edited presentation has **different bytes** and does not acquire a new exact-content approval automatically.
+
+
 > **Decision:** FORMATION APPROVED — RESEARCH ONLY
 > **Human decision owner:** Anhar
 > **Decision date:** 2026-10-21
@@ -25,9 +28,9 @@ The candidate label at the exact pinned commit records its **pre-approval** stat
 - Independent v3 semantic review: **APPROVE / 0 blocking findings**; original reviewed patch SHA-256: `a50025357a08180bb21e311267fdbb63a8c2728826d232983c09b32db847e0f3`.
 - One non-blocking status-navigation sentence was subsequently clarified; clarified patch SHA-256: `280bef4624cc51881baea97fe8d8254be5b645e63ad5474b5746885dd01bbee7`. The change was an editorial pointer correction, not a substantive contract revision.
 - Resulting v3 commit `4b49d0dd0db74cf34a927cadc938ae724676a75a` was verified for scope, reviewed patch content and unchanged earlier formation record.
-- Anhar explicitly approved the v3 structure and contents and then approved formation after a final source-level Agent knowledge sufficiency check against Kencleng's current authoritative Product, Design, API, backend/frontend and security-routing sources.
+- Anhar explicitly approved the v3 structure and contents and then approved formation after a final source-level Agent knowledge sufficiency check against a target project's effective Product, Design, API, backend/frontend and security-routing sources.
 
-This supports **definition completeness and formation**, not execution quality or runtime assurance. The Kencleng comparison is project-specific validation context, not a source of universal Rancang product semantics.
+This supports **definition completeness and formation**, not execution quality or runtime assurance. The historical project comparison was scoped validation evidence, not a source of universal Rancang product semantics.
 
 ## Approved capability boundaries
 
@@ -44,7 +47,7 @@ Agent declarations, knowledge documents and review approval **do not** prove nat
 
 ## Explicit exclusions and prior decisions
 
-Formation does **not** authorize Coordinator invocation, autonomous mode, Kencleng or other project writes, protected API/spec changes, implementation, deployment, downstream solution acceptance, or promotion to Harscode `main`. Balad remains Human-facing advisory only and cannot dispatch or supervise the Rancang Coordinator. Each concrete invocation needs separate Human-direct authorization with exact sources, scope, consumers, permitted tools/writes, output/state ownership and gates.
+Formation does **not** authorize Coordinator invocation, autonomous mode, target-project writes, protected API/spec changes, implementation, deployment, downstream solution acceptance, or promotion to Harscode `main`. Balad remains Human-facing advisory only and cannot dispatch or supervise the Rancang Coordinator. Each concrete invocation needs separate Human-direct authorization with exact sources, scope, consumers, permitted tools/writes, output/state ownership and gates.
 
 The previous reconstructed formation decision remains immutable at `06371fad6a044e53490c6e076b63a06f37e507f8` ([v1 decision](formation-approval-2026-10-20.md)). The distinct historical research formation decision at `1f20cf6584dba54dee17d8183c7069d7c99eafe6` also remains historical evidence. Neither prior formation approval transfers to the v3 definition; v3 is approved by this separate Human decision.
 

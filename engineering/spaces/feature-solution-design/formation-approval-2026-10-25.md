@@ -1,5 +1,8 @@
 # Rancang — vNext Research Formation Approval (2026-10-25)
 
+> **Project-agnostic current-tree edition (2026-11-04):** Historical project-case references were minimized. The [exact original source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/spaces/feature-solution-design/formation-approval-2026-10-25.md) remains immutable and is the audit basis for past formation/approval. This edited presentation has **different bytes** and does not acquire a new exact-content approval automatically.
+
+
 > **Decision:** FORMATION APPROVED — RESEARCH ONLY
 > **Human decision owner:** Anhar
 > **Decision date:** 2026-10-25
@@ -49,7 +52,7 @@ Outputs remain logical X1/O1–O5 plus separate security findings; choose the sm
 This approval **does not** authorize:
 
 - Direct invocation, autonomous operation, general Agent deployment, tool installation, or claiming Harness `READY`.
-- Kencleng or other target-project writes, protected-path changes, Project Engineering Standards changes outside separately scoped authorization, or mutation of canonical feature API/OpenAPI/schema.
+- target-project writes, protected-path changes, Project Engineering Standards changes outside separately scoped authorization, or mutation of canonical feature API/OpenAPI/schema.
 - Product or Design policy choices, feature implementation, migration, testing, deployment, operation, downstream bundle acceptance, or promotion to Harscode `main`.
 - Treating described Agent separation as actual tool/context independence, or planned verification as executed tests.
 

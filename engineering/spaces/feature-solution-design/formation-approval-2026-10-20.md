@@ -1,5 +1,8 @@
 # Rancang — Research Formation Approval (2026-10-20)
 
+> **Project-agnostic current-tree edition (2026-11-04):** Historical project-case references were minimized. The [exact original source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/spaces/feature-solution-design/formation-approval-2026-10-20.md) remains immutable and is the audit basis for past formation/approval. This edited presentation has **different bytes** and does not acquire a new exact-content approval automatically.
+
+
 > **Decision:** FORMATION APPROVED — RESEARCH ONLY
 > **Human decision owner:** Anhar
 > **Runtime standing:** NOT RUNTIME READY / NOT VERIFIED
@@ -46,7 +49,7 @@ Specialist responsibilities do not prescribe a fixed number of native Agents or 
 
 ## Explicit exclusions
 
-Formation does **not** authorize runtime activation, Coordinator invocation, autonomous operation, Kencleng or other project writes, protected-path changes, Product/Design decisions, implementation, downstream output acceptance, or promotion to Harscode `main`.
+Formation does **not** authorize runtime activation, Coordinator invocation, autonomous operation, target-project writes, protected-path changes, Product/Design decisions, implementation, downstream output acceptance, or promotion to Harscode `main`.
 
 Balad remains advisory-only. Human must directly authorize each concrete invocation.
 
