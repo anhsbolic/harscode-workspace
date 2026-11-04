@@ -12,6 +12,7 @@ This directory is **self-contained for the UI concern**. It does not require `de
 | UI-specific inputs, decision process, outputs and desired qualities | [UI Definition](definition.md) |
 | UI agent instruction, source selection and evidence safeguards | [UI AGENTS](AGENTS.md) |
 | UI decision authority, Human review, acceptance and receiving-consumer information | [UI Authority & Handoff](authority-and-handoff.md) |
+| Optional standardized UI output authoring + visual evidence index | [Bahasa Indonesia](templates/ui-output.id.md) · [English](templates/ui-output.en.md) |
 
 Read **actual project-owned Product, accepted UX, applicable Design Standards, approved visual assets/copy and current implementation evidence directly from their effective original sources** when needed for the decision. The UI responsibility consumes these information types; it does not have to ask an upstream agent or read Harscode sibling guidance as a prerequisite.
 
@@ -33,4 +34,4 @@ UI can investigate a bounded visual direction with clearly marked hypotheses. Mi
 
 A render, HTML candidate, PNG, screenshot, Figma file or prototype is **review evidence** until the legitimate project owner accepts its exact scope/revision; a polished view is not Product correctness, production readiness, user usability or project-standard promotion. Record actual render/viewport/state inspection or **NOT VISUALLY VERIFIED**; a source file in Git is not proof it has been viewed in a browser. Respect project security, accessibility, licensing, privacy and Human action permissions.
 
-**A3 draft boundary:** No project-specific UI artifact, UI output template, new UI Space, `design/project-standard/` guidance, or project-level design standard is created by this reusable research draft.
+**A3 research boundary:** These reusable [UI output templates](templates/ui-output.id.md) are **authoring aids**, not completed project-specific UI artifacts or approved visual evidence. No UI Space, `design/project-standard/` guidance, project-level design standard or project write authorization is created by this research guidance.
