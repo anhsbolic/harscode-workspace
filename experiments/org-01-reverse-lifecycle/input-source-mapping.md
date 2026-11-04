@@ -2,7 +2,7 @@
 
 > **Status:** CANDIDATE CROSS-STAGE MAPPING / WORKING EXPERIMENT — NOT VERIFIED, NOT CANONICAL.
 > **Owner of experiment decisions:** Anhar. **Persist authorized:** 2026-11-04.
-> **Repository scope:** Harscode-Workspace \`refactor/harscode-foundation\` (research only; operational \`main\` remains unchanged).
+> **Repository scope:** Harscode-Workspace `refactor/harscode-foundation` (research only; operational `main` remains unchanged).
 > **Basis:** [Engineering — Builder](engineering-builder.md), [UI Design — Hi-Fi](ui-design-hifi.md), [Rancang](rancang-engineering-solution.md), [UX Design — Lo-Fi](ux-design-lofi.md), and [Product](product-definition.md) working models.
 > **Scenario:** Calon Pembentuk Organisasi (illustrative ORG-01); no audit or comparison to existing Kencleng ORG-01 implementation or artifacts.
 
@@ -10,15 +10,15 @@
 
 Map each stage's **inputs** back to likely **outputs of one or several other stages**, **project-level sources**, or **Human / external evidence**. A stage does **not** necessarily wait for the preceding stage or an entire producing stage to finish. **Wajib / conditional / nice-to-have** statuses remain defined in the linked stage models; diagram edges are information provenance candidates, not new requirements or a state-machine/execution workflow.
 
-- Solid arrow \`-->\`: **candidate primary/direct information source**.
-- Dotted arrow \`-.->\`: **candidate additional or conditional source**.
+- Solid arrow `-->`: **candidate primary/direct information source**.
+- Dotted arrow `-.->`: **candidate additional or conditional source**.
 - Source category labels (e.g. "Project Design System") **do not assert an actual artifact exists**. No specific source path, current revision, ownership, or suitability has been verified.
 - A single Builder/Rancang/Design input may be **multi-source**. That does not grant a non-owner authority to change a Product, UX, or Engineering decision.
 - This document records the mappings discussed, **not** a complete cross-stage coherence audit. Any gap is noted without silently rewriting an already accepted stage working model.
 
 ## 1. Engineering — Builder (10 inputs)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     subgraph PHASE["Phase Outputs"]
         direction TB
@@ -62,13 +62,13 @@ flowchart LR
     TEST --> I8
     DS --> I9
     ASSET --> I10
-\`\`\`
+```
 
-**Key composite input:** \`Test & Acceptance Scenarios\` receives Product acceptance criteria, Rancang technical verification, project testing conventions and potentially UX interaction cases. \`Design System\` and \`Web Assets\` may come directly from project-level sources and/or final Design outputs; in the Builder model they are conditionally required if the accepted design/project requires them.
+**Key composite input:** `Test & Acceptance Scenarios` receives Product acceptance criteria, Rancang technical verification, project testing conventions and potentially UX interaction cases. `Design System` and `Web Assets` may come directly from project-level sources and/or final Design outputs; in the Builder model they are conditionally required if the accepted design/project requires them.
 
 ## 2. UI Design — Hi-Fi (12 recorded inputs)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     subgraph PHASE["Phase Outputs"]
         direction TB
@@ -120,13 +120,13 @@ flowchart LR
     AS --> I10
     REF --> I11
     UR --> I12
-\`\`\`
+```
 
 **Candidate reconciliation gap:** Lo-Fi explicitly outputs **Webpage Map & Route Specification** as a Design contract for Hi-Fi, but the recorded Hi-Fi model has no **separate, explicit named input** for it. The diagram currently shows its contribution through UX Flow and screen content. This is a note for later review, **not** a change to either approved experiment model. Rancang technical constraints may inform Hi-Fi when material; no requirement to finish the entire Rancang stage first. If project Brand Guidelines do not exist, the Hi-Fi working model requires explicit permission to set visual direction.
 
 ## 3. Rancang — Engineering Solution (13 inputs)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     subgraph PHASE["Phase Outputs"]
         direction TB
@@ -182,13 +182,13 @@ flowchart LR
     NFR --> I11
     TS --> I12
     RES --> I13
-\`\`\`
+```
 
 **Boundary:** Rancang directly consumes Product meaning, Lo-Fi UX, and project engineering reality. It owns API design and technical enforcement, **not** webpage navigation authority. **Hi-Fi is intentionally not a default Rancang input** and no special visual-format interpretation capability is required. A PoC need not pre-exist; Rancang may generate bounded research/evidence if a material unknown warrants it.
 
 ## 4. UX Design — Lo-Fi (11 inputs)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     subgraph PHASE["Phase Outputs"]
         direction TB
@@ -235,13 +235,13 @@ flowchart LR
     R -.-> I9
     RESEARCH --> I10
     PATTERN --> I11
-\`\`\`
+```
 
 **Candidate mapping gap:** Lo-Fi needs **Content & Information Requirements**, while Product's recorded outputs do not name these as a distinct artifact. Product Contract may supply them, supplemented by project domain sources, but **coverage is not yet verified**. Rancang constraints are optional/conditional: UX exploration does not need to wait for Rancang to finish.
 
 ## 5. Product — Product Definition (13 inputs)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     subgraph PROJECT["Project-Level Sources"]
         direction TB
@@ -297,20 +297,20 @@ flowchart LR
     OPS --> I11
     DEP --> I12
     MARKET --> I13
-\`\`\`
+```
 
 Product's earliest inputs often arise from project-level authority, stakeholders, domain knowledge, and external evidence, **not** from a mandatory prior lifecycle stage. Existing observed behavior is evidence of the system's condition, but does not automatically establish the correct Product policy.
 
 ### Optional feedback to Product (not a mandatory prerequisite)
 
-\`\`\`mermaid
+```mermaid
 flowchart LR
     UX["UX Lo-Fi Findings"] -.-> PR["Product Review"]
     HF["Hi-Fi Design Findings"] -.-> PR
     R["Rancang Feasibility Findings"] -.-> PR
     B["Builder / Runtime Evidence"] -.-> PR
     PR -->|"Only if consequential Product decision is made"| D["Product Decision & Contract"]
-\`\`\`
+```
 
 A phase finding is **not automatically** a Product Contract change. Reconciliation and relevant Human/Product authority are required for consequential changes.
 
@@ -326,4 +326,4 @@ A phase finding is **not automatically** a Product Contract change. Reconciliati
 
 **Completed:** lightweight candidate reverse mapping for all five phases, diagrammed with Mermaid, including source types and initial gaps. **Not completed:** verified artifact-to-input traceability, full cross-stage coherence analysis, source existence/version/authority verification, specific implementation feasibility or runtime validation.
 
-Existing five stage working models are deliberately unchanged. Harscode operational \`main\`, existing Rancang/Product/Design authority, and Kencleng ORG-01 artifacts remain unchanged. Any decision to revise stage models, validate against current project source-of-truth, or promote to operational guidance is a separate future action by Anhar.
+Existing five stage working models are deliberately unchanged. Harscode operational `main`, existing Rancang/Product/Design authority, and Kencleng ORG-01 artifacts remain unchanged. Any decision to revise stage models, validate against current project source-of-truth, or promote to operational guidance is a separate future action by Anhar.
