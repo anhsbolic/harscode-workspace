@@ -1,7 +1,7 @@
 # Rancang — Engineering Solution Design Space
 
 > **Current formation standing (2026-10-30):** **FORMATION APPROVED / RESEARCH-ONLY** applies to the immutable FR-01–FR-04 definition `6dfc4be790c526026529ed7ef397c61567809de4` ([approval](formation-approval-2026-10-30.md)). Earlier definitions `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` ([2026-10-27 record](formation-approval-2026-10-27.md)) and `9663a3fa73ac0101e66764d63af8711f291a66ab` remain historically approved.
-> **This branch revision:** Post-approval administrative status/navigation only; the exact Human approval binds `6dfc4be`, not later semantic edits.
+> **A4 candidate revision:** This branch contains an **unapproved semantic alignment proposal** in `contracts.md` and a neutral illustrative work ID; the exact Human formation approval still binds `6dfc4be`, **not** this candidate. See the [A4 experiment-led source audit](../../../experiments/org-01-reverse-lifecycle/a4-engineering-solution-deep-audit-and-target-design.md).
 > **Runtime:** **NOT READY / NOT VERIFIED**. This revision does not install a Harness, authorize invocation, or change the operational `main` baseline.
 > **Capability ID:** feature-solution-design. **Human-facing name:** Rancang.
 
@@ -21,7 +21,7 @@ A small local task may use a simpler permitted Engineering path. An upstream com
 
 ## Human interaction
 
-Human may say, for example, "Bro Koordinator Rancang, kita mulai kerjain ORG-01" or "kita lanjutin STORY-12." An identifier can refer to an outcome, story, PRD, defect or another project-owned work reference. The [Space Coordinator](agents/space-coordinator/agent.md) discovers its project, effective input, standards, and existing durable Rancang assignment before asking for missing material information. Discovery is not permission to write or to start consequential production.
+Human may say, for example, "Bro Koordinator Rancang, kita mulai kerjain WORK-123" or "kita lanjutin STORY-12." An identifier can refer to an outcome, story, PRD, defect or another project-owned work reference. The [Space Coordinator](agents/space-coordinator/agent.md) discovers its project, effective input, standards, and existing durable Rancang assignment before asking for missing material information. Discovery is not permission to write or to start consequential production.
 
 ## Authority and contractual entrypoints
 
