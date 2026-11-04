@@ -1,5 +1,8 @@
 # Rancang — Revised vNext Research Formation Approval (2026-10-27)
 
+> **Historical evidence boundary (2026-11-04):** This current-tree editorial edition differs from the [immutable pre-cleanup Harscode source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/spaces/feature-solution-design/formation-approval-2026-10-27.md). Prior Human acceptance belongs to the exact original revision and approved capability, **not automatically these changed bytes**. Project-specific evidence is not reusable Harscode policy.
+
+
 > **Decision:** FORMATION APPROVED — RESEARCH ONLY
 > **Human decision owner:** Anhar
 > **Decision date:** 2026-10-27 (Asia/Jakarta)
@@ -22,7 +25,7 @@ Candidate / NOT FORMATION APPROVED text inside the pinned definition predates th
 
 The independently reported review verdict was **PASS — eligible for Human formation consideration**, with **MEDIUM-HIGH confidence in definition** and **LOW confidence in runtime**. It identified no HIGH/CRITICAL definition blockers.
 
-**F-01 — MEDIUM, non-blocking:** a downstream consumer with only an upstream work ID could fail to locate the Rancang assignment state even if that state points to a handoff. The reviewer examined historical Kencleng ORG-01 as evidence, not as a violation of this later revision. The complete review response was supplied in the Human decision conversation and is not separately committed here.
+**F-01 — MEDIUM, non-blocking:** a downstream consumer with only an upstream work ID could fail to locate the Rancang assignment state even if that state points to a handoff. The reviewer examined historical target-project assignment as evidence, not as a violation of this later revision. The complete review response was supplied in the Human decision conversation and is not separately committed here.
 
 **Retained verification probe:** In bounded real downstream usage, give a consumer only an actual work identifier and permitted project access. Verify discovery of the correct assignment, exact handoff/source/review revisions, Human bundle-acceptance status, compatibility evidence and outstanding canonical API/authorization dependencies, without chat recall or pre-supplied internal paths. Check its real reusable Input Contract if one exists; project-bound compatibility remains mandatory. Report **NOT CHECKED / UNVERIFIED** if not demonstrated, and hold only affected downstream claims. Do not invent a Backend Go Space, global registry, mandatory per-consumer file or new workflow mechanism to satisfy this probe.
 

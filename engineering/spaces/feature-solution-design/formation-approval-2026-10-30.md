@@ -1,5 +1,8 @@
 # Rancang — FR-01–FR-04 Research Formation Approval (2026-10-30)
 
+> **Historical evidence boundary (2026-11-04):** This current-tree editorial edition differs from the [immutable pre-cleanup Harscode source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/spaces/feature-solution-design/formation-approval-2026-10-30.md). Prior Human acceptance belongs to the exact original revision and approved capability, **not automatically these changed bytes**. Project-specific evidence is not reusable Harscode policy.
+
+
 > **Decision:** FORMATION APPROVED / RESEARCH-ONLY
 > **Human decision owner:** Anhar
 > **Decision date:** 2026-10-30 (Asia/Jakarta)
@@ -16,7 +19,7 @@
 - Previous approved research definition: `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` ([prior approval](formation-approval-2026-10-27.md)).
 - Historical earlier definition: `9663a3fa73ac0101e66764d63af8711f291a66ab` ([historical approval](formation-approval-2026-10-25.md)).
 
-Anhar explicitly approved the exact candidate after receiving a read-only fresh source-level formation review whose conclusion was **PASS / eligible for Human approval**, with no material formation blockers. The review compared the prior approved definition with the candidate and cross-checked project-owned Kencleng ORG-01 real-use evidence, including the final `rancang-002` handoff at `anhsbolic/kencleng@5a5ca4c7128913d49f8e29a88fad57a61fa897c0`. The candidate's own `NOT FORMATION APPROVED` wording predates this Human decision; this record now determines its exact-revision standing. This approval does not form or promote other Foundation research capabilities.
+Anhar explicitly approved the exact candidate after receiving a read-only fresh source-level formation review whose conclusion was **PASS / eligible for Human approval**, with no material formation blockers. The review compared the prior approved definition with the candidate and cross-checked historical project-owned real-use evidence (pinned in the exact original record). The candidate's own `NOT FORMATION APPROVED` wording predates this Human decision; this record now determines its exact-revision standing. This approval does not form or promote other Foundation research capabilities.
 
 ## Review verdict and amendment coverage
 
@@ -33,7 +36,7 @@ The review found no material regression in Product/Design/project authority, own
 ## Retained limitations and downstream evidence
 
 - **F-01 / MEDIUM / NON-BLOCKING / NOT RUN:** cold downstream discovery must be demonstrated with only a real upstream work ID and permitted target-project access. Verify discovery of exact Rancang assignment, effective handoff, sources, reviews, Human acceptance, project-bound compatibility and remaining canonical API/authorization dependencies. Do not create a global registry or hypothetical implementation Space just to claim PASS.
-- **ORG-01 snapshot / LOW / NON-BLOCKING:** the Kencleng finalization commit `5a5ca4c` is real, while some embedded state/handoff sentences describe a historical pre-commit worktree. Consumers must distinguish snapshots from live Git standing.
+- **ORG-01 snapshot / LOW / NON-BLOCKING:** the historical target-project finalization commit was verified in the original source, while some embedded state/handoff sentences describe a historical pre-commit worktree. Consumers must distinguish snapshots from live Git standing.
 - **Harness:** R1–R8 full native verification, isolation/permission containment, cold process-loss resume, execution of amended `6dfc4be`, real downstream integration and application/security runtime tests remain **NOT RUN / UNVERIFIED**. Prior supervised pilots are bounded evidence only.
 
 ## Authority and consequence

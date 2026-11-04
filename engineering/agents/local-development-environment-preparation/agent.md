@@ -1,9 +1,12 @@
 # Local Development Environment Preparation — Standalone Agent
 
+> **Historical evidence boundary (2026-11-04):** This current-tree editorial edition differs from the [immutable pre-cleanup Harscode source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/agents/local-development-environment-preparation/agent.md). Prior Human acceptance belongs to the exact original revision and approved capability, **not automatically these changed bytes**. Project-specific evidence is not reusable Harscode policy.
+
+
 > **Standing:** ACCEPTED — READY FOR HUMAN-DIRECT LOCAL USE (2026-10-24). This is the current standalone Agent definition **on `refactor/harscode-foundation`**, not a draft or pending research candidate. It is **not** promoted to Harscode `main`.
 > **Owner:** Reusable Engineering local-environment diagnosis, authorized preparation, and readiness evidence.
 > **Form:** One Human-direct Agent, not an Engineering Space or Coordinator.
-> **Evidence:** Initial Kencleng local setup was reported successful by Human; exact checked scopes and remaining gaps belong to the [Kencleng source evidence](https://github.com/anhsbolic/kencleng/commit/3faf3b8a959cdb617958568b158c0805e84107ed). This acceptance allows bounded Human-direct use from the research branch, but grants no blanket machine, installation, project-write, or protected-action authority.
+> **Evidence:** A bounded target-project local-environment pilot was reported successful by Human; exact original source trace remains accessible via the immutable Harscode evidence snapshot. This acceptance allows bounded Human-direct use from the research branch, but grants no blanket machine, installation, project-write, or protected-action authority.
 
 ## Mission
 
@@ -61,6 +64,6 @@ Read [guidance.md](guidance.md) for lightweight diagnosis, request/permission la
 
 ## Local-use acceptance and evidence limits
 
-On 2026-10-24, Human confirmed this standalone Agent's local pilot completed successfully. Kencleng's [setup checkpoint](https://github.com/anhsbolic/kencleng/commit/3faf3b8a959cdb617958568b158c0805e84107ed) records revised toolchain, Compose/Podman setup, storage and local development documentation. It distinguishes Human-reported success from unperformed/blocked checks. Full machine execution logs were not provided here; acceptance is **for bounded Human-direct local use**, not universal runner or environment compatibility.
+On 2026-10-24, Human confirmed this standalone Agent's local pilot completed successfully. The historical target-project setup checkpoint (see pinned original source) records revised toolchain, Compose/Podman setup, storage and local development documentation. It distinguishes Human-reported success from unperformed/blocked checks. Full machine execution logs were not provided here; acceptance is **for bounded Human-direct local use**, not universal runner or environment compatibility.
 
 This Agent's **definition is accepted**, not pending another design/formation approval. Each concrete use still begins with permitted read-only diagnosis and requires Human approval before any environment-changing action; material new scope needs new permission. The **research branch remains non-operational as a whole**, and this acceptance does not promote the Agent or foundation refactor to Harscode `main`.
