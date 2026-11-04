@@ -1,6 +1,6 @@
 # Cross-Stage Foundation — Sequential Audit & Revision Plan / Tracker
 
-> **Status:** A1 Product, A2 UX and A3 UI SETTLED_FOR_RESEARCH; Project Design Standards NOT_STARTED; A4–A6 NOT_STARTED. Research-only, not operational main.
+> **Status:** A1 Product, A2 UX and A3 UI SETTLED_FOR_RESEARCH; Project Design Standards **KENCLENG REFERENCE AUDITED / OWNING GUIDANCE NOT STARTED**; A4–A6 NOT_STARTED. Research-only, not operational main.
 > **Decision owner:** Anhar. **Plan agreed:** 2026-11-04. **Tracking owner:** research collaboration; record actual approvals and evidence, do not infer them.
 > **Repository:** `anhsbolic/harscode-workspace`.
 > **Frozen subject baseline:** `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`.
@@ -261,3 +261,11 @@ Anhar explicitly approved exact research revision `cbe1010a37145c7f9ebf2adf1216d
 | `design/ui/templates/ui-output.en.md` | `73ba3c47b940d888fc82ef0b4ade909bbd8d791c` |
 
 Source verification: UI Definition 13 input / 9 process / 9 output / 6 outcome; ID/EN templates each cover O1–O9 and have 52 table rows; 61 relative source links checked with no broken file paths or heading anchors; applicable NextJS Builder input requirements read. Default web proof is static HTML/CSS, one HTML per actual accepted UX webpage, with in-page state variants, local relative preview navigation and evidence-backed exceptions. No files per UI state mandated. Actual rendering, accessibility, usability, target-project consumer execution and agent/harness runtime remain UNVERIFIED. Original UI files retain their historical DRAFT header bytes; this tracker provides external exact approval evidence without altering reviewed content. A3 UI is SETTLED_FOR_RESEARCH, while Project Design Standards and combined A3 remain incomplete.
+
+## 20. Kencleng Project Design Standards gap audit and scoped target-project reconciliation (2026-11-04)
+
+User objective: **complete the existing Kencleng Design Standards only where a real gap exists; do NOT repeat brand/design-system research**. Read-only compared Kencleng pilot `d6738298f43313d8c58afcec7b5131b33e0b26d0` with operational main `7a86769f51e7e1f0b6939b184a0336a9c984760f`, reviewed five canonical project Design concerns, two working supplemental sources, current ORG-01 Hi-Fi candidate, frontend authority routing, design tokens and actual builder handoff. The [Kencleng source/evidence matrix](a3-project-design-standards-kencleng-gap-matrix.md) records each finding and standing.
+
+**Material mismatch repaired on Kencleng pilot:** Brand Brief §12 had selection-time OPEN values already resolved later by effective Visual Guidelines and Asset Governance. Editorial status/source reconciliation landed at Kencleng pilot commit `2fe5ddf1fc32bbf152ddbc8936990d4ac4ae6424`, **one modified file only**, seven linked files/heading anchors valid; no new substantive visual/brand decision and **no Kencleng main change**. Source-level only; no actual rendered/consumer verification. The current pilot branch is not automatically main authority.
+
+**Decision standing:** Kencleng existing five canonical Design Standards are sufficiently separated; no reason to add or regenerate another set. Working IA/copy remain working; unresolved font licensing/logo/illustration/motion/production details stay OPEN until triggered. Harscode `design/project-standard/` is **not yet authored**; this audit is evidence, not Project Standard policy settlement or approval. A3 UI stays `SETTLED_FOR_RESEARCH`; broader combined A3 is still incomplete.
