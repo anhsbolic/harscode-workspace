@@ -1,6 +1,6 @@
 # Cross-Stage Foundation — Sequential Audit & Revision Plan / Tracker
 
-> **Status:** PLAN AGREED; A1 experiment-led reassessment and approved research guidance persisted; A1 SETTLED_FOR_RESEARCH after source-level validation; A2–A6 NOT_STARTED.
+> **Status:** PLAN AGREED; A1 experiment-led reassessment and approved research guidance persisted; A1–A2 SETTLED_FOR_RESEARCH after source-level validation; A3–A6 NOT_STARTED.
 > **Decision owner:** Anhar. **Plan agreed:** 2026-11-04. **Tracking owner:** research collaboration; record actual approvals and evidence, do not infer them.
 > **Repository:** `anhsbolic/harscode-workspace`.
 > **Frozen subject baseline:** `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`.
@@ -68,13 +68,13 @@ Statuses: `NOT_STARTED` → `AUDITING` → `REVIEW_PENDING` → (`REVISING` if a
 | --- | --- | --- | --- | --- | --- |
 | **Setup** | **COMPLETE** | [Candidate Reference Model](candidate-reference-model.md), [First-Pass Gap Assessment](foundation-gap-assessment.md) | Anhar agreed sequential audit-and-revision method, 2026-11-04 | New isolated branch; plan/tracker created here | Start A1 |
 | **A1 Product** | `SETTLED_FOR_RESEARCH` | A1 v2 reviewed original 11 Product files; new 13/9/6/6 core; 99-file active/research legacy-reference scan and source-level link/semantic checks | Anhar accepted new guidance architecture and three research authoring templates (2026-11-04); approved template blobs pinned at `f796b2d` | Research branch redesign, seven retired files, immutable history, 110 relative links checked in 14 affected/relevant files; two historical broken references repaired; target-project independent consumer fit **UNVERIFIED** | Start A2 UX Lo-Fi research, using information/responsibility contracts; preserve A1 limitations for A6 |
-| **A2 UX Lo-Fi** | `VALIDATING` | [A2 UX source audit](a2-ux-lofi-deep-audit-and-target-design.md): eight findings, 11/9/9/6 model, self-contained concern guidance and two language templates | Anhar accepted four UX guidance files and Indonesian template at `1658b5d` (2026-11-04); English version **requested, not yet reviewed** | Approved-format blob refs pinned in decision record; new `ux-output.en.md` exact-semantic translation draft and README language links; source/link check pending, independent consumer/harness/runtime UNVERIFIED | Validate bilingual template parity, changed links, and scoped A2 research closure; review English translation if needed |
+| **A2 UX Lo-Fi** | `SETTLED_FOR_RESEARCH` | [A2 audit & UX target](a2-ux-lofi-deep-audit-and-target-design.md), 8 findings, 11/9/9/6 conditional I/P/O/O, direct concern authority | Anhar accepted four UX guidance files and the Indonesian authoring template at exact revision `1658b5d` (2026-11-04); EN counterpart requested, **not separately approved** | Approved original blob refs recorded; English draft uses identical O1–O9 and table/placeholder structure; 35 local relative links checked across seven relevant files, 0 broken; README navigation-only change, project consumer/harness/runtime UNVERIFIED | Begin A3 UI + Project Design Standards source audit; keep EN translation review optional |
 | **A3 UI Hi-Fi** | `NOT_STARTED` | F-01 candidate only | None | None | After A2 adequately settled |
 | **A4 Rancang** | `NOT_STARTED` | F-03/F-05 candidate only | None | None | After A3 adequately settled |
 | **A5 Builder** | `NOT_STARTED` | F-04/F-05 candidate only | None | None | After A4 adequately settled |
 | **A6 Final coherence** | `NOT_STARTED` | F-06 candidate only; revisit all accepted changes | None | None | After A1–A5 |
 
-**Progress accounting:** `1 / 6` audit units **SETTLED_FOR_RESEARCH** (A1). Setup is complete, not a seventh audit. Research closure does not prove independent consumer fit, project Product authority, actual use, or runtime.
+**Progress accounting:** `2 / 6` audit units **SETTLED_FOR_RESEARCH** (A1 Product, A2 UX). Setup is complete, not a seventh audit. Research closure does not prove independent consumer fit, project Product/Design authority, actual use, or runtime.
 
 ## 6. Findings and decision log — append only when real evidence exists
 
@@ -95,7 +95,7 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 
 ## Next executable unit
 
-**A2 — REVIEW_PENDING.** [A2 research audit and proposed Interaction & Experience Definition](a2-ux-lofi-deep-audit-and-target-design.md) is ready for Anhar's decision; do not edit owning Design/Engineering Space definitions until the material target direction is approved. A1 remains SETTLED_FOR_RESEARCH (1/6).
+**A3 — UI Hi-Fi and Project Design Standards experiment-led audit, read-only first.** Start from the approved independent concern architecture; inspect UI/Project Standard source and effective target-project evidence before drafting new owning guidance. A1 and A2 are SETTLED_FOR_RESEARCH (2/6). The English UX authoring template remains a draft translation for optional review, not an A3 or A2 blocker.
 
 ## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
 
@@ -151,3 +151,19 @@ Anhar explicitly shifted A1 to **experiment-led fundamental reassessment**, with
 No approved UX meaning or ID template was changed to insert an approval status/hash, so original DRAFT headers remain part of immutable reviewed bytes. The README is subsequently changed **only for discoverability of the newly requested English template**; this does not silently create a new substantive approval of different bytes. Verify source semantic equivalence before A2 closure.
 
 **English-language request:** Anhar requested an English counterpart of the approved Indonesian template. `design/ux/templates/ux-output.en.md` is an English translation with the same O1–O9 identifiers, field/table structure, conditional applicability, consumer handoff and non-authorization boundaries. It remains **DRAFT FOR REVIEW** as a newly created artifact. The English version must not add binding requirements, alter Product/UX authority or replace the accepted ID version. No independent bilingual user test is claimed.
+
+## 12. A2 — Source validation and research settlement (2026-11-04)
+
+**Approval scope:** Anhar approved A2 owning UX research semantics and the Indonesian UX Output template after reviewing exact commit `1658b5dad08e3f7b95c8bb8ccfbd3d67367a5c51`; section 11 pins the exact five approved content blobs. That approval covers reusable Harscode **research design**, not actual target-project UX decisions, a UX Space, invocation, or operational Harscode.
+
+**Source validation:**
+- Four local UX guidance files cover the stated 11 input information classes, nine conditional activities, nine logical output meanings and six desired quality properties. Lo-Fi proofs and web route specifications are conditional; no mandatory phase/Space/producer dependency was introduced.
+- `design/ux/templates/ux-output.id.md` remained identical to approved blob `82c7e670d386142993f6588d096cdc0bbb8c67ec`. The three other UX guidance files (`AGENTS.md`, `definition.md`, `authority-and-handoff.md`) also retained approved blob identities.
+- `design/ux/README.md` was revised only for **two-language template navigation**. Its substantive UX semantics and authority boundaries did not change; the accepted reviewed README content remains retrievable at blob `98146c6f58331dd41350fdbbad894aea6f27c2f2`. This editorial update is not treated as retroactively approved new semantic meaning.
+- The requested `design/ux/templates/ux-output.en.md` is a newly authored English **DRAFT FOR HUMAN REVIEW** translated from the approved Indonesian template: the nine `O1–O9` identifiers/headings match, the source and translation have 41 Markdown table rows each, 40 placeholder rows each, and retain consumer handoff, exact-revision approval separation, and no implicit execution authorization. This parity check is structural/source-level, not independent user-language testing.
+- **35 Markdown local relative links across seven directly related files checked; zero broken.** Direct UX routing has no `design/README.md` or parent `design/AGENTS.md`. No target-project, Engineering Space, `main`, or frozen baseline changes were made.
+- Original Design root `design/exploration.md` and `design/authority-and-handoff.md` remain source-only transitional inputs to A3, not active UX instructions. No sibling UI or Project Standard guidance was invented before its audit.
+
+**Residual:** English authoring template content is **not separately Human-approved**. Actual independent UX consumer checks, live agent-harness instructions, rendered/usability/accessibility validation, and project Product/UX authority compatibility are **NOT CHECKED / UNVERIFIED**. No approval or runtime claim is inferred from document existence. These limits are suitable for research closure; revisit A2 only with material new evidence, not merely to align file counts.
+
+**A2 status: `SETTLED_FOR_RESEARCH`.** This is a source-level research settlement, not project Design acceptance or operational promotion.
