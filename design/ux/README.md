@@ -12,6 +12,7 @@ This folder is a **self-contained UX responsibility**. A reader or agent starts 
 | UX decisions and quality, Input → Process → Output → Outcome | [definition.md](definition.md) |
 | Legitimate UX approval, revisions, consumer information and reconciliation | [authority-and-handoff.md](authority-and-handoff.md) |
 | UX agent source selection, guardrails and stop conditions | [AGENTS.md](AGENTS.md) |
+| Optional standardized output authoring shape | [UX Output template — Bahasa Indonesia](templates/ux-output.id.md) |
 
 Read actual target-project Product authority, applicable Design Standards, accessibility/security constraints, research and relevant technical sources **directly from their owning project artifacts** for the actual assignment. Those are material information inputs—not dependencies on named producers, Spaces or sibling Harscode folders.
 
@@ -22,6 +23,8 @@ UX determines how a person **discovers, understands, navigates, acts, and recove
 Product owns meaningful domain journey, authority and consequential information/rules. Visual Interface Design owns final expressive UI. Project Design Standards responsibility owns reusable rules **across outcomes**. Engineering owns technical mechanisms/implementation. UX may be consumed by each without requiring a mandatory sequence.
 
 **Lo-Fi is a fidelity/proof method, not a mandatory lifecycle stage or new Harscode Space.** Nine logical UX outputs do not imply nine files or one prototype per assignment. Only relevant information must be sufficient for the real decision.
+
+**Template rule:** Use the optional [UX Output template](templates/ux-output.id.md) when a new bounded UX artifact needs a consistent, reviewable format. Existing target-project artifacts remain valid when they already expose sufficient UX meaning, source standing and consumer contracts. A filled template is not approval.
 
 ## Standing boundaries
 

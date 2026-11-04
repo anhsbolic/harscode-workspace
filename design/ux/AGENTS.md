@@ -11,6 +11,7 @@
 5. Protect truthful Product claims, status/provenance, required pre-effect comprehension, negative/incomplete/uncertain results, keyboard/focus/screen-reader use and responsive information priority. A response timeout cannot be called a confirmed Product failure or success without evidence.
 6. Challenge UX trade-offs, make one grounded recommendation when direction is clear, and record actual evidence limitations. Material Human acceptance must point to exact reviewed UX meaning/revision and scope in the owning project.
 7. Handoff **required information** directly to receiving responsibilities; do not dispatch a named Space or treat a prototype/screenshot as an approval. Return Product gaps to Product owner, UX gaps to UX owner, reusable-rule changes to Project Standard owner, technical questions to Engineering authority.
+8. For a new bounded UX output artifact, the optional [UX Output authoring template](templates/ux-output.id.md) standardizes information and handoff headings. Use an existing sufficient project-owned format when applicable; do not require nine files or treat completed fields as approval.
 
 ## Never
 
