@@ -98,7 +98,7 @@ They describe desired UX design quality. Approval of a prototype or good same-se
 
 ## 4. Revised direct-entrypoint Design architecture — Anhar correction (2026-11-04)
 
-**Standing: PROPOSED WORKING ARCHITECTURE / NOT YET HUMAN-APPROVED AS OWNING RESEARCH GUIDANCE.** Anhar clarified that each responsibility is meant to be directly addressable: a subject performing UX, UI or project standard work should start in its **own folder** and should not need to read a common `design/README.md`, `design/AGENTS.md` or common `design/authority-and-handoff.md` to understand its contract.
+**Standing: DIRECT-ENTRYPOINT THREE-CONCERN ARCHITECTURE APPROVED BY ANHAR (2026-11-04); UX GUIDANCE DRAFT / NOT YET ACCEPTED.** Anhar clarified that each responsibility is meant to be directly addressable: a subject performing UX, UI or project standard work should start in its **own folder** and should not need to read a common `design/README.md`, `design/AGENTS.md` or common `design/authority-and-handoff.md` to understand its contract.
 
 ```text
 design/
@@ -155,11 +155,11 @@ A2's implementation scope is `design/ux/` plus retiring/repointing root Design e
 
 **Strong recommendation:** Adopt Anhar's corrected **three independent self-contained Design concern directories**, each with its own `README.md`, `AGENTS.md`, `definition.md` and `authority-and-handoff.md`. Do not retain root-level Design guidance as a required agent route. The concern name is UX, UI or Project Standard; Lo-Fi/Hi-Fi remain optional fidelity and evidence modes, not lifecycle nodes.
 
-**A2 scoped next change after approval:** migrate the relevant UX semantics (11 inputs, nine conditional activities, nine logical outputs, six desired quality properties) into `design/ux/`; provide direct routing, scoped UX authority and information-based handoff. Check inbound references before removing root Design guidance, and verify actual agent/harness entrypoint behavior rather than assuming child `AGENTS.md` suppresses ancestor instructions.
+**A2 scoped draft now persisted for Human content review:** the relevant UX semantics (11 inputs, nine conditional activities, nine logical outputs, six desired quality properties) into `design/ux/`; provide direct routing, scoped UX authority and information-based handoff. Check inbound references before removing root Design guidance, and verify actual agent/harness entrypoint behavior rather than assuming child `AGENTS.md` suppresses ancestor instructions.
 
 **A3:** independently design UI and project-standard guidance from their owning evidence. Do not silently treat Kencleng-specific Design standards as Harscode universal policy. Distinguish reusable project standard authority from bounded UX/UI decisions.
 
-**Review status:** This is an updated **A2 DRAFT**; no owning `design/` files or target-project policy have been changed. A2 remains `REVIEW_PENDING`.
+**Review status:** The three-concern direct-entrypoint architecture is Human-approved. Four `design/ux/` guidance files are **drafts for substantive review**, and root `design/README.md` / `design/AGENTS.md` were retired for direct routing. Two older root Design guidance files remain transitional source for A3, not extra UX instructions. No project Product/Design authority or operational policy changed. A2 remains `REVIEW_PENDING`.
 
 ## 7. Project-level and historical Design evidence — 2026-11-04
 
@@ -177,3 +177,11 @@ A2's implementation scope is `design/ux/` plus retiring/repointing root Design e
 **Legacy supporting evidence (read-only, not current Harscode guidance):** `deprecated/legacy/product-design/product-brand-and-ui-exploration.md` discusses Product-truth-grounded Design direction exploration and later concrete visual system; `deprecated/legacy/product-design/design-authority-and-canonicalization.md` distinguishes exploratory proof from Human-approved durable reusable authority. Their valid insight is **explore → decide/approve → persist reusable rule when justified**, not a required waterfall or a mandate to copy legacy files into the active foundation.
 
 **Unverified:** Actual cross-project applicability, independent source consumption, real rendered UX tests and project-specific adoption. No claim that a new three-concern documentation arrangement has been tested in real work.
+
+## 8. UX draft source and migration evidence (2026-11-04)
+
+Anhar approved the **three independent Design concern folder architecture**, each with local `README.md`, `AGENTS.md`, `definition.md`, and `authority-and-handoff.md`, and direct concern entrypoints without shared Design root instructions. This was approval to draft owning research guidance, **not approval of the specific UX semantic contents**.
+
+The four UX files were written as reviewable **DRAFTS** at research revision `32c243c36239932f94f43dba5b0d88555161d164`. Root repository README was redirected to `design/ux/README.md`. Parent `design/AGENTS.md` and `design/README.md` were retired from the research tree, because they could otherwise form an unintended root Design instruction/entrypoint dependency. Root `design/exploration.md` and `design/authority-and-handoff.md` remain as **transitional A3 audit evidence**, not active UX authority. Frozen inspected-first-pass citation links were pinned to pre-migration exact sources instead of retargeted to new semantics.
+
+**Limits:** Actual harness instruction-loading behavior, independent consumer suitability, real UX evaluation, and project-specific Design acceptance are **NOT CHECKED**. Root repository and target-project instructions/security remain effective. A2 cannot be closed merely because the four draft files exist; Anhar's content review and scoped link/semantic validation remain required.
