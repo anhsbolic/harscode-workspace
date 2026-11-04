@@ -68,8 +68,8 @@ Statuses: `NOT_STARTED` → `AUDITING` → `REVIEW_PENDING` → (`REVISING` if a
 | --- | --- | --- | --- | --- | --- |
 | **Setup** | **COMPLETE** | [Candidate Reference Model](candidate-reference-model.md), [First-Pass Gap Assessment](foundation-gap-assessment.md) | Anhar agreed sequential audit-and-revision method, 2026-11-04 | New isolated branch; plan/tracker created here | Start A1 |
 | **A1 Product** | `SETTLED_FOR_RESEARCH` | A1 v2 reviewed original 11 Product files; new 13/9/6/6 core; 99-file active/research legacy-reference scan and source-level link/semantic checks | Anhar accepted new guidance architecture and three research authoring templates (2026-11-04); approved template blobs pinned at `f796b2d` | Research branch redesign, seven retired files, immutable history, 110 relative links checked in 14 affected/relevant files; two historical broken references repaired; target-project independent consumer fit **UNVERIFIED** | Start A2 UX Lo-Fi research, using information/responsibility contracts; preserve A1 limitations for A6 |
-| **A2 UX Lo-Fi** | `SETTLED_FOR_RESEARCH` | [A2 audit & UX target](a2-ux-lofi-deep-audit-and-target-design.md), 8 findings, 11/9/9/6 conditional I/P/O/O, direct concern authority | Anhar accepted four UX guidance files and the Indonesian authoring template at exact revision `1658b5d` (2026-11-04); EN counterpart requested, **not separately approved** | Approved original blob refs recorded; English draft uses identical O1–O9 and table/placeholder structure; 35 local relative links checked across seven relevant files, 0 broken; README navigation-only change, project consumer/harness/runtime UNVERIFIED | Begin A3 UI + Project Design Standards source audit; keep EN translation review optional |
-| **A3 UI Hi-Fi** | `NOT_STARTED` | F-01 candidate only | None | None | After A2 adequately settled |
+| **A2 UX Lo-Fi** | `SETTLED_FOR_RESEARCH` | [A2 audit & UX target](a2-ux-lofi-deep-audit-and-target-design.md), 8 findings, 11/9/9/6, direct concern and Lo-Fi format policy | Anhar accepted four UX guidance + ID template at `1658b5d`; **also approved exact A2 format revision and EN template at `7ff01bd` (2026-11-04)** | A2 original approvals in sections 11–12; format amendment exact blobs pinned in section 14; no UX rework, consumer/harness/runtime UNVERIFIED | A2 settled; revisit only on materially new evidence in A3/A6 |
+| **A3 UI Hi-Fi** | `REVIEW_PENDING` | [A3 UI & Project Standards deep audit / proposed target](a3-ui-and-project-standard-deep-audit-and-target-design.md): 10 findings A3-F01–F10, conditional UI 13/9/9/6, independent standard-formation semantics; Kencleng pilot exact evidence | Three-concern direct-entrypoint structure previously approved; **new A3 UI / Project Standard content not approved** | Read-only audit of current Harscode Design, approved A2 UX, UI experiment, Kencleng pilot and consumer contracts; no owning A3 guidance or project write | Human review of A3 semantic direction, then scoped UI and Project Standard guidance draft |
 | **A4 Rancang** | `NOT_STARTED` | F-03/F-05 candidate only | None | None | After A3 adequately settled |
 | **A5 Builder** | `NOT_STARTED` | F-04/F-05 candidate only | None | None | After A4 adequately settled |
 | **A6 Final coherence** | `NOT_STARTED` | F-06 candidate only; revisit all accepted changes | None | None | After A1–A5 |
@@ -95,7 +95,7 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 
 ## Next executable unit
 
-**A3 — UI Hi-Fi and Project Design Standards experiment-led audit, read-only first.** Start from the approved independent concern architecture; inspect UI/Project Standard source and effective target-project evidence before drafting new owning guidance. A1 and A2 are SETTLED_FOR_RESEARCH (2/6). The English UX authoring template remains a draft translation for optional review, not an A3 or A2 blocker.
+**A3 — REVIEW_PENDING.** [A3 UI & Project Design Standards source audit / target proposal](a3-ui-and-project-standard-deep-audit-and-target-design.md) is available for Anhar's decision. No owning A3 guidance changes before approval. A1 and A2 remain SETTLED_FOR_RESEARCH (2/6).
 
 ## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
 
@@ -175,3 +175,19 @@ No approved UX meaning or ID template was changed to insert an approval status/h
 **Amendment scope:** `design/ux/definition.md` adds format-selection, tool availability/fallback, renderer/interaction verification standing, simulation/proof limits, and prevention of competing artifact authority. `design/ux/templates/ux-output.id.md` and `ux-output.en.md` gain bilingual equivalent instructions and five metadata rows for covered logical output/proof question, artifact form, exact source, actual render/interaction verification, and evidence limits. No new template file, mandatory format, Space, runtime behavior or project-specific standards are introduced.
 
 **Authority and validation:** The previously approved semantic UX contract and ID template remain available at their earlier exact blobs; adding this policy changes current file bytes and must not be mislabeled as automatically covered by the previous exact-revision approval. The English template was already a draft prior to this scoped amendment. Research A2 remains `SETTLED_FOR_RESEARCH` on its previously reviewed architecture and semantics; the new format-amendment revision is an **approved direction / newly authored reviewable content**, with source/consumer evidence checked separately. No actual diagram rendering, HTML browser run, real user test or independent consumer check is implied.
+
+## 14. A2 exact-format acceptance and A3 research audit (2026-11-04)
+
+**New A2 Human approval:** After reviewing UX Lo-Fi Artifact Format Policy v1, Anhar explicitly said **“approve bro. lanjut”**. This accepts the scoped A2 format amendment at `7ff01bdcef7487b24e7a142adbb4425a37e39ffe` **as Harscode research guidance content**, including the revised Indonesian and English authoring templates. Exact reviewed blobs:
+
+| A2 format-amendment file | Accepted blob at `7ff01bd` |
+| --- | --- |
+| `design/ux/definition.md` | `6dba24605401866becc6901c81ef1c68cca04b5f` |
+| `design/ux/templates/ux-output.id.md` | `eb3439e768e58e864efaed0a91d05f69b3e88263` |
+| `design/ux/templates/ux-output.en.md` | `7c62b7dad2dddbbf0579c1285b719cdb3434e08a` |
+
+The approval covers the **reusable research authoring formats** and does **not** create approved UX decisions for Kencleng, a new Space, runtime artifact-render evidence, or operational Harscode policy. Pre-existing DRAFT template headers are left untouched; this tracker carries external exact-revision decision evidence. A2 remains `SETTLED_FOR_RESEARCH`.
+
+**A3 read-only source assessment:** [A3 UI & Project Design Standards audit](a3-ui-and-project-standard-deep-audit-and-target-design.md) compares the experimental UI 13 input / 9 process / 9 output / 6 outcome model with root transitional Design guidance, settled A2 UX boundary, actual Rancang/NextJS Builder consumer sources and Kencleng pilot project Design artifacts at `d6738298f43313d8c58afcec7b5131b33e0b26d0`. Findings `A3-F01–F10` recommend separate direct-entrypoint UI and Project Standard concerns, with explicit bounded UI vs project-wide standards promotion boundaries and conditional visual evidence. **No comparable Project Standard experimental I/P/O/O exists**, so the proposed standard model intentionally does not invent a fixed numeric contract. No owning `design/ui/` or `design/project-standard/` guidance was written in this audit commit; A3 remains `REVIEW_PENDING` for Anhar's review. Kencleng observed project policy is not imported as reusable Harscode policy.
+
+**Unverified:** Actual UI visual/browser inspection, independent consumer execution, full target-project compatibility, and agent-harness/runtime behavior are **NOT CHECKED**; no claims of rendered/implemented acceptance.
