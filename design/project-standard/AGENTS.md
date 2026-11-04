@@ -1,0 +1,25 @@
+# Project Design Standards AGENTS — Direct Concern Guidance
+
+> **Standing:** A3 RESEARCH DRAFT / HUMAN CONTENT REVIEW PENDING. Does not grant project Design ownership, Git write, branch promotion, protected-path modification, external tools, Space invocation or implementation permission.
+
+## Required behavior
+
+1. **Determine actual project and branch.** Read [Project Standard README](README.md), [Definition](definition.md) and [Authority & Handoff](authority-and-handoff.md). Locate the relevant **current target-project** Product and Design authority from its own routing/original files, not Harscode `main` assumptions, past sessions or a sibling Harscode AGENT.
+2. **Classify the real design question:** accepted rule already sufficient; inconsistent/stale source standing; feature-specific UX/UI candidate; credible new shared rule; material change to an accepted standard; or proposed supersession. State the **actual repeated-use/consumer evidence** and blast radius. A category label alone is not evidence of reuse.
+3. **Identify the one owner of each decision** and who can accept it. Product owns domain/business/legal/privacy truth; feature UX owns specific flows, IA/routes/states; feature UI owns bounded visual treatment/copy/candidates; reusable Project Design rules belong to actual project Design standards owners; Engineering owns production components/technology and runtime checks.
+4. **Choose the minimum adequate action.** If the current project original is sufficient, **REUSE — NO WRITE**. For a stale OPEN claim, correct the conflicting reference without reselecting the already accepted decision. For a new feature-specific pattern, keep it local/PROPOSED. Promote only when a real project-wide need and legitimate Human authority justify it.
+5. **Examine consequences proportionately.** Check existing consumers and alternative interpretations, representative UX/UI/accessibility/asset cases, conflicts with Product truth, migration/reversibility, and affected branch/environment. Do not silently treat a selected visual study as a production asset or concrete pixel contract.
+6. **Propose bounded exact changes** to an existing **owning project file** or the smallest genuinely missing owner source if needed. Distinguish candidate, working supplement, approved scoped standard, canonical effective rule, superseded and observed implementation. Do not copy an entire project's Design Standards into Harscode or manufacture a mandatory file inventory.
+7. **Respect Human and repository authority.** Material new cross-feature rules, semantic changes, brand-defining changes and supersession need the legitimate approval/delegation. A Human acceptance of an exact reviewed revision is not an unlimited approval for later edited bytes. Keep approval records separate when inserting a self-referential revision would modify accepted content.
+8. **Verify what was actually changed.** Confirm effective branch/commit and changed paths, relevant original-source standing, cross-reference consistency (including claims that earlier questions are still OPEN), local relative links and legitimate consumer discovery. Report `NOT CHECKED` for unperformed renderer/browser, usability, asset rights, frontend/runtime and independent consumer checks. Source checks alone do not close them.
+9. **Handoff without a new stage or ceremony.** Point downstream UX/UI/Engineering to the actual effective project-owned sources, applicability, exact accepted revision, relevant exceptions and what remains a candidate. Do not force a named Project Standards Space, checklist completion, component library, template, or new phase before routine work.
+
+## Hard boundaries and stop conditions
+
+- No new Product or domain semantics by visual implication; no silent UX routing changes, feature UI acceptance, brand adoption, asset licensing claim, production code edits or Design Standard promotion from UI screenshots.
+- No claim that older “Canonical” labels are binding on **another branch**, or that repository `main` was promoted by activity on a pilot/research branch.
+- No mass splitting/restructuring of an effective project's Design documentation because a conceptual taxonomy looks cleaner. Start with a router/header/decision-status correction when that is enough.
+- No reopened settled decision without material new evidence. No “best practice” requiring fixed I/P/O/O counts or a standard UI file template.
+- If ownership, approval or the project/branch source is materially ambiguous: identify the affected rule and owner, mark the proposed change **OPEN / NOT APPROVED**, and stop before claiming the new rule effective. Independent authorized work may continue.
+
+**Completion:** report the actual change (which may be **none**), project owner/source/revision/standing, consumer impact, performed verification and unverified risks; do not equate a created file or Git commit with approval.
