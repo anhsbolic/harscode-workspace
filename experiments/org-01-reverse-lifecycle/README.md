@@ -48,6 +48,15 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 
 **Standing:** candidate mapping **recorded** and internally reconciled for three approved clarifications; 60 candidate inputs mapped in total. Not independently verified against actual project sources, not a deep cross-stage audit, and not authorization to promote a lifecycle. No assumption that candidate project-level sources actually exist or are authoritative.
 
+## Research branch — candidate reference and foundation audit (2026-11-04)
+
+At source checkpoint `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`, Anhar authorized a new isolated research branch: `research/cross-stage-mapping`. All new work in this section belongs **only** to that branch; the source branch and operational baseline were not changed.
+
+- [Candidate Reference Model](candidate-reference-model.md) — one audit-facing synthesis of the five experiment concerns, 60 candidate information inputs, source/authority boundaries and ORG-01 illustrative test. Not canonical, not a lifecycle/workflow engine.
+- [Foundation Gap Assessment — First Pass](foundation-gap-assessment.md) — checkpoint-wide file inventory, targeted source-depth checks of foundation guidance and Engineering Space definitions, source-linked gaps/alignments, and explicit evidence limits. No audit of an operational branch or current Kencleng artifacts.
+
+**Standing:** initial research formalization and first-pass structural audit recorded; not source-to-runtime validation, formation revision or authority promotion. Next deep-dive decisions belong to Anhar.
+
 ## Sources and evidence standing
 
 This snapshot captures **explicit discussion and working decisions from the 2026-11-03 experiment session**, not fresh empirical user research, code inspection, independent consumer verification, or proof that the model works. Its Git revision is the durable reference for this working artifact; historical conversation is not required to reconstruct its content.
