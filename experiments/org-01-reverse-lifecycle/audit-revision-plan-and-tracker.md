@@ -1,6 +1,6 @@
 # Cross-Stage Foundation — Sequential Audit & Revision Plan / Tracker
 
-> **Status:** PLAN AGREED; A1 experiment-led reassessment and approved research guidance persisted; A1 validating approved templates and legacy migration; A2–A6 NOT_STARTED.
+> **Status:** PLAN AGREED; A1 experiment-led reassessment and approved research guidance persisted; A1 SETTLED_FOR_RESEARCH after source-level validation; A2–A6 NOT_STARTED.
 > **Decision owner:** Anhar. **Plan agreed:** 2026-11-04. **Tracking owner:** research collaboration; record actual approvals and evidence, do not infer them.
 > **Repository:** `anhsbolic/harscode-workspace`.
 > **Frozen subject baseline:** `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`.
@@ -67,14 +67,14 @@ Statuses: `NOT_STARTED` → `AUDITING` → `REVIEW_PENDING` → (`REVISING` if a
 | Unit | Status | Audit evidence / issue refs | Decision / approval refs | Research revisions / verification | Next item |
 | --- | --- | --- | --- | --- | --- |
 | **Setup** | **COMPLETE** | [Candidate Reference Model](candidate-reference-model.md), [First-Pass Gap Assessment](foundation-gap-assessment.md) | Anhar agreed sequential audit-and-revision method, 2026-11-04 | New isolated branch; plan/tracker created here | Start A1 |
-| **A1 Product** | `VALIDATING` | A1 v2 reviewed all 11 original Product files; experiment-led semantics and 99-file repository-local reference scan | Anhar approved 4-guidance/3-template architecture, core/authority/handoff design and all three optional research templates (2026-11-04) | New Product research guidance; old six phase docs and English legacy template retired with frozen provenance; repo-local validation pending; independent project consumers NOT CHECKED | Validate source links, invariant boundaries and report residual limitations before settling A1 |
+| **A1 Product** | `SETTLED_FOR_RESEARCH` | A1 v2 reviewed original 11 Product files; new 13/9/6/6 core; 99-file active/research legacy-reference scan and source-level link/semantic checks | Anhar accepted new guidance architecture and three research authoring templates (2026-11-04); approved template blobs pinned at `f796b2d` | Research branch redesign, seven retired files, immutable history, 110 relative links checked in 14 affected/relevant files; two historical broken references repaired; target-project independent consumer fit **UNVERIFIED** | Start A2 UX Lo-Fi research, using information/responsibility contracts; preserve A1 limitations for A6 |
 | **A2 UX Lo-Fi** | `NOT_STARTED` | F-01/F-03 candidate only | None | None | After A1 adequately settled |
 | **A3 UI Hi-Fi** | `NOT_STARTED` | F-01 candidate only | None | None | After A2 adequately settled |
 | **A4 Rancang** | `NOT_STARTED` | F-03/F-05 candidate only | None | None | After A3 adequately settled |
 | **A5 Builder** | `NOT_STARTED` | F-04/F-05 candidate only | None | None | After A4 adequately settled |
 | **A6 Final coherence** | `NOT_STARTED` | F-06 candidate only; revisit all accepted changes | None | None | After A1–A5 |
 
-**Progress accounting:** `0 / 6` audit units settled (A1 redesign persisted but still pending template/compatibility review). Setup is complete, **not** counted as A1 progress. Do not award a phase PASS based on the earlier first-pass assessment, candidate mapping coverage, or approved experiment snapshots.
+**Progress accounting:** `1 / 6` audit units **SETTLED_FOR_RESEARCH** (A1). Setup is complete, not a seventh audit. Research closure does not prove independent consumer fit, project Product authority, actual use, or runtime.
 
 ## 6. Findings and decision log — append only when real evidence exists
 
@@ -95,7 +95,7 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 
 ## Next executable unit
 
-**A1 — Product deep audit, read-only first.** Inspect the 11 existing Product files at their exact revisions; map content and consumer contracts against the [Product experiment model](product-definition.md). Produce an evidence-backed gap/recommendation summary for Anhar before making owning-source edits. Update the A1 row only after actual work, with the observed scope and refs.
+**A2 — UX Design Lo-Fi experiment-led reassessment**, read-only first, using A1 Product information contracts as an accepted **research design**, not canonical Harscode policy or mandatory producer dependency. Inspect Design owning sources and relevant effective source/consumer contracts before proposing revisions.
 
 ## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
 
@@ -103,6 +103,21 @@ Anhar explicitly shifted A1 to **experiment-led fundamental reassessment**, with
 
 **Persisted guidance:** `product/README.md`, `product/AGENTS.md`, `product/product-definition.md`, `product/authority-and-approval.md`, `product/consumer-handoff.md`. **Templates (Human-accepted research authoring shapes at reviewed revision `f796b2d`; unchanged preapproval headers):** `product/templates/product-definition.id.md`, `product/templates/product-contract.id.md`, `product/templates/product-approval-record.id.md`. The former six phase files and English legacy template were retired from this research branch, with immutable frozen references preserved in `product/history.md`; no operational or target-project authority changed. New Product research guidance is **not** operational policy and does not amend approved Engineering Space definitions.
 
-**Evidence limitations:** This is source/draft design work, not a validated Product process, target-project ORG-01 reapproval, independent fresh consumer check or runtime test. Actual deletion/redirect and compatibility work remain open. The research commit/revision should be verified against the branch when closing A1.
+**Evidence limitations:** This is approved working research design and source-level migration, not a validated target-project Product process, Kencleng ORG-01 reapproval, independent fresh consumer test or runtime verification. Old files were retired and pinned to immutable sources. External consumers remain UNVERIFIED and are owned by the applicable target-project Human for any actual adoption; cross-concern coherence will be reviewed in A6.
 
 **A1 template decision evidence (2026-11-04):** Anhar approved three research authoring templates at reviewed commit `f796b2d889168d708a49b42102947fcd59a1c156`: `product/templates/product-definition.id.md` blob `8f40b3cc2929e643f498c2a463e7f55c0e425e8c`; `product/templates/product-contract.id.md` blob `dcd5dc4505676c60aee29513e64ca3d4f64a5e65`; `product/templates/product-approval-record.id.md` blob `a34918b7ddf81c6706fcedf35d3b70a0ad3294c8`. These template bytes remain unchanged with their originally written DRAFT headers; this decision accepts the **research authoring shapes**, not target-project contracts, product decisions, or operational Harscode policy. Approval record external to template content avoids self-referential approval edits.
+
+## 9. A1 — Source-level validation and research closure (2026-11-04)
+
+**Human authority:** Anhar explicitly approved the experiment-led Product document architecture and core/authority/handoff drafts, then approved the three research templates at exact reviewed revision `f796b2d889168d708a49b42102947fcd59a1c156`. This approves the **research authoring formats**, not target-project Product requirements, formed capabilities or operational Harscode policy. Their unchanged template blobs and original DRAFT headers are reconciled through this separate approval evidence, not edited postapproval.
+
+**Verified source steps:**
+1. Audited all **11** pre-redesign Product files at research baseline and compared to ORG-01 experimental Product Definition as a primary but challengeable design reference. New Product core covers **13 information inputs, 9 iterative process activities, 6 logical outputs, 6 Product quality properties**, including actor/domain-role separation, consequential information obligations and subject-independent consumers.
+2. Scanned **99 active/research files** in the pre-cleanup research tree for links/codes referring to legacy six-phase Product paths. Engineering Spaces had **no direct path dependency on the seven retired files** in the scanned sources. No broad Engineering formation/contract changes were made.
+3. Retired six obsolete phase/template files plus legacy English Contract template (**7 total**) only on `research/cross-stage-mapping`. Preserved exact frozen originals at `96b479c1a4e1ead77bb1614ef49bf09aca435c0d`; directly fetched and verified all seven original blobs. Original first-pass assessment cites historical frozen sources, not the new Product file in their place.
+4. Checked **110 local relative Markdown links across 14 A1-affected and nearby reference documents** after retirement. Identified two pre-existing broken historical Specialist links in `FOUNDATION-VERIFICATION.md`; verified original source bytes exist at `5e3beb74e4c1231993924cd39a2df47654eab59a` and pinned those links in this closure commit. Repeat changed-document link check after commit.
+5. Verified the three unchanged template blob hashes agree with Anhar's approved research versions. Approval Record and Contract remain separate; Product Contract self-contained meaning does not waive original-source checks, security constraints, or downstream authorization.
+
+**Residuals / dispositions:** Real target-project Product adoption, external references to old `PROD-*` codes, independent fresh-session Product→Design/Engineering consumption, and actual ORG-01/Product value are **NOT CHECKED / UNPROVEN**, not silently treated as PASSED. Any target-project adoption/redefinition needs separate authorized owner review (Anhar where applicable) and exact artifact revisions. A2/A4/A6 may reveal material new evidence warranting A1 reconsideration; do not reopen only for naming alignment.
+
+**A1 status:** `SETTLED_FOR_RESEARCH` after repository-local evidence and Human research design approvals; this **does not** imply operational promotion, real consumer-fit acceptance, runtime execution or a new Product Space.
