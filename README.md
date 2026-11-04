@@ -14,7 +14,7 @@
 
 | Domain | Responsibility | Readiness |
 | --- | --- | --- |
-| [Product](product/README.md) | Six named Product phases, coded output types, value ownership and Product approval boundaries | STRUCTURED — BRANCH SCOPE ONLY; NOT OPERATIONAL MAIN |
+| [Product](product/README.md) | Experiment-led Product Definition I/P/O/O, Product authority/approval and subject-independent information handoff; draft templates under review | RESEARCH REDESIGN — NOT OPERATIONAL MAIN |
 | [Design](design/README.md) | Interaction/UI/visual expression and design authority | WORKING — RESEARCH ONLY |
 | [Engineering](engineering/README.md) | Solution, implementation, Engineering Spaces and Specialist-local knowledge | WORKING — RESEARCH ONLY |
 | [Collaboration](collaboration/README.md) | Human–AI advisory collaboration and authority-aware decisions | WORKING — RESEARCH ONLY |

@@ -1,6 +1,6 @@
 # Cross-Stage Foundation — Sequential Audit & Revision Plan / Tracker
 
-> **Status:** PLAN AGREED / TRACKER INITIALIZED — execution of individual phase audits and revisions **NOT STARTED**.
+> **Status:** PLAN AGREED; A1 experiment-led reassessment and approved research guidance persisted; A1 still REVIEW_PENDING; A2–A6 NOT_STARTED.
 > **Decision owner:** Anhar. **Plan agreed:** 2026-11-04. **Tracking owner:** research collaboration; record actual approvals and evidence, do not infer them.
 > **Repository:** `anhsbolic/harscode-workspace`.
 > **Frozen subject baseline:** `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`.
@@ -67,14 +67,14 @@ Statuses: `NOT_STARTED` → `AUDITING` → `REVIEW_PENDING` → (`REVISING` if a
 | Unit | Status | Audit evidence / issue refs | Decision / approval refs | Research revisions / verification | Next item |
 | --- | --- | --- | --- | --- | --- |
 | **Setup** | **COMPLETE** | [Candidate Reference Model](candidate-reference-model.md), [First-Pass Gap Assessment](foundation-gap-assessment.md) | Anhar agreed sequential audit-and-revision method, 2026-11-04 | New isolated branch; plan/tracker created here | Start A1 |
-| **A1 Product** | `NOT_STARTED` | F-02 candidate only; deep audit pending | None | None | Read all 11 Product files and assess |
+| **A1 Product** | `REVIEW_PENDING` | A1 v2 read-only reassessment of all 11 Product files; experiment-led I/P/O/O, actor/journey/role/content/approval and subject-independent consumption | Anhar approved new 4-guidance/3-optional-template target and core/authority/consumer working design (2026-11-04); authorized research branch persistence and additional draft templates | Research redesign commits; three templates **DRAFT for review**, legacy migration and independent consumer fit **not checked** | Review draft templates, source/references and legacy cleanup before settlement |
 | **A2 UX Lo-Fi** | `NOT_STARTED` | F-01/F-03 candidate only | None | None | After A1 adequately settled |
 | **A3 UI Hi-Fi** | `NOT_STARTED` | F-01 candidate only | None | None | After A2 adequately settled |
 | **A4 Rancang** | `NOT_STARTED` | F-03/F-05 candidate only | None | None | After A3 adequately settled |
 | **A5 Builder** | `NOT_STARTED` | F-04/F-05 candidate only | None | None | After A4 adequately settled |
 | **A6 Final coherence** | `NOT_STARTED` | F-06 candidate only; revisit all accepted changes | None | None | After A1–A5 |
 
-**Progress accounting:** `0 / 6` audit units settled. Setup is complete, **not** counted as A1 progress. Do not award a phase PASS based on the earlier first-pass assessment, candidate mapping coverage, or approved experiment snapshots.
+**Progress accounting:** `0 / 6` audit units settled (A1 redesign persisted but still pending template/compatibility review). Setup is complete, **not** counted as A1 progress. Do not award a phase PASS based on the earlier first-pass assessment, candidate mapping coverage, or approved experiment snapshots.
 
 ## 6. Findings and decision log — append only when real evidence exists
 
@@ -96,3 +96,11 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 ## Next executable unit
 
 **A1 — Product deep audit, read-only first.** Inspect the 11 existing Product files at their exact revisions; map content and consumer contracts against the [Product experiment model](product-definition.md). Produce an evidence-backed gap/recommendation summary for Anhar before making owning-source edits. Update the A1 row only after actual work, with the observed scope and refs.
+
+## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
+
+Anhar explicitly shifted A1 to **experiment-led fundamental reassessment**, without preservation bias toward the prior six-phase layout or historical ORG-01. The experiment remains challengeable, not canonical. A1 v2 evaluated all 11 Product files and approved a new **4-guidance / 3-optional-template design**, where Product Definition is one concern with 13 information inputs, nine iterative activities, six logical outputs and six quality properties. Dependency direction is **required information and functional responsibility (what), not named Space/Agent (who)**.
+
+**Persisted guidance:** `product/README.md`, `product/AGENTS.md`, `product/product-definition.md`, `product/authority-and-approval.md`, `product/consumer-handoff.md`. **Templates (unapproved drafts for Anhar's repository review):** `product/templates/product-definition.id.md`, `product/templates/product-contract.id.md`, `product/templates/product-approval-record.id.md`. The former phase files and English template remain temporarily for scoped migration, and are not active entrypoints to the proposed new research model. New Product research guidance is **not** operational policy and does not amend approved Engineering Space definitions.
+
+**Evidence limitations:** This is source/draft design work, not a validated Product process, target-project ORG-01 reapproval, independent fresh consumer check or runtime test. Actual deletion/redirect and compatibility work remain open. The research commit/revision should be verified against the branch when closing A1.

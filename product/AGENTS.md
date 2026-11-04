@@ -1,23 +1,13 @@
-# Product AGENTS — Phase Routing
+# Product AGENTS — Concern Routing (Research)
 
-> **Scope:** Harscode Product guidance on this branch, not an amendment of operational `main`.
+> **Standing:** Experiment-led Product research guidance on `research/cross-stage-mapping`, not operational policy or execution authorization.
 
-Read [Product phase catalog](README.md) first. Load the **smallest necessary** guidance for the active concern.
+Read [Product entrypoint](README.md) and [Product Definition](product-definition.md) for Input → Process → Output → Outcome and Product semantic ownership. Read [Authority & Approval](authority-and-approval.md) to establish decision authority, exact revisions, effective acceptance and supersession. Read [Consumer Handoff](consumer-handoff.md) to evaluate information needs, source fidelity, legitimate receiving responsibilities and project-bound compatibility.
 
-| Human concern | Guidance | Phase |
-| --- | --- | --- |
-| Purpose, actor value, responsibilities, Product truth and sufficiency | [Product Foundation](foundation.md) | `PROD-FND` |
-| Connected actor experiences and value journeys | [Product Journey Mapping](journey-mapping.md) | `PROD-JRN` |
-| Bounded outcome and real dependency selection | [Outcome Selection](outcome-selection.md) | `PROD-SEL` |
-| Self-contained semantics and acceptance | [Outcome Definition](outcome-definition.md) | `PROD-DEF` |
-| Open decisions, consistency and exact-revision approval | [Product Review & Approval](review-and-approval.md) | `PROD-APR` |
-| Consumer-facing approved Product input | [Product Handoff](handoff.md) | `PROD-HND` |
+Use the [optional draft templates](README.md#optional-templates--draft-for-review) only if they fit current project authority; do not mistake their presence for accepted Product decisions.
 
-## Hard boundaries
+**Dependency principle:** required information and functional responsibilities are stable; concrete subject identities (Space, Agent, team or tool) are resolved separately through current assignment and capability authority. No mandatory producer/consumer chain.
 
-- First identify the target project's **current approved primary artifacts, revisions and decision owners**. This guidance is not source of truth for any target project's actual Product semantics.
-- **Value promises belong to Product Foundation**. Design/UX expresses and tests them, and may return material gaps to Product; Design is not authorized to silently decide new business promises.
-- Human authority is required for consequential product behavior. Preserve evidence and provenance; do not inherit historical rules or invent financial, legal, identity, review or security meaning.
-- Selected Product outcomes are independent of Engineering Space count. No mandatory six-step engine, document inventory or fake milestone status.
-- Codes assist traceability, not reader instructions to excavate Product discovery. Approved Product Contract must contain the meaningful binding rules directly.
-- Product Handoff does not approve execution or supply Rancang `I2/I3/I4`. Existing formed Rancang source inspection remains until amended separately.
+**Hard boundaries:** Target-project approved sources and authorized Humans own Product truth. Product owns consequential actor/domain value, Domain Role meaning and Product acceptance; UI interaction/visual expression and technical mechanisms belong to their legitimate concerns. Exact-revision approval is not Design/Engineering approval, runtime readiness, invocation or protected-write permission. Do not promote illustrative ORG-01, current code, archived decisions or chat history into Product policy.
+
+Legacy phase-specific files remain temporarily for migration/source analysis and do not form a required lifecycle. Their former routing is superseded **only within this research design**, not in operational Harscode. Check exact inbound references before cleanup.

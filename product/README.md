@@ -1,41 +1,40 @@
-# Product — Phase and Output Catalog
+# Product — Product Definition (Research)
 
-> **Scope:** Harscode Product guidance, structured in branch `refactor/harscode-foundation`. **Not promoted to operational `main`.** Actual Product truth belongs to the target project's approved artifacts and Human owner.
-> **Core rule:** Product owns meaningful, truthful actor outcomes. Design expresses their approved meaning; Engineering implements it. Phase labels support navigation and traceability, **not a mandatory state machine or six separate files**.
+> **Standing:** AGREED WORKING RESEARCH DESIGN on `research/cross-stage-mapping`, 2026-11-04. Not operational Harscode policy, a Product Space, or target-project Product authority.
+> **Decision owner:** Anhar approved the new guidance architecture and core/authority/handoff working design. The three new optional templates are **DRAFTS FOR REVIEW**, not approved project Product artifacts.
 
-## Product phases (ordered for navigation)
+## One coherent Product concern
 
-| Order | Human-facing phase | Phase ID | Output kind ID | Main output | Owning concern |
-| --- | --- | --- | --- | --- | --- |
-| 1 | [Product Foundation](foundation.md) | `PROD-FND` | `PROD-INTENT` | Product Intent & Value Definition | Purpose, actor/business value, responsibilities, Product principles and truth |
-| 2 | [Product Journey Mapping](journey-mapping.md) | `PROD-JRN` | `PROD-JOURNEYS` | Interconnected Product Journeys | Meaningful actor progression, dependencies and unknowns |
-| 3 | [Outcome Selection](outcome-selection.md) | `PROD-SEL` | `PROD-SELECTION` | Selected Product Outcome | Human selection of a valuable, bounded outcome |
-| 4 | [Outcome Definition](outcome-definition.md) | `PROD-DEF` | `PROD-CONTRACT` | Product Contract | Outcome, success, behavioral obligations, negative paths and acceptance |
-| 5 | [Product Review & Approval](review-and-approval.md) | `PROD-APR` | `PROD-APPROVAL` | Approval Record | Human Decision Gate, exact-revision Product approval |
-| 6 | [Product Handoff](handoff.md) | `PROD-HND` | `PROD-HANDOFF` | Approved Consumer Handoff | Consumer-facing contract, authority and scope without automatic invocation |
+Product Definition establishes meaningful intended actor value, domain consequences, bounded Product outcomes and verifiable requirements. It has **13 information inputs, 9 iterative activities, 6 logical outputs and 6 outcome quality properties**. These are not mandatory document counts, execution phases or a workflow engine.
 
-**Codes distinguish types, not runtime states.** Phase code and output type are globally consistent in Harscode. Each project owns a stable **outcome instance key** (example `ORG-01`); append it when tracking scoped artifacts (`PROD-CONTRACT-ORG-01`, `PROD-APPROVAL-ORG-01`). Within-document `SC`/`REQ`/`AC`/`PD` identifiers are project-local. Humans can use plain names in discussion.
+| Active research guidance | Purpose |
+| --- | --- |
+| [Product Definition](product-definition.md) | Core Input → Process → Output → Outcome; Product/Actor/Domain Role meaning and boundaries |
+| [Authority & Approval](authority-and-approval.md) | Legitimate decision ownership, evidence standing, exact-revision Human approvals and supersession |
+| [Consumer Handoff](consumer-handoff.md) | Source/standing discovery, responsibility-based information needs and consumer compatibility |
 
-Do not create all outputs when the actual problem needs fewer: Product Value Definition may live inside Product Intent; selection can be a durable decision pointer; handoff can point to the approved Product Contract and approval record. No separate stage invocation, registry, six-folder structure, one-to-one Engineering Space assignment, or mandatory completion order is implied.
+See [Product AGENTS](AGENTS.md) for research routing. Effective Product authority remains in the **target project's owning sources and approved revisions**, not Harscode templates or historical experiments.
 
-## Authority boundaries
+## Optional templates — draft for review
 
-1. Start from **current target-project approved authority** and its revision. Older conversations, examples and other project artifacts are not Product truth.
-2. **Product Foundation owns value promises.** Journey Mapping connects how value is experienced; Outcome Selection chooses one; Outcome Definition makes scoped semantics and acceptance binding after Human approval. Product Design determines interaction/content/visual expression under those meanings and returns material Product-value gaps to the owner.
-3. Product reconciles upstream Product sources and decisions **before approving** a self-contained contract. Agent tracking codes never hide additional requirements from downstream readers.
-4. **Product approval is not Engineering approval.** Rancang input `I1` may consume an approved Product Contract, but `I2/I3/I4`, actual code/security evidence, consumer-fit and authorization remain separate.
-5. Current formed Rancang v3 still has an upstream source-inspection requirement. The desired Product-side self-contained handoff does **not** amend Rancang on its own; address that under Rancang authority later.
+- [Product Definition — Indonesian](templates/product-definition.id.md): intent, actor, meaningful Product journey, bounded selected outcome.
+- [Product Contract — Indonesian](templates/product-contract.id.md): binding Product semantics, domain authority, required information, rules, SC/REQ/AC.
+- [Product Approval Record — Indonesian](templates/product-approval-record.id.md): scoped Human decision tied to immutable approved artifact bytes.
 
-## Templates and guidance
+Use the project's existing accepted format when sufficient. A template is not approval, mandatory artifact, or source of new project rules.
 
-- [Product Contract template — Bahasa Indonesia](templates/product-contract.id.md)
-- [Product Contract template — English](templates/product-contract.en.md)
-- [Agent routing](AGENTS.md)
+## What, responsibility, then who
 
-The template is an authoring option. Actual project Product rules, approval, language and file organization are owned by each target project.
+This design makes **information contracts** and **functional responsibilities** the stable dependency boundaries. It does not require a named upstream producer or downstream Space. An actual project's assignment and capability guidance resolve **who** performs the responsibility.
 
-## Current demonstration and evidence limits
+Concrete subjects currently represented in this research tree include [Engineering Solution Design — Rancang](../engineering/spaces/feature-solution-design/README.md) and [Next.js frontend Engineering Development — NextJS Builder](../engineering/spaces/nextjs-builder/README.md). They are **current examples**, not required Product consumers; their own formation, authorization and source-inspection rules remain effective within their exact approved revisions.
 
-[Kencleng Product O1](https://github.com/anhsbolic/kencleng/blob/pilot/station5-c1-space-only/docs/product/outcomes/org-01/product-contract.md) has an Anhar-approved Product Contract on the Kencleng branch. It supports a concrete authored-output example, **not** universal evidence that the six-phase guidance is fully verified by independent downstream consumption. Historical experiments remain Git history; do not copy past project decisions as generic Harscode policy.
+## Migration boundary
 
-**Completion:** Product can finish as durable exact-revision approved semantics even while technical dependencies remain unverified. Reopen settled Product decisions only when materially new evidence appears.
+The former six-phase files (`foundation.md`, `journey-mapping.md`, `outcome-selection.md`, `outcome-definition.md`, `review-and-approval.md`, `handoff.md`), [historical index](history.md), and previous [English Product Contract template](templates/product-contract.en.md) remain **temporarily as migration/reference material**. They are not this research design's primary entrypoint and their old `Next:` phase cues are not required procedures. Do not treat both versions as jointly binding guidance.
+
+The frozen source revision `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d` remains unchanged. The old `PROD-*` identifiers, root/history navigation and consumer references require a scoped compatibility/cleanup check before legacy material is removed.
+
+The [reverse-lifecycle Product experiment](../experiments/org-01-reverse-lifecycle/product-definition.md) is the **primary research design reference**, but ORG-01 is illustrative, not accepted Product truth for other projects. Revalidation may challenge even the experiment model.
+
+The [research tracker](../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) records A1 progress. A1 is **not settled** while templates and migration remain unreviewed; no independent real-project consumer validation has been claimed.
