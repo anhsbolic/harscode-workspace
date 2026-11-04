@@ -27,6 +27,8 @@
 
 *Bounded UX exploration boleh menggunakan Product hypotheses dengan status dan uncertainty eksplisit. Consequential decisions yang akan dikunci memerlukan relevant Product authority dan approval, proportional to consequence. Evidence pengguna yang tersedia dan relevan tetap perlu dipertimbangkan; status “Nice to have” bukan izin untuk mengabaikannya. Klasifikasi input menunjuk informasi/material yang diperlukan, bukan sebelas file wajib.*
 
+**Cross-stage clarification (2026-11-04, approved by Anhar):** Input #6 (**Content & Information Requirements**) berasal dari consequential information requirements di Product Contract, dengan existing project-level domain information sebagai konteks pelengkap. UX menentukan pengelompokan, penyajian, dan interaksi informasi tersebut; ini tidak mengubah Product authority.
+
 **Bukan input yang diperlukan secara default:** Hi-Fi UI Design, final visual Design System, final web assets, API Contract, Database Schema, atau final Engineering Solution. Known technical constraints yang benar-benar relevan tetap harus diperhitungkan.
 
 ## 2. PROCESS
