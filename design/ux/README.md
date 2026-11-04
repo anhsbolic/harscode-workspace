@@ -22,7 +22,7 @@ UX determines how a person **discovers, understands, navigates, acts, and recove
 
 Product owns meaningful domain journey, authority and consequential information/rules. Visual Interface Design owns final expressive UI. Project Design Standards responsibility owns reusable rules **across outcomes**. Engineering owns technical mechanisms/implementation. UX may be consumed by each without requiring a mandatory sequence.
 
-**Lo-Fi is a fidelity/proof method, not a mandatory lifecycle stage or new Harscode Space.** Nine logical UX outputs do not imply nine files or one prototype per assignment. Only relevant information must be sufficient for the real decision.
+**Lo-Fi is a fidelity/proof method, not a mandatory lifecycle stage or new Harscode Space.** For new/material UX experience work, O2 **UX Flow Diagram** and O6 **Lo-Fi Wireframes** are **required by default**: Mermaid and HTML/CSS are the default newly authored forms. Reuse sufficient accepted exact-revision equivalents or document a scope/evidence/owner-based exception. Material IA, interaction states and web routes must also be available where applicable. Nine logical outputs still do not imply nine files or a universal interactive prototype.
 
 **Template rule:** Use the optional UX Output template in [Indonesian](templates/ux-output.id.md) or [English](templates/ux-output.en.md) when a new bounded UX artifact needs a consistent, reviewable format. Existing target-project artifacts remain valid when they already expose sufficient UX meaning, source standing and consumer contracts. A filled template is not approval.
 

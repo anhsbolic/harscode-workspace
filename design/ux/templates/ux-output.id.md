@@ -9,14 +9,16 @@
 - Isi **identitas, source/standing, scoped UX decisions, material interaction states, unresolved gaps, dan consumption needs** pada tingkat yang cukup untuk keputusan sebenarnya.
 - Gunakan **referensi exact project-owned source** jika output sudah ada dan valid; jangan menduplikasi authoritative Product, UX, atau Project Standard menjadi spesifikasi tandingan.
 - Untuk output yang tidak relevan, tulis **N/A — alasan** singkat. Untuk output yang belum diputuskan tetapi material, tulis **OPEN — owner dan affected decision**. Jangan mengisi placeholder dengan asumsi lalu mengklaim READY.
-- Jika prototype, UX Flow, wireframe, atau route map adalah file terpisah, tautkan exact revisions dan nyatakan authority/proof limits. **Lo-Fi adalah bentuk proof opsional**, bukan prasyarat UI atau Engineering.
+- Jika prototype, UX Flow, wireframe, atau route map adalah file terpisah, tautkan exact revisions dan nyatakan authority/proof limits. **O2 dan O6 wajib secara default untuk UX baru/material**, tetapi bukan kewajiban memanggil UX Space atau menjalankan fase Lo-Fi sebelum UI/Engineering.
 - Template yang sudah terisi **belum approved**. Approval Human terhadap exact artifact revision dicatat terpisah agar accepted bytes tidak berubah hanya untuk mengisi status atau SHA.
 
 ## Format artefak & batas pembuktian (conditional)
 
-Gunakan format sesuai [UX Definition — Artifact Representation & Tooling Constraints](../definition.md#7-artifact-representation--tooling-constraints--ux-lo-fi). **Markdown** adalah default; gunakan **Mermaid di dalam Markdown** jika hubungan/flow perlu diagram, **HTML + CSS** jika komposisi Lo-Fi perlu diperiksa, dan **minimal JavaScript** hanya jika interaksi yang disimulasikan perlu diuji serta tool/runtime diizinkan. Tidak ada kewajiban diagram, wireframe, atau prototype untuk setiap UX task.
+Gunakan format sesuai [UX Definition — Artifact Representation & Tooling Constraints](../definition.md#7-artifact-representation--tooling-constraints--ux-lo-fi). **Markdown** adalah default; gunakan **Mermaid di dalam Markdown** jika hubungan/flow perlu diagram, **HTML + CSS** jika komposisi Lo-Fi perlu diperiksa, dan **minimal JavaScript** hanya jika interaksi yang disimulasikan perlu diuji serta tool/runtime diizinkan. Untuk UX baru/material, **O2 diagram dan O6 Lo-Fi wajib secara default**; task lain boleh memakai sumber existing yang cukup, dan prototype interaktif tidak wajib secara universal.
 
 Jangan menganggap source Mermaid otomatis sudah dirender, file HTML otomatis sudah diperiksa di browser, atau clickable prototype otomatis membuktikan backend/real-user usability. Gunakan Markdown fallback jika rendering tidak tersedia; catat limitasi. Diagram/visual harus merujuk owning UX/Product decisions, **bukan menjadi competing authority**.
+
+**Baseline wajib untuk UX baru/material:** O2 UX Flow Diagram dan O6 Lo-Fi Wireframes harus tersedia sebagai default; Mermaid dan HTML/CSS menjadi format authoring baru. Accepted existing exact-revision artifact boleh digunakan tanpa dibuat ulang. Exception harus mencatat O-ID/scope, evidence, UX owner/delegation, dan akibat terhadap consumer. Ketiadaan renderer tidak otomatis menjadi exception; tandai NOT RENDERED / NOT CHECKED.
 
 ## 0. Identity, scope & effective sources — required for binding consumption
 
@@ -34,6 +36,7 @@ Jangan menganggap source Mermaid otomatis sudah dirender, file HTML otomatis sud
 | Diagram/Lo-Fi/prototype exact source | `<Git path + immutable revision atau NONE / NOT YET PERSISTED>` |
 | Render / interaction verification | `<CHECKED + actual tool/evidence ref / NOT CHECKED; source inspection != rendering>` |
 | Simulation / observed evidence / proof limits | `<yang disimulasikan, yang benar-benar diperiksa, yang tidak dibuktikan>` |
+| O2/O6 baseline fulfillment / exception | `<new actual proof / accepted exact-revision equivalent / O-ID + scope + evidence + legitimate owner/delegation + consumer impact>` |
 | Decision standing | `EXPLORATORY / PROPOSED / ACCEPTED only with separate exact-revision evidence` |
 | Material exclusions / non-claims | `<...>` |
 
@@ -51,7 +54,7 @@ Actor scenario and UX Journey concern **interaction experience**, not new Produc
 
 ## O2 — UX Flow
 
-**Diagram/prototype link or concise flow representation:** `<exact path / revision / N/A>`
+**O2 required-baseline coverage (new/material UX):** `<Mermaid source + exact revision / accepted equivalent revision / evidence-backed exception with scope and owner>`
 
 | Flow ID | Trigger / precondition | Interaction decision and branch | Exit / failure / unknown / recovery | Decision standing |
 | --- | --- | --- | --- | --- |
@@ -85,9 +88,9 @@ Distinguish mandatory pre-effect disclosures, information discoverable on demand
 
 **Web page paths are UX navigation decisions; not backend API endpoints or mandatory router/Next.js implementation details.** Do not invent paths for a non-web scope.
 
-## O6 — Structural Lo-Fi Proofs (conditional)
+## O6 — Structural Lo-Fi Proofs (required baseline for new/material UX)
 
-**Applicability:** `APPLICABLE / N/A — reason`
+**Baseline disposition:** `NEW PROOF / ACCEPTED EXACT-REVISION EQUIVALENT / JUSTIFIED NON-APPLICABILITY` — include source, evidence, UX owner and consumer consequence. Render verification remains separately stated.
 
 | Wireframe / structural artifact | UX question tested | Covered surface/state | Actual inspection/evidence and exact ref | Limitations |
 | --- | --- | --- | --- | --- |

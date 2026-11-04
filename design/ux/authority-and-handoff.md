@@ -37,6 +37,10 @@ Consumers are **functional responsibilities**, never mandatory named Spaces or p
 
 ## 4. Minimum consumable information
 
+**New/material receiving-UI baseline:** Before claiming UX ready for a material UI decision, provide **O2 UX Flow Diagram and O6 representative Lo-Fi structural screens by default**, with O1/O3/O4/O7 information and web O5 where material. Accepted exact-revision equivalents are sufficient without remaking files. An exception must identify affected output, evidence of non-applicability/unaffected UX, legitimate UX owner/delegation and consumer impact. Missing renderer is a verification limitation, **not an automatic output waiver**. A missing material UX output is a **consumer-discovered gap** and cannot silently become an accepted Hi-Fi assumption.
+
+
+
 For an actual receiving decision, the handoff must make discoverable:
 - **Scenario and scope:** actor, goal, relevant Product constraints and what is excluded.
 - **Accepted UX meaning:** flows, IA, navigation, interaction states, relevant responsive/accessibility obligations.

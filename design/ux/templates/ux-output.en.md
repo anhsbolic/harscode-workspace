@@ -10,14 +10,16 @@
 - Provide **identity, sources/standing, scoped UX decisions, material interaction states, unresolved gaps, and consumer needs** to the level needed for the actual decision.
 - Use **exact references to project-owned sources** when sufficient outputs already exist; do not duplicate authoritative Product, UX, or Project Standard meaning into a competing specification.
 - For inapplicable outputs, write **N/A — brief reason**. For material unresolved outputs, write **OPEN — owner and affected decision**. Do not fill placeholders with assumptions and then claim READY.
-- If a prototype, UX Flow, wireframe, or route map resides in a separate file, link the exact revisions and state its authority and evidence limits. **Lo-Fi is an optional form of proof**, not a prerequisite for UI or Engineering.
+- If a prototype, UX Flow, wireframe, or route map resides in a separate file, link the exact revisions and state its authority and evidence limits. **O2 and O6 are required by default for new/material UX**, without a mandatory UX Space invocation or Lo-Fi phase before UI/Engineering.
 - **A completed template is not approved.** Record Human approval of the exact artifact revision separately so accepted bytes are not modified merely to insert a status or SHA.
 
 ## Artifact format & evidence boundaries (conditional)
 
-Use formats according to [UX Definition — Artifact Representation & Tooling Constraints](../definition.md#7-artifact-representation--tooling-constraints--ux-lo-fi). **Markdown** is the default; add **Mermaid fenced in Markdown** when relationships/flows need a diagram, **HTML + CSS** when Lo-Fi composition needs inspection, and **minimal JavaScript** only when simulation must be exercised with available authorized tools/runtime. No diagram, wireframe, or prototype is required for every UX task.
+Use formats according to [UX Definition — Artifact Representation & Tooling Constraints](../definition.md#7-artifact-representation--tooling-constraints--ux-lo-fi). **Markdown** is the default; add **Mermaid fenced in Markdown** when relationships/flows need a diagram, **HTML + CSS** when Lo-Fi composition needs inspection, and **minimal JavaScript** only when simulation must be exercised with available authorized tools/runtime. **O2 diagram and O6 Lo-Fi are required by default for new/material UX**; other tasks may reuse sufficient accepted originals, and an interactive prototype is not universally required.
 
 Do not imply Mermaid source was rendered, that an HTML file was browser-inspected, or that a clickable prototype proves backend behavior or real-user usability. Fall back to Markdown if rendering is unavailable and disclose the limits. A visual must point to owning Product/UX decisions, **not become a competing authority**.
+
+**Required baseline for new/material UX:** O2 UX Flow Diagram and O6 Lo-Fi Wireframes must be available by default; Mermaid and HTML/CSS are the default newly authored forms. Existing accepted exact-revision equivalents may be reused without duplication. An exception requires affected O-ID/scope, evidence, UX owner/delegation and consumer consequence. Unavailable rendering is not an automatic exception; state NOT RENDERED / NOT CHECKED.
 
 ## 0. Identity, scope & effective sources — required for binding consumption
 
@@ -35,6 +37,7 @@ Do not imply Mermaid source was rendered, that an HTML file was browser-inspecte
 | Diagram/Lo-Fi/prototype exact source | `<Git path + immutable revision or NONE / NOT YET PERSISTED>` |
 | Render / interaction verification | `<CHECKED + actual tool/evidence ref / NOT CHECKED; source inspection != rendering>` |
 | Simulation / observed evidence / proof limits | `<what was simulated, actually inspected, and not proven>` |
+| O2/O6 baseline fulfillment / exception | `<new actual proof / accepted exact-revision equivalent / O-ID + scope + evidence + legitimate owner/delegation + consumer impact>` |
 | Decision standing | `EXPLORATORY / PROPOSED / ACCEPTED only with separate exact-revision evidence` |
 | Material exclusions / non-claims | `<...>` |
 
@@ -52,7 +55,7 @@ Actor scenario and UX Journey concern **interaction experience**, not new Produc
 
 ## O2 — UX Flow
 
-**Diagram/prototype link or concise flow representation:** `<exact path / revision / N/A>`
+**O2 required-baseline coverage (new/material UX):** `<Mermaid source + exact revision / accepted equivalent revision / evidence-backed exception with scope and owner>`
 
 | Flow ID | Trigger / precondition | Interaction decision and branch | Exit / failure / unknown / recovery | Decision standing |
 | --- | --- | --- | --- | --- |
@@ -86,9 +89,9 @@ Distinguish mandatory pre-effect disclosures, information discoverable on demand
 
 **Web page paths are UX navigation decisions; not backend API endpoints or mandatory router/Next.js implementation details.** Do not invent paths for a non-web scope.
 
-## O6 — Structural Lo-Fi Proofs (conditional)
+## O6 — Structural Lo-Fi Proofs (required baseline for new/material UX)
 
-**Applicability:** `APPLICABLE / N/A — reason`
+**Baseline disposition:** `NEW PROOF / ACCEPTED EXACT-REVISION EQUIVALENT / JUSTIFIED NON-APPLICABILITY` — include source, evidence, UX owner and consumer consequence. Render verification remains separately stated.
 
 | Wireframe / structural artifact | UX question tested | Covered surface/state | Actual inspection/evidence and exact ref | Limitations |
 | --- | --- | --- | --- | --- |

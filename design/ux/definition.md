@@ -37,7 +37,7 @@ Not universal prerequisites: Hi-Fi designs, finalized visual components, brand t
 2. **UX Flow Design** — actions, decision points, alternatives, exit/re-entry and recovery paths.
 3. **Information Architecture (IA)** — information hierarchy, grouping, priority, disclosure timing and discoverability.
 4. **Webpage Map & Route Design** — pages, paths, entries/exits, navigation, page-vs-state distinctions **when web routing is material**; other surfaces use appropriate navigation structures.
-5. **Lo-Fi Wireframing** — structural screen/layout proofs **when useful** for a real choice.
+5. **Lo-Fi Wireframing** — produce or verify representative structural screen/surface proofs **by default for new/material screen UX**; accepted equivalents or evidenced exceptions are documented for the affected scope.
 6. **Interaction & State Design** — focus/keyboard, forms, feedback, validation, loading, empty, denied, failed, partial, uncertain and recovery behaviors where applicable.
 7. **Lo-Fi Prototyping** — bounded clickable/simulated proof **when useful**, with explicit simulated-data limits.
 8. **UX Evaluation & Refinement** — evidence-aware walkthroughs, accessibility checks, user research when available, risk/trade-off review and iteration.
@@ -47,14 +47,30 @@ Order is **not linear**. Existing effective UX may already be sufficient. Do not
 
 ## 4. OUTPUT — Nine logical UX meanings
 
+### New/material UX work — required output baseline
+
+**Applicability.** A new bounded experience or a material change to interaction progression, screen/surface structure, information priority, navigation or consequential states must establish the affected UX baseline before claiming consumer-ready UX. For a change to an existing experience, cover the affected scope, not the whole product. This is **required information and representation coverage**, not a mandatory upstream UX Space, sequential phase or separate file count.
+
+- **O1 Actor Scenario & UX Journey, O3 IA, O4 Navigation Structure and O7 Interaction & UI State Requirements:** required decision-relevant meaning for the affected actor, surfaces and negative/unknown paths.
+- **O2 UX Flow Diagram — REQUIRED BY DEFAULT** for new/material UX: an inspectable representation of material transitions, decisions, alternatives, exits and recovery. **Mermaid in Markdown is the default newly authored form**. A sufficient exact-revision accepted equivalent can meet O2 without duplication.
+- **O6 Lo-Fi Wireframes — REQUIRED BY DEFAULT** for new/material screen/surface UX: inspectable representative structural screens, content priority, actions and affected states. **HTML/CSS is the default newly authored structural proof** when authorized tooling permits it. An already accepted equivalent may satisfy O6. A genuinely non-screen experience requires an evidence-based non-applicability record, not imaginary screens.
+- **O5 Webpage Map & Route Specification — required whenever material web routing is involved.** O8 clickable prototype remains conditional on a specific interaction question. O9 records actual scoped UX review/decisions where acceptance is material.
+
+**Exception rule (not an agent preference).** Either point to an *accepted and still-applicable exact-revision equivalent* that already supplies the output, or document which output and affected decision are genuinely inapplicable/unchanged, concrete source evidence, legitimate UX owner or delegated authority, and consumer impact. For a new/material screen experience, “optional”, “not needed”, and “no time” without evidence are not valid reasons to omit O2 or O6. A missing materially required UX output is a **consumer-discovered gap**; do not mark the affected UI decision accepted.
+
+**Tooling limitation is not automatic exemption.** If Mermaid preview or an HTML browser is unavailable, provide the clearest permitted inspectable source/equivalent, record **NOT RENDERED / NOT CHECKED**, and retain the relevant visual-review evidence gap. A generated file is not evidence of rendered usability, accessibility, real API behavior or Product truth. UX owns the missing UX decision; Product owns missing Product meaning; the actual consumer can continue independent authorized exploratory work but not finalize a decision that depends on the gap.
+
+**Format vs output:** O2/O6 are default *logical deliverable obligations* for material experience work, not mandatory newly created files in every UX task. One durable project-owned artifact may satisfy several outputs; no fixed invocation chain or nine-artifact packet is created.
+
+
 | Output | What must be understandable when applicable |
 | --- | --- |
 | **O1 Actor Scenario & UX Journey** | Actor situation, UX progression, encountered information, meaningful decision/recovery; Product consequences traced to Product source |
-| **O2 UX Flow Diagram** | Interaction transitions, branching, entry/exit, errors, uncertainty and recovery; diagram, prose or interactive representation as sufficient |
+| **O2 UX Flow Diagram** | **Required by default for new/material UX:** real flow branches, entry/exit, error/unknown and recovery; Mermaid default for new authoring, exact accepted equivalent or evidence-backed exception allowed |
 | **O3 Information Architecture** | Grouping, content priority, disclosure/access, relevant provenance and relationship among required information |
 | **O4 Navigation Structure** | Relevant surfaces, transitions, destinations and return/recovery relationships |
 | **O5 Webpage Map & Route Specification** | Webpage paths, purpose, entry/exit, navigation and page-vs-UI-state meaning, **if routing applies**; not backend API routes |
-| **O6 Lo-Fi Wireframes** | Structural surface/screens and relevant state layouts, **only when useful proof is needed** |
+| **O6 Lo-Fi Wireframes** | **Required by default for new/material screen UX:** representative structural surface/screens, hierarchy, actions and affected states; existing accepted equivalent or justified non-applicability allowed |
 | **O7 Interaction & UI State Requirements** | User-facing interaction, validation, focus, loading/error/denied/unknown/recovery, accessibility and truthful action result |
 | **O8 Lo-Fi Interactive Prototype** | Bounded, labeled simulation of interaction/navigation; conditional evidence, not server/real-user proof |
 | **O9 UX Review & Decision Record** | Actual Human decisions, accepted scope/exclusions, exact reviewed revision(s), evidence and material unresolved matters |
@@ -86,18 +102,18 @@ These are **responsibilities, not named lifecycle phases, Spaces, teams or indiv
 
 > **Research format baseline:** Anhar approved the following format-selection direction on 2026-11-04. This scoped addition is for research review; it does not reapprove earlier UX artifact bytes or alter target-project Design authority.
 
-**Choose the least complex representation that makes the actual UX decision understandable and reviewable.** Logical O1–O9 information is the contract; representations are conditional evidence forms, **not mandatory deliverables or separate authoritative specifications**.
+**Choose the least complex representation that meets the decision AND the new/material required output baseline in §4.** For affected new/material UX, O2 and O6 are **required by default**; equivalent accepted outputs and evidence-backed exceptions do not require new files. Other visual/prototype representations remain conditional and are not separate authorities.
 
 | Format | Default use / decision it makes clearer | Selection boundary |
 | --- | --- | --- |
 | **Markdown (`.md`)** | Default durable UX artifact: decisions, scenarios, flow/state tables, IA/navigation/route specifications, source links and handoff | Use text/tables alone when they communicate the relevant meaning sufficiently |
-| **Mermaid fenced in Markdown** | Preferred diagram form for UX Flow, journey/decision branches, IA/navigation and webpage-route relationships | Add only when relationships are materially clearer than prose/tables; keep it reviewable as text; never infer Product authority from a diagram |
-| **HTML + CSS (`.html`)** | Conditional Lo-Fi structural proof of screen/surface layout, content hierarchy, disclosures, responsive arrangement or interaction states | Use only when a visual composition must be inspected; keep proof scoped and non-production. Do not invent Hi-Fi visual rules or backend behavior |
+| **Mermaid fenced in Markdown** | Default for a newly authored **O2 required-baseline UX Flow**; also useful for journeys/branches, IA/navigation and webpage routes | For new/material UX provide O2 flow or an accepted equivalent / justified exception. Do not infer Product authority from diagrams |
+| **HTML + CSS (`.html`)** | Default newly authored **O6 required-baseline Lo-Fi** representation for material screen/surface UX; hierarchy, disclosure and state coverage | Accepted existing equivalent or evidence-based non-applicability may suffice. Keep non-production; do not invent Hi-Fi styling or backend behavior |
 | **Minimal JavaScript with HTML** | Conditional clickable simulation to investigate a specific interaction, branch or recovery question | Only if interaction is needed, tools and **authorized** preview/runtime are available, and simulated data/actions are explicit. Do not call real APIs, change project state, or trigger side effects by default |
 
 An illustration, screenshot, SVG/PNG or external Figma artifact may be cited as **supplemental evidence when actually available and permitted**; none is required by this baseline. Avoid adding image-generation/Figma/tool dependencies merely to fulfill a file-format checkbox. If the preferred representation cannot be created or verified with available authorized tools, use the clearest sufficient Markdown fallback and record the limitation; **never fabricate a render, diagram check or usability result**.
 
-**Format decision rule:** (1) text/table sufficient → Markdown only; (2) material flows/relationships hard to follow → Mermaid; (3) layout/priority must be seen → HTML/CSS Lo-Fi; (4) actual interaction must be explored → minimal local JavaScript, only when justified and permitted. One artifact may satisfy multiple logical outputs. No required flowchart, wireframe, webpage map, click-through or nine-file packet.
+**Format decision rule:** for **new/material experience work**, establish O2 (normally Mermaid) and O6 (normally HTML/CSS structural Lo-Fi) or inspect accepted equivalents/evidence-based exceptions; also cover applicable O1/O3/O4/O7 and conditional web O5. For a bounded task where accepted UX already suffices, Markdown source pointers/tables may be enough without creating a new diagram or wireframe. Minimal JavaScript stays optional and authorized. Multiple logical outputs may share one file; no universal interactive prototype, nine-file packet or named Space invocation.
 
 **Authority and proof limits:** The owning UX decision must be identifiable by exact project source/revision and legitimate Human approval standing. Any diagram, wireframe or prototype is **a representation of a scoped decision or hypothesis**, not self-authorizing Product/UX policy. If representation and textual binding source conflict, record the contradiction and return it to the legitimate owner; do not silently let either override the other.
 
@@ -107,7 +123,7 @@ Apply target-project accessibility, privacy, security, licensing, repository and
 
 ## 8. Sufficiency and completion
 
-For a particular decision, find: accepted/provisional UX intent, effective Product constraints, relevant interaction/navigation/IA states, accessibility, authority/scope/revision, actual evidence, unresolved materially blocked edges and legitimate owner. If those are sufficient, do not invent additional prototypes/documents.
+For a particular decision, find: accepted/provisional UX intent, effective Product constraints, relevant interaction/navigation/IA states, accessibility, authority/scope/revision, actual evidence, unresolved materially blocked edges and legitimate owner. **For new/material UX, check O2 diagram and O6 structural Lo-Fi coverage or accepted exact-revision equivalents/evidence-backed exceptions** before declaring affected UX consumer-sufficient. Do not generate redundant files once required content and proof are available.
 
 An accepted UX design does not automatically approve Product, Hi-Fi, Project Design Standards, code, release or runtime validity. See local [UX Authority & Handoff](authority-and-handoff.md) for exact revision and consumer standing.
 
