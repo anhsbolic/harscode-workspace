@@ -14,6 +14,7 @@
 | --- | --- |
 | **UX Flow Diagram** — alur pembentukan organisasi, navigation, review, submit, dan hasil | **Wajib** |
 | **Lo-Fi Wireframes** — struktur layar, penempatan informasi, dan navigasi | **Wajib** |
+| **Webpage Map & Route Specification** — accepted webpage paths, page purpose, entry/exit points, serta page vs UI state | **Wajib** |
 | **Product Requirements & Business Rules** — aturan pembentukan, kewenangan `Owner`, keberhasilan dan kegagalan | **Wajib** |
 | **Screen Content & Information** — informasi organisasi, form fields, penjelasan kewenangan dan pesan penting | **Wajib** |
 | **UI States & Interaction Requirements** — default, loading, validation, success, error dan uncertain result | **Wajib** |
@@ -26,6 +27,8 @@
 | **Usability Research / User Feedback** — evidence kebutuhan atau kesulitan pengguna | **Nice to have** |
 
 *Jika Brand Guidelines belum ada, diperlukan arahan atau kebebasan eksplisit untuk menentukan visual direction. `Wajib` berarti informasi/materialnya harus cukup, tidak harus satu dokumen terpisah. Research yang tersedia tetap dipertimbangkan secara proporsional; status *nice to have* bukan izin mengabaikan evidence yang relevan.*
+
+**Cross-stage clarification (2026-11-04, approved by Anhar):** Webpage Map & Route Specification dari UX Lo-Fi adalah explicit Design contract untuk Hi-Fi, bukan hal yang boleh diam-diam diubah saat visual design. Technical constraints yang material perlu direkonsiliasi dengan Design owner; ini tidak memerlukan dokumen baru.
 
 ## 2. PROCESS
 
