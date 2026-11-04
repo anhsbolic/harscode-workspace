@@ -13,6 +13,14 @@
 - Bedakan **NOT CHECKED**, **CHECKED (actual evidence)** dan **HUMAN ACCEPTED exact revision**. Review atau approval record boleh terpisah agar approved bytes tidak berubah karena menambahkan hash/status ke dalam artifact yang sudah ditinjau.
 - Gunakan `N/A — alasan dan scope` untuk output yang benar-benar tidak berlaku, `OPEN — owner dan consumer impact` untuk material gap; jangan pernah mengisi placeholder dengan asumsi lalu menyatakan READY.
 
+## Format visual web — baseline v1
+
+Untuk **new/material web Hi-Fi**, gunakan **static HTML + CSS sebagai default**: **satu `.html` untuk setiap actual webpage** yang sudah ditetapkan di accepted UX Webpage Map/Routes, bukan satu file untuk tiap state. Tampilkan default/loading/error/unknown, dialogs dan variants di **page terkait**. Pakai **relative preview links** antar actual webpages, bukan JavaScript untuk mengganti seluruh halaman berbeda dalam satu file. Preview filename tidak otomatis sama dengan production route. Gunakan shared CSS jika membantu; **minimal JS** hanya bila interaksi material perlu simulasi, tanpa real auth/API/data effects.
+
+**Existing accepted equivalent, legitimate project/tooling choice atau non-web UI** dapat menjadi evidence-backed exception. Catat affected scope, real constraint, exact artifact/evidence, legitimate Design owner/delegation dan consumer impact; agent convenience bukan alasan cukup. Tidak ada folder atau filename universal yang diwajibkan. Lihat [UI Definition §7](../definition.md#7-visual-artifact-formats-verification-and-limits).
+
+**Proof limit:** Git-hosted HTML/source code bukan browser verification. Catat actual page/state/viewport preview method jika benar-benar dijalankan; jika tidak, tandai `NOT VISUALLY VERIFIED` dan jangan mengklaim visual acceptance.
+
 ## 0. Identity, scope, input sufficiency & standing
 
 | Field | Actual value / exact source |
@@ -27,11 +35,20 @@
 | Effective Brand/Visual/Component/Asset standards | `<project-owned paths/revisions and applicability; N/A if absent>` |
 | Other material I01–I13 input decisions and gaps | `<applicable input IDs + source/owner; link source checks>` |
 | UI candidate artifact(s) and source revision(s) | `<exact revision(s) when persisted; prior source if proposed>` |
+| Web visual format and exception standing | `<HTML-per-actual-UX-webpage default / accepted exact equivalent / non-web / evidenced alternative + owner, scope, consumer impact>` |
 | Binding UI input sufficiency | `SUFFICIENT / CONDITIONAL / BLOCKED / UNVERIFIED + per-decision reason` |
 | UI content standing | `PROPOSED / ACCEPTED only with separate actual exact-revision evidence` |
 | Exclusions, open decisions, risks | `<...>` |
 
 **No silent UX substitution:** Untuk UX baru/material, UX O2 flow dan O6 structural Lo-Fi default required. Jika kurang, arahkan specific gap ke UX owner. UI boleh exploration yang independen, tetapi keputusan visual yang bergantung pada UX belum boleh diklaim accepted.
+
+## Page-to-file preview mapping — required for new/material web Hi-Fi
+
+| Accepted UX webpage / route + exact source | Preview HTML file + exact revision | Local relative navigation destination(s) | In-page state variants included | Render evidence / exception / open gap |
+| --- | --- | --- | --- | --- |
+| `<UX O5/O4 page and accepted revision>` | `<entry.html or equivalent + exact revision>` | `<relative hrefs corresponding to UX navigation>` | `<default/loading/validation/unknown etc. within this page>` | `<CHECKED with actual evidence / NOT VISUALLY VERIFIED / owner-backed exception>` |
+
+**Page vs state:** Jangan mengubah UI states menjadi webpage baru atau menyimulasikan seluruh distinct webpages melalui satu HTML. Mapping ini hanya referensi visual proof; tidak menetapkan route authority. Jika output sudah accepted dalam bentuk lain, tautkan exact accepted evidence dan dokumentasikan exception.
 
 ## 1. Visual evidence register — required for new/material UI
 

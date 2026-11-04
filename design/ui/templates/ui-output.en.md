@@ -13,6 +13,14 @@
 - Distinguish **NOT CHECKED**, **CHECKED (actual evidence)** and **HUMAN ACCEPTED exact revision**. Review and approval records may be separate so accepted bytes need not change merely to add a hash/status.
 - Use `N/A — reason and scope` for genuinely inapplicable outputs, `OPEN — owner and consumer impact` for material gaps; never fill placeholders with guesses and claim READY.
 
+## Web visual format — baseline v1
+
+For **new/material web Hi-Fi**, use **static HTML + CSS by default**: **one `.html` per actual accepted UX webpage**, not one file per UI state. Keep default/loading/error/unknown, dialogs and other variants **within their owning page**. Use **relative preview links** between actual webpages, not JavaScript to swap entire distinct pages inside a single HTML. Preview filenames need not match production URLs. Share CSS when useful; use **minimal JS** only for necessary local interaction simulation, never real auth/API/data effects.
+
+**Accepted existing equivalents, legitimately better project/tool constraints or non-web UI** can justify an evidence-backed exception. Record affected scope, actual constraint, exact artifact/evidence, legitimate Design owner/delegation and consumer impact; agent preference alone is insufficient. No universal folder/filename is mandated. See [UI Definition §7](../definition.md#7-visual-artifact-formats-verification-and-limits).
+
+**Proof limit:** Git-hosted HTML/source is not browser verification. Record the actual page/state/viewport preview method only when performed; otherwise use `NOT VISUALLY VERIFIED` without claiming visual acceptance.
+
 ## 0. Identity, scope, input sufficiency & standing
 
 | Field | Actual value / exact source |
@@ -27,11 +35,20 @@
 | Effective Brand/Visual/Component/Asset standards | `<project-owned paths/revisions and applicability; N/A if absent>` |
 | Other material I01–I13 input decisions and gaps | `<applicable input IDs + source/owner; link source checks>` |
 | UI candidate artifact(s) and source revision(s) | `<exact revision(s) when persisted; prior source if proposed>` |
+| Web visual format and exception standing | `<HTML-per-actual-UX-webpage default / accepted exact equivalent / non-web / evidenced alternative + owner, scope, consumer impact>` |
 | Binding UI input sufficiency | `SUFFICIENT / CONDITIONAL / BLOCKED / UNVERIFIED + per-decision reason` |
 | UI content standing | `PROPOSED / ACCEPTED only with separate actual exact-revision evidence` |
 | Exclusions, open decisions, risks | `<...>` |
 
 **No silent UX substitution:** For new/material UX, UX O2 flow and O6 structural Lo-Fi are required by default. Send specific gaps to the UX owner. UI may explore independently but cannot claim acceptance of a visual decision dependent on unaccepted UX.
+
+## Page-to-file preview mapping — required for new/material web Hi-Fi
+
+| Accepted UX webpage / route + exact source | Preview HTML file + exact revision | Local relative navigation destination(s) | In-page state variants included | Render evidence / exception / open gap |
+| --- | --- | --- | --- | --- |
+| `<UX O5/O4 page and accepted revision>` | `<entry.html or equivalent + exact revision>` | `<relative hrefs corresponding to UX navigation>` | `<default/loading/validation/unknown etc. within this page>` | `<CHECKED with actual evidence / NOT VISUALLY VERIFIED / owner-backed exception>` |
+
+**Page vs state:** Do not turn UI states into new webpages or simulate distinct entire webpages inside one HTML. This map only indexes visual proof; it grants no route authority. If already accepted in another medium, link exact accepted evidence and document the exception.
 
 ## 1. Visual evidence register — required for new/material UI
 
