@@ -57,6 +57,12 @@ At source checkpoint `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf
 
 **Standing:** initial research formalization and first-pass structural audit recorded; not source-to-runtime validation, formation revision or authority promotion. Next deep-dive decisions belong to Anhar.
 
+## Sequential audit and revision plan (2026-11-04)
+
+[**Audit & Revision Plan / Progress Tracker**](audit-revision-plan-and-tracker.md) is the active research planning and tracking entrypoint on `research/cross-stage-mapping`. Anhar agreed to evaluate and reconcile one concern at a time: **A1 Product → A2 UX Lo-Fi → A3 UI Hi-Fi → A4 Rancang → A5 Builder → A6 final cross-stage coherence**. This is **audit order only**, not operational waterfall or mandatory Space sequence.
+
+**Initial standing:** setup completed; **0/6 audit units settled**. The first-pass foundation assessment remains candidate findings, not an A1–A6 deep-audit PASS. All Product/Design/Engineering/Space owning guidance remains unchanged pending scoped review/approval. `main` is neither inspected nor edited; `refactor/harscode-foundation` remains an unchanged source checkpoint.
+
 ## Sources and evidence standing
 
 This snapshot captures **explicit discussion and working decisions from the 2026-11-03 experiment session**, not fresh empirical user research, code inspection, independent consumer verification, or proof that the model works. Its Git revision is the durable reference for this working artifact; historical conversation is not required to reconstruct its content.
