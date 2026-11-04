@@ -96,15 +96,39 @@ These are **quality targets**, not proved independent usability, rendered correc
 
 ## 7. Visual artifact formats, verification and limits
 
-**Default durable decision/handoff:** Markdown text/tables with exact links to effective project source and visual evidence. For **new/material visual UI**, provide an **actual inspectable visual artifact** (e.g. self-contained HTML/CSS, approved images or another genuinely available/reviewable medium). Source-only prose does not establish material visual layout quality.
+**Default durable handoff:** Markdown with links to effective project sources and real visual evidence. For **new/material web Hi-Fi**, the standard new visual proof is **static HTML + CSS, one `.html` file per actual webpage defined by the accepted UX Webpage Map/Routes**. This is a default with **evidence-based exceptions**, not a universal production folder or a mandatory named UI/UX Space.
 
-- **HTML/CSS** may demonstrate relevant actual screen compositions, state variants and responsive presentations; optional *minimal JS* may simulate genuinely needed UI interactions. The exact HTML file count, single- vs multi-page layout, tool and component implementation are **replaceable**, subject to target-project constraints and available authorized preview.
-- **Images, existing Figma artifacts and assets** can support visual inspection if legitimately available, with exact revisions/provenance and actual pixel inspection. Screenshots/selected-direction refs are not automatic production asset authority or pixel-perfect UI specifications.
-- **Render verification:** record inspected viewports, screens/states, actual tool/browser/test method, observed issues and proof limits; if unavailable, record `NOT VISUALLY VERIFIED`. A Git-hosted HTML file is not a rendered screenshot; a syntactically valid source, static mock or uninspected image filename is not independent visual proof.
-- **Interaction/accessibility truth:** a clickable simulation is not real API/auth/data mutation, independent user testing, verified contrast, keyboard/screen-reader evidence or integrated runtime behavior unless separately performed and documented. Avoid real external calls, credentials, personal data and unsafe side effects in design prototypes without actual authorization.
-- **No template-induced authority:** UI visual evidence is a bounded candidate until a legitimate Human accepts exact scope/revision; component-library promotion, global tokens, brand identity and reusable asset governance follow the target-project standard authority.
+### Web visual artifact baseline v1 — approved direction
 
-If tooling cannot make an essential visual design inspectable, report the affected proof gap and supply the closest permitted representation for review; do **not** silently replace visual evidence with unreviewed prose or claim Hi-Fi acceptance.
+| Decision | Web proof default | Boundary |
+| --- | --- | --- |
+| **Pages** | **One HTML file per actual accepted UX webpage**; connect separate preview pages through relative links | Preview filenames may differ from production URLs; do not invent, merge or split authoritative UX page/route meanings |
+| **States** | Keep default/loading/validation/error/denied/unknown/success, dialogs and overlays **within their owning page** | Do not make a file per UI state; do not simulate distinct webpages by JavaScript replacing whole-page content in one HTML by default |
+| **Styling** | Use CSS local to the bounded proof; a shared `styles.css` is appropriate when multiple pages benefit | No mandated physical directory or CSS architecture; follow effective target-project styles/tokens |
+| **Interaction** | Minimal JavaScript only for material local UI state/interactions that need simulated behavior | No real API, authentication, payment/data mutation, external effects, cookies, credentials or personal data without separate authorization |
+| **Assets** | Use permitted project-owned/approved assets or clearly labeled candidates with provenance and licensing | No fabricated identities, verification, branding or filler visual evidence |
+| **Review/handoff** | Markdown output index maps each real UX page/route to preview file and its state/viewport visual evidence | A committed HTML file, screenshot or filled template is not automatically Human-accepted or browser-tested |
+
+**One-page vs one-state rule:** When UX defines two **actual navigable webpages**, the new default visual proof uses **two HTML files** and local relative preview links. In-page variants live in their respective page. Do not invent/rename UX web routes to fit this file structure. A sufficient existing accepted equivalent or a legitimately authorized project/tool format may replace this default **only with a recorded task scope, actual constraint, equivalent inspectable proof, legitimate Design owner/delegation and consumer impact**. Agent convenience alone does not justify skipping it. For non-web UI, use the appropriate inspectable native/project medium instead of forcing HTML.
+
+**Illustrative only**, not a prescribed project directory or page list:
+
+```text
+ui-candidate/
+├── entry.html
+├── form.html
+├── review.html
+├── styles.css       # if shared styles help
+├── preview.js       # only if simulation requires it
+├── assets/          # if actually needed/permitted
+└── handoff.md       # optional reference to UI output record
+```
+
+**Rendering:** Inspect actual pages, relevant material states and representative narrow/wide widths in an *authorized* browser/preview when possible. Record exact source revision, inspected evidence, method and limits. If not performed, mark **`NOT VISUALLY VERIFIED`**; HTML in Git is not a rendered inspection. A static simulation cannot prove accessibility certification, independent user usability, Product/domain correctness, actual API/backend behavior or release readiness.
+
+**Authority:** Source Product truth and accepted UX navigation/page-vs-state meaning are binding in their concerns. Scoped UI visual evidence cannot silently become Product/UX approval, Engineering specification, reusable project-wide Design Standard or approved brand asset. Use exact Human-reviewed revision/scope and preserve unresolved evidence gaps.
+
+If an essential visual proof cannot be made inspectable with permitted tools, report the affected final-acceptance gap and supply the closest legitimate representation; never substitute text-only claims for material visual verification.
 
 ## 8. Functional consumer sufficiency and completion
 

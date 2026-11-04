@@ -18,7 +18,7 @@ Read **actual project-owned Product, accepted UX, applicable Design Standards, a
 
 ## What UI owns
 
-UI defines bounded **visual interface and content expression**: screen composition, visual hierarchy, final scoped UI language/copy, relevant responsive variants, visually expressed interaction states, visual components/styles and permitted assets. A new/material screen design normally needs **inspectable visual proof**, not merely a textual description.
+UI defines bounded **visual interface and content expression**: screen composition, visual hierarchy, final scoped UI language/copy, relevant responsive variants, visually expressed interaction states, visual components/styles and permitted assets. A new/material screen design normally needs **inspectable visual proof**, not merely a textual description. For newly authored web Hi-Fi, the [default is static HTML/CSS with one file per actual accepted UX webpage](definition.md#7-visual-artifact-formats-verification-and-limits); keep UI-state variants on the owning page and record actual preview/render inspection.
 
 UI does **not** redefine Product success, Domain Roles, business/legal/privacy constraints; accepted UX flows, IA, navigation/web paths or user-facing interaction-state meaning; target-project reusable Design Standard authority; Engineering APIs/security, component implementation or production behavior.
 
