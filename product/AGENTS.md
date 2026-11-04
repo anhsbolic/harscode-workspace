@@ -10,4 +10,3 @@ Use the [optional research templates](README.md#optional-templates--accepted-res
 
 **Hard boundaries:** Target-project approved sources and authorized Humans own Product truth. Product owns consequential actor/domain value, Domain Role meaning and Product acceptance; UI interaction/visual expression and technical mechanisms belong to their legitimate concerns. Exact-revision approval is not Design/Engineering approval, runtime readiness, invocation or protected-write permission. Do not promote illustrative ORG-01, current code, archived decisions or chat history into Product policy.
 
-Legacy six-phase files have been retired **in this research branch only**. See [historical lineage](history.md) for frozen copies; historical `PROD-*` codes are not required execution gates. No operational or target-project authority was amended.

@@ -29,12 +29,6 @@ This design makes **information contracts** and **functional responsibilities** 
 
 Concrete subjects currently represented in this research tree include [Engineering Solution Design — Rancang](../engineering/spaces/feature-solution-design/README.md) and [Next.js frontend Engineering Development — NextJS Builder](../engineering/spaces/nextjs-builder/README.md). They are **current examples**, not required Product consumers; their own formation, authorization and source-inspection rules remain effective within their exact approved revisions.
 
-## Migration boundary
-
-The previous six-phase documents and legacy English template have been retired from this research tree. See [historical lineage](history.md) for original immutable source links and semantic migration. Old `PROD-*` identifiers remain historical compatibility references only.
-
-The frozen source revision `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d` remains unchanged. A repository-local reference scan covered 99 active/research files; historical links were anchored to the frozen source. External consumer compatibility is still unverified.
-
 The [reverse-lifecycle Product experiment](../experiments/org-01-reverse-lifecycle/product-definition.md) is the **primary research design reference**, but ORG-01 is illustrative, not accepted Product truth for other projects. Revalidation may challenge even the experiment model.
 
 The [research tracker](../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) records A1 progress. The [research tracker](../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) owns current A1 status. No independent real-project consumer validation has been claimed.
