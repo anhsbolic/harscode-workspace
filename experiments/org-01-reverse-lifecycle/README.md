@@ -44,9 +44,9 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 
 ## Candidate Input–Source Mapping (2026-11-04)
 
-[**Five-stage Input–Source Mapping — Mermaid diagrams**](input-source-mapping.md) records reverse mappings from the 10 Builder, 12 Hi-Fi, 13 Rancang, 11 UX Lo-Fi, and 13 Product inputs to candidate phase outputs, project-level sources, and Human/external evidence. The mapping permits **non-linear and multi-source** relationships. It also flags potential coverage gaps for Lo-Fi's Webpage Map into Hi-Fi and Product-to-Lo-Fi Content & Information Requirements.
+[**Five-stage Input–Source Mapping — Mermaid diagrams**](input-source-mapping.md) records reverse mappings from the 10 Builder, 13 Hi-Fi, 13 Rancang, 11 UX Lo-Fi, and 13 Product inputs to candidate phase outputs, project-level sources, and Human/external evidence. The mapping permits **non-linear and multi-source** relationships. The lightweight coherence review (approved by Anhar on 2026-11-04) reconciles the previous gaps for Lo-Fi's Webpage Map into Hi-Fi and Product-to-Lo-Fi Content & Information Requirements, and clarifies consumed artifact revision/acceptance standing for Builder.
 
-**Standing:** candidate mapping **recorded**, not independently verified, not a full cross-stage coherence audit, and not authorization to revise the five stage models or promote a lifecycle. No assumption that candidate project-level sources actually exist or are authoritative.
+**Standing:** candidate mapping **recorded** and internally reconciled for three approved clarifications; 60 candidate inputs mapped in total. Not independently verified against actual project sources, not a deep cross-stage audit, and not authorization to promote a lifecycle. No assumption that candidate project-level sources actually exist or are authoritative.
 
 ## Sources and evidence standing
 
