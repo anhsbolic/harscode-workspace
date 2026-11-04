@@ -63,6 +63,8 @@ At source checkpoint `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf
 
 **Initial standing:** setup completed; **0/6 audit units settled**. The first-pass foundation assessment remains candidate findings, not an A1–A6 deep-audit PASS. All Product/Design/Engineering/Space owning guidance remains unchanged pending scoped review/approval. `main` is neither inspected nor edited; `refactor/harscode-foundation` remains an unchanged source checkpoint.
 
+**Research status update (2026-11-04):** The experiment-led Product A1 redesign has since been persisted to [Product Definition research guidance](../../product/README.md), with three Human-accepted optional templates. The old six-phase Product research docs were retired and pinned as frozen historical sources. See the [audit tracker](audit-revision-plan-and-tracker.md) for status and remaining evidence limits. The earlier *initial standing* text above is a dated setup snapshot, not the current A1 state.
+
 ## Sources and evidence standing
 
 This snapshot captures **explicit discussion and working decisions from the 2026-11-03 experiment session**, not fresh empirical user research, code inspection, independent consumer verification, or proof that the model works. Its Git revision is the durable reference for this working artifact; historical conversation is not required to reconstruct its content.

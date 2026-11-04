@@ -1,7 +1,7 @@
 # Product — Product Definition (Research)
 
 > **Standing:** AGREED WORKING RESEARCH DESIGN on `research/cross-stage-mapping`, 2026-11-04. Not operational Harscode policy, a Product Space, or target-project Product authority.
-> **Decision owner:** Anhar approved the new guidance architecture and core/authority/handoff working design. The three new optional templates are **DRAFTS FOR REVIEW**, not approved project Product artifacts.
+> **Decision owner:** Anhar approved the new guidance architecture and core/authority/handoff working design. Anhar accepted the three optional templates **as research authoring designs** against exact revision `f796b2d`. Their original DRAFT headers remain in the unchanged approved bytes; acceptance is recorded externally in the tracker. This is not target-project Product approval.
 
 ## One coherent Product concern
 
@@ -15,7 +15,7 @@ Product Definition establishes meaningful intended actor value, domain consequen
 
 See [Product AGENTS](AGENTS.md) for research routing. Effective Product authority remains in the **target project's owning sources and approved revisions**, not Harscode templates or historical experiments.
 
-## Optional templates — draft for review
+## Optional templates — accepted research designs
 
 - [Product Definition — Indonesian](templates/product-definition.id.md): intent, actor, meaningful Product journey, bounded selected outcome.
 - [Product Contract — Indonesian](templates/product-contract.id.md): binding Product semantics, domain authority, required information, rules, SC/REQ/AC.
@@ -31,10 +31,10 @@ Concrete subjects currently represented in this research tree include [Engineeri
 
 ## Migration boundary
 
-The former six-phase files (`foundation.md`, `journey-mapping.md`, `outcome-selection.md`, `outcome-definition.md`, `review-and-approval.md`, `handoff.md`), [historical index](history.md), and previous [English Product Contract template](templates/product-contract.en.md) remain **temporarily as migration/reference material**. They are not this research design's primary entrypoint and their old `Next:` phase cues are not required procedures. Do not treat both versions as jointly binding guidance.
+The previous six-phase documents and legacy English template have been retired from this research tree. See [historical lineage](history.md) for original immutable source links and semantic migration. Old `PROD-*` identifiers remain historical compatibility references only.
 
-The frozen source revision `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d` remains unchanged. The old `PROD-*` identifiers, root/history navigation and consumer references require a scoped compatibility/cleanup check before legacy material is removed.
+The frozen source revision `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d` remains unchanged. A repository-local reference scan covered 99 active/research files; historical links were anchored to the frozen source. External consumer compatibility is still unverified.
 
 The [reverse-lifecycle Product experiment](../experiments/org-01-reverse-lifecycle/product-definition.md) is the **primary research design reference**, but ORG-01 is illustrative, not accepted Product truth for other projects. Revalidation may challenge even the experiment model.
 
-The [research tracker](../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) records A1 progress. A1 is **not settled** while templates and migration remain unreviewed; no independent real-project consumer validation has been claimed.
+The [research tracker](../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) records A1 progress. The [research tracker](../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) owns current A1 status. No independent real-project consumer validation has been claimed.
