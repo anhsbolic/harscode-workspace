@@ -1,5 +1,8 @@
 # Rancang — Evidence-Bounded Supervised Piloting Posture (2026-10-27)
 
+> **Project-agnostic historical presentation:** The [exact original Harscode source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/harness/rancang-pilot-posture-2026-10-27.md) preserves historical project identity, source links and reviewed bytes. This edited copy does **not** change the old approval's subject or confer acceptance of these new bytes.
+
+
 > **Decision standing:** Human-directed research piloting posture / **CONDITIONALLY PILOTABLE FOR BOUNDED SUPERVISED DOCUMENTATION WORK**
 > **Owner of this evidence interpretation:** Harness concern; actual target-project invocation state remains project-owned.
 > **Not a certification:** Harness globally READY, full R1–R8 verification, current adapter/runtime certification, autonomous operation, or permission for any specific task.
@@ -9,10 +12,7 @@
 
 On 2026-10-27 Anhar chose to **defer a separate comprehensive Harness R1–R8 assessment for now** and continue learning through bounded real Rancang piloting. This is an experimental posture, not a waiver of mandatory security, authorization or independence safeguards.
 
-Evidence anchor: Kencleng's **historical ORG-01 Rancang Run #1**, at `anhsbolic/kencleng@6d5c2c5fd14496494c86d1c94ef201ab9de657c2` on `pilot/station5-c1-space-only`:
-- [Project-owned assignment state](https://github.com/anhsbolic/kencleng/blob/6d5c2c5fd14496494c86d1c94ef201ab9de657c2/docs/engineering/org-01/rancang-001/state.md)
-- [Independent solution review](https://github.com/anhsbolic/kencleng/blob/6d5c2c5fd14496494c86d1c94ef201ab9de657c2/docs/engineering/org-01/rancang-001/solution-review.md)
-- [Human-facing handoff](https://github.com/anhsbolic/kencleng/blob/6d5c2c5fd14496494c86d1c94ef201ab9de657c2/docs/engineering/org-01/rancang-001/handoff.md)
+Evidence anchor: a bounded, historical target-project Rancang assignment (exact project state, independent review and Human handoff are preserved in the immutable original Harscode record).
 
 That run used the **earlier formed Rancang definition** `9663a3fa73ac0101e66764d63af8711f291a66ab`, not the revised definition now formation-approved at `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf`. Its evidence **supports feasibility of a bounded documentation pilot on its observed Codex configuration**, not proof that the new definition or a different installed runtime has already passed.
 

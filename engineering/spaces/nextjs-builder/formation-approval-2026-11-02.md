@@ -1,5 +1,8 @@
 # NextJS Builder — Research Formation Approval (2026-11-02)
 
+> **Project-agnostic historical presentation:** The [exact original Harscode source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/spaces/nextjs-builder/formation-approval-2026-11-02.md) preserves historical project identity, source links and reviewed bytes. This edited copy does **not** change the old approval's subject or confer acceptance of these new bytes.
+
+
 > **Decision:** FORMATION APPROVED / RESEARCH-ONLY
 > **Human decision owner:** Anhar
 > **Human decision date:** 2026-11-02 (Asia/Jakarta)
@@ -52,9 +55,9 @@ The backend producer owns backend implementation/provider conformance, Next.js E
 - Native Harness installation, permission isolation/containment, model/tool suitability, independently separated Agent context, cold resumption or actual operational readiness — **NOT VERIFIED**.
 - Actual Next.js rendered visual/Anti-Slop improvements, Mock-first production effectiveness, tests, independent review quality or source-to-consumer reconstruction — **NOT RUN** for this new Space.
 - Real backend API availability, FE–BE integration, provider-contract conformance or delivery — **NOT VERIFIED**.
-- The Kencleng ORG-01 pilot's separate authorization, project SOP exceptions, protected writes, canonical API adoption or release readiness — **NOT AUTHORIZED BY FORMATION**.
+- A target project's separate assignment authorization, project SOP exceptions, protected writes, canonical API adoption or release readiness — **NOT AUTHORIZED BY FORMATION**.
 
-The first meaningful experiment is an **explicit Human-authorized, supervised, bounded** NextJS Builder `MOCK_DEVELOPMENT` invocation against a real project objective such as Kencleng ORG-01, after confirming live project authority and actual runtime/tool/permission readiness. Evaluate original-source discovery from a work ID, Agent ownership, useful early Craft contribution, contract fidelity, SOP-compliant performed evidence, meaningful independent assessment and durable handoff; do not presume success. A separate Human-authorized `REAL_API_INTEGRATION` assignment is only appropriate when its real prerequisites exist.
+The first meaningful experiment is an **explicit Human-authorized, supervised, bounded** NextJS Builder `MOCK_DEVELOPMENT` invocation against a real, independently authorized project objective, after confirming live project authority and actual runtime/tool/permission readiness. Evaluate original-source discovery from a work ID, Agent ownership, useful early Craft contribution, contract fidelity, SOP-compliant performed evidence, meaningful independent assessment and durable handoff; do not presume success. A separate Human-authorized `REAL_API_INTEGRATION` assignment is only appropriate when its real prerequisites exist.
 
 ## 6. Consequence
 

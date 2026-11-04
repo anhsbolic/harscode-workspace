@@ -1,5 +1,8 @@
 # NextJS Builder — Formation Review Packet
 
+> **Project-agnostic historical presentation:** The [exact original Harscode source](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/engineering/spaces/nextjs-builder/formation-review.md) preserves historical project identity, source links and reviewed bytes. This edited copy does **not** change the old approval's subject or confer acceptance of these new bytes.
+
+
 > **Historical candidate packet:** reviewed and **FORMATION APPROVED / RESEARCH-ONLY** by Anhar on 2026-11-02 for exact definition `323d8c4a19eb1ae497066ff47ce092ee19f0ab94`. See [Human approval record](formation-approval-2026-11-02.md). The candidate content below is retained as original formation rationale; no runtime verification is implied.
 > **Capability:** `nextjs-builder`, Harscode research-only `refactor/harscode-foundation`. This packet was written before Human approval and does not itself authorize Agent invocation.
 
@@ -40,18 +43,18 @@ Each Agent profile includes a concise **pre-handoff responsibility checklist**. 
 
 Definition specifies source fidelity, version-pinned durable state, native scoped tool permissions, SOP-aware test access, actual browser/backend readiness if needed, genuine independent review contexts and enforceable Human/mode/protected-action gates. Actual Harness compliance, reviewer isolation, write containment, real API integration and end-to-end UX/security evidence are **NOT RUN / UNVERIFIED** for this new Space. No native Agent mappings/models or invocations are installed by these files.
 
-## 6. Proposed first validation: Kencleng ORG-01, not generic policy
+## 6. Proposed first validation: project-owned assignment, not generic policy
 
-At Kencleng research checkpoint `pilot/station5-c1-space-only@5a5ca4c7128913d49f8e29a88fad57a61fa897c0`, the accepted ORG-01 Rancang handoff supports separately authorized parallel typed mock frontend work, while adopted canonical feature API and real backend runtime are not established by that handoff. A prospective next sequence:
+A bounded historical project-owned Engineering Solution handoff was reviewed as supporting evidence for separately authorized parallel typed mock frontend work, while adopted canonical feature API and real backend runtime are not established by that handoff. A prospective next sequence:
 
 1. Fresh Human-authorized NextJS Builder `MOCK_DEVELOPMENT` assignment, discover ORG-01 from only work ID/project source access. Read actual Product/Design/Rancang originals. Build bounded creation/inspection frontend, approved assets/copy and SOP-conformant evidence.
 2. Separately authorized backend production by its actual owner (no claim a Go Builder Space is formed here).
 3. Human initiates **new** NextJS Builder `REAL_API_INTEGRATION` assignment after provider readiness, with exact FE/BE refs. Verify actual compatibility and integration as permitted; if backend blocks, stop and return diagnosed blocker, not mock fallback.
 
-Cold downstream discovery **F-01 NOT RUN**; no implicit real backend test or project delivery claims. This is a *candidate validation plan*, not execution or a Kencleng change.
+Cold downstream discovery **F-01 NOT RUN**; no implicit real backend test or project delivery claims. This is a *candidate validation plan*, not execution or a target-project change.
 
 ## 7. Historical decision request (fulfilled on 2026-11-02)
 
-Anhar accepted the exact immutable candidate `323d8c4a19eb1ae497066ff47ce092ee19f0ab94` for **FORMATION APPROVED / RESEARCH-ONLY** on 2026-11-02. The authoritative decision and its limits are in the [separate formation approval record](formation-approval-2026-11-02.md). Approval does not establish runtime readiness, invocation permission, actual review independence, Kencleng implementation or promotion to operational `main`.
+Anhar accepted the exact immutable candidate `323d8c4a19eb1ae497066ff47ce092ee19f0ab94` for **FORMATION APPROVED / RESEARCH-ONLY** on 2026-11-02. The authoritative decision and its limits are in the [separate formation approval record](formation-approval-2026-11-02.md). Approval does not establish runtime readiness, invocation permission, actual review independence, target-project implementation or promotion to operational `main`.
 
 **Provenance:** prior working decisions are now covered by the exact-revision Human formation acceptance recorded separately. This administrative update is not a substantive formation amendment.
