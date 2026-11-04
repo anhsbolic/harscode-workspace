@@ -23,6 +23,10 @@
 
 **Routing:** The five foundation domains remain research guidance, not an approved operational replacement. The accepted standalone local-environment Agent is a scoped Human-direct local-use exception **on this branch only**; its acceptance does not authorize other Engineering Spaces or promote the foundation. Historical/archived material is reference only; current operational baseline remains `main`.
 
+## Project-agnostic current-tree verification
+
+The [project-agnosticity audit](PROJECT-AGNOSTICITY-AUDIT.md) records source-level cleanup scope, immutable provenance/approval safeguards, and the explicit exclusion of the frozen `deprecated/` archive. Historical experiment references do **not** create reusable target-project policy.
+
 ## Source and constraints
 
 Refactor source: `research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d`. Original research files remain accessible at that exact Git revision. Rancang's **original historical** formation pin `1f20cf6584dba54dee17d8183c7069d7c99eafe6` did not transfer through archival relocation; the **later formed research v3** was approved separately at `4b49d0dd0db74cf34a927cadc938ae724676a75a`. The **vNext definition** at `9663a3fa73ac0101e66764d63af8711f291a66ab` received a separate **FORMATION APPROVED / RESEARCH-ONLY** Human decision on 2026-10-25, recorded in [vNext exact formation approval](engineering/spaces/feature-solution-design/formation-approval-2026-10-25.md). The revised vNext definition `47297c6f369dad4d4e4c4f90f0e81eb0310be7cf` received separate **FORMATION APPROVED / RESEARCH-ONLY** on 2026-10-27; see [current revised approval](engineering/spaces/feature-solution-design/formation-approval-2026-10-27.md). For current standing follow [Engineering routing](engineering/README.md), not root navigation as separate approval authority.
