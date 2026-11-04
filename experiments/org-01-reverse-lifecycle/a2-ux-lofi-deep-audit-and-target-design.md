@@ -96,18 +96,36 @@ They describe desired UX design quality. Approval of a prototype or good same-se
 
 **Unproven risks:** No actual project UX decision, independent consumer, or usability test was run here. These are risks of under-specified reusable guidance, not observed ORG-01 UX failures.
 
-## 4. Proposed target Design architecture — intentionally not final before A3
+## 4. Revised Design domain architecture — 2026-11-04, still PROPOSED
 
-A2 should **not** decide all future UI Hi-Fi structure under the name of UX. The next target layout is a **candidate**, not a mandatory file schema:
+After the original A2 audit, Anhar proposed three **independent concerns under `design/`**: `ux/`, `ui/`, and `project-standard/`, seeking focused ownership and recalling legacy project-wide Design exploration. This proposal is materially better than the previous flat `design/ux-definition.md` candidate **as a review direction**, but is not yet a final approved Harscode guidance revision.
 
-- **design/README.md** — concern-level navigation, source standing, current capability/subject examples **only when actual**.
-- **design/AGENTS.md** — lean authority-aware routing.
-- **design/ux-definition.md** *(new candidate)* — reusable Interaction & Experience Definition I/P/O/O; conditional UX flows, IA/navigation, state and web route contract.
-- **design/authority-and-handoff.md** *(shared candidate)* — effective Design decisions, exact-revision Human acceptance, responsibility-based information consumption, producer/consumer compatibility; review with A3 to avoid duplicating UI-specific authority.
-- **design/exploration.md** — remain unchanged pending A3; decide later whether unique visual/brand exploration semantics belong in a future UI-specific core or common exploration guidance.
-- **Future UI/Hi-Fi core** — intentionally deferred to A3, which evaluates the Hi-Fi experiment, not silently specified by A2.
+```text
+design/
+├── README.md                   # Cross-concern navigation; current subject mapping only here when actual
+├── AGENTS.md                   # Research routing and authority boundaries
+├── authority-and-handoff.md    # Shared standing, approvals, source and consumer checks
+├── ux/
+│   └── definition.md           # Interaction & Experience Definition, A2
+├── ui/
+│   └── definition.md           # Visual Interface & Content Definition, A3
+└── project-standard/
+    └── definition.md           # Reusable project-level Design Standard formation/evolution
+```
 
-**No new UX template yet.** Whether an optional template solves a concrete authoring/consumer problem should be shown before adding it. A project can use its accepted document shape; UX output types do not mandate new files.
+Folders are **responsibility scopes, not runtime Spaces or required sequential phases**. Lo-Fi and Hi-Fi describe possible design fidelity and proofs; they are not the names of permanent upstream/downstream producers. New templates, additional `README.md` files, workflow states and a new audit unit are not justified by a folder split alone.
+
+**Separate but connected meaning:**
+- **UX Definition** owns bounded interaction progression, IA, navigation/webpage paths where relevant, interaction state meaning and UX decision acceptance. Its UX decisions may reference established reusable project standards, but are not automatically standards themselves.
+- **UI Definition** owns bounded visual/interface, UI copy, composition, responsive expression, reusable components/assets when needed, and accepted UI decisions. It may depend on accepted UX navigation/information as material **information**, not on a mandatory UX Space having run.
+- **Project Design Standards** owns defining, authorizing, evolving and making discoverable **reusable project-level design rules**: judgment principles, recurring interaction patterns, brand/product-UI direction, visual-system guidance, writing/terminology conventions and asset-governance rules when legitimately in scope. It does not own Product semantics, all feature UX/UI decisions or implementation technology.
+- **Shared Design authority/handoff** defines cross-concern approval standing, exact revisions, original-source checks and functional consumer needs. It must not turn independent UX/UI decisions into one blanket Design approval.
+
+An accepted UX/UI finding may motivate a proposed standard change; it **does not** automatically become project-wide precedent. A project-wide standard may constrain multiple UX/UI decisions, but those receiving responsibilities remain separately owned. A Design Standard may have working/research standing and need not be canonical. A project may use a single accepted standard artifact or several subject-specific sources; **these folders belong to reusable Harscode guidance, not a mandatory layout inside each project's `docs/design/`.**
+
+**Scope discipline:** A2 only drafts/reviews `design/ux/definition.md` and relevant cross-cutting navigation/authority effects after Anhar approval. A3 will independently examine `design/ui/` and project-standard separation using Hi-Fi experiment and project evidence. No extra A7 audit unit or automatic parallel `project-standard/` Space is implied. `design/exploration.md` remains pending disposition after review; no legacy history index is proposed.
+
+**No UX template yet.** A template should solve a real authoring or consumption need, not follow from nine logical outputs.
 
 ## 5. Cross-responsibility boundaries and two critical tests
 
@@ -119,12 +137,31 @@ A2 should **not** decide all future UI Hi-Fi structure under the name of UX. The
 
 **Evidence check:** Prototype clickability, hypothetical scenario, accepted UX revision, independent accessibility check and observed real-user usability are separate evidence claims. Do not certify more than the actual method supports.
 
-## 6. Recommended change direction and decision gate
+## 6. Revised recommendation and decision gate
 
-**Strong recommendation:** Approve creation of a reusable **Interaction & Experience Definition** concern as the A2 target, using the experiment's 11 inputs / nine activities / nine logical outputs / six desired properties as a *conditional semantic reference*. Keep UX responsibility independent of the identity or existence of Product, Visual Design, Engineering Solution, or Engineering Development Spaces. Do **not** form a new UX Space or impose nine mandatory deliverables.
+**Strong recommendation:** Adopt **one Design domain with three independent functional concerns**: `design/ux/`, `design/ui/`, `design/project-standard/`. This is a **proposed design**, not a Human-approved owning-source revision. The original A2 UX Input → Process → Output → Outcome (11/9/9/6) remains a challengeable core reference with conditional UX proofs and web-specific route obligations.
 
-After Anhar's decision, propose bounded updates to **design/README.md**, **design/AGENTS.md**, a new **design/ux-definition.md**, and **design/authority-and-handoff.md** (only UX/consumer-related parts); leave **design/exploration.md** for A3 unless evidence warrants a smaller specific edit. Avoid rewriting or reapproving existing Engineering Space definitions in A2.
+The core split protects both **feature-specific Design decisions** and **reusable project-standard authority**. Ownership must follow actual meaning: some UX patterns are reusable Design Standards, some are bounded UX decisions; some visual assets are canonical identity, others merely prototype evidence. Distinguish source standing explicitly.
 
-**Required for A2 settlement:** Human decision on material target semantics; source-branch research revision; diff/source/link checks; preservation of Product/UX/Visual/Engineering authority boundaries; explicit limitation of unverified consumer and real usability. Approval of A2 research guidance is not operational promotion or actual UX authority for Kencleng.
+For A2, request Anhar's decision on the **three-concern architecture** and scoped draft of `design/ux/definition.md`; do not prematurely finalize `design/ui/definition.md` or `design/project-standard/definition.md` before A3 evidence review. The existing shared `design/authority-and-handoff.md` can be reconciled as one cross-cutting contract if sufficient, avoiding competing approval systems.
 
-**Review status:** A2 is **REVIEW_PENDING**, not SETTLED_FOR_RESEARCH. No owning Design guidance has been changed by this audit.
+A2 settlement requires Human decision on material UX semantics, source-level revised research guidance with checked links and consumer boundaries, explicit uncertainty on real usability/project consumption, and scoped actual revision evidence. Do not alter Engineering Space formation or adopt Kencleng project standards as Harscode defaults.
+
+**Review status:** A2 remains **REVIEW_PENDING**. No owning `design/` changes, Kencleng edits, or operational promotion in this checkpoint.
+
+## 7. Project-level and historical Design evidence — 2026-11-04
+
+**Kencleng source inspected read-only:** `anhsbolic/kencleng@d6738298f43313d8c58afcec7b5131b33e0b26d0`, branch `pilot/station5-c1-space-only`, `docs/design/`. This was requested by Anhar to validate the proposed architecture, **not to change Kencleng authority, its effective project baseline, or its feature decisions**.
+
+- [Design authority router](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/README.md) distinguishes **project-wide reusable design authority** from Product meaning, and routes to different owning concerns: Product Design Principles, brand/Product UI brief, visual-system guidelines, UX patterns, asset governance, working IA and writing heuristics, selected reference evidence.
+- [Product Design Principles](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/product-design-principles.md), [Brand/Product UI Brief](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/brand-product-ui-brief.md), [Visual Guidelines](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/design-guidelines.md), [UX Patterns](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/patterns.md), and [Asset Governance](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/asset-governance.md) carry **canonical** project Design standing in their headers.
+- [Information Architecture](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/information-architecture.md) and [Indonesian UX Copywriting](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/copywriting-id.md) explicitly say **working supplemental guidance**, **not** amendments to canonical Product/Design meaning; work may be explored without claiming a new standard.
+- [Selected visual references](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/visual-references/selected-direction/README.md) are approved **direction evidence**, not production assets/pixel specifications or Product-state authority. No PNG pixel analysis is claimed.
+- [ORG-01 Design Candidate handoff](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/outcomes/org-01/handoff.md) explicitly says **DESIGN CANDIDATE / NOT HUMAN APPROVED**. It references project-wide Design standards without making its experimental feature UI a canonical project-wide rule.
+- [Optional Hi-Fi kickoff](https://github.com/anhsbolic/kencleng/blob/d6738298f43313d8c58afcec7b5131b33e0b26d0/docs/design/templates/hi-fi-static-html-kickoff.md) is an **optional session aid**, not a new Design Standard, Space, or permission to write/commit.
+
+**Interpretation:** Kencleng demonstrates the **useful authority distinction** between reusable project Design rules, working guidance, approved direction evidence and outcome-specific candidate Design. It supports considering `project-standard/` as a **separate reusable responsibility**; it does **not** prove Harscode needs a mandatory standardization stage, a particular file count, these exact Kencleng standards, or a new formed Space.
+
+**Legacy supporting evidence (read-only, not current Harscode guidance):** `deprecated/legacy/product-design/product-brand-and-ui-exploration.md` discusses Product-truth-grounded Design direction exploration and later concrete visual system; `deprecated/legacy/product-design/design-authority-and-canonicalization.md` distinguishes exploratory proof from Human-approved durable reusable authority. Their valid insight is **explore → decide/approve → persist reusable rule when justified**, not a required waterfall or a mandate to copy legacy files into the active foundation.
+
+**Unverified:** Actual cross-project applicability, independent source consumption, real rendered UX tests and project-specific adoption. No claim that a new three-concern documentation arrangement has been tested in real work.
