@@ -1,6 +1,6 @@
 # Cross-Stage Foundation — Sequential Audit & Revision Plan / Tracker
 
-> **Status:** PLAN AGREED; A1–A2 SETTLED_FOR_RESEARCH after source-level validation; A3 REVIEW_PENDING with evidence-based research proposal; A4–A6 NOT_STARTED.
+> **Status:** A1 Product, A2 UX and A3 UI SETTLED_FOR_RESEARCH; Project Design Standards NOT_STARTED; A4–A6 NOT_STARTED. Research-only, not operational main.
 > **Decision owner:** Anhar. **Plan agreed:** 2026-11-04. **Tracking owner:** research collaboration; record actual approvals and evidence, do not infer them.
 > **Repository:** `anhsbolic/harscode-workspace`.
 > **Frozen subject baseline:** `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`.
@@ -69,7 +69,7 @@ Statuses: `NOT_STARTED` → `AUDITING` → `REVIEW_PENDING` → (`REVISING` if a
 | **Setup** | **COMPLETE** | [Candidate Reference Model](candidate-reference-model.md), [First-Pass Gap Assessment](foundation-gap-assessment.md) | Anhar agreed sequential audit-and-revision method, 2026-11-04 | New isolated branch; plan/tracker created here | Start A1 |
 | **A1 Product** | `SETTLED_FOR_RESEARCH` | A1 v2 reviewed original 11 Product files; new 13/9/6/6 core; 99-file active/research legacy-reference scan and source-level link/semantic checks | Anhar accepted new guidance architecture and three research authoring templates (2026-11-04); approved template blobs pinned at `f796b2d` | Research branch redesign, seven retired files, immutable history, 110 relative links checked in 14 affected/relevant files; two historical broken references repaired; target-project independent consumer fit **UNVERIFIED** | Start A2 UX Lo-Fi research, using information/responsibility contracts; preserve A1 limitations for A6 |
 | **A2 UX Lo-Fi** | `SETTLED_FOR_RESEARCH` | A2 source-level 11/9/9/6; new/material UX O2 Flow Diagram and O6 Lo-Fi required-by-default, evidence-backed exceptions; exact amendment at `8d53c1a` | Anhar explicitly **approved exact research revision `8d53c1a`** (2026-11-04), including scoped UX guidance/template amendment; content blobs recorded in section 16 | Approved exact UX artifact blobs preserved; no actual independent UI consumer, browser, usability or runtime validation implied | Reopen only with materially new evidence or actual consumer incompatibility |
-| **A3 UI Hi-Fi** | `REVIEW_PENDING` (original UI guidance approved; web visual format amendment and bilingual templates for exact review) | [A3 UI audit](a3-ui-and-project-standard-deep-audit-and-target-design.md), [13-input compatibility](a3-ui-input-to-ux-output-compatibility.md); visual HTML-per-UX-page baseline v1 | Anhar approved four original UI guidance at `2fe4c72`; on 2026-11-04 approved **static HTML/CSS and one HTML per accepted actual UX webpage** as default with evidence-based exceptions; amended bytes/templates not yet approved | UI Definition/AGENTS/README amendment `ead7bf0` and new ID/EN template page-to-file mapping; source validation pending, actual browser/consumer UNVERIFIED | Review exact new UI visual policy/template revision; Project Standard remains separate |
+| **A3 UI Hi-Fi** | `SETTLED_FOR_RESEARCH` (UI concern only) | Four UI direct-entrypoint files, bilingual O1–O9 templates, 13-input map and web HTML-per-actual-UX-webpage format baseline | Anhar approved exact research revision `cbe1010` (2026-11-04); source blobs in §19 | Source-level 13/9/9/6, bilingual 9-output/52-row parity, 61 relative links with zero missing paths/anchors; browser, independent project consumer, runtime UNVERIFIED | Next: separately scoped Project Design Standards research; combined A3 not fully complete |
 | **A4 Rancang** | `NOT_STARTED` | F-03/F-05 candidate only | None | None | After A3 adequately settled |
 | **A5 Builder** | `NOT_STARTED` | F-04/F-05 candidate only | None | None | After A4 adequately settled |
 | **A6 Final coherence** | `NOT_STARTED` | F-06 candidate only; revisit all accepted changes | None | None | After A1–A5 |
@@ -95,7 +95,7 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 
 ## Next executable unit
 
-**A3 UI CONTENT REVIEW — REVIEW_PENDING.** Four self-contained `design/ui/` research guidance drafts now exist under the [direct UI entrypoint](../../design/ui/README.md), based on [13-input compatibility mapping](a3-ui-input-to-ux-output-compatibility.md) and [A3 source audit](a3-ui-and-project-standard-deep-audit-and-target-design.md). Anhar approved A2 exact scoped revision `8d53c1a` and requested UI drafting, **not automatic acceptance of the new UI semantic bytes**. A1 and A2 remain SETTLED_FOR_RESEARCH (2/6). Project Standard concern will be addressed separately.
+**A3 UI SETTLED_FOR_RESEARCH; Project Design Standards NOT_STARTED.** UI source guidance and authoring templates approved at exact `cbe1010`, with source-only checks recorded in §19. Combined A3 remains partial; no automatic project-standard formation or operational promotion.
 
 ## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
 
@@ -246,3 +246,18 @@ The six UX guidance/template files preserve their original DRAFT/proposed metada
 **Scoped change:** `design/ui/definition.md`, `AGENTS.md`, `README.md` were amended at `ead7bf0d3c0622c9bdb50471794f3fd502d667ff`; both optional `design/ui/templates/ui-output.id.md` and `.en.md` now include the format baseline and a matching **actual UX page-to-preview file mapping**. This is a policy/authoring revision; **not** creation of feature UI prototype, actual screenshot/visual validation, new Project Design Standard, project implementation, or authorization for external tools. Project Product/UX original authority remains unchanged. `design/ui/authority-and-handoff.md` is unchanged from its previously accepted exact blob `70684a76892af5d628301ac5676694f3f5bd3bd5`.
 
 **Approval boundary:** Human approved the **direction** of this format policy, not these newly authored exact bytes. Original four-file UI guidance approval in section 17 still applies only to its reviewed content blobs; ID/EN output templates were **DRAFT FOR HUMAN REVIEW** and remain so. A3 UI remains `REVIEW_PENDING` while exact amendment/template content awaits Human review. Actual browser rendering, UI consumer testing, accessibility checks, independent usability and target-project compatibility are **UNVERIFIED**.
+
+## 19. A3 UI exact-revision acceptance and settlement (2026-11-04)
+
+Anhar explicitly approved exact research revision `cbe1010a37145c7f9ebf2adf1216de848ddd6c96`, covering the visual HTML-per-accepted-UX-webpage default and both ID/EN UI authoring templates, following the earlier approval of core UI guidance. This is research acceptance only, not target-project UI acceptance or operational promotion.
+
+| Accepted UI file | Exact blob SHA |
+| --- | --- |
+| `design/ui/README.md` | `a0c88c4eeb4a65bbebd68323cf74297870ef69cd` |
+| `design/ui/AGENTS.md` | `2fbeed660a0f96c5427ea6c63706579affb2190f` |
+| `design/ui/definition.md` | `53d293cdf8a5f635690123a76de521f63e78b83f` |
+| `design/ui/authority-and-handoff.md` | `70684a76892af5d628301ac5676694f3f5bd3bd5` |
+| `design/ui/templates/ui-output.id.md` | `44b2c55d127dd98c4f97fc938f720f06b0e65013` |
+| `design/ui/templates/ui-output.en.md` | `73ba3c47b940d888fc82ef0b4ade909bbd8d791c` |
+
+Source verification: UI Definition 13 input / 9 process / 9 output / 6 outcome; ID/EN templates each cover O1–O9 and have 52 table rows; 61 relative source links checked with no broken file paths or heading anchors; applicable NextJS Builder input requirements read. Default web proof is static HTML/CSS, one HTML per actual accepted UX webpage, with in-page state variants, local relative preview navigation and evidence-backed exceptions. No files per UI state mandated. Actual rendering, accessibility, usability, target-project consumer execution and agent/harness runtime remain UNVERIFIED. Original UI files retain their historical DRAFT header bytes; this tracker provides external exact approval evidence without altering reviewed content. A3 UI is SETTLED_FOR_RESEARCH, while Project Design Standards and combined A3 remain incomplete.
