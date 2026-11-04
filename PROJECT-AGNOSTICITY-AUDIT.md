@@ -15,10 +15,10 @@
 
 | Check | Result |
 | --- | --- |
-| Non-deprecated current-tree files inspected | **109** files |
+| Non-deprecated current-tree files inspected | **109 existing files scanned**, plus this newly authored audit file: **110 current files total** |
 | Case-insensitive target-project identifier in those files and their paths | **0 occurrences** |
 | Explicit target-project brand/font-direction markers in inspected files | **0 occurrences** |
-| Non-deprecated relative Markdown links checked | **352**; **0 missing files/directories** |
+| Non-deprecated relative Markdown links checked | **352** from the 109-file scan, plus **1** new root-to-audit link verified: **353 total, 0 missing files/directories** |
 | Apparent file-only exception | A legitimate relative link to the existing Engineering `agents/` **directory**, verified as a Git tree |
 | `deprecated/` files | **258 existing files**, unchanged in this cleanup; contents intentionally **not scanned or modified** |
 | Project/operational changes | **No target-project or Harscode `main` modifications**; no runtime/visual tests |
