@@ -25,9 +25,11 @@
 
 *Conditional: the relevant Design System elements and web assets become **Wajib** if the accepted design or project constraints actually require them. "Wajib" refers to the **needed information or material**, not necessarily a distinct file or document.*
 
+**Cross-stage acceptance clarification (2026-11-04, approved by Anhar):** For consequential Builder work, consumed Product, UX, Hi-Fi and Engineering artifacts carry their **relevant source revision, acceptance standing/scope and material unresolved decisions**. Merely locating an artifact does not establish acceptance. This uses the records already owned by each source; **no new approval workflow or duplicate authority source** is introduced.
+
 ## 2. PROCESS
 
-1. **Input Review** — understand inputs and identify any material inconsistency or missing implementation decision.
+1. **Input Review** — understand inputs, confirm relevant source revisions and acceptance scope, and identify material inconsistencies, unresolved decisions, or missing implementation decisions.
 2. **Implementation Planning** — arrange frontend, backend, database and integration work.
 3. **Frontend Development** — build pages, forms, navigation, interactions and responsive UI.
 4. **Backend Development** — build API, authentication, authorization and business logic.
