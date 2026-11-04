@@ -68,7 +68,7 @@ Statuses: `NOT_STARTED` → `AUDITING` → `REVIEW_PENDING` → (`REVISING` if a
 | --- | --- | --- | --- | --- | --- |
 | **Setup** | **COMPLETE** | [Candidate Reference Model](candidate-reference-model.md), [First-Pass Gap Assessment](foundation-gap-assessment.md) | Anhar agreed sequential audit-and-revision method, 2026-11-04 | New isolated branch; plan/tracker created here | Start A1 |
 | **A1 Product** | `SETTLED_FOR_RESEARCH` | A1 v2 reviewed original 11 Product files; new 13/9/6/6 core; 99-file active/research legacy-reference scan and source-level link/semantic checks | Anhar accepted new guidance architecture and three research authoring templates (2026-11-04); approved template blobs pinned at `f796b2d` | Research branch redesign, seven retired files, immutable history, 110 relative links checked in 14 affected/relevant files; two historical broken references repaired; target-project independent consumer fit **UNVERIFIED** | Start A2 UX Lo-Fi research, using information/responsibility contracts; preserve A1 limitations for A6 |
-| **A2 UX Lo-Fi** | `NOT_STARTED` | F-01/F-03 candidate only | None | None | After A1 adequately settled |
+| **A2 UX Lo-Fi** | `REVIEW_PENDING` | [A2 experiment-led audit & target design](a2-ux-lofi-deep-audit-and-target-design.md): original 4 Design files inspected; eight risk/coverage findings A2-F01–F08, 11/9/9/6 model and subject-independent boundary | No A2 semantics/design approval yet; user requested begin A2, research draft permitted for GitHub review | DRAFT audit/target-design proposal only; no owning Design/Space revisions; no real consumer or usability validation | Anhar review A2 conceptual design; then scoped Design changes if approved |
 | **A3 UI Hi-Fi** | `NOT_STARTED` | F-01 candidate only | None | None | After A2 adequately settled |
 | **A4 Rancang** | `NOT_STARTED` | F-03/F-05 candidate only | None | None | After A3 adequately settled |
 | **A5 Builder** | `NOT_STARTED` | F-04/F-05 candidate only | None | None | After A4 adequately settled |
@@ -95,7 +95,7 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 
 ## Next executable unit
 
-**A2 — UX Design Lo-Fi experiment-led reassessment**, read-only first, using A1 Product information contracts as an accepted **research design**, not canonical Harscode policy or mandatory producer dependency. Inspect Design owning sources and relevant effective source/consumer contracts before proposing revisions.
+**A2 — REVIEW_PENDING.** [A2 research audit and proposed Interaction & Experience Definition](a2-ux-lofi-deep-audit-and-target-design.md) is ready for Anhar's decision; do not edit owning Design/Engineering Space definitions until the material target direction is approved. A1 remains SETTLED_FOR_RESEARCH (1/6).
 
 ## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
 
@@ -123,3 +123,7 @@ Anhar explicitly shifted A1 to **experiment-led fundamental reassessment**, with
 **A1 status:** `SETTLED_FOR_RESEARCH` after repository-local evidence and Human research design approvals; this **does not** imply operational promotion, real consumer-fit acceptance, runtime execution or a new Product Space.
 
 **Post-A1 documentation simplification (2026-11-04):** On Anhar's explicit direction, the standalone Product legacy-history index was removed and active Product navigation no longer surfaces legacy source material. Original Product files remain recoverable through immutable Git revisions; exact references needed for the historical audit stay in the evidence-bearing audit documents. This is a documentation/routing cleanup, **not** reopening A1, deleting Git history, changing approved template bytes or promoting research to operational policy.
+
+## 10. A2 UX Lo-Fi — audit draft for Human decision (2026-11-04)
+
+[A2 experiment-led deep audit and proposed target model](a2-ux-lofi-deep-audit-and-target-design.md) records complete source inspection of the four existing Design files, target information model, consumer/authority boundaries, evidence-supported findings A2-F01–F08, and a proposed concern-level redesign. Its standing is **DRAFT / REVIEW_PENDING**, **not an approved Design contract**. Owning `design/` files remain unchanged in this step, and no new Space/Agent/authorization is inferred. Human review must decide material A2 direction before research Design edits. Independent Design/project consumption, UX usability and runtime remain UNVERIFIED.
