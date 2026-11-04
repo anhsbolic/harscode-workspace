@@ -55,10 +55,10 @@ Process boleh iteratif dan proporsional terhadap keputusan yang sedang dibuat, b
 | 2 | **Actor Definition & Goals** — aktor, kebutuhan, konteks, dan tujuan yang ingin dicapai |
 | 3 | **Product User Journey** — meaningful progression dari kebutuhan awal hingga hasil; termasuk negative dan unknown states |
 | 4 | **Selected Product Outcome** — bounded outcome ORG-01 dan scope boundaries |
-| 5 | **Product Contract** — requirements, **Domain Roles & Authority Rules**, business rules, invariants, success criteria, dan acceptance criteria |
+| 5 | **Product Contract** — requirements, **Domain Roles & Authority Rules**, **Content & Information Requirements** yang consequential, business rules, invariants, success criteria, dan acceptance criteria |
 | 6 | **Product Review & Approval Record** — Human decisions, approval scope, unresolved questions, dan revision standing |
 
-**Domain Roles & Authority Rules** adalah bagian eksplisit Product Contract, **tidak otomatis dokumen terpisah**. Keenam output merupakan logical artifacts yang dapat digabung bila cukup untuk actual decision.
+**Domain Roles & Authority Rules** dan **Content & Information Requirements** yang consequential adalah bagian eksplisit Product Contract, **tidak otomatis dokumen terpisah**. Product menentukan informasi apa yang wajib dikumpulkan, ditampilkan/disampaikan, atau dipahami aktor karena alasan domain, aturan, atau konsekuensi Product. UX Design menentukan information grouping, presentation, hierarchy, dan interaction; Product tidak mengambil alih layout atau UI copy yang non-consequential. Keenam output merupakan logical artifacts yang dapat digabung bila cukup untuk actual decision.
 
 ## 4. OUTCOME — PRODUCT DEFINITION TARGET
 
