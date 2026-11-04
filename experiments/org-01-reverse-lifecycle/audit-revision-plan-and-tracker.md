@@ -1,6 +1,6 @@
 # Cross-Stage Foundation — Sequential Audit & Revision Plan / Tracker
 
-> **Status:** PLAN AGREED; A1 experiment-led reassessment and approved research guidance persisted; A1–A2 SETTLED_FOR_RESEARCH after source-level validation; A3–A6 NOT_STARTED.
+> **Status:** PLAN AGREED; A1–A2 SETTLED_FOR_RESEARCH after source-level validation; A3 REVIEW_PENDING with evidence-based research proposal; A4–A6 NOT_STARTED.
 > **Decision owner:** Anhar. **Plan agreed:** 2026-11-04. **Tracking owner:** research collaboration; record actual approvals and evidence, do not infer them.
 > **Repository:** `anhsbolic/harscode-workspace`.
 > **Frozen subject baseline:** `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`.
