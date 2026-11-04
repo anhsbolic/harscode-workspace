@@ -36,7 +36,7 @@ Consult only what is material:
 ## 3. PROCESS — six possible responsibilities, not a required workflow
 
 1. **Locate owner and effective branch.** Find the project-original rule, current approval/standing and scope; avoid treating pilot/worktree authority as operational `main`.
-2. **Classify whether change is needed.** Reuse accepted coverage; clarify stale reference/standing; keep one-off UI/UX local; identify a genuinely repeated cross-feature decision; or examine a justified modification/supersession. Make a **no-change conclusion** valid.
+2. **Classify whether change is needed.** Reuse accepted coverage; clarify stale reference/standing; keep one-off UI/UX local; identify an observed repeated cross-feature need **or a concrete, justified project-wide requirement** affecting identifiable current/committed consumers; or examine a justified modification/supersession. Make a **no-change conclusion** valid.
 3. **Verify cross-concern integrity.** Check Product truth, existing project patterns/brand/visual/asset constraints, feature UX/UI decision ownership and whether a candidate might silently alter page semantics, trust/evidence language or real action effects.
 4. **Evaluate evidence, costs and consumers.** Name why a reusable rule adds value, what otherwise breaks, affected consumers, downstream risks, accessibility/responsive and brand impact, reversible options and what testing has actually been performed. Scrutiny increases with semantic/security/brand/blast-radius consequence.
 5. **Obtain the legitimate decision when needed.** Ordinary delegated editorial/source clarification can remain small; novel project-wide or meaning-changing precedent, brand-defining asset and material supersession need the real owner/Human. Pin exact reviewed scope/revisions; a commit alone is not approval.
@@ -65,7 +65,7 @@ A healthy project Design Standards concern should make rules **discoverable, una
 | Existing accepted rule covers current feature | Link effective source and consume it; no new standard |
 | Older direction says OPEN after later concrete approval | Reconcile source standing and owning references, **not** repeat design selection |
 | One feature design looks useful elsewhere | Keep candidate scoped; examine repeated semantic need before promotion |
-| Multiple feature/UI consumers require a new common rule | Review proposed owner, actual usage/evidence, affected consumers and authorized scope; promote exact accepted project-owned rule |
+| Identifiable current/committed feature/UI consumers require a new common rule, even before repeated usage occurs | Review concrete shared need, owner, evidence, affected consumers and authorized scope; promote only the exact accepted project-owned rule |
 | Proposed change is semantic, trust-critical, brand-defining or breaking | Strengthen Human review, downstream impact containment and actual verification; do not wave through as local styling |
 | Runtime/browser/user evidence is absent | Name the limit **UNVERIFIED / NOT CHECKED** and do not imply consumer outcome proof |
 
