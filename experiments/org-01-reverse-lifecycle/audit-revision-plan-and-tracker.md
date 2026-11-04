@@ -68,8 +68,8 @@ Statuses: `NOT_STARTED` → `AUDITING` → `REVIEW_PENDING` → (`REVISING` if a
 | --- | --- | --- | --- | --- | --- |
 | **Setup** | **COMPLETE** | [Candidate Reference Model](candidate-reference-model.md), [First-Pass Gap Assessment](foundation-gap-assessment.md) | Anhar agreed sequential audit-and-revision method, 2026-11-04 | New isolated branch; plan/tracker created here | Start A1 |
 | **A1 Product** | `SETTLED_FOR_RESEARCH` | A1 v2 reviewed original 11 Product files; new 13/9/6/6 core; 99-file active/research legacy-reference scan and source-level link/semantic checks | Anhar accepted new guidance architecture and three research authoring templates (2026-11-04); approved template blobs pinned at `f796b2d` | Research branch redesign, seven retired files, immutable history, 110 relative links checked in 14 affected/relevant files; two historical broken references repaired; target-project independent consumer fit **UNVERIFIED** | Start A2 UX Lo-Fi research, using information/responsibility contracts; preserve A1 limitations for A6 |
-| **A2 UX Lo-Fi** | `SETTLED_FOR_RESEARCH` (scoped amendment under review) | Originally settled 11/9/9/6 UX semantics; A3 found material O2/O6 consumer-quality omission risk | Anhar approved new/material O2 UX Flow and O6 Lo-Fi **required by default**, evidence-backed exceptions (2026-11-04) | Six UX owning guidance/template files amended in `f2e795c`; previous approved blob refs preserved; exact new bytes awaiting review and source check | Validate scoped amendment and exact bytes; no automatic operational/project Design promotion |
-| **A3 UI Hi-Fi** | `REVIEW_PENDING` | [A3 deep audit](a3-ui-and-project-standard-deep-audit-and-target-design.md) + [13-input UI → UX / owning-source mapping](a3-ui-input-to-ux-output-compatibility.md) | A3 UI semantic model and Input Sufficiency Check **not yet approved**; A2 O2/O6 correction direction approved | All 13 UI experiment inputs mapped; no owning `design/ui/` files; actual consumer/renderer/runtime checks UNVERIFIED | Human review of UI input compatibility and A2 amendment; then prepare bounded UI owning guidance |
+| **A2 UX Lo-Fi** | `SETTLED_FOR_RESEARCH` | A2 source-level 11/9/9/6; new/material UX O2 Flow Diagram and O6 Lo-Fi required-by-default, evidence-backed exceptions; exact amendment at `8d53c1a` | Anhar explicitly **approved exact research revision `8d53c1a`** (2026-11-04), including scoped UX guidance/template amendment; content blobs recorded in section 16 | Approved exact UX artifact blobs preserved; no actual independent UI consumer, browser, usability or runtime validation implied | Reopen only with materially new evidence or actual consumer incompatibility |
+| **A3 UI Hi-Fi** | `REVIEW_PENDING` | [A3 source audit](a3-ui-and-project-standard-deep-audit-and-target-design.md), [13-input UI compatibility](a3-ui-input-to-ux-output-compatibility.md), new `design/ui/` four-file direct entrypoint | Anhar approved exact `8d53c1a` compatibility baseline as research and authorized continued UI drafting; **new UI guidance content NOT YET HUMAN-APPROVED** | Four `design/ui/` DRAFT research guidance files persisted at `44e513e`; experiment-led UI 13/9/9/6; scoped source/link verification; actual consumer and render UNVERIFIED | Human review of four UI files, then scoped research settlement; Project Standard separate later concern |
 | **A4 Rancang** | `NOT_STARTED` | F-03/F-05 candidate only | None | None | After A3 adequately settled |
 | **A5 Builder** | `NOT_STARTED` | F-04/F-05 candidate only | None | None | After A4 adequately settled |
 | **A6 Final coherence** | `NOT_STARTED` | F-06 candidate only; revisit all accepted changes | None | None | After A1–A5 |
@@ -95,7 +95,7 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 
 ## Next executable unit
 
-**A3 — REVIEW_PENDING.** [A3 UI & Project Design Standards source audit / target proposal](a3-ui-and-project-standard-deep-audit-and-target-design.md) is available for Anhar's decision. No owning A3 guidance changes before approval. A1 and A2 remain SETTLED_FOR_RESEARCH (2/6).
+**A3 UI CONTENT REVIEW — REVIEW_PENDING.** Four self-contained `design/ui/` research guidance drafts now exist under the [direct UI entrypoint](../../design/ui/README.md), based on [13-input compatibility mapping](a3-ui-input-to-ux-output-compatibility.md) and [A3 source audit](a3-ui-and-project-standard-deep-audit-and-target-design.md). Anhar approved A2 exact scoped revision `8d53c1a` and requested UI drafting, **not automatic acceptance of the new UI semantic bytes**. A1 and A2 remain SETTLED_FOR_RESEARCH (2/6). Project Standard concern will be addressed separately.
 
 ## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
 
@@ -199,3 +199,25 @@ The approval covers the **reusable research authoring formats** and does **not**
 **Scoped research amendment:** `design/ux/README.md`, `AGENTS.md`, `definition.md`, `authority-and-handoff.md`, and both output templates were revised at `f2e795c50d2c42b269f85bd69384aa91d982e5a3`. Current amended UX source is **authorized working research revision, pending exact-content review**, not retroactively covered by earlier blob approvals in sections 11–14. A2 remains `SETTLED_FOR_RESEARCH` for prior reviewed baseline with a **scoped revision under review**; no independent receiving UI test, browser visual checks or target-project design adoption yet.
 
 **A3 receiving side (proposal):** The matrix classifies all 13 UI experimental inputs by true owning authority and material requiredness. It proposes a UI Input Sufficiency Check before dependent **final** visual decisions, allowing unaffected provisional visual exploration but preventing UI from inventing missing Product/UX/navigation/standard meaning. **A3 remains `REVIEW_PENDING`; neither the UI guidance nor the Project Standard concern has been created or approved.**
+
+## 16. A2 exact revision approval and A3 UI direct-entrypoint drafting (2026-11-04)
+
+**Human decision:** Anhar explicitly approved the **exact source revision `8d53c1ac3baccb8e277382f2b583281ff89c8f51`** of the scoped A2 UX required-baseline amendment and UI input compatibility mapping, then said **“lanjut”**. This authorizes scoped research drafting of UI guidance; it is **not** UI semantics approval, Kencleng authority amendment, operational Harscode promotion or permission to invoke any Space. Exact reviewed content blobs:
+
+| Reviewed research file | Accepted exact blob at `8d53c1a` |
+| --- | --- |
+| `design/ux/README.md` | `095dbfa8d71f16701ba54d03a061fe0a87c46d51` |
+| `design/ux/AGENTS.md` | `0fe4be40d7b2e5e62ff6a0ef06b46ad719c7044c` |
+| `design/ux/definition.md` | `a503a571342868bb960973de4c9df9f3f9a190d8` |
+| `design/ux/authority-and-handoff.md` | `17ecc553fa113a74c9d40c03a0b95ffd0f0213ea` |
+| `design/ux/templates/ux-output.id.md` | `802b432b9b93ab65b1f0c2cc6c19ced029e14be5` |
+| `design/ux/templates/ux-output.en.md` | `efab1db7e80c4df4d50b5bd1d339ed18b2a1db52` |
+| `experiments/org-01-reverse-lifecycle/a3-ui-input-to-ux-output-compatibility.md` | `042eac8cafcdbd9fa8e681caf572b02fcf74df7e` |
+
+The six UX guidance/template files preserve their original DRAFT/proposed metadata in the accepted bytes. The approval record here provides external exact-revision standing without silently editing the approved content to insert hashes/status. The compatibility map is **accepted research input analysis**, not an approved `design/ui/` owning definition.
+
+**UI drafting checkpoint:** Four files authored at `44e513e0199ca9ea31e61a90b3f0760d8e1d0dc6` under `design/ui/`: `README.md`, `AGENTS.md`, `definition.md`, and `authority-and-handoff.md`. No shared Design parent router or sibling Harscode guidance dependency is introduced. The root README now directly links both UX and UI; the future Project Design Standard concern has **no owning files yet** and remains out of the current UI review scope.
+
+**Substantive UI research design under review:** 13 experiment-led inputs classified by actual owning information, nine iterative responsibilities, nine logical UI outputs, six desired quality properties; explicit **UI Input Sufficiency Check**, evidence-backed UX O2/O6 source availability for new/material UX; default **inspectable visual proof for new/material UI** with responsive/state/copy coverage; conditional interactive prototype; UI candidate component vs separately approved reusable project Standard authority; project original-source and exact-revision Human review discipline.
+
+**Residual validation:** Source-level link/semantic checks can establish only consistency of authored research files. No real target-project UI design case, rendered/browser comparison, accessibility/user usability test, independent Engineering consumer check, or agent harness run has been performed. `design/ui/` is **DRAFT / HUMAN CONTENT REVIEW PENDING**, not `SETTLED_FOR_RESEARCH`. A3 overall remains `REVIEW_PENDING`; project-standard research is not automatically accepted from the shared A3 audit.

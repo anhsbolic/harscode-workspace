@@ -176,3 +176,16 @@ Potential minimum: Markdown as durable decision/handoff index; a **tool-supporte
 Anhar accepted the **required-by-default O2 UX Flow Diagram and O6 Lo-Fi Wireframes baseline for new/material UX**, subject to evidence-backed exceptions and reuse of accepted existing equivalents. This corrects the initial A3-F02 risk of relying on optional producer outputs. See [UI 13-input → UX/other-owner compatibility matrix](a3-ui-input-to-ux-output-compatibility.md) for the complete experimental UI I01–I13 source/requiredness mapping and a proposed UI Input Sufficiency Check.
 
 **Boundary:** This approval authorizes a scoped amendment to `design/ux/` research guidance. The `design/ui/` Input Sufficiency Check remains **A3 PROPOSAL / REVIEW_PENDING** until UI owning guidance is reviewed. Older O2/O6 optional language elsewhere above records the original A3 audit checkpoint and is superseded for ongoing recommendation by the amended UX baseline. No mandatory physical files or stage/Space invocation, no new project-wide Design Standards, no Kencleng or Engineering formation edits, and no actual runtime/UI consumer proof.
+
+## 9. Subsequent UI-only owning-guidance draft (2026-11-04)
+
+Anhar accepted exact scoped A2/UX amendment and 13-input source mapping at `8d53c1ac3baccb8e277382f2b583281ff89c8f51`, and authorized continuing **UI guidance only**, explicitly deferring Project Design Standards authoring. As a result, the four **independent self-contained `design/ui/` documents** were authored on the research branch at `44e513e0199ca9ea31e61a90b3f0760d8e1d0dc6`:
+
+- [UI direct README](../../design/ui/README.md)
+- [UI AGENTS](../../design/ui/AGENTS.md)
+- [UI Definition](../../design/ui/definition.md)
+- [UI Authority & Handoff](../../design/ui/authority-and-handoff.md)
+
+The revised draft follows experiment-led **13 inputs / 9 iterative responsibilities / 9 logical outputs / 6 quality targets**, integrates the accepted UX O2/O6 required-by-default baseline, and proposes **UI Input Sufficiency Check** and **inspectable new/material UI visual evidence** before binding affected final UI decisions. Existing accepted target-project UI can be reused; static HTML / PNG / tools are conditional actual representations, not universal mandatory file formats or invocation permissions. UI-local component candidates do **not** silently become project-wide standard rules. Older 'no UI files authored' statements above record the earlier audit checkpoint and no longer describe the current research branch tree.
+
+**Standing:** New `design/ui/` content is **A3 DRAFT FOR HUMAN REVIEW**, not accepted/settled, and no actual independent UI consumer, live browser/rendered tests, Kencleng project adoption, operational promotion, or Project Standard guidance creation is claimed. The root `design/exploration.md` and `design/authority-and-handoff.md` remain transitional reference pending their separate Project Standard review. See [audit tracker](audit-revision-plan-and-tracker.md) for exact A2 approval references and later source-level validation.
