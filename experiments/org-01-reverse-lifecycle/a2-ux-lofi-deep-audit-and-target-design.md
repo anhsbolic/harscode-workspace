@@ -96,36 +96,50 @@ They describe desired UX design quality. Approval of a prototype or good same-se
 
 **Unproven risks:** No actual project UX decision, independent consumer, or usability test was run here. These are risks of under-specified reusable guidance, not observed ORG-01 UX failures.
 
-## 4. Revised Design domain architecture — 2026-11-04, still PROPOSED
+## 4. Revised direct-entrypoint Design architecture — Anhar correction (2026-11-04)
 
-After the original A2 audit, Anhar proposed three **independent concerns under `design/`**: `ux/`, `ui/`, and `project-standard/`, seeking focused ownership and recalling legacy project-wide Design exploration. This proposal is materially better than the previous flat `design/ux-definition.md` candidate **as a review direction**, but is not yet a final approved Harscode guidance revision.
+**Standing: PROPOSED WORKING ARCHITECTURE / NOT YET HUMAN-APPROVED AS OWNING RESEARCH GUIDANCE.** Anhar clarified that each responsibility is meant to be directly addressable: a subject performing UX, UI or project standard work should start in its **own folder** and should not need to read a common `design/README.md`, `design/AGENTS.md` or common `design/authority-and-handoff.md` to understand its contract.
 
 ```text
 design/
-├── README.md                   # Cross-concern navigation; current subject mapping only here when actual
-├── AGENTS.md                   # Research routing and authority boundaries
-├── authority-and-handoff.md    # Shared standing, approvals, source and consumer checks
 ├── ux/
-│   └── definition.md           # Interaction & Experience Definition, A2
+│   ├── README.md
+│   ├── AGENTS.md
+│   ├── definition.md
+│   └── authority-and-handoff.md
 ├── ui/
-│   └── definition.md           # Visual Interface & Content Definition, A3
+│   ├── README.md
+│   ├── AGENTS.md
+│   ├── definition.md
+│   └── authority-and-handoff.md
 └── project-standard/
-    └── definition.md           # Reusable project-level Design Standard formation/evolution
+    ├── README.md
+    ├── AGENTS.md
+    ├── definition.md
+    └── authority-and-handoff.md
 ```
 
-Folders are **responsibility scopes, not runtime Spaces or required sequential phases**. Lo-Fi and Hi-Fi describe possible design fidelity and proofs; they are not the names of permanent upstream/downstream producers. New templates, additional `README.md` files, workflow states and a new audit unit are not justified by a folder split alone.
+**Each concern is a self-contained semantic entrypoint, not a formed Space or a required lifecycle stage.** The folder separation expresses responsibility and independently owned I/P/O/O; it does not imply any one agent, team, harness or execution engine.
 
-**Separate but connected meaning:**
-- **UX Definition** owns bounded interaction progression, IA, navigation/webpage paths where relevant, interaction state meaning and UX decision acceptance. Its UX decisions may reference established reusable project standards, but are not automatically standards themselves.
-- **UI Definition** owns bounded visual/interface, UI copy, composition, responsive expression, reusable components/assets when needed, and accepted UI decisions. It may depend on accepted UX navigation/information as material **information**, not on a mandatory UX Space having run.
-- **Project Design Standards** owns defining, authorizing, evolving and making discoverable **reusable project-level design rules**: judgment principles, recurring interaction patterns, brand/product-UI direction, visual-system guidance, writing/terminology conventions and asset-governance rules when legitimately in scope. It does not own Product semantics, all feature UX/UI decisions or implementation technology.
-- **Shared Design authority/handoff** defines cross-concern approval standing, exact revisions, original-source checks and functional consumer needs. It must not turn independent UX/UI decisions into one blanket Design approval.
+| File inside each concern | Specific responsibility |
+| --- | --- |
+| `README.md` | Direct human/agent entrypoint: purpose, boundary, effective guidance, relevant artifacts and consumer needs |
+| `AGENTS.md` | Scope-specific agent behavior: what sources to inspect, what may be decided, what is forbidden, where to refer material authority gaps |
+| `definition.md` | Concern-specific Input → Process → Output → Outcome and semantic responsibilities |
+| `authority-and-handoff.md` | **This concern's** legitimate decision/approval standing, exact reviewed revisions, information offered to functional consumers, and rules for reconciliation |
 
-An accepted UX/UI finding may motivate a proposed standard change; it **does not** automatically become project-wide precedent. A project-wide standard may constrain multiple UX/UI decisions, but those receiving responsibilities remain separately owned. A Design Standard may have working/research standing and need not be canonical. A project may use a single accepted standard artifact or several subject-specific sources; **these folders belong to reusable Harscode guidance, not a mandatory layout inside each project's `docs/design/`.**
+No common `design/` agent-routing requirement, shared approval authority document or duplicate master contract is proposed. When actual repository migration happens, **remove or reconcile current root `design/AGENTS.md`, `design/README.md` and `design/authority-and-handoff.md` after checking inbound paths**. Simply adding child AGENTS files while leaving a parent AGENTS file in place is insufficient to guarantee parent instructions are not read: some harnesses automatically include ancestor instructions; behavior must be checked in the actual harness. Top-level repository navigation can link directly to `design/ux/README.md`, `design/ui/README.md` and `design/project-standard/README.md`.
 
-**Scope discipline:** A2 only drafts/reviews `design/ux/definition.md` and relevant cross-cutting navigation/authority effects after Anhar approval. A3 will independently examine `design/ui/` and project-standard separation using Hi-Fi experiment and project evidence. No extra A7 audit unit or automatic parallel `project-standard/` Space is implied. `design/exploration.md` remains pending disposition after review; no legacy history index is proposed.
+**Authority independence ≠ no information dependency.** A UX or UI concern may consume an applicable approved project Design Standard from the **target project's actual owning source**, but does not have to invoke or inspect a sibling Harscode guidance folder merely to obtain it. Likewise, UI may consume accepted UX interaction/navigation meaning when material without waiting for a UX Space. No concern may take ownership of another's binding decisions by reading its output.
 
-**No UX template yet.** A template should solve a real authoring or consumption need, not follow from nine logical outputs.
+**No identical boilerplate triplication:** Each `authority-and-handoff.md` has a different owning authority and consuming contract:
+- **UX:** approved interaction/navigation/IA and state decisions; material Product meaning stays Product-owned; route contract only when relevant.
+- **UI:** approved visual/interface/content expression and design assets; preserve applicable UX and Product constraints.
+- **Project Standard:** Human-authorized promotion, revision, supersession and consumption of **reusable project-level Design rules**. A working heuristic or feature prototype is not a canonical standard by virtue of being written.
+
+Shared principles (exact-revision approval, evidence standing, project-owned authority) may be stated concisely in each concern **without making one file a competing normative master**. Actual cross-cutting constraints still come from legitimate root/project/harness authority, not a newly invented Design super-owner.
+
+A2's implementation scope is `design/ux/` plus retiring/repointing root Design entrypoints where necessary, subject to explicit Human agreement. A3 will review `design/ui/` and `design/project-standard/`; these are proposed folder targets, not newly formed capabilities. No mandatory Lo-Fi → Hi-Fi → Standard sequence. No speculative templates or directory proliferation beyond the directly requested concern skeleton.
 
 ## 5. Cross-responsibility boundaries and two critical tests
 
@@ -137,17 +151,15 @@ An accepted UX/UI finding may motivate a proposed standard change; it **does not
 
 **Evidence check:** Prototype clickability, hypothetical scenario, accepted UX revision, independent accessibility check and observed real-user usability are separate evidence claims. Do not certify more than the actual method supports.
 
-## 6. Revised recommendation and decision gate
+## 6. Recommendation and decision gate — direct concern entrypoints
 
-**Strong recommendation:** Adopt **one Design domain with three independent functional concerns**: `design/ux/`, `design/ui/`, `design/project-standard/`. This is a **proposed design**, not a Human-approved owning-source revision. The original A2 UX Input → Process → Output → Outcome (11/9/9/6) remains a challengeable core reference with conditional UX proofs and web-specific route obligations.
+**Strong recommendation:** Adopt Anhar's corrected **three independent self-contained Design concern directories**, each with its own `README.md`, `AGENTS.md`, `definition.md` and `authority-and-handoff.md`. Do not retain root-level Design guidance as a required agent route. The concern name is UX, UI or Project Standard; Lo-Fi/Hi-Fi remain optional fidelity and evidence modes, not lifecycle nodes.
 
-The core split protects both **feature-specific Design decisions** and **reusable project-standard authority**. Ownership must follow actual meaning: some UX patterns are reusable Design Standards, some are bounded UX decisions; some visual assets are canonical identity, others merely prototype evidence. Distinguish source standing explicitly.
+**A2 scoped next change after approval:** migrate the relevant UX semantics (11 inputs, nine conditional activities, nine logical outputs, six desired quality properties) into `design/ux/`; provide direct routing, scoped UX authority and information-based handoff. Check inbound references before removing root Design guidance, and verify actual agent/harness entrypoint behavior rather than assuming child `AGENTS.md` suppresses ancestor instructions.
 
-For A2, request Anhar's decision on the **three-concern architecture** and scoped draft of `design/ux/definition.md`; do not prematurely finalize `design/ui/definition.md` or `design/project-standard/definition.md` before A3 evidence review. The existing shared `design/authority-and-handoff.md` can be reconciled as one cross-cutting contract if sufficient, avoiding competing approval systems.
+**A3:** independently design UI and project-standard guidance from their owning evidence. Do not silently treat Kencleng-specific Design standards as Harscode universal policy. Distinguish reusable project standard authority from bounded UX/UI decisions.
 
-A2 settlement requires Human decision on material UX semantics, source-level revised research guidance with checked links and consumer boundaries, explicit uncertainty on real usability/project consumption, and scoped actual revision evidence. Do not alter Engineering Space formation or adopt Kencleng project standards as Harscode defaults.
-
-**Review status:** A2 remains **REVIEW_PENDING**. No owning `design/` changes, Kencleng edits, or operational promotion in this checkpoint.
+**Review status:** This is an updated **A2 DRAFT**; no owning `design/` files or target-project policy have been changed. A2 remains `REVIEW_PENDING`.
 
 ## 7. Project-level and historical Design evidence — 2026-11-04
 
