@@ -12,6 +12,12 @@
 - Jika prototype, UX Flow, wireframe, atau route map adalah file terpisah, tautkan exact revisions dan nyatakan authority/proof limits. **Lo-Fi adalah bentuk proof opsional**, bukan prasyarat UI atau Engineering.
 - Template yang sudah terisi **belum approved**. Approval Human terhadap exact artifact revision dicatat terpisah agar accepted bytes tidak berubah hanya untuk mengisi status atau SHA.
 
+## Format artefak & batas pembuktian (conditional)
+
+Gunakan format sesuai [UX Definition — Artifact Representation & Tooling Constraints](../definition.md#7-artifact-representation--tooling-constraints--ux-lo-fi). **Markdown** adalah default; gunakan **Mermaid di dalam Markdown** jika hubungan/flow perlu diagram, **HTML + CSS** jika komposisi Lo-Fi perlu diperiksa, dan **minimal JavaScript** hanya jika interaksi yang disimulasikan perlu diuji serta tool/runtime diizinkan. Tidak ada kewajiban diagram, wireframe, atau prototype untuk setiap UX task.
+
+Jangan menganggap source Mermaid otomatis sudah dirender, file HTML otomatis sudah diperiksa di browser, atau clickable prototype otomatis membuktikan backend/real-user usability. Gunakan Markdown fallback jika rendering tidak tersedia; catat limitasi. Diagram/visual harus merujuk owning UX/Product decisions, **bukan menjadi competing authority**.
+
 ## 0. Identity, scope & effective sources — required for binding consumption
 
 | Field | Actual value / source |
@@ -23,6 +29,11 @@
 | Applicable project Design Standards | `<effective paths + exact revisions / N/A with reason>` |
 | Other material input and constraints | `<a11y, device, security/privacy, verified technical facts, research, etc.>` |
 | This UX artifact / referenced output revisions | `<path + immutable revision when available>` |
+| Logical UX output(s) dan pertanyaan yang dibuktikan | `<O1–O9 yang relevan + pertanyaan konkret; N/A jika tanpa visual>` |
+| Artifact representation / format | `<Markdown / Mermaid-in-Markdown / HTML+CSS / conditional JS / supporting reference>` |
+| Diagram/Lo-Fi/prototype exact source | `<Git path + immutable revision atau NONE / NOT YET PERSISTED>` |
+| Render / interaction verification | `<CHECKED + actual tool/evidence ref / NOT CHECKED; source inspection != rendering>` |
+| Simulation / observed evidence / proof limits | `<yang disimulasikan, yang benar-benar diperiksa, yang tidak dibuktikan>` |
 | Decision standing | `EXPLORATORY / PROPOSED / ACCEPTED only with separate exact-revision evidence` |
 | Material exclusions / non-claims | `<...>` |
 

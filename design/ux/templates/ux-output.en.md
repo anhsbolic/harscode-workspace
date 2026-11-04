@@ -13,6 +13,12 @@
 - If a prototype, UX Flow, wireframe, or route map resides in a separate file, link the exact revisions and state its authority and evidence limits. **Lo-Fi is an optional form of proof**, not a prerequisite for UI or Engineering.
 - **A completed template is not approved.** Record Human approval of the exact artifact revision separately so accepted bytes are not modified merely to insert a status or SHA.
 
+## Artifact format & evidence boundaries (conditional)
+
+Use formats according to [UX Definition — Artifact Representation & Tooling Constraints](../definition.md#7-artifact-representation--tooling-constraints--ux-lo-fi). **Markdown** is the default; add **Mermaid fenced in Markdown** when relationships/flows need a diagram, **HTML + CSS** when Lo-Fi composition needs inspection, and **minimal JavaScript** only when simulation must be exercised with available authorized tools/runtime. No diagram, wireframe, or prototype is required for every UX task.
+
+Do not imply Mermaid source was rendered, that an HTML file was browser-inspected, or that a clickable prototype proves backend behavior or real-user usability. Fall back to Markdown if rendering is unavailable and disclose the limits. A visual must point to owning Product/UX decisions, **not become a competing authority**.
+
 ## 0. Identity, scope & effective sources — required for binding consumption
 
 | Field | Actual value / source |
@@ -24,6 +30,11 @@
 | Applicable project Design Standards | `<effective paths + exact revisions / N/A with reason>` |
 | Other material input and constraints | `<a11y, device, security/privacy, verified technical facts, research, etc.>` |
 | This UX artifact / referenced output revisions | `<path + immutable revision when available>` |
+| Logical UX output(s) and proof question | `<relevant O1–O9 + concrete question; N/A if no visual>` |
+| Artifact representation / format | `<Markdown / Mermaid-in-Markdown / HTML+CSS / conditional JS / supporting reference>` |
+| Diagram/Lo-Fi/prototype exact source | `<Git path + immutable revision or NONE / NOT YET PERSISTED>` |
+| Render / interaction verification | `<CHECKED + actual tool/evidence ref / NOT CHECKED; source inspection != rendering>` |
+| Simulation / observed evidence / proof limits | `<what was simulated, actually inspected, and not proven>` |
 | Decision standing | `EXPLORATORY / PROPOSED / ACCEPTED only with separate exact-revision evidence` |
 | Material exclusions / non-claims | `<...>` |
 

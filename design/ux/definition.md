@@ -82,7 +82,30 @@ Desired qualities are **not** user-tested evidence, accessibility certification,
 
 These are **responsibilities, not named lifecycle phases, Spaces, teams or individuals**. Consumers may use accepted UX information without a named upstream UX producer. Material UX feedback can return to Product/UX/Standards/Engineering legitimate decision owners, never automatically amend their sources.
 
-## 7. Sufficiency and completion
+## 7. Artifact Representation & Tooling Constraints — UX Lo-Fi
+
+> **Research format baseline:** Anhar approved the following format-selection direction on 2026-11-04. This scoped addition is for research review; it does not reapprove earlier UX artifact bytes or alter target-project Design authority.
+
+**Choose the least complex representation that makes the actual UX decision understandable and reviewable.** Logical O1–O9 information is the contract; representations are conditional evidence forms, **not mandatory deliverables or separate authoritative specifications**.
+
+| Format | Default use / decision it makes clearer | Selection boundary |
+| --- | --- | --- |
+| **Markdown (`.md`)** | Default durable UX artifact: decisions, scenarios, flow/state tables, IA/navigation/route specifications, source links and handoff | Use text/tables alone when they communicate the relevant meaning sufficiently |
+| **Mermaid fenced in Markdown** | Preferred diagram form for UX Flow, journey/decision branches, IA/navigation and webpage-route relationships | Add only when relationships are materially clearer than prose/tables; keep it reviewable as text; never infer Product authority from a diagram |
+| **HTML + CSS (`.html`)** | Conditional Lo-Fi structural proof of screen/surface layout, content hierarchy, disclosures, responsive arrangement or interaction states | Use only when a visual composition must be inspected; keep proof scoped and non-production. Do not invent Hi-Fi visual rules or backend behavior |
+| **Minimal JavaScript with HTML** | Conditional clickable simulation to investigate a specific interaction, branch or recovery question | Only if interaction is needed, tools and **authorized** preview/runtime are available, and simulated data/actions are explicit. Do not call real APIs, change project state, or trigger side effects by default |
+
+An illustration, screenshot, SVG/PNG or external Figma artifact may be cited as **supplemental evidence when actually available and permitted**; none is required by this baseline. Avoid adding image-generation/Figma/tool dependencies merely to fulfill a file-format checkbox. If the preferred representation cannot be created or verified with available authorized tools, use the clearest sufficient Markdown fallback and record the limitation; **never fabricate a render, diagram check or usability result**.
+
+**Format decision rule:** (1) text/table sufficient → Markdown only; (2) material flows/relationships hard to follow → Mermaid; (3) layout/priority must be seen → HTML/CSS Lo-Fi; (4) actual interaction must be explored → minimal local JavaScript, only when justified and permitted. One artifact may satisfy multiple logical outputs. No required flowchart, wireframe, webpage map, click-through or nine-file packet.
+
+**Authority and proof limits:** The owning UX decision must be identifiable by exact project source/revision and legitimate Human approval standing. Any diagram, wireframe or prototype is **a representation of a scoped decision or hypothesis**, not self-authorizing Product/UX policy. If representation and textual binding source conflict, record the contradiction and return it to the legitimate owner; do not silently let either override the other.
+
+For each material representation, make discoverable: **covered logical UX output(s), artifact type/format, purpose/question, source path + exact revision (when available), standing, actual render/interaction verification (`CHECKED` with evidence / `NOT CHECKED`), simulated versus observed content, and proof limitations.** A Markdown/Mermaid source review is not a rendered visual inspection; a Git-tracked HTML file is not proof a browser rendered it; a clickable simulation is not independent user testing, accessibility certification, real API mutation or delivered outcome.
+
+Apply target-project accessibility, privacy, security, licensing, repository and action-authorization requirements. In particular, avoid external libraries/assets/network and real credentials or data in a Lo-Fi proof unless the relevant project authority and actual tool/runtime explicitly permit them.
+
+## 8. Sufficiency and completion
 
 For a particular decision, find: accepted/provisional UX intent, effective Product constraints, relevant interaction/navigation/IA states, accessibility, authority/scope/revision, actual evidence, unresolved materially blocked edges and legitimate owner. If those are sufficient, do not invent additional prototypes/documents.
 
