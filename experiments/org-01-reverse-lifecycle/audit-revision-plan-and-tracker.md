@@ -11,7 +11,7 @@
 | A2 UX Lo-Fi | `SETTLED_FOR_RESEARCH` | [UX](../../design/ux/README.md) |
 | A3 UI Hi-Fi | `SETTLED_FOR_RESEARCH` | [UI](../../design/ui/README.md) |
 | A3 Project Design Standards | `SETTLED_FOR_RESEARCH`, four exact-reviewed research guidance files accepted by Anhar on 2026-11-04; see approval record below | [Project Standard](../../design/project-standard/README.md) |
-| A4 Engineering Solution | `NOT_STARTED` at this approval checkpoint; next sequential read-only audit | [Engineering Solution](../../engineering/spaces/feature-solution-design/README.md) |
+| A4 Engineering Solution | `REVIEW_PENDING` — source-level experiment-led audit and bounded alignment proposal; **no Space definition edits** | [A4 assessment](a4-engineering-solution-deep-audit-and-target-design.md) |
 | A5 Builder / A6 final coherence | `NOT_STARTED` under this sequential audit | [Engineering](../../engineering/README.md) |
 
 Product, UX and UI approvals are scoped **research decisions** recorded at their historical exact Harscode revisions. Rewriting the tracker or historical experimental evidence does not reopen those decisions or upgrade them to operational project truth. A current Harscode guidance file that retains authoring-time DRAFT wording may have **later external exact-approval evidence** at the original historical revision; consult its linked immutable acceptance history.
@@ -39,4 +39,4 @@ Anhar explicitly **approved** the four current `design/project-standard/` resear
 
 ## Next bounded decision
 
-Proceed to **A4 Engineering Solution**: read the approved experimental Engineering Solution I/P/O/O model via its immutable historical revision and inspect current `engineering/spaces/feature-solution-design/` original sources and exact formation approvals before proposing any audit-driven change. Preserve existing formation standing; do not treat a research draft or new commit as a formed Space. A5 Builder and A6 cross-stage coherence follow when their owning concerns have been evaluated.
+Review [A4 Engineering Solution source audit](a4-engineering-solution-deep-audit-and-target-design.md), especially the material UX input sufficiency and data-model/persistence output obligations. A4 remains **REVIEW_PENDING** until Anhar decides the bounded alignment scope. No formed Rancang definition has been edited, no new formation approval is implied, and A5 Builder / A6 cross-stage coherence remain NOT_STARTED.
