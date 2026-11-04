@@ -42,6 +42,12 @@ Make the candidate Product → UX Design (Lo-Fi) → Rancang → UI Design (Hi-F
 
 **Reverse-stage modeling coverage:** all five stages now have a persisted working snapshot; Builder remains a working snapshot and the other four stages are Anhar-approved experiment models. This is **not** approval, validation, or operational promotion of the full lifecycle. **Next step:** determined by Anhar; no automatic audit or comparison.
 
+## Candidate Input–Source Mapping (2026-11-04)
+
+[**Five-stage Input–Source Mapping — Mermaid diagrams**](input-source-mapping.md) records reverse mappings from the 10 Builder, 12 Hi-Fi, 13 Rancang, 11 UX Lo-Fi, and 13 Product inputs to candidate phase outputs, project-level sources, and Human/external evidence. The mapping permits **non-linear and multi-source** relationships. It also flags potential coverage gaps for Lo-Fi's Webpage Map into Hi-Fi and Product-to-Lo-Fi Content & Information Requirements.
+
+**Standing:** candidate mapping **recorded**, not independently verified, not a full cross-stage coherence audit, and not authorization to revise the five stage models or promote a lifecycle. No assumption that candidate project-level sources actually exist or are authoritative.
+
 ## Sources and evidence standing
 
 This snapshot captures **explicit discussion and working decisions from the 2026-11-03 experiment session**, not fresh empirical user research, code inspection, independent consumer verification, or proof that the model works. Its Git revision is the durable reference for this working artifact; historical conversation is not required to reconstruct its content.
