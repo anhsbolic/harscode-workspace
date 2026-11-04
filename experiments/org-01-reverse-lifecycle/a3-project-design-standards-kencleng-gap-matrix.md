@@ -45,3 +45,14 @@ Do not require an additional Harscode `design/project-standard/` artifact count 
 **Recommendation: keep Kencleng's existing Project Design Standards architecture; treat the repaired stale OPEN list as sufficient targeted source maintenance for now.** The next valuable evidence is a bounded **actual ORG-01 rendered/consumer check** when the UI candidate is review-ready and the environment permits. That is a project-specific UI acceptance/operability exercise, **not** redoing Kencleng Design Standards.
 
 For the separate Harscode `design/project-standard/` concern, this case provides evidence for only the minimal reusable semantics: owning project source per rule, temporal OPEN→accepted derivation, scoped adoption, discoverable consumer originals, evidence-backed change impact and no forced standards inventory. **Owning Harscode guidance is still NOT AUTHORED / NOT APPROVED**; no synthetic I/P/O/O count is inferred.
+
+## 6. Subsequent Human-approved structural clarity cleanup (2026-11-04)
+
+The user subsequently approved **exact Kencleng pilot commit [`e43bc0276a9d027813e07d19099d86a5ee9e8c49`](https://github.com/anhsbolic/kencleng/commit/e43bc0276a9d027813e07d19099d86a5ee9e8c49)** following the targeted cleanup, without restarting the existing design system. This is **later evidence**, not a rewrite of the earlier one-file repair at `2fe5ddf`.
+
+- `docs/design/README.md` now explicitly routes **canonical**, **working** and **approved direction evidence** standing with separate project Product/feature UX/UI/Engineering owner boundaries.
+- Five canonical Kencleng Design documents state **Owns / Does not own**; the Brand Brief §3 is labeled as application of Product Design Principles, not an independent principles policy; §4 no longer calls already-approved typefaces and colors OPEN.
+- Diff `2fe5ddf...e43bc02`: exactly **six existing docs/design files**, **zero new files, renames, Product/Frontend/API changes**; source-level **23 relative links/anchors valid**. These are accepted **pilot branch** source changes, **not Kencleng `main` promotion or browser/consumer validation**.
+- Actual resulting lesson for reusable Harscode: a **clear, branch-aware authority map and scoped owner references** can repair ambiguous standards standing without a reorganization or new standardized document library. Kencleng's actual five canonical concern count and its specific design tokens do **not** become Harscode requirements.
+
+For Harscode, this evidence informs newly drafted **research-only** [Project Design Standards direct entry](../../design/project-standard/README.md). The four owning guidance files are **HUMAN CONTENT REVIEW PENDING**; no generic Harscode Project Standards semantics have been settled by acceptance of Kencleng's specific cleanup.

@@ -15,7 +15,7 @@
 | Domain | Responsibility | Readiness |
 | --- | --- | --- |
 | [Product](product/README.md) | Experiment-led Product Definition I/P/O/O, Product authority/approval and subject-independent information handoff; draft templates under review | RESEARCH REDESIGN — NOT OPERATIONAL MAIN |
-| Design — [UX direct entry](design/ux/README.md) · [UI direct entry](design/ui/README.md) | Independent UX and UI accepted-research guidance; UI includes bilingual templates and HTML-per-accepted-webpage baseline; Project Design Standards not yet authored | UX + UI SETTLED_FOR_RESEARCH — RESEARCH ONLY |
+| Design — [UX direct entry](design/ux/README.md) · [UI direct entry](design/ui/README.md) · [Project Standards direct entry](design/project-standard/README.md) | UX and UI accepted-research guidance; Project Standards independent definition and authority guidance drafted from Kencleng evidence | UX + UI SETTLED_FOR_RESEARCH; PROJECT STANDARD REVIEW_PENDING — RESEARCH ONLY |
 | [Engineering](engineering/README.md) | Solution, implementation, Engineering Spaces and Specialist-local knowledge | WORKING — RESEARCH ONLY |
 | [Collaboration](collaboration/README.md) | Human–AI advisory collaboration and authority-aware decisions | WORKING — RESEARCH ONLY |
 | [Harness](harness/README.md) | Runtime-specific execution/permission translation | WORKING — RESEARCH ONLY |

@@ -1,6 +1,6 @@
 # Cross-Stage Foundation — Sequential Audit & Revision Plan / Tracker
 
-> **Status:** A1 Product, A2 UX and A3 UI SETTLED_FOR_RESEARCH; Project Design Standards **KENCLENG REFERENCE AUDITED / OWNING GUIDANCE NOT STARTED**; A4–A6 NOT_STARTED. Research-only, not operational main.
+> **Status:** A1 Product, A2 UX and A3 UI SETTLED_FOR_RESEARCH; Project Design Standards **KENCLENG EVIDENCE REVIEWED / OWN GUIDANCE DRAFTED / HUMAN CONTENT REVIEW PENDING**; A4–A6 NOT_STARTED. Research-only, not operational main.
 > **Decision owner:** Anhar. **Plan agreed:** 2026-11-04. **Tracking owner:** research collaboration; record actual approvals and evidence, do not infer them.
 > **Repository:** `anhsbolic/harscode-workspace`.
 > **Frozen subject baseline:** `refactor/harscode-foundation@96b479c1a4e1ead77bb1614ef49bf09aca435c0d`.
@@ -95,7 +95,7 @@ Keep short per-item records here or link to specific unit assessment/commits **o
 
 ## Next executable unit
 
-**A3 UI SETTLED_FOR_RESEARCH; Project Design Standards NOT_STARTED.** UI source guidance and authoring templates approved at exact `cbe1010`, with source-only checks recorded in §19. Combined A3 remains partial; no automatic project-standard formation or operational promotion.
+**A3 PROJECT DESIGN STANDARDS — CONTENT REVIEW PENDING.** A1 Product, A2 UX and A3 UI retain approved research settlement. Kencleng six-file structural cleanup was Human-approved at exact `e43bc02`; Harscode's independent [Project Standard direct entry](../../design/project-standard/README.md) now contains four draft research guidance files, not an accepted generic standard. See §21. Combined A3 remains OPEN and not operationally promoted.
 
 ## 8. A1 v2 — persisted redesign checkpoint (2026-11-04)
 
@@ -269,3 +269,25 @@ User objective: **complete the existing Kencleng Design Standards only where a r
 **Material mismatch repaired on Kencleng pilot:** Brand Brief §12 had selection-time OPEN values already resolved later by effective Visual Guidelines and Asset Governance. Editorial status/source reconciliation landed at Kencleng pilot commit `2fe5ddf1fc32bbf152ddbc8936990d4ac4ae6424`, **one modified file only**, seven linked files/heading anchors valid; no new substantive visual/brand decision and **no Kencleng main change**. Source-level only; no actual rendered/consumer verification. The current pilot branch is not automatically main authority.
 
 **Decision standing:** Kencleng existing five canonical Design Standards are sufficiently separated; no reason to add or regenerate another set. Working IA/copy remain working; unresolved font licensing/logo/illustration/motion/production details stay OPEN until triggered. Harscode `design/project-standard/` is **not yet authored**; this audit is evidence, not Project Standard policy settlement or approval. A3 UI stays `SETTLED_FOR_RESEARCH`; broader combined A3 is still incomplete.
+
+## 21. Kencleng exact structural acceptance and Harscode Project Standards draft (2026-11-04)
+
+**Human Kencleng decision:** Anhar explicitly said **“approve. lanjut”** after review of the six-file targeted Design authority/ownership clarity cleanup at `anhsbolic/kencleng`, branch `pilot/station5-c1-space-only`, exact commit `e43bc0276a9d027813e07d19099d86a5ee9e8c49`. This **accepts the reviewed Kencleng pilot correction**, not any new visual system, Kencleng `main` authority, production adoption or implementation evidence. The six exact affected source blobs at approval:
+
+| Target-project source | Approved blob at `e43bc02` |
+| --- | --- |
+| `docs/design/README.md` | `152f1c4ac074e2ef6fae83fdeda2ebf371d320f3` |
+| `docs/design/product-design-principles.md` | `92b74d9dd7c80da055dd632f18e3059fe2013eaa` |
+| `docs/design/brand-product-ui-brief.md` | `a0dc6e6ebe206fdb7e418209b8b025f10b34e523` |
+| `docs/design/design-guidelines.md` | `4039f33e9b44969fcc119acbc2197ce5c07a0187` |
+| `docs/design/patterns.md` | `5c45ba62fc83dec6b802359317d642a408188e57` |
+| `docs/design/asset-governance.md` | `bfac585db273af1a05d67f88fbe6ff9d0ef4efbe` |
+
+**Actual Kencleng fix:** The `docs/design/README.md` concern/standing map differentiates five canonical Design owners, working IA/copy supplements, direction-only evidence, and feature-specific UI candidate; five canonical document headers name `Owns` and `Does not own`; Brand Brief §3 states its principles are brand applications rather than a second canonical design judgment source, and §4 refers concrete typography/color decisions to their later accepted owning Visual Guidelines. No path reshuffling or new design policy; only six project Design files changed. Prior check: 23 relative links and heading anchors valid; no Product, frontend, API or operational `main` modifications.
+
+**Harscode research drafting permission and scope:** Following this exact acceptance, Anhar requested continuing work. The **independent, self-contained** `design/project-standard/` concern now has four **DRAFT FOR HUMAN CONTENT REVIEW** guides: [README](../../design/project-standard/README.md), [AGENTS](../../design/project-standard/AGENTS.md), [Definition](../../design/project-standard/definition.md), [Authority & Handoff](../../design/project-standard/authority-and-handoff.md). These derive **generalizable responsibility distinctions** from the audited case without copying Kencleng's policy inventory, Sunlit palette, document directory or feature semantics.
+
+**Deliberate nonrequirements:** No fixed I/P/O/O counts, prescribed target-project Design file inventory, mandatory new standard creation, output template, formed Design Space, workflow state machine, or upstream prerequisite for routine UX/UI. No existing accepted `design/ui/` or `design/ux/` bytes were changed. Actual effective project standards remain in their own original sources; optional owner-specific Human acceptance and exact revision apply at the project level.
+
+**Unverified:** New project-standard guidance has not received Human exact-content approval or an independent fresh agent/project consumer execution test. Browser/visual and accessibility usability outcomes remain unverified. A3 combined scope is `REVIEW_PENDING` (only Project Standard owning guidance still open), and Harscode `main` is unaffected.
+
