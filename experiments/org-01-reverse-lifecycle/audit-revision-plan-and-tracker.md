@@ -70,6 +70,17 @@ The accepted Target Design v1's content was authored at the pinned old blob. Ret
 
 **New Rancang status:** `NOT FORMATION APPROVED / NOT RUNTIME VERIFIED`. Independent, fresh-context exact-definition review, source/consumer compatibility checks, actual security/runtime independence and any subsequent Human formation decision are **not** achieved by authoring commits.
 
+## A4 Rancang output authoring templates — research drafts pending Human review (2026-11-05)
+
+Following Anhar's explicit requirement to match the **substantive output authoring quality** of `product/templates/`, `design/ux/templates/` and `design/ui/templates/` (not only the old eight-line Rancang prompts), two detailed templates were authored:
+
+- [Rancang Output & Consumer Handoff — Bahasa Indonesia](../../engineering/spaces/rancang/templates/rancang-output.id.md), Git blob `a3bf652f81d66e87896c2e1156375d53ac600df3`, initial commit `330570fdc14c846d471f8f6efdd90f94feb89ba2`.
+- [Rancang Output & Consumer Handoff — English](../../engineering/spaces/rancang/templates/rancang-output.en.md), Git blob `aecb0bfaa42be0a5146156f4adde0b24cddb6ac4`, initial commit `9b500207a5c135eaf1241ddb275fbaf9f1c1511d`.
+
+Each draft covers **I01–I13 input authority/sufficiency, concrete authored O01–O08 tables, six design outcomes, real consumer-specific contract/compatibility, independent original-source findings as separate owner-controlled refs, accurate evidence standing and exact Human acceptance limits**. They are **optional authoring vehicles** with scope-dependent N/A, not eight required artifact files or auto-approved technical contracts. A machine-readable O03 when actual consumers require it remains a separate complete proposed project-format contract; a filled Markdown table does not replace that contract. The old `artifacts/templates.md` remains short non-binding sufficiency prompts, with explicit links to the detailed authoring files.
+
+**Standing:** Both template bytes are **DRAFT FOR HUMAN CONTENT REVIEW** and do not inherit approved UX/UI/Product template standing or the approved A4 Target Design v1 decision. Their presence does not form Rancang or certify downstream runtime consumer fit. Review their actual content before new exact Rancang formation review; language versions require separately accountable acceptance as appropriate.
+
 ## Next bounded decision
 
 Perform comprehensive source-level and **fresh-context independent formation review** of the newly authored [Rancang rewritten definition](../../engineering/spaces/rancang/README.md), with the exact approved [A4 target design v1](a4-rancang-zero-based-target-design-v1.md) and immutable experiment as reference. Separately review [Engineering Project Standards guidance](../../engineering/project-standard/README.md) for exact-content research acceptance; it is **not** automatically a formed Space. Human formation approval of Rancang's new exact revision remains a separate pending decision. A5/A6 remain on hold for A4.
