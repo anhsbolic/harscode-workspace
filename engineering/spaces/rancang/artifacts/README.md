@@ -8,7 +8,7 @@ Follow the **actual target project's effective** engineering/technical documenta
 
 A material result must be attributable: exact owning source and acceptance scope, accountable Architect section/content revision, reasoned design decision and constraints, actual known consumer, linked security/UX/reviewer findings, planned O07 cases versus observed results and remaining Human gates. A manifest of hashes alone is not an implementation-consumable solution.
 
-Use [optional prompts](templates.md) only to identify missing meaning; they are not an eight-file delivery packet, another canonical requirements copy, default OpenAPI mandate or Agent checklist engine.
+For **full output authoring**, use the optional [Rancang Output & Consumer Handoff template (Bahasa Indonesia)](../templates/rancang-output.id.md) or [English](../templates/rancang-output.en.md). These provide concrete source, I01–I13, O01–O08, evidence and consumer-readiness tables comparable to Product/UX/UI research authoring guides. The shorter [eight-output prompts](templates.md) are a quick sufficiency reference, **not** an alternative binding contract. Neither format forces eight files, an API technology, a second canonical Product/UX source or reviewer self-approval.
 
 ## Effective handoff
 
