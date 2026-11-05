@@ -4,7 +4,8 @@
 > **Date:** 2026-10-20
 > **Source:** `research/harscode-purpose-llm-fit@d972f9c4ec3470b0611da4286629a8659d96ab3d`
 > **Operational baseline (unchanged):** `main@c762a27aee622c247c2a408d932e762076e3588c`
-> **Refactor branch:** `refactor/harscode-foundation`
+> **Historical refactor branch (2026-10-20):** `refactor/harscode-foundation`
+> **Current foundation research branch (2026-11-05):** `research/cross-stage-mapping`; exact active guidance is owned by its current concern files, not this dated architectural snapshot.
 > **Companion:** [Foundation Refactor Checklist](REFACTOR-CHECKLIST.md)
 
 ## Objective
