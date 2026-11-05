@@ -33,6 +33,6 @@ These are six **semantic responsibilities**, not proof of six native independent
 
 ## Navigate and standing
 
-[Contract](contracts.md) · [Coordination and Human gates](coordination.md) · [Artifact representation](artifacts/README.md) · [Historical formation lineage](formation-lineage.md) · [Engineering formation rules](../../space-formation.md)
+[Contract](contracts.md) · [Coordination and Human gates](coordination.md) · [Output authoring template (ID)](templates/rancang-output.id.md) · [EN](templates/rancang-output.en.md) · [Artifact representation](artifacts/README.md) · [Historical formation lineage](formation-lineage.md) · [Engineering formation rules](../../space-formation.md)
 
 **Formation approval of this exact renamed/rebuilt definition is still required** before production under this new Space. Approval of the research target, creation of these files, or old-branch formation decisions are not formation approval; every invocation also needs separate Human authorization and actual runtime/tool evidence.
