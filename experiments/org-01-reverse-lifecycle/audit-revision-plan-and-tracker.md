@@ -81,6 +81,19 @@ Each draft covers **I01–I13 input authority/sufficiency, concrete authored O01
 
 **Standing:** Both template bytes are **DRAFT FOR HUMAN CONTENT REVIEW** and do not inherit approved UX/UI/Product template standing or the approved A4 Target Design v1 decision. Their presence does not form Rancang or certify downstream runtime consumer fit. Review their actual content before new exact Rancang formation review; language versions require separately accountable acceptance as appropriate.
 
+## A4 Rancang output templates — exact Human research acceptance (2026-11-05)
+
+Anhar explicitly **approved** the two reviewed detailed Rancang authoring templates and directed continuation toward A4 independent formation review. Acceptance applies to **research authoring template content only**, not the revised Rancang Space formation, Rancang invocation, produced target-project Engineering Solution, target-project standards or runtime performance.
+
+| Accepted authoring template | Exact approved Git blob | Reviewed branch checkpoint |
+| --- | --- | --- |
+| [Rancang Output & Consumer Handoff — Bahasa Indonesia](../../engineering/spaces/rancang/templates/rancang-output.id.md) | `a3bf652f81d66e87896c2e1156375d53ac600df3` | `b6b75d174b42f2df13583f4157e4a1b73cbaa439` |
+| [Rancang Output & Consumer Handoff — English](../../engineering/spaces/rancang/templates/rancang-output.en.md) | `aecb0bfaa42be0a5146156f4adde0b24cddb6ac4` | `b6b75d174b42f2df13583f4157e4a1b73cbaa439` |
+
+**Standing:** `ACCEPTED_FOR_RESEARCH_AUTHORING` on those **exact blobs**. Existing in-template `DRAFT FOR HUMAN REVIEW` headers are original authored content and do not override this subsequent external Human acceptance record. Do **not** edit accepted template content merely to update its status or SHA; any substantive change needs its own decision.
+
+The authoring aids preserve decision-specific applicability and actual project standard/consumer format precedence. They do not compel eight physical output files; material typed O03 content remains required in the real project format when an actual consumer demands it. Source validation of 13 inputs, eight output coverage, six quality outcomes and links has been performed; **real downstream consumer implementation proof and runtime independence remain unverified**.
+
 ## Next bounded decision
 
 Perform comprehensive source-level and **fresh-context independent formation review** of the newly authored [Rancang rewritten definition](../../engineering/spaces/rancang/README.md), with the exact approved [A4 target design v1](a4-rancang-zero-based-target-design-v1.md) and immutable experiment as reference. Separately review [Engineering Project Standards guidance](../../engineering/project-standard/README.md) for exact-content research acceptance; it is **not** automatically a formed Space. Human formation approval of Rancang's new exact revision remains a separate pending decision. A5/A6 remain on hold for A4.
