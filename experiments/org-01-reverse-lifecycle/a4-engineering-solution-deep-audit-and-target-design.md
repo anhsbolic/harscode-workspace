@@ -11,10 +11,10 @@ Read-only inspected research-branch source at the A4 entry checkpoint:
 
 | Source | Inspected Git blob SHA | Role in audit |
 | --- | --- | --- |
-| [Engineering Solution Space entry](../../engineering/spaces/feature-solution-design/README.md) | `16ed0713bf93be3099f8fc8ff5df6a9f6a3fdcac` | Mission, boundaries, existing formation standing |
-| [External Input / Output Contract](../../engineering/spaces/feature-solution-design/contracts.md) | `98185cd1b1b75b4bb1be499370b0673fb4e69d07` | Existing binding logical input/output semantics |
-| [Coordination](../../engineering/spaces/feature-solution-design/coordination.md) | `51d4f338e9592a5c4e58c12f3fd034374a18cbcc` | Human gates, producer/reviewer ownership, durable resumption |
-| [FR-01–FR-04 formation record](../../engineering/spaces/feature-solution-design/formation-approval-2026-10-30.md) | `2f7a029872b019e8e483c738b28cad210de06fda` | Current-tree historical approval pointer; original exact content in immutable Git |
+| [Engineering Solution Space entry](https://github.com/anhsbolic/harscode-workspace/blob/3440b5cf7cd2583d27c6ec35ae44502feea473f9/engineering/spaces/feature-solution-design/README.md) | `16ed0713bf93be3099f8fc8ff5df6a9f6a3fdcac` | Mission, boundaries, existing formation standing |
+| [External Input / Output Contract](https://github.com/anhsbolic/harscode-workspace/blob/3440b5cf7cd2583d27c6ec35ae44502feea473f9/engineering/spaces/feature-solution-design/contracts.md) | `98185cd1b1b75b4bb1be499370b0673fb4e69d07` | Existing binding logical input/output semantics |
+| [Coordination](https://github.com/anhsbolic/harscode-workspace/blob/3440b5cf7cd2583d27c6ec35ae44502feea473f9/engineering/spaces/feature-solution-design/coordination.md) | `51d4f338e9592a5c4e58c12f3fd034374a18cbcc` | Human gates, producer/reviewer ownership, durable resumption |
+| [FR-01–FR-04 formation record](https://github.com/anhsbolic/harscode-workspace/blob/3440b5cf7cd2583d27c6ec35ae44502feea473f9/engineering/spaces/feature-solution-design/formation-approval-2026-10-30.md) | `2f7a029872b019e8e483c738b28cad210de06fda` | Current-tree historical approval pointer; original exact content in immutable Git |
 | [Product Definition](../../product/product-definition.md) | `1d423cee38b7cc159d9855f99b519d5c065277cd` | Approved-research Product boundary and input meaning |
 | [UX Definition](../../design/ux/definition.md) | `a503a571342868bb960973de4c9df9f3f9a190d8` | Approved-research UX O2/O6 and other material UX responsibilities |
 | [UI Definition](../../design/ui/definition.md) | `53d293cdf8a5f635690123a76de521f63e78b83f` | Approved-research UI boundary; Hi-Fi is not a universal Rancang predecessor |
