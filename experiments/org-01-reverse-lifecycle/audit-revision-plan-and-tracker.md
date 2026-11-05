@@ -11,8 +11,8 @@
 | A2 UX Lo-Fi | `SETTLED_FOR_RESEARCH` | [UX](../../design/ux/README.md) |
 | A3 UI Hi-Fi | `SETTLED_FOR_RESEARCH` | [UI](../../design/ui/README.md) |
 | A3 Project Design Standards | `SETTLED_FOR_RESEARCH`, four exact-reviewed research guidance files accepted by Anhar on 2026-11-04; see approval record below | [Project Standard](../../design/project-standard/README.md) |
-| A4 Engineering Solution | `ZERO_BASED_REWRITE / NEW_FORMATION_REVIEW_PENDING`; Anhar accepted exact Target v1, **new Rancang candidate is NOT FORMATION APPROVED** | [New Rancang](../../engineering/spaces/rancang/README.md) · [Contract](../../engineering/spaces/rancang/contracts.md) · [Accepted target design](a4-rancang-zero-based-target-design-v1.md) |
-| A4 Engineering Project Standards | `NEW RESEARCH GUIDANCE / HUMAN CONTENT REVIEW PENDING`; separate direct concern, not formed Space or target-project standards authority | [Engineering Project Standard](../../engineering/project-standard/README.md) |
+| A4 Engineering Solution | `FORMATION APPROVED / RESEARCH-ONLY` by Anhar on 2026-11-05 for **exact new Rancang definition at `5a296470`**; runtime independence/readiness unverified; see D1 record below | [Rancang](../../engineering/spaces/rancang/README.md) · [Contract](../../engineering/spaces/rancang/contracts.md) · [D1 exact approval](#a4-human-decisions-d1-and-d2---2026-11-05) |
+| A4 Engineering Project Standards | `ACCEPTED FOR RESEARCH` by Anhar on 2026-11-05 for **four exact guidance blobs**; direct concern, not a formed Space or project-owned standard; see D2 record below | [Engineering Project Standard](../../engineering/project-standard/README.md) · [D2 exact approval](#a4-human-decisions-d1-and-d2---2026-11-05) |
 | A5 Builder / A6 final coherence | `NOT_STARTED` under this sequential audit | [Engineering](../../engineering/README.md) |
 
 Product, UX and UI approvals are scoped **research decisions** recorded at their historical exact Harscode revisions. Rewriting the tracker or historical experimental evidence does not reopen those decisions or upgrade them to operational project truth. A current Harscode guidance file that retains authoring-time DRAFT wording may have **later external exact-approval evidence** at the original historical revision; consult its linked immutable acceptance history.
@@ -94,6 +94,39 @@ Anhar explicitly **approved** the two reviewed detailed Rancang authoring templa
 
 The authoring aids preserve decision-specific applicability and actual project standard/consumer format precedence. They do not compel eight physical output files; material typed O03 content remains required in the real project format when an actual consumer demands it. Source validation of 13 inputs, eight output coverage, six quality outcomes and links has been performed; **real downstream consumer implementation proof and runtime independence remain unverified**.
 
+## A4 Human decisions D1 and D2 — 2026-11-05
+
+**Human evidence:** In the current Project session, after receiving the fresh-context read-only reviewer report and the recommendation to approve D1/D2 separately, **Anhar explicitly decided: "Approve D1 dan D2 Bro. untuk langkah selanjutnya aku perlu diskusi dulu ro"** (2026-11-05). This is exact research approval evidence supplied in the session; **not a new runtime/tool authorization**. Anhar explicitly requested discussion before deciding further work.
+
+**Independent reviewer input, supplied by Anhar:** read-only assessment of the original approved experiment, approved [A4 Target Design v1](a4-rancang-zero-based-target-design-v1.md), 20 new Rancang files and 4 Engineering Project Standards files at the pinned candidate. The submitted report recommended `RECOMMEND_FORMATION_REVIEW_PASS` for Rancang and `RECOMMEND_EXACT_RESEARCH_CONTENT_ACCEPTANCE` for Engineering Project Standards. It found **no source-level formation blockers**. Its R-F01/HIGH (native independence not proven), R-F02/MEDIUM (actual FE/BE consumer completeness untested), R-F03/MEDIUM (cold resumption untested), and R-F04/R-F05 LOW are **runtime/real-usage evidence and provenance/overhead limitations**, not documentary formation defects. The reviewer expressly did not claim complete platform context isolation. The report was submitted in chat, not committed as a separate signed immutable Git review artifact; this record does not assert otherwise.
+
+### D1 — Rancang new exact definition formation
+
+**Decision:** `APPROVED — FORMATION APPROVED / RESEARCH-ONLY` for the **new zero-based** reusable Rancang definition under `engineering/spaces/rancang/` at exact commit [`5a2964703bfddc3dc06a78091ef0b7f0220a57f0`](https://github.com/anhsbolic/harscode-workspace/commit/5a2964703bfddc3dc06a78091ef0b7f0220a57f0).
+
+**Approved exact scope:** 20 files then present at `engineering/spaces/rancang/`: `README.md`, `contracts.md`, `coordination.md`, `formation-lineage.md`, six distinct Agent `agent.md` + `knowledge.md` pairs, `artifacts/README.md` and `artifacts/templates.md`, and two bilingual research authoring templates `templates/rancang-output.id.md` and `templates/rancang-output.en.md`. Content identity is the **exact commit/tree/path snapshot**, not current changing branch HEAD. The templates also separately have prior exact research-authoring approval (ID blob `a3bf652f81d66e87896c2e1156375d53ac600df3`; EN blob `aecb0bfaa42be0a5146156f4adde0b24cddb6ac4`).
+
+**What D1 means:** Anhar accepts the declarative Rancang capability boundary, 13/10/8/6 external semantics, six concern/knowledge-separated responsibilities, exact-revision continuity, independent UX and Security challenge obligations, and the reviewed source representation at the pinned commit. D1 **does not approve any changed substantive bytes after the pin**, nor does it inherit old-path formation approval `6dfc4be790c526026529ed7ef397c61567809de4`. Do not edit pinned definition or approved templates just to write `APPROVED` in their headers; this external tracker is the standing record.
+
+**What D1 does not establish:** actual native independently isolated Agent/Security/Reviewer contexts, read/write/tool containment, acceptance by target-project Product/UX/security authorities, concrete task invocation or action scope, performed tests, successful FE/BE integration, cold resumption, canonical API/schema adoption, release, or delivered actor outcome. The runtime/evidence claims remain `NOT VERIFIED` until independently observed and separately authorized.
+
+### D2 — Engineering Project Standards four exact research guidance files
+
+**Decision:** `APPROVED — ACCEPTED FOR RESEARCH` as project-neutral reusable Engineering Project Standards **direct concern** guidance at `engineering/project-standard/`, **not** a newly formed Space and **not** a target project's canonical technical standards.
+
+| Accepted exact research guidance | Reviewed Git blob SHA at the D1 candidate checkpoint |
+| --- | --- |
+| [`README.md`](../../engineering/project-standard/README.md) | `7a73e86d86cc4484d363b38d5412a5cf6c3e0626` |
+| [`definition.md`](../../engineering/project-standard/definition.md) | `cd991305b38ca70a51980b6faf04802a254bafed` |
+| [`AGENTS.md`](../../engineering/project-standard/AGENTS.md) | `111a16c6819739972923284aafef0954296f2f75` |
+| [`authority-and-handoff.md`](../../engineering/project-standard/authority-and-handoff.md) | `94d9525889beecc602d67a0bec102dacb19b19e2` |
+
+**D2 scope:** Accepted semantics for discovery/reuse/no-change, formation/revision/supersession proposals of justified project-wide technical rules, legitimate project-level owner approval and consumer reconciliation, without mandatory catalogs, directories, Agent topology or automatic standards writes. Project-specific standards and security/legal/authority boundaries still reside with the actual target project. Preserve accepted blobs; later substantive changes need separate research acceptance.
+
+### Current checkpoint and pause
+
+After the pinned reviewed candidate `5a296470`, research commits only added the independent [review brief](a4-new-rancang-independent-review-brief.md) and adjusted this research tracker before the Human D1/D2 approval record. **No approved Rancang or Engineering Project Standards content was changed by this approval.** `main` operational baseline remains untouched. **A5/A6 remain on hold; Rancang runtime validation is only a future possibility, not an approved next action.** The next action is discussion with Anhar before selecting any new scope.
+
 ## Next bounded decision
 
-Use the pinned [A4 independent review brief](a4-new-rancang-independent-review-brief.md) for a **fresh-context read-only assessment** of the new [Rancang definition](../../engineering/spaces/rancang/README.md) against the immutable approved experiment and exact approved [Target Design v1](a4-rancang-zero-based-target-design-v1.md). The review must return distinct findings/verdicts for (A) Rancang exact-revision **formation readiness** and (B) [Engineering Project Standards research guidance](../../engineering/project-standard/README.md) **content acceptance readiness**; no automatic formation or standards approval follows from a review. The pinned review subject is `5a2964703bfddc3dc06a78091ef0b7f0220a57f0` (definitions and accepted bilingual output templates). A5/A6 remain on hold pending these A4 decisions.
+**PAUSE for discussion with Anhar.** D1 exact Rancang formation (research-only) and D2 exact Engineering Project Standards research content have been approved and recorded below. Do **not** start a Rancang invocation, bounded runtime validation, pilot, Agent/Harness installation, project-owned standard adoption, A5/A6 work, or promote research to operational `main` on the basis of those approvals. Anhar will discuss and choose the next scope/action separately; no runtime authorization has been granted.
