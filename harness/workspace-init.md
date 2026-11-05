@@ -1,6 +1,6 @@
 # Workspace Init — Local Harscode Routing Bootstrap
 
-> **Standing:** WORKING / RESEARCH-ONLY on `refactor/harscode-foundation`. Local bootstrap guidance, **not** a command, completed setup claim, Space authorization, or an operational `main` policy.
+> **Standing:** WORKING / RESEARCH-ONLY on `research/cross-stage-mapping` (earlier `refactor/harscode-foundation` is historical lineage). Local bootstrap guidance, **not** a command, completed setup claim, Space authorization, or an operational `main` policy.
 > **Owner:** Harness for workspace-local path/config and routing setup. [Collaboration / Balad](../collaboration/pairing.md) owns advisory behavior; [Engineering](../engineering/README.md) owns Space capabilities; target repositories own project truth.
 
 ## Scope and entry
