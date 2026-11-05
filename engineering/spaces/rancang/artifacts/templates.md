@@ -1,6 +1,6 @@
 # Rancang — Optional Eight-Output Content Prompts
 
-> **Standing:** Non-binding representation prompts. The [Rancang contract](../contracts.md) is authoritative for this candidate's semantics; actual target project standards take precedence. This is **not eight required files**.
+> **Standing:** Short, non-binding **content sufficiency prompts**, not the detailed output template. For comprehensive authoring use [Bahasa Indonesia](../templates/rancang-output.id.md) or [English](../templates/rancang-output.en.md). The [Rancang contract](../contracts.md) governs semantics and effective target-project standards take precedence. Neither the prompts nor the comprehensive templates require eight files.
 
 | Output | Questions the intended implementer should be able to answer |
 | --- | --- |
