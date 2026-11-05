@@ -1,6 +1,6 @@
 # Rancang — External Input / Output Contract
 
-> **Standing:** A4 experiment-led Engineering Solution alignment **CANDIDATE / NOT FORMATION APPROVED** on `research/a4-rancang-alignment-candidate`. The current formed research definition is `6dfc4be790c526026529ed7ef397c61567809de4` (2026-10-30); this candidate does not supersede its approval. No invocation, tool or write authority.
+> **Standing:** A4 experiment-led Engineering Solution alignment **CANDIDATE / NOT FORMATION APPROVED** on `research/cross-stage-mapping`. The current formed research definition is `6dfc4be790c526026529ed7ef397c61567809de4` (2026-10-30); this candidate does not supersede its approval. No invocation, tool or write authority.
 > **Owner:** Reusable Rancang Engineering Solution Design capability; effective project inputs, standards and accepted artifacts remain owned by the target project.
 
 ## 1. Input Contract: meaning versus acquisition
