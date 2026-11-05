@@ -1,6 +1,6 @@
 # AGENTS.md — Foundation Refactor Branch
 
-> **FOUNDATION RESEARCH BRANCH — NOT AN OPERATIONAL REPLACEMENT.** Applies to `refactor/harscode-foundation`; `main` remains the operational baseline. The standalone [Local Development Environment Preparation Agent](engineering/agents/local-development-environment-preparation/agent.md) is a narrowly **Human-accepted local-use exception**. This router gives no blanket project execution, Engineering Space invocation, Specialist dispatch, protected write, or production authorization.
+> **FOUNDATION RESEARCH BRANCH — NOT AN OPERATIONAL REPLACEMENT.** Current research ref: `research/cross-stage-mapping` (earlier `refactor/harscode-foundation` is historical lineage); `main` remains the operational baseline. The standalone [Local Development Environment Preparation Agent](engineering/agents/local-development-environment-preparation/agent.md) is a narrowly **Human-accepted local-use exception**. This router gives no blanket project execution, Engineering Space invocation, Specialist dispatch, protected write, or production authorization.
 
 ## Routing
 
