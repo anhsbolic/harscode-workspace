@@ -27,7 +27,7 @@ Use the project's existing accepted format when sufficient. A template is not ap
 
 This design makes **information contracts** and **functional responsibilities** the stable dependency boundaries. It does not require a named upstream producer or downstream Space. An actual project's assignment and capability guidance resolve **who** performs the responsibility.
 
-Concrete subjects currently represented in this research tree include [Engineering Solution Design — Rancang](../engineering/spaces/feature-solution-design/README.md) and [Next.js frontend Engineering Development — NextJS Builder](../engineering/spaces/nextjs-builder/README.md). They are **current examples**, not required Product consumers; their own formation, authorization and source-inspection rules remain effective within their exact approved revisions.
+Concrete subjects currently represented in this research tree include [Engineering Solution Design — Rancang](../engineering/spaces/rancang/README.md) and [Next.js frontend Engineering Development — NextJS Builder](../engineering/spaces/nextjs-builder/README.md). They are **research examples with separate definition/formation standing**, not required Product consumers; their own formation, authorization and source-inspection rules remain effective within their exact approved revisions.
 
 The [reverse-lifecycle Product experiment](../experiments/org-01-reverse-lifecycle/product-definition.md) is the **primary research design reference**, but ORG-01 is illustrative, not accepted Product truth for other projects. Revalidation may challenge even the experiment model.
 
