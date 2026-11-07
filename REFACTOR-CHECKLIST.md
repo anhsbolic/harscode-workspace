@@ -9,7 +9,7 @@
 | Product | [Product entry](product/README.md) | Scoped foundation research settled; operational project authority remains project-owned |
 | UX | [UX direct entry](design/ux/README.md) | Scoped research accepted, not operational `main` |
 | UI | [UI direct entry](design/ui/README.md) | Scoped research accepted, not target-project screen or runtime approval |
-| Project Design Standards | [Independent direct entry](design/project-standard/README.md) | Draft content under Human review; no target-project standard created |
+| Project Design Standards | [Independent direct entry](design/project-standard/README.md) | Exact guidance accepted **for research** (A3, 2026-11-04); no target-project standard created. [Standing provenance](experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md#a3-project-design-standards--exact-human-research-acceptance-2026-11-04) |
 | Engineering | [Engineering entry](engineering/README.md) | Existing exact formation records govern limited research capabilities; individual assignment still requires separate authorization |
 | Collaboration / Harness | [Collaboration](collaboration/README.md) · [Harness](harness/README.md) | Research guidance; no blanket dispatch or persistent write authority |
 
@@ -23,4 +23,4 @@
 
 ## What remains
 
-Complete scoped source-level review and actual relevant independent consumption for any proposed foundation promotion. Never change Harscode operational `main`, target-project repositories, accepted Engineering Space definitions or historical formation approvals by implication. The [cross-stage research tracker](experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) reports its own concern-level state and must not be confused with an operational release checklist.
+Complete scoped source-level review and actual relevant independent consumption for any proposed foundation promotion. Never change Harscode operational `main`, target-project repositories, accepted Engineering Space definitions or historical formation approvals by implication. The [cross-stage research tracker](experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) is the **sole active A1–A6 research-status owner**, including the selected horizontal-coherence next episode and explicitly deferred Go Backend Builder vertical-depth debt. This root file remains a **foundation refactor/migration checklist**, not a second A6/vertical-debt tracker or operational release checklist.
