@@ -15,13 +15,13 @@
 | Domain | Responsibility | Readiness |
 | --- | --- | --- |
 | [Product](product/README.md) | Experiment-led Product Definition I/P/O/O, Product authority/approval and subject-independent information handoff; draft templates under review | RESEARCH REDESIGN — NOT OPERATIONAL MAIN |
-| Design — [UX direct entry](design/ux/README.md) · [UI direct entry](design/ui/README.md) · [Project Standards direct entry](design/project-standard/README.md) | UX and UI accepted-research guidance; Project Standards independent, project-agnostic definition and authority guidance drafted for research | UX + UI SETTLED_FOR_RESEARCH; PROJECT STANDARD REVIEW_PENDING — RESEARCH ONLY |
+| Design — [UX direct entry](design/ux/README.md) · [UI direct entry](design/ui/README.md) · [Project Standards direct entry](design/project-standard/README.md) | UX/UI and independent project-neutral standards research guidance | UX + UI SETTLED_FOR_RESEARCH; PROJECT STANDARDS EXACT GUIDANCE ACCEPTED_FOR_RESEARCH — NOT OPERATIONAL MAIN; [research standing](experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) |
 | [Engineering](engineering/README.md) | Solution, implementation, Engineering Spaces and Specialist-local knowledge | WORKING — RESEARCH ONLY |
 | [Collaboration](collaboration/README.md) | Human–AI advisory collaboration and authority-aware decisions | WORKING — RESEARCH ONLY |
 | [Harness](harness/README.md) | Runtime-specific execution/permission translation | WORKING — RESEARCH ONLY |
 | [Deprecated](deprecated/README.md) | Frozen legacy references for selective migration | REFERENCE ONLY |
 
-**Routing:** The five foundation domains remain research guidance, not an approved operational replacement. The accepted standalone local-environment Agent is a scoped Human-direct local-use exception **on this branch only**; its acceptance does not authorize other Engineering Spaces or promote the foundation. Historical/archived material is reference only; current operational baseline remains `main`.
+**Routing:** The five foundation domains remain research guidance, not an approved operational replacement. The accepted standalone local-environment Agent is a scoped Human-direct local-use exception **on this branch only**; its acceptance does not authorize other Engineering Spaces or promote the foundation. Historical/archived material is reference only; current operational baseline remains `main`. For **current cross-stage A1–A6 research direction** (horizontal Engineering coherence selected, Go Backend Builder vertical depth explicitly deferred), consult the [single owning research tracker](experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) and its [A6 scope/closure criteria](experiments/org-01-reverse-lifecycle/a6-horizontal-engineering-coherence-scope-and-vertical-depth-debt.md); this root README is navigation, **not a parallel tracker**.
 
 ## Project-agnostic current-tree verification
 
