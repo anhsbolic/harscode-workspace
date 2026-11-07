@@ -52,7 +52,7 @@ Classify inputs along **two separate axes**:
 | --- | --- | --- |
 | **Engineering Requirements & Contracts** | Effective technical behavior, API/data interfaces, state and transaction invariants, auth/failure semantics, relevant verification/acceptance scenarios | Engineering; may originate from legitimate upstream provider **or** current project contracts. Source standing and effective adoption must be established. |
 | **Project Engineering Context** | Applicable standards, actual codebase, dependencies, architecture and existing consumers | Engineering; current target project authority/evidence. |
-| **Execution Context** | Tools, environment, database/test infrastructure, access limitations | Engineering/operational; supplied by project and assignment as applicable. Conditional depth, not a universal document set. |
+| **Project Execution Context** | Actual project-side development/test toolchain, target-software runtime dependencies, available test database/environment, connectivity and execution limitations | Engineering/operational; based on project configuration and permitted actual observation. **Excludes Agent harness, Agent invocation/session lifecycle and harness/tool-adapter provisioning.** Conditional depth; not a universal document set. |
 | **Assignment & Authority** | Intended technical outcome, scope, permitted changes, access, safeguards and escalation/approval boundaries | Governance; Human or legitimate delegated/project authority. Required for action, not automatically supplied by technical inputs. |
 
 **Non-Engineering upstream Product/UX meaning** may inform those Engineering inputs through legitimate technical translation; the specialized Builder is **not** expected to read and analyze the full Product Contract, infer missing Product semantics, or own Product-to-Engineering translation. The translation provider need not be Rancang, but the owner of consequential Product-derived decisions remains identifiable.
@@ -134,3 +134,82 @@ The current **high-level conceptual I/P/O/O model is sufficient for a working re
 - Later A5/A6 reconciliation, formal definition/formation and any promotion, each requiring separate explicit decision and evidence.
 
 **Recommended next activity:** **Read-only cross-stage input-sufficiency check** using one actual scoped backend assignment, prioritizing effective current project artifacts and identifying actionable gaps without making Rancang a mandatory provider. No repository mutation outside this research checkpoint; no Space formation or implementation authority is granted.
+
+## 9. Follow-on refinement — Project Execution Context and Delegated Authority (2026-11-07)
+
+> **Status:** Working decisions agreed in follow-on discussion and approved for checkpoint persistence by Anhar. This section **clarifies and supersedes** any broader interpretation of the "Execution Context" wording in earlier sections; it does not change original experiment evidence or confer operational authority.
+
+### 9.1 Project Execution Context, not Agent harness context
+
+**Refined Input 3 name:** **Project Execution Context**.
+
+**Meaning:** Actual conditions and facilities needed to **build, run and verify the target project's software** for the current authorized assignment—not the mechanisms that run or coordinate Harscode Agents.
+
+Examples within the Go Backend Builder's relevant project-side context:
+
+- **Development tools / toolchain:** available Go compiler/toolchain, dependency/build tools, Git access for project work, test runners, project database migration utilities.
+- **Target-software runtime / dependent services:** Go API service process, PostgreSQL instance, target application dependencies and relevant configuration.
+- **Environments and test facilities:** local/dev, isolated test and, when specifically relevant and authorized, staging or production; test databases, fixtures, integration test support.
+- **Availability and actual constraints:** accessible dependencies, connectivity, resource limits, configuration limitations, observed ability to execute relevant project checks.
+
+These are **information needs, not mandatory documents or a mandatory environment-provisioning phase**. Inspect actual availability with permitted actions rather than treating declarations as runtime proof.
+
+**Explicit exclusions from Builder/Space responsibility:**
+
+- Agent harness selection, installation, configuration, maintenance or provisioning.
+- Agent process/session lifecycle, invocation/routing, activation of internal Agents or Space runtime readiness.
+- Building/maintaining Agent-side tool adapters or ensuring the harness can run every Agent.
+- Owning the eventual harness platform architecture; that concern is intentionally deferred to a **separate discussion/ownership boundary**, without assuming its implementation or owner here.
+
+A Builder may **require or report missing execution capabilities** (for example the ability to run project tests), but does **not** take ownership of providing the Agent harness/tool infrastructure. This is a **capability/availability observation**, not harness responsibility.
+
+**Project-side preparation is conditional:** If target-project dev/test environment is ready, use it without readiness ceremony; if safely settable within delegated scope, the Builder may prepare it; if preparation affects consequential/shared systems or exceeds authority, do not execute that action without the legitimate authorization. Example: launching an authorized isolated PostgreSQL test database may be permitted; wiping a shared database is not justified merely to make tests pass. No mandatory seventh "Environment Setup" process is introduced.
+
+**Environment readiness differs from implementation readiness:** Missing test DB may block integration verification or the corresponding completion claim, but need not block independent, safe domain/API implementation. Handoff states what was and was not actually executed or verified.
+
+**Project context vs execution context vs authority example:**
+- "This project uses PostgreSQL" = **Project Engineering Context** (effective technical truth).
+- "Isolated test DB is unavailable right now" = **Project Execution Context** (actual availability).
+- "Agent may create a test DB or execute a migration" = **Assignment & Authority** (permission/delegation).
+
+**Availability/access is not authorization.** A technically reachable production DB does not itself confer the right to change it.
+
+### 9.2 Assignment & Authority — sufficient, bounded delegation
+
+The four input groups remain sufficient:
+
+1. **Engineering Requirements & Contracts** — effective technical obligations from any legitimate producer/source, with proper authority.
+2. **Project Engineering Context** — target-project codebase, standards, dependencies, architecture and relevant existing consumers.
+3. **Project Execution Context** — project-side development/test capability and observed constraints; **no Agent harness responsibilities**.
+4. **Assignment & Authority** — objective/scope, delegated Engineering discretion, execution boundaries and conditions for clarification/escalation.
+
+The fourth group requires **sufficient actionable authority information**, but not a new per-task approval document. Relevant permissions may already be expressed by effective project rules or durable delegated authority; do not demand that Human restate them on every assignment.
+
+**Sufficient Delegated Authority:** Agent has enough authorized latitude to solve the technical assignment using Engineering judgment, without repeated permission requests for routine steps. Human approval applies to consequential **out-of-authority** decisions, not all Implementation Plans. Decision Briefs remain concise and scoped; decision approval and permission for a consequential execution are distinguishable.
+
+**Delegated Authority Interpretation** (agreed working principle):
+
+> Agent may take actions **reasonably included in** an effective authorized assignment and delegated Engineering discretion, even if each action is not named explicitly. **Absence of an explicit prohibition is not authorization** for actions outside scope or carrying unapproved material consequences.
+
+Illustrations and practical resolution:
+
+- **Within delegated scope:** create/refactor relevant Go helpers, select internal transaction implementation, run permitted and understood safe tests; use impact assessment and proportionate regression evidence for shared code.
+- **Unclear authority:** inspect current assignment, project rules and legitimate authority records; seek clarification from the appropriate owner only if ambiguity remains material.
+- **Consequential action without authority:** do **not** execute protected/destructive/shared-state operations, expand task scope, change effective external contracts, or operate on sensitive/production systems merely because not explicitly forbidden. Propose the scoped decision and safer alternatives.
+- **Caution:** Even a routine-looking command can trigger a destructive integration test or shared-state mutation. Judge actual effect and environment, not command names alone.
+
+**Operating default:** autonomy for legitimate Engineering discretion **already delegated**; restraint for consequential actions **not authorized**. Analyze and propose freely within appropriate information-access boundaries, but do not confuse the freedom to recommend with permission to execute.
+
+Authorization for consequential decisions should be **identifiable and reconstructable** from legitimate owning records where required, without inventing a central permission registry, standardized form, scoring protocol, extra gate, workflow engine or harness-owned responsibility for the Builder.
+
+### 9.3 Resulting consistency and validation status
+
+- **Producer-agnostic, authority-aware:** no named upstream Space required; provenance, project adoption and authorization still matter.
+- **Engineering-centered, harness-independent:** Builder owns backend implementation and project-side technical verification, not provisioning Harscode Agent execution infrastructure.
+- **Need-driven environment preparation, not ceremony-driven:** work may progress in safe independent parts despite missing verification facilities.
+- **Bounded autonomy without micromanagement:** ordinary delegated tasks need no reapproval; material out-of-scope effects require legitimate authority.
+- **Accurate evidence:** implemented code, checked build, executed tests, verified API/DB runtime and production operations are separate claims.
+
+**Status:** Conceptual consistency is sufficient for research continuation; no actual Agent/runtime behavior, operational permissions or project input sufficiency has been proven by this checkpoint.
+
+**Next research step remains:** read-only cross-stage input-sufficiency check on a real Go backend assignment, with a sharp distinction between project execution facilities and Agent harness. Any future promotion or formation needs its own explicit decision.
