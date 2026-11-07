@@ -1,9 +1,11 @@
 # Cross-Stage Harscode Foundation — Research Standing & Historical Provenance
 
-> **Standing:** RESEARCH CHECKPOINT, 2026-11-04. This is a new **project-agnostic current-tree summary**, not the exact Human-reviewed original tracker, a canonical lifecycle or operational `main` policy.
+> **Standing:** ACTIVE CROSS-STAGE RESEARCH STATUS TRACKER (updated 2026-11-07, research branch only). This is a **project-agnostic current-tree research standing record**, not the exact Human-reviewed original historical tracker, a canonical lifecycle or operational `main` policy. Dated sections below preserve earlier decisions and snapshots; the **Current bounded research status** and **Latest direction** sections govern the newest research routing.
 > **Immutable full chronology:** [Historical Harscode research snapshot](https://github.com/anhsbolic/harscode-workspace/commit/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a). Original Git commit/tree preserves detailed prior source checks, project-case evidence and exact approval record. This summary **does not inherit acceptance for edited bytes**.
 
 ## Current bounded research status
+
+**Current selected direction (Anhar, 2026-11-07):** Continue **horizontal Engineering coherence** before Go Backend Builder vertical depth. A5 generalized conceptual I/P/O/O is sufficiently settled for research; Go Backend Builder Agent/skillset/formation and runtime depth are **explicitly deferred obligations**. This tracker is the **single owner of A1–A6 and vertical-debt research status**. The new [A6 scope/debt document](a6-horizontal-engineering-coherence-scope-and-vertical-depth-debt.md) defines questions and completion criteria, **not a parallel tracker**. This decision does not authorize A6 execution, Space formation, repo changes outside this approved research record, or operational promotion.
 
 | Concern | Standing | Current Harscode entry |
 | --- | --- | --- |
@@ -13,7 +15,9 @@
 | A3 Project Design Standards | `SETTLED_FOR_RESEARCH`, four exact-reviewed research guidance files accepted by Anhar on 2026-11-04; see approval record below | [Project Standard](../../design/project-standard/README.md) |
 | A4 Engineering Solution | `FORMATION APPROVED / RESEARCH-ONLY` by Anhar on 2026-11-05 for **exact new Rancang definition at `5a296470`**; runtime independence/readiness unverified; see D1 record below | [Rancang](../../engineering/spaces/rancang/README.md) · [Contract](../../engineering/spaces/rancang/contracts.md) · D1 exact approval recorded below |
 | A4 Engineering Project Standards | `ACCEPTED FOR RESEARCH` by Anhar on 2026-11-05 for **four exact guidance blobs**; direct concern, not a formed Space or project-owned standard; see D2 record below | [Engineering Project Standard](../../engineering/project-standard/README.md) · D2 exact approval recorded below |
-| A5 Builder / A6 final coherence | `NOT_STARTED` under this sequential audit | [Engineering](../../engineering/README.md) |
+| A5 Go Backend Builder I/P/O/O | `CONCEPTUALLY SUFFICIENT / WORKING RESEARCH` — unified generalized 4 Input / 6 Process / 3 logical Output / 1 technical Outcome; **not formed or runtime-proven** | [Unified definition](a5-go-backend-builder-unified-ipoo-research-definition.md) · [derivation method](a5-go-backend-builder-ipoo-derivation-method.md) |
+| A6 Horizontal Engineering Coherence | `SELECTED NEXT RESEARCH EPISODE / AUDIT NOT YET PERFORMED` — examine upstream/downstream Engineering I/P/O/O edges, cross-boundary integration, technical verification, acceptance and outcome claims | [Scope and boundaries](a6-horizontal-engineering-coherence-scope-and-vertical-depth-debt.md) |
+| A5 Go Backend Builder Vertical Depth | `DEFERRED / REQUIRED FOLLOW-UP` — V1 formation-ready design/Agent/skillset applicability **and** V2 evidence from authorized scoped execution for a fully proven vertical claim; **not cancelled** | [Debt definition and closure criteria](a6-horizontal-engineering-coherence-scope-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
 
 Product, UX and UI approvals are scoped **research decisions** recorded at their historical exact Harscode revisions. Rewriting the tracker or historical experimental evidence does not reopen those decisions or upgrade them to operational project truth. A current Harscode guidance file that retains authoring-time DRAFT wording may have **later external exact-approval evidence** at the original historical revision; consult its linked immutable acceptance history.
 
@@ -123,10 +127,20 @@ The authoring aids preserve decision-specific applicability and actual project s
 
 **D2 scope:** Accepted semantics for discovery/reuse/no-change, formation/revision/supersession proposals of justified project-wide technical rules, legitimate project-level owner approval and consumer reconciliation, without mandatory catalogs, directories, Agent topology or automatic standards writes. Project-specific standards and security/legal/authority boundaries still reside with the actual target project. Preserve accepted blobs; later substantive changes need separate research acceptance.
 
-### Current checkpoint and pause
+### Historical checkpoint and pause (2026-11-05; superseded for research routing by the 2026-11-07 decision above)
 
 After the pinned reviewed candidate `5a296470`, research commits only added the independent [review brief](a4-new-rancang-independent-review-brief.md) and adjusted this research tracker before the Human D1/D2 approval record. **No approved Rancang or Engineering Project Standards content was changed by this approval.** `main` operational baseline remains untouched. **A5/A6 remain on hold; Rancang runtime validation is only a future possibility, not an approved next action.** The next action is discussion with Anhar before selecting any new scope.
 
-## Next bounded decision
+## Latest direction and deferred obligation — 2026-11-07
 
-**PAUSE for discussion with Anhar.** D1 exact Rancang formation (research-only) and D2 exact Engineering Project Standards research content have been approved and recorded below. Do **not** start a Rancang invocation, bounded runtime validation, pilot, Agent/Harness installation, project-owned standard adoption, A5/A6 work, or promote research to operational `main` on the basis of those approvals. Anhar will discuss and choose the next scope/action separately; no runtime authorization has been granted.
+**Decision by Anhar:** Proceed with **horizontal Engineering I/P/O/O coherence first**, including upstream and downstream responsibility boundaries. **Go Backend Builder vertical depth remains a required follow-up** and must be addressed after horizontal coherence sufficiently informs the boundary (or when material new evidence requires earlier review). The choice changes research sequence, not the effective approval standing of A4 or any project.
+
+**Scope reference (not another tracker):** [A6 Horizontal Engineering Coherence Scope & Deferred Vertical Depth](a6-horizontal-engineering-coherence-scope-and-vertical-depth-debt.md). Primary horizontal question: who owns **Integrated Application** and **Technical Verification/independent assurance** and the material upstream/downstream contracts, without assuming a mandatory Space chain or creating an Integration/QA Space prematurely.
+
+**Depth required for the deferred Go Builder debt:**
+- **V1 — vertical design:** formation-ready coherent I/P/O/O and Agent responsibility composition, fit-for-purpose core/conditional skillset quality and applicability, authority/security/HITL boundaries, review independence, failure and handoff semantics, plus exact-definition Human formation review if pursued. `V1 DESIGN REVIEWED` alone is **not** runtime proven or Space formed.
+- **V2 — actual execution evidence:** later separately authorized bounded real use of the intended responsibilities/skillsets, actual risk-proportionate technical/integration verification, recoverability/failure handling and reconstructable handoff/evidence. Until available, retain `EXECUTION PENDING / NOT RUNTIME PROVEN`; **do not close the full vertical-depth debt**. Does **not** require a full vendor skillset catalog or production deployment.
+
+**Next substantive research action:** Perform an **initial source-level horizontal contract-edge/ownership audit** with truthful source standing. This update itself **records a selected research direction only**; audit findings, integration proof, invocation, formation and project writes have **not** been performed or authorized by the direction decision.
+
+**Historical context:** The prior `2026-11-05` pause and `A5/A6 NOT_STARTED` status described a dated earlier checkpoint. Its approvals and limitations remain preserved above; its next-action instruction is superseded by this explicit later Human decision. Future research-status changes belong in **this tracker only**, with links to evidence artifacts instead of copying new progress tables elsewhere.
