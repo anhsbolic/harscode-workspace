@@ -22,4 +22,4 @@ A bounded illustration was used to test the **semantic and authority boundaries*
 
 ## Boundary
 
-The original actor/scenario, exact project-specific sources and contemporaneous Human approval chronology are deliberately **not copied** into Harscode reusable research prose. Review the immutable exact source if that historical evidence is needed. Effective reusable guidance remains in the [current Product](../../product/README.md), [UX](../../design/ux/README.md), [UI](../../design/ui/README.md), and [Project Standards draft](../../design/project-standard/README.md) entrypoints, subject to each one's actual standing.
+The original actor/scenario, exact project-specific sources and contemporaneous Human approval chronology are deliberately **not copied** into Harscode reusable research prose. Review the immutable exact source if that historical evidence is needed. Effective reusable guidance remains in the [current Product](../../product/README.md), [UX](../../design/ux/README.md), [UI](../../design/ui/README.md), and [Project Standards research guidance](../../design/project-standard/README.md) entrypoints, subject to each one's actual standing.
