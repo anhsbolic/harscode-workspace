@@ -1,9 +1,10 @@
-# A2 UX — Zero-Based Target Design v1
+# A2 UX — Zero-Based Target Design v1 (reviewed candidate v1.1)
 
-> **Standing:** DRAFT RESEARCH CANDIDATE / HUMAN CONTENT AND EXACT-REVISION ACCEPTANCE PENDING (2026-11-13). This is a redesign proposal for reusable Harscode UX capability, **not** effective `design/ux/` guidance, target-project UX acceptance, operational `main` policy, formed Space, implementation authority or proven usability.
+> **Standing:** DRAFT RESEARCH CANDIDATE v1.1 / HUMAN CONTENT AND EXACT-REVISION ACCEPTANCE PENDING (2026-11-13). This is a redesign proposal for reusable Harscode UX capability, **not** effective `design/ux/` guidance, target-project UX acceptance, operational `main` policy, formed Space, implementation authority or proven usability.
 > **Authoritative comparison baseline:** Harscode `research/cross-stage-mapping@6aa247c7c45ac99c87016ce43839894ae7b87178`. The existing six UX owning guidance/template files preserve their distinct `SETTLED_FOR_RESEARCH` exact-approval standing (see [historical A2 research approvals](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md)). This target does not rescind, reinterpret as unapproved, or edit those accepted bytes.
 > **Research lineage:** [2026-11-12 UX quality problem framing and 2026-11-13 Foundational UX Model v0.1](audit-revision-plan-and-tracker.md). This proposal is **zero-based in conceptual derivation**, then reconciled against the current UX source for no silent loss.
 > **Design owner:** Human decision-maker for research direction and acceptance. Harscode is reusable guidance; a real target project owns its Product/UX truth and observed execution evidence.
+> **Revision provenance:** Original v1 is frozen at [commit `c3ce331`](https://github.com/anhsbolic/harscode-workspace/blob/c3ce3311110700b763cb4a5b23494aa4b4db0c0a/experiments/org-01-reverse-lifecycle/a2-ux-zero-based-target-design-v1.md), blob `336d80897b1d0d1bd720780e996bbdc4e7926ec8`. v1.1 is a **same-collaboration critical source review**, not a separate Human approval, external reviewer finding or actor usability test. See §12.
 
 ## 1. Question and decision
 
@@ -22,7 +23,7 @@ Three research questions:
 
 UX **does not** independently invent Product capabilities, roles, eligibility, law/consent/privacy claims, irreversible effects, success semantics or trust evidence; impose reusable cross-feature Design Standards; set final visual/brand expression; or own technical implementation, runtime/API behavior or test results. Project-level sources prevail over reusable Harscode guidance. Decisions are scoped, reversible where possible, and attributed to their legitimate owners.
 
-**Important:** a Product requirement may be semantically sufficient for binding consequences and still leave an **experience problem** for UX to discover and solve. Absence of comprehensive user research is neither automatic permission to invent actor facts nor an automatic blocker to safe bounded exploration.
+**Important:** An actor-facing conceptual model is a **UX explanation of effective Product meaning**, not a new owner of entity, capability, permission or domain definitions. A Product requirement may be semantically sufficient for binding consequences and still leave an **experience problem** for UX to discover and solve. Absence of comprehensive user research is neither automatic permission to invent actor facts nor an automatic blocker to safe bounded exploration.
 
 ## 3. Quality model — desired vs evidenced
 
@@ -43,10 +44,12 @@ Not every question has equal weight or must be answered on the first surface; ti
 | --- | --- | --- |
 | **Q1 — Actor and purpose fit** | Experience addresses a real actor goal and the legitimate Product commitment, not a requirement-derived sequence that lacks user meaning | Can the actor identify the relevant goal and does the resulting experience actually support it? |
 | **Q2 — Comprehension and predictability** | Terms, relationships, options, consequences, system status and next steps are understandable and not misleading | Can the actor accurately explain the significant choice/result and predict the next interaction? |
-| **Q3 — Effectiveness and proportional effort** | Relevant tasks can be completed with suitable efficiency, attention and cognitive burden | Can the intended task succeed without unjustified steps or errors, for the expected frequency/context? |
+| **Q3 — Effectiveness and proportional effort** | Relevant tasks can be completed with proportionate effort, attention and cognitive load; perceived ease/satisfaction matter when relevant | Can the intended task succeed without unjustified work, and is the effort/experience acceptable to affected actors in context? |
 | **Q4 — Agency, feedback and recovery** | Actor can make informed choices, retain appropriate control, correct mistakes, and recover from negative or uncertain situations | Can the actor discover safe available alternatives and recognize what is and is not reversible? |
 | **Q5 — Truthful and responsible experience** | Interaction does not fabricate certainty, authority, eligibility, endorsement or outcomes, or manipulate choice | Do representation and behavior preserve the accepted source of truth and material disclosures? |
 | **Q6 — Accessible and context-adaptive** | Experience respects relevant modalities, abilities, environments, devices and inclusive interaction needs | Is the experience usable under applicable assistive/input/environment constraints, with appropriate evidence? |
+
+Subjective responses such as perceived safety, confidence, comfort, satisfaction or delight can matter according to context; they are **not** universal requirements to make an interface cheerful, nor permission to obscure truth or invent Product benefits.
 
 These six **are target research meanings, not six mandatory metrics** or a claim of statistical validation. They are challengeable; other domain-specific qualities can be material. Evidence method and quality threshold depend on actor/context, consequence and intended consumer.
 
@@ -58,6 +61,8 @@ These six **are target research meanings, not six mandatory metrics** or a claim
 - **Representative actor observation/comprehension test:** may substantiate scoped understanding and task performance if method, participants and conditions fit; not automatic cross-context generality or production readiness.
 - **Implemented/runtime evidence:** separately belongs to authorized implementation and actual test/operations owners; design-level success cannot claim it.
 
+For each material quality claim, ask **what observed misunderstanding, error, harm, exclusion, friction or actor response would disconfirm it**. Research with actual users must respect applicable consent, privacy, authorization, data minimization and safeguarding; do not collect sensitive data merely to make the evidence packet appear stronger.
+
 State **DESIRED**, **ASSESSED / METHOD-LIMITED**, or **DEMONSTRATED IN STATED CONDITIONS** rather than an unqualified “UX PASS”. Where risk is material and comprehension untested, withhold strong user-understanding claims while still allowing explicitly provisional design exploration.
 
 ## 4. INPUT — five information responsibilities (not five required documents)
@@ -65,7 +70,7 @@ State **DESIRED**, **ASSESSED / METHOD-LIMITED**, or **DEMONSTRATED IN STATED CO
 | ID | Decision-relevant information | Sufficient / missing handling |
 | --- | --- | --- |
 | **I1 — Product meaning and actual commitment** | Intended Product outcomes, domain actors/rights, success/negative/unknown consequences, required information/disclosure, accepted scope and binding sources | Verify exact current owning Product meaning for dependent binding UX; ask Product for unresolved consequential decisions, not detailed screen advice |
-| **I2 — Actor goals, context and mental models** | Actors, situations, frequency, skills, expectations, mental-model hypotheses, available capacity, accessibility constraints, barriers, motivations and relevant non-users | Do not assume upstream actor descriptions answer user understanding; identify hypotheses and discovery questions; use proportionate research if material |
+| **I2 — Actor goals, context and mental models** | Primary, secondary and affected actors when applicable; conflicting goals, surrounding touchpoints, frequency, skills, expectations, mental-model hypotheses, accessibility, barriers, motivations and non-users | Do not assume upstream actor descriptions explain real comprehension; investigate cross-actor effects and unanswered questions proportionally |
 | **I3 — Existing experience and surrounding ecosystem** | Accepted UX patterns, previously observed behavior/problems, prior interactions and navigation context, available artifacts and user feedback | Treat existing design as inspectable evidence/constraint where accepted, **not** a compulsory template or known good solution |
 | **I4 — Applicable standards, feasibility and safeguards** | Project Design Standards, accessibility/device/input constraints, technical feasibility, safety/security/privacy, relevant platform patterns, real tooling and implementation constraints | Check legitimate source and authority; do not make unverifiable technical claims or require preexisting Engineering Spaces |
 | **I5 — Evidence, uncertainty and decision landscape** | Available usability/research evidence, assumptions, contradicted evidence, unresolved actor questions, evaluation conditions and decisions/owners | UX actively identifies what else it needs to know; prioritize consequential uncertainty; allow explicitly hypothetical bounded research without falsely claiming sufficient Product authority |
@@ -82,13 +87,13 @@ Ask: **Which decision can responsibly be made with what we know, which can be ex
 | --- | --- | --- | --- |
 | **P1 — Frame experience problem** | Verify decision scope, actor goal, actual task, stakes, inherited assumptions, baseline evidence and who owns each meaning. Challenge a solution disguised as a requirement | A scoped, actor-relevant question and explicit problem/hypothesis are identifiable |
 | **P2 — Discover and investigate** | Find unanswered user questions, mental-model ambiguity, opportunities, potential misunderstandings and evidence gaps. Choose cheap legitimate ways to learn, and distinguish assumed from observed | Enough understanding for the next reversible design decision; unresolved risk is labeled/owned |
-| **P3 — Conceptualize experience** | Propose a coherent actor-facing model: what concepts, entities, relationships, decisions, states and feedback should mean to the user; compare materially distinct concepts when needed | One concept (or bounded alternatives) with clear rationale and Product boundary, **before** its screen layout becomes the decision by accident |
+| **P3 — Conceptualize experience** | Form and challenge an actor-facing **interpretation of accepted** concepts, relationships, decisions, states and feedback; compare materially distinct concepts when warranted | Coherent, challengeable concept and rationale, without letting a layout silently become the premise; sketches/prototypes may help discover the concept |
 | **P4 — Design and challenge interactions** | Decide task progression, information priority, actions, navigation, search/findability, feedback, control, failure/uncertainty/recovery, relevant routes and inclusive modalities; inspect trade-offs | Meaningful user-facing decisions exist, challenged against goals and constraints; no silent invented Product policy |
 | **P5 — Express inspectable decisions** | Select the least elaborate **representation that lets actual reviewers/consumers understand and test** concept, flow, structure and relevant states; preserve a material decision/proof link | Applicable interaction/IA/navigation/state meaning is inspectable; representation has known fidelity/evidence limitations |
-| **P6 — Evaluate, refine and calibrate claims** | Establish the material quality questions, choose proportionate methods/actors/evidence, identify confusion, harm, friction and false confidence; revise or state residual limitations | Findings and decisions are traceable; strength of quality claims matches performed checks, not deliverable count |
+| **P6 — Evaluate, refine and calibrate claims** | Specify the material failure to detect (misunderstanding, unsafe action, friction, exclusion, loss of control); seek disconfirming evidence with suitable methods, refine or state limits | Findings and decisions are traceable; claims match performed checks, and unresolved high-consequence uncertainty is not silently accepted |
 | **P7 — Reconcile, decide and hand off** | Decide within UX delegation, advise Human on material UX acceptance, return Product-owned meaning to Product, verify constraints with Engineering, and prepare decision-specific consumer source/handoff | Legitimate decisions, exact effective sources, unresolved issues, consumer information and limitations are reconstructable |
 
-**No mandatory seven-stage pipeline.** Discovery and evaluation may recur after representation; simple delegated work may reuse existing sufficient evidence. P7 decision-making occurs throughout, not only at a final approval gate. Design may begin with a safe exploratory hypothesis even when Product meaning is not yet complete; binding outcomes cannot silently rely on unapproved meaning.
+**No mandatory seven-stage pipeline or concept-before-sketch gate.** Sketching may help discovery, and evaluation can precede a finalized concept. Discovery and evaluation may recur after representation; simple delegated work may reuse existing sufficient evidence. P7 decision-making occurs throughout, not only at a final approval gate. Design may begin with a safe exploratory hypothesis even when Product meaning is not yet complete; binding outcomes cannot silently rely on unapproved meaning.
 
 ### Capability expectations that must actually be exercised
 
@@ -98,39 +103,54 @@ Ask: **Which decision can responsibly be made with what we know, which can be ex
 
 **Design taste/judgment is operational, not aesthetic magic:** ability to see awkward conceptual framing, needless complexity, unclear hierarchy, false confidence and incoherent interaction; articulate why a design fails for its actors; compare meaningful choices and improve through critique/evidence. Visual aesthetics remain UI's owning expertise unless they affect functional UX clarity.
 
+**Reasoning challenge, not a required form:** What concrete actor question or problem is resolved? Which materially different solution, if any, was considered and why was it rejected or unnecessary? What observable failure would falsify this concept? Which truth belongs to Product rather than UX? Do not manufacture alternatives when one approach is plainly sufficient.
+
 ## 6. OUTPUT — six logical decision meanings (not six mandated files)
 
 | ID | Consumer-relevant meaning | Minimum when applicable |
 | --- | --- | --- |
-| **O1 — Experience question & actor context** | Actor goal/context, actual problem, constraints, assumptions, material uncertainties and research/evidence source | Specific enough to distinguish meaningful design from requirement transcription |
-| **O2 — Experience concept & rationale** | Actor-facing conceptual model, approach to understanding/choice/progression, considered alternatives where material, why selected and what remains hypothetical | Enables challenge of the concept **before** reviewing only a screen, diagram or route |
-| **O3 — Interaction, information & navigation contract** | Task/decision flows and branches, IA/disclosure timing, navigation and routes if relevant, state/feedback/negative/unknown/recovery meaning, accessibility and device implications | Concrete enough for receiving UI, Engineering and actual UX evaluation; no unsupported Product or backend semantics |
-| **O4 — Decision-appropriate inspectable proofs** | Diagram, scenario, storyboard, Lo-Fi/structural proof, dialogue/voice simulation, prototype or accepted equivalent **when needed for the actual decision** | Evidence of what was inspected, fidelity/coverage, render/interaction state and explicit limitations; not a mandatory file/fidelity |
+| **O1 — Experience question & actor context** | Relevant actors/affected people and goals, actual problem/context, constraints, assumptions, material uncertainties and research/evidence source | Specific enough to distinguish meaningful design from requirement transcription |
+| **O2 — Experience concept & rationale** | Actor-facing explanation of **accepted Product concepts**, experience approach, material hypotheses and alternatives, why selected and what remains provisional | Enables challenge of the concept **before** reviewing only a screen, diagram or route |
+| **O3 — Interaction, information & navigation contract** | **Separately inspectable** task/branch flow, decision-stage IA, navigation/routes, user-facing states/feedback/recovery and applicable modality/accessibility constraints | No material consumer information disappears within one umbrella output; never invent Product or backend semantics |
+| **O4 — Decision-appropriate inspectable proofs** | Diagram, scenario, storyboard, structural Lo-Fi, dialogue/voice simulation, prototype or accepted equivalent **matched to material decision and consumer** | For new/material screen UI, inspectable flow/branch and representative structure remain the default evidence obligations; format is flexible with valid equivalence/exception |
 | **O5 — UX evaluation, findings & refinement** | Quality questions, method, results, trade-offs, changes, unresolved issues and proportional claim standing | Evaluation meaning available independently of whether an interactive prototype exists |
 | **O6 — Scoped decisions & consumer handoff** | Decision and acceptance standing, owner/delegation, exact source/revision, scope/exclusions, applicable binding UX meaning, downstream dependencies and source links | Consumer can reconstruct what is binding, provisional, unknown and available to decide independently |
 
 **One artifact may serve several Outputs; several sources may jointly serve one Output.** The Output IDs are research reference labels, not a required delivery packet. Do not create a second Product/UX master when original project-owned accepted sources are sufficient.
 
-### 6.1 Non-negotiable consumer information, distinct from artifact choice
+### 6.1 Consumer information coverage — safeguard distinct from file count
 
-For **new/material screen UI** work, the receiving UI responsibility must be able to inspect:
-1. **Material interaction progression/branches**, including entries/exits, important decision points, denial, uncertain outcomes and recovery where applicable.
-2. **Representative surface structure and information priority**, including actions, page-vs-state meaning, and material responsive/accessibility priorities.
-3. **Relevant Product truth, interaction/state obligations, accepted decisions and exact scope/revisions**.
+**O3 is an umbrella grouping, not permission to hide decisions.** The receiving responsibility must be able to find each applicable meaning (a compact source pointer may suffice). A genuinely inapplicable meaning may be noted N/A with a context-specific reason; do not mandate one new coverage file.
 
-The earlier UX **O2 Flow** and **O6 Lo-Fi** defaults were introduced to stop downstream UI from **inventing missing UX decisions**. Preserve that substantive safeguard. The candidate changes the abstraction: **consumer inspectability is required; a specific diagram format or wireframe file is not automatically the best universal answer**. For ordinary screen-first UX, flow + representative structural Lo-Fi remain **strong default proof choices** when they are the least costly sufficient way to avoid guessing. Equivalent source/evidence must genuinely expose the same decisions; “UI can infer it” is not an exception.
+| Information meaning | Must be inspectable when material | Example proof, not required format |
+| --- | --- | --- |
+| **C1 Actor/problem/concept** | Goal, actual problem, mental-model hypotheses, selected approach and relevant affected actors | Scenario, concept rationale |
+| **C2 Interaction progression** | Entry/exit, decisions, branches, denial, uncertainty and recovery | Flow, task script, interaction simulation |
+| **C3 Information and structure** | Decision-stage information priority, disclosure, representative surface layout for screen work | IA, storyboard, structural Lo-Fi |
+| **C4 Navigation/continuity** | Destinations, returns, page-vs-state where relevant, cross-touchpoint continuity | Navigation map, route/dialogue reference |
+| **C5 State/feedback/control** | Allowed action, focus/feedback, loading, validation, failure/unknown and safe recovery | State/interaction requirements |
+| **C6 Accessibility/constraints** | Applicable assistive/input modalities and safety/technical limitations that shape UX | A11y notes, verified constraint refs |
+| **C7 Evidence/standing** | Actual source/revision, scope/approval, proof strength, unresolved issues and decision owner | Scoped handoff/decision refs |
 
-For voice/nonvisual/service experiences, provide correspondingly inspectable dialogue/task/concept/state proofs, not fictitious webpages. For minor changes with sufficient accepted UX, reference effective originals. When proof is materially missing, the **affected downstream acceptance is not consumer-ready**; unrelated independent exploration may continue.
+**New/material screen UX → receiving UI:** **C2 flow/branch proof and C3 representative structural proof are REQUIRED BY DEFAULT** through newly authored or sufficiently accepted exact-revision equivalents. A waiver requires the affected decision, concrete non-applicability/unchanged-scope evidence, authorized owner/delegation and consumer consequence. Unavailable renderer is a **NOT RENDERED** verification limit, not automatic permission to claim complete visual proof. Missing material meaning blocks **only** the dependent accepted consumer decision, not unrelated exploration.
+
+Mermaid for flow and HTML/CSS for new structural Lo-Fi remain useful authoring defaults, **not universal format obligations**. A consumer must actually be able to inspect the material interactions and layout; “UI can infer it” is not an equivalent. For non-screen/voice/service UX, use meaningful dialogue/task/state proofs rather than invented web pages. Existing sufficient accepted source can be referenced without duplication.
 
 ### 6.2 Evaluation is not a prototype dependency
 
 O5 is **not contingent on O4 being clickable**. A conceptual-comprehension walkthrough, expert review or actual user observation can support different bounded conclusions. A prototype is one possible evidence instrument, not the meaning of UX evaluation.
 
-### 6.3 Unresolved format compatibility — migration blocker before effective replacement
+### 6.3 Compatibility with accepted UX/UI contracts — must resolve before adoption
 
-Current accepted **UI `design/ui/definition.md` I01/I02**, UI authority/handoff, and UX own AGENTS/definition/templates explicitly refer to legacy UX **O2 Flow and O6 Lo-Fi required-by-default**. This v1 **cannot be activated as a drop-in new UX O1–O6 contract** without reconciling all those exact consumer references, maintaining an equivalent UI information-sufficiency gate and obtaining legitimate Human approval for affected new bytes.
+The accepted research UI `design/ui/definition.md` I01/I02 and UI authority/handoff expect legacy UX **O2 Flow** and **O6 Lo-Fi**, whereas this target's new **O2 means Experience Concept** and **O6 means Consumer Handoff**. It is a **semantic ID collision**. A rename without changing consumer interpretation would silently break a material source contract.
 
-**Do not silently update UI guidance as part of this target research artifact.** If the Human later approves a new UX semantics revision, prepare a scoped compatibility mapping/consumer amendment and review before any joint effective claim. The old A2 and UI exact-approved research bytes remain valid for their historical scope unless properly superseded.
+**Proposed scoped adoption plan (not yet authorized):**
+1. Inventory exact affected UX and UI README/AGENTS/definition/authority/template references, plus any real downstream Engineering input reading old IDs.
+2. Migrate by **information meaning**, not matching numbers: legacy UX O2 Flow → new O3/C2 + O4 flow proof; legacy UX O6 Lo-Fi → new O3/C3 + O4 representative structural proof. Preserve all other material old UX outputs via §8 mapping and C1–C7.
+3. Either **jointly review an effective UX/UI compatible revision set** or explicitly retain a **source-pinned compatibility interpretation** until legitimate UI owner approval. Do not present the new UX O2/O6 as satisfying old UI I01/I02 merely because numbers match.
+4. Inspect actual receiving UI decision with exact source, applicable Product/UX meaning, decision/proof coverage and evidence limitations. Source-level coherence alone is not independent consumer proof.
+
+Do not silently edit separate UI/Engineering guidance or re-label historical accepted blobs. Scope and Human approval must accompany any future effective replacement.
 
 ## 7. Explicit decision/authority routing
 
@@ -215,3 +235,22 @@ All four fit the **same abstract responsibilities**, with different emphasis. Th
 5. **Operational promotion remains independent:** research quality improvement, source review, legitimate project acceptance, independent consumption, and actual runtime verification are distinct.
 
 **Explicitly NOT done:** edited accepted UX/UI files; target project Design/Product changes; user usability test; independent consumer implementation; new Harscode operational policy; acceptance of this draft by Human.
+
+## 12. Source-based critical review of v1 and v1.1 corrections (2026-11-13)
+
+> **Standing:** Author-led adversarial **source critique** within this same Human–AI research collaboration, comparing original v1 to accepted UX/UI guidance. **Not** independent actor testing, independent consumer execution, third-party verification or Human acceptance. Initial v1 is preserved by exact Git revision in the header.
+
+| ID | Critical finding | v1.1 correction |
+| --- | --- | --- |
+| **CR-01 HIGH — Concept/authority** | UX concept could be read as authority to redefine domain objects, actors or capabilities | Express accepted Product meaning through actor-facing concepts; binding domain decisions still belong to Product |
+| **CR-02 MED — Actor/quality breadth** | Single-actor/task emphasis underrepresents affected actors, cross-touchpoint tension and subjective UX quality | Relevant multi-actor context and subjective perceptions included conditionally, without mandatory delight or research |
+| **CR-03 HIGH — False phase gate** | “Before screen layout” could be applied as a mandatory linear concept-design gate | Explicit iteration/sketch-first allowance; conceptual reasoning must be challengeable, not chronologically first |
+| **CR-04 HIGH — Design judgment operationality** | Named skillsets alone might produce polished but unchallenged designs | Concrete critique prompts and disconfirming quality questions, without mandatory option catalog |
+| **CR-05 HIGH — Output/consumer gap** | One O3 grouped contract might hide necessary flow/state/navigation/structural meaning | C1–C7 inspectability map; preserve C2 flow and C3 structural proof required-by-default for material receiving screen UI |
+| **CR-06 HIGH — O2/O6 collision** | New output ID meanings differ from already accepted receiving UI I01/I02 contracts | Concrete semantic mapping and scope-bound joint/compatible adoption plan; no automatic old UI acceptance |
+| **CR-07 MED — Evidence/research safety** | Design review could still claim observed user clarity; new research could collect personal data casually | Falsifiable evaluation claims; appropriate consent/privacy/research safeguards and limits |
+| **CR-08 OPEN — Actual effectiveness** | More complete UX guidance does not prove that real users will understand or succeed | No usability success claim; bounded lab and distinct-context consumer checks remain necessary |
+
+**Review verdict:** v1 direction is defensible but would be unsafe to promote without CR-01, CR-03, CR-05 and CR-06 corrections. This revised v1.1 candidate addresses those source-level risks but **does not** establish that 5/7/6/6 is optimal or that the revised UX is empirically better. Exact Human content approval and the real consumer/proof checks remain separate.
+
+**Next inquiry:** Challenge v1.1 on real actor problem framing and disconfirming UX evidence through one bounded **blind-first** experience design case, then check an unrelated interaction context and consumer compatibility. Only then decide whether to prepare an effective replacement and synchronized UI/Engineering reference amendments.
