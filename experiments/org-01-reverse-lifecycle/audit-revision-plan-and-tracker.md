@@ -5,6 +5,8 @@
 
 ## Current bounded research status
 
+**Latest UX foundational model v0.1 — research checkpoint (2026-11-13):** A **blind-first, first-principles** working model of generic UX responsibility, quality, capabilities and I/P/O/O was articulated **before** a structured comparison with the already accepted A2 UX 11/9/9/6 research semantics. It is a **nonbinding research candidate**, not an approved new definition, delivered usability or operational policy. Next: compare against A2 with KEEP / STRENGTHEN / REWORK / REMOVE, then test in a bounded laboratory. [Detail below](#ux-quality-investigation--foundational-ux-model-v01-2026-11-13).
+
 **Latest separate UX quality investigation — Human working direction (2026-11-12):** A new, bounded qualitative research episode investigates why a target-project UX candidate was assessed as unclear and its UI expression as too basic. The aim is **Harscode's reusable UX capability**, with the target project serving only as a laboratory. Prioritize a **zero-based, first-principles UX investigation within I/P/O/O**, then compare with the existing 11/9/9/6 research definition and test with a real bounded design task. The already accepted A2 research standing is preserved; no new UX/UI/Product policy, acceptance or runtime claim follows. [Separate checkpoint below](#ux-quality-investigation--foundational-research-checkpoint-2026-11-12).
 
 **Latest bounded I/P/O/O audit checkpoint — Anhar decision (2026-11-11):** `CONCEPTUALLY SUCCESSFUL / BOUNDED RESEARCH AUDIT PAUSED`. The inspected Input → Process → Output + Outcome responsibilities and cross-concern consumer joins appear sufficiently coherent for the research question. The hypothesis that multiple upstream information sources inherently force a branching, sequential dependency chain was **not supported by the bounded audit**; this does not disprove all possible branching failures. Actual acceptance/source provenance, reconstructability and runtime evidence remain separate. Anhar chose to stop extending this audit and explicitly authorized persistence of this limited research conclusion. **Not A6 full closure**, accepted new Harscode operational policy, independent consumer validation, or a production/runtime claim. [Decision and evidence bounds](#bounded-ipoo-audit-checkpoint--conceptual-success-and-pause-2026-11-11).
@@ -38,6 +40,65 @@
 | ↳ A5 / P1–P8 Builder coverage & horizontal coherence | `ACCEPTED FOR CONCEPTUAL RESEARCH / HORIZONTAL EPISODE CLOSED` (Anhar, 2026-11-10). P1–P8 owners/edges accounted for; applicable real tasks still need actual authority, subject binding and evidence. | [Final A5 horizontal assessment](a5-engineering-builder-horizontal-coherence-final-assessment-2026-11-10.md) · [Historical baseline below](#a5-original-p1p8-process-coverage--baseline-review-2026-11-07) |
 | ↳ A5 / Go Backend Builder vertical depth | `DEFERRED / REQUIRED FOLLOW-UP` — V1 formation-ready design depth and later separately authorized V2 bounded execution evidence; **not cancelled** | [Debt and closure criteria](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
 | **A6 Cross-stage coherence & foundation closure** | `IN_PROGRESS / PART 1 CONCEPTUALLY ACCEPTED / PART 2 TARGETED ROUTING RECONCILED`; project-fit/runtime `NOT CHECKED / NOT VERIFIED`, full A6 closure pending. | [Part 1](#a6-part-1--bounded-ipoo-contract--consumer-reconciliation-2026-11-10) · [Part 2](#a6-part-2--cross-cutting-foundation-reconciliation-2026-11-10) · [Original worklist](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) |
+
+## UX quality investigation — Foundational UX Model v0.1 (2026-11-13)
+
+> **Standing:** HUMAN-REQUESTED PERSISTENCE OF AN **INDEPENDENT WORKING RESEARCH CANDIDATE**; **NOT** Human exact-content approval of a revised UX definition, canonical/operational Harscode guidance, a formed Space/Agent, target-project UX acceptance, or execution authorization.
+> **Pre-checkpoint branch HEAD:** `7fcd006ab20037ee8d7cebdbb9ea06fbe28e19a7` on `research/cross-stage-mapping`. The prior [2026-11-12 UX quality investigation checkpoint](#ux-quality-investigation--foundational-research-checkpoint-2026-11-12) remains in force. A2's exact-revision UX 11/9/9/6 guidance remains `SETTLED_FOR_RESEARCH` in its original approved scope; operational `main` remains unchanged. Do not infer a new approval from this checkpoint.
+
+### Objective and known limits
+
+The objective is **general-purpose Harscode UX capability**: to explain why an earlier bounded UX candidate was perceived as unclear, what constitutes clear/high-quality UX, and how to design and evaluate better experience. A real target project is a **laboratory only**, not Harscode policy. Human dissatisfaction is a legitimate observation, not by itself a causal diagnosis. No duty to preserve an existing UX flow, IA, step count, page sequence or wireframe; compare old choices only after independent concept work.
+
+No independent actor comprehension test, representative usability evidence, cross-context generalizability proof, or verified UX effectiveness improvement has occurred. Earlier case-based hypotheses (weak discovery, mental-model development, exploration, evaluation) remain **HYPOTHESES**, not settled causes.
+
+### Independent UX responsibility
+
+**UX Design discovers and resolves human-experience problems in interaction with systems**. It shapes conceptual understanding, goal-directed tasks, interaction progression, information organization, navigation, feedback, control and recovery under legitimate Product meaning and applicable constraints. It selects representations and evidence to reason about and communicate design decisions. UX does not own new Product rules, legal/role/permission claims, engineering implementation details or reusable project-wide Design Standards.
+
+### What makes UX clear and good? — working quality model
+
+**Fundamental clarity:** purpose/relevance; concepts and mental models; available actions/consequences; current/resulting state; continuation and recovery.
+
+**Overall context-specific quality:** effectiveness; efficiency and cognitive effort; comprehension; agency/control; confidence rooted in truth; accessibility/inclusivity; contextual fit. Quality criteria and evidence strength vary by actor, intent, environment, frequency, consequence/risk and interaction medium. A short flow is not inherently good UX; a complete flow is not proof of actor comprehension. These dimensions are **investigative**, not new accepted Harscode Outcome items or mandatory scores.
+
+**Desired vs demonstrated quality:** an ambition to be intuitive/clear is not a usability result. Source/flow inspection, visual/prototype review, Human critique, actor comprehension observations, independent accessibility checks and real usage each justify **different, bounded claims**. Do not infer user-test, production/runtime or independent validation from design artifact existence.
+
+### Candidate UX professional capabilities — not mandated roles or phases
+
+| Capability | Essential ability |
+| --- | --- |
+| **Problem framing** | Find the real actor problem, challenge inherited solution framing and distinguish constraints, assumptions and symptoms |
+| **Proactive discovery** | Identify important unanswered actor questions, needs, mental-model risks and missing evidence, then investigate proportionally |
+| **Experience conceptualization** | Form a coherent user-facing model of objects, relationships, tasks, states and consequences before prematurely fixing screens/flow |
+| **Interaction design judgment** | Explore and challenge task, IA, navigation, interaction, feedback and recovery concepts; choose based on context and trade-offs |
+| **Evidence-based evaluation** | Select suitable checks, examine whether experiences actually meet objectives, refine and qualify uncertainty |
+| **Decision and authority judgment** | Decide within UX delegation, recommend material UX acceptance to Human, escalate genuinely missing Product meaning with a precise recommendation, and reconcile Engineering constraints without taking its authority |
+
+Proactive discovery and conceptualization are **priority hypotheses**, not a proven complete diagnosis. Skills and judgment must be evaluated in actual execution, not assumed from labels.
+
+### Blind-first I/P/O/O research semantics — no target counts proposed
+
+| Layer | Independently derived meaning |
+| --- | --- |
+| **Input** | Actual Product meaning; actor and situation; existing experience; applicable standards/constraints; research, uncertainty and information UX must discover |
+| **Process** | Iterative responsibilities: understand/frame; discover/investigate; conceptualize; explore/design; challenge/decide; evaluate/refine; communicate/reconcile |
+| **Output** | Consumable decision meaning and appropriate evidence: actor experience model; interaction decisions; IA/navigation; necessary inspectable representations; evaluation/decision record; downstream UX handoff |
+| **Outcome** | Contextually clear, effective, efficient, controllable, truthful, accessible and fit-for-purpose experience, with **desired vs demonstrated** claims separated |
+
+**These are semantic groupings, not prescribed numerical replacements for 11/9/9/6, sequential process gates, files, documents, tools, prototypes or Spaces.** Current A2 default output/exception rules remain in place until an independently reviewed revision changes them.
+
+### Decision posture under incomplete input
+
+UX should (a) **decide** within legitimate delegation when evidence suffices; (b) **investigate/compare** when alternative interaction solutions are uncertain; (c) **recommend to Human** for material UX decisions beyond delegation; (d) return missing binding Product semantics to Product **with a concrete question, implication and recommendation**, without inventing domain truth; and (e) verify/reconcile material technical, security and accessibility constraints with legitimate owners. Safe hypotheses may remain provisional; block only actual dependent binding decisions.
+
+### Generality and limitations
+
+This working model was conceptually stress-tested against first-use onboarding, frequent operational tasks, high-stakes decisions, and voice/nonvisual interaction. Different tasks have different dominant quality dimensions and evidence methods. **This is a conceptual check, not independent proof of general applicability.** Do not import any real case's brand, domain, UI screen taxonomy, flows or implementation into reusable Harscode UX definitions.
+
+### Next investigation — not yet performed
+
+**Semantic Gap Analysis: Foundational UX Model v0.1 versus accepted A2 UX 11/9/9/6.** Check each responsibility, skill, quality criterion, evidence/authority claim for **KEEP / STRENGTHEN / REWORK / REMOVE**, with material evidence and consumer impact. Then consider separately approved scoped revisions and bounded laboratory comparison with an independently derived UX concept. Product-input insufficiency requires a demonstrated missing decision, not assumed upstream blame. No `design/ux/` changes or target-project/`main` mutation are authorized by this checkpoint.
 
 ## UX quality investigation — foundational research checkpoint (2026-11-12)
 
