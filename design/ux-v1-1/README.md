@@ -1,37 +1,37 @@
-# UX v1.1 — Experimental Experience Design Framework
+# UX v1.1 — Experimental Actor-Centered Experience Design
 
-> **Standing:** **EXPERIMENTAL / WORKING RESEARCH**, version `v1.1`, 2026-11-13. This directory was created for a **Human-directed bounded UX experiment**, not as a new operational/default Harscode UX. Content is **NOT HUMAN EXACT-REVISION ACCEPTED**, not target-project UX authority, not an approved project Design Standard, and not a formed Space or execution permission.
-> **Source:** [A2 zero-based target design v1.1](../../experiments/org-01-reverse-lifecycle/a2-ux-zero-based-target-design-v1.md) — research candidate reviewed at `research/cross-stage-mapping@74e94ef917198df65ae35e5995486160e67b0727`. Actual tested results must be recorded in the owning target project or explicitly marked local research evidence.
-> **Effective Harscode research UX:** [existing accepted UX concern](../ux/README.md), `SETTLED_FOR_RESEARCH` at its separately accepted exact revisions. **No automatic supersession or implicit routing to this experiment.** Operational `main` remains unchanged.
+> **Standing:** EXPERIMENTAL / WORKING RESEARCH — actor-centered corrective revision, 2026-11-13. This directory is an explicitly selected **research framework**, not operational Harscode `main`, an accepted replacement for `design/ux/`, a target-project UX decision, a Project Design Standard, or a formed Space. **Exact revised content still needs Human review and acceptance** before any research-guidance replacement claim.
+> **Lineage:** [A2 zero-based target design v1.1](../../experiments/org-01-reverse-lifecycle/a2-ux-zero-based-target-design-v1.md) and the [research tracker](../../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md). The previous framework revision is preserved at `research/cross-stage-mapping@9f4f61a7e4fb7fa9ce54816cdde5aa108ae72615`.
+> **Effective research guidance elsewhere:** [Existing accepted UX](../ux/README.md) retains its approved exact-revision standing. **Do not load this experiment by default or silently supersede existing UX/UI consumer contracts.**
 
-## Why this experiment exists
+## Working thesis
 
-Test whether a UX responsibility model centered on **problem framing, proactive discovery, experience conceptualization, contextual interaction judgment and falsifiable quality evaluation** produces more understandable, fit-for-purpose UX than a representation-led process.
+**UX is accountable for understanding and solving a human-experience problem, not for faithfully converting Product requirements into flows, explanatory panels or wireframes.** UX must critically question **all** relevant input meaning from the actor's perspective, discover the questions that matter, and use judgment and evidence to decide what the actor should encounter, understand, choose, do and experience next.
 
-The objective is **better human experiences**, not an increased count of diagrams, wireframes, research files or activities. One bounded screen experience may need a flow and structural Lo-Fi; a voice or nonvisual experience will need different inspectable proofs. Meaning and quality outweigh output formatting.
+**Empathy is inquiry, not pretend certainty.** Imagine credible user situations to reveal questions, then distinguish Product-established facts, observed user evidence, expert inference, design hypothesis and unknowns. A designer's imagined mental model is not user research. Neither a comprehensive question list nor a completed wireframe demonstrates empathy or quality.
 
-## How to use — explicit experimental selection only
+## Direct use — explicitly bounded experiment
 
-1. Confirm the Human has authorized using **this experimental framework** for the particular bounded assignment. Do not interpret presence of this folder as default UX policy or permission for target-project writes.
-2. Read [AGENTS.md](AGENTS.md) for bounded execution and [definition.md](definition.md) for the full Input / Process / Output / Outcome model.
-3. Read the **actual target-project Product authority and applicable Design Standards** at effective revisions, plus the required actor/technical/security/privacy information. Do not import a past case as a reusable Harscode rule.
-4. Derive and challenge the actor experience concept without preserving existing UX flow, IA or screens by inertia. Existing UX is evidence/context when relevant, and accepted project UX remains authoritative until legitimately changed.
-5. Produce **decision-appropriate inspectable material**; for *new/material screen UX* receiving UI decisions, default to **material flow/branches and representative structural surface proofs** (or accepted equivalents/justified scoped exceptions), alongside relevant states, information priority, accessibility, source/approval and evidence limits.
-6. Have a Human inspect the real Lo-Fi or prototype **as an exploratory evaluation**, record criticism and revise where material. Human liking the result is not representative-user usability proof or an effective Product/UX approval unless explicitly and durably decided within the owning project.
+1. **Load [AGENTS.md](AGENTS.md) and [definition.md](definition.md).** Inspect real target-project owning Product, relevant Design Standards, existing effective UX and constraints at exact revisions. Do not derive project truth from Harscode's generic examples.
+2. **Investigate the actor's relevant experience envelope**, not just an already-assumed form: how the actor might arrive, understand the purpose, decide whether to participate, begin, be interrupted, return, commit, inspect the real result and continue **where this could change the UX decision**. These are investigative lenses, **not required pages, journeys or scope expansion**.
+3. **Challenge the whole Input.** Separate Product meaning still missing, UX/user evidence missing, verified constraints and legitimate local UX choices. Surface consequential upstream gaps with a clear question, impact and recommended direction; don't ask Product to choose wireframe layout.
+4. **Conceptualize and scrutinize.** Form an actor-facing explanation of accepted Product meaning; consider materially different experience approaches where useful; expose user effort, confusion, false implications, agency and recovery risk. Sketching and research may interleave.
+5. **Make the experience inspectable.** For new/material screen UX feeding UI, inspectable interaction flow/branches and representative structural Lo-Fi remain required by default, with accepted equivalents/evidence-backed scoped exceptions. Cover relevant IA, navigation, states and constraints. Avoid giving every Product rule a separate explanatory panel.
+6. **Critique and refine before presenting acceptance claims.** Inspect the actual Lo-Fi on relevant devices/conditions, challenge naturalness, cognitive burden, clarity and truthful state handling; revise material failures. Human qualitative feedback is important evidence but not representative-user usability proof.
+7. **Deliver concise grounded findings**: relevant actor question, proposed experience, decisions, inspectable artifacts, true gaps routed to owners, actual evidence, uncertainty, source standing and what the Human is asked to review. No mandatory seven-stage workflow or multi-file packet.
 
-## Responsibility and authority
+## Boundary and compatibility
 
-- **UX:** actor-facing conceptual/interaction decisions, information priority, navigation, feedback and recovery, UX research/quality reasoning and scoped UX handoff.
-- **Product:** consequential domain meaning, actors/rights, eligibility, rules, obligations, success/negative truth and feature capabilities.
-- **Project Design Standards:** reusable project-wide design patterns and principles.
-- **Visual UI:** final expressive visual/copy/component decisions within accepted Product/UX/Standards.
-- **Engineering:** technical mechanisms, implementation feasibility, APIs and observed runtime evidence.
-- **Human owner:** material accepted UX/other legitimate decisions, exact-source authority and approvals.
+**Product** owns domain outcomes, value/benefit claims, real capabilities, required data and their reasons, actor rights, material success/failure semantics and binding constraints. **UX** explores actor needs, comprehension, experience concepts, interactions, navigation, information priority, feedback/recovery and applicable research/evaluation. **UI** owns expressive visual/content details under actual Design Standards. **Engineering and security/privacy owners** own technical and safety truths within their authority. **Human** remains the legitimate material approval owner.
 
-**Compatibility warning:** this experimental `O2` is **Experience Concept** and `O6` is **Decision & Handoff**, whereas existing accepted UX/UI consumer guidance calls old `O2` **Flow** and old `O6` **Lo-Fi**. Identical IDs do **not** imply interchangeable contracts. See [definition](definition.md#consumer-sufficiency-and-legacy-compatibility). No old UI consumer may claim accepted new UX via numerical equivalence.
+If a UX question exposes undefined material Product truth, **return it to Product** rather than silently designing a policy. If a question concerns actor understanding or layout timing within accepted Product meaning, **UX must investigate/decide it**, rather than escalating to Product as a way to avoid design judgment. See the [decision ownership test](definition.md#product-sufficiency-and-question-routing).
 
-## Research status and exit
+**Legacy ID collision:** experimental `O2 = Experience Concept` / `O6 = Decisions & Handoff`, while accepted UX/UI sources refer to old `O2 = Flow` / `O6 = Lo-Fi`. Never map them by number. Use experimental `O3/C2 + O4` for old Flow and `O3/C3 + O4` for old structural Lo-Fi; effective UI contract changes need separate authorized review.
 
-**STARTED / NOT PROVEN.** The framework must be exercised on a real bounded UX task through inspectable Lo-Fi, then subjected to Human qualitative critique and, when proportionate, actor/consumer evidence. A more attractive Lo-Fi alone will not prove generality or causality. Further research acceptance or replacement of `design/ux/` requires a separate, exact-revision Human decision and consumer compatibility review.
+## What this framework must demonstrate
 
-**Do not:** auto-load this for unrelated work, write to target projects without scoped authorization, fabricate user testing, treat prototype as production, or silently amend accepted Product/UX/UI guidance.
+A fresh executor should be able to uncover non-obvious relevant actor questions, distinguish actual missing Product commitments from UX uncertainty, propose a natural and truthful experience, expose enough flow/Lo-Fi for Human review and UI consumption, **find and fix weak experiential choices** and keep quality claims proportional to evidence.
+
+The earlier experiment demonstrated that source-correct, complete, rendered Lo-Fi can still be criticized as unnatural. **This is a research warning, not proven causal attribution to one step.** Bounded real-case evaluation and feedback remain necessary before claiming improved UX.
+
+**Not authorized:** target-project writes without scoped permission; creating a new Product promise; inventing interviews/user evidence; protected implementation, deployment, Space dispatch or operational promotion.
