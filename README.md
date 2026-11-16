@@ -14,14 +14,16 @@
 
 | Domain | Responsibility | Readiness |
 | --- | --- | --- |
-| [Product](product/README.md) | Experiment-led Product Definition I/P/O/O, Product authority/approval and subject-independent information handoff; three optional templates accepted as research authoring aids (not target-project authority) | RESEARCH REDESIGN — NOT OPERATIONAL MAIN |
-| Design — [UX direct entry](design/ux/README.md) · [UI direct entry](design/ui/README.md) · [Project Standards direct entry](design/project-standard/README.md) | UX/UI and independent project-neutral standards research guidance | UX + UI SETTLED_FOR_RESEARCH; PROJECT STANDARDS EXACT GUIDANCE ACCEPTED_FOR_RESEARCH — NOT OPERATIONAL MAIN; [research standing](experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) |
+| [Product](product/README.md) | **Single selected unversioned research Product Definition**: legitimate value/commitments/authority/uncertainty with source-based handoff | NEW EXACT-REVISION HUMAN REVIEW PENDING — NOT OPERATIONAL MAIN |
+| Design — [UX direct entry](design/ux/README.md) · [UI direct entry](design/ui/README.md) · [Project Standards direct entry](design/project-standard/README.md) | **One selected UX and UI research contract each**; archived A2/experimental UX remain historical; Project Standards retain separate research authority | REVISED UX/UI EXACT-REVISION REVIEW PENDING; PROJECT STANDARDS unchanged — NOT OPERATIONAL MAIN; [consolidation record](experiments/product-v2/single-active-product-ux-ui-consolidation-2026-11-16.md) |
 | [Engineering](engineering/README.md) | Solution, implementation, Engineering Spaces and Specialist-local knowledge | WORKING — RESEARCH ONLY |
 | [Collaboration](collaboration/README.md) | Human–AI advisory collaboration and authority-aware decisions | WORKING — RESEARCH ONLY |
 | [Harness](harness/README.md) | Runtime-specific execution/permission translation | WORKING — RESEARCH ONLY |
 | [Deprecated](deprecated/README.md) | Frozen legacy references for selective migration | REFERENCE ONLY |
 
 **Routing:** The five foundation domains remain research guidance, not an approved operational replacement. The accepted standalone local-environment Agent is a scoped Human-direct local-use exception **on this branch only**; its acceptance does not authorize other Engineering Spaces or promote the foundation. Historical/archived material is reference only; current operational baseline remains `main`. For **current A1–A6 research direction** (A5 horizontal **closed for conceptual research**, Go vertical depth **deferred**, A6 Part 1 **conceptually accepted**, Part 2 routing reconciled, and **full foundation closure pending**), consult the [single owning research tracker](experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) and its [A5 scope/vertical closure criteria](experiments/org-01-reverse-lifecycle/a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md); this root README is navigation, **not a parallel tracker**.
+
+**Current research routing:** Use the unversioned [Product](product/README.md), [UX](design/ux/README.md) and [UI](design/ui/README.md) entrypoints. Older Product/UX source snapshots and immutable approval provenance are in [research history](experiments/history/README.md); `design/ux-v1-1/` is a redirect only. This does not change current `main` or Kencleng authority.
 
 ## Project-agnostic current-tree verification
 
