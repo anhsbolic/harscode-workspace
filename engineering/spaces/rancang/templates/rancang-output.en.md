@@ -24,7 +24,7 @@
 | Actual Human instruction, authorized scope and output destination | `<reference; actions/tool writes separately authorized>` |
 | Legitimate Engineering Solution decision owner / delegation | `<...>` |
 | Intended implementers/consumers and decisions they must make | `<functional owners, scope, actual input contract>` |
-| Effective Product Contract and exact approval | `<source/revision/scope or explicitly NON-BINDING hypothesis>` |
+| Effective accepted original Product meaning, source(s) and exact approval | `<source/revision/scope or explicitly NON-BINDING hypothesis>` |
 | Effective current UX O3/C2 Flow, O3/C3 Lo-Fi via O4 proofs, applicable C4–C6 and O6/C7 exact standing | `<real project accepted source or owner-backed scoped exception>` |
 | Engineering Project Standards and actual stack | `<effective project sources, material owner gap; no mandatory formal catalog>` |
 | Security/privacy, material NFRs and current technical baseline | `<effective project source/revision and observed code>` |
@@ -38,7 +38,7 @@
 
 | Input ID | Actual source / revision / standing or N/A evidence | Material affected O-ID/consumer | Missing owner decision |
 | --- | --- | --- | --- |
-| **I01 Product Contract** | `<...>` | `<...>` | `<...>` |
+| **I01 Accepted Product Meaning** | `<...>` | `<...>` | `<...>` |
 | **I02 UX Flow Diagram** | `<accepted current UX O3/C2 + O4 proof/equivalent/exception>` | `<...>` | `<...>` |
 | **I03 Lo-Fi Wireframes** | `<accepted current UX O3/C3 + O4 proof/equivalent/exception>` | `<...>` | `<...>` |
 | **I04 IA & Navigation** | `<...>` | `<...>` | `<...>` |
