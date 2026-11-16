@@ -1,6 +1,6 @@
 # UX Authority & Consumer Handoff
 
-> **Standing:** A2 DRAFT / RESEARCH-ONLY; not target-project UX authority, Space authorization, or approved Project Design Standard.
+> **Standing:** SINGLE-ACTIVE RESEARCH REVISION CANDIDATE / EXACT HUMAN CONTENT REVIEW PENDING; not target-project UX authority, Space authorization, or approved Project Design Standard.
 > **Owner:** UX Interaction & Experience responsibility. Actual accepted project decisions belong to target project's legitimate owner at exact effective revisions.
 > **Entry:** [UX README](README.md) · [UX Definition](definition.md).
 
@@ -16,7 +16,7 @@ Human approval should identify the actual interaction/IA/navigation/state questi
 
 ## 2. What UX owns and cannot approve
 
-UX owns bounded accepted interaction flows, IA, navigation/route decisions when applicable, user-facing interaction-state requirements and UX evidence. It cannot change accepted Product actor/domain rules, required disclosures, irreversible effects, legal/security/privacy claims, or Product success/failure semantics.
+UX owns actor inquiry and context-sensitive experience problem, concept, bounded interaction flows, IA, navigation/routes/page-vs-state when applicable, user-facing recovery/accessibility meaning and evidence. It cannot change accepted Product actor/domain rules, required disclosures, irreversible effects, legal/security/privacy claims, or Product success/failure semantics.
 
 UX authority is separate from final UI visual expression, reusable Project Design Standard authority and Engineering architecture. A feature UX pattern **may be proposed** for reuse; it is not an approved project-wide standard unless the legitimate project-standard owner accepts that change at its exact revision.
 
@@ -37,7 +37,7 @@ Consumers are **functional responsibilities**, never mandatory named Spaces or p
 
 ## 4. Minimum consumable information
 
-**New/material receiving-UI baseline:** Before claiming UX ready for a material UI decision, provide **O2 UX Flow Diagram and O6 representative Lo-Fi structural screens by default**, with O1/O3/O4/O7 information and web O5 where material. Accepted exact-revision equivalents are sufficient without remaking files. An exception must identify affected output, evidence of non-applicability/unaffected UX, legitimate UX owner/delegation and consumer impact. Missing renderer is a verification limitation, **not an automatic output waiver**. A missing material UX output is a **consumer-discovered gap** and cannot silently become an accepted Hi-Fi assumption.
+**New/material receiving-UI baseline:** [current UX](definition.md) requires **C2 flow/branches and C3 representative structural Lo-Fi by default through O3 interaction meaning plus O4 inspectable proof**, with applicable **C4 navigation/page-vs-state, C5 states/recovery, C6 accessibility and C7 original sources/approval**. O2 is Experience Concept and O6 is Scoped Handoff; **UX O7 does not exist**. Existing accepted equivalents may suffice without new artifacts. An exception must identify actual missing consumer meaning, evidence, scope, UX owner and dependent UI/Engineering decision; a missing renderer is an evidence limitation, not an automatic waiver.
 
 
 
@@ -49,7 +49,7 @@ For an actual receiving decision, the handoff must make discoverable:
 - **Evidence and limits:** walkthrough vs prototype/simulation vs independent user/accessibility check vs actual implemented result.
 - **Delegated freedom and material gaps:** what receiver can decide; missing information, affected blocked edge and authorized owner.
 
-A short durable pointer to original project sources can be sufficient. **No nine-file UX packet or stage-based dispatch.**
+A short durable pointer to original project sources can be sufficient. **No six-file or legacy nine-file UX packet or stage-based dispatch.**
 
 ## 5. Compatibility, contradictions, revision
 
@@ -57,7 +57,7 @@ A short durable pointer to original project sources can be sufficient. **No nine
 
 Product gaps go to legitimate Product owner; UX route/IA conflicts to UX owner; reusable standards to project-standard owner; technical mechanism/feasibility to Engineering owner. A new finding never automatically amends accepted authority; independent authorized work can continue when its decision is not blocked.
 
-Material UX semantic changes require scoped new effective approval and affected consumer check. Technical infeasibility can trigger revision, but does not transfer web navigation authority to backend API design. Preserve previous accepted bytes in Git; no competing history index in active UX guidance.
+Material UX semantic changes require scoped new effective approval and affected consumer check. Technical infeasibility can trigger revision, but does not transfer web navigation authority to backend API design. Old A2 and experimental revisions remain immutable Git/history evidence, **not competing current sources**. Changed content/approval requires legitimate exact-revision review.
 
 A clickable prototype is limited UX design evidence, not proof of real Product mutation, user comprehension, accessibility certification or Engineering verification. UX acceptance doesn't authorize UI implementation, protected writes, Space invocation, production or release.
 

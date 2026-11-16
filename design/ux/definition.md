@@ -1,130 +1,161 @@
-# UX Definition — Interaction & Experience Design
+# UX Definition — Actor-Centered Experience Design
 
-> **Standing:** A2 PROPOSED RESEARCH DESIGN / REVIEW PENDING, 2026-11-04. The folder architecture is approved; the UX semantic contract below still requires Anhar's review. Not operational policy, a formed Space, or project UX authority.
-> **Basis:** [A2 evidence-based audit](../../experiments/org-01-reverse-lifecycle/a2-ux-lofi-deep-audit-and-target-design.md) and its challengeable [UX Lo-Fi working experiment](../../experiments/org-01-reverse-lifecycle/ux-design-lofi.md).
+> **Standing:** **SELECTED SINGLE-ACTIVE UX RESEARCH REVISION CANDIDATE / EXACT HUMAN CONTENT REVIEW PENDING (2026-11-16)**. The prior A2 was approved **only at its immutable exact revision** (historical A2 approval `8d53c1a`). This working replacement derives from actor-centered experimental source blob `70f7c76f42f894978d66af688db633cdfb8f144c`; archived sources are in [research history](../../experiments/history/README.md). Not operational Harscode `main`, target-project UX authority, a formed Space or execution permission.
+> **Research lineage:** [actor-centered UX target study](../../experiments/org-01-reverse-lifecycle/a2-ux-zero-based-target-design-v1.md), immutable [pre-consolidation UX research](../../experiments/history/ux-actor-centered-experiment/definition.md), and [single-active consolidation record](../../experiments/product-v2/single-active-product-ux-ui-consolidation-2026-11-16.md). Bounded real/synthetic case facts are not reusable Harscode policy.
+> **Owner:** Reusable Harscode research responsibility; accepted project UX, Product truth, applicable Design Standards and implementation evidence remain owned by their legitimate target-project authorities.
 
-## 1. Purpose
+## Purpose — actor-centered experience design
 
-Define **how an actor encounters, understands, navigates, interacts and recovers** through a bounded experience without changing legitimate Product meaning.
+**UX investigates and solves problems of human experience with a system.** It must learn what relevant people are trying to accomplish; what they know, need, expect, misunderstand or fear; how they might discover the experience, decide to engage, act, be interrupted, recover and continue; and which interaction/information structure helps them succeed with proportionate effort while preserving legitimate Product meaning.
 
-**Product User Journey** = Product-owned meaningful domain progression/actor rights/outcomes. **UX Journey** = actor experience of information, decisions and actions. **UX Flow** = concrete user interaction/navigation transitions. These may relate but are **not interchangeable**. UX owns flow, IA, navigation and interaction meaning; not Product policy, visual styling, design standard promotion, backend API paths or implementation mechanisms.
+UX is not merely an interface-spec producer, a rule explainer or a copy of Product's domain journey. Its professional responsibility includes **proactively questioning every relevant input from the actor's perspective**, discovering high-value missing questions, generating and challenging experience concepts, deciding within UX authority, identifying material Product insufficiency and checking the actual proposed experience rather than only output completeness.
 
-**Lo-Fi is a representation/fidelity method, not a mandatory phase or Space.**
+**Empathy is evidence-seeking judgment:** imagine plausible lived situations to find relevant questions, but label imagined behavior as **hypothesis**, not a verified user need. Actors can differ by familiarity, intent, context, ability, frequency and prior interactions. Human perspective must be investigated with context/evidence proportional to the consequence—not asserted because a designer has personally imagined it.
 
-## 2. INPUT — 11 information needs
+**Authority boundary:** Product owns actual benefits/value propositions, domain outcomes, rights/eligibility, required data and why they are required, consequential conditions, success/negative/unknown semantics and other Product promises. UX owns actor discovery and interaction reasoning, user-facing conceptual explanations, task progression, IA, navigation when applicable, information priority, feedback/agency/recovery, design evaluation and scoped UX evidence. Project Standards own reusable design conventions; UI owns final expressive interface/copy; Engineering/security/privacy owners own their respective technical and protective decisions. Harscode research does not revise target-project truth.
 
-| # | Input | Necessity and authority |
+## Cross-input actor inquiry — the central responsibility
+
+**Apply this to I1–I5 together, not as a supplement to I2.** In each bounded assignment, UX should search for **questions that could materially change the experience decision**, including questions not explicitly anticipated by Product. An indicative, non-exhaustive set of lenses:
+
+| Inquiry lens | What UX must be capable of questioning | Boundary |
 | --- | --- | --- |
-| 1 | Product Intent & Selected Outcome | Bounded value and scope, accepted or explicitly hypothesized for exploration |
-| 2 | Actor Definition & Goals | Actor context, needs and actual goals; evidence/hypothesis standing explicit |
-| 3 | Product User Journey | Product-owned meaningful progression and negative/uncertain consequences relevant to UX |
-| 4 | Product Requirements & Business Rules | Effective binding rules when material to accepted interaction; provisional only in exploration |
-| 5 | Product Acceptance Criteria | Required for material interaction choices and truthful success; **not** executed test evidence |
-| 6 | Content & Information Requirements | Product-owned consequential information, disclosure/provenance/verification duties; UX owns priority, placement and access |
-| 7 | Accessibility & Device Requirements | Applicable device/input modalities, accessibility obligations, project standards |
-| 8 | Existing IA & Navigation Patterns | Inspect effective patterns if available/relevant; existing UI is evidence, not automatic authority |
-| 9 | Known Technical Constraints | Actual material, verified facts; no prerequisite Engineering Space invocation |
-| 10 | User Research & Usability Findings | Consider available relevant evidence; absence does not justify usability claims |
-| 11 | UX Patterns & Design References | Optional inspiration/support; authority only if project legitimately accepts them |
+| **Awareness / relevance** | Does the relevant person understand the service, its value and when the capability is useful? Where might they learn about it? | Product owns truthful benefit claims; UX explores presentation and journey |
+| **Intent / motivation** | What triggers a real need? Is “wants to do the task” a proven actor goal or just the Product outcome restated? | Do not invent a universal actor motivation |
+| **Knowledge / conceptual model** | What might the person already know or misinterpret about objects, roles, consequences and status? | Product defines domain meaning; UX designs comprehension |
+| **Entry / readiness** | What happens before the main action? What if the actor is new, already authenticated, returning or starts from a different touchpoint? | Understanding entry context does not automatically authorize new pages/features |
+| **Effort / data / timing** | Which information is actually required, why and by when? When should identification, disclosure and effort occur to minimize unnecessary burden? | Product/privacy/security own mandatory data, purpose and authorization; UX owns timing/presentation within constraints |
+| **Choice / commitment** | What should the actor recognize before consequential action, and when is extra review justified versus needless friction? | Do not waive binding Product disclosures or create new consent rules |
+| **State / interruption / return** | What if the actor stops, comes back, changes context, sees an error, gets unknown results or has multiple relevant objects? | Do not promise drafts, persistence, retry, permissions or other unapproved capabilities |
+| **After-action / continuity** | Can they understand what truly happened, inspect it and know what is genuinely possible next? | Do not imply follow-on Product journeys are already available |
+| **Other actors / access** | Who else is affected, with conflicting goals, devices, assistive needs or exposure to consequential information? | Do not invent roles or policies |
+| **Trust / comfort / naturalness** | Does the experience feel like the actor's task rather than an internal system explanation? Is information visible when needed, with truthful but proportionate detail? | Do not optimize persuasion at the expense of informed choice |
 
-**11 inputs are information categories, not eleven files or eleven upstream producers.** Read effective project-owned sources directly; Human evidence, user research, Product and technical context may contribute concurrently. Bounded UX exploration may use clearly labeled Product hypotheses; material accepted UX decisions relying on Product obligations require accepted Product authority. Missing truth blocks only affected decisions.
+**These are discovery prompts, not a ten-item checklist, universal actor funnel, new Product journey or instruction to create all touchpoints.** The real question set should expand when the evidence raises relevant concerns, and contract when the problem is narrow. Use the simplest way to learn that can materially improve a decision: existing observations, reputable research, expert critique, contextual walkthrough, authorized actor inquiry or a safe reversible experiment. Do not fabricate participation or data.
 
-Not universal prerequisites: Hi-Fi designs, finalized visual components, brand tokens, API/schema, backend solution completion or a preexisting prototype.
+**Required intellectual discipline:** for a consequential design choice, distinguish (a) **KNOWN — effective authorized Product/project fact**, (b) **OBSERVED — actual research/actor evidence with scope**, (c) **INFERRED — reasoned interpretation**, (d) **HYPOTHESIS — plausible, untested actor/interaction assumption**, and (e) **UNKNOWN — material unanswered question**. These are descriptions of evidence, **not mandatory workflow states or a new tracker**. Prioritization depends on whether a wrong assumption would change the concept, create harm, block a receiving decision or can be cheaply reversed.
 
-## 3. PROCESS — Nine conditional iterative activities
+## INPUT — five sources-of-meaning groups, all subject to inquiry
 
-1. **Actor Scenario Analysis** — goals, context, expectations, effort and possible misleading inferences.
-2. **UX Flow Design** — actions, decision points, alternatives, exit/re-entry and recovery paths.
-3. **Information Architecture (IA)** — information hierarchy, grouping, priority, disclosure timing and discoverability.
-4. **Webpage Map & Route Design** — pages, paths, entries/exits, navigation, page-vs-state distinctions **when web routing is material**; other surfaces use appropriate navigation structures.
-5. **Lo-Fi Wireframing** — produce or verify representative structural screen/surface proofs **by default for new/material screen UX**; accepted equivalents or evidenced exceptions are documented for the affected scope.
-6. **Interaction & State Design** — focus/keyboard, forms, feedback, validation, loading, empty, denied, failed, partial, uncertain and recovery behaviors where applicable.
-7. **Lo-Fi Prototyping** — bounded clickable/simulated proof **when useful**, with explicit simulated-data limits.
-8. **UX Evaluation & Refinement** — evidence-aware walkthroughs, accessibility checks, user research when available, risk/trade-off review and iteration.
-9. **Human UX Review & Acceptance** — legitimate owner decision for material UX meaning, accepted scope, exact artifact and uncertainty.
+Input means information actually needed **or needing discovery** for a bounded UX decision, not a file count or mandatory upstream agent chain.
 
-Order is **not linear**. Existing effective UX may already be sufficient. Do not run nine gates to produce a label of completion.
+| ID | Input group | UX actor-centered challenge | Owning source / evidence |
+| --- | --- | --- | --- |
+| **I1 Product meaning and outcomes** | Actual Product value, target actors/outcomes, eligibility/rights, capabilities, rules, data requirements, disclosures, preconditions, success and unknown/failure semantics | Are value and consequences meaningful/understandable to the actor? Which *binding Product commitments* are undefined and block a responsible experience? | Product authority; UX may recommend Product change but not decide its semantics |
+| **I2 People and situated context** | Relevant actors, goals, knowledge, motivations, environment, abilities, frequency, emotional/cognitive conditions and affected parties | What does this person actually want/know/expect? Which assumptions come from Product shorthand or the designer rather than evidence? | Observed research when available; otherwise explicit UX hypotheses |
+| **I3 Surrounding experience and prior choices** | Before-entry touchpoints, existing accepted UX, related journeys, interruptions, re-entry, prior behavior, critiques and reusable interaction conventions | Where does the actor come from and go next? Is the old flow natural or merely familiar to the team? | Project-owned accepted UX, source evidence and available usage findings; no automatic reuse |
+| **I4 Applicable constraints and design standards** | Privacy, security, accessibility, platform/device, legal requirements, approved project patterns, content obligations and verified technical facts | How do these constraints actually affect the actor? Can equivalent UX choices preserve protections with less confusion/effort? | Their legitimate project/security/technical owners; UX doesn't author binding constraints |
+| **I5 Evidence, uncertainty and decisions** | Findings, contradictions, untested assumptions, unresolved actor questions, prior approvals and confidence limits | Which unknown would change actor understanding or safety? What can UX learn cheaply, and what must return to Product/other owner? | Actual evidence, investigation and explicit uncertainty; not fabricated user insight |
 
-## 4. OUTPUT — Nine logical UX meanings
+**Sufficiency is decision-specific.** A complete list of files, Product requirements or all five Input headings never proves sufficient actor understanding. Conversely, unanswered low-impact questions do not block all UX work. Determine what is known, what is uncertain, what can be decided within delegated UX authority, what is safely exploratory and which binding decision cannot proceed.
 
-### New/material UX work — required output baseline
+## Product sufficiency and question routing
 
-**Applicability.** A new bounded experience or a material change to interaction progression, screen/surface structure, information priority, navigation or consequential states must establish the affected UX baseline before claiming consumer-ready UX. For a change to an existing experience, cover the affected scope, not the whole product. This is **required information and representation coverage**, not a mandatory upstream UX Space, sequential phase or separate file count.
+**A material missing Product decision is a Product input gap even when the Product Contract is already approved.** UX must surface it; the previous approval does not authorize UX to invent the answer. The distinction depends on **ownership of the answer**, not who first noticed the question.
 
-- **O1 Actor Scenario & UX Journey, O3 IA, O4 Navigation Structure and O7 Interaction & UI State Requirements:** required decision-relevant meaning for the affected actor, surfaces and negative/unknown paths.
-- **O2 UX Flow Diagram — REQUIRED BY DEFAULT** for new/material UX: an inspectable representation of material transitions, decisions, alternatives, exits and recovery. **Mermaid in Markdown is the default newly authored form**. A sufficient exact-revision accepted equivalent can meet O2 without duplication.
-- **O6 Lo-Fi Wireframes — REQUIRED BY DEFAULT** for new/material screen/surface UX: inspectable representative structural screens, content priority, actions and affected states. **HTML/CSS is the default newly authored structural proof** when authorized tooling permits it. An already accepted equivalent may satisfy O6. A genuinely non-screen experience requires an evidence-based non-applicability record, not imaginary screens.
-- **O5 Webpage Map & Route Specification — required whenever material web routing is involved.** O8 clickable prototype remains conditional on a specific interaction question. O9 records actual scoped UX review/decisions where acceptance is material.
-
-**Exception rule (not an agent preference).** Either point to an *accepted and still-applicable exact-revision equivalent* that already supplies the output, or document which output and affected decision are genuinely inapplicable/unchanged, concrete source evidence, legitimate UX owner or delegated authority, and consumer impact. For a new/material screen experience, “optional”, “not needed”, and “no time” without evidence are not valid reasons to omit O2 or O6. A missing materially required UX output is a **consumer-discovered gap**; do not mark the affected UI decision accepted.
-
-**Tooling limitation is not automatic exemption.** If Mermaid preview or an HTML browser is unavailable, provide the clearest permitted inspectable source/equivalent, record **NOT RENDERED / NOT CHECKED**, and retain the relevant visual-review evidence gap. A generated file is not evidence of rendered usability, accessibility, real API behavior or Product truth. UX owns the missing UX decision; Product owns missing Product meaning; the actual consumer can continue independent authorized exploratory work but not finalize a decision that depends on the gap.
-
-**Format vs output:** O2/O6 are default *logical deliverable obligations* for material experience work, not mandatory newly created files in every UX task. One durable project-owned artifact may satisfy several outputs; no fixed invocation chain or nine-artifact packet is created.
-
-
-| Output | What must be understandable when applicable |
-| --- | --- |
-| **O1 Actor Scenario & UX Journey** | Actor situation, UX progression, encountered information, meaningful decision/recovery; Product consequences traced to Product source |
-| **O2 UX Flow Diagram** | **Required by default for new/material UX:** real flow branches, entry/exit, error/unknown and recovery; Mermaid default for new authoring, exact accepted equivalent or evidence-backed exception allowed |
-| **O3 Information Architecture** | Grouping, content priority, disclosure/access, relevant provenance and relationship among required information |
-| **O4 Navigation Structure** | Relevant surfaces, transitions, destinations and return/recovery relationships |
-| **O5 Webpage Map & Route Specification** | Webpage paths, purpose, entry/exit, navigation and page-vs-UI-state meaning, **if routing applies**; not backend API routes |
-| **O6 Lo-Fi Wireframes** | **Required by default for new/material screen UX:** representative structural surface/screens, hierarchy, actions and affected states; existing accepted equivalent or justified non-applicability allowed |
-| **O7 Interaction & UI State Requirements** | User-facing interaction, validation, focus, loading/error/denied/unknown/recovery, accessibility and truthful action result |
-| **O8 Lo-Fi Interactive Prototype** | Bounded, labeled simulation of interaction/navigation; conditional evidence, not server/real-user proof |
-| **O9 UX Review & Decision Record** | Actual Human decisions, accepted scope/exclusions, exact reviewed revision(s), evidence and material unresolved matters |
-
-Logical outputs **may be combined** in existing project-owned artifacts. They are not nine required files. O5 is an explicit Design information contract for **applicable web routing decisions**, not a new mandatory UI page list. When technical constraints materially challenge accepted webpage paths, reconcile with UX owner; Engineering owns backend API paths and implementation mechanics, not silent UX routing changes.
-
-**Truthfulness:** Product determines whether an action can succeed or fail and what is known; UX determines how to show that meaning. A timeout with unknown mutation outcome cannot be labeled success or definitive failure without authoritative evidence. User-asserted, pending, verified and reported information should not visually collapse when distinct in accepted Product meaning.
-
-## 5. OUTCOME — Six desired quality properties
-
-| Quality | Target |
-| --- | --- |
-| **Goal-Oriented** | Supports real bounded actor goals, not internal workflow ceremony |
-| **Intuitive** | Understandable actions, navigation, affordances and recovery |
-| **Clear IA** | Information discoverable and appropriately prioritized at decision points |
-| **Efficient** | Reduce non-value friction without concealing material consequences |
-| **Trustworthy** | No misleading legitimacy, certainty, outcome, provenance or state claims |
-| **Accessible** | Appropriate keyboard/focus, assistive interaction and responsive information priority |
-
-Desired qualities are **not** user-tested evidence, accessibility certification, rendered implementation or actual delivered actor outcome.
-
-## 6. Functional authority and consumer boundaries
-
-**Product Definition** owns actor/domain goals, meaningful Product User Journey, binding consequential information, roles, business rules and acceptance. **UX** owns interaction choices, IA, navigation/web routes, state treatment and UX evidence. **Visual Interface & Content Design** owns final screen expression/copy/components; **Project Design Standards** owns reusable cross-outcome principles/patterns/brand/visual/asset standards; **Engineering Solution Design** owns technical feasibility, API/auth/state architecture; **Engineering Development** owns permitted implementation and observed runtime evidence.
-
-These are **responsibilities, not named lifecycle phases, Spaces, teams or individuals**. Consumers may use accepted UX information without a named upstream UX producer. Material UX feedback can return to Product/UX/Standards/Engineering legitimate decision owners, never automatically amend their sources.
-
-## 7. Artifact Representation & Tooling Constraints — UX Lo-Fi
-
-> **Research format baseline:** Anhar approved the following format-selection direction on 2026-11-04. This scoped addition is for research review; it does not reapprove earlier UX artifact bytes or alter target-project Design authority.
-
-**Choose the least complex representation that meets the decision AND the new/material required output baseline in §4.** For affected new/material UX, O2 and O6 are **required by default**; equivalent accepted outputs and evidence-backed exceptions do not require new files. Other visual/prototype representations remain conditional and are not separate authorities.
-
-| Format | Default use / decision it makes clearer | Selection boundary |
+| What the question actually asks | Legitimate response | Examples of missing meaning |
 | --- | --- | --- |
-| **Markdown (`.md`)** | Default durable UX artifact: decisions, scenarios, flow/state tables, IA/navigation/route specifications, source links and handoff | Use text/tables alone when they communicate the relevant meaning sufficiently |
-| **Mermaid fenced in Markdown** | Default for a newly authored **O2 required-baseline UX Flow**; also useful for journeys/branches, IA/navigation and webpage routes | For new/material UX provide O2 flow or an accepted equivalent / justified exception. Do not infer Product authority from diagrams |
-| **HTML + CSS (`.html`)** | Default newly authored **O6 required-baseline Lo-Fi** representation for material screen/surface UX; hierarchy, disclosure and state coverage | Accepted existing equivalent or evidence-based non-applicability may suffice. Keep non-production; do not invent Hi-Fi styling or backend behavior |
-| **Minimal JavaScript with HTML** | Conditional clickable simulation to investigate a specific interaction, branch or recovery question | Only if interaction is needed, tools and **authorized** preview/runtime are available, and simulated data/actions are explicit. Do not call real APIs, change project state, or trigger side effects by default |
+| **What value/capability/promise exists?** Who is allowed? What data is required and why? What actual conditions/effects apply? | **Return to Product** (and applicable privacy/legal/security owner) with scope, actor impact, source check and recommended answer or material alternatives | Binding value proposition, authorized action, mandatory data, persistence/lifecycle semantics |
+| **What do actual people understand, want, fear or do?** Which concept better fits? | **UX investigates** proportionally, labels hypotheses, requests legitimate research authorization if needed | Mental model, discoverability, preference, confusion, recovery comprehension |
+| **How to explain, sequence, navigate and present authorized Product meaning?** | **UX decides** in its delegation and seeks Human scoped UX approval when material | Whether to use contextual disclosure vs separate review; structure and interaction timing |
+| **Can an interaction work with actual implementation/security constraints?** | **Verify with Engineering / relevant control owner**; do not fabricate mechanisms | Feasibility, identity/session constraint, API state consistency |
+| **How should visual system, final wording, icons and components express accepted UX?** | **UI within delegated Design Standards**, return reusable cross-feature changes to Standards owner | Presentation, copy treatment, approved component/pattern expression |
 
-An illustration, screenshot, SVG/PNG or external Figma artifact may be cited as **supplemental evidence when actually available and permitted**; none is required by this baseline. Avoid adding image-generation/Figma/tool dependencies merely to fulfill a file-format checkbox. If the preferred representation cannot be created or verified with available authorized tools, use the clearest sufficient Markdown fallback and record the limitation; **never fabricate a render, diagram check or usability result**.
+**Do not turn every actor question into a Product blocker.** A Product rule may be adequate while the right UX interaction remains uncertain; UX owns that uncertainty. Conversely, it is not safe for UX to fill in a Product value proposition or data obligation because the interface needs a motivating message.
 
-**Format decision rule:** for **new/material experience work**, establish O2 (normally Mermaid) and O6 (normally HTML/CSS structural Lo-Fi) or inspect accepted equivalents/evidence-based exceptions; also cover applicable O1/O3/O4/O7 and conditional web O5. For a bounded task where accepted UX already suffices, Markdown source pointers/tables may be enough without creating a new diagram or wireframe. Minimal JavaScript stays optional and authorized. Multiple logical outputs may share one file; no universal interactive prototype, nine-file packet or named Space invocation.
+**When escalating a genuine material Product gap**, communicate compactly: (1) source/scope actually checked; (2) unanswered **binding** decision and affected actor moment; (3) practical UX consequences of leaving it unresolved; (4) one recommended answer (or materially distinct alternatives) with assumptions; (5) which binding UX decision is blocked and which safe exploratory work can continue. This is decision help, not a new mandatory document or cross-domain workflow.
 
-**Authority and proof limits:** The owning UX decision must be identifiable by exact project source/revision and legitimate Human approval standing. Any diagram, wireframe or prototype is **a representation of a scoped decision or hypothesis**, not self-authorizing Product/UX policy. If representation and textual binding source conflict, record the contradiction and return it to the legitimate owner; do not silently let either override the other.
+A discovered before-entry or after-action concern may be **relevant context** even when new landing pages, acquisition features or follow-on capabilities are outside the currently authorized scope. UX may propose them as options but must not treat discovery as approval to implement them.
 
-For each material representation, make discoverable: **covered logical UX output(s), artifact type/format, purpose/question, source path + exact revision (when available), standing, actual render/interaction verification (`CHECKED` with evidence / `NOT CHECKED`), simulated versus observed content, and proof limitations.** A Markdown/Mermaid source review is not a rendered visual inspection; a Git-tracked HTML file is not proof a browser rendered it; a clickable simulation is not independent user testing, accessibility certification, real API mutation or delivered outcome.
+## PROCESS — seven iterative professional responsibilities
 
-Apply target-project accessibility, privacy, security, licensing, repository and action-authorization requirements. In particular, avoid external libraries/assets/network and real credentials or data in a Lo-Fi proof unless the relevant project authority and actual tool/runtime explicitly permit them.
+Responsibilities are **not** a mandatory ordered pipeline or a requirement for seven passes/files. Their test is the quality of the reasoning and experience decisions, not whether each label has a paragraph.
 
-## 8. Sufficiency and completion
+| ID | Responsibility | What competent execution looks like |
+| --- | --- | --- |
+| **P1 Frame the human experience problem** | Challenge the assumption of an already-motivated/knowledgeable actor; identify actual context, relevant experience envelope, actor goal, stakes and scope without copying the Product requirement as the user problem |
+| **P2 Discover and interrogate all input** | Generate **new relevant questions** across I1–I5; investigate with proportionate evidence, distinguish known/observed/inferred/hypothesized/unknown, prioritize questions that could change the design and return genuine Product gaps |
+| **P3 Conceptualize the experience** | Develop actor-facing meanings and approaches to discovery, choice, action and continuation (as relevant); compare meaningful alternatives or counterexamples; challenge system-centric and overly explanatory concepts; preserve Product semantics |
+| **P4 Design meaningful interaction** | Choose information priority/timing, progression, IA, navigation, sign-in/data collection positioning within binding rules, feedback, control and recovery. Avoid imposing every Product invariant as permanent visible text |
+| **P5 Make decisions inspectable** | Create only useful flow, scenario, structural Lo-Fi, prototype/dialogue and state representations; allow reviewers to assess actual actor experience and consumers to inspect obligations; avoid one-to-one requirement-to-widget transcription |
+| **P6 Evaluate *naturalness and quality*, then refine** | Inspect first-glance purpose, actual actor mental-model fit, perceived effort, familiar interaction, repeated explanation, information timing, accessibility, choice, consequence understanding, interruption/re-entry and meaningful negative states. Seek disconfirming evidence, **revise material defects**, and state what remains unknown |
+| **P7 Decide, reconcile and hand off** | Make delegated UX decisions; recommend scoped Human acceptance of material UX meaning; return real Product/Engineering/Standard gaps; preserve effective sources, decision rationale, evidence limits and consumer-ready interaction meaning |
 
-For a particular decision, find: accepted/provisional UX intent, effective Product constraints, relevant interaction/navigation/IA states, accessibility, authority/scope/revision, actual evidence, unresolved materially blocked edges and legitimate owner. **For new/material UX, check O2 diagram and O6 structural Lo-Fi coverage or accepted exact-revision equivalents/evidence-backed exceptions** before declaring affected UX consumer-sufficient. Do not generate redundant files once required content and proof are available.
+**Cross-cutting judgment, not a worksheet:** Does this experience make sense from the actor's point of view? Is the design solving the right human problem or primarily explaining system internals? What was assumed without evidence? What simpler or materially better path could work? Which consequence/uncertainty must remain explicit? What failure would falsify the proposed concept?
 
-An accepted UX design does not automatically approve Product, Hi-Fi, Project Design Standards, code, release or runtime validity. See local [UX Authority & Handoff](authority-and-handoff.md) for exact revision and consumer standing.
+**Discovery can change problem framing; Lo-Fi may expose new discovery questions.** Revisit earlier reasoning when there is materially new evidence. Do not demand that every question be answered before any sketch; do not freeze a concept merely because its diagram is complete. A short, safe, reversible task may need very little ceremony; a high-consequence task may require stronger evidence and Human review.
 
-**Principle:** UX depends on the information and decisions needed, **not the identity or invocation of a preceding/following subject**.
+### Naturalness is evaluable, not a taste exemption
+
+Treat “natural” as a **contextual quality question**, not an aesthetic label. For a particular actor/task ask whether:
+- the purpose, key terms and next action make sense without learning the product's internal architecture;
+- requested effort, identity/data timing and disclosures are justified by the actor's goal and actual Product obligations;
+- hierarchy prioritizes what is needed **at that moment**, with important consequences visible before commitment and supporting detail discoverable instead of repeated everywhere;
+- the design handles actual entry, return, interruption, failed/uncertain and after-action states where material;
+- familiar conventions are respected where helpful but questioned when they mislead;
+- the relevant actor can understand what occurred, what remains unknown and what can really happen next.
+
+An expert/Human critique can identify suspected unnaturalness; it does not independently prove representative actor comprehension. When qualitative feedback finds material confusion or excessive bureaucracy, **investigate and revise** before presenting the candidate as sufficient. Do not turn this into a universal checklist or a mandate to design all contexts in one assignment.
+
+## OUTPUT — six logical meanings, not six documents
+
+| ID | Meaning that must remain discoverable when material |
+| --- | --- |
+| **O1 Human problem and inquiry evidence** | Actual actor/context, motivation and goal hypotheses, relevant before/during/after moments, high-value questions, Product facts vs observed/inferred/unknown evidence, owner of consequential gaps |
+| **O2 Experience concept and judgment** | Actor-facing interpretation of Product meaning; rationale for choice/progression, relevant considered alternatives, naturalness risks, assumption boundaries and reasoned trade-offs |
+| **O3 Interaction, information and navigation decisions** | Concrete flows, IA/disclosure, relevant navigation/routes, action/data/sign-in timing under real Product rules, actor feedback, state, uncertainty, recovery and accessibility meaning |
+| **O4 Inspectable experience proofs** | Representative flows/branches and structural Lo-Fi for new/material screen UX by default; other decision-appropriate storyboard/dialogue/prototype or accepted equivalent with actual coverage and render/interaction limits |
+| **O5 Quality findings and refinement** | Specific actor questions/quality claims, actual method and observations, naturalness/effort/comprehension criticism, changes made, unresolved important risks and evidence strength |
+| **O6 Scoped decisions and consumer handoff** | Binding/provisional meaning, legitimate owner and acceptance, exact effective project sources, product-gap dispositions, affected receiving decisions, evidence and constraints |
+
+**Decision-quality evidence is required, not verbose documentation.** For simple work, a brief source pointer and design decision may suffice. A concise actor-question rationale and one strong Lo-Fi can be more useful than many artifacts that explain the domain but make the interaction cumbersome.
+
+### Consumer sufficiency and legacy IDs
+
+For receiving UI/Engineering work, preserve inspectable material:
+- **C1:** actual actor/problem/concept and hypotheses;
+- **C2:** flow, entry/exit, decisions, alternate/negative/unknown paths and recovery;
+- **C3:** IA, information priority, disclosure and representative screen/surface structure;
+- **C4:** navigation and continuity, page-versus-state and relevant cross-touchpoint links;
+- **C5:** user-facing states, action controls, validation, feedback and recovery;
+- **C6:** accessibility, input modality, security/privacy/technical constraints affecting UX;
+- **C7:** exact source/approval standing, evidence limits and unresolved owner-scoped gaps.
+
+**For new/material screen UX consumed by UI, C2 flow/branch proof and C3 representative structural Lo-Fi remain required by default**, alongside other material meanings. Existing accepted exact-revision equivalent or scoped non-applicability/unchanged-decision exception must be justified with actual evidence, UX owner/delegation and affected consumer consequences. This protects against a UI consumer inventing missing UX meaning; it does not mean a flow or Lo-Fi proves human usability. Non-screen interaction uses appropriate inspectable equivalent, not imaginary web pages. Do not require redundant files.
+
+**Single current meaning:** `O2 = Experience Concept`, `O3 = Interaction/IA/navigation/states`, `O4 = Inspectable Proofs`, `O6 = Scoped Handoff`. `C2` is flow/branches and `C3` is structural Lo-Fi; **no UX O7 exists**. The [current UI receiving contract](../ui/definition.md) and [Engineering Solution receiving contract](../../engineering/spaces/rancang/contracts.md) must consume these meanings, not legacy numeric IDs. Old A2 O2 Flow/O6 Lo-Fi/O7 States are [historical](../../experiments/history/ux-a2-research/definition.md), not another active UX contract.
+
+## OUTCOME — six context-sensitive desired UX qualities
+
+| ID | Quality property | Actor-centered claim to assess |
+| --- | --- | --- |
+| **Q1 Actor/purpose fit** | Does the relevant person recognize truthful value, understand why the experience matters and reach an actual Product-supported goal? |
+| **Q2 Comprehension/predictability** | Are purpose, concepts, actions, consequences, state and continuation understandable without making the person learn system-internal bureaucracy? |
+| **Q3 Effectiveness/proportional effort** | Can relevant actors complete tasks with reasonable attention, steps, data burden and frustration for their context and frequency? |
+| **Q4 Agency/feedback/recovery** | Can they make informed decisions, change/stop when allowed, understand results, resume and recover safely without invented capabilities? |
+| **Q5 Truthful/responsible experience** | Are claims, roles, status, provenance, permissions and negative/unknown consequences accurate, respectful and non-manipulative? |
+| **Q6 Accessible/context-fit experience** | Are input modalities, ability, devices, environment and relevant other actors accommodated with appropriate evidence? |
+
+These **do not assert six compulsory metrics**. Subjective confidence, satisfaction, perceived ease, comfort or discomfort can be material and should be assessed proportionately. “Natural” UX must also remain truthful and safe; an attractive shortcut is not success if it obscures a binding consequence.
+
+**Desired ≠ demonstrated:** source inspection verifies meaning/coverage; rendered Lo-Fi review shows structure at a fidelity; expert or Human critique provides scoped qualitative evidence; observed actor testing can support actual comprehension under tested conditions; implementation/runtime claims require separate authorized evidence. Record the level honestly; do not report broad usability or accessibility certification from self-review.
+
+## Failure signals and bounded correction
+
+Potential failure signals include:
+- UI is an annotated domain-rule diagram rather than a task the relevant person naturally recognizes;
+- early steps presume actor motivation/awareness that has not been investigated;
+- the actor is asked for information before its reason or mandatory timing is established;
+- consequential disclaimers are repeated without improving decision-stage comprehension;
+- a new Product capability or legal/safety promise appears only because UX needed a reassuring CTA;
+- a rendered, source-correct prototype receives concrete qualitative criticism but is still deemed finished without refinement;
+- an unanswered UX-research question is wrongly escalated to Product, or a missing binding Product decision is silently invented;
+- the output is complete on paper but insufficient for a real UI consumer.
+
+Treat these as **diagnostic clues**, not universally disqualifying checklist items. Investigate the specific actor/task, challenge the chosen concept, find proportionate evidence, then revise the material decision. Keep unrelated approved work intact.
+
+## Research standing and real-project authority limits
+
+This is the **single selected UX research source** for bounded explicitly authorized research on this branch. Changed exact bytes still need Human content review. Neither source-level alignment nor a rendered Lo-Fi proves better actor outcomes, universal fit, operational promotion, real-project UX acceptance or independent validation.
+
+The owning target project retains all real Product/UX authority. Any new material Product semantics discovered through UX require owning Product decision; a Human's critique of a prototype is not automatically approval of replacement content. The selected research route is migrated, but the new UX/UI/Engineering receiving bytes require their own exact-revision acceptance. Actual project Product/UX decisions, Engineering formation and Harscode operational `main` remain independently governed.

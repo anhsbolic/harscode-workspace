@@ -1,33 +1,16 @@
-# UX — Interaction & Experience Definition
+# UX — Actor-Centered Experience Design (Research)
 
-> **Standing:** A2 DRAFT FOR ANHAR REVIEW, research-only (2026-11-04). Human approval applies to the independent three-directory architecture, **not yet this UX document content**. Not operational Harscode policy, a formed Space, or actual project UX approval.
-> **Authority:** Harscode owns reusable UX guidance; exact accepted UX decisions belong to the relevant target project and legitimate decision owner.
+> **Standing:** **SINGLE-ACTIVE RESEARCH CANDIDATE / EXACT HUMAN REVIEW PENDING (2026-11-16)**. Prior A2 source is historically approved at `8d53c1a`; its approval does **not** transfer to this new actor-centered definition. Not operational `main` or target-project UX authority.
 
-## Direct entrypoint
+## Direct active entrypoints
 
-This folder is a **self-contained UX responsibility**. A reader or agent starts here, not at a parent `design/README.md`, shared Design authority file or sibling UI/Project Standard guidance.
+- [UX Definition](definition.md): I1–I5, P1–P7, O1–O6, Q1–Q6 and C1–C7 consumer sufficiency.
+- [UX AGENTS](AGENTS.md): actor-centered investigation, authority and evidence discipline.
+- [UX Authority & Handoff](authority-and-handoff.md): source/approval, actual consumer needs and material constraints.
+- Optional [output template Bahasa Indonesia](templates/ux-output.id.md) · [English](templates/ux-output.en.md): concise source-addressable decision record, not mandatory six files.
 
-| UX need | Read here |
-| --- | --- |
-| UX decisions and quality, Input → Process → Output → Outcome | [definition.md](definition.md) |
-| Legitimate UX approval, revisions, consumer information and reconciliation | [authority-and-handoff.md](authority-and-handoff.md) |
-| UX agent source selection, guardrails and stop conditions | [AGENTS.md](AGENTS.md) |
-| Optional standardized output authoring shape | [Indonesian](templates/ux-output.id.md) · [English](templates/ux-output.en.md) |
+UX investigates human context and owns experience concept, flow, IA, navigation, recovery and structural proofs **within accepted Product meaning**. Product owns legitimate value/capability/eligibility/rights and consequential outcomes. UI owns visual/copy expression; Engineering owns mechanisms; Project Standards own reusable rules.
 
-Read actual target-project Product authority, applicable Design Standards, accessibility/security constraints, research and relevant technical sources **directly from their owning project artifacts** for the actual assignment. Those are material information inputs—not dependencies on named producers, Spaces or sibling Harscode folders.
+**New/material screen UX:** C2 actual flow branches and C3 representative structural Lo-Fi are default inspectable obligations through **O3 interaction meaning + O4 proof**; also C4 page-vs-state, C5 states, C6 accessibility and C7 authority/evidence as needed. Current **O2 is Experience Concept; O6 is Handoff; there is no O7**.
 
-## UX responsibility
-
-UX determines how a person **discovers, understands, navigates, acts, and recovers** while preserving Product meaning. It owns scenario-specific UX Journey, UX Flow, Information Architecture, navigation/webpage path decisions where applicable, structural layout/proofs, user-facing interaction/state requirements and scoped UX acceptance.
-
-Product owns meaningful domain journey, authority and consequential information/rules. Visual Interface Design owns final expressive UI. Project Design Standards responsibility owns reusable rules **across outcomes**. Engineering owns technical mechanisms/implementation. UX may be consumed by each without requiring a mandatory sequence.
-
-**Lo-Fi is a fidelity/proof method, not a mandatory lifecycle stage or new Harscode Space.** For new/material UX experience work, O2 **UX Flow Diagram** and O6 **Lo-Fi Wireframes** are **required by default**: Mermaid and HTML/CSS are the default newly authored forms. Reuse sufficient accepted exact-revision equivalents or document a scope/evidence/owner-based exception. Material IA, interaction states and web routes must also be available where applicable. Nine logical outputs still do not imply nine files or a universal interactive prototype.
-
-**Template rule:** Use the optional UX Output template in [Indonesian](templates/ux-output.id.md) or [English](templates/ux-output.en.md) when a new bounded UX artifact needs a consistent, reviewable format. Existing target-project artifacts remain valid when they already expose sufficient UX meaning, source standing and consumer contracts. A filled template is not approval.
-
-## Standing boundaries
-
-Exploratory UX may use clearly marked Product hypotheses. A binding UX choice that depends on consequential Product meaning requires effective project authority for that meaning. Material UX approval is exact-revision and scope-bound; an accepted UX design is **not** Product policy, Design Standard promotion, final UI approval, actual usability proof or runtime verification.
-
-Root `design/` instructions are not part of this concern's routing; repository-root and target-project security/authorization instructions still apply. Root Design exploration/authority documents remain transitional A3 research inputs, not extra UX instruction.
+Historical [A2 sources](../../experiments/history/ux-a2-research/definition.md) and [experimental predecessor](../../experiments/history/ux-actor-centered-experiment/definition.md) are preserved for provenance, not active competing contracts. Legacy `design/ux-v1-1/` is a historical redirect only. Exact target-project UX acceptance remains separate.
