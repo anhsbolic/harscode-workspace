@@ -8,6 +8,7 @@
 - [Authority & Approval](authority-and-approval.md) — legitimate Human/domain owners, exact effective project approvals, changed meaning and supersession.
 - [Consumer Handoff](consumer-handoff.md) — functional source/standing exchange with UX, UI, Engineering and feedback.
 - [Product AGENTS](AGENTS.md) — execution boundaries.
+- [Product Kickoff Prompt](product-kickoff-prompt.md) — **optional, project-agnostic** conversation starter for deriving needed Product outputs, desired outcomes, starting point and decision-specific sufficiency from real project authority. Not a mandatory step or Product approval.
 
 Optional authoring aids, **not three mandatory documents**: [Product meaning](templates/product-definition.id.md), [Product Contract where applicable](templates/product-contract.id.md), [Product decision record](templates/product-approval-record.id.md).
 
