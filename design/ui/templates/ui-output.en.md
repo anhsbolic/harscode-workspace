@@ -1,6 +1,6 @@
 # Template — UI Output & Consumer Handoff (English)
 
-> **Standing:** A3 RESEARCH AUTHORING TEMPLATE / DRAFT FOR ANHAR REVIEW (2026-11-04). Not approved target-project UI Design, project-wide Design Standard, runtime/visual verification, a formed Space, or tool/write authorization.
+> **Standing:** **A3 ALIGNED RESEARCH TEMPLATE REVISION CANDIDATE — EXACT-REVISION HUMAN REVIEW PENDING (2026-11-16)**; prior template approved **for research only** at `cbe1010` (blob `73ba3c47b940d888fc82ef0b4ade909bbd8d791c`), whose approval does not transfer to these bytes. Not approved project UI/Design Standard, runtime/visual verification, formed Space, or tool/write authorization.
 > **Contract:** [UI Definition](../definition.md) · [UI Authority & Consumer Handoff](../authority-and-handoff.md). Other language: [Indonesian](ui-output.id.md).
 > **Use:** One bounded UI output record, or a navigable index to existing project-owned artifacts. Nine logical outputs **O1–O9 do not mean nine mandatory files**. This template **does not replace actual visual artifacts** for new/material design.
 
@@ -30,8 +30,8 @@ For **new/material web Hi-Fi**, use **static HTML + CSS by default**: **one `.ht
 | Intended functional consumer and decision | `<Engineering / verification / other, exact decision>` |
 | Current project repo, branch and inspected baseline | `<path + immutable revision>` |
 | Effective Product sources / accepted scope | `<project-owned paths + revisions + standing>` |
-| Effective UX sources: O2 Flow & O6 Lo-Fi baseline | `<accepted paths/revisions, or legitimate evidenced exception>` |
-| Applicable UX O1/O3/O4/O7 and web O5 | `<actual accepted source/revision or gap owner>` |
+| Selected UX lineage, standing and flow/Lo-Fi (A2 O2/O6, or v1.1 O3/C2+C3 + O4) | `<original source paths/revisions, accepted project decision or legitimate evidenced exception>` |
+| Applicable UX IA/navigation/states/provenance (A2 O1/O3/O4/O7/web O5; or v1.1 O1/O3/C4-C7/O6) | `<original selected source/revision, decision standing, unresolved owner>` |
 | Effective Brand/Visual/Component/Asset standards | `<project-owned paths/revisions and applicability; N/A if absent>` |
 | Other material I01–I13 input decisions and gaps | `<applicable input IDs + source/owner; link source checks>` |
 | UI candidate artifact(s) and source revision(s) | `<exact revision(s) when persisted; prior source if proposed>` |
@@ -40,13 +40,13 @@ For **new/material web Hi-Fi**, use **static HTML + CSS by default**: **one `.ht
 | UI content standing | `PROPOSED / ACCEPTED only with separate actual exact-revision evidence` |
 | Exclusions, open decisions, risks | `<...>` |
 
-**No silent UX substitution:** For new/material UX, UX O2 flow and O6 structural Lo-Fi are required by default. Send specific gaps to the UX owner. UI may explore independently but cannot claim acceptance of a visual decision dependent on unaccepted UX.
+**No silent UX substitution:** For new/material UX, flow/branches and representative structural Lo-Fi remain default required: A2 **O2/O6**, or explicitly selected v1.1 **O3/C2 + O4** and **O3/C3 + O4**. v1.1 O2 is concept, O6 is handoff—not the legacy flow/Lo-Fi. Missing proof/approval returns to UX owner. UI may explore independently but cannot claim acceptance of a visual decision dependent on unaccepted UX.
 
 ## Page-to-file preview mapping — required for new/material web Hi-Fi
 
 | Accepted UX webpage / route + exact source | Preview HTML file + exact revision | Local relative navigation destination(s) | In-page state variants included | Render evidence / exception / open gap |
 | --- | --- | --- | --- | --- |
-| `<UX O5/O4 page and accepted revision>` | `<entry.html or equivalent + exact revision>` | `<relative hrefs corresponding to UX navigation>` | `<default/loading/validation/unknown etc. within this page>` | `<CHECKED with actual evidence / NOT VISUALLY VERIFIED / owner-backed exception>` |
+| `<selected UX webpage source: A2 O5/O4 or v1.1 O3/C4 + O4 as needed; exact accepted project revision>` | `<entry.html or equivalent + exact revision>` | `<relative hrefs corresponding to UX navigation>` | `<default/loading/validation/unknown etc. within this page>` | `<CHECKED with actual evidence / NOT VISUALLY VERIFIED / owner-backed exception>` |
 
 **Page vs state:** Do not turn UI states into new webpages or simulate distinct entire webpages inside one HTML. This map only indexes visual proof; it grants no route authority. If already accepted in another medium, link exact accepted evidence and document the exception.
 

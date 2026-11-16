@@ -1,6 +1,6 @@
 # Template — UI Output & Consumer Handoff (Bahasa Indonesia)
 
-> **Standing:** A3 RESEARCH AUTHORING TEMPLATE / DRAFT FOR ANHAR REVIEW (2026-11-04). Bukan approved target-project UI Design, project-wide Design Standard, runtime/visual verification, formed Space, atau izin menulis/menjalankan tool.
+> **Standing:** **A3 ALIGNED RESEARCH TEMPLATE REVISION CANDIDATE — EXACT-REVISION HUMAN REVIEW PENDING (2026-11-16)**; template sebelumnya approved **hanya untuk research** pada `cbe1010` (blob `44b2c55d127dd98c4f97fc938f720f06b0e65013`); approval itu tidak berpindah ke revisi baru. Bukan approved project UI/Design Standard, runtime/visual verification, formed Space atau izin menjalankan tool.
 > **Contract:** [UI Definition](../definition.md) · [UI Authority & Consumer Handoff](../authority-and-handoff.md). Versi bahasa lain: [English](ui-output.en.md).
 > **Use:** Satu bounded UI output record, atau navigable index ke artifact project-owned yang sudah tersedia. Sembilan logical outputs **O1–O9 bukan sembilan file wajib**. Template ini **tidak menggantikan visual artifact** untuk desain baru/material.
 
@@ -30,8 +30,8 @@ Untuk **new/material web Hi-Fi**, gunakan **static HTML + CSS sebagai default**:
 | Intended functional consumer and decision | `<Engineering / verification / other, exact decision>` |
 | Current project repo, branch and inspected baseline | `<path + immutable revision>` |
 | Effective Product sources / accepted scope | `<project-owned paths + revisions + standing>` |
-| Effective UX sources: O2 Flow & O6 Lo-Fi baseline | `<accepted paths/revisions, or legitimate evidenced exception>` |
-| Applicable UX O1/O3/O4/O7 and web O5 | `<actual accepted source/revision or gap owner>` |
+| Selected UX lineage, standing and flow/Lo-Fi (A2 O2/O6, or v1.1 O3/C2+C3 + O4) | `<original source paths/revisions, accepted project decision or legitimate evidenced exception>` |
+| Applicable UX IA/navigation/states/provenance (A2 O1/O3/O4/O7/web O5; or v1.1 O1/O3/C4-C7/O6) | `<original selected source/revision, decision standing, unresolved owner>` |
 | Effective Brand/Visual/Component/Asset standards | `<project-owned paths/revisions and applicability; N/A if absent>` |
 | Other material I01–I13 input decisions and gaps | `<applicable input IDs + source/owner; link source checks>` |
 | UI candidate artifact(s) and source revision(s) | `<exact revision(s) when persisted; prior source if proposed>` |
@@ -40,13 +40,13 @@ Untuk **new/material web Hi-Fi**, gunakan **static HTML + CSS sebagai default**:
 | UI content standing | `PROPOSED / ACCEPTED only with separate actual exact-revision evidence` |
 | Exclusions, open decisions, risks | `<...>` |
 
-**No silent UX substitution:** Untuk UX baru/material, UX O2 flow dan O6 structural Lo-Fi default required. Jika kurang, arahkan specific gap ke UX owner. UI boleh exploration yang independen, tetapi keputusan visual yang bergantung pada UX belum boleh diklaim accepted.
+**No silent UX substitution:** Untuk UX baru/material, flow/branches dan representative structural Lo-Fi tetap default required: A2 **O2/O6**, atau v1.1 yang dipilih eksplisit **O3/C2 + O4** dan **O3/C3 + O4**. v1.1 O2 = concept dan O6 = handoff, bukan flow/Lo-Fi. Kekurangan proof/approval tetap dikembalikan ke UX owner. UI boleh exploration yang independen, tetapi keputusan visual yang bergantung pada UX belum boleh diklaim accepted.
 
 ## Page-to-file preview mapping — required for new/material web Hi-Fi
 
 | Accepted UX webpage / route + exact source | Preview HTML file + exact revision | Local relative navigation destination(s) | In-page state variants included | Render evidence / exception / open gap |
 | --- | --- | --- | --- | --- |
-| `<UX O5/O4 page and accepted revision>` | `<entry.html or equivalent + exact revision>` | `<relative hrefs corresponding to UX navigation>` | `<default/loading/validation/unknown etc. within this page>` | `<CHECKED with actual evidence / NOT VISUALLY VERIFIED / owner-backed exception>` |
+| `<selected UX webpage source: A2 O5/O4 or v1.1 O3/C4 + O4 as needed; exact accepted project revision>` | `<entry.html or equivalent + exact revision>` | `<relative hrefs corresponding to UX navigation>` | `<default/loading/validation/unknown etc. within this page>` | `<CHECKED with actual evidence / NOT VISUALLY VERIFIED / owner-backed exception>` |
 
 **Page vs state:** Jangan mengubah UI states menjadi webpage baru atau menyimulasikan seluruh distinct webpages melalui satu HTML. Mapping ini hanya referensi visual proof; tidak menetapkan route authority. Jika output sudah accepted dalam bentuk lain, tautkan exact accepted evidence dan dokumentasikan exception.
 
