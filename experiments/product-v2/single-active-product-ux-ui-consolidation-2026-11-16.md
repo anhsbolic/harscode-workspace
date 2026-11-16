@@ -18,7 +18,7 @@
 
 - Former Product, accepted A2 UX and experimental actor-centered UX source bytes are archived in [research history](../history/README.md) and pinned at `a6862daf`; history cannot silently become active.
 - Former A2 UX research approval applies to exact old content at `8d53c1a`; prior A3 UI approval only to `cbe1010`; old Rancang D1 formation-only research approval only at `5a2964703bfddc3dc06a78091ef0b7f0220a57f0`. **No old approval is borrowed by newly changed bytes.**
-- `design/ux-v1-1/` is now redirect-only. Frozen Product v2 remains an immutable research result, not a competing active Product contract.
+- The obsolete `design/ux-v1-1/` directory was physically removed from this research working tree; the selected actor-centered UX v1.1 meaning lives solely at unversioned `design/ux/`, while its previous source bytes remain in `experiments/history/ux-actor-centered-experiment/` and pinned immutable Git revisions. Frozen Product v2 remains an immutable research result, not a competing active Product contract.
 - Rancang's directly changed contract/README/UX specialist knowledge/templates are **not newly formation-approved** and cannot be invoked on the strength of D1; a separate explicit exact-revision formation review will be needed before capability invocation.
 - NextJS Builder was not edited; its applicable input principle is source-based and it still requires actual project/assignment authorization. Kencleng and `main` were not edited.
 

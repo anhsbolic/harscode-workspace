@@ -11,6 +11,8 @@
 
 **UI A3** previous exact research approval at `cbe1010a37145c7f9ebf2adf1216de848ddd6c96` is preserved through immutable Git, without redundant physical copies. **Rancang D1** exact formation approval `5a2964703bfddc3dc06a78091ef0b7f0220a57f0` is likewise historical and research-only; revised Rancang source bytes now require distinct formation review.
 
+**The old `design/ux-v1-1/` path was removed from the active working tree** after archival; references to that path inside unchanged historical experiments must be resolved against their original pinned commit, not treated as active links. This archive retains exact source bytes; it does not create a second UX version.
+
 **Current selected research entrypoints:** [Product](../../product/README.md) · [UX](../../design/ux/README.md) · [UI](../../design/ui/README.md).
 
 **No general deprecation of operational main:** These are research-branch working replacements; target-project semantics/authority remain with each project. This archive does not make a product decision or create a new workflow, Space, approval mechanism or migration policy.
