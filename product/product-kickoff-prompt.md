@@ -4,7 +4,7 @@
 
 ## Use
 
-Supply the actual **target project repository/branch** and the **current effective Product foundation or other legitimate project-owned sources**. A Product Intent may be the foundation when the project has one; do not invent one when it does not. Replace the placeholders below and paste only the prompt into a new discussion. The assistant must inspect the current sources rather than assume a pinned checkpoint or conversation memory is authority.
+Supply the actual **target project repository/branch** and the **current effective Product foundation or other legitimate project-owned sources**. A Product Intent may be the foundation when the project has one; do not invent one when it does not. Replace the placeholders below and paste only the prompt into a new discussion. The assistant must inspect current effective sources rather than assume a pinned checkpoint or conversational recall is authority. Default kickoff input is the project-owned current definition and relevant live evidence—not a repository chronology. Only consult previous revisions when the Human asks or a specific material authority conflict requires provenance.
 
 ## Copy-paste prompt
 
@@ -14,7 +14,9 @@ Sumber awal:
 - **Project:** <repository, branch, dan source Product yang berlaku, misalnya Product Intent jika ada>, beserta authority, evidence, dan standards yang relevan.
 - **Harscode:** <repository dan branch/ref yang sengaja dipilih>, khususnya `product/` untuk Product responsibility, I/P/O/O, authority, dan consumer handoff.
 
-Verifikasi dan pahami sumber-sumber tersebut terlebih dahulu. Source of truth Product tetap berada pada project; Harscode adalah reusable guidance, bukan pemilik keputusan Product project.
+Verifikasi dan pahami **current effective sources** tersebut terlebih dahulu. Source of truth Product tetap berada pada project; Harscode adalah reusable guidance, bukan pemilik keputusan Product project.
+
+**Fokus pada kondisi Product yang berlaku sekarang.** Jangan secara proaktif mencari, membaca atau membahas arsip, progress yang tidak aktif, kronologi perubahan repository, atau narasi reset sebagai temuan pembuka. Lihat revisi terdahulu hanya jika aku meminta, atau ada konflik authority material yang benar-benar membutuhkan pemeriksaan provenance. Jika itu terjadi, jelaskan dampaknya pada keputusan sekarang tanpa narasi sejarah yang tidak diminta.
 
 Berdasarkan sumber yang sah dan kebutuhan nyata project, bantu aku menentukan:
 
