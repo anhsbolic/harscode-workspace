@@ -1,6 +1,6 @@
 # Template — Rancang Engineering Solution Output & Consumer Handoff (Bahasa Indonesia)
 
-> **Standing:** A4 RESEARCH AUTHORING TEMPLATE / DRAFT FOR HUMAN REVIEW (2026-11-05). Template opsional untuk menghasilkan dan mengevaluasi keluaran Rancang; **bukan** formed Space approval, accepted target-project Engineering Solution, canonical feature API/schema, bukti runtime, atau izin write.
+> **Standing:** RECONCILED RESEARCH RANCANG TEMPLATE / NEW EXACT FORMATION REVIEW PENDING. Old D1 research-only formation approval applies to historical pinned bytes only; no invocation or project approval.
 > **Contract:** [Rancang I/P/O/O](../contracts.md) · [Coordination & independent concerns](../coordination.md) · [Artifact representation](../artifacts/README.md). Versi bahasa lain: [English](rancang-output.en.md).
 > **Semantic basis:** [Approved Rancang experiment (immutable)](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/experiments/org-01-reverse-lifecycle/rancang-engineering-solution.md): **13 input, 10 proses iteratif, 8 logical output, 6 outcome kualitas**.
 > **Use:** Satu bounded solution artifact **atau index ke actual project-owned sources**. O01–O08 adalah coverage yang perlu ditelusuri, **bukan delapan file wajib atau delapan section kosong**. Actual project standards dan declared consumer format menang.
@@ -8,7 +8,7 @@
 ## Cara menggunakan dan quality floor
 
 - **Mulai dari real consumer**: assignment, Product/UX/Engineering authority, accepted revisions, constraints, intended FE/BE/data/integration implementers, delegated freedoms dan acceptance. Jangan mengganti Product, UX atau Engineering Project Standards dengan salinan yang menjadi authority tandingan.
-- **Sufficiency sebelum binding**: nilai input I01–I13 sesuai keputusan yang material. Untuk UX baru/material, UX Flow O2 default; untuk material screen UX, Lo-Fi O6 default. Accepted equivalent atau exception memerlukan legitimate UX owner, scope dan evidence. **Hi-Fi bukan input default Rancang.**
+- **Sufficiency sebelum binding**: nilai input I01–I13 sesuai keputusan yang material. Untuk UX baru/material, current UX O3/C2 + O4 Flow default; untuk material screen UX O3/C3 + O4 Lo-Fi default. Accepted equivalent atau exception memerlukan legitimate UX owner, scope dan evidence. **Hi-Fi bukan input default Rancang.**
 - **Cakupan bukan pengisian ritual**: gunakan `N/A — alasan dan scope` untuk benar-benar tidak berlaku; `OPEN/BLOCKED — owner, affected decision/consumer` untuk gap material. Provisional Engineering hypotheses boleh membantu exploratory design tetapi **bukan** sumber binding output.
 - **Architect owns substantive O01–O07**; Requirements Analyst memeriksa original-source fidelity; UX/Experience dan Security membaca original yang relevan secara independen dan mengembalikan findings milik mereka; independent Solution Reviewer memeriksa keseluruhan. **Coordinator owns O08**, tidak boleh menulis ulang keputusan producer atau temuan reviewer.
 - **Bukti bukan klaim**: `PROPOSED`, `HUMAN-ACCEPTED (separate exact-revision evidence)`, `CANONICAL ADOPTED`, `NOT RUN`, `CHECKED` dan `INDEPENDENCE UNVERIFIED` berarti hal berbeda. Approval tidak tercipta karena template selesai diisi.
@@ -25,7 +25,7 @@
 | Legitimate Engineering Solution decision owner / delegation | `<...>` |
 | Intended implementers/consumers and actual decisions they need | `<functional owner, scoped work, actual consumer contract>` |
 | Effective Product Contract and exact approval | `<source + revision + decision scope, or explicitly NON-BINDING hypothesis>` |
-| Effective UX O2 Flow, O6 Lo-Fi and O3/O4/O5/O7 when relevant | `<exact accepted sources/equivalents, scoped exception with owner/evidence, or BLOCKED>` |
+| Effective current UX O3/C2 Flow, O3/C3 Lo-Fi via O4 proofs, applicable C4–C6 and O6/C7 exact standing | `<real project accepted source or owner-backed scoped exception>` |
 | Engineering Project Standards and stack | `<actual project-owned effective source/standing; material gap owner; absence ≠ automatic blockage>` |
 | Security/privacy, applicable NFRs, technical baseline | `<owning sources/versions, real code, project-level requirements>` |
 | Existing API/DB/provider contracts and implementation baselines | `<canonical/proposed standing, exact revision, environments as actually observed>` |
@@ -39,8 +39,8 @@
 | Input ID | Source / revision / standing, or N/A evidence | Material consequence or affected O-ID | Open decision / rightful owner |
 | --- | --- | --- | --- |
 | **I01 Product Contract** | `<...>` | `<...>` | `<...>` |
-| **I02 UX Flow Diagram** | `<accepted UX O2/equivalent/exception>` | `<...>` | `<...>` |
-| **I03 Lo-Fi Wireframes** | `<accepted UX O6/equivalent/exception>` | `<...>` | `<...>` |
+| **I02 UX Flow Diagram** | `<accepted current UX O3/C2 + O4 proof/equivalent/exception>` | `<...>` | `<...>` |
+| **I03 Lo-Fi Wireframes** | `<accepted current UX O3/C3 + O4 proof/equivalent/exception>` | `<...>` | `<...>` |
 | **I04 IA & Navigation** | `<...>` | `<...>` | `<...>` |
 | **I05 Interaction & UI States** | `<...>` | `<...>` | `<...>` |
 | **I06 Existing Codebase & Architecture** | `<...>` | `<...>` | `<...>` |
@@ -114,7 +114,7 @@ Jangan menjadikan N/A jalan pintas untuk input material yang belum diterima. Pro
 
 ## O05 — State & Error Handling Design
 
-| Technical state / trigger and authoritative owner | Preconditions and transition / side effects | Success, denied, error, partial or **unknown** result semantics | Retry/idempotency/concurrency and recovery | Truthful actor-facing UX O7/O03/O07 link |
+| Technical state / trigger and authoritative owner | Preconditions and transition / side effects | Success, denied, error, partial or **unknown** result semantics | Retry/idempotency/concurrency and recovery | Truthful actor-facing current UX O3/C5-C6 + O4; Rancang O03/O07 link |
 | --- | --- | --- | --- | --- |
 | `<...>` | `<...>` | `<...>` | `<...>` | `<...>` |
 

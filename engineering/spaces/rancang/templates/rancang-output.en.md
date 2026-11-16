@@ -1,6 +1,6 @@
 # Template — Rancang Engineering Solution Output & Consumer Handoff (English)
 
-> **Standing:** A4 RESEARCH AUTHORING TEMPLATE / DRAFT FOR HUMAN REVIEW (2026-11-05). Optional reusable authoring aid; **not** approved Space formation, a project-accepted Engineering Solution, canonical API/database schema, runtime evidence, or write permission.
+> **Standing:** RECONCILED RESEARCH RANCANG TEMPLATE / NEW EXACT FORMATION REVIEW PENDING. Old D1 research-only formation approval applies to historical pinned bytes only; no invocation or project approval.
 > **Contract:** [Rancang I/P/O/O](../contracts.md) · [Coordination & independent concerns](../coordination.md) · [Artifact representation](../artifacts/README.md). Other language: [Bahasa Indonesia](rancang-output.id.md).
 > **Semantic basis:** [Approved Rancang experiment (immutable)](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/experiments/org-01-reverse-lifecycle/rancang-engineering-solution.md): **13 inputs, 10 iterative processes, 8 logical outputs, 6 desired qualities**.
 > **Use:** One bounded solution artifact **or a navigable index of actual project-owned sources**. O01–O08 are semantic coverage, **not eight mandatory files or empty sections**. The receiving project's effective standards and consumer-required formats take precedence.
@@ -8,7 +8,7 @@
 ## How to use and quality floor
 
 - **Start from real consumers:** identify the exact assignment, accepted Product/UX/Engineering authority, technical constraints, intended frontend/backend/data/integration implementers, delegated freedoms and acceptance. Do not duplicate binding upstream information into a competing master source.
-- **Check sufficiency before binding:** inspect relevant I01–I13. Accepted UX Flow O2 is required by default for new/material UX; accepted Lo-Fi O6 is required by default for new/material screen/surface UX, with legitimate exact-revision equivalents or scoped evidenced exceptions. **Hi-Fi is not a default Rancang input.**
+- **Check sufficiency before binding:** inspect relevant I01–I13. Accepted current UX O3/C2 + O4 flow is required by default for new/material UX; accepted O3/C3 + O4 Lo-Fi is required by default for new/material screen/surface UX, with legitimate exact-revision equivalents or scoped evidenced exceptions. **Hi-Fi is not a default Rancang input.**
 - **Coverage is not a paperwork quota:** use `N/A — scoped reason` for genuinely irrelevant meaning and `OPEN/BLOCKED — owner and affected decision/consumer` for material gaps. Bounded technical hypotheses may support exploration but not binding consumer claims.
 - **Architect owns substantive O01–O07**, Requirements Analyst protects original-source fidelity, UX/Experience and Security independently inspect the originals relevant to their concerns and own their own findings, and an independent Solution Reviewer assesses whole-solution fitness. **Coordinator owns O08** and cannot rewrite producer decisions or independent findings.
 - **Keep proof claims distinct:** `PROPOSED`, `HUMAN-ACCEPTED (separate exact-revision evidence)`, `CANONICAL ADOPTED`, `NOT RUN`, `CHECKED` and `INDEPENDENCE UNVERIFIED` are different states of evidence. Filling this template never constitutes approval.
@@ -25,7 +25,7 @@
 | Legitimate Engineering Solution decision owner / delegation | `<...>` |
 | Intended implementers/consumers and decisions they must make | `<functional owners, scope, actual input contract>` |
 | Effective Product Contract and exact approval | `<source/revision/scope or explicitly NON-BINDING hypothesis>` |
-| Effective UX O2 Flow, O6 Lo-Fi and relevant O3/O4/O5/O7 | `<accepted source/equivalent, owner-backed scoped exception, or BLOCKED>` |
+| Effective current UX O3/C2 Flow, O3/C3 Lo-Fi via O4 proofs, applicable C4–C6 and O6/C7 exact standing | `<real project accepted source or owner-backed scoped exception>` |
 | Engineering Project Standards and actual stack | `<effective project sources, material owner gap; no mandatory formal catalog>` |
 | Security/privacy, material NFRs and current technical baseline | `<effective project source/revision and observed code>` |
 | Existing API/database/provider contracts and implementation baseline | `<canonical vs proposed standing, exact revisions, real availability>` |
@@ -39,8 +39,8 @@
 | Input ID | Actual source / revision / standing or N/A evidence | Material affected O-ID/consumer | Missing owner decision |
 | --- | --- | --- | --- |
 | **I01 Product Contract** | `<...>` | `<...>` | `<...>` |
-| **I02 UX Flow Diagram** | `<accepted UX O2/equivalent/exception>` | `<...>` | `<...>` |
-| **I03 Lo-Fi Wireframes** | `<accepted UX O6/equivalent/exception>` | `<...>` | `<...>` |
+| **I02 UX Flow Diagram** | `<accepted current UX O3/C2 + O4 proof/equivalent/exception>` | `<...>` | `<...>` |
+| **I03 Lo-Fi Wireframes** | `<accepted current UX O3/C3 + O4 proof/equivalent/exception>` | `<...>` | `<...>` |
 | **I04 IA & Navigation** | `<...>` | `<...>` | `<...>` |
 | **I05 Interaction & UI States** | `<...>` | `<...>` | `<...>` |
 | **I06 Existing Codebase & Architecture** | `<...>` | `<...>` | `<...>` |

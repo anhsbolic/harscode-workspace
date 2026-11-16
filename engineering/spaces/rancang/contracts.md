@@ -1,17 +1,17 @@
 # Rancang — External Input / Process / Output / Outcome Contract
 
-> **Standing:** A4 ZERO-BASED NEW FORMATION CANDIDATE / NOT FORMATION APPROVED (2026-11-05). The [approved experiment](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/experiments/org-01-reverse-lifecycle/rancang-engineering-solution.md) is the semantic target, not runtime or target-project authority.
+> **Standing:** **RECONCILED RESEARCH RANCANG CONTRACT REVISION CANDIDATE / NEW EXACT FORMATION REVIEW PENDING (2026-11-16)**. The historical D1 source at `5a2964703bfddc3dc06a78091ef0b7f0220a57f0` was FORMATION APPROVED **research-only**, original contract blob `903c54e05083640ee6060af1056995de8e9614ae`. This changed contract does **not inherit formation approval** and authorizes no invocation, implementation or real target-project decisions.
 > **Owners:** Architect produces technical solution; Coordinator owns external contract/joins; Requirements, UX and Security retain independent concern lenses, and Solution Reviewer assesses cross-output fitness.
 
 ## 1. INPUT — 13 information obligations, not thirteen required files
 
 | ID | Input from approved experiment | Decision-specific sufficiency / legitimate source |
 | --- | --- | --- |
-| **I01** | Product Contract | Accepted consequential Product invariants, permissions/roles, behavior and observable acceptance at exact owned revision. Product hypotheses support only labeled exploration, not binding decisions. |
-| **I02** | UX Flow Diagram | Relevant accepted UX O2 flow for new/material UX by default; exact accepted equivalent or justified owning UX exception permitted. |
-| **I03** | Lo-Fi Wireframes | Relevant accepted UX O6 structural evidence for new/material screen/surface UX by default; inspect, do **not author** as Rancang. Equivalent/non-applicability must be legitimate and evidenced. |
-| **I04** | Information Architecture & Navigation | Effective UX IA, navigation, page/path versus UI state and relevant web route decisions; Design owns webpage paths, not Architect. |
-| **I05** | Interaction & UI State Requirements | Effective UX O7 interaction, validation, loading, denial, error, unknown and recovery obligations, with accepted Product truth. |
+| **I01** | Accepted Product Meaning | Direct legitimate target-project Product commitments, roles/rights, consequential invariants and observable acceptance at exact original approved source(s), whether an accepted self-contained Product Contract or other actual owned sources. Product research O1–O4 is not project approval; proposed hypotheses are only for labeled exploration |
+| **I02** | UX Flow & Branch Proof | Relevant accepted **current UX O3/C2 + O4 inspectable flow/branches** for new/material UX by default; legitimate accepted project equivalent or owning UX exception allowed |
+| **I03** | Structural Lo-Fi Proof | Relevant accepted **current UX O3/C3 + O4 representative structural screen/surface evidence** by default for new/material screen UX; inspect, do not author Rancang wireframes. Legitimate equivalents/exceptions allowed |
+| **I04** | Information Architecture & Navigation | Current effective **UX O3/C3-C4** IA, navigation, page/path versus UI state and relevant web routes, original scope/project acceptance. Design owns webpages; not API routes |
+| **I05** | Interaction & UI State Requirements | Effective **current UX O3/C5-C6 + relevant O4** actor-visible validation, loading, denial, error, unknown and recovery with accepted original Product meaning. No current UX O7 exists |
 | **I06** | Existing Codebase & System Architecture | Relevant actual code, stack, deployed boundaries and technical constraints for an existing project; label freshness/limits. |
 | **I07** | Engineering Standards & Technology Stack | Effective and sufficiently specified project-level stack/technical rules; use [Engineering Project Standards concern](../../project-standard/README.md) to resolve material reusable gaps, not create an empty catalog. |
 | **I08** | Security & Privacy Requirements | Independently inspected owning security/privacy/trust constraints, privileges, protection floors and actual risks; Engineering cost does not weaken binding safeguards. |
@@ -21,7 +21,7 @@
 | **I12** | Test & Acceptance Scenarios | Current accepted positive, negative, security, concurrency, recovery and edge obligations; differentiate proposed verification from performed results. |
 | **I13** | Technical Research / PoC | Existing feasibility evidence or proportionate investigation when material technical uncertainty exists; never a universal PoC gate. |
 
-**Acquisition:** Original project/Human/Design/technical sources can supply multiple inputs. No mandatory named upstream Space, fixed PRD/TRD, file count or sequential stage. Technical-only/non-screen work may legitimately omit screen UX with evidence; new/material UX has accepted O2 and O6 required-by-default coverage (or accepted equivalents/evidence-backed exceptions). **Hi-Fi is not a required/default Rancang input**. When actual accepted Hi-Fi constraints materially affect the solution, consume the relevant explicit requirements; do not require Figma/image/browser tooling.
+**Acquisition:** Actual owning Product/UX/technical/security project sources can supply multiple needs. No mandatory named upstream Space, fixed PRD/TRD, file count or serial phase. Screen UX is genuinely N/A for technical-only work with evidence; new/material screen UX consumes **current UX C2 Flow and C3 Lo-Fi through O3/O4 by default** (accepted equivalent/owner-backed scoped exception allowed). **Hi-Fi is not a default Rancang input**. Consume accepted material UI constraints only when they affect the technical design, without requiring Figma/image/browser tooling. No new Rancang version can claim old formation authorization.
 
 **Input disposition:** `SUFFICIENT` for the decision, `CONDITIONAL` for bounded explicitly provisional technical exploration, `BLOCKED` where missing external authority would be invented, `NOT APPLICABLE` for genuinely irrelevant inputs. Coordinator and Requirements Analyst cite exact project source/standing; independent UX and Security specialists re-read originals relevant to their concerns. A work ID permits authorized discovery only. Missing Engineering mechanisms require investigation, not reflexive upstream refusal; only affected binding decisions are held.
 

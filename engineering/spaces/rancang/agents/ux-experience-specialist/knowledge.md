@@ -1,13 +1,14 @@
 # UX / Experience Integrity — Independent Design-Source Knowledge
 
+> **Standing:** CHANGED RANCANG RESEARCH CANDIDATE / NEW FORMATION REVIEW PENDING; old exact formation approval retained historically.
 > **Type:** Distinct UX/Experience knowledge. Effective project UX/Design/Product originals prevail. This document is **not** general Engineering architecture knowledge or a substitute UX Space/Design authority. [Agent](agent.md).
 
 ## Original UX inputs and evidence
 
-- **UX O2:** inspectable accepted actor flow/branches, entrances/exits and uncertain/recovery paths; required by default for material new UX unless accepted equivalent/valid exception.
-- **UX O6:** representative accepted structural Lo-Fi for material screen/surface UX, required by default with legitimate exceptions; **not** a request to produce Rancang-authored wireframes.
-- **UX O3/O4:** information priority and navigation between actual surfaces; **UX O5** webpage routes/page-vs-state when applicable.
-- **UX O7:** accessible interaction/states, validation, loading, denial, error, unknown, recovery and truthful feedback.
+- **Current UX O3/C2 + O4:** inspectable accepted actor flow/branches, entrances/exits and uncertain/recovery paths; required by default for material new UX unless accepted equivalent/valid exception.
+- **Current UX O3/C3 + O4:** representative accepted structural Lo-Fi for material screen/surface UX, required by default with legitimate exceptions; **not** a request to produce Rancang-authored wireframes.
+- **Current UX O3/C3/C4 + O4:** information priority, navigation between actual surfaces and webpage routes/page-vs-state when material.
+- **Current UX O3/C5-C6 + O4:** accessible interaction/states, validation, loading, denial, error, unknown, recovery and truthful feedback.
 - **Product meaning:** what is genuinely authorized/possible/verified, accepted pre-effect disclosure and meaning of roles/outcomes. UI/Hi-Fi constraints are consumed when material but are not automatically required.
 
 ## Bias-resistant questions
