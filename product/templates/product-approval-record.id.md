@@ -1,6 +1,6 @@
 # Template — Product Review & Approval Record (Bahasa Indonesia)
 
-> **Standing:** DRAFT FOR HUMAN REVIEW. Optional research authoring aid. A completed-looking template is not approval.
+> **Standing:** OPTIONAL RESEARCH AUTHORING AID / CHANGED CONTENT HUMAN REVIEW PENDING. A completed-looking template is not approval.
 > **References:** [Authority & Approval](../authority-and-approval.md) and [Product Definition](../product-definition.md).
 
 ## 1. Legitimate decision and scope
@@ -20,7 +20,7 @@ Record only a decision **actually made** by the legitimate Human owner. Do not i
 
 | Artifact / concern | Exact reviewed immutable path + blob/commit | Approved meaning/scope |
 | --- | --- | --- |
-| Product Contract | `<exact accepted revision>` | `<...>` |
+| Original approved Product source(s), Contract if applicable | `<exact accepted revision and scope>` | `<...>` |
 | Supporting Product Definition (if material to decision) | `<exact accepted revision>` | `<...>` |
 
 If the final Git revision was not yet available at the Human decision moment, identify an immutable reviewed content snapshot and **verify byte/semantic equivalence** before treating persisted content as approved. Never mutate accepted Contract bytes just to write this record or approval status.
@@ -31,7 +31,7 @@ If the final Git revision was not yet available at the Human decision moment, id
 | --- | --- | --- | --- |
 | `<...>` | `<...>` | `<...>` | `<...>` |
 
-The binding Product Contract contains accepted SC/REQ/AC; this record is **not a second normative specification**.
+Binding Product source(s) contain required SC/REQ/AC or equivalents when material; an approved Contract, if used, stays self-contained. This approval record is **not a second normative specification**.
 
 ## 4. Unresolved questions and evidence limits
 

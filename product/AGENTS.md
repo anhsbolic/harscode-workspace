@@ -1,12 +1,9 @@
-# Product AGENTS — Concern Routing (Research)
+# Product AGENTS — Single Active Research Concern
 
-> **Standing:** Experiment-led Product research guidance on `research/cross-stage-mapping`, not operational policy or execution authorization.
+> **Standing:** SELECTED RESEARCH REVISION CANDIDATE / EXACT CONTENT HUMAN REVIEW PENDING. No authorization for target-project writes, tools, Space invocation or real Product policy.
 
-Read [Product entrypoint](README.md) and [Product Definition](product-definition.md) for Input → Process → Output → Outcome and Product semantic ownership. Read [Authority & Approval](authority-and-approval.md) to establish decision authority, exact revisions, effective acceptance and supersession. Read [Consumer Handoff](consumer-handoff.md) to evaluate information needs, source fidelity, legitimate receiving responsibilities and project-bound compatibility.
+Read [Product Definition](product-definition.md), [Authority & Approval](authority-and-approval.md) and [Consumer Handoff](consumer-handoff.md). Inspect actual project owning Product/domain evidence, accepted revisions and constraints. Challenge whether real value/commitment is justified before decomposing capability. Separate Product decisions from UX actor investigation/flow, UI expression, Engineering mechanism and independent Security/Privacy constraints.
 
-Use the [optional research templates](README.md#optional-templates--accepted-research-designs) only if they fit current project authority; do not mistake their presence for accepted Product decisions.
+Expose **O1 Value intent, O2 legitimate commitments, O3 authority & constraints, O4 uncertainty/evidence** as decision-specific meaning, not four files. When material, include precise roles/rights, required data, invariants, denial/partial/unknown results and SC/REQ/AC or accepted equivalents. A hypothetical rule is not binding; a self-contained approved Product Contract cannot hide material rules in pointers. Avoid mandatory Product User Journey, PRD, screen map, workflow engine or generic output packet.
 
-**Dependency principle:** required information and functional responsibilities are stable; concrete subject identities (Space, Agent, team or tool) are resolved separately through current assignment and capability authority. No mandatory producer/consumer chain.
-
-**Hard boundaries:** Target-project approved sources and authorized Humans own Product truth. Product owns consequential actor/domain value, Domain Role meaning and Product acceptance; UI interaction/visual expression and technical mechanisms belong to their legitimate concerns. Exact-revision approval is not Design/Engineering approval, runtime readiness, invocation or protected-write permission. Do not promote illustrative ORG-01, current code, archived decisions or chat history into Product policy.
-
+Consumer feedback returns to legitimate Product/domain authority with consequence, original source, owner and recommended decision; never invent a policy to make downstream complete. Project security/permission boundaries prevail.

@@ -1,6 +1,6 @@
 # Template — Product Contract (Bahasa Indonesia)
 
-> **Standing:** DRAFT FOR HUMAN REVIEW. Optional research authoring aid, not automatically binding target-project Product authority or Engineering input.
+> **Standing:** OPTIONAL RESEARCH AUTHORING AID / CHANGED CONTENT HUMAN REVIEW PENDING, not automatically binding target-project Product authority or Engineering input.
 > **References:** [Product Definition](../product-definition.md), [Authority & Approval](../authority-and-approval.md), [Consumer Handoff](../consumer-handoff.md).
 > **Boundary:** Defines consequential Product meaning, not screens, APIs, database models, named Space contracts, or execution permission.
 
@@ -48,16 +48,16 @@ Only define authority rules material to this outcome. Actor perspective is not i
 
 Product defines necessary domain information and consequential disclosure, not layout, visual hierarchy or non-consequential final UI copy. Material rules must trace to acceptance/invariants; they cannot hide in an optional appendix.
 
-## 4. Bounded Product User Journey Anchor
+## 4. Material Domain Lifecycle / Consequence Anchor (conditional)
 
-| Moment | Legitimate actor understanding/action | Actual Product/domain consequence | Rejection, failure, partial, uncertain meaning |
+| Material domain change (if applicable) | Rights/role/actor consequence | Binding domain effect/invariant | Rejection, failure, partial, uncertain meaning |
 | --- | --- | --- | --- |
 | Entry | `<...>` | `<...>` | `<...>` |
 | Pre-effect | `<...>` | `<...>` | `<...>` |
 | Action | `<...>` | `<...>` | `<...>` |
 | Result / later inspection | `<...>` | `<...>` | `<...>` |
 
-Can reference a separate effective journey artifact for context, but no binding Product meaning may require reconstructing historical chat/research IDs. Do not specify UX screens/routes or technical sequencing.
+**No mandatory Product User Journey.** Record real domain lifecycle/authority consequences if material, otherwise N/A with reason. UX owns experience journey/flow/routes; no normative meaning can hide in chat/research IDs.
 
 ## 5. Product Requirements, Business Rules & Invariants
 

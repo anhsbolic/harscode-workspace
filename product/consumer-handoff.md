@@ -1,6 +1,6 @@
 # Product Consumer Handoff
 
-> **Standing:** AGREED WORKING RESEARCH DESIGN (2026-11-04). Not operational Harscode policy, project Product authority or execution authorization.
+> **Standing:** SINGLE ACTIVE RESEARCH REVISION CANDIDATE / EXACT CONTENT HUMAN REVIEW PENDING (2026-11-16). Not operational Harscode policy, project Product authority or execution authorization.
 > **Purpose:** Information-contract-based Product consumption without dependencies on named phases, Spaces, Agents, teams or technology.
 
 ## 1. Principle
@@ -19,15 +19,13 @@ Only the first two define reusable Product consumption. The third is resolved th
 
 ## 3. Product information types
 
-Product Definition exposes six logical outputs: **Product Intent & Value Definition**, **Actor Definition & Goals**, **Product User Journey**, **Selected Product Outcome**, **Product Contract**, and **Product Review & Approval Record**.
-
-They are not six mandatory files or one mandatory package. The approved Product Contract must directly expose its own binding Product rules; supporting discovery material must not hide additional obligations.
+Product Definition exposes four logical meanings: **O1 Value intent, O2 Legitimate Product commitments, O3 Authority & constraints, O4 Uncertainty & evidence status**. These are not four mandatory files or a serial producer chain. The approved Product Contract must directly expose its own binding Product rules; supporting discovery material must not hide additional obligations.
 
 ## 4. Receiving responsibilities
 
 | Responsibility | Product information needed when material |
 | --- | --- |
-| Interaction & Experience Design | Intent, actors/goals, Product journey, bounded outcome, consequential information and behavior, acceptance constraints |
+| Interaction & Experience Design | Legitimate value/actors/capabilities, accepted Product effects/constraints, evidence/uncertainty and decision authority; **UX owns experience journey** |
 | Visual Interface & Content Design | Binding Product meaning, required disclosures/provenance and truthful result states |
 | Engineering Solution Design | Accepted bounded Product behavior, domain roles/authority, invariants, success and acceptance |
 | Engineering Development | Applicable Product behavior/acceptance **plus separately owned** Design, technical, security and implementation inputs |

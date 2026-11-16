@@ -1,6 +1,6 @@
 # Product Authority & Approval
 
-> **Standing:** AGREED WORKING RESEARCH DESIGN (2026-11-04); not operational Harscode policy or target-project authority.
+> **Standing:** SINGLE ACTIVE RESEARCH REVISION CANDIDATE / EXACT CONTENT HUMAN REVIEW PENDING (2026-11-16); not operational Harscode policy or target-project authority.
 > **Purpose:** Legitimate Product decision ownership, standing, exact-revision approval and supersession.
 
 ## 1. Principle
@@ -35,7 +35,7 @@ When two authorities materially conflict, name both exact sources, consequences 
 
 ## 5. Decision sufficiency and Product review
 
-Challenge problem/value evidence, actor goals and meaningful journey, consequential Domain Role and information obligations, business rules, SC/REQ/AC coherence, negative/partial/uncertain paths, dependencies, affected parties and consumer completeness.
+Challenge problem/value evidence, intended beneficiary vs UX-owned experience journey, consequential Domain Role and information obligations, business rules, SC/REQ/AC coherence, negative/partial/uncertain paths, dependencies, affected parties and consumer completeness.
 
 Scale scrutiny with consequence, irreversibility, privacy/security implications and consumer blast radius. Not every unresolved question blocks; only the affected binding claim does where material. Bounded exploratory hypotheses remain non-binding.
 
@@ -47,9 +47,9 @@ No internal review PASS, conversation acknowledgment or template completion auto
 
 ## 7. Exact-revision approval and persistence
 
-**Product Contract states binding meaning; Product Review & Approval Record identifies exact accepted bytes, who accepted them, affected scope, decision evidence and limitations.**
+**Original accepted target-project Product source(s) state binding meaning; a decision/approval record identifies exact accepted bytes, legitimate owner, scope, evidence and limitations.** An accepted project Product Contract, if used, must itself directly express its binding rules.
 
-Minimum durable record: project/outcome identity, legitimate approver, decision, scope and exclusions, exact Contract path and blob/commit revision, decision reference/time, material unknowns and any supersession relation.
+Minimum durable record: project/outcome identity, legitimate approver, decision, scope and exclusions, exact original accepted Product source path(s), including Contract where applicable, and blob/commit revision, decision reference/time, material unknowns and any supersession relation.
 
 **Do not edit the approved Contract merely to embed its approval label or own SHA, then treat the old approval as covering new bytes.** Keep the Approval Record separate when needed. If acceptance happens before final artifact revision is known, preserve immutable reviewed content and reconcile the persisted bytes; materially changed content requires new review. Unpersisted chat approval remains a working decision, not durable project authority.
 
