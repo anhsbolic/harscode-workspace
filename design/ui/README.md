@@ -1,6 +1,6 @@
 # UI — Visual Interface & Content Definition
 
-> **Standing:** **CROSS-CONCERN ALIGNED UI RESEARCH REVISION CANDIDATE / EXACT-REVISION HUMAN REVIEW PENDING (2026-11-16)**. Original A3 research guidance/templates were `SETTLED_FOR_RESEARCH` at immutable [approved revision `cbe1010`](https://github.com/anhsbolic/harscode-workspace/commit/cbe1010a37145c7f9ebf2adf1216de848ddd6c96), but this changed version has **not inherited** that approval. Not operational Harscode policy, formed UI Space, target-project authority or execution authorization.
+> **Standing:** SINGLE-ACTIVE UI RESEARCH REVISION CANDIDATE / EXACT HUMAN CONTENT REVIEW PENDING. Historical A3 approval applies to original pinned bytes only, not this revised guidance. Not operational `main`, target-project UI authority or Space invocation.
 > **Owner:** Reusable Visual Interface & Content Definition guidance; material UI decisions and exact effective revisions belong to legitimate target-project Design owners.
 
 ## Direct entrypoint
@@ -26,9 +26,9 @@ UI does **not** redefine Product success, Domain Roles, business/legal/privacy c
 
 ## Entry and sufficiency
 
-The [13-input UI coverage](definition.md#2-input--13-decision-specific-information-needs) and [UI Input Sufficiency Check](definition.md#3-ui-input-sufficiency-check) decide what accepted information must exist for the actual task. **New/material UX experiences** must provide inspectable **flow/branch and representative structural Lo-Fi proofs by default**, with selected version-specific sources: A2 **O2 flow/O6 Lo-Fi**, or explicitly selected experimental UX v1.1 **O3/C2 + O4 flow** and **O3/C3 + O4 Lo-Fi**. Inspect applicable v1.1 **O3/C4 page-vs-state**, **O3/C5-C6 interaction/accessibility** and **O6/C7 standing**; never equate the v1.1 O2 concept / O6 handoff with A2 O2/O6. Webpage Map & Routes are required for material web navigation.
+The [13-input UI coverage](definition.md#2-input--13-decision-specific-information-needs) checks actual material source meaning: **current UX O3/C2 + O4 flow**, **O3/C3 + O4 Lo-Fi** by default for new/material screen UX; C4 navigation/page-vs-state, C5 interaction/states, C6 accessibility and O6/C7 approval when applicable. UX O2 concept and O6 handoff are not flow/Lo-Fi. Binding project acceptance is separate.
 
-The [scoped Product v2 → UX v1.1 → UI research alignment record](../../experiments/product-v2/phase1-product-v2-ux-v1-1-ui-a3-semantic-alignment-2026-11-16.md) is a **candidate map**, not automatically selected for all work. UI can investigate a bounded visual direction with clearly marked hypotheses. Missing Product/UX/standard decisions block only their affected **binding UI decisions**, not independent authorized exploration.
+The [single-active research consolidation record](../../experiments/product-v2/single-active-product-ux-ui-consolidation-2026-11-16.md) documents current source routing. UI may explore with explicitly provisional evidence, but cannot bind material meaning without legitimate owning sources/approval.
 
 ## Artifact and authority limits
 
