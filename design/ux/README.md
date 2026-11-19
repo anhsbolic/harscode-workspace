@@ -7,6 +7,7 @@
 - [UX Definition](definition.md): I1–I5, P1–P7, O1–O6, Q1–Q6 and C1–C7 consumer sufficiency.
 - [UX AGENTS](AGENTS.md): actor-centered investigation, authority and evidence discipline.
 - [UX Authority & Handoff](authority-and-handoff.md): source/approval, actual consumer needs and material constraints.
+- [UX Kickoff Prompt](ux-kickoff-prompt.md): optional, project-agnostic UX starting prompt for actor inquiry, decision-specific outputs and quality/evidence sufficiency, not a mandatory process.
 - Optional [output template Bahasa Indonesia](templates/ux-output.id.md) · [English](templates/ux-output.en.md): concise source-addressable decision record, not mandatory six files.
 
 UX investigates human context and owns experience concept, flow, IA, navigation, recovery and structural proofs **within accepted Product meaning**. Product owns legitimate value/capability/eligibility/rights and consequential outcomes. UI owns visual/copy expression; Engineering owns mechanisms; Project Standards own reusable rules.
