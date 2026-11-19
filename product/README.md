@@ -9,6 +9,7 @@
 - [Consumer Handoff](consumer-handoff.md) — functional source/standing exchange with UX, UI, Engineering and feedback.
 - [Product AGENTS](AGENTS.md) — execution boundaries.
 - [Product Kickoff Prompt](product-kickoff-prompt.md) — **optional, project-agnostic** conversation starter for deriving needed Product outputs, desired outcomes, starting point and decision-specific sufficiency from real project authority. Not a mandatory step or Product approval.
+- [Current CRTV research status](../experiments/product-v2/product-research-crtv-status-2026-11-19.md) — evidence-based checkpoint: bounded real-task Product completion supported, independent UX consumption NOT TESTED, reusable Harscode Product NOT PROVEN. Research evidence pointer only, not Product policy or new phase gate.
 
 Optional authoring aids, **not three mandatory documents**: [Product meaning](templates/product-definition.id.md), [Product Contract where applicable](templates/product-contract.id.md), [Product decision record](templates/product-approval-record.id.md).
 
