@@ -41,3 +41,5 @@ A bounded UX intake test is the **highest-value next evidence-producing action**
 - **Reopen Harscode Product design** only on material consumer failure, demonstrated missing reusable semantic/authority boundary, reproducible costly friction attributable to the model, or meaningful counterexamples. Project-specific UX/Engineering decisions remain with their actual owners.
 
 **Checkpoint conclusion:** **Product research candidate active; source-level CRTV promising; next validation is independent bounded receiving-consumer evidence; reusable Harscode Product not yet proven.**
+
+**Subsequent research triage (20 November 2026):** [Post-outcome retro: evidence notes vs proposed clarifications vs open investigation](po-01-product-retro-improvement-triage-2026-11-20.md). This link records *candidate changes only*; the selected Product Definition and current CRTV proof standing remain unchanged.
