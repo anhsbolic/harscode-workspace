@@ -9,6 +9,7 @@ Produce and verify software solutions against current project authority: solutio
 
 | Concern | Guidance |
 | --- | --- |
+| Cross-capability Engineering philosophy, judgment and guardrails | [Engineering Principles V1](principles.md) — **HUMAN CONTENT ACCEPTED / RESEARCH-ONLY** for exact blob `c0871d079cfa293a7f22eb970ae3ed8b9b58197d`; [approval standing](../experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md#engineering-principles-v1--human-content-acceptance-2026-11-25). The draft header is historical; no formation, execution or operational promotion. |
 | Create/revise a reusable engineering production capability | [Space formation](space-formation.md) |
 | Prepare bounded work and test that delivered software matches accepted contracts | [Production and verification](production-and-verification.md) |
 | Local development environment readiness (standalone Agent) | [Accepted Agent definition](agents/local-development-environment-preparation/agent.md) · [Guidance](agents/local-development-environment-preparation/guidance.md). **Historical exact-revision capability accepted for bounded Human-direct local use**; current `agent.md` is an editorial edition with different bytes, **not separately exact-content reapproved**. No blanket runtime/side-effect authorization or promotion to `main`. |
