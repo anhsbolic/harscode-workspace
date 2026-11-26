@@ -15,7 +15,7 @@ This breakdown is the bounded research plan within this single owning tracker, n
 
 | Work package | Completion boundary | Standing |
 | --- | --- | --- |
-| V1.1 — Process Responsibility Deep Dive | Analyze P1–P6 responsibilities, authority, competencies, working contexts, coupling, independence, evidence, and justified effort. No final Agent count assumed. | IN_PROGRESS — P2 |
+| V1.1 — Process Responsibility Deep Dive | Analyze P1–P6 responsibilities, authority, competencies, working contexts, coupling, independence, evidence, and justified effort. No final Agent count assumed. | IN_PROGRESS — P3 |
 | V1.2 — Agent Composition | Justify smallest sufficient composition, conditional participation, coherent implementation ownership, required independent assurance and accountable-subject binding. | NOT_STARTED |
 | V1.3 — Competency & Knowledge Architecture | Core/conditional competency requirements and sufficient initial guidance for actual demand; scoped discovery, applicability, safeguards and project precedence. Reconcile existing knowledge-library restrictions explicitly if needed. | NOT_STARTED |
 | V1.4 — Collaboration, State & Authority | Concrete coordination, reporting, single-writer assignment state, safe concurrency, continuity, security/HITL, sufficient effort/stopping and handoff semantics. | NOT_STARTED |
@@ -29,8 +29,8 @@ V1.1 concern-level progress (analysis concerns, not execution stages):
 | Concern | Standing |
 | --- | --- |
 | P1 — Technical Input Assessment | AGREED WORKING DECISION |
-| P2 — Implementation Planning | IN_DISCUSSION |
-| P3 — Software Implementation | OPEN |
+| P2 — Implementation Planning | AGREED WORKING DECISION |
+| P3 — Software Implementation | IN_DISCUSSION |
 | P4 — Backend Integration | OPEN |
 | P5 — Technical Verification | OPEN |
 | P6 — Review & Handoff | OPEN |
@@ -51,7 +51,19 @@ Proactive gaps: distinguish missing artifact, missing information and missing au
 
 Standing: Human-agreed working research decision, source-grounded conceptual analysis only. No formation approval, actual invocation, runtime evidence, full target feature-contract audit or changes to settled I/P/O/O or Engineering guidance. Final allocation/knowledge/state mechanisms remain for V1.2–V1.5.
 
-**Next:** P2 — Implementation Planning; analyze local technical design, planning sufficiency, dependency/coupling, risk and recoverability, verification strategy and delegated decision authority. Keep plans proportional and distinguish implementation-owner judgment from Coordinator allocation/coordination and legitimate upstream solution authority. No Agent invocation or implementation.
+#### V1.1 P2 — agreed working decision (2026-11-26)
+
+Human accepted **Implementation-Owned, Proportionate & Adaptive Planning**, **Invariant-Aware Decomposition**, and **Verification-Aware Technical Planning**. Retain existing P2 and settled P1. Planning is a reasoning responsibility, not a mandatory formal Techplan, separate Planner Agent, phase, or per-plan Human approval. Select a sufficient approach based on effective inputs, applicable standards, justified defaults, actual technical context, complexity, uncertainty, coupling and consequence. Plan behavior and invariants before selecting mechanisms; assess affected consumers/dependencies, technical decomposition, security, compatibility, recoverability, verification and cost. Avoid both consequential underplanning and speculative overplanning.
+
+The accountable implementation owner retains local technical planning, implementation sequencing and coherent technical direction. Coordinator owns assignment-level allocation, collaboration direction, dependencies, safe parallelism, applicable gates and assurance coordination; neither role automatically takes over legitimate upstream solution authority. Conditional design assistance, isolated exploration or early independent design scrutiny may be justified by material complexity/risk, but producer accountability and required independent judgment remain intact. P1/P2/P3 coupling is a design hypothesis to assess alongside P4–P6, not an approved Agent topology.
+
+Decompose around coherent behavior and shared invariants, not arbitrary technical layers or activity lists. Delegate bounded transferable contributions where coupling, ownership, write containment, authority and total engineering cost justify it. Parallelism is an optimization, not an objective; preserve single accountable implementation ownership and coordination over shared dependencies. Consider meaningful positive/negative evidence and relevant integration, security, concurrency, compatibility and recovery before consequential implementation. No mandatory TDD, fixed test sequence or producer restriction on independent assurance. Adapt plans when material evidence changes; re-assess affected constraints and coordinate material changes, without treating plans as new authority or permission to expand scope.
+
+Preserve material technical decisions, risk/approval needs, dependency commitments, verification intentions and their owning references where needed for subsequent work/reconstruction. Distinguish planned from executed evidence. Do not persist routine steps or discarded alternatives absent material value. Use existing durable representations and E4 reconciliation rather than mandating physical plan artifacts or duplicate state. Honor actual project-specific planning/approval obligations where applicable. Final Agent composition, competency packaging and concrete collaboration mechanisms remain open.
+
+Standing: Human-agreed working research decision, source-grounded conceptual analysis only. No formation approval, execution evidence, changes to I/P/O/O or Engineering foundation.
+
+**Next:** P3 — Software Implementation; examine coherent construction ownership, Go engineering competencies, bounded contribution delegation, correctness/security, local verification and correction, context coupling, and authority-preserving adaptation. No Agent invocation or implementation.
 
 
 ### Engineering Principles V1 — Human content acceptance (2026-11-25)
@@ -106,7 +118,7 @@ Standing: Human-agreed working research decision, source-grounded conceptual ana
 | **A5 Engineering — Builder (umbrella)** | `IN_PROGRESS / HORIZONTAL CONCEPTUAL EPISODE CLOSED` — Anhar accepted P1–P8 horizontal coherence at source level on 2026-11-10. Go vertical design+real execution evidence remains owed; NextJS V3 and conditional E2E have separate formation/runtime status. Not `A5 COMPLETE`. | [Final horizontal assessment](a5-engineering-builder-horizontal-coherence-final-assessment-2026-11-10.md) · [Deferred vertical debt](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
 | ↳ A5 / Go Backend Builder I/P/O/O | `CONCEPTUALLY SUFFICIENT / WORKING RESEARCH` — generalized 4 Input / 6 Process / 3 Output / 1 technical Outcome; **not formed or runtime-proven** | [Unified definition](a5-go-backend-builder-unified-ipoo-research-definition.md) · [derivation method](a5-go-backend-builder-ipoo-derivation-method.md) |
 | ↳ A5 / P1–P8 Builder coverage & horizontal coherence | `ACCEPTED FOR CONCEPTUAL RESEARCH / HORIZONTAL EPISODE CLOSED` (Anhar, 2026-11-10). P1–P8 owners/edges accounted for; applicable real tasks still need actual authority, subject binding and evidence. | [Final A5 horizontal assessment](a5-engineering-builder-horizontal-coherence-final-assessment-2026-11-10.md) · [Historical baseline below](#a5-original-p1p8-process-coverage--baseline-review-2026-11-07) |
-| ↳ A5 / Go Backend Builder vertical depth | `V1 IN_PROGRESS / V2 DEFERRED` — V1.1 P1 agreed; P2 discussion active; exact formation approval and bounded real execution evidence remain pending; full debt open. | [Bounded V1 plan](#a5-go-backend-builder-vertical-depth-v1--bounded-formation-plan-2026-11-26) · [Debt and closure criteria](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
+| ↳ A5 / Go Backend Builder vertical depth | `V1 IN_PROGRESS / V2 DEFERRED` — V1.1 P1–P2 agreed; P3 discussion active; exact formation approval and bounded real execution evidence remain pending; full debt open. | [Bounded V1 plan](#a5-go-backend-builder-vertical-depth-v1--bounded-formation-plan-2026-11-26) · [Debt and closure criteria](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
 | **A6 Cross-stage coherence & foundation closure** | `IN_PROGRESS / PART 1 CONCEPTUALLY ACCEPTED / PART 2 TARGETED ROUTING RECONCILED`; project-fit/runtime `NOT CHECKED / NOT VERIFIED`, full A6 closure pending. | [Part 1](#a6-part-1--bounded-ipoo-contract--consumer-reconciliation-2026-11-10) · [Part 2](#a6-part-2--cross-cutting-foundation-reconciliation-2026-11-10) · [Original worklist](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) |
 
 ## UX quality investigation — v1.1 source-based critical review (2026-11-13)
