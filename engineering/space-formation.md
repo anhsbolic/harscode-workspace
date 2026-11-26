@@ -10,6 +10,8 @@ Formation cost must be justified by actual need, reusable applicability and fail
 
 ## Formation decision
 
+For internal Agent composition, knowledge, information exchange, assignment-state continuity and bounded coordination, use [Engineering Agent Formation & Coordination V1](agent-formation-and-coordination.md) as Human-content-accepted research guidance within existing authority. This complements rather than replaces the formation decision below and does not approve any exact Space definition or runtime invocation.
+
 For a proposed reusable capability, document only what changes the decision:
 
 1. **Demand/evidence:** the real repeated or consequential production gap, consumers, current alternatives and reason a separate capability adds value.
