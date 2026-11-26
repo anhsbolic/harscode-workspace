@@ -5,6 +5,41 @@
 
 ## Current bounded research status
 
+### A5 Go Backend Builder Vertical Depth V1 — bounded formation plan (2026-11-26)
+
+**Human decision:** Resume the required V1 vertical-design debt with the current session scoped through formation-ready design, exact-definition review, separate Human formation approval and persistence. Ground initial competency and knowledge depth in the actual needs of the selected target project, keeping reusable Space definitions project-neutral; project-specific source facts and rules remain with their owning project. V2 execution strategy is deferred until V1 is complete. No invocation, target-project implementation, runtime verification, or promotion to operational main is authorized. Approval of this plan is not approval of the future definition.
+
+**Baseline:** [Go unified I/P/O/O](a5-go-backend-builder-unified-ipoo-research-definition.md), [horizontal assessment](a5-engineering-builder-horizontal-coherence-final-assessment-2026-11-10.md), [vertical debt criteria](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level), [Engineering Principles V1](../../engineering/principles.md), [Agent Formation & Coordination V1](../../engineering/agent-formation-and-coordination.md) and [Space Formation](../../engineering/space-formation.md) at research baseline `66ae4f453f893c586e33b607a8418bcc0e1542bb`. Retain settled external responsibility/I/P/O/O and E1–E5 unless material evidence requires reconciliation.
+
+This breakdown is the bounded research plan within this single owning tracker, not a Space runtime workflow, additional approval ledger, or mandatory stage/Agent topology. Iterate where actual findings warrant it. Record material decisions and evidence pointers here; keep reusable technical content in its owning definition or guidance.
+
+| Work package | Completion boundary | Standing |
+| --- | --- | --- |
+| V1.1 — Process Responsibility Deep Dive | Analyze P1–P6 responsibilities, authority, competencies, working contexts, coupling, independence, evidence, and justified effort. No final Agent count assumed. | IN_PROGRESS — P1 |
+| V1.2 — Agent Composition | Justify smallest sufficient composition, conditional participation, coherent implementation ownership, required independent assurance and accountable-subject binding. | NOT_STARTED |
+| V1.3 — Competency & Knowledge Architecture | Core/conditional competency requirements and sufficient initial guidance for actual demand; scoped discovery, applicability, safeguards and project precedence. Reconcile existing knowledge-library restrictions explicitly if needed. | NOT_STARTED |
+| V1.4 — Collaboration, State & Authority | Concrete coordination, reporting, single-writer assignment state, safe concurrency, continuity, security/HITL, sufficient effort/stopping and handoff semantics. | NOT_STARTED |
+| V1.5 — Formation Authoring | Actual project-neutral Space/Agent definitions, strict I/P/O/O, failure/partial/refusal semantics, necessary knowledge/guidance, runtime requirements and evidence expectations. No prescribed file count. | NOT_STARTED |
+| V1.6 — Formation Review | Review exact candidate against all applicable obligations and representative cases; reconcile material findings and generic upstream/downstream fit, qualify actual bound compatibility and runtime unknowns. | NOT_STARTED |
+| Separate Human formation approval | Exact candidate revision, scope and owner explicitly approved; persist approved definition and standing. | PENDING — not granted by plan |
+| V2 — Real execution validation | Later separately authorized episode; actual bounded execution evidence required for full debt resolution. | DEFERRED — strategy not yet selected |
+
+V1.1 concern-level progress (analysis concerns, not execution stages):
+
+| Concern | Standing |
+| --- | --- |
+| P1 — Technical Input Assessment | IN_DISCUSSION |
+| P2 — Implementation Planning | OPEN |
+| P3 — Software Implementation | OPEN |
+| P4 — Backend Integration | OPEN |
+| P5 — Technical Verification | OPEN |
+| P6 — Review & Handoff | OPEN |
+
+**Session DoD:** coherent external mission, scope, authority and I/P/O/O; justified Agent composition and authored definitions; sufficient core/conditional knowledge for initial target demand and discovery guidance; collaboration, reporting and durable-state guidance; security/HITL, verification, independent assurance and stopping safeguards; runtime capability requirements; conceptual stress tests and relevant compatibility review; exact formation review and separate Human approval, with durable approved definition/standing. V1 closure is `VERTICAL_DESIGN_REVIEWED`; the additional session target is `FORMATION_APPROVED / EXECUTION_PENDING`. Definition readiness does not mean runner readiness, authorization to invoke, or proven execution. Stop design when these obligations are sufficient; do not build speculative technology catalogs, global state services, search engines or orchestration tooling. A5 overall remains IN_PROGRESS, HI-004 remains open, and A6 standing is unchanged. V2 strategy and execution are outside this session scope; do not close full vertical debt without relevant actual evidence.
+
+**Next:** P1 — assess input authority, sufficiency, actual project context, feasibility and material gaps; use read-only target-project source grounding without importing project-specific policy into reusable guidance. No Agent invocation or implementation.
+
+
 ### Engineering Principles V1 — Human content acceptance (2026-11-25)
 
 **Decision:** Anhar explicitly accepted the final [Engineering Principles V1](../../engineering/principles.md) draft and authorized persistence to the research branch with minimal Engineering routing updates. **Standing:** `HUMAN CONTENT ACCEPTED / RESEARCH-ONLY` for exact Git blob `c0871d079cfa293a7f22eb970ae3ed8b9b58197d` (unchanged approved bytes), authored against `cd76f36d3192b5b6de13fb635ef86c1fb5a7ff21`. The candidate's pre-approval header and wording are retained as exact provenance; this record establishes the subsequent Human decision. Scope: reusable Engineering philosophy, 20 decision principles and six non-negotiable guardrails across Engineering formation, competency design, delegated production, verification and handoff. No changes to project authority, accepted Space definitions, A5 horizontal decisions, Go vertical debt standing, operational `main`, or invocation/runtime authorization. No execution evidence is claimed. Material future changes require their own applicable review.
@@ -57,7 +92,7 @@
 | **A5 Engineering — Builder (umbrella)** | `IN_PROGRESS / HORIZONTAL CONCEPTUAL EPISODE CLOSED` — Anhar accepted P1–P8 horizontal coherence at source level on 2026-11-10. Go vertical design+real execution evidence remains owed; NextJS V3 and conditional E2E have separate formation/runtime status. Not `A5 COMPLETE`. | [Final horizontal assessment](a5-engineering-builder-horizontal-coherence-final-assessment-2026-11-10.md) · [Deferred vertical debt](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
 | ↳ A5 / Go Backend Builder I/P/O/O | `CONCEPTUALLY SUFFICIENT / WORKING RESEARCH` — generalized 4 Input / 6 Process / 3 Output / 1 technical Outcome; **not formed or runtime-proven** | [Unified definition](a5-go-backend-builder-unified-ipoo-research-definition.md) · [derivation method](a5-go-backend-builder-ipoo-derivation-method.md) |
 | ↳ A5 / P1–P8 Builder coverage & horizontal coherence | `ACCEPTED FOR CONCEPTUAL RESEARCH / HORIZONTAL EPISODE CLOSED` (Anhar, 2026-11-10). P1–P8 owners/edges accounted for; applicable real tasks still need actual authority, subject binding and evidence. | [Final A5 horizontal assessment](a5-engineering-builder-horizontal-coherence-final-assessment-2026-11-10.md) · [Historical baseline below](#a5-original-p1p8-process-coverage--baseline-review-2026-11-07) |
-| ↳ A5 / Go Backend Builder vertical depth | `DEFERRED / REQUIRED FOLLOW-UP` — V1 formation-ready design depth and later separately authorized V2 bounded execution evidence; **not cancelled** | [Debt and closure criteria](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
+| ↳ A5 / Go Backend Builder vertical depth | `V1 IN_PROGRESS / V2 DEFERRED` — V1.1 P1 discussion active; exact formation approval and bounded real execution evidence remain pending; full debt open. | [Bounded V1 plan](#a5-go-backend-builder-vertical-depth-v1--bounded-formation-plan-2026-11-26) · [Debt and closure criteria](a5-engineering-builder-horizontal-coherence-and-vertical-depth-debt.md#5-deferred-go-backend-builder-vertical-depth--explicit-debt-and-closure-level) |
 | **A6 Cross-stage coherence & foundation closure** | `IN_PROGRESS / PART 1 CONCEPTUALLY ACCEPTED / PART 2 TARGETED ROUTING RECONCILED`; project-fit/runtime `NOT CHECKED / NOT VERIFIED`, full A6 closure pending. | [Part 1](#a6-part-1--bounded-ipoo-contract--consumer-reconciliation-2026-11-10) · [Part 2](#a6-part-2--cross-cutting-foundation-reconciliation-2026-11-10) · [Original worklist](https://github.com/anhsbolic/harscode-workspace/blob/947d9b361bd4cdf07d3aeebffb4a27eaf18da49a/experiments/org-01-reverse-lifecycle/audit-revision-plan-and-tracker.md) |
 
 ## UX quality investigation — v1.1 source-based critical review (2026-11-13)
